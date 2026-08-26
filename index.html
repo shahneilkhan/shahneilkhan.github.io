@@ -1,1 +1,1717 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shah Neil Khan — Software Engineer & UI/UX Design Expert</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --void: #07090a;
+      --panel: #0d1211;
+      --panel-2: #111817;
+      --line: #1c2523;
+      --teal-deep: #0f2d29;
+      --teal-glow: #2bb3a3;
+      --gold: #c9a24b;
+      --lime: #b7d33e;
+      --text: #eef1ee;
+      --muted: #8b948e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    .display {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Ambient Background */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+
+      background:
+        radial-gradient(
+          700px 500px at 15% -5%,
+          rgba(43, 179, 163, 0.14),
+          transparent 60%
+        ),
+        radial-gradient(
+          600px 500px at 100% 10%,
+          rgba(201, 162, 75, 0.08),
+          transparent 60%
+        );
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background-image:
+        radial-gradient(
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px
+        );
+
+      background-size: 34px 34px;
+
+      mask-image:
+        radial-gradient(
+          circle at 50% 0%,
+          black,
+          transparent 70%
+        );
+    }
+
+    /* Navigation */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+
+      backdrop-filter: blur(14px);
+
+      background:
+        rgba(7, 9, 10, 0.72);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 18px 28px;
+
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.3px;
+    }
+
+    .logo span {
+      color: var(--teal-glow);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 34px;
+
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .navlinks a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+
+      padding: 8px 18px;
+      border-radius: 6px;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: #07090a;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 96px 0 80px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      font-size: 12.5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      color: var(--lime);
+
+      border:
+        1px solid rgba(183, 211, 62, 0.35);
+
+      background:
+        rgba(183, 211, 62, 0.06);
+
+      padding: 6px 14px;
+      border-radius: 20px;
+
+      margin-bottom: 26px;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--lime);
+
+      box-shadow:
+        0 0 8px var(--lime);
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.08;
+      font-weight: 700;
+
+      letter-spacing: -0.5px;
+
+      margin-bottom: 22px;
+    }
+
+    .hero h1 .accent {
+      color: var(--teal-glow);
+    }
+
+    .hero p.lede {
+      font-size: 16.5px;
+      color: var(--muted);
+
+      line-height: 1.75;
+
+      max-width: 480px;
+
+      margin-bottom: 34px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      border-radius: 8px;
+
+      font-weight: 600;
+      font-size: 14.5px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #07090a;
+    }
+
+    .btn-primary:hover {
+      background: #e0b95c;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--teal-glow);
+      color: var(--teal-glow);
+    }
+
+    /* Hero Photo */
+
+    .hero-photo {
+      position: relative;
+    }
+
+    .beam-frame {
+      position: relative;
+
+      border-radius: 18px;
+      overflow: hidden;
+
+      border:
+        1px solid var(--line);
+
+      box-shadow:
+        0 0 0 1px rgba(43, 179, 163, 0.08),
+        0 30px 60px -20px rgba(0, 0, 0, 0.7),
+        0 0 80px -10px rgba(43, 179, 163, 0.25);
+    }
+
+    .beam-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    .badge-tag {
+      position: absolute;
+
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
+
+      background:
+        rgba(7, 9, 10, 0.72);
+
+      backdrop-filter: blur(6px);
+
+      border:
+        1px solid rgba(183, 211, 62, 0.4);
+
+      border-radius: 10px;
+
+      padding: 12px 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .badge-tag .role {
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-tag .status {
+      font-size: 11px;
+      color: var(--muted);
+
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-tag .status::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #4ade80;
+
+      box-shadow:
+        0 0 6px #4ade80;
+    }
+
+    /* Sections */
+
+    .section {
+      padding: 80px 0;
+      border-top:
+        1px solid var(--line);
+    }
+
+    .stitle {
+      display: flex;
+      align-items: flex-end;
+      gap: 18px;
+
+      margin-bottom: 44px;
+    }
+
+    .stitle .num {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 13px;
+      color: var(--void);
+
+      background: var(--teal-glow);
+
+      width: 30px;
+      height: 30px;
+
+      border-radius: 6px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 700;
+    }
+
+    .stitle h2 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .stitle .rule {
+      flex: 1;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--line),
+          transparent
+        );
+
+      margin-bottom: 12px;
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .about-grid p {
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.85;
+
+      margin-bottom: 16px;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+
+      margin-top: 8px;
+    }
+
+    .stat {
+      border:
+        1px solid var(--line);
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      background: var(--panel);
+    }
+
+    .stat .n {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 28px;
+      font-weight: 700;
+
+      color: var(--gold);
+    }
+
+    .stat .l {
+      font-size: 12.5px;
+      color: var(--muted);
+
+      margin-top: 4px;
+    }
+
+    /* Skills */
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 14px;
+    }
+
+    .skill-card {
+      border:
+        1px solid var(--line);
+
+      background: var(--panel);
+
+      border-radius: 12px;
+
+      padding: 22px 18px;
+
+      transition: all 0.2s ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--teal-glow);
+      transform: translateY(-3px);
+    }
+
+    .skill-card .ic {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .skill-card .t {
+      font-weight: 600;
+      font-size: 14.5px;
+
+      margin-bottom: 4px;
+    }
+
+    .skill-card .d {
+      font-size: 12px;
+      color: var(--muted);
+
+      line-height: 1.5;
+    }
+
+    /* Experience */
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns:
+        140px 1fr;
+
+      gap: 28px;
+
+      padding: 28px 0;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .tl-date {
+      color: var(--teal-glow);
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .tl-role {
+      font-size: 19px;
+      font-weight: 700;
+
+      margin-bottom: 4px;
+    }
+
+    .tl-org {
+      color: var(--gold);
+      font-size: 13.5px;
+
+      margin-bottom: 12px;
+
+      font-weight: 600;
+    }
+
+    .tl-desc {
+      color: var(--muted);
+      font-size: 14.5px;
+
+      line-height: 1.75;
+
+      max-width: 640px;
+    }
+
+    /* Connect */
+
+    .brand-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .brand-card {
+      border:
+        1px solid var(--line);
+
+      background: var(--panel);
+
+      border-radius: 14px;
+
+      padding: 26px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      transition: all 0.2s ease;
+    }
+
+    .brand-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .brand-card .bi {
+      width: 44px;
+      height: 44px;
+
+      border-radius: 10px;
+
+      background: var(--panel-2);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 19px;
+
+      border:
+        1px solid var(--line);
+    }
+
+    .brand-card h3 {
+      font-size: 16px;
+    }
+
+    .brand-card p {
+      font-size: 13px;
+      color: var(--muted);
+
+      line-height: 1.6;
+    }
+
+    .brand-card .go {
+      font-size: 12.5px;
+      color: var(--teal-glow);
+
+      font-weight: 600;
+
+      margin-top: auto;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 90px 0 40px;
+
+      border-top:
+        1px solid var(--line);
+    }
+
+    .cta-box {
+      text-align: center;
+
+      padding: 60px 40px;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--panel),
+          var(--void)
+        );
+
+      border:
+        1px solid var(--line);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          400px 200px at 50% 0%,
+          rgba(43, 179, 163, 0.18),
+          transparent 70%
+        );
+    }
+
+    .cta-box h2 {
+      font-size: 30px;
+
+      margin-bottom: 14px;
+
+      position: relative;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+
+      margin-bottom: 30px;
+
+      position: relative;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 14px;
+
+      justify-content: center;
+      flex-wrap: wrap;
+
+      position: relative;
+    }
+
+    .foot-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-top: 56px;
+
+      flex-wrap: wrap;
+      gap: 16px;
+
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .foot-social {
+      display: flex;
+      gap: 20px;
+    }
+
+    .foot-social a:hover {
+      color: var(--teal-glow);
+    }
+
+    /* Animations */
+
+    @keyframes floaty {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%,
+      100% {
+        box-shadow:
+          0 0 6px currentColor;
+
+        opacity: 1;
+      }
+
+      50% {
+        box-shadow:
+          0 0 14px currentColor;
+
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes floatGlow {
+      0%,
+      100% {
+        transform:
+          translateY(0)
+          scale(1);
+
+        opacity: 0.7;
+      }
+
+      50% {
+        transform:
+          translateY(-10px)
+          scale(1.05);
+
+        opacity: 1;
+      }
+    }
+
+    .beam-frame {
+      animation:
+        floaty 6s ease-in-out infinite;
+    }
+
+    .eyebrow::before,
+    .badge-tag .status::before {
+      animation:
+        pulseGlow 2.2s ease-in-out infinite;
+    }
+
+    .hero-photo::before {
+      content: "";
+
+      position: absolute;
+      inset: -40px;
+
+      background:
+        radial-gradient(
+          circle at 50% 30%,
+          rgba(43, 179, 163, 0.25),
+          transparent 65%
+        );
+
+      z-index: -1;
+
+      animation:
+        floatGlow 6s ease-in-out infinite;
+    }
+
+    /* Scroll Reveal */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(24px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+    /* Mobile */
+
+    @media (max-width: 860px) {
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .brand-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .hero {
+        padding:
+          60px 0;
+      }
+
+      .hero-photo {
+        max-width: 500px;
+      }
+    }
+
+    @media (max-width: 560px) {
+
+      nav {
+        padding:
+          16px 20px;
+      }
+
+      .wrap {
+        padding:
+          0 20px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .nav-cta {
+        padding:
+          7px 12px;
+
+        font-size: 11px;
+      }
+
+      .stat-row {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .badge-tag {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .section {
+        padding:
+          60px 0;
+      }
+
+      .cta-box {
+        padding:
+          40px 20px;
+      }
+
+      .cta-box h2 {
+        font-size: 26px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+
+  <header>
+
+    <nav>
+
+      <div class="logo">
+        SNK<span>.</span>
+      </div>
+
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#connect">Connect</a>
+      </div>
+
+      <a
+        class="nav-cta"
+        href="assets/Shah_Neil_Khan_CV.pdf"
+        download
+      >
+        Download CV
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- Hero Section -->
+
+  <section class="hero">
+
+    <div class="wrap hero-grid">
+
+      <div>
+
+        <div class="eyebrow">
+          Available for remote UX/UI work
+        </div>
+
+        <h1>
+          Designing digital
+          <br>
+
+          products with
+          <span class="accent">
+            clarity
+          </span>
+
+          <br>
+
+          &amp; craft.
+        </h1>
+
+        <p class="lede">
+
+          I'm Shah Neil Khan —
+          a Software Engineer &amp;
+          UI/UX Design Expert based in Sylhet,
+          Bangladesh, currently leading UX for
+          Yaqeen Institute (Texas, USA) remotely.
+
+        </p>
+
+        <div class="btn-row">
+
+          <a
+            class="btn btn-primary"
+            href="assets/Shah_Neil_Khan_CV.pdf"
+            download
+          >
+            ⬇ Download CV
+          </a>
+
+          <a
+            class="btn btn-outline"
+            href="https://wa.me/8801705633733"
+            target="_blank"
+            rel="noopener"
+          >
+            💬 Chat on WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Hero Image -->
+
+      <div class="hero-photo">
+
+        <div class="beam-frame">
+
+          <img
+            src="assets/hero.png"
+            alt="Shah Neil Khan"
+          >
+
+          <div class="badge-tag">
+
+            <span class="role">
+              LEAD UX DIGITAL EXPERT
+            </span>
+
+            <span class="status">
+              Remote · Texas, USA
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- About Section -->
+
+  <section
+    class="section reveal"
+    id="about"
+  >
+
+    <div class="wrap">
+
+      <div class="stitle">
+
+        <span class="num">
+          01
+        </span>
+
+        <h2>
+          About
+        </h2>
+
+        <span class="rule"></span>
+
+      </div>
+
+
+      <div class="about-grid">
+
+        <div>
+
+          <p>
+
+            I design and build digital products end-to-end —
+            from user research and wireframes to polished,
+            production-ready interfaces.
+
+            My background blends software engineering
+            with UI/UX design, which means I don't just
+            hand off mockups — I understand how they get built.
+
+          </p>
+
+
+          <p>
+
+            Since 2026, I've been leading UX for
+            Yaqeen Institute, a Texas-based organization,
+            working fully remote from Moulvibazar, Sylhet.
+
+            Self-taught and hands-on,
+            I've built my skillset through real projects
+            rather than a classroom.
+
+          </p>
+
+        </div>
+
+
+        <div class="stat-row">
+
+          <div class="stat">
+
+            <div class="n">
+              2026
+            </div>
+
+            <div class="l">
+              Leading UX at Yaqeen Institute
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="n">
+              8+
+            </div>
+
+            <div class="l">
+              Core design &amp; dev skills
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="n">
+              100%
+            </div>
+
+            <div class="l">
+              Remote-first workflow
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="n">
+              BD
+            </div>
+
+            <div class="l">
+              Based in Sylhet, Bangladesh
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Skills Section -->
+
+  <section
+    class="section reveal"
+    id="skills"
+  >
+
+    <div class="wrap">
+
+      <div class="stitle">
+
+        <span class="num">
+          02
+        </span>
+
+        <h2>
+          Skills
+        </h2>
+
+        <span class="rule"></span>
+
+      </div>
+
+
+      <div class="skill-grid">
+
+
+        <div class="skill-card">
+
+          <div class="ic">
+            🎨
+          </div>
+
+          <div class="t">
+            Figma
+          </div>
+
+          <div class="d">
+            Interface design &amp;
+            design systems
+          </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="ic">
+            🖌️
+          </div>
+
+          <div class="t">
+            Photoshop / Illustrator
+          </div>
+
+          <div class="d">
+            Visual &amp;
+            brand assets
+          </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="ic">
+            🧩
+          </div>
+
+          <div class="t">
+            UI Design
+          </div>
+
+          <div class="d">
+            Clean, usable interfaces
+          </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="ic">
+            🔍
+          </div>
+
+          <div class="t">
+            UX Research &amp;
+            Wireframing
+          </div>
+
+          <div class="d">
+            User-first problem solving
+          </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="ic">
+            ⚡
+          </div>
+
+          <div class="t">
+            Prototyping
+          </div>
+
+          <div class="d">
+            Interactive, testable flows
+          </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="ic">
+            🧱
+          </div>
+
+          <div class="t">
+            HTML / CSS
+          </div>
+
+          <div class="d">
+            Semantic, responsive markup
+          </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="ic">
+            💻
+          </div>
+
+          <div class="t">
+            JavaScript
+          </div>
+
+          <div class="d">
+            Interactive front-end logic
+          </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="ic">
+            🌐
+          </div>
+
+          <div class="t">
+            WordPress
+          </div>
+
+          <div class="d">
+            CMS builds &amp;
+            customization
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Experience Section -->
+
+  <section
+    class="section reveal"
+    id="experience"
+  >
+
+    <div class="wrap">
+
+      <div class="stitle">
+
+        <span class="num">
+          03
+        </span>
+
+        <h2>
+          Experience
+        </h2>
+
+        <span class="rule"></span>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <div class="tl-date">
+          2026 — Present
+        </div>
+
+
+        <div>
+
+          <div class="tl-role">
+            UX Lead Digital Expert
+          </div>
+
+          <div class="tl-org">
+            Yaqeen Institute ·
+            Texas, USA (Remote)
+          </div>
+
+          <div class="tl-desc">
+
+            Leading UI/UX design for the organization's
+            websites and digital products —
+            covering product design,
+            building user-friendly interfaces,
+            and coordinating with the team
+            to continuously improve digital experiences.
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Connect Section -->
+
+  <section
+    class="section reveal"
+    id="connect"
+  >
+
+    <div class="wrap">
+
+      <div class="stitle">
+
+        <span class="num">
+          04
+        </span>
+
+        <h2>
+          Find me elsewhere
+        </h2>
+
+        <span class="rule"></span>
+
+      </div>
+
+
+      <div class="brand-grid">
+
+
+        <!-- LinkedIn -->
+
+        <a
+          class="brand-card"
+          href="https://www.linkedin.com/in/uxuidesigners"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <div class="bi">
+            in
+          </div>
+
+          <h3>
+            LinkedIn
+          </h3>
+
+          <p>
+            Professional profile,
+            experience &amp; recommendations.
+          </p>
+
+          <div class="go">
+            View profile →
+          </div>
+
+        </a>
+
+
+        <!-- GitHub -->
+
+        <a
+          class="brand-card"
+          href="https://github.com/shahneilkhan/shahneilkhan.github.io"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <div class="bi">
+            ⌥
+          </div>
+
+          <h3>
+            GitHub
+          </h3>
+
+          <p>
+            Code, this portfolio's source
+            &amp; front-end projects.
+          </p>
+
+          <div class="go">
+            View repos →
+          </div>
+
+        </a>
+
+
+        <!-- Behance -->
+
+        <a
+          class="brand-card"
+          href="https://www.behance.net/thesnkdesign"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <div class="bi">
+            Bē
+          </div>
+
+          <h3>
+            Behance
+          </h3>
+
+          <p>
+            Case studies &amp;
+            visual design work.
+          </p>
+
+          <div class="go">
+            View work →
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Footer -->
+
+  <footer class="reveal">
+
+    <div class="wrap">
+
+      <div class="cta-box">
+
+        <h2>
+          Let's build something clean
+          &amp; useful.
+        </h2>
+
+        <p>
+          Open to remote UX/UI
+          &amp; front-end projects —
+          reply within a day.
+        </p>
+
+
+        <div class="cta-btns">
+
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/8801705633733"
+            target="_blank"
+            rel="noopener"
+          >
+            💬 Message on WhatsApp
+          </a>
+
+
+          <a
+            class="btn btn-outline"
+            href="assets/Shah_Neil_Khan_CV.pdf"
+            download
+          >
+            ⬇ Download CV
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="foot-links">
+
+        <div>
+          © 2026 Shah Neil Khan.
+          Moulvibazar, Sylhet, Bangladesh.
+        </div>
+
+
+        <div class="foot-social">
+
+          <a
+            href="https://www.linkedin.com/in/uxuidesigners"
+            target="_blank"
+            rel="noopener"
+          >
+            LinkedIn
+          </a>
+
+
+          <a
+            href="https://github.com/shahneilkhan/shahneilkhan.github.io"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub
+          </a>
+
+
+          <a
+            href="https://www.behance.net/thesnkdesign"
+            target="_blank"
+            rel="noopener"
+          >
+            Behance
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JavaScript -->
+
+  <script>
+
+    const revealEls =
+      document.querySelectorAll(
+        ".reveal"
+      );
+
+
+    if (
+      "IntersectionObserver"
+      in window
+    ) {
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+
+            entries.forEach(
+              (entry) => {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  entry.target
+                    .classList
+                    .add("in");
+
+                  observer.unobserve(
+                    entry.target
+                  );
+
+                }
+
+              }
+            );
+
+          },
+          {
+            threshold: 0.15
+          }
+        );
+
+
+      revealEls.forEach(
+        (element) => {
+
+          observer.observe(
+            element
+          );
+
+        }
+      );
+
+    } else {
+
+      revealEls.forEach(
+        (element) => {
+
+          element.classList
+            .add("in");
+
+        }
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>
