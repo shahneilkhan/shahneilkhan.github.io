@@ -1,6 +1,6 @@
 /* =========================================
-   TABAYYUN PORTFOLIO
-   script.js
+   SHAHNEIL KHAN PORTFOLIO
+   FINAL SCRIPT.JS
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,161 +11,252 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const body = document.body;
   const header = document.querySelector(".site-header");
-  const menuToggle = document.getElementById("menuToggle");
-  const navMenu = document.querySelector(".nav-menu");
-  const themeToggle = document.getElementById("themeToggle");
 
-  const langButtons = document.querySelectorAll(".lang-btn");
-  const navLinks = document.querySelectorAll(".nav-link");
+  const menuToggle =
+    document.getElementById("menuToggle");
+
+  const navMenu =
+    document.querySelector(".nav-menu");
+
+  const themeToggle =
+    document.getElementById("themeToggle");
+
+  const langButtons =
+    document.querySelectorAll(".lang-btn");
+
+  const navLinks =
+    document.querySelectorAll(".nav-link");
+
+  const sections =
+    document.querySelectorAll("section[id]");
+
 
   /* =========================================
-     DARK / LIGHT MODE
+     THEME
   ========================================= */
 
-  const savedTheme = localStorage.getItem("tabayyun-theme");
+  function setTheme(theme) {
+
+    body.setAttribute("data-theme", theme);
+
+    localStorage.setItem(
+      "tabayyun-theme",
+      theme
+    );
+
+    if (themeToggle) {
+
+      themeToggle.textContent =
+        theme === "dark"
+          ? "🌙"
+          : "☀️";
+
+      themeToggle.setAttribute(
+        "aria-label",
+        theme === "dark"
+          ? "Switch to light mode"
+          : "Switch to dark mode"
+      );
+    }
+  }
+
+
+  const savedTheme =
+    localStorage.getItem("tabayyun-theme");
+
 
   if (savedTheme === "dark") {
-    body.setAttribute("data-theme", "dark");
 
-    if (themeToggle) {
-      themeToggle.textContent = "🌙";
-    }
+    setTheme("dark");
+
   } else {
-    body.setAttribute("data-theme", "light");
 
-    if (themeToggle) {
-      themeToggle.textContent = "☀️";
-    }
+    setTheme("light");
+
   }
+
 
   if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
 
-      const currentTheme = body.getAttribute("data-theme");
+    themeToggle.addEventListener(
+      "click",
+      () => {
 
-      if (currentTheme === "dark") {
+        const currentTheme =
+          body.getAttribute("data-theme");
 
-        body.setAttribute("data-theme", "light");
-        localStorage.setItem("tabayyun-theme", "light");
+        setTheme(
+          currentTheme === "dark"
+            ? "light"
+            : "dark"
+        );
 
-        themeToggle.textContent = "☀️";
-
-      } else {
-
-        body.setAttribute("data-theme", "dark");
-        localStorage.setItem("tabayyun-theme", "dark");
-
-        themeToggle.textContent = "🌙";
       }
-    });
+    );
+
   }
+
 
   /* =========================================
      MOBILE MENU
   ========================================= */
 
-  if (menuToggle && navMenu) {
-
-    menuToggle.addEventListener("click", () => {
-
-      menuToggle.classList.toggle("active");
-      navMenu.classList.toggle("active");
-      body.classList.toggle("menu-open");
-
-    });
-
-    /* Close menu after clicking a link */
-
-    navLinks.forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        menuToggle.classList.remove("active");
-        navMenu.classList.remove("active");
-        body.classList.remove("menu-open");
-
-      });
-
-    });
-
-  }
-
-  /* =========================================
-     CLOSE MENU OUTSIDE
-  ========================================= */
-
-  document.addEventListener("click", (event) => {
+  function closeMenu() {
 
     if (!navMenu || !menuToggle) return;
 
-    const clickedInsideMenu =
-      navMenu.contains(event.target);
+    navMenu.classList.remove("active");
 
-    const clickedButton =
-      menuToggle.contains(event.target);
+    menuToggle.classList.remove("active");
 
-    if (
-      !clickedInsideMenu &&
-      !clickedButton &&
-      navMenu.classList.contains("active")
-    ) {
+    body.classList.remove("menu-open");
 
-      navMenu.classList.remove("active");
-      menuToggle.classList.remove("active");
-      body.classList.remove("menu-open");
+  }
 
-    }
+
+  if (menuToggle && navMenu) {
+
+    menuToggle.addEventListener(
+      "click",
+      (event) => {
+
+        event.stopPropagation();
+
+        navMenu.classList.toggle("active");
+
+        menuToggle.classList.toggle("active");
+
+        body.classList.toggle(
+          "menu-open"
+        );
+
+      }
+    );
+
+  }
+
+
+  /* Close menu after nav click */
+
+  navLinks.forEach(link => {
+
+    link.addEventListener(
+      "click",
+      () => {
+
+        closeMenu();
+
+      }
+    );
 
   });
 
+
+  /* Close menu outside */
+
+  document.addEventListener(
+    "click",
+    event => {
+
+      if (!navMenu || !menuToggle) return;
+
+      const insideMenu =
+        navMenu.contains(event.target);
+
+      const insideButton =
+        menuToggle.contains(event.target);
+
+      if (
+        !insideMenu &&
+        !insideButton
+      ) {
+
+        closeMenu();
+
+      }
+
+    }
+  );
+
+
   /* =========================================
-     HEADER SCROLL EFFECT
+     ESC KEY
   ========================================= */
 
-  function handleHeaderScroll() {
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (event.key === "Escape") {
+
+        closeMenu();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================
+     HEADER SCROLL
+  ========================================= */
+
+  function updateHeader() {
 
     if (!header) return;
 
     if (window.scrollY > 30) {
+
       header.classList.add("scrolled");
+
     } else {
+
       header.classList.remove("scrolled");
+
     }
 
   }
 
-  window.addEventListener("scroll", handleHeaderScroll);
 
-  handleHeaderScroll();
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
+
+  updateHeader();
+
 
   /* =========================================
-     ACTIVE NAVIGATION
+     ACTIVE NAV
   ========================================= */
-
-  const sections = document.querySelectorAll("section[id]");
 
   function updateActiveNav() {
 
-    let currentSection = "";
+    let current =
+      "home";
 
     sections.forEach(section => {
 
       const sectionTop =
-        section.offsetTop - 160;
+        section.offsetTop - 180;
 
-      const sectionHeight =
+      const sectionBottom =
+        sectionTop +
         section.offsetHeight;
 
       if (
         window.scrollY >= sectionTop &&
-        window.scrollY < sectionTop + sectionHeight
+        window.scrollY < sectionBottom
       ) {
 
-        currentSection = section.getAttribute("id");
+        current =
+          section.getAttribute("id");
 
       }
 
     });
+
 
     navLinks.forEach(link => {
 
@@ -174,17 +265,67 @@ document.addEventListener("DOMContentLoaded", () => {
       const href =
         link.getAttribute("href");
 
-      if (href === `#${currentSection}`) {
+      if (
+        href === `#${current}`
+      ) {
+
         link.classList.add("active");
+
       }
 
     });
 
   }
 
-  window.addEventListener("scroll", updateActiveNav);
+
+  window.addEventListener(
+    "scroll",
+    updateActiveNav,
+    { passive: true }
+  );
 
   updateActiveNav();
+
+
+  /* =========================================
+     SMOOTH SCROLL
+  ========================================= */
+
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        event => {
+
+          const id =
+            link.getAttribute("href");
+
+          if (
+            !id ||
+            id === "#"
+          ) {
+            return;
+          }
+
+          const target =
+            document.querySelector(id);
+
+          if (!target) return;
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+      );
+
+    });
+
 
   /* =========================================
      SCROLL REVEAL
@@ -193,19 +334,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealElements =
     document.querySelectorAll(".reveal");
 
-  if ("IntersectionObserver" in window) {
+
+  if (
+    "IntersectionObserver"
+    in window
+  ) {
 
     const revealObserver =
       new IntersectionObserver(
-        (entries, observer) => {
+        entries => {
 
           entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
+            if (
+              entry.isIntersecting
+            ) {
 
-              entry.target.classList.add("show");
+              entry.target.classList.add(
+                "show"
+              );
 
-              observer.unobserve(entry.target);
+              revealObserver.unobserve(
+                entry.target
+              );
 
             }
 
@@ -213,24 +364,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         },
         {
-          threshold: 0.12
+          threshold: 0.12,
+          rootMargin: "0px 0px -40px 0px"
         }
       );
 
+
     revealElements.forEach(element => {
+
       revealObserver.observe(element);
+
     });
 
   } else {
 
     revealElements.forEach(element => {
+
       element.classList.add("show");
+
     });
 
   }
 
+
   /* =========================================
-     ENGLISH / BANGLA
+     LANGUAGE
   ========================================= */
 
   const translations = {
@@ -245,20 +403,29 @@ document.addEventListener("DOMContentLoaded", () => {
       works: "Works",
       connect: "Connect",
 
-      heroTag: "Software Engineer • Web • UI/UX",
+      heroTag:
+        "Software Engineer • Web • UI/UX",
 
-      heroTitle: "Building digital experiences that matter.",
+      heroTitle:
+        "Building digital experiences that matter.",
 
       heroDescription:
         "Software Engineer and Web & UI/UX Designer focused on creating modern, responsive and meaningful digital products.",
 
-      viewWorks: "View Works",
-      contactMe: "Contact Me",
+      viewWorks:
+        "View Works",
 
-      skillsTitle: "Skills",
-      worksTitle: "Selected Works"
+      contactMe:
+        "Contact Me",
+
+      skillsTitle:
+        "Skills",
+
+      worksTitle:
+        "Selected Works"
 
     },
+
 
     bn: {
 
@@ -270,171 +437,281 @@ document.addEventListener("DOMContentLoaded", () => {
       works: "কাজ",
       connect: "কানেক্ট",
 
-      heroTag: "সফটওয়্যার ইঞ্জিনিয়ার • ওয়েব • UI/UX",
+      heroTag:
+        "সফটওয়্যার ইঞ্জিনিয়ার • ওয়েব • UI/UX",
 
-      heroTitle: "গুরুত্বপূর্ণ ডিজিটাল অভিজ্ঞতা তৈরি করি।",
+      heroTitle:
+        "গুরুত্বপূর্ণ ডিজিটাল অভিজ্ঞতা তৈরি করি।",
 
       heroDescription:
-        "আমি একজন Software Engineer এবং Web & UI/UX Designer। আধুনিক, responsive ও user-friendly digital product তৈরি করতে কাজ করি।",
+        "আমি একজন Software Engineer এবং Web & UI/UX Designer। আধুনিক, responsive এবং user-friendly digital product তৈরি করতে কাজ করি।",
 
-      viewWorks: "কাজগুলো দেখুন",
-      contactMe: "যোগাযোগ করুন",
+      viewWorks:
+        "কাজগুলো দেখুন",
 
-      skillsTitle: "দক্ষতা",
-      worksTitle: "নির্বাচিত কাজ"
+      contactMe:
+        "যোগাযোগ করুন",
+
+      skillsTitle:
+        "দক্ষতা",
+
+      worksTitle:
+        "নির্বাচিত কাজ"
 
     }
 
   };
 
+
   /* =========================================
-     LANGUAGE FUNCTION
+     CHANGE LANGUAGE
   ========================================= */
 
   function changeLanguage(language) {
 
-    const data = translations[language];
+    const data =
+      translations[language];
 
     if (!data) return;
 
-    /* Navigation */
 
-    const navigationMap = {
-      "#home": data.home,
-      "#about": data.about,
-      "#contact": data.contact,
-      "#download": data.download,
-      "#skills": data.skills,
-      "#works": data.works,
-      "#connect": data.connect
-    };
-
-    navLinks.forEach(link => {
-
-      const href =
-        link.getAttribute("href");
-
-      if (navigationMap[href]) {
-        link.textContent =
-          navigationMap[href];
-      }
-
-    });
-
-    /* Elements with data-i18n */
+    /* data-i18n elements */
 
     document
       .querySelectorAll("[data-i18n]")
       .forEach(element => {
 
         const key =
-          element.getAttribute("data-i18n");
+          element.getAttribute(
+            "data-i18n"
+          );
 
-        if (data[key]) {
-          element.textContent = data[key];
+        if (
+          Object.prototype.hasOwnProperty
+          .call(data, key)
+        ) {
+
+          element.textContent =
+            data[key];
+
         }
 
       });
 
-    /* Save language */
+
+    /* Language buttons */
+
+    langButtons.forEach(button => {
+
+      const buttonLanguage =
+        button.dataset.lang;
+
+      button.classList.toggle(
+        "active",
+        buttonLanguage === language
+      );
+
+    });
+
+
+    /* HTML language */
+
+    document.documentElement.lang =
+      language === "bn"
+        ? "bn"
+        : "en";
+
+
+    /* Save */
 
     localStorage.setItem(
       "tabayyun-language",
       language
     );
 
-    /* Update buttons */
-
-    langButtons.forEach(button => {
-
-      button.classList.remove("active");
-
-      const buttonLanguage =
-        button.dataset.lang;
-
-      if (buttonLanguage === language) {
-        button.classList.add("active");
-      }
-
-    });
-
-    document.documentElement.lang =
-      language === "bn" ? "bn" : "en";
-
   }
 
+
   /* =========================================
-     LANGUAGE BUTTONS
+     LANGUAGE BUTTON CLICK
   ========================================= */
 
   langButtons.forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-      let language =
-        button.dataset.lang;
+        let language =
+          button.dataset.lang;
 
-      /*
-        যদি HTML button-এ data-lang না থাকে,
-        তাহলে text দেখে language detect করবে।
-      */
 
-      if (!language) {
+        if (!language) {
 
-        const text =
-          button.textContent.trim();
+          language =
+            button.textContent
+              .trim()
+              .toLowerCase() ===
+              "বাংলা"
+              ? "bn"
+              : "en";
 
-        language =
-          text === "বাংলা"
-            ? "bn"
-            : "en";
+        }
+
+
+        changeLanguage(language);
 
       }
-
-      changeLanguage(language);
-
-    });
+    );
 
   });
 
+
   /* =========================================
-     LOAD SAVED LANGUAGE
+     LOAD LANGUAGE
   ========================================= */
 
   const savedLanguage =
-    localStorage.getItem("tabayyun-language");
+    localStorage.getItem(
+      "tabayyun-language"
+    );
 
-  if (savedLanguage) {
 
-    changeLanguage(savedLanguage);
+  if (
+    savedLanguage &&
+    translations[savedLanguage]
+  ) {
+
+    changeLanguage(
+      savedLanguage
+    );
+
+  } else {
+
+    changeLanguage("en");
 
   }
 
+
   /* =========================================
-     SMOOTH SCROLL
+     KEYBOARD ACCESS
   ========================================= */
 
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
+  document.addEventListener(
+    "keydown",
+    event => {
 
-    link.addEventListener("click", event => {
+      /*
+        Ctrl/Cmd + J
+        = Theme toggle
+      */
 
-      const targetId =
-        link.getAttribute("href");
+      if (
+        (event.ctrlKey ||
+          event.metaKey) &&
+        event.key.toLowerCase() === "j"
+      ) {
 
-      const target =
-        document.querySelector(targetId);
+        event.preventDefault();
 
-      if (!target) return;
+        if (themeToggle) {
+          themeToggle.click();
+        }
 
-      event.preventDefault();
+      }
 
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+    }
+  );
+
+
+  /* =========================================
+     PROJECT LINK EFFECT
+  ========================================= */
+
+  document
+    .querySelectorAll(".project-card")
+    .forEach(card => {
+
+      card.addEventListener(
+        "mouseenter",
+        () => {
+
+          card.style.setProperty(
+            "--mouse-x",
+            "50%"
+          );
+
+          card.style.setProperty(
+            "--mouse-y",
+            "50%"
+          );
+
+        }
+      );
 
     });
 
-  });
+
+  /* =========================================
+     PARALLAX SKY
+  ========================================= */
+
+  const sky =
+    document.querySelector(
+      ".sky-background"
+    );
+
+
+  if (
+    sky &&
+    !window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+  ) {
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        const scroll =
+          window.scrollY;
+
+        sky.style.transform =
+          `translateY(${scroll * 0.04}px)`;
+
+      },
+      { passive: true }
+    );
+
+  }
+
+
+  /* =========================================
+     RESIZE
+  ========================================= */
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      if (
+        window.innerWidth > 760
+      ) {
+
+        closeMenu();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================
+     PAGE READY
+  ========================================= */
+
+  document.body.classList.add(
+    "page-ready"
+  );
 
 });
