@@ -1,32 +1,40 @@
 /* =========================================
-   TABAYYUN PORTFOLIO
-   style.css
+   SHAHNEIL KHAN PORTFOLIO
+   FULL STYLE.CSS
 ========================================= */
 
 :root {
-  --bg: #f7f9fc;
-  --bg-soft: #ffffff;
-  --text: #111827;
+  --bg: #f5f7fb;
+  --bg-soft: rgba(255, 255, 255, 0.88);
+  --text: #101827;
   --text-soft: #64748b;
+
   --primary: #0f766e;
-  --primary-dark: #115e59;
-  --border: rgba(15, 23, 42, 0.1);
-  --shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
-  --nav-bg: rgba(255, 255, 255, 0.82);
+  --primary-light: #2dd4bf;
+
+  --border: rgba(15, 23, 42, 0.10);
+  --shadow: 0 15px 45px rgba(15, 23, 42, 0.10);
+
+  --nav-bg: rgba(255, 255, 255, 0.78);
+
   --transition: 0.3s ease;
 }
 
 [data-theme="dark"] {
-  --bg: #050816;
-  --bg-soft: #0b1120;
+  --bg: #030712;
+  --bg-soft: rgba(10, 18, 35, 0.82);
   --text: #f8fafc;
   --text-soft: #94a3b8;
+
   --primary: #2dd4bf;
-  --primary-dark: #14b8a6;
-  --border: rgba(255, 255, 255, 0.1);
-  --shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-  --nav-bg: rgba(5, 8, 22, 0.82);
+  --primary-light: #5eead4;
+
+  --border: rgba(255, 255, 255, 0.10);
+  --shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
+
+  --nav-bg: rgba(3, 7, 18, 0.78);
 }
+
 
 /* =========================================
    RESET
@@ -43,6 +51,8 @@ html {
 }
 
 body {
+  min-height: 100vh;
+
   font-family:
     Inter,
     "Noto Sans Bengali",
@@ -50,14 +60,16 @@ body {
     Arial,
     sans-serif;
 
-  background: var(--bg);
   color: var(--text);
+  background: var(--bg);
+
   line-height: 1.6;
-  transition:
-    background var(--transition),
-    color var(--transition);
 
   overflow-x: hidden;
+
+  transition:
+    background 0.5s ease,
+    color 0.3s ease;
 }
 
 body.menu-open {
@@ -65,8 +77,8 @@ body.menu-open {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 a {
@@ -75,10 +87,11 @@ a {
 }
 
 button {
-  font: inherit;
   border: 0;
+  font: inherit;
   cursor: pointer;
 }
+
 
 /* =========================================
    CONTAINER
@@ -89,31 +102,542 @@ button {
   margin-inline: auto;
 }
 
+
+/* =========================================
+   GALAXY / SKY BACKGROUND
+========================================= */
+
+.sky-background {
+  position: fixed;
+  inset: 0;
+
+  z-index: -10;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #55b8ef 0%,
+      #9ed9f5 42%,
+      #f8c47a 75%,
+      #f27c62 100%
+    );
+
+  animation: skyDayNight 24s ease-in-out infinite alternate;
+}
+
+
+/* Dark galaxy overlay */
+
+.sky-background::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(93, 78, 180, 0.25),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(45, 212, 191, 0.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 7, 18, 0.08),
+      rgba(3, 7, 18, 0.72)
+    );
+
+  opacity: 0;
+
+  animation: galaxyOverlay 24s ease-in-out infinite alternate;
+}
+
+
+/* =========================================
+   SUN
+========================================= */
+
+.sun {
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  right: 14%;
+  top: 18%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #fffbd1 0%,
+      #ffe16b 38%,
+      #ffae42 72%,
+      rgba(255, 174, 66, 0) 73%
+    );
+
+  filter:
+    drop-shadow(0 0 30px rgba(255, 205, 80, 0.7))
+    drop-shadow(0 0 70px rgba(255, 170, 50, 0.35));
+
+  animation:
+    sunMove 24s ease-in-out infinite alternate;
+}
+
+
+/* =========================================
+   MOON
+========================================= */
+
+.moon {
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  right: 15%;
+  top: 16%;
+
+  border-radius: 50%;
+
+  background: #f8fafc;
+
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 70px rgba(148, 163, 184, 0.45);
+
+  opacity: 0;
+
+  animation: moonAppear 24s ease-in-out infinite alternate;
+}
+
+.moon::before {
+  content: "";
+
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  left: 28px;
+  top: -8px;
+
+  border-radius: 50%;
+
+  background: #07101f;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+
+  background-image:
+    radial-gradient(circle, #ffffff 1px, transparent 1.5px),
+    radial-gradient(circle, #ffffff 1px, transparent 1.5px),
+    radial-gradient(circle, #a5b4fc 1px, transparent 1.5px);
+
+  background-size:
+    90px 90px,
+    140px 140px,
+    190px 190px;
+
+  background-position:
+    10px 20px,
+    40px 80px,
+    90px 40px;
+
+  animation:
+    starsAppear 24s ease-in-out infinite alternate,
+    starsMove 30s linear infinite;
+}
+
+.stars-two {
+  transform: scale(1.3);
+  opacity: 0;
+}
+
+.stars-three {
+  transform: scale(1.7);
+  opacity: 0;
+}
+
+
+/* =========================================
+   CLOUDS
+========================================= */
+
+.cloud {
+  position: absolute;
+
+  width: 180px;
+  height: 55px;
+
+  border-radius: 100px;
+
+  background: rgba(255, 255, 255, 0.42);
+
+  filter: blur(1px);
+
+  animation:
+    cloudMove 35s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: inherit;
+}
+
+.cloud::before {
+  width: 70px;
+  height: 70px;
+
+  left: 25px;
+  bottom: 15px;
+}
+
+.cloud::after {
+  width: 90px;
+  height: 90px;
+
+  right: 20px;
+  bottom: 10px;
+}
+
+.cloud-one {
+  top: 24%;
+  left: -220px;
+}
+
+.cloud-two {
+  top: 40%;
+  left: -350px;
+
+  transform: scale(0.7);
+
+  animation-delay: 12s;
+}
+
+
+/* =========================================
+   FLYING BIRDS
+========================================= */
+
+.birds {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+}
+
+.bird {
+  position: absolute;
+
+  color: #172033;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  transform: rotate(-10deg);
+
+  opacity: 0.75;
+}
+
+.bird-one {
+  top: 22%;
+  left: -80px;
+
+  animation: birdFlyOne 18s linear infinite;
+}
+
+.bird-two {
+  top: 31%;
+  left: -100px;
+
+  font-size: 22px;
+
+  animation: birdFlyTwo 22s linear infinite;
+  animation-delay: 4s;
+}
+
+.bird-three {
+  top: 17%;
+  left: -120px;
+
+  font-size: 19px;
+
+  animation: birdFlyThree 26s linear infinite;
+  animation-delay: 8s;
+}
+
+.bird-four {
+  top: 38%;
+  left: -100px;
+
+  font-size: 24px;
+
+  animation: birdFlyFour 21s linear infinite;
+  animation-delay: 11s;
+}
+
+
+/* =========================================
+   SKY ANIMATIONS
+========================================= */
+
+@keyframes skyDayNight {
+
+  0% {
+    background:
+      linear-gradient(
+        180deg,
+        #55b8ef 0%,
+        #9ed9f5 42%,
+        #f8c47a 75%,
+        #f27c62 100%
+      );
+  }
+
+  45% {
+    background:
+      linear-gradient(
+        180deg,
+        #f69b62 0%,
+        #ee7464 45%,
+        #7d4b78 75%,
+        #241d4b 100%
+      );
+  }
+
+  100% {
+    background:
+      radial-gradient(
+        circle at 50% 30%,
+        #172554 0%,
+        #0f172a 38%,
+        #020617 100%
+      );
+  }
+}
+
+@keyframes galaxyOverlay {
+
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes sunMove {
+
+  0% {
+    top: 15%;
+    right: 14%;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  45% {
+    top: 43%;
+    right: 45%;
+    opacity: 1;
+    transform: scale(0.82);
+  }
+
+  100% {
+    top: 90%;
+    right: 65%;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes moonAppear {
+
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  45% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes starsAppear {
+
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes starsMove {
+
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-30px);
+  }
+}
+
+
+/* =========================================
+   BIRD ANIMATIONS
+========================================= */
+
+@keyframes birdFlyOne {
+
+  0% {
+    transform:
+      translate(-100px, 30px)
+      scale(0.8);
+  }
+
+  50% {
+    transform:
+      translate(50vw, -40px)
+      scale(1);
+  }
+
+  100% {
+    transform:
+      translate(110vw, -90px)
+      scale(0.75);
+  }
+}
+
+@keyframes birdFlyTwo {
+
+  0% {
+    transform:
+      translate(-100px, 0)
+      rotate(-8deg);
+  }
+
+  50% {
+    transform:
+      translate(55vw, 80px)
+      rotate(8deg);
+  }
+
+  100% {
+    transform:
+      translate(115vw, -20px)
+      rotate(-5deg);
+  }
+}
+
+@keyframes birdFlyThree {
+
+  0% {
+    transform:
+      translate(-100px, 50px)
+      scale(0.7);
+  }
+
+  100% {
+    transform:
+      translate(115vw, -100px)
+      scale(1);
+  }
+}
+
+@keyframes birdFlyFour {
+
+  0% {
+    transform:
+      translate(-100px, 0);
+  }
+
+  100% {
+    transform:
+      translate(115vw, 100px);
+  }
+}
+
+@keyframes cloudMove {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(130vw);
+  }
+}
+
+
 /* =========================================
    HEADER
 ========================================= */
 
 .site-header {
   position: fixed;
+
   top: 0;
   left: 0;
+
   width: 100%;
+
   z-index: 9999;
 
   background: var(--nav-bg);
+
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
   border-bottom: 1px solid var(--border);
 
   transition:
-    background var(--transition),
-    box-shadow var(--transition);
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .site-header.scrolled {
   box-shadow: var(--shadow);
 }
+
 
 /* =========================================
    NAVBAR
@@ -124,23 +648,25 @@ button {
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 25px;
+
+  gap: 20px;
 }
 
+
 /* =========================================
-   LOGO
+   LOGO — 80PX
 ========================================= */
 
 .logo {
   width: 80px;
   height: 80px;
 
+  flex: 0 0 80px;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  flex-shrink: 0;
   overflow: hidden;
 
   border-radius: 14px;
@@ -155,27 +681,27 @@ button {
 
   object-fit: contain;
 
-  transition:
-    transform var(--transition),
-    opacity var(--transition);
+  transition: transform 0.3s ease;
 }
 
 .logo:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
+
 /* =========================================
-   NAVIGATION
+   NAV MENU
 ========================================= */
 
 .nav-menu {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 7px;
+
+  gap: 3px;
+
+  margin-left: auto;
 
   list-style: none;
-  margin-left: auto;
 }
 
 .nav-menu li {
@@ -183,44 +709,47 @@ button {
 }
 
 .nav-link {
-  position: relative;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 10px 12px;
+  padding: 10px 11px;
 
   color: var(--text-soft);
+
+  border-radius: 9px;
 
   font-size: 14px;
   font-weight: 600;
 
-  border-radius: 9px;
-
   transition:
-    color var(--transition),
-    background var(--transition);
+    color 0.3s ease,
+    background 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--primary);
-  background: rgba(45, 212, 191, 0.08);
+
+  background:
+    rgba(45, 212, 191, 0.09);
 }
 
+
 /* =========================================
-   RIGHT CONTROLS
+   NAV CONTROLS
 ========================================= */
 
 .nav-controls {
   display: flex;
   align-items: center;
+
   gap: 8px;
 }
 
+
 /* =========================================
-   LANGUAGE SWITCHER
+   LANGUAGE
 ========================================= */
 
 .language-switcher {
@@ -230,6 +759,7 @@ button {
   padding: 4px;
 
   background: var(--bg-soft);
+
   border: 1px solid var(--border);
 
   border-radius: 10px;
@@ -242,6 +772,7 @@ button {
   padding: 0 8px;
 
   color: var(--text-soft);
+
   background: transparent;
 
   border-radius: 7px;
@@ -249,9 +780,7 @@ button {
   font-size: 12px;
   font-weight: 700;
 
-  transition:
-    color var(--transition),
-    background var(--transition);
+  transition: 0.3s ease;
 }
 
 .lang-btn:hover {
@@ -259,12 +788,14 @@ button {
 }
 
 .lang-btn.active {
-  color: #ffffff;
+  color: #fff;
+
   background: var(--primary);
 }
 
+
 /* =========================================
-   THEME BUTTON
+   THEME TOGGLE
 ========================================= */
 
 .theme-toggle {
@@ -278,25 +809,25 @@ button {
   color: var(--text);
 
   background: var(--bg-soft);
+
   border: 1px solid var(--border);
 
   border-radius: 10px;
 
   font-size: 18px;
 
-  transition:
-    color var(--transition),
-    background var(--transition),
-    transform var(--transition);
+  transition: 0.3s ease;
 }
 
 .theme-toggle:hover {
   color: var(--primary);
+
   transform: translateY(-2px);
 }
 
+
 /* =========================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ========================================= */
 
 .menu-toggle {
@@ -309,9 +840,11 @@ button {
   justify-content: center;
 
   flex-direction: column;
+
   gap: 5px;
 
   background: var(--bg-soft);
+
   border: 1px solid var(--border);
 
   border-radius: 10px;
@@ -321,17 +854,17 @@ button {
   width: 19px;
   height: 2px;
 
-  display: block;
-
   background: var(--text);
 
-  border-radius: 20px;
+  border-radius: 10px;
 
-  transition: var(--transition);
+  transition: 0.3s ease;
 }
 
 .menu-toggle.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform:
+    translateY(7px)
+    rotate(45deg);
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -339,8 +872,11 @@ button {
 }
 
 .menu-toggle.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform:
+    translateY(-7px)
+    rotate(-45deg);
 }
+
 
 /* =========================================
    HERO
@@ -349,22 +885,21 @@ button {
 .hero {
   min-height: 100vh;
 
-  position: relative;
-
   display: flex;
   align-items: center;
 
   padding-top: 120px;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
 
-  overflow: hidden;
+  position: relative;
 }
 
 .hero-content {
   position: relative;
+
   z-index: 5;
 
-  max-width: 760px;
+  max-width: 780px;
 }
 
 .hero-tag {
@@ -372,12 +907,16 @@ button {
   align-items: center;
 
   margin-bottom: 20px;
+
   padding: 7px 13px;
 
   color: var(--primary);
 
-  background: rgba(45, 212, 191, 0.08);
-  border: 1px solid rgba(45, 212, 191, 0.2);
+  background:
+    rgba(45, 212, 191, 0.10);
+
+  border:
+    1px solid rgba(45, 212, 191, 0.22);
 
   border-radius: 50px;
 
@@ -386,10 +925,15 @@ button {
 }
 
 .hero h1 {
-  margin-bottom: 20px;
+  max-width: 850px;
 
-  font-size: clamp(42px, 7vw, 82px);
+  margin-bottom: 22px;
+
+  font-size:
+    clamp(44px, 7vw, 82px);
+
   line-height: 1.02;
+
   letter-spacing: -3px;
 }
 
@@ -400,7 +944,7 @@ button {
 .hero-description {
   max-width: 650px;
 
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 
   color: var(--text-soft);
 
@@ -410,33 +954,32 @@ button {
 .hero-buttons {
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   flex-wrap: wrap;
 }
+
 
 /* =========================================
    BUTTONS
 ========================================= */
 
 .btn {
-  min-height: 46px;
+  min-height: 47px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0 20px;
+  padding: 0 21px;
 
   border-radius: 10px;
 
   font-size: 14px;
   font-weight: 700;
 
-  transition:
-    transform var(--transition),
-    background var(--transition),
-    color var(--transition);
+  transition: 0.3s ease;
 }
 
 .btn:hover {
@@ -444,48 +987,76 @@ button {
 }
 
 .btn-primary {
-  color: #ffffff;
+  color: #fff;
+
   background: var(--primary);
 }
 
 .btn-primary:hover {
-  background: var(--primary-dark);
+  background: #0d9488;
 }
 
 .btn-outline {
   color: var(--text);
-  background: transparent;
+
+  background: var(--bg-soft);
+
   border: 1px solid var(--border);
 }
 
 .btn-outline:hover {
   color: var(--primary);
+
   border-color: var(--primary);
 }
 
+
 /* =========================================
-   SECTION
+   SECTIONS
 ========================================= */
 
 section {
   position: relative;
-  padding: 100px 0;
+
+  padding: 105px 0;
+}
+
+section::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(255, 255, 255, 0.02)
+    );
+
+  pointer-events: none;
 }
 
 .section-title {
-  margin-bottom: 12px;
+  margin-bottom: 13px;
 
-  font-size: clamp(30px, 5vw, 48px);
+  font-size:
+    clamp(32px, 5vw, 50px);
+
   line-height: 1.1;
+
+  letter-spacing: -1.5px;
 }
 
 .section-description {
-  max-width: 650px;
+  max-width: 680px;
 
   margin-bottom: 45px;
 
   color: var(--text-soft);
 }
+
 
 /* =========================================
    CARDS
@@ -494,31 +1065,40 @@ section {
 .card {
   padding: 28px;
 
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
+  background:
+    var(--bg-soft);
+
+  border:
+    1px solid var(--border);
 
   border-radius: 18px;
 
   box-shadow: var(--shadow);
 
+  backdrop-filter: blur(12px);
+
   transition:
-    transform var(--transition),
-    border-color var(--transition);
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(45, 212, 191, 0.35);
+  transform: translateY(-7px);
+
+  border-color:
+    rgba(45, 212, 191, 0.35);
 }
 
+
 /* =========================================
-   SKILLS GRID
+   SKILLS
 ========================================= */
 
 .skills-grid {
   display: grid;
 
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns:
+    repeat(4, 1fr);
 
   gap: 18px;
 }
@@ -528,49 +1108,57 @@ section {
 }
 
 .skill-icon {
-  width: 55px;
-  height: 55px;
+  width: 56px;
+  height: 56px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin: 0 auto 15px;
+  margin:
+    0 auto 16px;
 
   color: var(--primary);
 
-  background: rgba(45, 212, 191, 0.08);
+  background:
+    rgba(45, 212, 191, 0.09);
 
   border-radius: 14px;
 
-  font-size: 23px;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .skill-card h3 {
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+
   font-size: 16px;
 }
 
 .skill-card p {
   color: var(--text-soft);
+
   font-size: 13px;
 }
 
+
 /* =========================================
-   PROJECT GRID
+   PROJECTS
 ========================================= */
 
 .projects-grid {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3, 1fr);
 
   gap: 22px;
 }
 
 .project-card {
-  overflow: hidden;
   padding: 0;
+
+  overflow: hidden;
 }
 
 .project-image {
@@ -578,7 +1166,7 @@ section {
 
   overflow: hidden;
 
-  background: #111827;
+  background: #0f172a;
 }
 
 .project-image img {
@@ -587,11 +1175,13 @@ section {
 
   object-fit: cover;
 
-  transition: transform 0.5s ease;
+  transition:
+    transform 0.5s ease;
 }
 
-.project-card:hover .project-image img {
-  transform: scale(1.06);
+.project-card:hover
+.project-image img {
+  transform: scale(1.07);
 }
 
 .project-content {
@@ -600,50 +1190,65 @@ section {
 
 .project-content h3 {
   margin-bottom: 7px;
+
+  font-size: 18px;
 }
 
 .project-content p {
   color: var(--text-soft);
+
   font-size: 14px;
 }
+
 
 /* =========================================
    CONTACT
 ========================================= */
 
 .contact-box {
-  padding: 45px;
+  padding: 50px 35px;
 
   text-align: center;
 
   background:
     linear-gradient(
       135deg,
-      rgba(45, 212, 191, 0.1),
+      rgba(45, 212, 191, 0.10),
       transparent
     ),
     var(--bg-soft);
 
-  border: 1px solid var(--border);
+  border:
+    1px solid var(--border);
+
   border-radius: 22px;
+
+  box-shadow: var(--shadow);
+
+  backdrop-filter: blur(14px);
 }
 
 .contact-box p {
-  max-width: 600px;
+  max-width: 620px;
 
-  margin: 12px auto 25px;
+  margin:
+    12px auto 28px;
 
   color: var(--text-soft);
 }
+
 
 /* =========================================
    FOOTER
 ========================================= */
 
 footer {
-  padding: 30px 0;
+  position: relative;
 
-  border-top: 1px solid var(--border);
+  padding: 32px 0;
+
+  border-top:
+    1px solid var(--border);
 
   color: var(--text-soft);
 
@@ -652,13 +1257,16 @@ footer {
   font-size: 13px;
 }
 
+
 /* =========================================
    SCROLL REVEAL
 ========================================= */
 
 .reveal {
   opacity: 0;
-  transform: translateY(25px);
+
+  transform:
+    translateY(28px);
 
   transition:
     opacity 0.7s ease,
@@ -667,31 +1275,40 @@ footer {
 
 .reveal.show {
   opacity: 1;
-  transform: translateY(0);
+
+  transform:
+    translateY(0);
 }
+
 
 /* =========================================
    TABLET
 ========================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
+
   .nav-menu {
-    gap: 2px;
+    gap: 0;
   }
 
   .nav-link {
-    padding: 9px 8px;
+    padding:
+      9px 7px;
+
     font-size: 13px;
   }
 
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, 1fr);
   }
 
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, 1fr);
   }
 }
+
 
 /* =========================================
    MOBILE
@@ -700,90 +1317,133 @@ footer {
 @media (max-width: 760px) {
 
   .container {
-    width: min(100% - 28px, 600px);
+    width:
+      calc(100% - 28px);
   }
 
   .navbar {
     min-height: 82px;
+
+    gap: 8px;
   }
 
-  /* Logo remains exactly 80px */
-  .logo,
+
+  /* 80PX LOGO */
+
+  .logo {
+    width: 80px;
+    height: 80px;
+
+    flex: 0 0 80px;
+  }
+
   .logo img {
     width: 80px;
     height: 80px;
+
+    max-width: 80px;
+    max-height: 80px;
   }
+
+
+  /* MOBILE CONTROLS */
 
   .nav-controls {
     margin-left: auto;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
-  .nav-menu {
-    position: fixed;
-
-    top: 82px;
-    left: 14px;
-    right: 14px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-    padding: 14px;
-
-    background: var(--nav-bg);
-
-    border: 1px solid var(--border);
-    border-radius: 16px;
-
-    box-shadow: var(--shadow);
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-
-    transition:
-      opacity var(--transition),
-      visibility var(--transition),
-      transform var(--transition);
-  }
-
-  .nav-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .nav-link {
-    width: 100%;
-
-    justify-content: flex-start;
-
-    padding: 13px 15px;
-
-    font-size: 14px;
   }
 
   .language-switcher {
     display: none;
   }
 
-  .theme-toggle {
-    width: 40px;
-    height: 40px;
+  .menu-toggle {
+    display: flex;
   }
+
+
+  /* MOBILE MENU */
+
+  .nav-menu {
+    position: fixed;
+
+    top: 82px;
+
+    left: 14px;
+    right: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 3px;
+
+    padding: 14px;
+
+    margin: 0;
+
+    background:
+      var(--nav-bg);
+
+    backdrop-filter:
+      blur(20px);
+
+    border:
+      1px solid var(--border);
+
+    border-radius: 17px;
+
+    box-shadow:
+      var(--shadow);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+      translateY(-12px);
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .nav-menu.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+      translateY(0);
+  }
+
+  .nav-link {
+    width: 100%;
+
+    justify-content:
+      flex-start;
+
+    padding:
+      13px 15px;
+
+    font-size: 14px;
+  }
+
+
+  /* HERO */
 
   .hero {
     min-height: auto;
-    padding-top: 140px;
+
+    padding-top: 145px;
     padding-bottom: 80px;
   }
 
   .hero h1 {
+    font-size:
+      clamp(42px, 13vw, 62px);
+
     letter-spacing: -2px;
   }
 
@@ -791,19 +1451,56 @@ footer {
     font-size: 16px;
   }
 
+
+  /* SECTIONS */
+
   section {
-    padding: 75px 0;
+    padding:
+      75px 0;
   }
+
+
+  /* GRIDS */
 
   .skills-grid,
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
+
+  /* CONTACT */
+
   .contact-box {
-    padding: 30px 20px;
+    padding:
+      35px 20px;
+  }
+
+
+  /* SKY */
+
+  .sun {
+    width: 95px;
+    height: 95px;
+
+    right: 8%;
+  }
+
+  .moon {
+    width: 75px;
+    height: 75px;
+
+    right: 9%;
+  }
+
+  .moon::before {
+    width: 75px;
+    height: 75px;
+
+    left: 20px;
   }
 }
+
 
 /* =========================================
    SMALL MOBILE
@@ -812,11 +1509,23 @@ footer {
 @media (max-width: 420px) {
 
   .container {
-    width: calc(100% - 22px);
+    width:
+      calc(100% - 22px);
   }
 
-  .navbar {
-    gap: 8px;
+  .hero h1 {
+    font-size: 43px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    align-items:
+      stretch;
+  }
+
+  .btn {
+    width: 100%;
   }
 
   .logo,
@@ -824,32 +1533,28 @@ footer {
     width: 80px;
     height: 80px;
   }
-
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn {
-    width: 100%;
-  }
 }
+
 
 /* =========================================
    REDUCED MOTION
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    scroll-behavior:
+      auto !important;
   }
 }
