@@ -3,29 +3,20 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Shahneil Khan — Software Engineer & UI/UX Designer</title>
+  <title>Shahneil Khan — Software Engineer</title>
 
   <meta
     name="description"
-    content="Shahneil Khan — Software Engineer, Web Engineer, Product Designer and UI/UX Designer."
+    content="Shahneil Khan — Software Engineer, Web Developer and UI/UX Designer."
   >
 
-  <meta
-    name="author"
-    content="Shahneil Khan"
-  >
+  <meta name="author" content="Shahneil Khan">
 
-  <meta
-    name="theme-color"
-    content="#080808"
-  >
+  <meta name="theme-color" content="#050505">
 
-  <!-- Google Fonts -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
@@ -39,76 +30,56 @@
     rel="stylesheet"
   >
 
-  <!-- Main CSS -->
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
-  <!-- =========================
+  <!-- ==================================================
        CURSOR
-       ========================= -->
+       ================================================== -->
 
   <div class="cursor"></div>
 
 
-  <!-- =========================
+  <!-- ==================================================
        NAVBAR
-       ========================= -->
+       ================================================== -->
 
-  <nav>
+  <nav class="navbar">
 
-    <a
-      href="#home"
-      class="logo"
-    >
+    <a href="#home" class="logo">
       SK<span>.</span>
     </a>
 
 
     <div class="nav-links">
 
-      <a href="#home">
-        Home
-      </a>
+      <a href="#home">Home</a>
 
-      <a href="#about">
-        About
-      </a>
+      <a href="#about">About</a>
 
-      <a href="#skills">
-        Skills
-      </a>
+      <a href="#skills">Skills</a>
 
-      <a href="#work">
-        Work
-      </a>
+      <a href="#work">Work</a>
 
-      <a href="#lab">
-        Lab
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
+      <a href="#contact">Contact</a>
 
     </div>
 
   </nav>
 
 
-  <!-- =========================
+  <!-- ==================================================
        HERO
-       ========================= -->
+       ================================================== -->
 
-  <header
-    id="home"
-    class="hero"
-  >
+  <header id="home" class="hero">
+
+    <div class="hero-overlay"></div>
+
 
     <div class="hero-content">
 
@@ -122,9 +93,7 @@
         SHAHNEIL
         <br>
 
-        <span>
-          KHAN
-        </span>
+        <span>KHAN</span>
 
       </h1>
 
@@ -132,7 +101,7 @@
       <p class="hero-description">
 
         I design and engineer meaningful digital
-        experiences by combining software engineering,
+        experiences through software engineering,
         web development, UI/UX and modern technology.
 
       </p>
@@ -150,11 +119,17 @@
 
         <a
           href="mailto:thesnkgraphic@email.com"
-          class="btn btn-secondary"
+          class="btn btn-outline"
         >
-          Contact Me
+          Let's Talk
         </a>
 
+      </div>
+
+
+      <div class="hero-scroll">
+        SCROLL TO EXPLORE
+        <span>↓</span>
       </div>
 
     </div>
@@ -162,28 +137,23 @@
   </header>
 
 
-  <!-- =========================
+  <!-- ==================================================
        ABOUT
-       ========================= -->
+       ================================================== -->
 
-  <section
-    id="about"
-    class="about"
-  >
+  <section id="about" class="about">
 
     <div class="section-label">
-      01 — About Me
+      01 — ABOUT
     </div>
 
 
     <h2 class="section-title">
 
-      Building with
+      Designer's eye.
       <br>
 
-      <span>
-        creativity & purpose.
-      </span>
+      <span>Engineer's mind.</span>
 
     </h2>
 
@@ -191,81 +161,114 @@
     <div class="about-grid">
 
 
-      <div class="about-text">
+      <!-- PROFILE -->
 
-        I'm Shahneil Khan, a Software Engineer and
-        Web/UI/UX professional passionate about creating
-        useful digital products.
+      <div class="profile-card">
 
-        <br><br>
+        <div class="profile-image">
 
-        I enjoy working across the complete product
-        journey — from understanding a problem and
-        designing the interface to developing and
-        deploying the final product.
+          <img
+            src="assets/profile.jpg"
+            alt="Shahneil Khan"
+            onerror="this.style.display='none'"
+          >
 
-        <br><br>
+          <div class="profile-placeholder">
+            SK
+          </div>
 
-        My goal is simple: make technology easier,
-        more useful and more human.
+        </div>
+
+
+        <div class="profile-info">
+
+          <div class="profile-tag">
+            SOFTWARE ENGINEER
+          </div>
+
+
+          <h3>
+            Shahneil Khan
+          </h3>
+
+
+          <p>
+            Web · UI/UX · Product · Technology
+          </p>
+
+
+          <div class="profile-status">
+
+            <span></span>
+
+            Available for Projects
+
+          </div>
+
+        </div>
 
       </div>
 
 
-      <div class="facts">
+      <!-- ABOUT CONTENT -->
+
+      <div class="about-content">
+
+        <p>
+
+          I'm Shahneil Khan, a Software Engineer and
+          Web/UI/UX professional passionate about building
+          useful and beautiful digital products.
+
+        </p>
 
 
-        <div class="fact">
+        <p>
 
-          <small>
-            NAME
-          </small>
+          I enjoy transforming ideas into real products —
+          from research and user experience design to
+          frontend development, backend engineering
+          and deployment.
 
-          <strong>
-            Shahneil Khan
-          </strong>
+        </p>
+
+
+        <p>
+
+          I believe great technology should not only work
+          well, but should also feel simple, intuitive
+          and meaningful.
+
+        </p>
+
+
+        <div class="social-links">
+
+          <a
+            href="https://github.com/ishahneilkhan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub ↗
+          </a>
+
+
+          <a
+            href="https://www.linkedin.com/in/uxuidesigners/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn ↗
+          </a>
+
+
+          <a
+            href="mailto:thesnkgraphic@email.com"
+          >
+            Email ↗
+          </a>
 
         </div>
-
-
-        <div class="fact">
-
-          <small>
-            ROLE
-          </small>
-
-          <strong>
-            Software Engineer
-          </strong>
-
-        </div>
-
-
-        <div class="fact">
-
-          <small>
-            SPECIALIZATION
-          </small>
-
-          <strong>
-            Web · UI/UX · Product
-          </strong>
-
-        </div>
-
-
-        <div class="fact">
-
-          <small>
-            LOCATION
-          </small>
-
-          <strong>
-            Bangladesh · Worldwide
-          </strong>
-
-        </div>
-
 
       </div>
 
@@ -274,23 +277,23 @@
   </section>
 
 
-  <!-- =========================
+  <!-- ==================================================
        SKILLS
-       ========================= -->
+       ================================================== -->
 
-  <section id="skills">
+  <section id="skills" class="skills">
 
     <div class="section-label">
-      02 — Skills
+      02 — SKILLS
     </div>
 
 
     <h2 class="section-title">
 
-      Skills I use to
-      <span>
-        build products.
-      </span>
+      Skills that turn
+      <br>
+
+      <span>ideas into products.</span>
 
     </h2>
 
@@ -298,33 +301,48 @@
     <div class="skills-grid">
 
 
-      <div class="skill-card">
+      <!-- SOFTWARE -->
+
+      <article class="skill-card">
+
+        <div class="skill-number">
+          01
+        </div>
 
         <h3>
           Software Engineering
         </h3>
 
         <p>
+
           Software Architecture<br>
           Clean Code<br>
           Git & GitHub<br>
           API Development<br>
           Debugging<br>
           Testing<br>
-          Problem Solving<br>
-          System Design
+          System Design<br>
+          Problem Solving
+
         </p>
 
-      </div>
+      </article>
 
 
-      <div class="skill-card">
+      <!-- WEB -->
+
+      <article class="skill-card">
+
+        <div class="skill-number">
+          02
+        </div>
 
         <h3>
           Web Development
         </h3>
 
         <p>
+
           HTML5<br>
           CSS3<br>
           JavaScript<br>
@@ -333,18 +351,26 @@
           Backend Development<br>
           REST APIs<br>
           Web Performance
+
         </p>
 
-      </div>
+      </article>
 
 
-      <div class="skill-card">
+      <!-- UI UX -->
+
+      <article class="skill-card">
+
+        <div class="skill-number">
+          03
+        </div>
 
         <h3>
           UI / UX Design
         </h3>
 
         <p>
+
           UX Research<br>
           Wireframing<br>
           Prototyping<br>
@@ -353,95 +379,117 @@
           Design Systems<br>
           Usability<br>
           Accessibility
+
         </p>
 
-      </div>
+      </article>
 
 
-      <div class="skill-card">
+      <!-- PRODUCT -->
+
+      <article class="skill-card">
+
+        <div class="skill-number">
+          04
+        </div>
 
         <h3>
           Product Design
         </h3>
 
         <p>
+
           Product Strategy<br>
-          User Research<br>
+          Design Thinking<br>
           Information Architecture<br>
           Visual Design<br>
-          Design Thinking<br>
           User Testing<br>
           Product Experience<br>
-          Case Studies
+          Case Studies<br>
+          Problem Solving
+
         </p>
 
-      </div>
+      </article>
 
 
-      <div class="skill-card">
+      <!-- AI -->
+
+      <article class="skill-card">
+
+        <div class="skill-number">
+          05
+        </div>
 
         <h3>
           AI & Technology
         </h3>
 
         <p>
+
           AI Applications<br>
           LLM Concepts<br>
           AI UX<br>
           Automation<br>
-          AI Product Ideas<br>
           Prompt Engineering<br>
+          AI Product Design<br>
           Emerging Technology<br>
           Creative Technology
+
         </p>
 
-      </div>
+      </article>
 
 
-      <div class="skill-card">
+      <!-- PROFESSIONAL -->
+
+      <article class="skill-card">
+
+        <div class="skill-number">
+          06
+        </div>
 
         <h3>
           Professional Skills
         </h3>
 
         <p>
+
           Communication<br>
-          Teamwork<br>
           Leadership<br>
+          Teamwork<br>
           Research<br>
           Presentation<br>
           Critical Thinking<br>
-          Learning<br>
-          Project Management
+          Project Management<br>
+          Continuous Learning
+
         </p>
 
-      </div>
+      </article>
 
     </div>
 
   </section>
 
 
-  <!-- =========================
+  <!-- ==================================================
        WORK
-       ========================= -->
+       ================================================== -->
 
-  <section
-    id="work"
-    class="work"
-  >
+  <section id="work" class="work">
 
     <div class="section-label">
-      03 — Selected Work
+      03 — SELECTED WORK
     </div>
 
 
     <h2 class="section-title">
 
       Things I've
-      <span>
-        built.
-      </span>
+      <br>
+
+      <span>designed & built.</span>
 
     </h2>
 
@@ -451,14 +499,22 @@
 
       <!-- PROJECT 01 -->
 
-      <article class="project">
+      <article class="project-card">
 
-        <div class="project-number">
-          01
+        <div class="project-top">
+
+          <span>
+            01
+          </span>
+
+          <span>
+            WEB
+          </span>
+
         </div>
 
 
-        <div>
+        <div class="project-content">
 
           <h3>
             Code Yard
@@ -467,10 +523,19 @@
 
           <p>
 
-            A web project focused on creating a modern
-            and useful digital experience.
+            A modern web project focused on creating
+            a clean and useful digital experience.
 
           </p>
+
+
+          <div class="project-tech">
+
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+
+          </div>
 
 
           <a
@@ -489,14 +554,22 @@
 
       <!-- PROJECT 02 -->
 
-      <article class="project">
+      <article class="project-card">
 
-        <div class="project-number">
-          02
+        <div class="project-top">
+
+          <span>
+            02
+          </span>
+
+          <span>
+            EDUCATION
+          </span>
+
         </div>
 
 
-        <div>
+        <div class="project-content">
 
           <h3>
             SNK IT Institute
@@ -509,6 +582,15 @@
             technology learning and modern digital skills.
 
           </p>
+
+
+          <div class="project-tech">
+
+            <span>Education</span>
+            <span>Web</span>
+            <span>UX</span>
+
+          </div>
 
 
           <a
@@ -527,14 +609,22 @@
 
       <!-- PROJECT 03 -->
 
-      <article class="project">
+      <article class="project-card">
 
-        <div class="project-number">
-          03
+        <div class="project-top">
+
+          <span>
+            03
+          </span>
+
+          <span>
+            LEARNING
+          </span>
+
         </div>
 
 
-        <div>
+        <div class="project-content">
 
           <h3>
             SNK GuideUp
@@ -543,10 +633,19 @@
 
           <p>
 
-            A learning platform designed to provide
-            accessible academic and IT learning resources.
+            A learning platform designed to make academic
+            and IT learning resources more accessible.
 
           </p>
+
+
+          <div class="project-tech">
+
+            <span>Learning</span>
+            <span>Web</span>
+            <span>UI/UX</span>
+
+          </div>
 
 
           <a
@@ -568,25 +667,23 @@
   </section>
 
 
-  <!-- =========================
+  <!-- ==================================================
        DESIGN LAB
-       ========================= -->
+       ================================================== -->
 
-  <section id="lab">
+  <section id="lab" class="lab">
 
     <div class="section-label">
-      04 — Design Lab
+      04 — DESIGN LAB
     </div>
 
 
     <h2 class="section-title">
 
-      Ideas,
+      Ideas worth
       <br>
 
-      <span>
-        experiments & future.
-      </span>
+      <span>exploring.</span>
 
     </h2>
 
@@ -610,11 +707,11 @@
       </div>
 
       <div class="lab-item">
-        Web Experiments
+        AI Products
       </div>
 
       <div class="lab-item">
-        AI Products
+        Web Experiments
       </div>
 
       <div class="lab-item">
@@ -630,138 +727,122 @@
   </section>
 
 
-  <!-- =========================
-       EXPERIENCE
-       ========================= -->
+  <!-- ==================================================
+       PROCESS
+       ================================================== -->
 
-  <section id="experience">
+  <section class="process">
 
     <div class="section-label">
-      05 — My Approach
+      05 — PROCESS
     </div>
 
 
     <h2 class="section-title">
 
       From idea
-      <span>
-        to reality.
-      </span>
+      <br>
+
+      <span>to reality.</span>
 
     </h2>
 
 
-    <div class="about-grid">
+    <div class="process-list">
 
 
-      <div class="about-text">
+      <div class="process-item">
 
-        <strong>
-          01 — Understand
-        </strong>
+        <span>01</span>
 
-        <br>
+        <div>
 
-        Understand the problem, users and business goals.
+          <h3>
+            Understand
+          </h3>
 
-        <br><br>
-
-
-        <strong>
-          02 — Design
-        </strong>
-
-        <br>
-
-        Turn ideas into clear interfaces,
-        flows and prototypes.
-
-        <br><br>
-
-
-        <strong>
-          03 — Engineer
-        </strong>
-
-        <br>
-
-        Build reliable, responsive and scalable
-        digital products.
-
-        <br><br>
-
-
-        <strong>
-          04 — Improve
-        </strong>
-
-        <br>
-
-        Test, learn, optimize and continuously improve
-        the experience.
-
-      </div>
-
-
-      <div class="facts">
-
-
-        <div class="fact">
-
-          <small>
-            DESIGN
-          </small>
-
-          <strong>
-            Research → Wireframe → Prototype
-          </strong>
-
-        </div>
-
-
-        <div class="fact">
-
-          <small>
-            DEVELOPMENT
-          </small>
-
-          <strong>
-            Plan → Build → Test → Deploy
-          </strong>
-
-        </div>
-
-
-        <div class="fact">
-
-          <small>
-            PRODUCT
-          </small>
-
-          <strong>
-            Problem → Solution → Impact
-          </strong>
+          <p>
+            Understand the problem, users and goals.
+          </p>
 
         </div>
 
       </div>
+
+
+      <div class="process-item">
+
+        <span>02</span>
+
+        <div>
+
+          <h3>
+            Design
+          </h3>
+
+          <p>
+            Create clear interfaces, flows and prototypes.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="process-item">
+
+        <span>03</span>
+
+        <div>
+
+          <h3>
+            Engineer
+          </h3>
+
+          <p>
+            Turn the design into a real working product.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="process-item">
+
+        <span>04</span>
+
+        <div>
+
+          <h3>
+            Improve
+          </h3>
+
+          <p>
+            Test, learn, optimize and continuously improve.
+          </p>
+
+        </div>
+
+      </div>
+
 
     </div>
 
   </section>
 
 
-  <!-- =========================
-       SOCIAL / CONTACT
-       ========================= -->
+  <!-- ==================================================
+       CONTACT
+       ================================================== -->
 
-  <section
-    id="contact"
-    class="contact"
-  >
+  <section id="contact" class="contact">
+
+    <div class="contact-glow"></div>
+
 
     <div class="section-label">
-      06 — Contact
+      06 — CONTACT
     </div>
 
 
@@ -770,20 +851,17 @@
       Let's build
       <br>
 
-      <span>
-        something great.
-      </span>
+      <span>something meaningful.</span>
 
     </h2>
 
 
     <p>
-      Have a project, idea or collaboration in mind?
+      Have an idea, project or collaboration in mind?
     </p>
 
 
     <div class="hero-buttons">
-
 
       <a
         href="mailto:thesnkgraphic@email.com"
@@ -797,9 +875,9 @@
         href="https://github.com/ishahneilkhan"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-secondary"
+        class="btn btn-outline"
       >
-        GitHub
+        GitHub ↗
       </a>
 
 
@@ -807,9 +885,9 @@
         href="https://www.linkedin.com/in/uxuidesigners/"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-secondary"
+        class="btn btn-outline"
       >
-        LinkedIn
+        LinkedIn ↗
       </a>
 
     </div>
@@ -817,27 +895,27 @@
   </section>
 
 
-  <!-- =========================
+  <!-- ==================================================
        FOOTER
-       ========================= -->
+       ================================================== -->
 
   <footer>
 
-    <span>
+    <div>
       © 2026 Shahneil Khan
-    </span>
+    </div>
 
 
-    <span>
-      Software Engineer · Web · UI/UX
-    </span>
+    <div>
+      SOFTWARE · WEB · UI/UX
+    </div>
 
   </footer>
 
 
-  <!-- =========================
+  <!-- ==================================================
        JAVASCRIPT
-       ========================= -->
+       ================================================== -->
 
   <script src="script.js"></script>
 
