@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -12,7 +11,7 @@
 
   <meta
     name="description"
-    content="Shahneil Khan — Software Engineer, Web Developer and UI/UX Designer."
+    content="Shahneil Khan — Software Engineer, Web Developer, UI/UX Designer and Creative Technologist."
   >
 
   <meta
@@ -20,19 +19,14 @@
     content="Shahneil Khan"
   >
 
-  <meta
-    name="theme-color"
-    content="#03040a"
+  <title>Shahneil Khan — Software Engineer & UI/UX Designer</title>
+
+
+  <!-- Google Font -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
   >
-
-  <title>
-    Shahneil Khan — Software Engineer
-  </title>
-
-
-  <!-- Google Fonts -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
     rel="preconnect"
@@ -41,13 +35,12 @@
   >
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
 
-  <!-- Main CSS -->
-
+  <!-- CSS -->
   <link
     rel="stylesheet"
     href="style.css"
@@ -67,13 +60,12 @@
 
 
   <!-- =====================================================
-       NAVIGATION
+       NAVBAR
        ===================================================== -->
 
-  <nav class="navbar">
+  <header class="navbar">
 
-
-    <!-- LOGO -->
+    <!-- NEW LOGO -->
 
     <a
       href="#home"
@@ -82,46 +74,42 @@
     >
 
       <img
-        src="https://raw.githubusercontent.com/ishahneilkhan/Gallery/main/cover%20es01.svg"
+        src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg"
         alt="Shahneil Khan Logo"
       >
 
     </a>
 
 
-    <!-- NAV LINKS -->
+    <!-- Desktop Navigation -->
 
-    <div class="nav-links">
+    <nav
+      class="nav-links"
+      aria-label="Main navigation"
+    >
 
-      <a href="#home">
-        Home
-      </a>
+      <a href="#home">Home</a>
 
-      <a href="#about">
-        About
-      </a>
+      <a href="#about">About</a>
 
-      <a href="#skills">
-        Skills
-      </a>
+      <a href="#skills">Skills</a>
 
-      <a href="#work">
-        Work
-      </a>
+      <a href="#work">Work</a>
 
-      <a href="#contact">
-        Contact
-      </a>
+      <a href="#process">Process</a>
 
-    </div>
+      <a href="#contact">Contact</a>
+
+    </nav>
 
 
-    <!-- MOBILE MENU BUTTON -->
+    <!-- Mobile Menu Button -->
 
     <button
       class="menu-toggle"
-      aria-label="Open Menu"
-      type="button"
+      id="menuToggle"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
     >
 
       <span></span>
@@ -130,122 +118,1032 @@
 
     </button>
 
-  </nav>
+  </header>
+
 
 
   <!-- =====================================================
        MOBILE MENU
        ===================================================== -->
 
-  <div class="mobile-menu">
+  <nav
+    class="mobile-menu"
+    id="mobileMenu"
+    aria-label="Mobile navigation"
+  >
 
-    <a href="#home">
-      Home
-    </a>
+    <a href="#home">Home</a>
 
-    <a href="#about">
-      About
-    </a>
+    <a href="#about">About</a>
 
-    <a href="#skills">
-      Skills
-    </a>
+    <a href="#skills">Skills</a>
 
-    <a href="#work">
-      Work
-    </a>
+    <a href="#work">Work</a>
 
-    <a href="#contact">
-      Contact
-    </a>
+    <a href="#process">Process</a>
 
-  </div>
+    <a href="#contact">Contact</a>
+
+  </nav>
+
 
 
   <!-- =====================================================
        HERO
        ===================================================== -->
 
-  <header
-    id="home"
-    class="hero"
-  >
+  <main>
+
+    <section
+      class="hero"
+      id="home"
+    >
 
 
-    <!-- HERO BACKGROUND -->
+      <!-- Background -->
 
-    <div class="hero-background">
-
-
-      <!-- Your Banner -->
-
-      <div class="banner-image"></div>
+      <div class="hero-background">
 
 
-      <!-- Dark Overlay -->
+        <!-- Night / Banner Background -->
 
-      <div class="banner-dark"></div>
+        <div class="banner-image"></div>
 
-
-      <!-- Animated Galaxy -->
-
-      <div class="galaxy-bg">
-
-        <div class="stars stars-1"></div>
-
-        <div class="stars stars-2"></div>
-
-        <div class="stars stars-3"></div>
-
-        <div class="nebula nebula-1"></div>
-
-        <div class="nebula nebula-2"></div>
-
-        <div class="galaxy-orb"></div>
-
-      </div>
+        <div class="banner-dark"></div>
 
 
-      <!-- Cinematic Overlay -->
+        <!-- Galaxy -->
 
-      <div class="hero-overlay"></div>
+        <div class="galaxy-bg">
 
-    </div>
+          <div class="stars stars-1"></div>
+
+          <div class="stars stars-2"></div>
+
+          <div class="stars stars-3"></div>
+
+          <div class="nebula nebula-1"></div>
+
+          <div class="nebula nebula-2"></div>
+
+          <div class="galaxy-orb"></div>
+
+        </div>
 
 
+        <!-- Dark Overlay -->
 
-    <!-- HERO CONTENT -->
-
-    <div class="hero-content">
-
-
-      <div class="eyebrow">
-
-        SOFTWARE ENGINEER
-        <span>·</span>
-        WEB
-        <span>·</span>
-        UI/UX
+        <div class="hero-overlay"></div>
 
       </div>
 
 
-      <h1>
 
-        SHAHNEIL
+      <!-- Hero Content -->
+
+      <div class="hero-content">
+
+
+        <div class="eyebrow">
+
+          SOFTWARE ENGINEER
+
+          <span>•</span>
+
+          WEB
+
+          <span>•</span>
+
+          UI/UX
+
+          <span>•</span>
+
+          CREATIVE TECH
+
+        </div>
+
+
+        <h1>
+
+          SHAHNEIL
+
+          <br>
+
+          <span>KHAN</span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+          I design and build digital experiences that combine
+          software engineering, modern web technologies and
+          thoughtful UI/UX design.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <a
+            href="#work"
+            class="btn btn-primary"
+          >
+
+            View My Work
+
+          </a>
+
+
+          <a
+            href="#contact"
+            class="btn btn-outline"
+          >
+
+            Let's Connect
+
+          </a>
+
+        </div>
+
+
+        <div class="hero-scroll">
+
+          SCROLL TO EXPLORE
+
+          <span>↓</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ABOUT
+         ===================================================== -->
+
+    <section
+      class="about"
+      id="about"
+    >
+
+
+      <div class="section-label">
+
+        01 — ABOUT
+
+      </div>
+
+
+      <h2 class="section-title">
+
+        BUILDING WITH
+
+        <span>PURPOSE.</span>
+
+      </h2>
+
+
+      <div class="about-grid">
+
+
+        <!-- Profile -->
+
+        <div class="profile-card">
+
+          <div class="profile-image">
+
+            <img
+              src="https://raw.githubusercontent.com/ishahneilkhan/assets/main/Banner.png.jfif"
+              alt="Shahneil Khan"
+              loading="lazy"
+            >
+
+          </div>
+
+
+          <div class="profile-info">
+
+            <div class="profile-tag">
+
+              SOFTWARE • DESIGN • WEB
+
+            </div>
+
+
+            <h3>
+
+              Shahneil Khan
+
+            </h3>
+
+
+            <p>
+
+              Software Engineer & UI/UX Designer
+
+            </p>
+
+
+            <div class="profile-status">
+
+              <span></span>
+
+              Available for opportunities
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- About Text -->
+
+        <div class="about-content">
+
+          <p>
+
+            I am a technology-focused creator interested in
+            software engineering, web development and digital
+            product design.
+
+          </p>
+
+
+          <p>
+
+            My goal is to create websites and applications that
+            are not only functional, but also fast, accessible,
+            responsive and visually meaningful.
+
+          </p>
+
+
+          <p>
+
+            I enjoy working across the complete product journey —
+            from ideas and user experience to interface design,
+            development and deployment.
+
+          </p>
+
+
+          <div class="social-links">
+
+
+            <a
+              href="mailto:thesnkgraphic@email.com"
+            >
+
+              Email
+
+            </a>
+
+
+            <a
+              href="https://github.com/ishahneilkhan"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              GitHub
+
+            </a>
+
+
+            <a
+              href="https://www.linkedin.com/in/uxuidesigners"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              LinkedIn
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SKILLS
+         ===================================================== -->
+
+    <section
+      class="skills"
+      id="skills"
+    >
+
+
+      <div class="section-label">
+
+        02 — SKILLS
+
+      </div>
+
+
+      <h2 class="section-title">
+
+        WHAT I
+
+        <span>CREATE.</span>
+
+      </h2>
+
+
+      <div class="skills-grid">
+
+
+        <!-- Skill 01 -->
+
+        <article class="skill-card">
+
+          <div class="skill-number">
+
+            01
+
+          </div>
+
+
+          <h3>
+
+            Software Engineering
+
+          </h3>
+
+
+          <p>
+
+            Programming, problem solving, application
+            architecture, APIs, databases, Git and modern
+            development workflows.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- Skill 02 -->
+
+        <article class="skill-card">
+
+          <div class="skill-number">
+
+            02
+
+          </div>
+
+
+          <h3>
+
+            Web Development
+
+          </h3>
+
+
+          <p>
+
+            Responsive websites, modern HTML, CSS, JavaScript,
+            frontend interfaces, performance and deployment.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- Skill 03 -->
+
+        <article class="skill-card">
+
+          <div class="skill-number">
+
+            03
+
+          </div>
+
+
+          <h3>
+
+            UI / UX Design
+
+          </h3>
+
+
+          <p>
+
+            User research, wireframes, design systems,
+            prototypes, visual hierarchy and user-centered
+            interfaces.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- Skill 04 -->
+
+        <article class="skill-card">
+
+          <div class="skill-number">
+
+            04
+
+          </div>
+
+
+          <h3>
+
+            Frontend
+
+          </h3>
+
+
+          <p>
+
+            Building clean, responsive and interactive
+            experiences with modern frontend technologies.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- Skill 05 -->
+
+        <article class="skill-card">
+
+          <div class="skill-number">
+
+            05
+
+          </div>
+
+
+          <h3>
+
+            Product Thinking
+
+          </h3>
+
+
+          <p>
+
+            Turning ideas into practical digital products with
+            attention to usability, business goals and user needs.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- Skill 06 -->
+
+        <article class="skill-card">
+
+          <div class="skill-number">
+
+            06
+
+          </div>
+
+
+          <h3>
+
+            Creative Technology
+
+          </h3>
+
+
+          <p>
+
+            Combining design, code, animation and emerging
+            technologies to create unique digital experiences.
+
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROJECTS
+         ===================================================== -->
+
+    <section
+      class="work"
+      id="work"
+    >
+
+
+      <div class="section-label">
+
+        03 — SELECTED WORK
+
+      </div>
+
+
+      <h2 class="section-title">
+
+       THINGS I
+
+        <span>BUILT.</span>
+
+      </h2>
+
+
+      <div class="projects">
+
+
+        <!-- Project 01 -->
+
+        <article class="project-card">
+
+          <div class="project-top">
+
+            <span>PROJECT 01</span>
+
+            <span>WEB</span>
+
+          </div>
+
+
+          <div class="project-content">
+
+            <h3>
+
+              Demo Website
+
+            </h3>
+
+
+            <p>
+
+              A modern web project focused on clean visual
+              presentation, responsive layout and user experience.
+
+            </p>
+
+
+            <div class="project-tech">
+
+              <span>HTML</span>
+
+              <span>CSS</span>
+
+              <span>JavaScript</span>
+
+              <span>UI/UX</span>
+
+            </div>
+
+
+            <a
+              href="https://demowebsite.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-link"
+            >
+
+              Visit Project →
+
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Project 02 -->
+
+        <article class="project-card">
+
+          <div class="project-top">
+
+            <span>PROJECT 02</span>
+
+            <span>EDUCATION</span>
+
+          </div>
+
+
+          <div class="project-content">
+
+            <h3>
+
+              SNK IT Institute
+
+            </h3>
+
+
+            <p>
+
+              An educational web experience designed to present
+              information clearly and make digital learning
+              resources easier to explore.
+
+            </p>
+
+
+            <div class="project-tech">
+
+              <span>WEB</span>
+
+              <span>DESIGN</span>
+
+              <span>RESPONSIVE</span>
+
+              <span>UX</span>
+
+            </div>
+
+
+            <a
+              href="https://snkitinstitute.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-link"
+            >
+
+              Visit Project →
+
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Project 03 -->
+
+        <article class="project-card">
+
+          <div class="project-top">
+
+            <span>PROJECT 03</span>
+
+            <span>PLATFORM</span>
+
+          </div>
+
+
+          <div class="project-content">
+
+            <h3>
+
+              SNK GuideUp
+
+            </h3>
+
+
+            <p>
+
+              A digital platform concept focused on useful
+              resources, clean navigation and accessible
+              information architecture.
+
+            </p>
+
+
+            <div class="project-tech">
+
+              <span>WEB</span>
+
+              <span>UI/UX</span>
+
+              <span>DESIGN</span>
+
+              <span>DEVELOPMENT</span>
+
+            </div>
+
+
+            <a
+              href="https://snkguideup.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-link"
+            >
+
+              Visit Project →
+
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DESIGN / CREATIVE LAB
+         ===================================================== -->
+
+    <section class="lab">
+
+
+      <div class="section-label">
+
+        04 — TOOLKIT
+
+      </div>
+
+
+      <h2 class="section-title">
+
+        MY DIGITAL
+
+        <span>TOOLKIT.</span>
+
+      </h2>
+
+
+      <div class="lab-grid">
+
+
+        <div class="lab-item">
+
+          HTML / CSS
+
+        </div>
+
+
+        <div class="lab-item">
+
+          JavaScript
+
+        </div>
+
+
+        <div class="lab-item">
+
+          Git & GitHub
+
+        </div>
+
+
+        <div class="lab-item">
+
+          Responsive Design
+
+        </div>
+
+
+        <div class="lab-item">
+
+          UI Design
+
+        </div>
+
+
+        <div class="lab-item">
+
+          UX Research
+
+        </div>
+
+
+        <div class="lab-item">
+
+          Prototyping
+
+        </div>
+
+
+        <div class="lab-item">
+
+          Design Systems
+
+        </div>
+
+
+        <div class="lab-item">
+
+          Accessibility
+
+        </div>
+
+
+        <div class="lab-item">
+
+          Performance
+
+        </div>
+
+
+        <div class="lab-item">
+
+          Product Thinking
+
+        </div>
+
+
+        <div class="lab-item">
+
+          Creative Coding
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROCESS
+         ===================================================== -->
+
+    <section
+      class="process"
+      id="process"
+    >
+
+
+      <div class="section-label">
+
+        05 — PROCESS
+
+      </div>
+
+
+      <h2 class="section-title">
+
+        HOW I
+
+        <span>WORK.</span>
+
+      </h2>
+
+
+      <div class="process-list">
+
+
+        <div class="process-item">
+
+          <span>01</span>
+
+          <div>
+
+            <h3>
+
+              Discover
+
+            </h3>
+
+            <p>
+
+              Understand the problem, audience, requirements
+              and goals before writing code.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="process-item">
+
+          <span>02</span>
+
+          <div>
+
+            <h3>
+
+              Design
+
+            </h3>
+
+            <p>
+
+              Create information architecture, wireframes,
+              visual direction and user flows.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="process-item">
+
+          <span>03</span>
+
+          <div>
+
+            <h3>
+
+              Build
+
+            </h3>
+
+            <p>
+
+              Turn the design into responsive, accessible and
+              maintainable digital experiences.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="process-item">
+
+          <span>04</span>
+
+          <div>
+
+            <h3>
+
+              Refine
+
+            </h3>
+
+            <p>
+
+              Test, optimize, fix details and improve the final
+              experience across devices.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTACT
+         ===================================================== -->
+
+    <section
+      class="contact"
+      id="contact"
+    >
+
+
+      <div class="contact-glow"></div>
+
+
+      <div class="section-label">
+
+        06 — CONTACT
+
+      </div>
+
+
+      <h2>
+
+        LET'S BUILD
 
         <br>
 
-        <span>KHAN</span>
+        <span>SOMETHING.</span>
 
-      </h1>
+      </h2>
 
 
-      <p class="hero-description">
+      <p>
 
-        I design and engineer meaningful digital
-        experiences through software engineering,
-        web development, UI/UX and modern technology.
+        Have an idea, project or opportunity?
+
+        Let's talk.
 
       </p>
 
@@ -254,960 +1152,32 @@
 
 
         <a
-          href="#work"
+          href="mailto:thesnkgraphic@email.com"
           class="btn btn-primary"
         >
 
-          Explore My Work
+          Send Email
 
         </a>
 
 
         <a
-          href="mailto:thesnkgraphic@email.com"
+          href="https://github.com/ishahneilkhan"
+          target="_blank"
+          rel="noopener noreferrer"
           class="btn btn-outline"
         >
 
-          Let's Talk
+          GitHub
 
         </a>
 
-
       </div>
 
+    </section>
 
-      <div class="hero-scroll">
+  </main>
 
-        SCROLL TO EXPLORE
-
-        <span>
-          ↓
-        </span>
-
-      </div>
-
-
-    </div>
-
-
-  </header>
-
-
-  <!-- =====================================================
-       ABOUT
-       ===================================================== -->
-
-  <section
-    id="about"
-    class="about"
-  >
-
-
-    <div class="section-label">
-
-      01 — ABOUT
-
-    </div>
-
-
-    <h2 class="section-title">
-
-      Designer's eye.
-
-      <br>
-
-      <span>
-        Engineer's mind.
-      </span>
-
-    </h2>
-
-
-    <div class="about-grid">
-
-
-      <!-- PROFILE CARD -->
-
-      <div class="profile-card">
-
-
-        <div class="profile-image">
-
-
-          <img
-            src="assets/profile.jpg"
-            alt="Shahneil Khan"
-            onerror="this.style.display='none'"
-          >
-
-
-          <div class="profile-placeholder">
-
-            SK
-
-          </div>
-
-
-        </div>
-
-
-        <div class="profile-info">
-
-
-          <div class="profile-tag">
-
-            SOFTWARE ENGINEER
-
-          </div>
-
-
-          <h3>
-
-            Shahneil Khan
-
-          </h3>
-
-
-          <p>
-
-            Web · UI/UX · Product · Technology
-
-          </p>
-
-
-          <div class="profile-status">
-
-            <span></span>
-
-            Available for Projects
-
-          </div>
-
-
-        </div>
-
-
-      </div>
-
-
-
-      <!-- ABOUT TEXT -->
-
-      <div class="about-content">
-
-
-        <p>
-
-          I'm Shahneil Khan, a Software Engineer and
-          Web/UI/UX professional passionate about building
-          useful and beautiful digital products.
-
-        </p>
-
-
-        <p>
-
-          I enjoy transforming ideas into real products —
-          from research and user experience design to
-          frontend development, backend engineering
-          and deployment.
-
-        </p>
-
-
-        <p>
-
-          I believe great technology should not only work
-          well, but should also feel simple, intuitive
-          and meaningful.
-
-        </p>
-
-
-        <div class="social-links">
-
-
-          <a
-            href="https://github.com/ishahneilkhan"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            GitHub ↗
-
-          </a>
-
-
-          <a
-            href="https://www.linkedin.com/in/uxuidesigners/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            LinkedIn ↗
-
-          </a>
-
-
-          <a
-            href="mailto:thesnkgraphic@email.com"
-          >
-
-            Email ↗
-
-          </a>
-
-
-        </div>
-
-
-      </div>
-
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =====================================================
-       SKILLS
-       ===================================================== -->
-
-  <section
-    id="skills"
-    class="skills"
-  >
-
-
-    <div class="section-label">
-
-      02 — SKILLS
-
-    </div>
-
-
-    <h2 class="section-title">
-
-      Skills that turn
-
-      <br>
-
-      <span>
-        ideas into products.
-      </span>
-
-    </h2>
-
-
-    <div class="skills-grid">
-
-
-      <!-- SOFTWARE -->
-
-      <article class="skill-card">
-
-        <div class="skill-number">
-          01
-        </div>
-
-        <h3>
-          Software Engineering
-        </h3>
-
-        <p>
-
-          Software Architecture<br>
-          Clean Code<br>
-          Git & GitHub<br>
-          API Development<br>
-          Debugging<br>
-          Testing<br>
-          System Design<br>
-          Problem Solving
-
-        </p>
-
-      </article>
-
-
-      <!-- WEB -->
-
-      <article class="skill-card">
-
-        <div class="skill-number">
-          02
-        </div>
-
-        <h3>
-          Web Development
-        </h3>
-
-        <p>
-
-          HTML5<br>
-          CSS3<br>
-          JavaScript<br>
-          Responsive Design<br>
-          Frontend Development<br>
-          Backend Development<br>
-          REST APIs<br>
-          Web Performance
-
-        </p>
-
-      </article>
-
-
-      <!-- UI UX -->
-
-      <article class="skill-card">
-
-        <div class="skill-number">
-          03
-        </div>
-
-        <h3>
-          UI / UX Design
-        </h3>
-
-        <p>
-
-          UX Research<br>
-          Wireframing<br>
-          Prototyping<br>
-          User Flows<br>
-          Interaction Design<br>
-          Design Systems<br>
-          Usability<br>
-          Accessibility
-
-        </p>
-
-      </article>
-
-
-      <!-- PRODUCT -->
-
-      <article class="skill-card">
-
-        <div class="skill-number">
-          04
-        </div>
-
-        <h3>
-          Product Design
-        </h3>
-
-        <p>
-
-          Product Strategy<br>
-          Design Thinking<br>
-          Information Architecture<br>
-          Visual Design<br>
-          User Testing<br>
-          Product Experience<br>
-          Case Studies<br>
-          Problem Solving
-
-        </p>
-
-      </article>
-
-
-      <!-- AI -->
-
-      <article class="skill-card">
-
-        <div class="skill-number">
-          05
-        </div>
-
-        <h3>
-          AI & Technology
-        </h3>
-
-        <p>
-
-          AI Applications<br>
-          LLM Concepts<br>
-          AI UX<br>
-          Automation<br>
-          Prompt Engineering<br>
-          AI Product Design<br>
-          Emerging Technology<br>
-          Creative Technology
-
-        </p>
-
-      </article>
-
-
-      <!-- PROFESSIONAL -->
-
-      <article class="skill-card">
-
-        <div class="skill-number">
-          06
-        </div>
-
-        <h3>
-          Professional Skills
-        </h3>
-
-        <p>
-
-          Communication<br>
-          Leadership<br>
-          Teamwork<br>
-          Research<br>
-          Presentation<br>
-          Critical Thinking<br>
-          Project Management<br>
-          Continuous Learning
-
-        </p>
-
-      </article>
-
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =====================================================
-       WORK / PROJECTS
-       ===================================================== -->
-
-  <section
-    id="work"
-    class="work"
-  >
-
-
-    <div class="section-label">
-
-      03 — SELECTED WORK
-
-    </div>
-
-
-    <h2 class="section-title">
-
-      Things I've
-
-      <br>
-
-      <span>
-        designed & built.
-      </span>
-
-    </h2>
-
-
-    <div class="projects">
-
-
-      <!-- PROJECT 01 -->
-
-      <article class="project-card">
-
-
-        <div class="project-top">
-
-          <span>
-            01
-          </span>
-
-          <span>
-            WEB
-          </span>
-
-        </div>
-
-
-        <div class="project-content">
-
-
-          <h3>
-            Demo Website
-          </h3>
-
-
-          <p>
-
-            A modern web experience focused on
-            clean visual design, usability and
-            responsive development.
-
-          </p>
-
-
-          <div class="project-tech">
-
-            <span>
-              HTML
-            </span>
-
-            <span>
-              CSS
-            </span>
-
-            <span>
-              JavaScript
-            </span>
-
-          </div>
-
-
-          <a
-            href="https://demowebsite.github.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="project-link"
-          >
-
-            Visit Project →
-
-          </a>
-
-
-        </div>
-
-
-      </article>
-
-
-
-      <!-- PROJECT 02 -->
-
-      <article class="project-card">
-
-
-        <div class="project-top">
-
-          <span>
-            02
-          </span>
-
-          <span>
-            EDUCATION
-          </span>
-
-        </div>
-
-
-        <div class="project-content">
-
-
-          <h3>
-            SNK IT Institute
-          </h3>
-
-
-          <p>
-
-            An education-focused digital platform
-            designed around practical technology
-            learning and modern skills.
-
-          </p>
-
-
-          <div class="project-tech">
-
-            <span>
-              Web
-            </span>
-
-            <span>
-              Education
-            </span>
-
-            <span>
-              UX
-            </span>
-
-          </div>
-
-
-          <a
-            href="https://snkitinstitute.github.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="project-link"
-          >
-
-            Visit Project →
-
-          </a>
-
-
-        </div>
-
-
-      </article>
-
-
-
-      <!-- PROJECT 03 -->
-
-      <article class="project-card">
-
-
-        <div class="project-top">
-
-          <span>
-            03
-          </span>
-
-          <span>
-            LEARNING
-          </span>
-
-        </div>
-
-
-        <div class="project-content">
-
-
-          <h3>
-            SNK GuideUp
-          </h3>
-
-
-          <p>
-
-            A learning-oriented platform created
-            to make academic and IT resources
-            easier to discover and use.
-
-          </p>
-
-
-          <div class="project-tech">
-
-            <span>
-              Learning
-            </span>
-
-            <span>
-              Web
-            </span>
-
-            <span>
-              UI/UX
-            </span>
-
-          </div>
-
-
-          <a
-            href="https://snkguideup.github.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="project-link"
-          >
-
-            Visit Project →
-
-          </a>
-
-
-        </div>
-
-
-      </article>
-
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =====================================================
-       DESIGN LAB
-       ===================================================== -->
-
-  <section
-    id="lab"
-    class="lab"
-  >
-
-
-    <div class="section-label">
-
-      04 — DESIGN LAB
-
-    </div>
-
-
-    <h2 class="section-title">
-
-      Ideas worth
-
-      <br>
-
-      <span>
-        exploring.
-      </span>
-
-    </h2>
-
-
-    <div class="lab-grid">
-
-
-      <div class="lab-item">
-        AI × UX
-      </div>
-
-
-      <div class="lab-item">
-        Creative Coding
-      </div>
-
-
-      <div class="lab-item">
-        Motion UI
-      </div>
-
-
-      <div class="lab-item">
-        Design Systems
-      </div>
-
-
-      <div class="lab-item">
-        AI Products
-      </div>
-
-
-      <div class="lab-item">
-        Web Experiments
-      </div>
-
-
-      <div class="lab-item">
-        Interactive Design
-      </div>
-
-
-      <div class="lab-item">
-        Future Interfaces
-      </div>
-
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =====================================================
-       PROCESS
-       ===================================================== -->
-
-  <section class="process">
-
-
-    <div class="section-label">
-
-      05 — PROCESS
-
-    </div>
-
-
-    <h2 class="section-title">
-
-      From idea
-
-      <br>
-
-      <span>
-        to reality.
-      </span>
-
-    </h2>
-
-
-    <div class="process-list">
-
-
-      <div class="process-item">
-
-        <span>
-          01
-        </span>
-
-        <div>
-
-          <h3>
-            Understand
-          </h3>
-
-          <p>
-            Understand the problem, users and goals.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="process-item">
-
-        <span>
-          02
-        </span>
-
-        <div>
-
-          <h3>
-            Design
-          </h3>
-
-          <p>
-            Create clear interfaces, flows and prototypes.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="process-item">
-
-        <span>
-          03
-        </span>
-
-        <div>
-
-          <h3>
-            Engineer
-          </h3>
-
-          <p>
-            Turn the design into a real working product.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="process-item">
-
-        <span>
-          04
-        </span>
-
-        <div>
-
-          <h3>
-            Improve
-          </h3>
-
-          <p>
-            Test, learn, optimize and continuously improve.
-          </p>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =====================================================
-       CONTACT
-       ===================================================== -->
-
-  <section
-    id="contact"
-    class="contact"
-  >
-
-
-    <div class="contact-glow"></div>
-
-
-    <div class="section-label">
-
-      06 — CONTACT
-
-    </div>
-
-
-    <h2>
-
-      Let's build
-
-      <br>
-
-      <span>
-        something meaningful.
-      </span>
-
-    </h2>
-
-
-    <p>
-
-      Have an idea, project or collaboration in mind?
-
-    </p>
-
-
-    <div class="hero-buttons">
-
-
-      <a
-        href="mailto:thesnkgraphic@email.com"
-        class="btn btn-primary"
-      >
-
-        Email Me →
-
-      </a>
-
-
-      <a
-        href="https://github.com/ishahneilkhan"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-outline"
-      >
-
-        GitHub ↗
-
-      </a>
-
-
-      <a
-        href="https://www.linkedin.com/in/uxuidesigners/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-outline"
-      >
-
-        LinkedIn ↗
-
-      </a>
-
-
-    </div>
-
-
-  </section>
 
 
   <!-- =====================================================
@@ -1216,22 +1186,21 @@
 
   <footer>
 
-
-    <div>
+    <span>
 
       © 2026 Shahneil Khan
 
-    </div>
+    </span>
 
 
-    <div>
+    <span>
 
-      SOFTWARE · WEB · UI/UX
+      SOFTWARE • WEB • UI/UX
 
-    </div>
-
+    </span>
 
   </footer>
+
 
 
   <!-- =====================================================
