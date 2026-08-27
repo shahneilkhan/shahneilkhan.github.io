@@ -1,504 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Shahneil Khan — Software Engineer & UI/UX Designer</title>
 
   <meta
     name="description"
-    content="Shahneil Khan is a Software Engineer, Web Engineer and UI/UX Product Designer building meaningful digital experiences."
-  />
+    content="Shahneil Khan — Software Engineer, Web Engineer, Product Designer and UI/UX Designer."
+  >
 
-  <meta name="theme-color" content="#080808" />
+  <meta
+    name="keywords"
+    content="Shahneil Khan, Software Engineer, Web Developer, UI UX Designer, Product Designer, Bangladesh"
+  >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="author" content="Shahneil Khan">
+
+  <meta name="theme-color" content="#080808">
+
+  <!-- Open Graph -->
+  <meta
+    property="og:title"
+    content="Shahneil Khan — Software Engineer & UI/UX Designer"
+  >
+
+  <meta
+    property="og:description"
+    content="I design and engineer meaningful digital experiences."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:url"
+    content="https://shahneilkhan.github.io/"
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
     rel="stylesheet"
-  />
+  >
 
-  <style>
-    :root {
-      --bg: #080808;
-      --text: #f5f3ed;
-      --muted: #a7a7a7;
-      --gold: #d4af37;
-      --border: rgba(255,255,255,.12);
-      --glass: rgba(255,255,255,.06);
-    }
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-<script src="script.js"></script>
-
-    body {
-      font-family: "Inter", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ================= NAVBAR ================= */
-
-    nav {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1100px, calc(100% - 30px));
-      padding: 14px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10,10,10,.65);
-      backdrop-filter: blur(18px);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      z-index: 1000;
-    }
-
-    .logo {
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      font-size: 13px;
-      color: #ccc;
-    }
-
-    .nav-links a {
-      transition: .3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    /* ================= HERO ================= */
-
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          rgba(0,0,0,.55),
-          rgba(0,0,0,.88)
-        ),
-        url("assets/kaaba.jpg") center/cover no-repeat;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(
-          circle at center,
-          transparent 0%,
-          rgba(0,0,0,.55) 70%,
-          #080808 100%
-        );
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      padding: 30px;
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(55px, 10vw, 125px);
-      line-height: .9;
-      letter-spacing: -7px;
-      font-weight: 800;
-    }
-
-    .hero h1 span {
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,.65);
-    }
-
-    .hero-description {
-      max-width: 650px;
-      margin: 35px auto;
-      color: #c6c6c6;
-      line-height: 1.7;
-      font-size: 17px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 22px;
-      border-radius: 100px;
-      border: 1px solid var(--border);
-      transition: .35s;
-      font-size: 14px;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #080808;
-      font-weight: 700;
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    /* ================= GENERAL ================= */
-
-    section {
-      padding: 120px 7%;
-    }
-
-    .section-label {
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-size: clamp(40px, 7vw, 80px);
-      line-height: .95;
-      letter-spacing: -4px;
-      max-width: 850px;
-    }
-
-    .section-title span {
-      color: #777;
-    }
-
-    /* ================= ABOUT ================= */
-
-    .about {
-      background: #0b0b0b;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      margin-top: 70px;
-    }
-
-    .about-text {
-      color: #aaa;
-      font-size: 18px;
-      line-height: 1.9;
-    }
-
-    .facts {
-      display: grid;
-      gap: 20px;
-    }
-
-    .fact {
-      padding: 25px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: var(--glass);
-    }
-
-    .fact small {
-      color: #777;
-      display: block;
-      margin-bottom: 7px;
-    }
-
-    .fact strong {
-      font-size: 20px;
-    }
-
-    /* ================= SKILLS ================= */
-
-    .skills-grid {
-      margin-top: 70px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .skill-card {
-      min-height: 220px;
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 25px;
-      transition: .4s;
-      background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.06),
-        rgba(255,255,255,.01)
-      );
-    }
-
-    .skill-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(212,175,55,.5);
-    }
-
-    .skill-card h3 {
-      margin-bottom: 25px;
-      color: var(--gold);
-    }
-
-    .skill-card p {
-      color: #999;
-      line-height: 2;
-    }
-
-    /* ================= WORK ================= */
-
-    .work {
-      background: #0b0b0b;
-    }
-
-    .projects {
-      margin-top: 70px;
-      display: grid;
-      gap: 25px;
-    }
-
-    .project {
-      min-height: 420px;
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      padding: 35px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      transition: .5s;
-      background:
-        linear-gradient(135deg, #171717, #080808);
-    }
-
-    .project:hover {
-      transform: scale(.99);
-      border-color: rgba(212,175,55,.5);
-    }
-
-    .project-number {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      color: #555;
-      font-size: 13px;
-    }
-
-    .project h3 {
-      font-size: clamp(35px, 5vw, 65px);
-      letter-spacing: -3px;
-    }
-
-    .project p {
-      color: #999;
-      margin-top: 12px;
-    }
-
-    .project-link {
-      color: var(--gold);
-      margin-top: 25px;
-      font-size: 14px;
-    }
-
-    /* ================= LAB ================= */
-
-    .lab-grid {
-      margin-top: 60px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .lab-item {
-      min-height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      transition: .3s;
-      color: #aaa;
-    }
-
-    .lab-item:hover {
-      background: var(--gold);
-      color: #000;
-      transform: rotate(-2deg);
-    }
-
-    /* ================= CONTACT ================= */
-
-    .contact {
-      text-align: center;
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .contact h2 {
-      font-size: clamp(50px, 10vw, 130px);
-      letter-spacing: -7px;
-      line-height: .85;
-      max-width: 1000px;
-    }
-
-    .contact h2 span {
-      color: var(--gold);
-    }
-
-    .contact p {
-      color: #888;
-      margin: 35px 0;
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer {
-      padding: 30px 7%;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      color: #666;
-      font-size: 13px;
-    }
-
-    /* ================= RESPONSIVE ================= */
-
-    @media (max-width: 800px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      nav {
-        justify-content: center;
-      }
-
-      .hero h1 {
-        letter-spacing: -4px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .lab-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      section {
-        padding: 90px 6%;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-
-    /* ================= CURSOR ================= */
-
-    .cursor {
-      width: 12px;
-      height: 12px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
-    }
-
-    @media (max-width: 800px) {
-      .cursor {
-        display: none;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
+  <!-- =====================================================
+       CUSTOM CURSOR
+       ===================================================== -->
+
   <div class="cursor"></div>
 
-  <!-- NAVIGATION -->
+
+  <!-- =====================================================
+       NAVIGATION
+       ===================================================== -->
 
   <nav>
-    <a href="#" class="logo">SK<span>.</span></a>
+
+    <a href="#home" class="logo">
+      SK<span>.</span>
+    </a>
 
     <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#lab">Lab</a>
-      <a href="#contact">Contact</a>
+
+      <a href="#home">
+        Home
+      </a>
+
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#skills">
+        Skills
+      </a>
+
+      <a href="#lab">
+        Lab
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
     </div>
+
   </nav>
 
-  <!-- HERO -->
 
-  <header class="hero">
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <header id="home" class="hero">
 
     <div class="hero-content">
 
@@ -506,72 +126,151 @@
         Software Engineer · Product Designer
       </div>
 
+
       <h1>
-        SHAHNEIL<br />
+        SHAHNEIL
+        <br>
         <span>KHAN</span>
       </h1>
 
+
       <p class="hero-description">
-        I design and engineer meaningful digital experiences —
+
+        I design and engineer meaningful digital experiences,
         combining UI/UX, web development, software engineering
         and emerging AI technologies.
+
       </p>
 
+
       <div class="hero-buttons">
-        <a href="#work" class="btn btn-primary">
+
+        <a
+          href="#work"
+          class="btn btn-primary"
+        >
           Explore My Work
         </a>
 
-        <a href="#contact" class="btn btn-secondary">
+
+        <a
+          href="#contact"
+          class="btn btn-secondary"
+        >
           Let's Talk
         </a>
+
       </div>
 
     </div>
 
   </header>
 
-  <!-- ABOUT -->
 
-  <section id="about" class="about">
+  <!-- =====================================================
+       ABOUT
+       ===================================================== -->
 
-    <div class="section-label">01 — About</div>
+  <section
+    id="about"
+    class="about"
+  >
+
+    <div class="section-label">
+      01 — About
+    </div>
+
 
     <h2 class="section-title">
-      Designer's eye.<br />
-      <span>Engineer's mind.</span>
+
+      Designer's eye.
+      <br>
+
+      <span>
+        Engineer's mind.
+      </span>
+
     </h2>
+
 
     <div class="about-grid">
 
+
       <div class="about-text">
-        I am a multidisciplinary digital professional focused on
-        creating products that are useful, intuitive and beautifully
-        engineered.
 
-        <br /><br />
+        I am a multidisciplinary digital professional
+        focused on creating products that are useful,
+        intuitive and beautifully engineered.
 
-        My work sits between product design and software engineering.
-        I enjoy turning complex problems into simple interfaces and
-        scalable digital experiences.
+        <br><br>
+
+        My work sits between product design and software
+        engineering. I enjoy turning complex problems into
+        simple interfaces and scalable digital experiences.
+
+        <br><br>
+
+        From research and wireframes to production-ready
+        applications, I care about the complete product
+        experience.
+
       </div>
+
 
       <div class="facts">
 
-        <div class="fact">
-          <small>ROLE</small>
-          <strong>Software Engineer & UI/UX Designer</strong>
-        </div>
 
         <div class="fact">
-          <small>FOCUS</small>
-          <strong>Web · Product · AI · UX</strong>
+
+          <small>
+            ROLE
+          </small>
+
+          <strong>
+            Software Engineer & UI/UX Designer
+          </strong>
+
         </div>
 
+
         <div class="fact">
-          <small>APPROACH</small>
-          <strong>Research → Design → Build → Ship</strong>
+
+          <small>
+            FOCUS
+          </small>
+
+          <strong>
+            Web · Product · AI · UX
+          </strong>
+
         </div>
+
+
+        <div class="fact">
+
+          <small>
+            APPROACH
+          </small>
+
+          <strong>
+            Research → Design → Build → Ship
+          </strong>
+
+        </div>
+
+
+        <div class="fact">
+
+          <small>
+            BASED
+          </small>
+
+          <strong>
+            Bangladesh · Working Globally
+          </strong>
+
+        </div>
+
 
       </div>
 
@@ -579,243 +278,344 @@
 
   </section>
 
-  <!-- SKILLS -->
+
+  <!-- =====================================================
+       SKILLS
+       ===================================================== -->
 
   <section id="skills">
 
-    <div class="section-label">02 — Capabilities</div>
+    <div class="section-label">
+      02 — Capabilities
+    </div>
+
 
     <h2 class="section-title">
-      What I <span>bring</span> to the table.
+
+      What I
+      <span>
+        bring
+      </span>
+      to the table.
+
     </h2>
+
 
     <div class="skills-grid">
 
+
+      <!-- UI UX -->
+
       <div class="skill-card">
-        <h3>UI / UX</h3>
+
+        <h3>
+          UI / UX
+        </h3>
+
         <p>
-          Product Design<br />
-          UX Research<br />
-          Design Systems<br />
-          Wireframes<br />
-          Prototyping<br />
+
+          Product Design
+          <br>
+
+          UX Research
+          <br>
+
+          Design Systems
+          <br>
+
+          Wireframing
+          <br>
+
+          Prototyping
+          <br>
+
           Interaction Design
+          <br>
+
+          Usability Testing
+          <br>
+
+          Accessibility
+
         </p>
+
       </div>
 
+
+      <!-- FRONTEND -->
+
       <div class="skill-card">
-        <h3>Frontend</h3>
+
+        <h3>
+          Frontend
+        </h3>
+
         <p>
-          HTML / CSS<br />
-          JavaScript<br />
-          TypeScript<br />
-          React<br />
-          Next.js<br />
+
+          HTML5
+          <br>
+
+          CSS3
+          <br>
+
+          JavaScript
+          <br>
+
+          TypeScript
+          <br>
+
+          React
+          <br>
+
+          Next.js
+          <br>
+
           Tailwind CSS
+          <br>
+
+          Responsive Web
+
         </p>
+
       </div>
 
+
+      <!-- BACKEND -->
+
       <div class="skill-card">
-        <h3>Backend</h3>
+
+        <h3>
+          Backend
+        </h3>
+
         <p>
-          Node.js<br />
-          REST APIs<br />
-          PostgreSQL<br />
-          MongoDB<br />
-          Authentication<br />
+
+          Node.js
+          <br>
+
+          REST APIs
+          <br>
+
+          PostgreSQL
+          <br>
+
+          MongoDB
+          <br>
+
+          Prisma
+          <br>
+
+          Authentication
+          <br>
+
           Database Design
+          <br>
+
+          API Security
+
         </p>
+
       </div>
 
+
+      <!-- SOFTWARE ENGINEERING -->
+
       <div class="skill-card">
-        <h3>Engineering</h3>
+
+        <h3>
+          Engineering
+        </h3>
+
         <p>
-          Git & GitHub<br />
-          Docker<br />
-          Linux<br />
-          Testing<br />
-          System Design<br />
+
+          Git & GitHub
+          <br>
+
+          Clean Code
+          <br>
+
+          Testing
+          <br>
+
+          Debugging
+          <br>
+
+          System Design
+          <br>
+
+          Software Architecture
+          <br>
+
+          Design Patterns
+          <br>
+
+          Code Review
+
+        </p>
+
+      </div>
+
+
+      <!-- CLOUD -->
+
+      <div class="skill-card">
+
+        <h3>
+          Cloud & DevOps
+        </h3>
+
+        <p>
+
+          Vercel
+          <br>
+
+          AWS
+          <br>
+
+          Cloudflare
+          <br>
+
+          Docker
+          <br>
+
+          Linux
+          <br>
+
           CI / CD
-        </p>
-      </div>
+          <br>
 
-      <div class="skill-card">
-        <h3>Cloud</h3>
-        <p>
-          Vercel<br />
-          AWS<br />
-          Cloudflare<br />
-          DNS<br />
-          Deployment<br />
+          DNS
+          <br>
+
           Performance
+
         </p>
+
       </div>
 
+
+      <!-- AI -->
+
       <div class="skill-card">
-        <h3>AI</h3>
+
+        <h3>
+          AI Engineering
+        </h3>
+
         <p>
-          LLM APIs<br />
-          AI Agents<br />
-          RAG<br />
-          AI UX<br />
-          Automation<br />
-          AI Products
+
+          LLM APIs
+          <br>
+
+          AI Agents
+          <br>
+
+          RAG
+          <br>
+
+          AI UX
+          <br>
+
+          AI Product Design
+          <br>
+
+          Automation
+          <br>
+
+          Prompt Engineering
+          <br>
+
+          AI Applications
+
         </p>
+
       </div>
+
 
     </div>
 
   </section>
 
-  <!-- WORK -->
 
-  <section id="work" class="work">
+  <!-- =====================================================
+       SELECTED WORK
+       ===================================================== -->
 
-    <div class="section-label">03 — Selected Work</div>
+  <section
+    id="work"
+    class="work"
+  >
+
+    <div class="section-label">
+      03 — Selected Work
+    </div>
+
 
     <h2 class="section-title">
-      Things I've <span>designed & built.</span>
+
+      Things I've
+      <span>
+        designed & built.
+      </span>
+
     </h2>
+
 
     <div class="projects">
 
-      <article class="project">
 
-        <div class="project-number">01</div>
-
-        <h3>Yaqeen</h3>
-
-        <p>
-          Product design, UX research and digital experience.
-        </p>
-
-        <a href="#" class="project-link">
-          View Case Study →
-        </a>
-
-      </article>
+      <!-- PROJECT 01 -->
 
       <article class="project">
 
-        <div class="project-number">02</div>
+        <div class="project-number">
+          01
+        </div>
 
-        <h3>Digital Product</h3>
 
-        <p>
-          A modern web product focused on simplicity and usability.
-        </p>
+        <div>
 
-        <a href="#" class="project-link">
-          View Case Study →
-        </a>
+          <h3>
+            Yaqeen
+          </h3>
+
+          <p>
+            Product design, UX research and digital
+            experience focused on clarity, trust and usability.
+          </p>
+
+          <a
+            href="#"
+            class="project-link"
+          >
+            View Case Study →
+          </a>
+
+        </div>
 
       </article>
+
+
+      <!-- PROJECT 02 -->
 
       <article class="project">
 
-        <div class="project-number">03</div>
+        <div class="project-number">
+          02
+        </div>
 
-        <h3>AI Experience</h3>
 
-        <p>
-          Exploring the intersection of AI, product design and UX.
-        </p>
+        <div>
 
-        <a href="#" class="project-link">
-          View Case Study →
-        </a>
+          <h3>
+            Web Product
+          </h3>
 
-      </article>
+          <p>
+            A modern web experience designed and engineered
+            with performance, usability and scalability in mind.
+          </p>
 
-    </div>
-
-  </section>
-
-  <!-- DESIGN LAB -->
-
-  <section id="lab">
-
-    <div class="section-label">04 — Design Lab</div>
-
-    <h2 class="section-title">
-      Experiments,<br />
-      <span>ideas & curiosity.</span>
-    </h2>
-
-    <div class="lab-grid">
-
-      <div class="lab-item">Motion UI</div>
-      <div class="lab-item">AI × UX</div>
-      <div class="lab-item">3D Web</div>
-      <div class="lab-item">Design Systems</div>
-      <div class="lab-item">Creative Coding</div>
-      <div class="lab-item">Micro Interactions</div>
-      <div class="lab-item">Prototypes</div>
-      <div class="lab-item">Experiments</div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section id="contact" class="contact">
-
-    <div class="section-label">05 — Contact</div>
-
-    <h2>
-      Let's build<br />
-      <span>something meaningful.</span>
-    </h2>
-
-    <p>
-      Have an idea, product or project in mind?
-    </p>
-
-    <a
-      href="mailto:hello@shahneilkhan.com"
-      class="btn btn-primary"
-    >
-      Start a Conversation →
-    </a>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <span>© 2026 Shahneil Khan</span>
-
-    <span>
-      Designed & Engineered with intention.
-    </span>
-
-  </footer>
-
-  <script>
-    // Custom cursor
-
-    const cursor = document.querySelector(".cursor");
-
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-    });
-
-    // Simple parallax effect for Kaaba background
-
-    const hero = document.querySelector(".hero");
-
-    window.addEventListener("scroll", () => {
-      const scroll = window.scrollY;
-
-      if (scroll < window.innerHeight) {
-        hero.style.backgroundPosition =
-          `center ${50 + scroll * 0.03}%`;
-      }
-    });
-  </script>
-
-</body>
-</html>
+          <a
+            href="#"
+            class="project
