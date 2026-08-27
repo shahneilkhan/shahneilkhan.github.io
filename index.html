@@ -1,51 +1,2082 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
-    content="Shahneil Khan — Software Engineer, Web Developer, UI/UX Designer and Creative Technologist."
+    content="Tabayyun — Shahneil Khan. Software Engineer, Web Developer and UI/UX Designer."
   >
 
-  <meta
-    name="author"
-    content="Shahneil Khan"
-  >
+  <title>Tabayyun — Shahneil Khan</title>
 
-  <title>Shahneil Khan — Software Engineer & UI/UX Designer</title>
-
-
-  <!-- Google Font -->
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
+  <style>
 
-  <!-- CSS -->
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+    /* =====================================================
+       RESET
+       ===================================================== */
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #03040b;
+      color: #ffffff;
+      overflow-x: hidden;
+
+      transition:
+        background .5s ease,
+        color .5s ease;
+    }
+
+    body.light {
+      background: #f5f6fa;
+      color: #10121a;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+
+    /* =====================================================
+       VARIABLES
+       ===================================================== */
+
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f4d878;
+
+      --black: #03040b;
+      --dark: #070914;
+
+      --white: #ffffff;
+      --text: #ffffff;
+      --muted: #9da3b8;
+
+      --border: rgba(255,255,255,.09);
+      --card: rgba(255,255,255,.035);
+    }
+
+    body.light {
+      --black: #f5f6fa;
+      --dark: #ffffff;
+
+      --text: #11131b;
+      --muted: #626978;
+
+      --border: rgba(10,15,30,.12);
+      --card: rgba(255,255,255,.72);
+    }
+
+
+    /* =====================================================
+       CURSOR
+       ===================================================== */
+
+    .cursor {
+      position: fixed;
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+
+      pointer-events: none;
+
+      z-index: 99999;
+
+      transform: translate(-50%, -50%);
+
+      transition:
+        width .2s ease,
+        height .2s ease;
+    }
+
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    .navbar {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 90px;
+
+      padding: 0 5%;
+
+      display: flex;
+      align-items: center;
+
+      background: rgba(3,4,11,.62);
+
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+      z-index: 1000;
+
+      transition:
+        background .4s ease,
+        border .4s ease;
+    }
+
+    body.light .navbar {
+      background: rgba(255,255,255,.72);
+
+      border-bottom:
+        1px solid rgba(0,0,0,.08);
+    }
+
+
+    /* =====================================================
+       LOGO
+       ===================================================== */
+
+    .brand {
+      width: 80px;
+      height: 80px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      transform: scale(.65);
+
+      transition:
+        transform .3s ease;
+    }
+
+    .brand:hover img {
+      transform: scale(.72);
+    }
+
+
+    /* =====================================================
+       BRAND NAME
+       ===================================================== */
+
+    .brand-name {
+      margin-left: 4px;
+
+      color: var(--gold);
+
+      font-size: 16px;
+      font-weight: 800;
+
+      letter-spacing: .08em;
+    }
+
+
+    /* =====================================================
+       DESKTOP NAV
+       ===================================================== */
+
+    .nav-links {
+      margin-left: auto;
+
+      display: flex;
+      align-items: center;
+
+      gap: 25px;
+    }
+
+    .nav-links a {
+      position: relative;
+
+      color: #e6e8ef;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+
+      transition: color .25s ease;
+    }
+
+    body.light .nav-links a {
+      color: #303442;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -8px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--gold);
+
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+
+    /* =====================================================
+       NAV ACTIONS
+       ===================================================== */
+
+    .nav-actions {
+      margin-left: 25px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 13px;
+    }
+
+
+    /* =====================================================
+       LANGUAGE
+       ===================================================== */
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+
+      gap: 5px;
+
+      color: rgba(255,255,255,.35);
+
+      white-space: nowrap;
+    }
+
+    body.light .language-switch {
+      color: rgba(0,0,0,.3);
+    }
+
+    .lang {
+      border: none;
+
+      background: transparent;
+
+      color: #aeb3c0;
+
+      cursor: pointer;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      transition: color .25s ease;
+    }
+
+    body.light .lang {
+      color: #777d89;
+    }
+
+    .lang:hover,
+    .lang.active {
+      color: var(--gold);
+    }
+
+
+    /* =====================================================
+       THEME BUTTON
+       ===================================================== */
+
+    .theme-toggle {
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border:
+        1px solid rgba(255,255,255,.12);
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.05);
+
+      color: white;
+
+      cursor: pointer;
+
+      transition:
+        transform .3s ease,
+        border .3s ease;
+    }
+
+    body.light .theme-toggle {
+      color: #11131b;
+
+      border-color:
+        rgba(0,0,0,.12);
+
+      background:
+        rgba(0,0,0,.04);
+    }
+
+    .theme-toggle:hover {
+      transform: rotate(20deg);
+
+      border-color: var(--gold);
+    }
+
+
+    /* =====================================================
+       MOBILE MENU BUTTON
+       ===================================================== */
+
+    .menu-toggle {
+      display: none;
+
+      width: 40px;
+      height: 40px;
+
+      border:
+        1px solid rgba(255,255,255,.12);
+
+      background: transparent;
+
+      cursor: pointer;
+
+      align-items: center;
+      justify-content: center;
+
+      flex-direction: column;
+
+      gap: 5px;
+    }
+
+    body.light .menu-toggle {
+      border-color: rgba(0,0,0,.12);
+    }
+
+    .menu-toggle span {
+      width: 20px;
+      height: 2px;
+
+      background: #ffffff;
+
+      transition: .3s ease;
+    }
+
+    body.light .menu-toggle span {
+      background: #11131b;
+    }
+
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
+
+    .mobile-menu {
+      position: fixed;
+
+      top: 90px;
+      left: 0;
+
+      width: 100%;
+
+      padding: 28px 7%;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 20px;
+
+      background:
+        rgba(3,4,11,.96);
+
+      backdrop-filter: blur(20px);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+      transform: translateY(-120%);
+
+      opacity: 0;
+
+      transition:
+        transform .4s ease,
+        opacity .4s ease;
+
+      z-index: 999;
+    }
+
+    body.light .mobile-menu {
+      background:
+        rgba(255,255,255,.97);
+
+      border-bottom:
+        1px solid rgba(0,0,0,.08);
+    }
+
+    .mobile-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-menu a {
+      color: #ffffff;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+    }
+
+    body.light .mobile-menu a {
+      color: #11131b;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold);
+    }
+
+    .mobile-controls {
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      padding-top: 10px;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+      position: relative;
+
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+    }
+
+
+    /* =====================================================
+       SKY
+       ===================================================== */
+
+    .hero-background {
+      position: absolute;
+
+      inset: 0;
+
+      overflow: hidden;
+
+      z-index: 0;
+    }
+
+    .sky-background {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          #50b9f1 0%,
+          #a8e1ff 45%,
+          #f5cf84 72%,
+          #dc7657 100%
+        );
+
+      animation:
+        skyCycle 45s linear infinite;
+    }
+
+
+    /* =====================================================
+       SUN
+       ===================================================== */
+
+    .sun {
+      position: absolute;
+
+      width: 125px;
+      height: 125px;
+
+      top: 18%;
+      right: 17%;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          #fffde2 0%,
+          #ffe37d 38%,
+          #ffae48 66%,
+          rgba(255,160,50,0) 70%
+        );
+
+      box-shadow:
+        0 0 50px rgba(255,220,105,.9),
+        0 0 110px rgba(255,177,65,.6),
+        0 0 190px rgba(255,145,40,.3);
+
+      animation:
+        sunMove 45s linear infinite;
+    }
+
+
+    /* =====================================================
+       SKY GLOW
+       ===================================================== */
+
+    .sky-glow {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 75% 25%,
+          rgba(255,240,180,.4),
+          transparent 32%
+        );
+
+      animation:
+        glowCycle 45s linear infinite;
+    }
+
+
+    /* =====================================================
+       BIRDS
+       ===================================================== */
+
+    .birds {
+      position: absolute;
+
+      inset: 0;
+
+      pointer-events: none;
+    }
+
+    .birds span {
+      position: absolute;
+
+      left: -15%;
+
+      color:
+        rgba(15,20,32,.75);
+
+      font-size: 25px;
+
+      animation:
+        birdFly linear infinite;
+    }
+
+    .birds span:nth-child(1) {
+      top: 20%;
+
+      font-size: 17px;
+
+      animation-duration: 18s;
+    }
+
+    .birds span:nth-child(2) {
+      top: 29%;
+
+      font-size: 26px;
+
+      animation-duration: 22s;
+
+      animation-delay: 4s;
+    }
+
+    .birds span:nth-child(3) {
+      top: 15%;
+
+      font-size: 15px;
+
+      animation-duration: 25s;
+
+      animation-delay: 8s;
+    }
+
+    .birds span:nth-child(4) {
+      top: 38%;
+
+      font-size: 20px;
+
+      animation-duration: 20s;
+
+      animation-delay: 10s;
+    }
+
+    .birds span:nth-child(5) {
+      top: 25%;
+
+      font-size: 14px;
+
+      animation-duration: 28s;
+
+      animation-delay: 13s;
+    }
+
+
+    /* =====================================================
+       GALAXY
+       ===================================================== */
+
+    .galaxy-bg {
+      position: absolute;
+
+      inset: 0;
+
+      opacity: 0;
+
+      animation:
+        galaxyAppear 45s linear infinite;
+
+      background:
+        radial-gradient(
+          circle at 70% 30%,
+          rgba(83,91,190,.38),
+          transparent 18%
+        ),
+        radial-gradient(
+          circle at 25% 65%,
+          rgba(92,55,160,.28),
+          transparent 25%
+        );
+    }
+
+    .stars {
+      position: absolute;
+
+      inset: 0;
+
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.9) 1px,
+          transparent 1.5px
+        );
+
+      background-size: 95px 95px;
+
+      animation:
+        starsMove 15s linear infinite;
+    }
+
+    .stars-2 {
+      background-size: 150px 150px;
+
+      opacity: .55;
+
+      animation-duration: 23s;
+    }
+
+    .stars-3 {
+      background-size: 220px 220px;
+
+      opacity: .35;
+
+      animation-duration: 30s;
+    }
+
+    .nebula {
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      border-radius: 50%;
+
+      filter: blur(70px);
+    }
+
+    .nebula-1 {
+      top: 15%;
+      right: 10%;
+
+      background:
+        rgba(95,72,210,.18);
+    }
+
+    .nebula-2 {
+      bottom: -15%;
+      left: 10%;
+
+      background:
+        rgba(38,102,190,.15);
+    }
+
+
+    /* =====================================================
+       BANNER
+       ===================================================== */
+
+    .banner-image {
+      position: absolute;
+
+      inset: 0;
+
+      background-image:
+        url("https://raw.githubusercontent.com/ishahneilkhan/assets/main/Banner.png.jfif");
+
+      background-size: cover;
+
+      background-position: center;
+
+      opacity: .10;
+
+      filter:
+        brightness(.7)
+        saturate(.7);
+
+      mix-blend-mode: screen;
+
+      z-index: 2;
+    }
+
+
+    /* =====================================================
+       HERO OVERLAY
+       ===================================================== */
+
+    .hero-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2,3,10,.90) 0%,
+          rgba(2,3,10,.64) 48%,
+          rgba(2,3,10,.25) 100%
+        );
+
+      z-index: 3;
+    }
+
+    body.light .hero-overlay {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.76) 0%,
+          rgba(255,255,255,.42) 50%,
+          rgba(255,255,255,.12) 100%
+        );
+    }
+
+
+    /* =====================================================
+       HERO CONTENT
+       ===================================================== */
+
+    .hero-content {
+      position: relative;
+
+      z-index: 5;
+
+      width: min(1180px, 88%);
+
+      margin: 0 auto;
+
+      padding-top: 70px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .2em;
+    }
+
+    body.light .eyebrow {
+      color: #9b7915;
+    }
+
+    .eyebrow span {
+      color: rgba(255,255,255,.45);
+    }
+
+    .hero h1 {
+      margin-top: 25px;
+
+      font-size:
+        clamp(60px, 10vw, 145px);
+
+      line-height: .84;
+
+      letter-spacing: -.07em;
+
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: transparent;
+
+      -webkit-text-stroke:
+        1px rgba(255,255,255,.8);
+    }
+
+    body.light .hero h1 span {
+      -webkit-text-stroke:
+        1px #222633;
+    }
+
+    .hero-description {
+      max-width: 600px;
+
+      margin-top: 35px;
+
+      color: #d1d5e0;
+
+      font-size: 16px;
+
+      line-height: 1.8;
+    }
+
+    body.light .hero-description {
+      color: #3f4553;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
+
+    .hero-buttons {
+      display: flex;
+
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 52px;
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 24px;
+
+      border-radius: 4px;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease,
+        border .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+
+      color: #080808;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+    }
+
+    .btn-outline {
+      border:
+        1px solid rgba(255,255,255,.3);
+
+      background:
+        rgba(255,255,255,.04);
+
+      color: #fff;
+    }
+
+    body.light .btn-outline {
+      color: #11131b;
+
+      border-color:
+        rgba(0,0,0,.2);
+
+      background:
+        rgba(255,255,255,.4);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+
+      color: var(--gold);
+    }
+
+
+    /* =====================================================
+       HERO SCROLL
+       ===================================================== */
+
+    .hero-scroll {
+      margin-top: 65px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      color:
+        rgba(255,255,255,.55);
+
+      font-size: 9px;
+      font-weight: 700;
+
+      letter-spacing: .2em;
+    }
+
+    body.light .hero-scroll {
+      color:
+        rgba(0,0,0,.55);
+    }
+
+    .hero-scroll span {
+      color: var(--gold);
+
+      font-size: 18px;
+
+      animation:
+        scrollArrow 1.5s ease-in-out infinite;
+    }
+
+
+    /* =====================================================
+       SECTIONS
+       ===================================================== */
+
+    section:not(.hero) {
+      position: relative;
+
+      padding: 120px 6%;
+
+      background: var(--black);
+
+      transition:
+        background .5s ease;
+    }
+
+    .section-label {
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .2em;
+
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      max-width: 900px;
+
+      font-size:
+        clamp(42px, 7vw, 90px);
+
+      line-height: .95;
+
+      letter-spacing: -.06em;
+
+      font-weight: 900;
+    }
+
+    .section-title span {
+      color: var(--gold);
+    }
+
+
+    /* =====================================================
+       ABOUT
+       ===================================================== */
+
+    .about-grid {
+      max-width: 1180px;
+
+      margin: 65px auto 0;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(280px,.8fr)
+        minmax(300px,1fr);
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+    .profile-card {
+      border:
+        1px solid var(--border);
+
+      background:
+        var(--card);
+
+      padding: 14px;
+
+      backdrop-filter: blur(15px);
+    }
+
+    .profile-image {
+      height: 390px;
+
+      overflow: hidden;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      filter:
+        grayscale(.2)
+        contrast(1.05);
+
+      transition:
+        transform .7s ease;
+    }
+
+    .profile-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .profile-info {
+      padding: 25px 10px 15px;
+    }
+
+    .profile-tag {
+      color: var(--gold);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .16em;
+    }
+
+    .profile-info h3 {
+      margin-top: 12px;
+
+      font-size: 25px;
+    }
+
+    .profile-info p {
+      margin-top: 7px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .profile-status {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-top: 18px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+    }
+
+    .profile-status span {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #55db83;
+
+      box-shadow:
+        0 0 10px #55db83;
+    }
+
+    .about-content p {
+      color: var(--muted);
+
+      font-size: 16px;
+
+      line-height: 1.9;
+
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 22px;
+
+      margin-top: 30px;
+    }
+
+    .social-links a {
+      color: var(--text);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+
+      border-bottom:
+        1px solid var(--gold);
+
+      padding-bottom: 6px;
+    }
+
+    .social-links a:hover {
+      color: var(--gold);
+    }
+
+
+    /* =====================================================
+       SKILLS
+       ===================================================== */
+
+    .skills {
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(92,69,185,.08),
+          transparent 30%
+        ),
+        var(--black) !important;
+    }
+
+    .skills-grid {
+      max-width: 1180px;
+
+      margin: 60px auto 0;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap: 14px;
+    }
+
+    .skill-card {
+      min-height: 245px;
+
+      padding: 30px;
+
+      border:
+        1px solid var(--border);
+
+      background:
+        var(--card);
+
+      transition:
+        transform .3s ease,
+        border .3s ease,
+        background .3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(212,175,55,.4);
+    }
+
+    .skill-number {
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .15em;
+    }
+
+    .skill-card h3 {
+      margin-top: 45px;
+
+      font-size: 20px;
+    }
+
+    .skill-card p {
+      margin-top: 14px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       WORKS
+       ===================================================== */
+
+    .projects {
+      max-width: 1180px;
+
+      margin: 60px auto 0;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap: 15px;
+    }
+
+    .project-card {
+      min-height: 440px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      border:
+        1px solid var(--border);
+
+      background:
+        var(--card);
+
+      transition:
+        transform .35s ease,
+        border .35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+
+      border-color:
+        rgba(212,175,55,.4);
+    }
+
+    .project-top {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 21px 24px;
+
+      border-bottom:
+        1px solid var(--border);
+
+      color: var(--gold);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .12em;
+    }
+
+    .project-content {
+      display: flex;
+
+      flex-direction: column;
+
+      flex: 1;
+
+      padding: 30px 24px;
+    }
+
+    .project-content h3 {
+      font-size: 27px;
+
+      letter-spacing: -.04em;
+    }
+
+    .project-content p {
+      margin-top: 15px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.8;
+    }
+
+    .project-tech {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-top: 25px;
+    }
+
+    .project-tech span {
+      padding: 7px 9px;
+
+      color: var(--muted);
+
+      border:
+        1px solid var(--border);
+
+      font-size: 8px;
+      font-weight: 700;
+
+      letter-spacing: .08em;
+    }
+
+    .project-link {
+      margin-top: auto;
+
+      padding-top: 30px;
+
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+    }
+
+    .project-link:hover {
+      color: var(--gold-light);
+    }
+
+
+    /* =====================================================
+       DOWNLOAD
+       ===================================================== */
+
+    .download-box {
+      max-width: 1180px;
+
+      margin: 60px auto 0;
+
+      padding: 45px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 30px;
+
+      border:
+        1px solid var(--border);
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(212,175,55,.08),
+          rgba(255,255,255,.025)
+        );
+    }
+
+    .download-box h3 {
+      font-size: 28px;
+
+      letter-spacing: -.04em;
+    }
+
+    .download-box p {
+      margin-top: 10px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =====================================================
+       PROCESS
+       ===================================================== */
+
+    .process-list {
+      max-width: 1000px;
+
+      margin: 65px auto 0;
+    }
+
+    .process-item {
+      display: grid;
+
+      grid-template-columns:
+        80px 1fr;
+
+      gap: 35px;
+
+      padding: 30px 0;
+
+      border-top:
+        1px solid var(--border);
+    }
+
+    .process-item:last-child {
+      border-bottom:
+        1px solid var(--border);
+    }
+
+    .process-item > span {
+      color: var(--gold);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+    }
+
+    .process-item h3 {
+      font-size: 26px;
+    }
+
+    .process-item p {
+      max-width: 650px;
+
+      margin-top: 9px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       CONTACT
+       ===================================================== */
+
+    .contact {
+      min-height: 75vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+    .contact-glow {
+      position: absolute;
+
+      width: 600px;
+      height: 600px;
+
+      right: -200px;
+      bottom: -300px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(212,175,55,.13),
+          transparent 65%
+        );
+
+      pointer-events: none;
+    }
+
+    .contact h2 {
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 1000px;
+
+      font-size:
+        clamp(50px,9vw,125px);
+
+      line-height: .88;
+
+      letter-spacing: -.07em;
+    }
+
+    .contact h2 span {
+      color: var(--gold);
+    }
+
+    .contact > p {
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 500px;
+
+      margin-top: 30px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+      min-height: 90px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 6%;
+
+      background:
+        #020308;
+
+      border-top:
+        1px solid var(--border);
+
+      color:
+        #777d8d;
+
+      font-size: 9px;
+      font-weight: 700;
+
+      letter-spacing: .12em;
+
+      text-transform: uppercase;
+    }
+
+    body.light footer {
+      background: #e9ebf1;
+    }
+
+
+    /* =====================================================
+       KEYFRAMES
+       ===================================================== */
+
+    @keyframes skyCycle {
+
+      0% {
+        background:
+          linear-gradient(
+            180deg,
+            #4eb7f2,
+            #a8e1ff,
+            #f7d28a
+          );
+      }
+
+      25% {
+        background:
+          linear-gradient(
+            180deg,
+            #3da7ed,
+            #91d5fa,
+            #f4c36f
+          );
+      }
+
+      50% {
+        background:
+          linear-gradient(
+            180deg,
+            #287fd0,
+            #e69b67,
+            #ef704b
+          );
+      }
+
+      70% {
+        background:
+          linear-gradient(
+            180deg,
+            #392b78,
+            #d05c65,
+            #ed8b4d
+          );
+      }
+
+      85% {
+        background:
+          linear-gradient(
+            180deg,
+            #10183d,
+            #272552,
+            #101326
+          );
+      }
+
+      100% {
+        background:
+          linear-gradient(
+            180deg,
+            #02030a,
+            #080b1d,
+            #02030a
+          );
+      }
+    }
+
+
+    @keyframes sunMove {
+
+      0% {
+        top: 22%;
+        right: 12%;
+
+        transform: scale(.85);
+
+        opacity: .9;
+      }
+
+      30% {
+        top: 10%;
+        right: 35%;
+
+        transform: scale(1);
+
+        opacity: 1;
+      }
+
+      55% {
+        top: 22%;
+        right: 58%;
+
+        transform: scale(1);
+      }
+
+      75% {
+        top: 55%;
+        right: 75%;
+
+        transform: scale(.85);
+
+        opacity: .9;
+      }
+
+      100% {
+        top: 70%;
+        right: 90%;
+
+        transform: scale(.5);
+
+        opacity: 0;
+      }
+    }
+
+
+    @keyframes glowCycle {
+
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .9;
+      }
+
+      75% {
+        opacity: .35;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+
+    @keyframes galaxyAppear {
+
+      0%,
+      62% {
+        opacity: 0;
+      }
+
+      78% {
+        opacity: .35;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+
+    @keyframes starsMove {
+
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(25px);
+      }
+    }
+
+
+    @keyframes birdFly {
+
+      0% {
+        transform:
+          translateX(0)
+          translateY(0)
+          rotate(-8deg)
+          scale(.7);
+
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      45% {
+        transform:
+          translateX(50vw)
+          translateY(-35px)
+          rotate(7deg)
+          scale(1);
+      }
+
+      75% {
+        transform:
+          translateX(90vw)
+          translateY(25px)
+          rotate(-5deg)
+          scale(.9);
+      }
+
+      100% {
+        transform:
+          translateX(120vw)
+          translateY(-20px)
+          rotate(8deg)
+          scale(.7);
+
+        opacity: 0;
+      }
+    }
+
+
+    @keyframes scrollArrow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1100px) {
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .brand-name {
+        display: none;
+      }
+
+      .about-grid {
+        gap: 45px;
+      }
+
+    }
+
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid,
+      .projects {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .download-box {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .cursor {
+        display: none;
+      }
+
+      .navbar {
+        height: 82px;
+
+        padding: 0 5%;
+      }
+
+      .brand {
+        width: 80px;
+        height: 80px;
+      }
+
+      .brand img {
+        transform: scale(.62);
+      }
+
+      .brand:hover img {
+        transform: scale(.62);
+      }
+
+      .nav-actions {
+        margin-left: auto;
+
+        gap: 8px;
+      }
+
+      .language-switch {
+        gap: 3px;
+      }
+
+      .mobile-menu {
+        top: 82px;
+      }
+
+      .hero-content {
+        width: 90%;
+
+        padding-top: 70px;
+      }
+
+      .eyebrow {
+        font-size: 8px;
+
+        flex-wrap: wrap;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(54px,17vw,90px);
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-buttons {
+        gap: 9px;
+      }
+
+      .btn {
+        min-height: 48px;
+
+        padding: 0 18px;
+      }
+
+      .hero-scroll {
+        margin-top: 50px;
+      }
+
+      section:not(.hero) {
+        padding:
+          85px 5%;
+      }
+
+      .about-grid {
+        margin-top: 45px;
+      }
+
+      .profile-image {
+        height: 330px;
+      }
+
+      .skills-grid,
+      .projects {
+        grid-template-columns: 1fr;
+
+        margin-top: 45px;
+      }
+
+      .skill-card {
+        min-height: auto;
+      }
+
+      .project-card {
+        min-height: 390px;
+      }
+
+      .process-item {
+        grid-template-columns:
+          50px 1fr;
+
+        gap: 15px;
+      }
+
+      .process-item h3 {
+        font-size: 21px;
+      }
+
+      .download-box {
+        padding: 30px 22px;
+      }
+
+      .contact h2 {
+        font-size:
+          clamp(48px,15vw,82px);
+      }
+
+      .sun {
+        width: 85px;
+        height: 85px;
+      }
+
+      .nebula {
+        width: 300px;
+        height: 300px;
+      }
+
+      footer {
+        min-height: 110px;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        text-align: center;
+      }
+
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+
+        scroll-behavior: auto !important;
+      }
+
+    }
+
+  </style>
 </head>
 
 
@@ -53,7 +2084,7 @@
 
 
   <!-- =====================================================
-       CUSTOM CURSOR
+       CURSOR
        ===================================================== -->
 
   <div class="cursor"></div>
@@ -65,61 +2096,155 @@
 
   <header class="navbar">
 
-    <!-- NEW LOGO -->
+
+    <!-- LOGO -->
 
     <a
       href="#home"
-      class="brand-logo"
-      aria-label="Shahneil Khan Home"
+      class="brand"
+      aria-label="Tabayyun Home"
     >
 
       <img
         src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg"
-        alt="Shahneil Khan Logo"
+        alt="Tabayyun Logo"
       >
 
     </a>
 
 
-    <!-- Desktop Navigation -->
+    <!-- NAME -->
 
-    <nav
-      class="nav-links"
-      aria-label="Main navigation"
-    >
+    <div class="brand-name">
+      Tabayyun
+    </div>
 
-      <a href="#home">Home</a>
 
-      <a href="#about">About</a>
+    <!-- DESKTOP NAV -->
 
-      <a href="#skills">Skills</a>
+    <nav class="nav-links">
 
-      <a href="#work">Work</a>
+      <a
+        href="#home"
+        class="active"
+        data-en="Home"
+        data-bn="হোম"
+      >
+        Home
+      </a>
 
-      <a href="#process">Process</a>
+      <a
+        href="#about"
+        data-en="About"
+        data-bn="সম্পর্কে"
+      >
+        About
+      </a>
 
-      <a href="#contact">Contact</a>
+      <a
+        href="#contact"
+        data-en="Contact"
+        data-bn="যোগাযোগ"
+      >
+        Contact
+      </a>
+
+      <a
+        href="#download"
+        data-en="Download"
+        data-bn="ডাউনলোড"
+      >
+        Download
+      </a>
+
+      <a
+        href="#skills"
+        data-en="Skills"
+        data-bn="দক্ষতা"
+      >
+        Skills
+      </a>
+
+      <a
+        href="#works"
+        data-en="Works"
+        data-bn="কাজ"
+      >
+        Works
+      </a>
+
+      <a
+        href="#connect"
+        data-en="Connect"
+        data-bn="কানেক্ট"
+      >
+        Connect
+      </a>
 
     </nav>
 
 
-    <!-- Mobile Menu Button -->
+    <!-- ACTIONS -->
 
-    <button
-      class="menu-toggle"
-      id="menuToggle"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-    >
+    <div class="nav-actions">
 
-      <span></span>
-      <span></span>
-      <span></span>
 
-    </button>
+      <!-- LANGUAGE -->
+
+      <div class="language-switch">
+
+        <button
+          class="lang active"
+          id="enBtn"
+          type="button"
+        >
+          EN
+        </button>
+
+        <span>|</span>
+
+        <button
+          class="lang"
+          id="bnBtn"
+          type="button"
+        >
+          বাংলা
+        </button>
+
+      </div>
+
+
+      <!-- THEME -->
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Toggle dark and light mode"
+      >
+        ☀️
+      </button>
+
+
+      <!-- MOBILE -->
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </div>
 
   </header>
-
 
 
   <!-- =====================================================
@@ -129,139 +2254,213 @@
   <nav
     class="mobile-menu"
     id="mobileMenu"
-    aria-label="Mobile navigation"
   >
 
-    <a href="#home">Home</a>
+    <a
+      href="#home"
+      data-en="Home"
+      data-bn="হোম"
+    >
+      Home
+    </a>
 
-    <a href="#about">About</a>
+    <a
+      href="#about"
+      data-en="About"
+      data-bn="সম্পর্কে"
+    >
+      About
+    </a>
 
-    <a href="#skills">Skills</a>
+    <a
+      href="#contact"
+      data-en="Contact"
+      data-bn="যোগাযোগ"
+    >
+      Contact
+    </a>
 
-    <a href="#work">Work</a>
+    <a
+      href="#download"
+      data-en="Download"
+      data-bn="ডাউনলোড"
+    >
+      Download
+    </a>
 
-    <a href="#process">Process</a>
+    <a
+      href="#skills"
+      data-en="Skills"
+      data-bn="দক্ষতা"
+    >
+      Skills
+    </a>
 
-    <a href="#contact">Contact</a>
+    <a
+      href="#works"
+      data-en="Works"
+      data-bn="কাজ"
+    >
+      Works
+    </a>
+
+    <a
+      href="#connect"
+      data-en="Connect"
+      data-bn="কানেক্ট"
+    >
+      Connect
+    </a>
+
+
+    <div class="mobile-controls">
+
+      <button
+        class="lang active"
+        id="mobileEn"
+        type="button"
+      >
+        EN
+      </button>
+
+      <span>|</span>
+
+      <button
+        class="lang"
+        id="mobileBn"
+        type="button"
+      >
+        বাংলা
+      </button>
+
+    </div>
 
   </nav>
 
 
-
   <!-- =====================================================
-       HERO
+       MAIN
        ===================================================== -->
 
   <main>
+
+
+    <!-- ===================================================
+         HERO
+         =================================================== -->
 
     <section
       class="hero"
       id="home"
     >
 
-
-      <!-- Background -->
-
       <div class="hero-background">
 
 
-        <!-- Night / Banner Background -->
+        <!-- SKY -->
 
-        <div class="banner-image"></div>
+        <div class="sky-background">
 
-        <div class="banner-dark"></div>
+          <div class="sun"></div>
+
+          <div class="sky-glow"></div>
 
 
-        <!-- Galaxy -->
+          <!-- BIRDS -->
 
-        <div class="galaxy-bg">
+          <div class="birds">
 
-          <div class="stars stars-1"></div>
+            <span>⌁</span>
+            <span>⌁</span>
+            <span>⌁</span>
+            <span>⌁</span>
+            <span>⌁</span>
 
-          <div class="stars stars-2"></div>
-
-          <div class="stars stars-3"></div>
-
-          <div class="nebula nebula-1"></div>
-
-          <div class="nebula nebula-2"></div>
-
-          <div class="galaxy-orb"></div>
+          </div>
 
         </div>
 
 
-        <!-- Dark Overlay -->
+        <!-- GALAXY -->
+
+        <div class="galaxy-bg">
+
+          <div class="stars"></div>
+          <div class="stars stars-2"></div>
+          <div class="stars stars-3"></div>
+
+          <div class="nebula nebula-1"></div>
+          <div class="nebula nebula-2"></div>
+
+        </div>
+
+
+        <!-- BANNER -->
+
+        <div class="banner-image"></div>
+
+
+        <!-- OVERLAY -->
 
         <div class="hero-overlay"></div>
 
       </div>
 
 
-
-      <!-- Hero Content -->
+      <!-- HERO CONTENT -->
 
       <div class="hero-content">
 
 
-        <div class="eyebrow">
-
+        <div
+          class="eyebrow"
+          data-en="SOFTWARE ENGINEER • WEB • UI/UX"
+          data-bn="সফটওয়্যার ইঞ্জিনিয়ার • ওয়েব • UI/UX"
+        >
           SOFTWARE ENGINEER
-
           <span>•</span>
-
           WEB
-
           <span>•</span>
-
           UI/UX
-
-          <span>•</span>
-
-          CREATIVE TECH
-
         </div>
 
 
         <h1>
-
           SHAHNEIL
-
           <br>
-
           <span>KHAN</span>
-
         </h1>
 
 
-        <p class="hero-description">
-
-          I design and build digital experiences that combine
-          software engineering, modern web technologies and
-          thoughtful UI/UX design.
-
+        <p
+          class="hero-description"
+          data-en="I design and build modern digital experiences combining software engineering, web development and thoughtful UI/UX design."
+          data-bn="আমি সফটওয়্যার ইঞ্জিনিয়ারিং, ওয়েব ডেভেলপমেন্ট এবং চিন্তাশীল UI/UX ডিজাইনের সমন্বয়ে আধুনিক ডিজিটাল অভিজ্ঞতা তৈরি করি।"
+        >
+          I design and build modern digital experiences
+          combining software engineering, web development
+          and thoughtful UI/UX design.
         </p>
 
 
         <div class="hero-buttons">
 
           <a
-            href="#work"
+            href="#works"
             class="btn btn-primary"
+            data-en="View My Work"
+            data-bn="আমার কাজ দেখুন"
           >
-
             View My Work
-
           </a>
 
-
           <a
-            href="#contact"
+            href="#connect"
             class="btn btn-outline"
+            data-en="Let's Connect"
+            data-bn="যোগাযোগ করুন"
           >
-
             Let's Connect
-
           </a>
 
         </div>
@@ -269,9 +2468,14 @@
 
         <div class="hero-scroll">
 
-          SCROLL TO EXPLORE
-
           <span>↓</span>
+
+          <span
+            data-en="SCROLL TO EXPLORE"
+            data-bn="এক্সপ্লোর করতে স্ক্রল করুন"
+          >
+            SCROLL TO EXPLORE
+          </span>
 
         </div>
 
@@ -280,29 +2484,41 @@
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ===================================================
          ABOUT
-         ===================================================== -->
+         =================================================== -->
 
     <section
       class="about"
       id="about"
     >
 
-
-      <div class="section-label">
-
+      <div
+        class="section-label"
+        data-en="01 — ABOUT"
+        data-bn="০১ — পরিচিতি"
+      >
         01 — ABOUT
-
       </div>
 
 
       <h2 class="section-title">
 
-        BUILDING WITH
+        <span
+          data-en="BUILDING"
+          data-bn="উদ্দেশ্য নিয়ে"
+        >
+          BUILDING
+        </span>
 
-        <span>PURPOSE.</span>
+        <br>
+
+        <span
+          data-en="WITH PURPOSE."
+          data-bn="কাজ করি।"
+        >
+          WITH PURPOSE.
+        </span>
 
       </h2>
 
@@ -310,7 +2526,7 @@
       <div class="about-grid">
 
 
-        <!-- Profile -->
+        <!-- PROFILE -->
 
         <div class="profile-card">
 
@@ -328,23 +2544,18 @@
           <div class="profile-info">
 
             <div class="profile-tag">
-
-              SOFTWARE • DESIGN • WEB
-
+              SOFTWARE • WEB • DESIGN
             </div>
 
-
             <h3>
-
               Shahneil Khan
-
             </h3>
 
-
-            <p>
-
+            <p
+              data-en="Software Engineer & UI/UX Designer"
+              data-bn="সফটওয়্যার ইঞ্জিনিয়ার ও UI/UX ডিজাইনার"
+            >
               Software Engineer & UI/UX Designer
-
             </p>
 
 
@@ -352,7 +2563,12 @@
 
               <span></span>
 
-              Available for opportunities
+              <span
+                data-en="Available for opportunities"
+                data-bn="নতুন সুযোগের জন্য প্রস্তুত"
+              >
+                Available for opportunities
+              </span>
 
             </div>
 
@@ -361,69 +2577,62 @@
         </div>
 
 
-
-        <!-- About Text -->
+        <!-- ABOUT TEXT -->
 
         <div class="about-content">
 
-          <p>
-
+          <p
+            data-en="I am a technology-focused creator interested in software engineering, web development and digital product design."
+            data-bn="আমি প্রযুক্তিকেন্দ্রিক একজন ক্রিয়েটর, যার আগ্রহ সফটওয়্যার ইঞ্জিনিয়ারিং, ওয়েব ডেভেলপমেন্ট এবং ডিজিটাল প্রোডাক্ট ডিজাইনে।"
+          >
             I am a technology-focused creator interested in
-            software engineering, web development and digital
-            product design.
-
+            software engineering, web development and
+            digital product design.
           </p>
 
 
-          <p>
-
-            My goal is to create websites and applications that
-            are not only functional, but also fast, accessible,
-            responsive and visually meaningful.
-
+          <p
+            data-en="I enjoy creating websites and applications that are fast, responsive, accessible and visually meaningful."
+            data-bn="আমি এমন ওয়েবসাইট ও অ্যাপ্লিকেশন তৈরি করতে পছন্দ করি যেগুলো দ্রুত, responsive, accessible এবং দৃষ্টিনন্দন।"
+          >
+            I enjoy creating websites and applications that
+            are fast, responsive, accessible and visually
+            meaningful.
           </p>
 
 
-          <p>
-
-            I enjoy working across the complete product journey —
-            from ideas and user experience to interface design,
-            development and deployment.
-
+          <p
+            data-en="From idea and UX to interface design, development and deployment, I enjoy working across the complete digital product journey."
+            data-bn="আইডিয়া ও UX থেকে শুরু করে interface design, development এবং deployment পর্যন্ত পুরো digital product journey নিয়ে কাজ করতে ভালোবাসি।"
+          >
+            From idea and UX to interface design, development
+            and deployment, I enjoy working across the
+            complete digital product journey.
           </p>
 
 
           <div class="social-links">
 
-
             <a
               href="mailto:thesnkgraphic@email.com"
             >
-
               Email
-
             </a>
-
 
             <a
               href="https://github.com/ishahneilkhan"
               target="_blank"
               rel="noopener noreferrer"
             >
-
               GitHub
-
             </a>
-
 
             <a
               href="https://www.linkedin.com/in/uxuidesigners"
               target="_blank"
               rel="noopener noreferrer"
             >
-
               LinkedIn
-
             </a>
 
           </div>
@@ -435,29 +2644,41 @@
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ===================================================
          SKILLS
-         ===================================================== -->
+         =================================================== -->
 
     <section
       class="skills"
       id="skills"
     >
 
-
-      <div class="section-label">
-
+      <div
+        class="section-label"
+        data-en="02 — SKILLS"
+        data-bn="০২ — দক্ষতা"
+      >
         02 — SKILLS
-
       </div>
 
 
       <h2 class="section-title">
 
-        WHAT I
+        <span
+          data-en="WHAT I"
+          data-bn="আমি যা"
+        >
+          WHAT I
+        </span>
 
-        <span>CREATE.</span>
+        <br>
+
+        <span
+          data-en="CREATE."
+          data-bn="তৈরি করি।"
+        >
+          CREATE.
+        </span>
 
       </h2>
 
@@ -465,176 +2686,147 @@
       <div class="skills-grid">
 
 
-        <!-- Skill 01 -->
-
         <article class="skill-card">
 
           <div class="skill-number">
-
             01
-
           </div>
 
-
-          <h3>
-
+          <h3
+            data-en="Software Engineering"
+            data-bn="সফটওয়্যার ইঞ্জিনিয়ারিং"
+          >
             Software Engineering
-
           </h3>
 
-
-          <p>
-
+          <p
+            data-en="Programming, problem solving, application architecture, APIs, databases and modern development workflows."
+            data-bn="Programming, problem solving, application architecture, APIs, databases এবং modern development workflow নিয়ে কাজ।"
+          >
             Programming, problem solving, application
-            architecture, APIs, databases, Git and modern
+            architecture, APIs, databases and modern
             development workflows.
-
           </p>
 
         </article>
 
 
-
-        <!-- Skill 02 -->
-
         <article class="skill-card">
 
           <div class="skill-number">
-
             02
-
           </div>
 
-
-          <h3>
-
+          <h3
+            data-en="Web Development"
+            data-bn="ওয়েব ডেভেলপমেন্ট"
+          >
             Web Development
-
           </h3>
 
-
-          <p>
-
-            Responsive websites, modern HTML, CSS, JavaScript,
-            frontend interfaces, performance and deployment.
-
+          <p
+            data-en="Responsive websites, modern HTML, CSS, JavaScript, frontend interfaces and deployment."
+            data-bn="Responsive website, modern HTML, CSS, JavaScript, frontend interface এবং deployment।"
+          >
+            Responsive websites, modern HTML, CSS,
+            JavaScript, frontend interfaces and deployment.
           </p>
 
         </article>
 
 
-
-        <!-- Skill 03 -->
-
         <article class="skill-card">
 
           <div class="skill-number">
-
             03
-
           </div>
 
-
-          <h3>
-
+          <h3
+            data-en="UI / UX Design"
+            data-bn="UI / UX ডিজাইন"
+          >
             UI / UX Design
-
           </h3>
 
-
-          <p>
-
-            User research, wireframes, design systems,
-            prototypes, visual hierarchy and user-centered
+          <p
+            data-en="User flows, wireframes, prototypes, design systems, visual hierarchy and user-centered interfaces."
+            data-bn="User flow, wireframe, prototype, design system, visual hierarchy এবং user-centered interface।"
+          >
+            User flows, wireframes, prototypes, design
+            systems, visual hierarchy and user-centered
             interfaces.
-
           </p>
 
         </article>
 
 
-
-        <!-- Skill 04 -->
-
         <article class="skill-card">
 
           <div class="skill-number">
-
             04
-
           </div>
 
-
-          <h3>
-
-            Frontend
-
+          <h3
+            data-en="Frontend Development"
+            data-bn="ফ্রন্টএন্ড ডেভেলপমেন্ট"
+          >
+            Frontend Development
           </h3>
 
-
-          <p>
-
-            Building clean, responsive and interactive
-            experiences with modern frontend technologies.
-
+          <p
+            data-en="Clean, responsive and interactive interfaces for modern digital products."
+            data-bn="আধুনিক ডিজিটাল প্রোডাক্টের জন্য clean, responsive এবং interactive interface।"
+          >
+            Clean, responsive and interactive interfaces
+            for modern digital products.
           </p>
 
         </article>
 
 
-
-        <!-- Skill 05 -->
-
         <article class="skill-card">
 
           <div class="skill-number">
-
             05
-
           </div>
 
-
-          <h3>
-
+          <h3
+            data-en="Product Thinking"
+            data-bn="প্রোডাক্ট থিংকিং"
+          >
             Product Thinking
-
           </h3>
 
-
-          <p>
-
-            Turning ideas into practical digital products with
-            attention to usability, business goals and user needs.
-
+          <p
+            data-en="Turning ideas into useful digital products with attention to users and business goals."
+            data-bn="User এবং business goal মাথায় রেখে idea-কে useful digital product-এ রূপ দেওয়া।"
+          >
+            Turning ideas into useful digital products
+            with attention to users and business goals.
           </p>
 
         </article>
 
 
-
-        <!-- Skill 06 -->
-
         <article class="skill-card">
 
           <div class="skill-number">
-
             06
-
           </div>
 
-
-          <h3>
-
+          <h3
+            data-en="Creative Technology"
+            data-bn="ক্রিয়েটিভ টেকনোলজি"
+          >
             Creative Technology
-
           </h3>
 
-
-          <p>
-
+          <p
+            data-en="Combining design, code, animation and emerging technologies to create unique experiences."
+            data-bn="Design, code, animation এবং emerging technology একসাথে ব্যবহার করে unique experience তৈরি।"
+          >
             Combining design, code, animation and emerging
-            technologies to create unique digital experiences.
-
+            technologies to create unique experiences.
           </p>
 
         </article>
@@ -644,29 +2836,41 @@
     </section>
 
 
-
-    <!-- =====================================================
-         PROJECTS
-         ===================================================== -->
+    <!-- ===================================================
+         WORKS
+         =================================================== -->
 
     <section
       class="work"
-      id="work"
+      id="works"
     >
 
-
-      <div class="section-label">
-
+      <div
+        class="section-label"
+        data-en="03 — SELECTED WORK"
+        data-bn="০৩ — নির্বাচিত কাজ"
+      >
         03 — SELECTED WORK
-
       </div>
 
 
       <h2 class="section-title">
 
-       THINGS I
+        <span
+          data-en="THINGS I"
+          data-bn="আমার"
+        >
+          THINGS I
+        </span>
 
-        <span>BUILT.</span>
+        <br>
+
+        <span
+          data-en="BUILT."
+          data-bn="তৈরি করা কাজ।"
+        >
+          BUILT.
+        </span>
 
       </h2>
 
@@ -674,15 +2878,19 @@
       <div class="projects">
 
 
-        <!-- Project 01 -->
+        <!-- PROJECT 1 -->
 
         <article class="project-card">
 
           <div class="project-top">
 
-            <span>PROJECT 01</span>
+            <span>
+              PROJECT 01
+            </span>
 
-            <span>WEB</span>
+            <span>
+              WEB
+            </span>
 
           </div>
 
@@ -690,28 +2898,23 @@
           <div class="project-content">
 
             <h3>
-
               Demo Website
-
             </h3>
 
-
-            <p>
-
-              A modern web project focused on clean visual
-              presentation, responsive layout and user experience.
-
+            <p
+              data-en="A modern web project focused on responsive layout, visual presentation and user experience."
+              data-bn="Responsive layout, visual presentation এবং user experience-কেন্দ্রিক একটি modern web project।"
+            >
+              A modern web project focused on responsive
+              layout, visual presentation and user experience.
             </p>
 
 
             <div class="project-tech">
 
               <span>HTML</span>
-
               <span>CSS</span>
-
               <span>JavaScript</span>
-
               <span>UI/UX</span>
 
             </div>
@@ -722,10 +2925,10 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-link"
+              data-en="Visit Project →"
+              data-bn="প্রজেক্ট দেখুন →"
             >
-
               Visit Project →
-
             </a>
 
           </div>
@@ -733,16 +2936,19 @@
         </article>
 
 
-
-        <!-- Project 02 -->
+        <!-- PROJECT 2 -->
 
         <article class="project-card">
 
           <div class="project-top">
 
-            <span>PROJECT 02</span>
+            <span>
+              PROJECT 02
+            </span>
 
-            <span>EDUCATION</span>
+            <span>
+              EDUCATION
+            </span>
 
           </div>
 
@@ -750,29 +2956,24 @@
           <div class="project-content">
 
             <h3>
-
               SNK IT Institute
-
             </h3>
 
-
-            <p>
-
-              An educational web experience designed to present
-              information clearly and make digital learning
+            <p
+              data-en="An educational web experience designed to present information clearly and make learning resources easier to explore."
+              data-bn="তথ্য সহজভাবে উপস্থাপন এবং learning resource explore করার জন্য তৈরি একটি educational web experience।"
+            >
+              An educational web experience designed to
+              present information clearly and make learning
               resources easier to explore.
-
             </p>
 
 
             <div class="project-tech">
 
               <span>WEB</span>
-
               <span>DESIGN</span>
-
               <span>RESPONSIVE</span>
-
               <span>UX</span>
 
             </div>
@@ -783,10 +2984,10 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-link"
+              data-en="Visit Project →"
+              data-bn="প্রজেক্ট দেখুন →"
             >
-
               Visit Project →
-
             </a>
 
           </div>
@@ -794,16 +2995,19 @@
         </article>
 
 
-
-        <!-- Project 03 -->
+        <!-- PROJECT 3 -->
 
         <article class="project-card">
 
           <div class="project-top">
 
-            <span>PROJECT 03</span>
+            <span>
+              PROJECT 03
+            </span>
 
-            <span>PLATFORM</span>
+            <span>
+              PLATFORM
+            </span>
 
           </div>
 
@@ -811,29 +3015,23 @@
           <div class="project-content">
 
             <h3>
-
               SNK GuideUp
-
             </h3>
 
-
-            <p>
-
-              A digital platform concept focused on useful
-              resources, clean navigation and accessible
-              information architecture.
-
+            <p
+              data-en="A digital platform focused on useful resources, clean navigation and accessible information."
+              data-bn="Useful resource, clean navigation এবং accessible information-কেন্দ্রিক একটি digital platform।"
+            >
+              A digital platform focused on useful resources,
+              clean navigation and accessible information.
             </p>
 
 
             <div class="project-tech">
 
               <span>WEB</span>
-
               <span>UI/UX</span>
-
               <span>DESIGN</span>
-
               <span>DEVELOPMENT</span>
 
             </div>
@@ -844,10 +3042,10 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-link"
+              data-en="Visit Project →"
+              data-bn="প্রজেক্ট দেখুন →"
             >
-
               Visit Project →
-
             </a>
 
           </div>
@@ -859,144 +3057,123 @@
     </section>
 
 
+    <!-- ===================================================
+         DOWNLOAD
+         =================================================== -->
 
-    <!-- =====================================================
-         DESIGN / CREATIVE LAB
-         ===================================================== -->
+    <section
+      class="download"
+      id="download"
+    >
 
-    <section class="lab">
-
-
-      <div class="section-label">
-
-        04 — TOOLKIT
-
+      <div
+        class="section-label"
+        data-en="04 — DOWNLOAD"
+        data-bn="০৪ — ডাউনলোড"
+      >
+        04 — DOWNLOAD
       </div>
 
 
       <h2 class="section-title">
 
-        MY DIGITAL
+        <span
+          data-en="GET MY"
+          data-bn="আমার"
+        >
+          GET MY
+        </span>
 
-        <span>TOOLKIT.</span>
+        <br>
+
+        <span
+          data-en="PROFILE."
+          data-bn="প্রোফাইল নিন।"
+        >
+          PROFILE.
+        </span>
 
       </h2>
 
 
-      <div class="lab-grid">
+      <div class="download-box">
 
+        <div>
 
-        <div class="lab-item">
+          <h3
+            data-en="Shahneil Khan — CV"
+            data-bn="Shahneil Khan — CV"
+          >
+            Shahneil Khan — CV
+          </h3>
 
-          HTML / CSS
-
-        </div>
-
-
-        <div class="lab-item">
-
-          JavaScript
-
-        </div>
-
-
-        <div class="lab-item">
-
-          Git & GitHub
+          <p
+            data-en="Download my latest CV and learn more about my skills, experience and projects."
+            data-bn="আমার skills, experience এবং projects সম্পর্কে জানতে সর্বশেষ CV download করুন।"
+          >
+            Download my latest CV and learn more about my
+            skills, experience and projects.
+          </p>
 
         </div>
 
 
-        <div class="lab-item">
+        <!--
+          CV FILE:
+          পরে assets/Shahneil-Khan-CV.pdf
+          নামে PDF রাখবেন।
+        -->
 
-          Responsive Design
-
-        </div>
-
-
-        <div class="lab-item">
-
-          UI Design
-
-        </div>
-
-
-        <div class="lab-item">
-
-          UX Research
-
-        </div>
-
-
-        <div class="lab-item">
-
-          Prototyping
-
-        </div>
-
-
-        <div class="lab-item">
-
-          Design Systems
-
-        </div>
-
-
-        <div class="lab-item">
-
-          Accessibility
-
-        </div>
-
-
-        <div class="lab-item">
-
-          Performance
-
-        </div>
-
-
-        <div class="lab-item">
-
-          Product Thinking
-
-        </div>
-
-
-        <div class="lab-item">
-
-          Creative Coding
-
-        </div>
+        <a
+          href="assets/Shahneil-Khan-CV.pdf"
+          download
+          class="btn btn-primary"
+          data-en="Download CV ↓"
+          data-bn="CV ডাউনলোড ↓"
+        >
+          Download CV ↓
+        </a>
 
       </div>
 
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ===================================================
          PROCESS
-         ===================================================== -->
+         =================================================== -->
 
     <section
       class="process"
       id="process"
     >
 
-
-      <div class="section-label">
-
+      <div
+        class="section-label"
+        data-en="05 — PROCESS"
+        data-bn="০৫ — কাজের পদ্ধতি"
+      >
         05 — PROCESS
-
       </div>
 
 
       <h2 class="section-title">
 
-        HOW I
+        <span
+          data-en="HOW I"
+          data-bn="আমি যেভাবে"
+        >
+          HOW I
+        </span>
 
-        <span>WORK.</span>
+        <br>
+
+        <span
+          data-en="WORK."
+          data-bn="কাজ করি।"
+        >
+          WORK.
+        </span>
 
       </h2>
 
@@ -1006,21 +3183,25 @@
 
         <div class="process-item">
 
-          <span>01</span>
+          <span>
+            01
+          </span>
 
           <div>
 
-            <h3>
-
+            <h3
+              data-en="Discover"
+              data-bn="Discover"
+            >
               Discover
-
             </h3>
 
-            <p>
-
-              Understand the problem, audience, requirements
-              and goals before writing code.
-
+            <p
+              data-en="Understand the problem, audience, requirements and goals."
+              data-bn="Problem, audience, requirement এবং goal বুঝে কাজ শুরু করি।"
+            >
+              Understand the problem, audience,
+              requirements and goals.
             </p>
 
           </div>
@@ -1028,24 +3209,27 @@
         </div>
 
 
-
         <div class="process-item">
 
-          <span>02</span>
+          <span>
+            02
+          </span>
 
           <div>
 
-            <h3>
-
+            <h3
+              data-en="Design"
+              data-bn="Design"
+            >
               Design
-
             </h3>
 
-            <p>
-
-              Create information architecture, wireframes,
-              visual direction and user flows.
-
+            <p
+              data-en="Create information architecture, wireframes and user flows."
+              data-bn="Information architecture, wireframe এবং user flow তৈরি করি।"
+            >
+              Create information architecture,
+              wireframes and user flows.
             </p>
 
           </div>
@@ -1053,24 +3237,27 @@
         </div>
 
 
-
         <div class="process-item">
 
-          <span>03</span>
+          <span>
+            03
+          </span>
 
           <div>
 
-            <h3>
-
+            <h3
+              data-en="Build"
+              data-bn="Build"
+            >
               Build
-
             </h3>
 
-            <p>
-
-              Turn the design into responsive, accessible and
-              maintainable digital experiences.
-
+            <p
+              data-en="Turn the design into responsive, accessible digital experiences."
+              data-bn="Design-কে responsive ও accessible digital experience-এ রূপ দিই।"
+            >
+              Turn the design into responsive,
+              accessible digital experiences.
             </p>
 
           </div>
@@ -1078,24 +3265,27 @@
         </div>
 
 
-
         <div class="process-item">
 
-          <span>04</span>
+          <span>
+            04
+          </span>
 
           <div>
 
-            <h3>
-
+            <h3
+              data-en="Refine"
+              data-bn="Refine"
+            >
               Refine
-
             </h3>
 
-            <p>
-
-              Test, optimize, fix details and improve the final
+            <p
+              data-en="Test, optimize and improve the final experience across devices."
+              data-bn="Test, optimize এবং বিভিন্ন device-এর জন্য final experience improve করি।"
+            >
+              Test, optimize and improve the final
               experience across devices.
-
             </p>
 
           </div>
@@ -1107,57 +3297,66 @@
     </section>
 
 
-
-    <!-- =====================================================
-         CONTACT
-         ===================================================== -->
+    <!-- ===================================================
+         CONTACT / CONNECT
+         =================================================== -->
 
     <section
       class="contact"
       id="contact"
     >
 
-
       <div class="contact-glow"></div>
 
 
-      <div class="section-label">
-
+      <div
+        class="section-label"
+        data-en="06 — CONTACT"
+        data-bn="০৬ — যোগাযোগ"
+      >
         06 — CONTACT
-
       </div>
 
 
       <h2>
 
-        LET'S BUILD
+        <span
+          data-en="LET'S BUILD"
+          data-bn="চলুন তৈরি করি"
+        >
+          LET'S BUILD
+        </span>
 
         <br>
 
-        <span>SOMETHING.</span>
+        <span
+          data-en="SOMETHING."
+          data-bn="দারুণ কিছু।"
+        >
+          SOMETHING.
+        </span>
 
       </h2>
 
 
-      <p>
-
+      <p
+        data-en="Have an idea, project or opportunity? Let's talk."
+        data-bn="আপনার কোনো idea, project বা opportunity আছে? যোগাযোগ করুন।"
+      >
         Have an idea, project or opportunity?
-
         Let's talk.
-
       </p>
 
 
       <div class="hero-buttons">
 
-
         <a
           href="mailto:thesnkgraphic@email.com"
           class="btn btn-primary"
+          data-en="Send Email"
+          data-bn="ইমেইল পাঠান"
         >
-
           Send Email
-
         </a>
 
 
@@ -1167,9 +3366,75 @@
           rel="noopener noreferrer"
           class="btn btn-outline"
         >
-
           GitHub
+        </a>
 
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         CONNECT
+         =================================================== -->
+
+    <section
+      class="connect"
+      id="connect"
+    >
+
+      <div
+        class="section-label"
+        data-en="07 — CONNECT"
+        data-bn="০৭ — কানেক্ট"
+      >
+        07 — CONNECT
+      </div>
+
+
+      <h2 class="section-title">
+
+        <span
+          data-en="FIND ME"
+          data-bn="আমাকে"
+        >
+          FIND ME
+        </span>
+
+        <br>
+
+        <span
+          data-en="ONLINE."
+          data-bn="অনলাইনে খুঁজুন।"
+        >
+          ONLINE.
+        </span>
+
+      </h2>
+
+
+      <div class="social-links">
+
+        <a
+          href="mailto:thesnkgraphic@email.com"
+        >
+          Email
+        </a>
+
+        <a
+          href="https://github.com/ishahneilkhan"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/uxuidesigners"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
         </a>
 
       </div>
@@ -1179,37 +3444,820 @@
   </main>
 
 
-
   <!-- =====================================================
        FOOTER
        ===================================================== -->
 
   <footer>
 
-    <span>
-
+    <span id="copyright">
       © 2026 Shahneil Khan
-
     </span>
 
-
-    <span>
-
+    <span
+      data-en="SOFTWARE • WEB • UI/UX"
+      data-bn="সফটওয়্যার • ওয়েব • UI/UX"
+    >
       SOFTWARE • WEB • UI/UX
-
     </span>
 
   </footer>
-
 
 
   <!-- =====================================================
        JAVASCRIPT
        ===================================================== -->
 
-  <script src="script.js"></script>
+  <script>
 
+    "use strict";
+
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
+    const body =
+      document.body;
+
+    const themeToggle =
+      document.getElementById("themeToggle");
+
+    const enBtn =
+      document.getElementById("enBtn");
+
+    const bnBtn =
+      document.getElementById("bnBtn");
+
+    const mobileEn =
+      document.getElementById("mobileEn");
+
+    const mobileBn =
+      document.getElementById("mobileBn");
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    const cursor =
+      document.querySelector(".cursor");
+
+    const navLinks =
+      document.querySelectorAll(
+        ".nav-links a"
+      );
+
+    const sections =
+      document.querySelectorAll(
+        "section[id]"
+      );
+
+
+    /* =====================================================
+       LANGUAGE
+       ===================================================== */
+
+    function setLanguage(language) {
+
+      document.documentElement.lang =
+        language === "bn"
+          ? "bn"
+          : "en";
+
+
+      document
+        .querySelectorAll("[data-en][data-bn]")
+        .forEach(element => {
+
+          element.textContent =
+            element.getAttribute(
+              language === "bn"
+                ? "data-bn"
+                : "data-en"
+            );
+
+        });
+
+
+      document
+        .querySelectorAll(".lang")
+        .forEach(button => {
+
+          button.classList.remove(
+            "active"
+          );
+
+        });
+
+
+      if (language === "bn") {
+
+        bnBtn.classList.add("active");
+
+        mobileBn.classList.add("active");
+
+      } else {
+
+        enBtn.classList.add("active");
+
+        mobileEn.classList.add("active");
+
+      }
+
+
+      localStorage.setItem(
+        "tabayyun-language",
+        language
+      );
+
+    }
+
+
+    enBtn.addEventListener(
+      "click",
+      () => setLanguage("en")
+    );
+
+    bnBtn.addEventListener(
+      "click",
+      () => setLanguage("bn")
+    );
+
+    mobileEn.addEventListener(
+      "click",
+      () => {
+
+        setLanguage("en");
+
+        closeMenu();
+
+      }
+    );
+
+    mobileBn.addEventListener(
+      "click",
+      () => {
+
+        setLanguage("bn");
+
+        closeMenu();
+
+      }
+    );
+
+
+    /* =====================================================
+       LOAD LANGUAGE
+       ===================================================== */
+
+    const savedLanguage =
+      localStorage.getItem(
+        "tabayyun-language"
+      ) || "en";
+
+    setLanguage(savedLanguage);
+
+
+    /* =====================================================
+       DARK / LIGHT MODE
+       ===================================================== */
+
+    function updateThemeIcon() {
+
+      if (body.classList.contains("light")) {
+
+        themeToggle.textContent = "🌙";
+
+      } else {
+
+        themeToggle.textContent = "☀️";
+
+      }
+
+    }
+
+
+    function setTheme(theme) {
+
+      if (theme === "light") {
+
+        body.classList.add("light");
+
+      } else {
+
+        body.classList.remove("light");
+
+      }
+
+      updateThemeIcon();
+
+      localStorage.setItem(
+        "tabayyun-theme",
+        theme
+      );
+
+    }
+
+
+    themeToggle.addEventListener(
+      "click",
+      () => {
+
+        const isLight =
+          body.classList.contains("light");
+
+        setTheme(
+          isLight
+            ? "dark"
+            : "light"
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       LOAD THEME
+       ===================================================== */
+
+    const savedTheme =
+      localStorage.getItem(
+        "tabayyun-theme"
+      ) || "dark";
+
+    setTheme(savedTheme);
+
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
+
+    function openMenu() {
+
+      mobileMenu.classList.add(
+        "active"
+      );
+
+      body.classList.add(
+        "menu-open"
+      );
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+
+      const spans =
+        menuToggle.querySelectorAll(
+          "span"
+        );
+
+      spans[0].style.transform =
+        "translateY(7px) rotate(45deg)";
+
+      spans[1].style.opacity = "0";
+
+      spans[2].style.transform =
+        "translateY(-7px) rotate(-45deg)";
+
+    }
+
+
+    function closeMenu() {
+
+      mobileMenu.classList.remove(
+        "active"
+      );
+
+      body.classList.remove(
+        "menu-open"
+      );
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+
+      const spans =
+        menuToggle.querySelectorAll(
+          "span"
+        );
+
+      spans[0].style.transform =
+        "translateY(0) rotate(0)";
+
+      spans[1].style.opacity = "1";
+
+      spans[2].style.transform =
+        "translateY(0) rotate(0)";
+
+    }
+
+
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        if (
+          mobileMenu.classList.contains(
+            "active"
+          )
+        ) {
+
+          closeMenu();
+
+        } else {
+
+          openMenu();
+
+        }
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(".mobile-menu a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          closeMenu
+        );
+
+      });
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeMenu();
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       NAVBAR SCROLL
+       ===================================================== */
+
+    const navbar =
+      document.querySelector(
+        ".navbar"
+      );
+
+
+    function navbarScroll() {
+
+      if (
+        window.scrollY > 40
+      ) {
+
+        if (
+          body.classList.contains("light")
+        ) {
+
+          navbar.style.background =
+            "rgba(255,255,255,.92)";
+
+        } else {
+
+          navbar.style.background =
+            "rgba(3,4,11,.92)";
+
+        }
+
+      } else {
+
+        if (
+          body.classList.contains("light")
+        ) {
+
+          navbar.style.background =
+            "rgba(255,255,255,.72)";
+
+        } else {
+
+          navbar.style.background =
+            "rgba(3,4,11,.62)";
+
+        }
+
+      }
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      navbarScroll,
+      {
+        passive: true
+      }
+    );
+
+
+    /* =====================================================
+       ACTIVE NAV
+       ===================================================== */
+
+    const navObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (
+              !entry.isIntersecting
+            ) {
+              return;
+            }
+
+
+            const id =
+              entry.target.getAttribute(
+                "id"
+              );
+
+
+            navLinks.forEach(link => {
+
+              link.classList.remove(
+                "active"
+              );
+
+
+              if (
+                link.getAttribute(
+                  "href"
+                ) === `#${id}`
+              ) {
+
+                link.classList.add(
+                  "active"
+                );
+
+              }
+
+            });
+
+          });
+
+        },
+        {
+          rootMargin:
+            "-25% 0px -60% 0px"
+        }
+      );
+
+
+    sections.forEach(section => {
+
+      navObserver.observe(section);
+
+    });
+
+
+    /* =====================================================
+       CUSTOM CURSOR
+       ===================================================== */
+
+    if (
+      cursor &&
+      window.matchMedia(
+        "(pointer:fine)"
+      ).matches
+    ) {
+
+      let mouseX = 0;
+      let mouseY = 0;
+
+      let currentX = 0;
+      let currentY = 0;
+
+
+      document.addEventListener(
+        "mousemove",
+        event => {
+
+          mouseX =
+            event.clientX;
+
+          mouseY =
+            event.clientY;
+
+        }
+      );
+
+
+      function moveCursor() {
+
+        currentX +=
+          (mouseX - currentX) * .18;
+
+        currentY +=
+          (mouseY - currentY) * .18;
+
+
+        cursor.style.left =
+          currentX + "px";
+
+        cursor.style.top =
+          currentY + "px";
+
+
+        requestAnimationFrame(
+          moveCursor
+        );
+
+      }
+
+
+      moveCursor();
+
+
+      document
+        .querySelectorAll(
+          "a, button, .skill-card, .project-card"
+        )
+        .forEach(element => {
+
+          element.addEventListener(
+            "mouseenter",
+            () => {
+
+              cursor.style.width =
+                "24px";
+
+              cursor.style.height =
+                "24px";
+
+            }
+          );
+
+
+          element.addEventListener(
+            "mouseleave",
+            () => {
+
+              cursor.style.width =
+                "8px";
+
+              cursor.style.height =
+                "8px";
+
+            }
+          );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       PROJECT TILT
+       ===================================================== */
+
+    if (
+      window.matchMedia(
+        "(min-width:901px)"
+      ).matches
+    ) {
+
+      document
+        .querySelectorAll(
+          ".project-card"
+        )
+        .forEach(card => {
+
+          card.addEventListener(
+            "mousemove",
+            event => {
+
+              const rect =
+                card.getBoundingClientRect();
+
+
+              const x =
+                event.clientX -
+                rect.left;
+
+
+              const y =
+                event.clientY -
+                rect.top;
+
+
+              const rotateX =
+                ((y - rect.height / 2) /
+                (rect.height / 2)) * -2;
+
+
+              const rotateY =
+                ((x - rect.width / 2) /
+                (rect.width / 2)) * 2;
+
+
+              card.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-8px)`;
+
+            }
+          );
+
+
+          card.addEventListener(
+            "mouseleave",
+            () => {
+
+              card.style.transform =
+                "";
+
+            }
+          );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       SCROLL REVEAL
+       ===================================================== */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".section-label, .section-title, .about-grid, .skill-card, .project-card, .download-box, .process-item, .contact h2, .contact > p"
+      );
+
+
+    revealElements.forEach(
+      element => {
+
+        element.style.opacity =
+          "0";
+
+        element.style.transform =
+          "translateY(25px)";
+
+        element.style.transition =
+          "opacity .8s ease, transform .8s ease";
+
+      }
+    );
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (
+              !entry.isIntersecting
+            ) {
+              return;
+            }
+
+
+            entry.target.style.opacity =
+              "1";
+
+            entry.target.style.transform =
+              "translateY(0)";
+
+
+            revealObserver.unobserve(
+              entry.target
+            );
+
+          });
+
+        },
+        {
+          threshold: .1
+        }
+      );
+
+
+    revealElements.forEach(
+      element => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       HERO PARALLAX
+       ===================================================== */
+
+    const hero =
+      document.querySelector(
+        ".hero"
+      );
+
+    const galaxy =
+      document.querySelector(
+        ".galaxy-bg"
+      );
+
+
+    if (
+      hero &&
+      galaxy &&
+      window.matchMedia(
+        "(pointer:fine)"
+      ).matches
+    ) {
+
+      hero.addEventListener(
+        "mousemove",
+        event => {
+
+          const rect =
+            hero.getBoundingClientRect();
+
+
+          const x =
+            (event.clientX -
+              rect.left)
+            / rect.width
+            - .5;
+
+
+          const y =
+            (event.clientY -
+              rect.top)
+            / rect.height
+            - .5;
+
+
+          galaxy.style.transform =
+            `translate(
+              ${x * 15}px,
+              ${y * 15}px
+            )`;
+
+        }
+      );
+
+
+      hero.addEventListener(
+        "mouseleave",
+        () => {
+
+          galaxy.style.transform =
+            "translate(0,0)";
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       COPYRIGHT YEAR
+       ===================================================== */
+
+    const copyright =
+      document.getElementById(
+        "copyright"
+      );
+
+    if (copyright) {
+
+      copyright.textContent =
+        `© ${new Date().getFullYear()} Shahneil Khan`;
+
+    }
+
+
+    /* =====================================================
+       FINAL
+       ===================================================== */
+
+    updateThemeIcon();
+
+    navbarScroll();
+
+  </script>
 
 </body>
-
 </html>
