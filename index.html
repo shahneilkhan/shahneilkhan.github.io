@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Shahneil Khan — Software Engineer</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
     content="Shahneil Khan — Software Engineer, Web Developer and UI/UX Designer."
   >
 
-  <meta name="author" content="Shahneil Khan">
+  <meta
+    name="author"
+    content="Shahneil Khan"
+  >
 
-  <meta name="theme-color" content="#050505">
+  <meta
+    name="theme-color"
+    content="#03040a"
+  >
 
-  <!-- Google Font -->
+  <title>
+    Shahneil Khan — Software Engineer
+  </title>
+
+
+  <!-- Google Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
@@ -30,67 +45,195 @@
     rel="stylesheet"
   >
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Main CSS -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
 
 
 <body>
 
-  <!-- ==================================================
-       CURSOR
-       ================================================== -->
+
+  <!-- =====================================================
+       CUSTOM CURSOR
+       ===================================================== -->
 
   <div class="cursor"></div>
 
 
-  <!-- ==================================================
-       NAVBAR
-       ================================================== -->
+  <!-- =====================================================
+       NAVIGATION
+       ===================================================== -->
 
   <nav class="navbar">
 
-    <a href="#home" class="logo">
-      SK<span>.</span>
+
+    <!-- LOGO -->
+
+    <a
+      href="#home"
+      class="brand-logo"
+      aria-label="Shahneil Khan Home"
+    >
+
+      <img
+        src="https://raw.githubusercontent.com/ishahneilkhan/Gallery/main/cover%20es01.svg"
+        alt="Shahneil Khan Logo"
+      >
+
     </a>
 
 
+    <!-- NAV LINKS -->
+
     <div class="nav-links">
 
-      <a href="#home">Home</a>
+      <a href="#home">
+        Home
+      </a>
 
-      <a href="#about">About</a>
+      <a href="#about">
+        About
+      </a>
 
-      <a href="#skills">Skills</a>
+      <a href="#skills">
+        Skills
+      </a>
 
-      <a href="#work">Work</a>
+      <a href="#work">
+        Work
+      </a>
 
-      <a href="#contact">Contact</a>
+      <a href="#contact">
+        Contact
+      </a>
 
     </div>
+
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button
+      class="menu-toggle"
+      aria-label="Open Menu"
+      type="button"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
 
   </nav>
 
 
-  <!-- ==================================================
+  <!-- =====================================================
+       MOBILE MENU
+       ===================================================== -->
+
+  <div class="mobile-menu">
+
+    <a href="#home">
+      Home
+    </a>
+
+    <a href="#about">
+      About
+    </a>
+
+    <a href="#skills">
+      Skills
+    </a>
+
+    <a href="#work">
+      Work
+    </a>
+
+    <a href="#contact">
+      Contact
+    </a>
+
+  </div>
+
+
+  <!-- =====================================================
        HERO
-       ================================================== -->
+       ===================================================== -->
 
-  <header id="home" class="hero">
+  <header
+    id="home"
+    class="hero"
+  >
 
-    <div class="hero-overlay"></div>
 
+    <!-- HERO BACKGROUND -->
+
+    <div class="hero-background">
+
+
+      <!-- Your Banner -->
+
+      <div class="banner-image"></div>
+
+
+      <!-- Dark Overlay -->
+
+      <div class="banner-dark"></div>
+
+
+      <!-- Animated Galaxy -->
+
+      <div class="galaxy-bg">
+
+        <div class="stars stars-1"></div>
+
+        <div class="stars stars-2"></div>
+
+        <div class="stars stars-3"></div>
+
+        <div class="nebula nebula-1"></div>
+
+        <div class="nebula nebula-2"></div>
+
+        <div class="galaxy-orb"></div>
+
+      </div>
+
+
+      <!-- Cinematic Overlay -->
+
+      <div class="hero-overlay"></div>
+
+    </div>
+
+
+
+    <!-- HERO CONTENT -->
 
     <div class="hero-content">
 
+
       <div class="eyebrow">
-        SOFTWARE ENGINEER · WEB · UI/UX
+
+        SOFTWARE ENGINEER
+        <span>·</span>
+        WEB
+        <span>·</span>
+        UI/UX
+
       </div>
 
 
       <h1>
 
         SHAHNEIL
+
         <br>
 
         <span>KHAN</span>
@@ -109,11 +252,14 @@
 
       <div class="hero-buttons">
 
+
         <a
           href="#work"
           class="btn btn-primary"
         >
+
           Explore My Work
+
         </a>
 
 
@@ -121,39 +267,58 @@
           href="mailto:thesnkgraphic@email.com"
           class="btn btn-outline"
         >
+
           Let's Talk
+
         </a>
+
 
       </div>
 
 
       <div class="hero-scroll">
+
         SCROLL TO EXPLORE
-        <span>↓</span>
+
+        <span>
+          ↓
+        </span>
+
       </div>
 
+
     </div>
+
 
   </header>
 
 
-  <!-- ==================================================
+  <!-- =====================================================
        ABOUT
-       ================================================== -->
+       ===================================================== -->
 
-  <section id="about" class="about">
+  <section
+    id="about"
+    class="about"
+  >
+
 
     <div class="section-label">
+
       01 — ABOUT
+
     </div>
 
 
     <h2 class="section-title">
 
       Designer's eye.
+
       <br>
 
-      <span>Engineer's mind.</span>
+      <span>
+        Engineer's mind.
+      </span>
 
     </h2>
 
@@ -161,11 +326,13 @@
     <div class="about-grid">
 
 
-      <!-- PROFILE -->
+      <!-- PROFILE CARD -->
 
       <div class="profile-card">
 
+
         <div class="profile-image">
+
 
           <img
             src="assets/profile.jpg"
@@ -173,27 +340,38 @@
             onerror="this.style.display='none'"
           >
 
+
           <div class="profile-placeholder">
+
             SK
+
           </div>
+
 
         </div>
 
 
         <div class="profile-info">
 
+
           <div class="profile-tag">
+
             SOFTWARE ENGINEER
+
           </div>
 
 
           <h3>
+
             Shahneil Khan
+
           </h3>
 
 
           <p>
+
             Web · UI/UX · Product · Technology
+
           </p>
 
 
@@ -205,14 +383,18 @@
 
           </div>
 
+
         </div>
+
 
       </div>
 
 
-      <!-- ABOUT CONTENT -->
+
+      <!-- ABOUT TEXT -->
 
       <div class="about-content">
+
 
         <p>
 
@@ -244,12 +426,15 @@
 
         <div class="social-links">
 
+
           <a
             href="https://github.com/ishahneilkhan"
             target="_blank"
             rel="noopener noreferrer"
           >
+
             GitHub ↗
+
           </a>
 
 
@@ -258,42 +443,59 @@
             target="_blank"
             rel="noopener noreferrer"
           >
+
             LinkedIn ↗
+
           </a>
 
 
           <a
             href="mailto:thesnkgraphic@email.com"
           >
+
             Email ↗
+
           </a>
+
 
         </div>
 
+
       </div>
 
+
     </div>
+
 
   </section>
 
 
-  <!-- ==================================================
+  <!-- =====================================================
        SKILLS
-       ================================================== -->
+       ===================================================== -->
 
-  <section id="skills" class="skills">
+  <section
+    id="skills"
+    class="skills"
+  >
+
 
     <div class="section-label">
+
       02 — SKILLS
+
     </div>
 
 
     <h2 class="section-title">
 
       Skills that turn
+
       <br>
 
-      <span>ideas into products.</span>
+      <span>
+        ideas into products.
+      </span>
 
     </h2>
 
@@ -468,28 +670,39 @@
 
       </article>
 
+
     </div>
+
 
   </section>
 
 
-  <!-- ==================================================
-       WORK
-       ================================================== -->
+  <!-- =====================================================
+       WORK / PROJECTS
+       ===================================================== -->
 
-  <section id="work" class="work">
+  <section
+    id="work"
+    class="work"
+  >
+
 
     <div class="section-label">
+
       03 — SELECTED WORK
+
     </div>
 
 
     <h2 class="section-title">
 
       Things I've
+
       <br>
 
-      <span>designed & built.</span>
+      <span>
+        designed & built.
+      </span>
 
     </h2>
 
@@ -500,6 +713,7 @@
       <!-- PROJECT 01 -->
 
       <article class="project-card">
+
 
         <div class="project-top">
 
@@ -516,24 +730,34 @@
 
         <div class="project-content">
 
+
           <h3>
-            Code Yard
+            Demo Website
           </h3>
 
 
           <p>
 
-            A modern web project focused on creating
-            a clean and useful digital experience.
+            A modern web experience focused on
+            clean visual design, usability and
+            responsive development.
 
           </p>
 
 
           <div class="project-tech">
 
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
+            <span>
+              HTML
+            </span>
+
+            <span>
+              CSS
+            </span>
+
+            <span>
+              JavaScript
+            </span>
 
           </div>
 
@@ -544,17 +768,23 @@
             rel="noopener noreferrer"
             class="project-link"
           >
+
             Visit Project →
+
           </a>
+
 
         </div>
 
+
       </article>
+
 
 
       <!-- PROJECT 02 -->
 
       <article class="project-card">
+
 
         <div class="project-top">
 
@@ -571,6 +801,7 @@
 
         <div class="project-content">
 
+
           <h3>
             SNK IT Institute
           </h3>
@@ -578,17 +809,26 @@
 
           <p>
 
-            An IT education platform focused on practical
-            technology learning and modern digital skills.
+            An education-focused digital platform
+            designed around practical technology
+            learning and modern skills.
 
           </p>
 
 
           <div class="project-tech">
 
-            <span>Education</span>
-            <span>Web</span>
-            <span>UX</span>
+            <span>
+              Web
+            </span>
+
+            <span>
+              Education
+            </span>
+
+            <span>
+              UX
+            </span>
 
           </div>
 
@@ -599,17 +839,23 @@
             rel="noopener noreferrer"
             class="project-link"
           >
+
             Visit Project →
+
           </a>
+
 
         </div>
 
+
       </article>
+
 
 
       <!-- PROJECT 03 -->
 
       <article class="project-card">
+
 
         <div class="project-top">
 
@@ -626,6 +872,7 @@
 
         <div class="project-content">
 
+
           <h3>
             SNK GuideUp
           </h3>
@@ -633,17 +880,26 @@
 
           <p>
 
-            A learning platform designed to make academic
-            and IT learning resources more accessible.
+            A learning-oriented platform created
+            to make academic and IT resources
+            easier to discover and use.
 
           </p>
 
 
           <div class="project-tech">
 
-            <span>Learning</span>
-            <span>Web</span>
-            <span>UI/UX</span>
+            <span>
+              Learning
+            </span>
+
+            <span>
+              Web
+            </span>
+
+            <span>
+              UI/UX
+            </span>
 
           </div>
 
@@ -654,96 +910,126 @@
             rel="noopener noreferrer"
             class="project-link"
           >
+
             Visit Project →
+
           </a>
 
+
         </div>
+
 
       </article>
 
 
     </div>
 
+
   </section>
 
 
-  <!-- ==================================================
+  <!-- =====================================================
        DESIGN LAB
-       ================================================== -->
+       ===================================================== -->
 
-  <section id="lab" class="lab">
+  <section
+    id="lab"
+    class="lab"
+  >
+
 
     <div class="section-label">
+
       04 — DESIGN LAB
+
     </div>
 
 
     <h2 class="section-title">
 
       Ideas worth
+
       <br>
 
-      <span>exploring.</span>
+      <span>
+        exploring.
+      </span>
 
     </h2>
 
 
     <div class="lab-grid">
 
+
       <div class="lab-item">
         AI × UX
       </div>
+
 
       <div class="lab-item">
         Creative Coding
       </div>
 
+
       <div class="lab-item">
         Motion UI
       </div>
+
 
       <div class="lab-item">
         Design Systems
       </div>
 
+
       <div class="lab-item">
         AI Products
       </div>
+
 
       <div class="lab-item">
         Web Experiments
       </div>
 
+
       <div class="lab-item">
         Interactive Design
       </div>
+
 
       <div class="lab-item">
         Future Interfaces
       </div>
 
+
     </div>
+
 
   </section>
 
 
-  <!-- ==================================================
+  <!-- =====================================================
        PROCESS
-       ================================================== -->
+       ===================================================== -->
 
   <section class="process">
 
+
     <div class="section-label">
+
       05 — PROCESS
+
     </div>
 
 
     <h2 class="section-title">
 
       From idea
+
       <br>
 
-      <span>to reality.</span>
+      <span>
+        to reality.
+      </span>
 
     </h2>
 
@@ -753,7 +1039,9 @@
 
       <div class="process-item">
 
-        <span>01</span>
+        <span>
+          01
+        </span>
 
         <div>
 
@@ -772,7 +1060,9 @@
 
       <div class="process-item">
 
-        <span>02</span>
+        <span>
+          02
+        </span>
 
         <div>
 
@@ -791,7 +1081,9 @@
 
       <div class="process-item">
 
-        <span>03</span>
+        <span>
+          03
+        </span>
 
         <div>
 
@@ -810,7 +1102,9 @@
 
       <div class="process-item">
 
-        <span>04</span>
+        <span>
+          04
+        </span>
 
         <div>
 
@@ -829,45 +1123,60 @@
 
     </div>
 
+
   </section>
 
 
-  <!-- ==================================================
+  <!-- =====================================================
        CONTACT
-       ================================================== -->
+       ===================================================== -->
 
-  <section id="contact" class="contact">
+  <section
+    id="contact"
+    class="contact"
+  >
+
 
     <div class="contact-glow"></div>
 
 
     <div class="section-label">
+
       06 — CONTACT
+
     </div>
 
 
     <h2>
 
       Let's build
+
       <br>
 
-      <span>something meaningful.</span>
+      <span>
+        something meaningful.
+      </span>
 
     </h2>
 
 
     <p>
+
       Have an idea, project or collaboration in mind?
+
     </p>
 
 
     <div class="hero-buttons">
 
+
       <a
         href="mailto:thesnkgraphic@email.com"
         class="btn btn-primary"
       >
+
         Email Me →
+
       </a>
 
 
@@ -877,7 +1186,9 @@
         rel="noopener noreferrer"
         class="btn btn-outline"
       >
+
         GitHub ↗
+
       </a>
 
 
@@ -887,37 +1198,49 @@
         rel="noopener noreferrer"
         class="btn btn-outline"
       >
+
         LinkedIn ↗
+
       </a>
 
+
     </div>
+
 
   </section>
 
 
-  <!-- ==================================================
+  <!-- =====================================================
        FOOTER
-       ================================================== -->
+       ===================================================== -->
 
   <footer>
 
+
     <div>
+
       © 2026 Shahneil Khan
+
     </div>
 
 
     <div>
+
       SOFTWARE · WEB · UI/UX
+
     </div>
+
 
   </footer>
 
 
-  <!-- ==================================================
+  <!-- =====================================================
        JAVASCRIPT
-       ================================================== -->
+       ===================================================== -->
 
   <script src="script.js"></script>
 
+
 </body>
+
 </html>
