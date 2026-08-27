@@ -1,717 +1,953 @@
-/* =========================================
-   SHAHNEIL KHAN PORTFOLIO
-   FINAL SCRIPT.JS
-========================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* =========================================
-     ELEMENTS
-  ========================================= */
-
-  const body = document.body;
-  const header = document.querySelector(".site-header");
-
-  const menuToggle =
-    document.getElementById("menuToggle");
-
-  const navMenu =
-    document.querySelector(".nav-menu");
-
-  const themeToggle =
-    document.getElementById("themeToggle");
-
-  const langButtons =
-    document.querySelectorAll(".lang-btn");
-
-  const navLinks =
-    document.querySelectorAll(".nav-link");
-
-  const sections =
-    document.querySelectorAll("section[id]");
+/* =====================================================
+   SHAH NEIL KHAN | TABAYYUN
+   SCRIPT.JS
+   VERSION 1.0
+===================================================== */
 
 
-  /* =========================================
-     THEME
-  ========================================= */
+/* =====================================================
+   1.0 — DOM ELEMENTS
+===================================================== */
 
-  function setTheme(theme) {
+const body = document.body;
 
-    body.setAttribute("data-theme", theme);
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav-menu");
 
-    localStorage.setItem(
-      "tabayyun-theme",
-      theme
+const themeToggle = document.querySelector(".theme-toggle");
+
+const langButtons = document.querySelectorAll(".lang-btn");
+
+const downloadMenu = document.querySelector(".download-menu");
+const downloadTrigger = document.querySelector(".download-trigger");
+
+const navLinks = document.querySelectorAll(".nav-link");
+
+const chatbot = document.querySelector(".chatbot");
+const chatbotButton = document.querySelector(".chatbot-button");
+const chatbotClose = document.querySelector(".chatbot-close");
+
+const chatbotForm = document.querySelector(".chatbot-input");
+const chatbotInput = document.querySelector(".chatbot-input input");
+const chatbotMessages = document.querySelector(".chatbot-messages");
+
+const header = document.querySelector(".site-header");
+
+const revealElements = document.querySelectorAll(".reveal");
+
+
+/* =====================================================
+   2.0 — MOBILE MENU
+===================================================== */
+
+if (menuToggle && navMenu) {
+
+  menuToggle.addEventListener("click", () => {
+
+    navMenu.classList.toggle("active");
+
+    body.classList.toggle(
+      "menu-open",
+      navMenu.classList.contains("active")
     );
 
-    if (themeToggle) {
+  });
 
-      themeToggle.textContent =
-        theme === "dark"
-          ? "🌙"
-          : "☀️";
-
-      themeToggle.setAttribute(
-        "aria-label",
-        theme === "dark"
-          ? "Switch to light mode"
-          : "Switch to dark mode"
-      );
-    }
-  }
+}
 
 
-  const savedTheme =
-    localStorage.getItem("tabayyun-theme");
+/* =====================================================
+   2.1 — CLOSE MOBILE MENU
+===================================================== */
+
+navLinks.forEach((link) => {
+
+  link.addEventListener("click", () => {
+
+    navMenu?.classList.remove("active");
+
+    body.classList.remove("menu-open");
+
+  });
+
+});
 
 
-  if (savedTheme === "dark") {
+/* =====================================================
+   2.2 — CLOSE MENU OUTSIDE
+===================================================== */
 
-    setTheme("dark");
+document.addEventListener("click", (event) => {
 
-  } else {
+  if (!navMenu || !menuToggle) return;
 
-    setTheme("light");
+  const clickedInsideMenu =
+    navMenu.contains(event.target);
 
-  }
+  const clickedToggle =
+    menuToggle.contains(event.target);
 
-
-  if (themeToggle) {
-
-    themeToggle.addEventListener(
-      "click",
-      () => {
-
-        const currentTheme =
-          body.getAttribute("data-theme");
-
-        setTheme(
-          currentTheme === "dark"
-            ? "light"
-            : "dark"
-        );
-
-      }
-    );
-
-  }
-
-
-  /* =========================================
-     MOBILE MENU
-  ========================================= */
-
-  function closeMenu() {
-
-    if (!navMenu || !menuToggle) return;
+  if (
+    !clickedInsideMenu &&
+    !clickedToggle
+  ) {
 
     navMenu.classList.remove("active");
-
-    menuToggle.classList.remove("active");
 
     body.classList.remove("menu-open");
 
   }
 
+});
 
-  if (menuToggle && navMenu) {
 
-    menuToggle.addEventListener(
-      "click",
-      (event) => {
+/* =====================================================
+   3.0 — DARK / LIGHT MODE
+===================================================== */
 
-        event.stopPropagation();
+const savedTheme =
+  localStorage.getItem("tabayyun-theme");
 
-        navMenu.classList.toggle("active");
 
-        menuToggle.classList.toggle("active");
+if (savedTheme === "light") {
 
-        body.classList.toggle(
-          "menu-open"
-        );
+  body.setAttribute(
+    "data-theme",
+    "light"
+  );
 
-      }
+} else {
+
+  body.setAttribute(
+    "data-theme",
+    "dark"
+  );
+
+}
+
+
+/* =====================================================
+   3.1 — THEME ICON
+===================================================== */
+
+function updateThemeIcon() {
+
+  if (!themeToggle) return;
+
+  const isLight =
+    body.getAttribute("data-theme") === "light";
+
+  themeToggle.textContent =
+    isLight ? "🌙" : "☀️";
+
+  themeToggle.setAttribute(
+    "aria-label",
+    isLight
+      ? "Switch to dark mode"
+      : "Switch to light mode"
+  );
+
+}
+
+updateThemeIcon();
+
+
+/* =====================================================
+   3.2 — THEME TOGGLE
+===================================================== */
+
+if (themeToggle) {
+
+  themeToggle.addEventListener("click", () => {
+
+    const currentTheme =
+      body.getAttribute("data-theme");
+
+    const newTheme =
+      currentTheme === "light"
+        ? "dark"
+        : "light";
+
+    body.setAttribute(
+      "data-theme",
+      newTheme
     );
-
-  }
-
-
-  /* Close menu after nav click */
-
-  navLinks.forEach(link => {
-
-    link.addEventListener(
-      "click",
-      () => {
-
-        closeMenu();
-
-      }
-    );
-
-  });
-
-
-  /* Close menu outside */
-
-  document.addEventListener(
-    "click",
-    event => {
-
-      if (!navMenu || !menuToggle) return;
-
-      const insideMenu =
-        navMenu.contains(event.target);
-
-      const insideButton =
-        menuToggle.contains(event.target);
-
-      if (
-        !insideMenu &&
-        !insideButton
-      ) {
-
-        closeMenu();
-
-      }
-
-    }
-  );
-
-
-  /* =========================================
-     ESC KEY
-  ========================================= */
-
-  document.addEventListener(
-    "keydown",
-    event => {
-
-      if (event.key === "Escape") {
-
-        closeMenu();
-
-      }
-
-    }
-  );
-
-
-  /* =========================================
-     HEADER SCROLL
-  ========================================= */
-
-  function updateHeader() {
-
-    if (!header) return;
-
-    if (window.scrollY > 30) {
-
-      header.classList.add("scrolled");
-
-    } else {
-
-      header.classList.remove("scrolled");
-
-    }
-
-  }
-
-
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-  );
-
-  updateHeader();
-
-
-  /* =========================================
-     ACTIVE NAV
-  ========================================= */
-
-  function updateActiveNav() {
-
-    let current =
-      "home";
-
-    sections.forEach(section => {
-
-      const sectionTop =
-        section.offsetTop - 180;
-
-      const sectionBottom =
-        sectionTop +
-        section.offsetHeight;
-
-      if (
-        window.scrollY >= sectionTop &&
-        window.scrollY < sectionBottom
-      ) {
-
-        current =
-          section.getAttribute("id");
-
-      }
-
-    });
-
-
-    navLinks.forEach(link => {
-
-      link.classList.remove("active");
-
-      const href =
-        link.getAttribute("href");
-
-      if (
-        href === `#${current}`
-      ) {
-
-        link.classList.add("active");
-
-      }
-
-    });
-
-  }
-
-
-  window.addEventListener(
-    "scroll",
-    updateActiveNav,
-    { passive: true }
-  );
-
-  updateActiveNav();
-
-
-  /* =========================================
-     SMOOTH SCROLL
-  ========================================= */
-
-  document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        event => {
-
-          const id =
-            link.getAttribute("href");
-
-          if (
-            !id ||
-            id === "#"
-          ) {
-            return;
-          }
-
-          const target =
-            document.querySelector(id);
-
-          if (!target) return;
-
-          event.preventDefault();
-
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-        }
-      );
-
-    });
-
-
-  /* =========================================
-     SCROLL REVEAL
-  ========================================= */
-
-  const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-  if (
-    "IntersectionObserver"
-    in window
-  ) {
-
-    const revealObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (
-              entry.isIntersecting
-            ) {
-
-              entry.target.classList.add(
-                "show"
-              );
-
-              revealObserver.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.12,
-          rootMargin: "0px 0px -40px 0px"
-        }
-      );
-
-
-    revealElements.forEach(element => {
-
-      revealObserver.observe(element);
-
-    });
-
-  } else {
-
-    revealElements.forEach(element => {
-
-      element.classList.add("show");
-
-    });
-
-  }
-
-
-  /* =========================================
-     LANGUAGE
-  ========================================= */
-
-  const translations = {
-
-    en: {
-
-      home: "Home",
-      about: "About",
-      contact: "Contact",
-      download: "Download",
-      skills: "Skills",
-      works: "Works",
-      connect: "Connect",
-
-      heroTag:
-        "Software Engineer • Web • UI/UX",
-
-      heroTitle:
-        "Building digital experiences that matter.",
-
-      heroDescription:
-        "Software Engineer and Web & UI/UX Designer focused on creating modern, responsive and meaningful digital products.",
-
-      viewWorks:
-        "View Works",
-
-      contactMe:
-        "Contact Me",
-
-      skillsTitle:
-        "Skills",
-
-      worksTitle:
-        "Selected Works"
-
-    },
-
-
-    bn: {
-
-      home: "হোম",
-      about: "আমার সম্পর্কে",
-      contact: "যোগাযোগ",
-      download: "ডাউনলোড",
-      skills: "দক্ষতা",
-      works: "কাজ",
-      connect: "কানেক্ট",
-
-      heroTag:
-        "সফটওয়্যার ইঞ্জিনিয়ার • ওয়েব • UI/UX",
-
-      heroTitle:
-        "গুরুত্বপূর্ণ ডিজিটাল অভিজ্ঞতা তৈরি করি।",
-
-      heroDescription:
-        "আমি একজন Software Engineer এবং Web & UI/UX Designer। আধুনিক, responsive এবং user-friendly digital product তৈরি করতে কাজ করি।",
-
-      viewWorks:
-        "কাজগুলো দেখুন",
-
-      contactMe:
-        "যোগাযোগ করুন",
-
-      skillsTitle:
-        "দক্ষতা",
-
-      worksTitle:
-        "নির্বাচিত কাজ"
-
-    }
-
-  };
-
-
-  /* =========================================
-     CHANGE LANGUAGE
-  ========================================= */
-
-  function changeLanguage(language) {
-
-    const data =
-      translations[language];
-
-    if (!data) return;
-
-
-    /* data-i18n elements */
-
-    document
-      .querySelectorAll("[data-i18n]")
-      .forEach(element => {
-
-        const key =
-          element.getAttribute(
-            "data-i18n"
-          );
-
-        if (
-          Object.prototype.hasOwnProperty
-          .call(data, key)
-        ) {
-
-          element.textContent =
-            data[key];
-
-        }
-
-      });
-
-
-    /* Language buttons */
-
-    langButtons.forEach(button => {
-
-      const buttonLanguage =
-        button.dataset.lang;
-
-      button.classList.toggle(
-        "active",
-        buttonLanguage === language
-      );
-
-    });
-
-
-    /* HTML language */
-
-    document.documentElement.lang =
-      language === "bn"
-        ? "bn"
-        : "en";
-
-
-    /* Save */
 
     localStorage.setItem(
-      "tabayyun-language",
-      language
+      "tabayyun-theme",
+      newTheme
     );
+
+    updateThemeIcon();
+
+  });
+
+}
+
+
+/* =====================================================
+   4.0 — ENGLISH / BANGLA
+===================================================== */
+
+const translations = {
+
+  en: {
+
+    "nav.home": "Home",
+    "nav.about": "About",
+    "nav.skills": "Skills",
+    "nav.education": "Education",
+    "nav.works": "Works",
+    "nav.contact": "Contact",
+
+    "hero.tag": "Creative Designer & Developer",
+
+    "hero.title":
+      "Building digital experiences with purpose.",
+
+    "hero.description":
+      "I’m Shah Neil Khan — a designer and developer focused on creating modern, useful and meaningful digital experiences.",
+
+    "hero.work":
+      "View My Works",
+
+    "hero.contact":
+      "Contact Me",
+
+    "contact.title":
+      "Let’s create something meaningful.",
+
+    "contact.button":
+      "Start a Conversation"
+
+  },
+
+  bn: {
+
+    "nav.home": "হোম",
+    "nav.about": "আমার সম্পর্কে",
+    "nav.skills": "দক্ষতা",
+    "nav.education": "শিক্ষা",
+    "nav.works": "কাজ",
+    "nav.contact": "যোগাযোগ",
+
+    "hero.tag":
+      "ক্রিয়েটিভ ডিজাইনার ও ডেভেলপার",
+
+    "hero.title":
+      "উদ্দেশ্যপূর্ণ ডিজিটাল অভিজ্ঞতা তৈরি করি।",
+
+    "hero.description":
+      "আমি শাহ নীল খান — আধুনিক, কার্যকর ও অর্থবহ ডিজিটাল অভিজ্ঞতা তৈরিতে কাজ করি।",
+
+    "hero.work":
+      "আমার কাজ দেখুন",
+
+    "hero.contact":
+      "যোগাযোগ করুন",
+
+    "contact.title":
+      "চলুন অর্থবহ কিছু তৈরি করি।",
+
+    "contact.button":
+      "কথা শুরু করুন"
 
   }
 
-
-  /* =========================================
-     LANGUAGE BUTTON CLICK
-  ========================================= */
-
-  langButtons.forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        let language =
-          button.dataset.lang;
+};
 
 
-        if (!language) {
+/* =====================================================
+   4.1 — LANGUAGE STORAGE
+===================================================== */
 
-          language =
-            button.textContent
-              .trim()
-              .toLowerCase() ===
-              "বাংলা"
-              ? "bn"
-              : "en";
+const savedLanguage =
+  localStorage.getItem("tabayyun-language") || "en";
 
-        }
+setLanguage(savedLanguage);
 
 
-        changeLanguage(language);
+/* =====================================================
+   4.2 — SET LANGUAGE
+===================================================== */
+
+function setLanguage(language) {
+
+  const dictionary =
+    translations[language];
+
+  if (!dictionary) return;
+
+
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach((element) => {
+
+      const key =
+        element.getAttribute("data-i18n");
+
+      if (dictionary[key]) {
+
+        element.textContent =
+          dictionary[key];
 
       }
+
+    });
+
+
+  langButtons.forEach((button) => {
+
+    button.classList.toggle(
+      "active",
+      button.dataset.lang === language
     );
 
   });
 
 
-  /* =========================================
-     LOAD LANGUAGE
-  ========================================= */
+  document.documentElement.lang =
+    language === "bn"
+      ? "bn"
+      : "en";
 
-  const savedLanguage =
-    localStorage.getItem(
-      "tabayyun-language"
-    );
+  localStorage.setItem(
+    "tabayyun-language",
+    language
+  );
+
+}
+
+
+/* =====================================================
+   4.3 — LANGUAGE BUTTONS
+===================================================== */
+
+langButtons.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    const language =
+      button.dataset.lang;
+
+    setLanguage(language);
+
+  });
+
+});
+
+
+/* =====================================================
+   5.0 — DOWNLOAD MENU
+===================================================== */
+
+if (downloadTrigger && downloadMenu) {
+
+  downloadTrigger.addEventListener(
+    "click",
+    (event) => {
+
+      event.stopPropagation();
+
+      downloadMenu.classList.toggle(
+        "active"
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   5.1 — CLOSE DOWNLOAD MENU
+===================================================== */
+
+document.addEventListener("click", () => {
+
+  downloadMenu?.classList.remove(
+    "active"
+  );
+
+});
+
+
+/* =====================================================
+   6.0 — CHATBOT
+===================================================== */
+
+function openChatbot() {
+
+  if (!chatbot) return;
+
+  chatbot.classList.add("active");
+
+  chatbotButton?.setAttribute(
+    "aria-expanded",
+    "true"
+  );
+
+  setTimeout(() => {
+
+    chatbotInput?.focus();
+
+  }, 200);
+
+}
+
+
+function closeChatbot() {
+
+  if (!chatbot) return;
+
+  chatbot.classList.remove("active");
+
+  chatbotButton?.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+}
+
+
+if (chatbotButton) {
+
+  chatbotButton.addEventListener(
+    "click",
+    () => {
+
+      if (
+        chatbot?.classList.contains("active")
+      ) {
+
+        closeChatbot();
+
+      } else {
+
+        openChatbot();
+
+      }
+
+    }
+  );
+
+}
+
+
+if (chatbotClose) {
+
+  chatbotClose.addEventListener(
+    "click",
+    closeChatbot
+  );
+
+}
+
+
+/* =====================================================
+   6.1 — CHATBOT RESPONSES
+===================================================== */
+
+function getBotResponse(message) {
+
+  const text =
+    message.toLowerCase().trim();
 
 
   if (
-    savedLanguage &&
-    translations[savedLanguage]
+    text.includes("hello") ||
+    text.includes("hi") ||
+    text.includes("hey")
   ) {
 
-    changeLanguage(
-      savedLanguage
-    );
-
-  } else {
-
-    changeLanguage("en");
+    return "Hello! 👋 How can I help you?";
 
   }
 
 
-  /* =========================================
-     KEYBOARD ACCESS
-  ========================================= */
+  if (
+    text.includes("name") ||
+    text.includes("who are you")
+  ) {
 
-  document.addEventListener(
+    return "I’m the Tabayyun assistant for Shah Neil Khan.";
+
+  }
+
+
+  if (
+    text.includes("contact") ||
+    text.includes("phone") ||
+    text.includes("whatsapp")
+  ) {
+
+    return "You can contact Shah Neil Khan on WhatsApp at 01705633700.";
+
+  }
+
+
+  if (
+    text.includes("project") ||
+    text.includes("work")
+  ) {
+
+    return "You can explore the Works section to see the featured projects.";
+
+  }
+
+
+  if (
+    text.includes("skill") ||
+    text.includes("skills")
+  ) {
+
+    return "The portfolio includes design, UI/UX and development skills.";
+
+  }
+
+
+  if (
+    text.includes("email") ||
+    text.includes("mail")
+  ) {
+
+    return "Email: thesnkgraphic@email.com";
+
+  }
+
+
+  if (
+    text.includes("thank")
+  ) {
+
+    return "You’re welcome! 😊";
+
+  }
+
+
+  return "Thanks for your message! Please use the Contact section or WhatsApp for direct communication.";
+
+}
+
+
+/* =====================================================
+   6.2 — ADD CHAT MESSAGE
+===================================================== */
+
+function addChatMessage(
+  message,
+  type = "bot"
+) {
+
+  if (!chatbotMessages) return;
+
+
+  const messageElement =
+    document.createElement("div");
+
+
+  messageElement.className =
+    type === "user"
+      ? "user-message"
+      : "bot-message";
+
+
+  messageElement.textContent =
+    message;
+
+
+  chatbotMessages.appendChild(
+    messageElement
+  );
+
+
+  chatbotMessages.scrollTop =
+    chatbotMessages.scrollHeight;
+
+}
+
+
+/* =====================================================
+   6.3 — CHATBOT FORM
+===================================================== */
+
+if (chatbotForm) {
+
+  chatbotForm.addEventListener(
+    "submit",
+    (event) => {
+
+      event.preventDefault();
+
+
+      const message =
+        chatbotInput?.value.trim();
+
+
+      if (!message) return;
+
+
+      addChatMessage(
+        message,
+        "user"
+      );
+
+
+      chatbotInput.value = "";
+
+
+      setTimeout(() => {
+
+        const response =
+          getBotResponse(message);
+
+        addChatMessage(
+          response,
+          "bot"
+        );
+
+      }, 500);
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   6.4 — CHATBOT ENTER KEY
+===================================================== */
+
+if (chatbotInput) {
+
+  chatbotInput.addEventListener(
     "keydown",
-    event => {
-
-      /*
-        Ctrl/Cmd + J
-        = Theme toggle
-      */
+    (event) => {
 
       if (
-        (event.ctrlKey ||
-          event.metaKey) &&
-        event.key.toLowerCase() === "j"
+        event.key === "Enter" &&
+        !event.shiftKey
       ) {
 
         event.preventDefault();
 
-        if (themeToggle) {
-          themeToggle.click();
-        }
+        chatbotForm?.requestSubmit();
 
       }
 
     }
   );
 
-
-  /* =========================================
-     PROJECT LINK EFFECT
-  ========================================= */
-
-  document
-    .querySelectorAll(".project-card")
-    .forEach(card => {
-
-      card.addEventListener(
-        "mouseenter",
-        () => {
-
-          card.style.setProperty(
-            "--mouse-x",
-            "50%"
-          );
-
-          card.style.setProperty(
-            "--mouse-y",
-            "50%"
-          );
-
-        }
-      );
-
-    });
+}
 
 
-  /* =========================================
-     PARALLAX SKY
-  ========================================= */
+/* =====================================================
+   7.0 — WHATSAPP
+===================================================== */
 
-  const sky =
-    document.querySelector(
-      ".sky-background"
+const whatsappNumber =
+  "8801705633700";
+
+
+function openWhatsApp() {
+
+  const message =
+    encodeURIComponent(
+      "Hello Shah Neil Khan, I visited your portfolio and would like to talk with you."
     );
 
 
-  if (
-    sky &&
-    !window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches
-  ) {
+  const whatsappURL =
+    `https://wa.me/${whatsappNumber}?text=${message}`;
 
-    window.addEventListener(
-      "scroll",
-      () => {
 
-        const scroll =
-          window.scrollY;
+  window.open(
+    whatsappURL,
+    "_blank",
+    "noopener,noreferrer"
+  );
 
-        sky.style.transform =
-          `translateY(${scroll * 0.04}px)`;
+}
 
-      },
-      { passive: true }
+
+document
+  .querySelectorAll(
+    "[data-whatsapp]"
+  )
+  .forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      openWhatsApp
+    );
+
+  });
+
+
+/* =====================================================
+   8.0 — SCROLL EFFECT
+===================================================== */
+
+function handleScroll() {
+
+  if (!header) return;
+
+
+  if (window.scrollY > 30) {
+
+    header.classList.add(
+      "scrolled"
+    );
+
+  } else {
+
+    header.classList.remove(
+      "scrolled"
     );
 
   }
 
+}
 
-  /* =========================================
-     RESIZE
-  ========================================= */
 
-  window.addEventListener(
-    "resize",
-    () => {
+window.addEventListener(
+  "scroll",
+  handleScroll,
+  { passive: true }
+);
 
-      if (
-        window.innerWidth > 760
-      ) {
 
-        closeMenu();
+handleScroll();
+
+
+/* =====================================================
+   8.1 — ACTIVE NAVIGATION
+===================================================== */
+
+const sections =
+  document.querySelectorAll(
+    "section[id]"
+  );
+
+
+function updateActiveNav() {
+
+  let currentSection = "";
+
+
+  sections.forEach((section) => {
+
+    const sectionTop =
+      section.offsetTop - 150;
+
+    const sectionHeight =
+      section.offsetHeight;
+
+
+    if (
+      window.scrollY >= sectionTop &&
+      window.scrollY <
+        sectionTop + sectionHeight
+    ) {
+
+      currentSection =
+        section.getAttribute("id");
+
+    }
+
+  });
+
+
+  navLinks.forEach((link) => {
+
+    const target =
+      link.getAttribute("href");
+
+
+    link.classList.toggle(
+      "active",
+      target === `#${currentSection}`
+    );
+
+  });
+
+}
+
+
+window.addEventListener(
+  "scroll",
+  updateActiveNav,
+  { passive: true }
+);
+
+
+updateActiveNav();
+
+
+/* =====================================================
+   8.2 — SMOOTH NAVIGATION
+===================================================== */
+
+document
+  .querySelectorAll(
+    'a[href^="#"]'
+  )
+  .forEach((link) => {
+
+    link.addEventListener(
+      "click",
+      (event) => {
+
+        const targetID =
+          link.getAttribute("href");
+
+
+        if (
+          !targetID ||
+          targetID === "#"
+        ) return;
+
+
+        const target =
+          document.querySelector(
+            targetID
+          );
+
+
+        if (!target) return;
+
+
+        event.preventDefault();
+
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
 
       }
+    );
+
+  });
+
+
+/* =====================================================
+   9.0 — REVEAL ANIMATION
+===================================================== */
+
+if (
+  "IntersectionObserver"
+  in window
+) {
+
+  const observer =
+    new IntersectionObserver(
+      (entries, observerInstance) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add(
+              "show"
+            );
+
+
+            observerInstance.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+  revealElements.forEach(
+    (element) => {
+
+      observer.observe(element);
 
     }
   );
 
+} else {
 
-  /* =========================================
-     PAGE READY
-  ========================================= */
+  revealElements.forEach(
+    (element) => {
 
-  document.body.classList.add(
-    "page-ready"
+      element.classList.add(
+        "show"
+      );
+
+    }
   );
 
-});
+}
+
+
+/* =====================================================
+   9.1 — KEYBOARD ESC
+===================================================== */
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (event.key !== "Escape") return;
+
+
+    navMenu?.classList.remove(
+      "active"
+    );
+
+    downloadMenu?.classList.remove(
+      "active"
+    );
+
+    closeChatbot();
+
+    body.classList.remove(
+      "menu-open"
+    );
+
+  }
+);
+
+
+/* =====================================================
+   9.2 — YEAR
+===================================================== */
+
+document
+  .querySelectorAll(
+    "[data-year]"
+  )
+  .forEach((element) => {
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
+
+
+/* =====================================================
+   9.3 — PAGE READY
+===================================================== */
+
+document.documentElement.classList.add(
+  "js-ready"
+);
+
+console.log(
+  "Tabayyun Portfolio — Shah Neil Khan"
+);
+
+console.log(
+  "JavaScript loaded successfully."
+);
