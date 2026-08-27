@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Shah Neil Khan — Software Engineer & UI/UX Design Expert</title>
+  <title>Shahneil Khan — Software Engineer & UI/UX Designer</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta
+    name="description"
+    content="Shahneil Khan is a Software Engineer, Web Engineer and UI/UX Product Designer building meaningful digital experiences."
+  />
+
+  <meta name="theme-color" content="#080808" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
     rel="stylesheet"
-  >
+  />
 
   <style>
     :root {
-      --void: #07090a;
-      --panel: #0d1211;
-      --panel-2: #111817;
-      --line: #1c2523;
-      --teal-deep: #0f2d29;
-      --teal-glow: #2bb3a3;
-      --gold: #c9a24b;
-      --lime: #b7d33e;
-      --text: #eef1ee;
-      --muted: #8b948e;
+      --bg: #080808;
+      --text: #f5f3ed;
+      --muted: #a7a7a7;
+      --gold: #d4af37;
+      --border: rgba(255,255,255,.12);
+      --glass: rgba(255,255,255,.06);
     }
 
     * {
@@ -37,17 +42,10 @@
     }
 
     body {
-      background: var(--void);
-      color: var(--text);
       font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
       overflow-x: hidden;
-    }
-
-    h1,
-    h2,
-    h3,
-    .display {
-      font-family: "Space Grotesk", sans-serif;
     }
 
     a {
@@ -55,901 +53,425 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* Ambient Background */
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-
-      background:
-        radial-gradient(
-          700px 500px at 15% -5%,
-          rgba(43, 179, 163, 0.14),
-          transparent 60%
-        ),
-        radial-gradient(
-          600px 500px at 100% 10%,
-          rgba(201, 162, 75, 0.08),
-          transparent 60%
-        );
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-
-      background-image:
-        radial-gradient(
-          rgba(255, 255, 255, 0.03) 1px,
-          transparent 1px
-        );
-
-      background-size: 34px 34px;
-
-      mask-image:
-        radial-gradient(
-          circle at 50% 0%,
-          black,
-          transparent 70%
-        );
-    }
-
-    /* Navigation */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-
-      backdrop-filter: blur(14px);
-
-      background:
-        rgba(7, 9, 10, 0.72);
-
-      border-bottom:
-        1px solid var(--line);
-    }
+    /* ================= NAVBAR ================= */
 
     nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, calc(100% - 30px));
+      padding: 14px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-
-      padding: 18px 28px;
-
-      max-width: 1120px;
-      margin: 0 auto;
+      align-items: center;
+      background: rgba(10,10,10,.65);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      z-index: 1000;
     }
 
     .logo {
-      font-weight: 700;
-      font-size: 17px;
-      letter-spacing: 0.3px;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
     .logo span {
-      color: var(--teal-glow);
-    }
-
-    .navlinks {
-      display: flex;
-      gap: 34px;
-
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .navlinks a:hover {
-      color: var(--text);
-    }
-
-    .nav-cta {
-      border: 1px solid var(--gold);
       color: var(--gold);
+    }
 
-      padding: 8px 18px;
-      border-radius: 6px;
-
+    .nav-links {
+      display: flex;
+      gap: 25px;
       font-size: 13px;
-      font-weight: 600;
-
-      transition: all 0.2s ease;
+      color: #ccc;
     }
 
-    .nav-cta:hover {
-      background: var(--gold);
-      color: #07090a;
+    .nav-links a {
+      transition: .3s;
     }
 
-    /* Hero */
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* ================= HERO ================= */
 
     .hero {
-      padding: 96px 0 80px;
+      min-height: 100vh;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,.55),
+          rgba(0,0,0,.88)
+        ),
+        url("assets/kaaba.jpg") center/cover no-repeat;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 56px;
-      align-items: center;
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at center,
+          transparent 0%,
+          rgba(0,0,0,.55) 70%,
+          #080808 100%
+        );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      padding: 30px;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      font-size: 12.5px;
-      letter-spacing: 2px;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-
-      color: var(--lime);
-
-      border:
-        1px solid rgba(183, 211, 62, 0.35);
-
-      background:
-        rgba(183, 211, 62, 0.06);
-
-      padding: 6px 14px;
-      border-radius: 20px;
-
-      margin-bottom: 26px;
-    }
-
-    .eyebrow::before {
-      content: "";
-
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: var(--lime);
-
-      box-shadow:
-        0 0 8px var(--lime);
+      margin-bottom: 25px;
     }
 
     .hero h1 {
-      font-size: 52px;
-      line-height: 1.08;
-      font-weight: 700;
-
-      letter-spacing: -0.5px;
-
-      margin-bottom: 22px;
+      font-size: clamp(55px, 10vw, 125px);
+      line-height: .9;
+      letter-spacing: -7px;
+      font-weight: 800;
     }
 
-    .hero h1 .accent {
-      color: var(--teal-glow);
+    .hero h1 span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.65);
     }
 
-    .hero p.lede {
-      font-size: 16.5px;
-      color: var(--muted);
-
-      line-height: 1.75;
-
-      max-width: 480px;
-
-      margin-bottom: 34px;
+    .hero-description {
+      max-width: 650px;
+      margin: 35px auto;
+      color: #c6c6c6;
+      line-height: 1.7;
+      font-size: 17px;
     }
 
-    .btn-row {
+    .hero-buttons {
       display: flex;
-      gap: 14px;
+      justify-content: center;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 14px 26px;
-      border-radius: 8px;
-
-      font-weight: 600;
-      font-size: 14.5px;
-
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      transition: all 0.2s ease;
+      padding: 14px 22px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      transition: .35s;
+      font-size: 14px;
     }
 
     .btn-primary {
       background: var(--gold);
-      color: #07090a;
+      color: #080808;
+      font-weight: 700;
     }
 
-    .btn-primary:hover {
-      background: #e0b95c;
-      transform: translateY(-2px);
+    .btn:hover {
+      transform: translateY(-4px);
     }
 
-    .btn-outline {
-      border: 1px solid var(--line);
-      color: var(--text);
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
-    .btn-outline:hover {
-      border-color: var(--teal-glow);
-      color: var(--teal-glow);
+    /* ================= GENERAL ================= */
+
+    section {
+      padding: 120px 7%;
     }
 
-    /* Hero Photo */
-
-    .hero-photo {
-      position: relative;
-    }
-
-    .beam-frame {
-      position: relative;
-
-      border-radius: 18px;
-      overflow: hidden;
-
-      border:
-        1px solid var(--line);
-
-      box-shadow:
-        0 0 0 1px rgba(43, 179, 163, 0.08),
-        0 30px 60px -20px rgba(0, 0, 0, 0.7),
-        0 0 80px -10px rgba(43, 179, 163, 0.25);
-    }
-
-    .beam-frame img {
-      width: 100%;
-      display: block;
-    }
-
-    .badge-tag {
-      position: absolute;
-
-      bottom: 18px;
-      left: 18px;
-      right: 18px;
-
-      background:
-        rgba(7, 9, 10, 0.72);
-
-      backdrop-filter: blur(6px);
-
-      border:
-        1px solid rgba(183, 211, 62, 0.4);
-
-      border-radius: 10px;
-
-      padding: 12px 16px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .badge-tag .role {
-      color: var(--lime);
+    .section-label {
+      color: var(--gold);
       font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
-    .badge-tag .status {
-      font-size: 11px;
-      color: var(--muted);
-
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .section-title {
+      font-size: clamp(40px, 7vw, 80px);
+      line-height: .95;
+      letter-spacing: -4px;
+      max-width: 850px;
     }
 
-    .badge-tag .status::before {
-      content: "";
-
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: #4ade80;
-
-      box-shadow:
-        0 0 6px #4ade80;
+    .section-title span {
+      color: #777;
     }
 
-    /* Sections */
+    /* ================= ABOUT ================= */
 
-    .section {
-      padding: 80px 0;
-      border-top:
-        1px solid var(--line);
+    .about {
+      background: #0b0b0b;
     }
-
-    .stitle {
-      display: flex;
-      align-items: flex-end;
-      gap: 18px;
-
-      margin-bottom: 44px;
-    }
-
-    .stitle .num {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 13px;
-      color: var(--void);
-
-      background: var(--teal-glow);
-
-      width: 30px;
-      height: 30px;
-
-      border-radius: 6px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-weight: 700;
-    }
-
-    .stitle h2 {
-      font-size: 28px;
-      font-weight: 700;
-    }
-
-    .stitle .rule {
-      flex: 1;
-
-      height: 1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--line),
-          transparent
-        );
-
-      margin-bottom: 12px;
-    }
-
-    /* About */
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 70px;
+      margin-top: 70px;
     }
 
-    .about-grid p {
-      color: var(--muted);
-      font-size: 15.5px;
-      line-height: 1.85;
-
-      margin-bottom: 16px;
+    .about-text {
+      color: #aaa;
+      font-size: 18px;
+      line-height: 1.9;
     }
 
-    .stat-row {
+    .facts {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-
-      margin-top: 8px;
-    }
-
-    .stat {
-      border:
-        1px solid var(--line);
-
-      border-radius: 12px;
-
-      padding: 20px;
-
-      background: var(--panel);
-    }
-
-    .stat .n {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 28px;
-      font-weight: 700;
-
-      color: var(--gold);
-    }
-
-    .stat .l {
-      font-size: 12.5px;
-      color: var(--muted);
-
-      margin-top: 4px;
-    }
-
-    /* Skills */
-
-    .skill-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 14px;
-    }
-
-    .skill-card {
-      border:
-        1px solid var(--line);
-
-      background: var(--panel);
-
-      border-radius: 12px;
-
-      padding: 22px 18px;
-
-      transition: all 0.2s ease;
-    }
-
-    .skill-card:hover {
-      border-color: var(--teal-glow);
-      transform: translateY(-3px);
-    }
-
-    .skill-card .ic {
-      font-size: 22px;
-      margin-bottom: 14px;
-    }
-
-    .skill-card .t {
-      font-weight: 600;
-      font-size: 14.5px;
-
-      margin-bottom: 4px;
-    }
-
-    .skill-card .d {
-      font-size: 12px;
-      color: var(--muted);
-
-      line-height: 1.5;
-    }
-
-    /* Experience */
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns:
-        140px 1fr;
-
-      gap: 28px;
-
-      padding: 28px 0;
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-    .timeline-item:last-child {
-      border-bottom: none;
-    }
-
-    .tl-date {
-      color: var(--teal-glow);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .tl-role {
-      font-size: 19px;
-      font-weight: 700;
-
-      margin-bottom: 4px;
-    }
-
-    .tl-org {
-      color: var(--gold);
-      font-size: 13.5px;
-
-      margin-bottom: 12px;
-
-      font-weight: 600;
-    }
-
-    .tl-desc {
-      color: var(--muted);
-      font-size: 14.5px;
-
-      line-height: 1.75;
-
-      max-width: 640px;
-    }
-
-    /* Connect */
-
-    .brand-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 18px;
-    }
-
-    .brand-card {
-      border:
-        1px solid var(--line);
-
-      background: var(--panel);
-
-      border-radius: 14px;
-
-      padding: 26px;
-
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-
-      transition: all 0.2s ease;
-    }
-
-    .brand-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-3px);
-    }
-
-    .brand-card .bi {
-      width: 44px;
-      height: 44px;
-
-      border-radius: 10px;
-
-      background: var(--panel-2);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 19px;
-
-      border:
-        1px solid var(--line);
-    }
-
-    .brand-card h3 {
-      font-size: 16px;
-    }
-
-    .brand-card p {
-      font-size: 13px;
-      color: var(--muted);
-
-      line-height: 1.6;
-    }
-
-    .brand-card .go {
-      font-size: 12.5px;
-      color: var(--teal-glow);
-
-      font-weight: 600;
-
-      margin-top: auto;
-    }
-
-    /* Footer */
-
-    footer {
-      padding: 90px 0 40px;
-
-      border-top:
-        1px solid var(--line);
-    }
-
-    .cta-box {
-      text-align: center;
-
-      padding: 60px 40px;
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          180deg,
-          var(--panel),
-          var(--void)
-        );
-
-      border:
-        1px solid var(--line);
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-box::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        radial-gradient(
-          400px 200px at 50% 0%,
-          rgba(43, 179, 163, 0.18),
-          transparent 70%
-        );
-    }
-
-    .cta-box h2 {
-      font-size: 30px;
-
-      margin-bottom: 14px;
-
-      position: relative;
-    }
-
-    .cta-box p {
-      color: var(--muted);
-
-      margin-bottom: 30px;
-
-      position: relative;
-    }
-
-    .cta-btns {
-      display: flex;
-      gap: 14px;
-
-      justify-content: center;
-      flex-wrap: wrap;
-
-      position: relative;
-    }
-
-    .foot-links {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      margin-top: 56px;
-
-      flex-wrap: wrap;
-      gap: 16px;
-
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .foot-social {
-      display: flex;
       gap: 20px;
     }
 
-    .foot-social a:hover {
-      color: var(--teal-glow);
+    .fact {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--glass);
     }
 
-    /* Animations */
-
-    @keyframes floaty {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
+    .fact small {
+      color: #777;
+      display: block;
+      margin-bottom: 7px;
     }
 
-    @keyframes pulseGlow {
-      0%,
-      100% {
-        box-shadow:
-          0 0 6px currentColor;
-
-        opacity: 1;
-      }
-
-      50% {
-        box-shadow:
-          0 0 14px currentColor;
-
-        opacity: 0.7;
-      }
+    .fact strong {
+      font-size: 20px;
     }
 
-    @keyframes floatGlow {
-      0%,
-      100% {
-        transform:
-          translateY(0)
-          scale(1);
+    /* ================= SKILLS ================= */
 
-        opacity: 0.7;
-      }
-
-      50% {
-        transform:
-          translateY(-10px)
-          scale(1.05);
-
-        opacity: 1;
-      }
+    .skills-grid {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
     }
 
-    .beam-frame {
-      animation:
-        floaty 6s ease-in-out infinite;
+    .skill-card {
+      min-height: 220px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      transition: .4s;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.06),
+        rgba(255,255,255,.01)
+      );
     }
 
-    .eyebrow::before,
-    .badge-tag .status::before {
-      animation:
-        pulseGlow 2.2s ease-in-out infinite;
+    .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212,175,55,.5);
     }
 
-    .hero-photo::before {
-      content: "";
+    .skill-card h3 {
+      margin-bottom: 25px;
+      color: var(--gold);
+    }
 
-      position: absolute;
-      inset: -40px;
+    .skill-card p {
+      color: #999;
+      line-height: 2;
+    }
 
+    /* ================= WORK ================= */
+
+    .work {
+      background: #0b0b0b;
+    }
+
+    .projects {
+      margin-top: 70px;
+      display: grid;
+      gap: 25px;
+    }
+
+    .project {
+      min-height: 420px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 35px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: .5s;
       background:
-        radial-gradient(
-          circle at 50% 30%,
-          rgba(43, 179, 163, 0.25),
-          transparent 65%
-        );
-
-      z-index: -1;
-
-      animation:
-        floatGlow 6s ease-in-out infinite;
+        linear-gradient(135deg, #171717, #080808);
     }
 
-    /* Scroll Reveal */
-
-    .reveal {
-      opacity: 0;
-
-      transform:
-        translateY(24px);
-
-      transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+    .project:hover {
+      transform: scale(.99);
+      border-color: rgba(212,175,55,.5);
     }
 
-    .reveal.in {
-      opacity: 1;
-
-      transform:
-        translateY(0);
+    .project-number {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: #555;
+      font-size: 13px;
     }
 
-    /* Mobile */
+    .project h3 {
+      font-size: clamp(35px, 5vw, 65px);
+      letter-spacing: -3px;
+    }
 
-    @media (max-width: 860px) {
+    .project p {
+      color: #999;
+      margin-top: 12px;
+    }
 
-      .navlinks {
+    .project-link {
+      color: var(--gold);
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    /* ================= LAB ================= */
+
+    .lab-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .lab-item {
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: .3s;
+      color: #aaa;
+    }
+
+    .lab-item:hover {
+      background: var(--gold);
+      color: #000;
+      transform: rotate(-2deg);
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact {
+      text-align: center;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(50px, 10vw, 130px);
+      letter-spacing: -7px;
+      line-height: .85;
+      max-width: 1000px;
+    }
+
+    .contact h2 span {
+      color: var(--gold);
+    }
+
+    .contact p {
+      color: #888;
+      margin: 35px 0;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 30px 7%;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
         display: none;
       }
 
-      .hero-grid {
-        grid-template-columns: 1fr;
+      nav {
+        justify-content: center;
       }
 
       .hero h1 {
-        font-size: 36px;
+        letter-spacing: -4px;
       }
 
       .about-grid {
         grid-template-columns: 1fr;
       }
 
-      .skill-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .brand-grid {
+      .skills-grid {
         grid-template-columns: 1fr;
       }
 
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 8px;
+      .lab-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .hero {
-        padding:
-          60px 0;
+      section {
+        padding: 90px 6%;
       }
 
-      .hero-photo {
-        max-width: 500px;
-      }
-    }
-
-    @media (max-width: 560px) {
-
-      nav {
-        padding:
-          16px 20px;
-      }
-
-      .wrap {
-        padding:
-          0 20px;
-      }
-
-      .hero h1 {
-        font-size: 34px;
-      }
-
-      .nav-cta {
-        padding:
-          7px 12px;
-
-        font-size: 11px;
-      }
-
-      .stat-row {
-        grid-template-columns: 1fr;
-      }
-
-      .skill-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .badge-tag {
+      footer {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
-
-      .section {
-        padding:
-          60px 0;
-      }
-
-      .cta-box {
-        padding:
-          40px 20px;
-      }
-
-      .cta-box h2 {
-        font-size: 26px;
+        gap: 10px;
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
+    /* ================= CURSOR ================= */
 
-      html {
-        scroll-behavior: auto;
-      }
+    .cursor {
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
 
-      * {
-        transition: none !important;
-        animation: none !important;
+    @media (max-width: 800px) {
+      .cursor {
+        display: none;
       }
     }
   </style>
@@ -957,760 +479,341 @@
 
 <body>
 
-  <!-- Navigation -->
+  <div class="cursor"></div>
 
-  <header>
+  <!-- NAVIGATION -->
 
-    <nav>
+  <nav>
+    <a href="#" class="logo">SK<span>.</span></a>
 
-      <div class="logo">
-        SNK<span>.</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#lab">Lab</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Software Engineer · Product Designer
       </div>
 
-      <div class="navlinks">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#connect">Connect</a>
+      <h1>
+        SHAHNEIL<br />
+        <span>KHAN</span>
+      </h1>
+
+      <p class="hero-description">
+        I design and engineer meaningful digital experiences —
+        combining UI/UX, web development, software engineering
+        and emerging AI technologies.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#work" class="btn btn-primary">
+          Explore My Work
+        </a>
+
+        <a href="#contact" class="btn btn-secondary">
+          Let's Talk
+        </a>
       </div>
 
-      <a
-        class="nav-cta"
-        href="assets/Shah_Neil_Khan_CV.pdf"
-        download
-      >
-        Download CV
-      </a>
-
-    </nav>
+    </div>
 
   </header>
 
+  <!-- ABOUT -->
 
-  <!-- Hero Section -->
+  <section id="about" class="about">
 
-  <section class="hero">
+    <div class="section-label">01 — About</div>
 
-    <div class="wrap hero-grid">
+    <h2 class="section-title">
+      Designer's eye.<br />
+      <span>Engineer's mind.</span>
+    </h2>
 
-      <div>
+    <div class="about-grid">
 
-        <div class="eyebrow">
-          Available for remote UX/UI work
+      <div class="about-text">
+        I am a multidisciplinary digital professional focused on
+        creating products that are useful, intuitive and beautifully
+        engineered.
+
+        <br /><br />
+
+        My work sits between product design and software engineering.
+        I enjoy turning complex problems into simple interfaces and
+        scalable digital experiences.
+      </div>
+
+      <div class="facts">
+
+        <div class="fact">
+          <small>ROLE</small>
+          <strong>Software Engineer & UI/UX Designer</strong>
         </div>
 
-        <h1>
-          Designing digital
-          <br>
+        <div class="fact">
+          <small>FOCUS</small>
+          <strong>Web · Product · AI · UX</strong>
+        </div>
 
-          products with
-          <span class="accent">
-            clarity
-          </span>
+        <div class="fact">
+          <small>APPROACH</small>
+          <strong>Research → Design → Build → Ship</strong>
+        </div>
 
-          <br>
+      </div>
 
-          &amp; craft.
-        </h1>
+    </div>
 
-        <p class="lede">
+  </section>
 
-          I'm Shah Neil Khan —
-          a Software Engineer &amp;
-          UI/UX Design Expert based in Sylhet,
-          Bangladesh, currently leading UX for
-          Yaqeen Institute (Texas, USA) remotely.
+  <!-- SKILLS -->
 
+  <section id="skills">
+
+    <div class="section-label">02 — Capabilities</div>
+
+    <h2 class="section-title">
+      What I <span>bring</span> to the table.
+    </h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <h3>UI / UX</h3>
+        <p>
+          Product Design<br />
+          UX Research<br />
+          Design Systems<br />
+          Wireframes<br />
+          Prototyping<br />
+          Interaction Design
         </p>
-
-        <div class="btn-row">
-
-          <a
-            class="btn btn-primary"
-            href="assets/Shah_Neil_Khan_CV.pdf"
-            download
-          >
-            ⬇ Download CV
-          </a>
-
-          <a
-            class="btn btn-outline"
-            href="https://wa.me/8801705633733"
-            target="_blank"
-            rel="noopener"
-          >
-            💬 Chat on WhatsApp
-          </a>
-
-        </div>
-
       </div>
 
-
-      <!-- Hero Image -->
-
-      <div class="hero-photo">
-
-        <div class="beam-frame">
-
-          <img
-            src="assets/hero.png"
-            alt="Shah Neil Khan"
-          >
-
-          <div class="badge-tag">
-
-            <span class="role">
-              LEAD UX DIGITAL EXPERT
-            </span>
-
-            <span class="status">
-              Remote · Texas, USA
-            </span>
-
-          </div>
-
-        </div>
-
+      <div class="skill-card">
+        <h3>Frontend</h3>
+        <p>
+          HTML / CSS<br />
+          JavaScript<br />
+          TypeScript<br />
+          React<br />
+          Next.js<br />
+          Tailwind CSS
+        </p>
       </div>
 
-    </div>
-
-  </section>
-
-
-  <!-- About Section -->
-
-  <section
-    class="section reveal"
-    id="about"
-  >
-
-    <div class="wrap">
-
-      <div class="stitle">
-
-        <span class="num">
-          01
-        </span>
-
-        <h2>
-          About
-        </h2>
-
-        <span class="rule"></span>
-
+      <div class="skill-card">
+        <h3>Backend</h3>
+        <p>
+          Node.js<br />
+          REST APIs<br />
+          PostgreSQL<br />
+          MongoDB<br />
+          Authentication<br />
+          Database Design
+        </p>
       </div>
 
+      <div class="skill-card">
+        <h3>Engineering</h3>
+        <p>
+          Git & GitHub<br />
+          Docker<br />
+          Linux<br />
+          Testing<br />
+          System Design<br />
+          CI / CD
+        </p>
+      </div>
 
-      <div class="about-grid">
+      <div class="skill-card">
+        <h3>Cloud</h3>
+        <p>
+          Vercel<br />
+          AWS<br />
+          Cloudflare<br />
+          DNS<br />
+          Deployment<br />
+          Performance
+        </p>
+      </div>
 
-        <div>
-
-          <p>
-
-            I design and build digital products end-to-end —
-            from user research and wireframes to polished,
-            production-ready interfaces.
-
-            My background blends software engineering
-            with UI/UX design, which means I don't just
-            hand off mockups — I understand how they get built.
-
-          </p>
-
-
-          <p>
-
-            Since 2026, I've been leading UX for
-            Yaqeen Institute, a Texas-based organization,
-            working fully remote from Moulvibazar, Sylhet.
-
-            Self-taught and hands-on,
-            I've built my skillset through real projects
-            rather than a classroom.
-
-          </p>
-
-        </div>
-
-
-        <div class="stat-row">
-
-          <div class="stat">
-
-            <div class="n">
-              2026
-            </div>
-
-            <div class="l">
-              Leading UX at Yaqeen Institute
-            </div>
-
-          </div>
-
-
-          <div class="stat">
-
-            <div class="n">
-              8+
-            </div>
-
-            <div class="l">
-              Core design &amp; dev skills
-            </div>
-
-          </div>
-
-
-          <div class="stat">
-
-            <div class="n">
-              100%
-            </div>
-
-            <div class="l">
-              Remote-first workflow
-            </div>
-
-          </div>
-
-
-          <div class="stat">
-
-            <div class="n">
-              BD
-            </div>
-
-            <div class="l">
-              Based in Sylhet, Bangladesh
-            </div>
-
-          </div>
-
-        </div>
-
+      <div class="skill-card">
+        <h3>AI</h3>
+        <p>
+          LLM APIs<br />
+          AI Agents<br />
+          RAG<br />
+          AI UX<br />
+          Automation<br />
+          AI Products
+        </p>
       </div>
 
     </div>
 
   </section>
 
+  <!-- WORK -->
 
-  <!-- Skills Section -->
+  <section id="work" class="work">
 
-  <section
-    class="section reveal"
-    id="skills"
-  >
+    <div class="section-label">03 — Selected Work</div>
 
-    <div class="wrap">
+    <h2 class="section-title">
+      Things I've <span>designed & built.</span>
+    </h2>
 
-      <div class="stitle">
+    <div class="projects">
 
-        <span class="num">
-          02
-        </span>
+      <article class="project">
 
-        <h2>
-          Skills
-        </h2>
+        <div class="project-number">01</div>
 
-        <span class="rule"></span>
-
-      </div>
-
-
-      <div class="skill-grid">
-
-
-        <div class="skill-card">
-
-          <div class="ic">
-            🎨
-          </div>
-
-          <div class="t">
-            Figma
-          </div>
-
-          <div class="d">
-            Interface design &amp;
-            design systems
-          </div>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <div class="ic">
-            🖌️
-          </div>
-
-          <div class="t">
-            Photoshop / Illustrator
-          </div>
-
-          <div class="d">
-            Visual &amp;
-            brand assets
-          </div>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <div class="ic">
-            🧩
-          </div>
-
-          <div class="t">
-            UI Design
-          </div>
-
-          <div class="d">
-            Clean, usable interfaces
-          </div>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <div class="ic">
-            🔍
-          </div>
-
-          <div class="t">
-            UX Research &amp;
-            Wireframing
-          </div>
-
-          <div class="d">
-            User-first problem solving
-          </div>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <div class="ic">
-            ⚡
-          </div>
-
-          <div class="t">
-            Prototyping
-          </div>
-
-          <div class="d">
-            Interactive, testable flows
-          </div>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <div class="ic">
-            🧱
-          </div>
-
-          <div class="t">
-            HTML / CSS
-          </div>
-
-          <div class="d">
-            Semantic, responsive markup
-          </div>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <div class="ic">
-            💻
-          </div>
-
-          <div class="t">
-            JavaScript
-          </div>
-
-          <div class="d">
-            Interactive front-end logic
-          </div>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <div class="ic">
-            🌐
-          </div>
-
-          <div class="t">
-            WordPress
-          </div>
-
-          <div class="d">
-            CMS builds &amp;
-            customization
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- Experience Section -->
-
-  <section
-    class="section reveal"
-    id="experience"
-  >
-
-    <div class="wrap">
-
-      <div class="stitle">
-
-        <span class="num">
-          03
-        </span>
-
-        <h2>
-          Experience
-        </h2>
-
-        <span class="rule"></span>
-
-      </div>
-
-
-      <div class="timeline-item">
-
-        <div class="tl-date">
-          2026 — Present
-        </div>
-
-
-        <div>
-
-          <div class="tl-role">
-            UX Lead Digital Expert
-          </div>
-
-          <div class="tl-org">
-            Yaqeen Institute ·
-            Texas, USA (Remote)
-          </div>
-
-          <div class="tl-desc">
-
-            Leading UI/UX design for the organization's
-            websites and digital products —
-            covering product design,
-            building user-friendly interfaces,
-            and coordinating with the team
-            to continuously improve digital experiences.
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- Connect Section -->
-
-  <section
-    class="section reveal"
-    id="connect"
-  >
-
-    <div class="wrap">
-
-      <div class="stitle">
-
-        <span class="num">
-          04
-        </span>
-
-        <h2>
-          Find me elsewhere
-        </h2>
-
-        <span class="rule"></span>
-
-      </div>
-
-
-      <div class="brand-grid">
-
-
-        <!-- LinkedIn -->
-
-        <a
-          class="brand-card"
-          href="https://www.linkedin.com/in/uxuidesigners"
-          target="_blank"
-          rel="noopener"
-        >
-
-          <div class="bi">
-            in
-          </div>
-
-          <h3>
-            LinkedIn
-          </h3>
-
-          <p>
-            Professional profile,
-            experience &amp; recommendations.
-          </p>
-
-          <div class="go">
-            View profile →
-          </div>
-
-        </a>
-
-
-        <!-- GitHub -->
-
-        <a
-          class="brand-card"
-          href="https://github.com/shahneilkhan/shahneilkhan.github.io"
-          target="_blank"
-          rel="noopener"
-        >
-
-          <div class="bi">
-            ⌥
-          </div>
-
-          <h3>
-            GitHub
-          </h3>
-
-          <p>
-            Code, this portfolio's source
-            &amp; front-end projects.
-          </p>
-
-          <div class="go">
-            View repos →
-          </div>
-
-        </a>
-
-
-        <!-- Behance -->
-
-        <a
-          class="brand-card"
-          href="https://www.behance.net/thesnkdesign"
-          target="_blank"
-          rel="noopener"
-        >
-
-          <div class="bi">
-            Bē
-          </div>
-
-          <h3>
-            Behance
-          </h3>
-
-          <p>
-            Case studies &amp;
-            visual design work.
-          </p>
-
-          <div class="go">
-            View work →
-          </div>
-
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- Footer -->
-
-  <footer class="reveal">
-
-    <div class="wrap">
-
-      <div class="cta-box">
-
-        <h2>
-          Let's build something clean
-          &amp; useful.
-        </h2>
+        <h3>Yaqeen</h3>
 
         <p>
-          Open to remote UX/UI
-          &amp; front-end projects —
-          reply within a day.
+          Product design, UX research and digital experience.
         </p>
 
+        <a href="#" class="project-link">
+          View Case Study →
+        </a>
 
-        <div class="cta-btns">
+      </article>
 
-          <a
-            class="btn btn-primary"
-            href="https://wa.me/8801705633733"
-            target="_blank"
-            rel="noopener"
-          >
-            💬 Message on WhatsApp
-          </a>
+      <article class="project">
 
+        <div class="project-number">02</div>
 
-          <a
-            class="btn btn-outline"
-            href="assets/Shah_Neil_Khan_CV.pdf"
-            download
-          >
-            ⬇ Download CV
-          </a>
+        <h3>Digital Product</h3>
 
-        </div>
+        <p>
+          A modern web product focused on simplicity and usability.
+        </p>
 
-      </div>
+        <a href="#" class="project-link">
+          View Case Study →
+        </a>
 
+      </article>
 
-      <div class="foot-links">
+      <article class="project">
 
-        <div>
-          © 2026 Shah Neil Khan.
-          Moulvibazar, Sylhet, Bangladesh.
-        </div>
+        <div class="project-number">03</div>
 
+        <h3>AI Experience</h3>
 
-        <div class="foot-social">
+        <p>
+          Exploring the intersection of AI, product design and UX.
+        </p>
 
-          <a
-            href="https://www.linkedin.com/in/uxuidesigners"
-            target="_blank"
-            rel="noopener"
-          >
-            LinkedIn
-          </a>
+        <a href="#" class="project-link">
+          View Case Study →
+        </a>
 
-
-          <a
-            href="https://github.com/shahneilkhan/shahneilkhan.github.io"
-            target="_blank"
-            rel="noopener"
-          >
-            GitHub
-          </a>
-
-
-          <a
-            href="https://www.behance.net/thesnkdesign"
-            target="_blank"
-            rel="noopener"
-          >
-            Behance
-          </a>
-
-        </div>
-
-      </div>
+      </article>
 
     </div>
+
+  </section>
+
+  <!-- DESIGN LAB -->
+
+  <section id="lab">
+
+    <div class="section-label">04 — Design Lab</div>
+
+    <h2 class="section-title">
+      Experiments,<br />
+      <span>ideas & curiosity.</span>
+    </h2>
+
+    <div class="lab-grid">
+
+      <div class="lab-item">Motion UI</div>
+      <div class="lab-item">AI × UX</div>
+      <div class="lab-item">3D Web</div>
+      <div class="lab-item">Design Systems</div>
+      <div class="lab-item">Creative Coding</div>
+      <div class="lab-item">Micro Interactions</div>
+      <div class="lab-item">Prototypes</div>
+      <div class="lab-item">Experiments</div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="contact">
+
+    <div class="section-label">05 — Contact</div>
+
+    <h2>
+      Let's build<br />
+      <span>something meaningful.</span>
+    </h2>
+
+    <p>
+      Have an idea, product or project in mind?
+    </p>
+
+    <a
+      href="mailto:hello@shahneilkhan.com"
+      class="btn btn-primary"
+    >
+      Start a Conversation →
+    </a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <span>© 2026 Shahneil Khan</span>
+
+    <span>
+      Designed & Engineered with intention.
+    </span>
 
   </footer>
 
-
-  <!-- JavaScript -->
-
   <script>
+    // Custom cursor
 
-    const revealEls =
-      document.querySelectorAll(
-        ".reveal"
-      );
+    const cursor = document.querySelector(".cursor");
 
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
 
-    if (
-      "IntersectionObserver"
-      in window
-    ) {
+    // Simple parallax effect for Kaaba background
 
-      const observer =
-        new IntersectionObserver(
-          (entries) => {
+    const hero = document.querySelector(".hero");
 
-            entries.forEach(
-              (entry) => {
+    window.addEventListener("scroll", () => {
+      const scroll = window.scrollY;
 
-                if (
-                  entry.isIntersecting
-                ) {
-
-                  entry.target
-                    .classList
-                    .add("in");
-
-                  observer.unobserve(
-                    entry.target
-                  );
-
-                }
-
-              }
-            );
-
-          },
-          {
-            threshold: 0.15
-          }
-        );
-
-
-      revealEls.forEach(
-        (element) => {
-
-          observer.observe(
-            element
-          );
-
-        }
-      );
-
-    } else {
-
-      revealEls.forEach(
-        (element) => {
-
-          element.classList
-            .add("in");
-
-        }
-      );
-
-    }
-
+      if (scroll < window.innerHeight) {
+        hero.style.backgroundPosition =
+          `center ${50 + scroll * 0.03}%`;
+      }
+    });
   </script>
 
 </body>
