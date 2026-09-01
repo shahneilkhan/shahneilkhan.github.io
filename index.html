@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shah Neil Khan — UX Lead Digital Expert</title>
-<meta name="description" content="Shah Neil Khan — UI/UX Designer & Software Engineer. UX Lead Digital Expert at Yaqeen Institute. Figma, Prototyping, UX Research.">
+<title>WebsitesDeal — Premium Website Templates</title>
+<meta name="description" content="Browse and order premium website demo templates. Fast delivery, easy WhatsApp ordering.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,108 +12,102 @@
 <!-- NAVBAR -->
 <header class="navbar">
   <div class="nav-left">
-    <span class="brand-name">SHAH NEIL KHAN</span>
+    <img src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg" alt="WebsitesDeal Logo" class="site-logo">
+    <span class="brand-name" data-en="WebsitesDeal" data-bn="ওয়েবসাইটসডিল">WebsitesDeal</span>
   </div>
-  <nav class="nav-menu">
-    <a href="#about">About</a>
-    <a href="#expertise">Expertise</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <a href="#contact" class="talk-btn">Let's Talk ↗</a>
+  <div class="nav-right">
+    <button id="settingsBtn" class="settings-btn" aria-label="Settings">⚙️</button>
+  </div>
 </header>
+
+<!-- SETTINGS PANEL -->
+<div id="settingsPanel" class="settings-panel hidden">
+  <h3 data-en="Settings" data-bn="সেটিংস">Settings</h3>
+
+  <div class="setting-row">
+    <span data-en="Language" data-bn="ভাষা">Language</span>
+    <div class="toggle-group">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="bn">বাং</button>
+    </div>
+  </div>
+
+  <div class="setting-row">
+    <span data-en="Theme" data-bn="থিম">Theme</span>
+    <div class="toggle-group">
+      <button class="theme-btn" data-theme-choice="light">☀️</button>
+      <button class="theme-btn active" data-theme-choice="dark">🌙</button>
+      <button class="theme-btn" data-theme-choice="auto">🖥️</button>
+    </div>
+  </div>
+
+  <div class="setting-row">
+    <span data-en="Animation" data-bn="অ্যানিমেশন">Animation</span>
+    <div class="toggle-group">
+      <button id="animOn" class="anim-btn active" data-anim="on" data-en="On" data-bn="চালু">On</button>
+      <button id="animOff" class="anim-btn" data-anim="off" data-en="Off" data-bn="বন্ধ">Off</button>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="hero-greet">HELLO, I'M</p>
-    <h1>SHAH NEIL<br>KHAN.</h1>
-    <p class="hero-role">SOFTWARE ENGINEER<br>&amp; AI / CONTEXT ENGINEER</p>
-    <p class="hero-desc">I build intelligent software, AI systems, and context-aware digital experiences.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">EXPLORE MY WORK ↗</a>
-      <a href="#contact" class="btn-secondary">LET'S TALK</a>
+  <h1 data-en="Premium Website Demos" data-bn="প্রিমিয়াম ওয়েবসাইট ডেমো">Premium Website Demos</h1>
+  <p data-en="Handpicked website templates. Preview, choose, and order in one click." data-bn="বাছাই করা ওয়েবসাইট টেমপ্লেট। প্রিভিউ করুন, পছন্দ করুন, এক ক্লিকে অর্ডার করুন।">Handpicked website templates. Preview, choose, and order in one click.</p>
+</section>
+
+<!-- PRODUCT GRID -->
+<section class="product-grid">
+
+  <div class="product-card">
+    <div class="product-image">
+      <img src="https://via.placeholder.com/400x250/1a1a1f/888?text=Business+Landing" alt="Business Landing Page">
+    </div>
+    <div class="product-info">
+      <h3 class="product-title" data-en="Business Landing Page" data-bn="বিজনেস ল্যান্ডিং পেজ">Business Landing Page</h3>
+      <p class="product-price">৳ 1500</p>
+      <a href="https://wa.me/8801705633700?text=আমি%20এই%20Template%20টি%20Order%20করতে%20চাই%3A%20Business%20Landing%20Page"
+         target="_blank" class="order-btn" data-en="Order Now" data-bn="অর্ডার করুন">Order Now</a>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="context-diagram">
-      <div class="flow-node">USER</div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-node highlight">CONTEXT<br>ENGINE</div>
-      <div class="flow-branch">↙&nbsp;&nbsp;↓&nbsp;&nbsp;↘</div>
-      <div class="flow-row">
-        <div class="flow-node small">DATA</div>
-        <div class="flow-node small">MEMORY</div>
-        <div class="flow-node small">TOOLS</div>
-      </div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-node accent">AI</div>
+  <div class="product-card">
+    <div class="product-image">
+      <img src="https://via.placeholder.com/400x250/1a1a1f/888?text=Portfolio+Site" alt="Portfolio Website">
+    </div>
+    <div class="product-info">
+      <h3 class="product-title" data-en="Portfolio Website" data-bn="পোর্টফোলিও ওয়েবসাইট">Portfolio Website</h3>
+      <p class="product-price">৳ 1800</p>
+      <a href="https://wa.me/8801705633700?text=আমি%20এই%20Template%20টি%20Order%20করতে%20চাই%3A%20Portfolio%20Website"
+         target="_blank" class="order-btn" data-en="Order Now" data-bn="অর্ডার করুন">Order Now</a>
     </div>
   </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about" class="section">
-  <h2>About</h2>
-  <p class="section-text">I'm Shah Neil Khan, a self-taught Software Engineer and UI/UX Design Expert based in Sylhet, Bangladesh. I work remotely as UX Lead Digital Expert at Yaqeen Institute, Texas — designing interfaces and researching user experience for digital products, without any formal design degree.</p>
-</section>
-
-<!-- EXPERTISE / SKILLS -->
-<section id="expertise" class="section">
-  <h2>Expertise</h2>
-  <div class="skills-grid">
-    <div class="skill-card">Figma</div>
-    <div class="skill-card">Photoshop / Illustrator</div>
-    <div class="skill-card">JavaScript</div>
-    <div class="skill-card">HTML / CSS</div>
-    <div class="skill-card">WordPress</div>
-    <div class="skill-card">UI Design</div>
-    <div class="skill-card">UX Research & Wireframing</div>
-    <div class="skill-card">Prototyping</div>
+  <div class="product-card">
+    <div class="product-image">
+      <img src="https://via.placeholder.com/400x250/1a1a1f/888?text=E-commerce+Store" alt="E-commerce Store">
+    </div>
+    <div class="product-info">
+      <h3 class="product-title" data-en="E-commerce Store" data-bn="ই-কমার্স স্টোর">E-commerce Store</h3>
+      <p class="product-price">৳ 2500</p>
+      <a href="https://wa.me/8801705633700?text=আমি%20এই%20Template%20টি%20Order%20করতে%20চাই%3A%20E-commerce%20Store"
+         target="_blank" class="order-btn" data-en="Order Now" data-bn="অর্ডার করুন">Order Now</a>
+    </div>
   </div>
+
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="section">
-  <h2>Projects</h2>
-  <div class="project-grid">
-    <a href="https://shahneilkhan.github.io/demosite" target="_blank" class="project-card">
-      <h3>SNK Demo Market</h3>
-      <p>Marketplace for premium website demo templates with WhatsApp ordering.</p>
-    </a>
-    <a href="https://behance.net/thesnkdesign" target="_blank" class="project-card">
-      <h3>Behance Portfolio</h3>
-      <p>UI/UX case studies and visual design work.</p>
-    </a>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="section">
-  <h2>Experience</h2>
-  <div class="experience-item">
-    <h3>UX Lead Digital Expert</h3>
-    <p class="exp-company">Yaqeen Institute — Texas, USA (Remote) · 2026 – Present</p>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section contact-section">
-  <h2>Contact</h2>
-  <p class="section-text">Available for remote UI/UX and product design work.</p>
-  <div class="contact-links">
-    <a href="https://wa.me/8801705633733" target="_blank" class="btn-primary">WhatsApp</a>
-    <a href="https://linkedin.com/in/uxuidesigners" target="_blank" class="btn-secondary">LinkedIn</a>
-    <a href="https://github.com/shahneilkhan" target="_blank" class="btn-secondary">GitHub</a>
-    <a href="https://behance.net/thesnkdesign" target="_blank" class="btn-secondary">Behance</a>
-  </div>
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <img src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg" alt="WebsitesDeal Logo" class="cta-logo">
+  <h2 data-en="Looking for a custom website?" data-bn="কাস্টম ওয়েবসাইট দরকার?">Looking for a custom website?</h2>
+  <p data-en="We design and build websites tailored to your business needs." data-bn="আপনার ব্যবসার প্রয়োজন অনুযায়ী আমরা ওয়েবসাইট ডিজাইন ও তৈরি করি।">We design and build websites tailored to your business needs.</p>
+  <a href="https://wa.me/8801705633700?text=আমি%20একটি%20Custom%20Website%20বানাতে%20চাই" target="_blank" class="btn-primary" data-en="Let's Connect" data-bn="যোগাযোগ করুন">Let's Connect</a>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p>© 2026 Shah Neil Khan. All rights reserved.</p>
+  <p data-en="© 2026 WebsitesDeal. All rights reserved." data-bn="© ২০২৬ ওয়েবসাইটসডিল। সর্বস্বত্ব সংরক্ষিত।">© 2026 WebsitesDeal. All rights reserved.</p>
 </footer>
 
 <script src="script.js"></script>
