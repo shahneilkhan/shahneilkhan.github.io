@@ -36,6 +36,18 @@ a { color: inherit; }
   border-bottom: 1px solid var(--border);
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
 .navbar .brand-name {
   font-weight: 700;
   font-size: 16px;
@@ -315,6 +327,45 @@ a { color: inherit; }
   color: var(--text-dim);
   font-size: 13px;
   border-top: 1px solid var(--border);
+}
+
+/* ===== ABOUT STATS ===== */
+.about-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.about-grid .section-text {
+  flex: 1;
+  min-width: 260px;
+}
+
+.about-stats {
+  flex: 1;
+  min-width: 260px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.stat-label {
+  color: var(--text-dim);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* ===== COMING SOON BRAND CARDS ===== */
