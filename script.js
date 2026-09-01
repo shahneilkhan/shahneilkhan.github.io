@@ -1,25 +1,46 @@
-/* ===== COMING SOON BRAND CARDS ===== */
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", () => {
+  /* ===== COMING SOON CARDS ===== */
   const comingSoonCards = document.querySelectorAll(".project-card.soon");
 
-  comingSoonCards.forEach((card) => {
-    // Prevent clicks on Coming Soon cards
-    card.addEventListener("click", (event) => {
+  comingSoonCards.forEach(function (card) {
+    card.addEventListener("click", function (event) {
       event.preventDefault();
       event.stopPropagation();
     });
+  });
 
-    // Prevent keyboard activation
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
+
+  /* ===== SMOOTH SCROLL ===== */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      const targetId = this.getAttribute("href");
+
+      if (targetId === "#") return;
+
+      const target = document.querySelector(targetId);
+
+      if (target) {
         event.preventDefault();
-        event.stopPropagation();
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
       }
     });
-
-    // Accessibility
-    card.setAttribute("aria-disabled", "true");
-    card.setAttribute("tabindex", "-1");
   });
+
+
+  /* ===== NAVBAR SCROLL EFFECT ===== */
+  const navbar = document.querySelector(".navbar");
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 30) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
 });
