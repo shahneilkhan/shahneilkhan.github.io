@@ -329,6 +329,35 @@ a { color: inherit; }
   border-top: 1px solid var(--border);
 }
 
+/* ===== CASE STUDY ===== */
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.case-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.case-label {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.case-text {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 /* ===== ABOUT STATS ===== */
 .about-grid {
   display: flex;
