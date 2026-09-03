@@ -1,41 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tabayyun TV — Shah Neil Khan</title>
-<meta name="description" content="Tabayyun TV — a Dawah platform by Shah Neil Khan, seeking clarity and truth.">
+<title>Shah Neil Khan — UX Lead Digital Expert</title>
+<meta name="description" content="Shah Neil Khan — UI/UX Designer & Software Engineer. UX Lead Digital Expert at Yaqeen Institute. Figma, Prototyping, UX Research.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-left">
+    <img src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg" alt="SNK Logo" class="site-logo">
+    <span class="brand-name">SHAH NEIL KHAN</span>
+  </div>
+  <nav class="nav-menu">
+    <a href="#about">About</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#projects">Projects</a>
+    <a href="#case-study">Case Study</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="https://wa.me/8801705633700" target="_blank" class="talk-btn">Let's Talk ↗</a>
+</header>
+
 <!-- HERO -->
 <section class="hero">
 
-  <!-- SUNSET SCENE -->
-  <svg class="scene" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hero-scene" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="skyGradient" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id="heroSky" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#160f2e"/>
         <stop offset="35%" stop-color="#4a2a5c"/>
         <stop offset="62%" stop-color="#d9704f"/>
         <stop offset="80%" stop-color="#f7b155"/>
         <stop offset="100%" stop-color="#ffd98a"/>
       </linearGradient>
-      <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <radialGradient id="heroSunGlow" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="#fff2c8" stop-opacity="0.9"/>
         <stop offset="100%" stop-color="#fff2c8" stop-opacity="0"/>
       </radialGradient>
     </defs>
 
-    <!-- Sky -->
-    <rect x="0" y="0" width="1200" height="700" fill="url(#skyGradient)"/>
+    <rect x="0" y="0" width="1200" height="700" fill="url(#heroSky)"/>
 
-    <!-- Sun glow + disc, sits behind mosque dome -->
-    <circle cx="600" cy="470" r="160" fill="url(#sunGlow)"/>
-    <circle cx="600" cy="470" r="70" fill="#ffe3a3"/>
+    <!-- Sun setting, slowly moving down -->
+    <g class="hero-sun-group">
+      <circle cx="600" cy="470" r="160" fill="url(#heroSunGlow)"/>
+      <circle cx="600" cy="470" r="70" fill="#ffe3a3"/>
+    </g>
 
-    <!-- Birds (V shapes), animated drifting across the sky -->
+    <!-- Adhan sound waves from minaret -->
+    <g class="adhan-waves" stroke="#ffe3a3" stroke-width="3" fill="none" opacity="0.8">
+      <circle class="wave wave1" cx="487" cy="404" r="10"/>
+      <circle class="wave wave2" cx="487" cy="404" r="10"/>
+      <circle class="wave wave3" cx="487" cy="404" r="10"/>
+    </g>
+
+    <!-- Birds -->
     <g class="birds" fill="none" stroke="#2a1b3d" stroke-width="4" stroke-linecap="round">
       <path class="bird bird1" d="M0,0 L12,-8 L24,0"/>
       <path class="bird bird2" d="M0,0 L10,-7 L20,0"/>
@@ -43,98 +67,226 @@
       <path class="bird bird4" d="M0,0 L9,-6 L18,0"/>
     </g>
 
-    <!-- Distant hills -->
+    <!-- Hills -->
     <path d="M0,520 Q200,470 400,510 T800,500 T1200,520 L1200,700 L0,700 Z" fill="#2a1b3d" opacity="0.55"/>
-
     <!-- Ground -->
     <path d="M0,560 Q300,530 600,555 T1200,555 L1200,700 L0,700 Z" fill="#1c1330"/>
 
-    <!-- Masjid silhouette -->
+    <!-- Masjid -->
     <g class="masjid" fill="#150c26">
-      <!-- main dome building -->
-      <rect x="520" y="470" width="160" height="90" />
+      <rect x="520" y="470" width="160" height="90"/>
       <path d="M520,470 Q600,390 680,470 Z"/>
       <circle cx="600" cy="392" r="6"/>
       <rect x="597" y="378" width="6" height="16"/>
-      <!-- left minaret -->
       <rect x="480" y="410" width="14" height="150"/>
       <path d="M480,410 Q487,392 494,410 Z"/>
       <rect x="485" y="398" width="4" height="14"/>
-      <!-- right minaret -->
       <rect x="706" y="410" width="14" height="150"/>
       <path d="M706,410 Q713,392 720,410 Z"/>
       <rect x="711" y="398" width="4" height="14"/>
-      <!-- entrance arch -->
       <path d="M580,560 L580,520 Q600,495 620,520 L620,560 Z" fill="#0e0820"/>
     </g>
 
-    <!-- Walking figure, animated moving toward masjid entrance -->
-    <g class="walker">
+    <!-- People walking toward prayer -->
+    <g class="walker walker1">
       <circle cx="0" cy="-26" r="6" fill="#150c26"/>
       <path d="M0,-20 L0,0 M0,-14 L-8,-6 M0,-14 L8,-6 M0,0 L-7,16 M0,0 L7,16" stroke="#150c26" stroke-width="3" stroke-linecap="round" fill="none"/>
     </g>
+    <g class="walker walker2">
+      <circle cx="0" cy="-24" r="5" fill="#150c26"/>
+      <path d="M0,-19 L0,0 M0,-13 L-7,-5 M0,-13 L7,-5 M0,0 L-6,15 M0,0 L6,15" stroke="#150c26" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </g>
   </svg>
 
-  <!-- TEXT OVERLAY -->
-  <div class="hero-content">
-    <p class="hero-eyebrow">TABAYYUN TV</p>
-    <h1>Seeking Clarity.<br>Returning to Allah.</h1>
-    <p class="hero-sub">A Dawah platform by Shah Neil Khan — asking honest questions, and finding sincere answers.</p>
+  <div class="hero-overlay">
+    <p class="hero-greet">HELLO, I'M</p>
+    <h1>SHAH NEIL<br>KHAN.</h1>
+    <p class="hero-role">SOFTWARE ENGINEER<br>&amp; AI / CONTEXT ENGINEER</p>
+    <p class="hero-desc">I build intelligent software, AI systems, and context-aware digital experiences.</p>
     <div class="hero-actions">
-      <a href="#story" class="btn-primary">My Story</a>
-      <a href="#" class="btn-secondary">Watch Videos</a>
+      <a href="#projects" class="btn-primary">EXPLORE MY WORK ↗</a>
+      <a href="https://wa.me/8801705633700" target="_blank" class="btn-secondary">LET'S TALK</a>
     </div>
   </div>
-
 </section>
 
-<!-- LIFE STORY -->
-<section id="story" class="story-section">
-  <h2>My Journey</h2>
-  <div class="story-text">
-    <p>I wasn't always Muslim. [Write briefly about your life before Islam — where you grew up, what you believed in, what your life looked like.]</p>
-    <p>Everything changed when [describe the moment or period that led you toward Islam]. It wasn't an easy path — [mention any struggles, doubts, or challenges you faced].</p>
-    <p>On [date/year], I took my Shahada and became Muslim. [Describe how that moment felt, and what changed in your life afterward.]</p>
-    <p>Since then, my life has been about returning — returning to purpose, to truth, and to Allah. That journey led me to start <strong>Tabayyun TV</strong> in [year] — a platform to help others ask honest questions and find clarity.</p>
-    <p>Through Tabayyun TV, I [describe what you actually do]. My hope is that this platform becomes a place where people can find sincere, clear answers.</p>
+<!-- ABOUT -->
+<section id="about" class="section about-section">
+  <h2>About</h2>
+  <div class="about-grid">
+    <p class="section-text">I'm Shah Neil Khan, a self-taught Software Engineer and UI/UX Design Expert based in Sylhet, Bangladesh. I work remotely as UX Lead Digital Expert at Yaqeen Institute, Texas — designing interfaces and researching user experience for digital products, without any formal design degree.</p>
+    <div class="about-stats">
+      <div class="stat-card">
+        <p class="stat-label">Based In</p>
+        <p class="stat-value">Sylhet, Bangladesh</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Current Role</p>
+        <p class="stat-value">UX Lead Digital Expert</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Working With</p>
+        <p class="stat-value">Yaqeen Institute, Texas (Remote)</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Background</p>
+        <p class="stat-value">Self-taught</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- SOCIAL MEDIA CARDS -->
-<section class="social-section">
-  <h2>Follow Tabayyun TV</h2>
-  <div class="social-grid">
+<!-- EXPERTISE / SKILLS -->
+<section id="expertise" class="section">
+  <h2>Expertise</h2>
+  <div class="skills-grid">
+    <div class="skill-card">Figma</div>
+    <div class="skill-card">Photoshop / Illustrator</div>
+    <div class="skill-card">JavaScript</div>
+    <div class="skill-card">HTML / CSS</div>
+    <div class="skill-card">WordPress</div>
+    <div class="skill-card">UI Design</div>
+    <div class="skill-card">UX Research & Wireframing</div>
+    <div class="skill-card">Prototyping</div>
+  </div>
+</section>
 
-    <a href="https://youtube.com/@tabayyuninstitute" target="_blank" class="social-card">
-      <div class="social-icon">▶</div>
-      <p class="social-platform">YouTube</p>
-      <p class="social-handle">@tabayyuninstitute</p>
-      <p class="social-count">[Update follower count]</p>
-    </a>
+<!-- BRANDS -->
+<section id="projects" class="section">
+  <h2>Brands</h2>
+  <div class="project-grid">
 
-    <a href="https://facebook.com/tabayyuninstitute" target="_blank" class="social-card">
-      <div class="social-icon">f</div>
-      <p class="social-platform">Facebook</p>
-      <p class="social-handle">@tabayyuninstitute</p>
-      <p class="social-count">[Update follower count]</p>
-    </a>
+    <div class="project-card soon">
+      <span class="soon-badge">Coming Soon</span>
+      <h3>WebsitesDeal</h3>
+      <p>Marketplace for premium website demo templates with WhatsApp ordering.</p>
+    </div>
 
-    <a href="https://instagram.com/tabayyuninstitute" target="_blank" class="social-card">
-      <div class="social-icon">◎</div>
-      <p class="social-platform">Instagram</p>
-      <p class="social-handle">@tabayyuninstitute</p>
-      <p class="social-count">[Update follower count]</p>
-    </a>
+    <div class="project-card soon">
+      <span class="soon-badge">Coming Soon</span>
+      <h3>UI/UX Design & Strategy</h3>
+      <p>Product design, research, and strategy services.</p>
+    </div>
 
-    <a href="https://tiktok.com/@tabayyuninstitute" target="_blank" class="social-card">
-      <div class="social-icon">♪</div>
-      <p class="social-platform">TikTok</p>
-      <p class="social-handle">@tabayyuninstitute</p>
-      <p class="social-count">[Update follower count]</p>
-    </a>
+    <div class="project-card soon">
+      <span class="soon-badge">Coming Soon</span>
+      <h3>Branding & Graphic Design</h3>
+      <p>Visual identity, logo, and brand design.</p>
+    </div>
+
+    <div class="project-card soon">
+      <span class="soon-badge">Coming Soon</span>
+      <h3>ThemFlows</h3>
+      <p>Design systems and workflow templates.</p>
+    </div>
+
+    <div class="project-card soon">
+      <span class="soon-badge">Coming Soon</span>
+      <h3>Mentor AI Academy</h3>
+      <p>AI learning and mentorship programs.</p>
+    </div>
 
   </div>
 </section>
+
+<!-- TABAYYUN TV BANNER -->
+<a href="https://shahneilkhan.github.io/tabayyuntv" target="_blank" class="tv-banner">
+  <svg class="tv-scene" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="tvSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#160f2e"/>
+        <stop offset="35%" stop-color="#4a2a5c"/>
+        <stop offset="62%" stop-color="#d9704f"/>
+        <stop offset="80%" stop-color="#f7b155"/>
+        <stop offset="100%" stop-color="#ffd98a"/>
+      </linearGradient>
+      <radialGradient id="tvSunGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fff2c8" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#fff2c8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <rect x="0" y="0" width="1200" height="500" fill="url(#tvSky)"/>
+    <circle cx="600" cy="300" r="150" fill="url(#tvSunGlow)"/>
+    <circle cx="600" cy="300" r="65" fill="#ffe3a3"/>
+
+    <g class="tv-birds" fill="none" stroke="#2a1b3d" stroke-width="4" stroke-linecap="round">
+      <path class="tv-bird tv-bird1" d="M0,0 L12,-8 L24,0"/>
+      <path class="tv-bird tv-bird2" d="M0,0 L10,-7 L20,0"/>
+      <path class="tv-bird tv-bird3" d="M0,0 L14,-9 L28,0"/>
+    </g>
+
+    <path d="M0,350 Q200,300 400,340 T800,330 T1200,350 L1200,500 L0,500 Z" fill="#2a1b3d" opacity="0.55"/>
+    <path d="M0,390 Q300,360 600,385 T1200,385 L1200,500 L0,500 Z" fill="#1c1330"/>
+
+    <g class="tv-masjid" fill="#150c26">
+      <rect x="520" y="300" width="160" height="90"/>
+      <path d="M520,300 Q600,220 680,300 Z"/>
+      <circle cx="600" cy="222" r="6"/>
+      <rect x="597" y="208" width="6" height="16"/>
+      <rect x="480" y="240" width="14" height="150"/>
+      <path d="M480,240 Q487,222 494,240 Z"/>
+      <rect x="706" y="240" width="14" height="150"/>
+      <path d="M706,240 Q713,222 720,240 Z"/>
+      <path d="M580,390 L580,350 Q600,325 620,350 L620,390 Z" fill="#0e0820"/>
+    </g>
+  </svg>
+
+  <div class="tv-banner-content">
+    <p class="tv-eyebrow">A SEPARATE DAWAH PLATFORM</p>
+    <h2>Tabayyun TV</h2>
+    <p class="tv-sub">Seeking clarity. Returning to Allah. Visit my Dawah platform ↗</p>
+  </div>
+</a>
+
+<!-- CASE STUDY -->
+<section id="case-study" class="section">
+  <h2>Case Study: Building This Portfolio</h2>
+  <div class="case-study-grid">
+    <div class="case-block">
+      <p class="case-label">Problem</p>
+      <p class="case-text">Needed a premium, unique portfolio to reflect my UI/UX and software engineering work — without any budget for paid hosting or tools.</p>
+    </div>
+    <div class="case-block">
+      <p class="case-label">Approach</p>
+      <p class="case-text">Designed and built it step-by-step in vanilla HTML, CSS, and JavaScript — a dark, cinematic aesthetic with a custom Context Engine diagram to visually represent how I think about AI and UX systems.</p>
+    </div>
+    <div class="case-block">
+      <p class="case-label">Tools</p>
+      <p class="case-text">HTML / CSS / JavaScript, GitHub Pages for free hosting, WhatsApp API for direct contact — no paid services used.</p>
+    </div>
+    <div class="case-block">
+      <p class="case-label">Result</p>
+      <p class="case-text">A fully responsive, live portfolio at zero cost — showcasing both my design sense and technical execution.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <h2>Experience</h2>
+  <div class="experience-item">
+    <h3>UX Lead Digital Expert</h3>
+    <p class="exp-company">Yaqeen Institute — Texas, USA (Remote) · 2026 – Present</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-section">
+  <h2>Contact</h2>
+  <p class="section-text">Available for remote UI/UX and product design work.</p>
+  <div class="contact-links">
+    <a href="https://wa.me/8801705633700" target="_blank" class="btn-primary">WhatsApp</a>
+    <a href="https://linkedin.com/in/uxuidesigners" target="_blank" class="btn-secondary">LinkedIn</a>
+    <a href="https://github.com/shahneilkhan" target="_blank" class="btn-secondary">GitHub</a>
+    <a href="https://behance.net/thesnkdesign" target="_blank" class="btn-secondary">Behance</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Shah Neil Khan. All rights reserved.</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
