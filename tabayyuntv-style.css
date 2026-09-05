@@ -7,6 +7,57 @@ body {
   color: #fdf6e9;
 }
 
+/* ===== NAVBAR ===== */
+.tv-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.tv-brand-name {
+  color: #fdf6e9;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.tv-nav-menu {
+  display: flex;
+  gap: 24px;
+}
+
+.tv-nav-menu a {
+  color: #f2e6cf;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.tv-nav-menu a:hover {
+  color: #ffd98a;
+}
+
+@media (max-width: 700px) {
+  .tv-navbar { padding: 16px 20px; }
+}
+
+/* ===== FOOTER ===== */
+.tv-footer {
+  text-align: center;
+  padding: 24px;
+  color: #cabfa8;
+  font-size: 13px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
 /* ===== HERO ===== */
 .hero {
   position: relative;
