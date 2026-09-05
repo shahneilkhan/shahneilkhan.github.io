@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PRIMARY SEO -->
+  <title>Shah Neil Khan — Software Engineer & AI / Context Engineer</title>
+
+  <meta
+    name="description"
+    content="Shah Neil Khan is a Software Engineer and AI / Context Engineer focused on full-stack web development, AI systems, cybersecurity, ethical hacking, and human-centered UI/UX."
+  >
+
+  <meta
+    name="keywords"
+    content="Shah Neil Khan, Software Engineer, AI Engineer, Context Engineer, Full Stack Developer, Web Developer, UI UX Designer, Cybersecurity, Ethical Hacking, AI Systems"
+  >
+
+  <meta name="author" content="Shah Neil Khan">
+  <meta name="robots" content="index, follow">
+
+  <!-- CANONICAL -->
+  <link rel="canonical" href="https://shahneilkhan.github.io/">
+
+  <!-- FAVICON -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+  >
+
+  <!-- THEME -->
+  <meta name="theme-color" content="#080808">
+
+  <!-- OPEN GRAPH -->
+  <meta
+    property="og:title"
+    content="Shah Neil Khan — Software Engineer & AI / Context Engineer"
+  >
+
+  <meta
+    property="og:description"
+    content="Building intelligent, secure, scalable software and context-aware digital experiences."
+  >
+
+  <meta
+    property="og:image"
+    content="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+  >
+
+  <meta
+    property="og:url"
+    content="https://shahneilkhan.github.io/"
+  >
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shah Neil Khan">
+
+  <!-- TWITTER / X -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta
+    name="twitter:title"
+    content="Shah Neil Khan — Software Engineer & AI / Context Engineer"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Building intelligent, secure, scalable software and context-aware digital experiences."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+  >
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+  <div class="nav-left">
+
+    <img
+      src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+      alt="Shah Neil Khan logo"
+      class="site-logo"
+    >
+
+    <span class="brand-name">
+      SHAH NEIL KHAN
+    </span>
+
+  </div>
+
+
+  <nav class="nav-menu" aria-label="Primary navigation">
+
+    <a href="about.html">
+      About
+    </a>
+
+    <a href="#expertise">
+      Expertise
+    </a>
+
+    <a href="#projects">
+      Projects
+    </a>
+
+    <a href="#case-study">
+      Case Study
+    </a>
+
+    <a href="#experience">
+      Experience
+    </a>
+
+    <a href="#contact">
+      Contact
+    </a>
+
+  </nav>
+
+
+  <a
+    href="https://wa.me/8801705633700"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="talk-btn"
+  >
+    Let's Talk ↗
+  </a>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+  <svg
+    class="hero-scene"
+    viewBox="0 0 1200 700"
+    preserveAspectRatio="xMidYMax slice"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+
+    <defs>
+
+      <linearGradient
+        id="heroSky"
+        x1="0"
+        y1="0"
+        x2="0"
+        y2="1"
+      >
+
+        <stop offset="0%" stop-color="#160f2e"/>
+        <stop offset="35%" stop-color="#4a2a5c"/>
+        <stop offset="62%" stop-color="#d9704f"/>
+        <stop offset="80%" stop-color="#f7b155"/>
+        <stop offset="100%" stop-color="#ffd98a"/>
+
+      </linearGradient>
+
+
+      <radialGradient
+        id="heroSunGlow"
+        cx="50%"
+        cy="50%"
+        r="50%"
+      >
+
+        <stop
+          offset="0%"
+          stop-color="#fff2c8"
+          stop-opacity="0.9"
+        />
+
+        <stop
+          offset="100%"
+          stop-color="#fff2c8"
+          stop-opacity="0"
+        />
+
+      </radialGradient>
+
+    </defs>
+
+
+    <rect
+      x="0"
+      y="0"
+      width="1200"
+      height="700"
+      fill="url(#heroSky)"
+    />
+
+
+    <!-- SUN -->
+
+    <g class="hero-sun-group">
+
+      <circle
+        cx="600"
+        cy="470"
+        r="160"
+        fill="url(#heroSunGlow)"
+      />
+
+      <circle
+        cx="600"
+        cy="470"
+        r="70"
+        fill="#ffe3a3"
+      />
+
+    </g>
+
+
+    <!-- ADHAN WAVES -->
+
+    <g
+      class="adhan-waves"
+      stroke="#ffe3a3"
+      stroke-width="3"
+      fill="none"
+      opacity="0.8"
+    >
+
+      <circle
+        class="wave wave1"
+        cx="487"
+        cy="404"
+        r="10"
+      />
+
+      <circle
+        class="wave wave2"
+        cx="487"
+        cy="404"
+        r="10"
+      />
+
+      <circle
+        class="wave wave3"
+        cx="487"
+        cy="404"
+        r="10"
+      />
+
+    </g>
+
+
+    <!-- BIRDS -->
+
+    <g
+      class="birds"
+      fill="none"
+      stroke="#2a1b3d"
+      stroke-width="4"
+      stroke-linecap="round"
+    >
+
+      <path
+        class="bird bird1"
+        d="M0,0 L12,-8 L24,0"
+      />
+
+      <path
+        class="bird bird2"
+        d="M0,0 L10,-7 L20,0"
+      />
+
+      <path
+        class="bird bird3"
+        d="M0,0 L14,-9 L28,0"
+      />
+
+      <path
+        class="bird bird4"
+        d="M0,0 L9,-6 L18,0"
+      />
+
+    </g>
+
+
+    <!-- HILLS -->
+
+    <path
+      d="M0,520 Q200,470 400,510 T800,500 T1200,520 L1200,700 L0,700 Z"
+      fill="#2a1b3d"
+      opacity="0.55"
+    />
+
+
+    <!-- GROUND -->
+
+    <path
+      d="M0,560 Q300,530 600,555 T1200,555 L1200,700 L0,700 Z"
+      fill="#1c1330"
+    />
+
+
+    <!-- MASJID -->
+
+    <g
+      class="masjid"
+      fill="#150c26"
+    >
+
+      <rect
+        x="520"
+        y="470"
+        width="160"
+        height="90"
+      />
+
+      <path
+        d="M520,470 Q600,390 680,470 Z"
+      />
+
+      <circle
+        cx="600"
+        cy="392"
+        r="6"
+      />
+
+      <rect
+        x="597"
+        y="378"
+        width="6"
+        height="16"
+      />
+
+      <rect
+        x="480"
+        y="410"
+        width="14"
+        height="150"
+      />
+
+      <path
+        d="M480,410 Q487,392 494,410 Z"
+      />
+
+      <rect
+        x="485"
+        y="398"
+        width="4"
+        height="14"
+      />
+
+      <rect
+        x="706"
+        y="410"
+        width="14"
+        height="150"
+      />
+
+      <path
+        d="M706,410 Q713,392 720,410 Z"
+      />
+
+      <rect
+        x="711"
+        y="398"
+        width="4"
+        height="14"
+      />
+
+      <path
+        d="M580,560 L580,520 Q600,495 620,520 L620,560 Z"
+        fill="#0e0820"
+      />
+
+    </g>
+
+
+    <!-- WALKERS -->
+
+    <g class="walker walker1">
+
+      <circle
+        cx="0"
+        cy="-26"
+        r="6"
+        fill="#150c26"
+      />
+
+      <path
+        d="M0,-20 L0,0 M0,-14 L-8,-6 M0,-14 L8,-6 M0,0 L-7,16 M0,0 L7,16"
+        stroke="#150c26"
+        stroke-width="3"
+        stroke-linecap="round"
+        fill="none"
+      />
+
+    </g>
+
+
+    <g class="walker walker2">
+
+      <circle
+        cx="0"
+        cy="-24"
+        r="5"
+        fill="#150c26"
+      />
+
+      <path
+        d="M0,-19 L0,0 M0,-13 L-7,-5 M0,-13 L7,-5 M0,0 L-6,15 M0,0 L6,15"
+        stroke="#150c26"
+        stroke-width="3"
+        stroke-linecap="round"
+        fill="none"
+      />
+
+    </g>
+
+  </svg>
+
+
+
+  <div class="hero-overlay">
+
+    <p class="hero-greet">
+      HELLO, I'M
+    </p>
+
+
+    <h1>
+      SHAH NEIL<br>
+      KHAN.
+    </h1>
+
+
+    <p class="hero-role">
+      SOFTWARE ENGINEER<br>
+      &amp; AI / CONTEXT ENGINEER
+    </p>
+
+
+    <p class="hero-desc">
+      I build intelligent, secure, scalable software and
+      context-aware digital experiences.
+    </p>
+
+
+    <div class="hero-actions">
+
+      <a
+        href="#projects"
+        class="btn-primary"
+      >
+        EXPLORE MY WORK ↗
+      </a>
+
+
+      <a
+        href="https://wa.me/8801705633700"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-secondary"
+      >
+        LET'S TALK
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPERTISE
+===================================================== -->
+
+<section
+  id="expertise"
+  class="section expertise-section"
+>
+
+  <div class="expertise-intro">
+
+    <span class="section-kicker">
+      01 — EXPERTISE
+    </span>
+
+
+    <h2>
+      Engineering <span>with purpose.</span>
+    </h2>
+
+
+    <p>
+      I combine software engineering, AI, cybersecurity and
+      human-centered design to build intelligent, secure and
+      scalable digital products.
+    </p>
+
+  </div>
+
+
+
+  <div class="expertise-grid">
+
+
+    <!-- FULL STACK -->
+
+    <article class="expertise-card">
+
+      <div class="expertise-card-top">
+
+        <span class="expertise-number">
+          01
+        </span>
+
+        <span class="expertise-type">
+          ENGINEERING
+        </span>
+
+      </div>
+
+
+      <h3>
+        Full-Stack Software Engineering
+      </h3>
+
+
+      <p>
+        Building modern web applications across frontend,
+        backend, APIs, databases, authentication and
+        application architecture.
+      </p>
+
+
+      <div class="expertise-tags">
+
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>TypeScript</span>
+        <span>React</span>
+        <span>Next.js</span>
+        <span>Node.js</span>
+        <span>Python</span>
+        <span>REST APIs</span>
+        <span>Authentication</span>
+        <span>PostgreSQL</span>
+        <span>MongoDB</span>
+        <span>Git</span>
+        <span>GitHub</span>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- AI -->
+
+    <article class="expertise-card">
+
+      <div class="expertise-card-top">
+
+        <span class="expertise-number">
+          02
+        </span>
+
+        <span class="expertise-type">
+          ARTIFICIAL INTELLIGENCE
+        </span>
+
+      </div>
+
+
+      <h3>
+        AI &amp; Context Engineering
+      </h3>
+
+
+      <p>
+        Designing context-aware AI applications that connect
+        models with data, memory, tools and real-world
+        application workflows.
+      </p>
+
+
+      <div class="expertise-tags">
+
+        <span>LLM Applications</span>
+        <span>Context Engineering</span>
+        <span>Prompt Engineering</span>
+        <span>RAG</span>
+        <span>AI Agents</span>
+        <span>Vector Search</span>
+        <span>Tool Calling</span>
+        <span>Function Calling</span>
+        <span>Structured Output</span>
+        <span>AI Workflows</span>
+        <span>OpenAI</span>
+        <span>Claude</span>
+        <span>Gemini</span>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- UI UX -->
+
+    <article class="expertise-card">
+
+      <div class="expertise-card-top">
+
+        <span class="expertise-number">
+          03
+        </span>
+
+        <span class="expertise-type">
+          PRODUCT DESIGN
+        </span>
+
+      </div>
+
+
+      <h3>
+        UI/UX &amp; Product Design
+      </h3>
+
+
+      <p>
+        Designing intuitive digital products by combining
+        UX strategy, interaction design, visual systems
+        and engineering.
+      </p>
+
+
+      <div class="expertise-tags">
+
+        <span>UX Research</span>
+        <span>User Flows</span>
+        <span>Information Architecture</span>
+        <span>Wireframing</span>
+        <span>Prototyping</span>
+        <span>UI Design</span>
+        <span>Design Systems</span>
+        <span>Figma</span>
+        <span>Accessibility</span>
+        <span>Interaction Design</span>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- SECURITY -->
+
+    <article class="expertise-card">
+
+      <div class="expertise-card-top">
+
+        <span class="expertise-number">
+          04
+        </span>
+
+        <span class="expertise-type">
+          SECURITY
+        </span>
+
+      </div>
+
+
+      <h3>
+        Cybersecurity &amp; Ethical Hacking
+      </h3>
+
+
+      <p>
+        Applying a security-first mindset to software,
+        web applications and APIs through secure development,
+        vulnerability assessment and ethical security testing.
+      </p>
+
+
+      <div class="expertise-tags">
+
+        <span>Web Security</span>
+        <span>Ethical Hacking</span>
+        <span>Security Testing</span>
+        <span>OWASP Top 10</span>
+        <span>Vulnerability Assessment</span>
+        <span>Burp Suite</span>
+        <span>Linux Security</span>
+        <span>Threat Modeling</span>
+        <span>Secure APIs</span>
+        <span>Secure Coding</span>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ARCHITECTURE -->
+
+    <article class="expertise-card">
+
+      <div class="expertise-card-top">
+
+        <span class="expertise-number">
+          05
+        </span>
+
+        <span class="expertise-type">
+          SYSTEMS
+        </span>
+
+      </div>
+
+
+      <h3>
+        Software Architecture &amp; System Design
+      </h3>
+
+
+      <p>
+        Turning product requirements into maintainable,
+        reliable and scalable software through thoughtful
+        architecture and engineering principles.
+      </p>
+
+
+      <div class="expertise-tags">
+
+        <span>System Design</span>
+        <span>Software Architecture</span>
+        <span>Clean Architecture</span>
+        <span>SOLID</span>
+        <span>OOP</span>
+        <span>Design Patterns</span>
+        <span>Database Design</span>
+        <span>API Architecture</span>
+        <span>Scalability</span>
+        <span>Performance</span>
+        <span>Testing</span>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- DEVOPS -->
+
+    <article class="expertise-card">
+
+      <div class="expertise-card-top">
+
+        <span class="expertise-number">
+          06
+        </span>
+
+        <span class="expertise-type">
+          INFRASTRUCTURE
+        </span>
+
+      </div>
+
+
+      <h3>
+        DevOps, Cloud &amp; Infrastructure
+      </h3>
+
+
+      <p>
+        Deploying and maintaining modern applications with
+        automation, containerization and production-focused
+        infrastructure.
+      </p>
+
+
+      <div class="expertise-tags">
+
+        <span>Linux</span>
+        <span>Docker</span>
+        <span>CI/CD</span>
+        <span>GitHub Actions</span>
+        <span>Nginx</span>
+        <span>Cloud Deployment</span>
+        <span>Server Management</span>
+        <span>Environment Management</span>
+        <span>Monitoring</span>
+        <span>Deployment Automation</span>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROJECTS / BRANDS
+===================================================== -->
+
+<section
+  id="projects"
+  class="section"
+>
+
+  <h2>
+    Selected Projects
+  </h2>
+
+
+  <div class="project-grid">
+
+
+    <div class="project-card soon">
+
+      <span class="soon-badge">
+        Coming Soon
+      </span>
+
+      <h3>
+        WebsitesDeal
+      </h3>
+
+      <p>
+        Marketplace concept for premium website demo
+        templates with direct WhatsApp ordering.
+      </p>
+
+    </div>
+
+
+
+    <div class="project-card soon">
+
+      <span class="soon-badge">
+        Coming Soon
+      </span>
+
+      <h3>
+        AI / Context Engineering
+      </h3>
+
+      <p>
+        AI application concepts focused on context,
+        intelligent workflows and human-centered interaction.
+      </p>
+
+    </div>
+
+
+
+    <div class="project-card soon">
+
+      <span class="soon-badge">
+        Coming Soon
+      </span>
+
+      <h3>
+        UI/UX Design &amp; Strategy
+      </h3>
+
+      <p>
+        Product design, UX research, interaction design
+        and digital product strategy.
+      </p>
+
+    </div>
+
+
+
+    <div class="project-card soon">
+
+      <span class="soon-badge">
+        Coming Soon
+      </span>
+
+      <h3>
+        ThemFlows
+      </h3>
+
+      <p>
+        Design systems, workflow concepts and reusable
+        digital product resources.
+      </p>
+
+    </div>
+
+
+
+    <div class="project-card soon">
+
+      <span class="soon-badge">
+        Coming Soon
+      </span>
+
+      <h3>
+        Mentor AI Academy
+      </h3>
+
+      <p>
+        AI learning, mentorship and technology education
+        platform concept.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TABAYYUN TV
+===================================================== -->
+
+<a
+  href="https://shahneilkhan.github.io/tabayyuntv"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="tv-banner"
+>
+
+  <svg
+    class="tv-scene"
+    viewBox="0 0 1200 500"
+    preserveAspectRatio="xMidYMax slice"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+
+    <defs>
+
+      <linearGradient
+        id="tvSky"
+        x1="0"
+        y1="0"
+        x2="0"
+        y2="1"
+      >
+
+        <stop offset="0%" stop-color="#160f2e"/>
+        <stop offset="35%" stop-color="#4a2a5c"/>
+        <stop offset="62%" stop-color="#d9704f"/>
+        <stop offset="80%" stop-color="#f7b155"/>
+        <stop offset="100%" stop-color="#ffd98a"/>
+
+      </linearGradient>
+
+
+      <radialGradient
+        id="tvSunGlow"
+        cx="50%"
+        cy="50%"
+        r="50%"
+      >
+
+        <stop
+          offset="0%"
+          stop-color="#fff2c8"
+          stop-opacity="0.9"
+        />
+
+        <stop
+          offset="100%"
+          stop-color="#fff2c8"
+          stop-opacity="0"
+        />
+
+      </radialGradient>
+
+    </defs>
+
+
+    <rect
+      x="0"
+      y="0"
+      width="1200"
+      height="500"
+      fill="url(#tvSky)"
+    />
+
+
+    <circle
+      cx="600"
+      cy="300"
+      r="150"
+      fill="url(#tvSunGlow)"
+    />
+
+
+    <circle
+      cx="600"
+      cy="300"
+      r="65"
+      fill="#ffe3a3"
+    />
+
+
+    <g
+      class="tv-birds"
+      fill="none"
+      stroke="#2a1b3d"
+      stroke-width="4"
+      stroke-linecap="round"
+    >
+
+      <path
+        class="tv-bird tv-bird1"
+        d="M0,0 L12,-8 L24,0"
+      />
+
+      <path
+        class="tv-bird tv-bird2"
+        d="M0,0 L10,-7 L20,0"
+      />
+
+      <path
+        class="tv-bird tv-bird3"
+        d="M0,0 L14,-9 L28,0"
+      />
+
+    </g>
+
+
+    <path
+      d="M0,350 Q200,300 400,340 T800,330 T1200,350 L1200,500 L0,500 Z"
+      fill="#2a1b3d"
+      opacity="0.55"
+    />
+
+
+    <path
+      d="M0,390 Q300,360 600,385 T1200,385 L1200,500 L0,500 Z"
+      fill="#1c1330"
+    />
+
+
+    <g
+      class="tv-masjid"
+      fill="#150c26"
+    >
+
+      <rect
+        x="520"
+        y="300"
+        width="160"
+        height="90"
+      />
+
+      <path
+        d="M520,300 Q600,220 680,300 Z"
+      />
+
+      <circle
+        cx="600"
+        cy="222"
+        r="6"
+      />
+
+      <rect
+        x="597"
+        y="208"
+        width="6"
+        height="16"
+      />
+
+      <rect
+        x="480"
+        y="240"
+        width="14"
+        height="150"
+      />
+
+      <path
+        d="M480,240 Q487,222 494,240 Z"
+      />
+
+      <rect
+        x="706"
+        y="240"
+        width="14"
+        height="150"
+      />
+
+      <path
+        d="M706,240 Q713,222 720,240 Z"
+      />
+
+      <path
+        d="M580,390 L580,350 Q600,325 620,350 L620,390 Z"
+        fill="#0e0820"
+      />
+
+    </g>
+
+  </svg>
+
+
+  <div class="tv-banner-content">
+
+    <p class="tv-eyebrow">
+      A SEPARATE DAWAH PLATFORM
+    </p>
+
+    <h2>
+      Tabayyun TV
+    </h2>
+
+    <p class="tv-sub">
+      Seeking clarity. Returning to Allah.
+      Visit my Dawah platform ↗
+    </p>
+
+  </div>
+
+</a>
+
+
+
+<!-- =====================================================
+     CASE STUDY
+===================================================== -->
+
+<section
+  id="case-study"
+  class="section"
+>
+
+  <h2>
+    Case Study: Building This Portfolio
+  </h2>
+
+
+  <div class="case-study-grid">
+
+
+    <div class="case-block">
+
+      <p class="case-label">
+        Problem
+      </p>
+
+      <p class="case-text">
+        Needed a premium personal portfolio that could
+        communicate software engineering, AI, UI/UX and
+        technical thinking without relying on expensive
+        hosting or proprietary infrastructure.
+      </p>
+
+    </div>
+
+
+
+    <div class="case-block">
+
+      <p class="case-label">
+        Approach
+      </p>
+
+      <p class="case-text">
+        Designed and built the experience with vanilla
+        HTML, CSS and JavaScript, combining a cinematic
+        visual language with a structured engineering
+        portfolio and AI-oriented positioning.
+      </p>
+
+    </div>
+
+
+
+    <div class="case-block">
+
+      <p class="case-label">
+        Technology
+      </p>
+
+      <p class="case-text">
+        HTML5, CSS3, JavaScript, Git, GitHub and GitHub
+        Pages, with a lightweight static architecture
+        designed for performance and maintainability.
+      </p>
+
+    </div>
+
+
+
+    <div class="case-block">
+
+      <p class="case-label">
+        Result
+      </p>
+
+      <p class="case-text">
+        A responsive personal engineering portfolio that
+        communicates technical capability, product thinking,
+        visual design and an AI-focused engineering identity.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ENGINEERING APPROACH
+===================================================== -->
+
+<section
+  id="approach"
+  class="section engineering-approach"
+>
+
+  <div class="approach-intro">
+
+    <span class="section-kicker">
+      02 — ENGINEERING MINDSET
+    </span>
+
+    <h2>
+      How I <span>build.</span>
+    </h2>
+
+    <p>
+      Good software is not only about writing code.
+      It is about understanding the problem, designing
+      the system, protecting the user and continuously
+      improving the product.
+    </p>
+
+  </div>
+
+
+  <div class="approach-grid">
+
+
+    <div class="approach-card">
+
+      <span>01</span>
+
+      <h3>
+        Understand
+      </h3>
+
+      <p>
+        Understand users, requirements, constraints,
+        business goals and technical context before
+        choosing a solution.
+      </p>
+
+    </div>
+
+
+
+    <div class="approach-card">
+
+      <span>02</span>
+
+      <h3>
+        Design
+      </h3>
+
+      <p>
+        Translate requirements into clear architecture,
+        user flows, interfaces, APIs and maintainable
+        technical structures.
+      </p>
+
+    </div>
+
+
+
+    <div class="approach-card">
+
+      <span>03</span>
+
+      <h3>
+        Build
+      </h3>
+
+      <p>
+        Implement reliable software with clean code,
+        reusable components, testing and thoughtful
+        engineering practices.
+      </p>
+
+    </div>
+
+
+
+    <div class="approach-card">
+
+      <span>04</span>
+
+      <h3>
+        Secure
+      </h3>
+
+      <p>
+        Treat security as part of engineering rather
+        than an afterthought through secure design,
+        validation and security testing.
+      </p>
+
+    </div>
+
+
+
+    <div class="approach-card">
+
+      <span>05</span>
+
+      <h3>
+        Evaluate
+      </h3>
+
+      <p>
+        Measure usability, performance, reliability,
+        AI output quality and overall product behavior.
+      </p>
+
+    </div>
+
+
+
+    <div class="approach-card">
+
+      <span>06</span>
+
+      <h3>
+        Improve
+      </h3>
+
+      <p>
+        Iterate continuously through feedback,
+        debugging, optimization and better technical
+        decisions.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+
+<section
+  id="experience"
+  class="section"
+>
+
+  <h2>
+    Experience
+  </h2>
+
+
+  <div class="experience-item">
+
+    <div class="experience-header">
+
+      <div>
+
+        <h3>
+          UX Lead Digital Expert
+        </h3>
+
+        <p class="exp-company">
+          Yaqeen Institute — Texas, USA (Remote)
+          · 2026 – Present
+        </p>
+
+      </div>
+
+      <span class="experience-category">
+        PRODUCT &amp; DIGITAL
+      </span>
+
+    </div>
+
+
+    <p class="experience-description">
+      Leading digital experience and product design
+      initiatives with a focus on user experience,
+      digital systems, interface quality and the
+      intersection of design and technology.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+  id="contact"
+  class="section contact-section"
+>
+
+  <span class="section-kicker">
+    03 — CONTACT
+  </span>
+
+
+  <h2>
+    Let's build <span>something meaningful.</span>
+  </h2>
+
+
+  <p class="section-text">
+
+    Available for software engineering, AI systems,
+    product engineering, UI/UX and security-focused
+    digital projects.
+
+  </p>
+
+
+  <div class="contact-links">
+
+
+    <a
+      href="https://wa.me/8801705633700"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-primary"
+    >
+      WhatsApp
+    </a>
+
+
+    <a
+      href="https://linkedin.com/in/uxuidesigners"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary"
+    >
+      LinkedIn
+    </a>
+
+
+    <a
+      href="https://github.com/shahneilkhan"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary"
+    >
+      GitHub
+    </a>
+
+
+    <a
+      href="https://behance.net/thesnkdesign"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary"
+    >
+      Behance
+    </a>
+
+
+    <a
+      href="https://youtube.com/@shahneilkhan"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary"
+    >
+      YouTube
+    </a>
+
+
+    <a
+      href="https://facebook.com/iamsnkbd"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary"
+    >
+      Facebook
+    </a>
+
+
+    <a
+      href="https://instagram.com/iamsnkbd"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary"
+    >
+      Instagram
+    </a>
+
+
+    <a
+      href="https://x.com/iamsnkbd"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary"
+    >
+      X
+    </a>
+
+
+    <a
+      href="https://tiktok.com/@iamsnkbd"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary"
+    >
+      TikTok
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+  <p>
+    © 2026 Shah Neil Khan. All rights reserved.
+  </p>
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
