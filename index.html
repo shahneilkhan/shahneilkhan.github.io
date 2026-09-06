@@ -1,1844 +1,1305 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <title>Shah Neil Khan — Software Engineer & AI Engineer</title>
 
   <meta
     name="description"
-    content="Shah Neil Khan — Software Engineer & AI Engineer building intelligent digital experiences, AI systems, full-stack products and human-centered interfaces."
+    content="Shah Neil Khan — Software Engineer & AI Engineer focused on intelligent software, AI systems, product experience, and human-centered UX."
   >
 
-  <meta
-    name="author"
-    content="Shah Neil Khan"
-  >
+  <meta name="theme-color" content="#090909">
 
-  <meta
-    name="theme-color"
-    content="#090909"
-  >
-
-  <meta
-    name="robots"
-    content="index, follow"
-  >
-
-  <title>
-    Shah Neil Khan — Software Engineer & AI Engineer
-  </title>
-
-  <!-- =====================================================
-       FONTS
-       ===================================================== -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- =====================================================
-       STYLES
-       ===================================================== -->
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
-  <!-- =====================================================
-       FAVICON
-       ===================================================== -->
-
+  <!-- SNK Logo -->
   <link
     rel="icon"
     type="image/svg+xml"
     href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
   >
 
-</head>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
 
-<!-- =======================================================
-     HEADER
-     ======================================================= -->
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
 
-<header class="site-header">
+  <header class="site-header" id="site-header">
 
-  <div class="container">
+    <div class="container header-inner">
 
-    <!-- Brand -->
+      <a href="index.html" class="brand" aria-label="Shah Neil Khan home">
 
-    <a
-      href="index.html"
-      class="brand"
-      aria-label="Shah Neil Khan home"
-    >
-
-      <img
-        src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-        alt="SNK — Shah Neil Khan"
-        class="brand-logo"
-      >
-
-      <span class="brand-text">
-
-        <span class="brand-name">
-          Shah Neil Khan
+        <span class="brand-logo">
+          <img
+            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+            alt="SNK"
+          >
         </span>
 
-        <span class="brand-subtitle">
-          Software · Intelligence · Experience
+        <span class="brand-copy">
+          <strong>SHAH NEIL KHAN</strong>
+          <small>SNK / PERSONAL BRAND</small>
         </span>
 
-      </span>
-
-    </a>
-
-
-    <!-- Desktop / Mobile Navigation -->
-
-    <nav
-      class="nav-menu"
-      id="primary-navigation"
-      aria-label="Primary navigation"
-    >
-
-      <a
-        href="#home"
-        class="nav-link active"
-      >
-        Home
       </a>
 
-      <a
-        href="#work"
-        class="nav-link"
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
       >
-        Work
+        <span></span>
+      </button>
+
+
+      <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="#home">Home</a>
+        <a href="#work">Work</a>
+        <a href="#ai">AI</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a href="brand.html">Brand</a>
+        <a href="#contact">Contact</a>
+
+      </nav>
+
+      <a href="#contact" class="header-cta">
+        Let's Talk <span>↗</span>
       </a>
-
-      <a
-        href="#ai"
-        class="nav-link"
-      >
-        AI
-      </a>
-
-      <a
-        href="#expertise"
-        class="nav-link"
-      >
-        Expertise
-      </a>
-
-      <a
-        href="#experience"
-        class="nav-link"
-      >
-        Experience
-      </a>
-
-      <a
-        href="about.html"
-        class="nav-link"
-      >
-        About
-      </a>
-
-      <a
-        href="brand.html"
-        class="nav-link"
-      >
-        Brand
-      </a>
-
-      <a
-        href="contact.html"
-        class="nav-link"
-      >
-        Contact
-      </a>
-
-    </nav>
-
-
-    <!-- Mobile Toggle -->
-
-    <button
-      class="nav-toggle"
-      type="button"
-      aria-label="Open navigation"
-      aria-expanded="false"
-      aria-controls="primary-navigation"
-    >
-
-      <span></span>
-      <span></span>
-      <span></span>
-
-    </button>
-
-  </div>
-
-</header>
-
-
-<!-- =======================================================
-     HERO
-     ======================================================= -->
-
-<main id="home">
-
-<section class="hero">
-
-  <!-- Cinematic background -->
-
-  <div
-    class="hero-visual"
-    aria-hidden="true"
-  >
-
-    <div class="hero-art">
-
-      <!-- Existing cinematic hero artwork -->
-
-      <img
-        src="hero.svg"
-        alt=""
-        class="hero-svg"
-      >
-
-      <div class="hero-overlay"></div>
 
     </div>
 
-  </div>
+  </header>
 
 
-  <!-- Hero Content -->
+  <main>
 
-  <div class="hero-inner">
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
 
-    <div class="hero-content reveal">
+    <section class="hero section-dark" id="home">
 
-      <span class="eyebrow">
-        SHAH NEIL KHAN / SNK
-      </span>
+      <div class="hero-background">
 
+        <div class="hero-vignette"></div>
+        <div class="hero-grid"></div>
 
-      <h1 class="hero-title">
-        SOFTWARE<br>
-        ENGINEER
-        <span>&amp;</span><br>
-        AI ENGINEER
-      </h1>
-
-
-      <p class="hero-subtitle">
-        Code → Intelligence → Experience
-      </p>
-
-
-      <p class="hero-copy">
-        I build intelligent digital experiences across
-        software engineering, AI systems, product,
-        UX and secure technology.
-      </p>
-
-
-      <div class="hero-actions">
-
-        <a
-          href="#work"
-          class="btn btn-primary"
+        <img
+          src="hero.svg"
+          alt=""
+          class="hero-svg"
+          aria-hidden="true"
         >
-          Explore My Work
-          <span class="arrow">→</span>
-        </a>
-
-        <a
-          href="contact.html"
-          class="btn btn-secondary"
-        >
-          Start a Conversation
-          <span class="arrow">↗</span>
-        </a>
 
       </div>
 
 
-      <div class="hero-signature">
-        BUILDING DIGITAL EXPERIENCES_
+      <div class="container hero-inner">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            SOFTWARE / AI / EXPERIENCE
+          </div>
+
+
+          <h1 class="hero-title">
+            SOFTWARE<br>
+            ENGINEER<br>
+            <span>&amp; AI ENGINEER</span>
+          </h1>
+
+
+          <div class="hero-signature">
+            Code <span>→</span> Intelligence <span>→</span> Experience
+          </div>
+
+
+          <p class="hero-description">
+            I build intelligent software, AI systems, and digital
+            experiences where engineering, context, product thinking,
+            and human-centered UX meet.
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a href="#work" class="btn btn-primary">
+              Explore My Work
+              <span>↗</span>
+            </a>
+
+            <a href="#ai" class="btn btn-secondary">
+              Explore AI
+            </a>
+
+          </div>
+
+
+          <div class="hero-status">
+
+            <span class="status-dot"></span>
+
+            <span>SYSTEM STATUS</span>
+
+            <strong>ONLINE</strong>
+
+            <span class="status-divider">/</span>
+
+            <span>AI CONNECTED</span>
+
+            <span class="status-divider">/</span>
+
+            <span>CONTEXT READY</span>
+
+          </div>
+
+        </div>
+
+
+        <!-- Terminal -->
+
+        <div class="hero-terminal terminal-card">
+
+          <div class="terminal-header">
+
+            <div class="terminal-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <span class="terminal-title">
+              snk-engine
+            </span>
+
+            <span class="terminal-status">
+              ONLINE
+            </span>
+
+          </div>
+
+
+          <div class="terminal-body">
+
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span>
+              <span>./snk-engine</span>
+            </div>
+
+            <div class="terminal-line muted">
+              initializing...
+            </div>
+
+            <div class="terminal-progress">
+              <span>[██████████████████]</span>
+              <strong>100%</strong>
+            </div>
+
+            <div class="terminal-line success">
+              ✓ identity
+            </div>
+
+            <div class="terminal-line success">
+              ✓ context
+            </div>
+
+            <div class="terminal-line success">
+              ✓ memory
+            </div>
+
+            <div class="terminal-line success">
+              ✓ retrieval
+            </div>
+
+            <div class="terminal-line success">
+              ✓ tools
+            </div>
+
+            <div class="terminal-line success">
+              ✓ intelligence
+            </div>
+
+            <div class="terminal-line ready">
+              &gt; system.ready()
+            </div>
+
+            <div class="terminal-output">
+              BUILDING DIGITAL EXPERIENCES_
+            </div>
+
+            <div class="terminal-code">
+              const experience = await build({
+              <br>
+              &nbsp;&nbsp;intelligence: AI,
+              <br>
+              &nbsp;&nbsp;context: memory,
+              <br>
+              &nbsp;&nbsp;design: UX
+              <br>
+              });
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
+    </section>
 
 
-    <!-- =================================================
-         CINEMATIC TERMINAL
-         ================================================= -->
+    <!-- =========================================================
+         SELECTED WORK
+    ========================================================== -->
 
-    <div
-      class="terminal reveal"
-      aria-label="SNK engineering system terminal"
-    >
+    <section class="section section-work" id="work">
 
-      <div class="terminal-header">
+      <div class="container">
 
-        <div class="terminal-dots">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="section-heading reveal">
+
+          <div>
+            <span class="section-number">01 / SELECTED WORK</span>
+
+            <h2>
+              BUILDING THINGS<br>
+              THAT <em>MATTER.</em>
+            </h2>
+          </div>
+
+          <p>
+            A selection of software, product, AI, and digital
+            experience work. Real projects first — no artificial
+            project metrics or placeholder case studies.
+          </p>
+
         </div>
 
-        <span class="terminal-title">
-          snk-engine
-        </span>
+
+        <div class="work-grid">
+
+          <!-- Verified existing work -->
+
+          <article class="project-card project-featured reveal">
+
+            <div class="project-top">
+
+              <span class="project-index">
+                01
+              </span>
+
+              <span class="project-type">
+                DIGITAL PRODUCT
+              </span>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <h3>
+                WebsitesDeal
+              </h3>
+
+              <p>
+                A digital marketplace experience focused on
+                presenting website demos and enabling direct
+                customer interaction.
+              </p>
+
+            </div>
+
+
+            <div class="project-footer">
+
+              <span>
+                PRODUCT / WEB / UX
+              </span>
+
+              <a
+                href="https://shahneilkhan.github.io/demosite"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link"
+              >
+                View Project <span>↗</span>
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project slot kept intentionally minimal -->
+
+          <article class="project-card project-empty reveal">
+
+            <div class="project-top">
+
+              <span class="project-index">
+                02
+              </span>
+
+              <span class="project-type">
+                AI / SOFTWARE
+              </span>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <span class="project-label">
+                PROJECT DATA
+              </span>
+
+              <h3>
+                Your next system.
+              </h3>
+
+              <p>
+                This space is reserved for a real AI or software
+                project once the project details, visuals, and
+                live repository are added.
+              </p>
+
+            </div>
+
+
+            <div class="project-footer">
+
+              <span>
+                CASE STUDY READY
+              </span>
+
+              <span class="project-link disabled">
+                Details pending
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="project-card project-empty reveal">
+
+            <div class="project-top">
+
+              <span class="project-index">
+                03
+              </span>
+
+              <span class="project-type">
+                PRODUCT / UX
+              </span>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <span class="project-label">
+                PROJECT DATA
+              </span>
+
+              <h3>
+                Product experience.
+              </h3>
+
+              <p>
+                A future case study documenting the problem,
+                design decisions, system architecture, and
+                resulting experience.
+              </p>
+
+            </div>
+
+
+            <div class="project-footer">
+
+              <span>
+                CASE STUDY READY
+              </span>
+
+              <span class="project-link disabled">
+                Details pending
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="project-card project-empty reveal">
+
+            <div class="project-top">
+
+              <span class="project-index">
+                04
+              </span>
+
+              <span class="project-type">
+                ENGINEERING
+              </span>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <span class="project-label">
+                PROJECT DATA
+              </span>
+
+              <h3>
+                Full-stack system.
+              </h3>
+
+              <p>
+                Reserved for a verified engineering project with
+                architecture, implementation, and deployment
+                details.
+              </p>
+
+            </div>
+
+
+            <div class="project-footer">
+
+              <span>
+                CASE STUDY READY
+              </span>
+
+              <span class="project-link disabled">
+                Details pending
+              </span>
+
+            </div>
+
+          </article>
+
+        </div>
 
       </div>
 
+    </section>
 
-      <div class="terminal-body">
 
-        <div class="terminal-line command">
-          $ ./snk-engine
+    <!-- =========================================================
+         AI / CONTEXT ENGINEERING
+    ========================================================== -->
+
+    <section class="section section-ai" id="ai">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <span class="section-number">
+              02 / AI &amp; CONTEXT ENGINEERING
+            </span>
+
+            <h2>
+              AI THAT<br>
+              <em>UNDERSTANDS CONTEXT.</em>
+            </h2>
+
+          </div>
+
+          <p>
+            Modern AI isn't only about choosing a powerful model.
+            It's about giving the model the right context, memory,
+            knowledge, tools, and constraints to produce useful
+            results.
+          </p>
+
         </div>
 
-        <div class="terminal-line">
-          initializing...
+
+        <!-- AI Pipeline -->
+
+        <div class="ai-pipeline reveal">
+
+          <div class="pipeline-node">
+            USER
+          </div>
+
+          <div class="pipeline-arrow">→</div>
+
+          <div class="pipeline-node highlight">
+            INTENT
+          </div>
+
+          <div class="pipeline-arrow">→</div>
+
+          <div class="pipeline-node highlight">
+            CONTEXT ENGINE
+          </div>
+
+          <div class="pipeline-arrow">→</div>
+
+          <div class="pipeline-node">
+            AI / MODEL
+          </div>
+
+          <div class="pipeline-arrow">→</div>
+
+          <div class="pipeline-node">
+            VALIDATION
+          </div>
+
+          <div class="pipeline-arrow">→</div>
+
+          <div class="pipeline-node accent">
+            OUTPUT
+          </div>
+
         </div>
 
-        <div class="terminal-line terminal-progress">
-          [██████████████████] 100%
+
+        <div class="ai-support-row reveal">
+
+          <span>MEMORY</span>
+          <span>KNOWLEDGE</span>
+          <span>RETRIEVAL</span>
+          <span>TOOLS</span>
+
         </div>
 
-        <br>
 
-        <div class="terminal-line success">
-          ✓ identity
+        <!-- AI Cards -->
+
+        <div class="ai-grid">
+
+          <article class="ai-card reveal">
+
+            <span class="card-number">01</span>
+
+            <h3>Context</h3>
+
+            <p>
+              Give intelligence the right information,
+              constraints, instructions, and surrounding
+              context before asking it to act.
+            </p>
+
+            <span class="card-arrow">↗</span>
+
+          </article>
+
+
+          <article class="ai-card reveal">
+
+            <span class="card-number">02</span>
+
+            <h3>Retrieval</h3>
+
+            <p>
+              Connect models with relevant knowledge through
+              retrieval pipelines instead of relying only on
+              model memory.
+            </p>
+
+            <span class="card-arrow">↗</span>
+
+          </article>
+
+
+          <article class="ai-card reveal">
+
+            <span class="card-number">03</span>
+
+            <h3>Memory</h3>
+
+            <p>
+              Design systems that can preserve useful state,
+              preferences, history, and long-running context
+              when the product requires it.
+            </p>
+
+            <span class="card-arrow">↗</span>
+
+          </article>
+
+
+          <article class="ai-card reveal">
+
+            <span class="card-number">04</span>
+
+            <h3>Tools</h3>
+
+            <p>
+              Connect AI to APIs, databases, services, and
+              controlled actions so intelligence can operate
+              inside a real system.
+            </p>
+
+            <span class="card-arrow">↗</span>
+
+          </article>
+
         </div>
 
-        <div class="terminal-line success">
-          ✓ context
+
+        <div class="ai-equation reveal">
+
+          MODEL + CONTEXT + MEMORY + TOOLS + VALIDATION
+
+          <span>=</span>
+
+          USEFUL AI SYSTEM
+
         </div>
 
-        <div class="terminal-line success">
-          ✓ memory
-        </div>
 
-        <div class="terminal-line success">
-          ✓ retrieval
-        </div>
+        <div class="ai-signature reveal">
 
-        <div class="terminal-line success">
-          ✓ tools
-        </div>
+          Better context creates better intelligence.
 
-        <div class="terminal-line success">
-          ✓ intelligence
-        </div>
-
-        <br>
-
-        <div class="terminal-line command">
-          &gt; system.ready()
-          <span class="terminal-cursor"></span>
-        </div>
-
-        <br>
-
-        <div class="terminal-line">
-          const experience = await build({
-        </div>
-
-        <div class="terminal-line">
-          &nbsp;&nbsp;intelligence: AI,
-        </div>
-
-        <div class="terminal-line">
-          &nbsp;&nbsp;context: memory,
-        </div>
-
-        <div class="terminal-line">
-          &nbsp;&nbsp;design: UX
-        </div>
-
-        <div class="terminal-line">
-          });
         </div>
 
       </div>
 
-    </div>
-
-  </div>
-
-</section>
+    </section>
 
 
-<!-- =======================================================
-     SELECTED WORK
-     ======================================================= -->
+    <!-- =========================================================
+         ENGINEERING MINDSET
+    ========================================================== -->
 
-<section
-  id="work"
-  class="section"
->
+    <section class="section section-mindset">
 
-  <div class="container">
+      <div class="container">
 
-    <div class="section-header reveal">
+        <div class="section-heading reveal">
 
-      <span class="section-kicker">
-        Selected Work
-      </span>
+          <div>
 
-      <h2 class="section-title">
-        SYSTEMS<br>
-        WORTH BUILDING.
-      </h2>
+            <span class="section-number">
+              03 / ENGINEERING MINDSET
+            </span>
 
-      <p class="section-copy">
-        A selection of software, AI and product work
-        focused on turning complex problems into useful
-        digital experiences.
-      </p>
+            <h2>
+              I DON'T JUST BUILD.<br>
+              <em>I THINK FIRST.</em>
+            </h2>
 
-    </div>
-
-
-    <!-- =================================================
-         PROJECT GRID
-         ================================================= -->
-
-    <div class="projects-grid">
-
-
-      <!-- PROJECT 01 -->
-
-      <article
-        class="project-card reveal"
-        data-tilt
-      >
-
-        <span class="project-number">
-          01 / FLAGSHIP
-        </span>
-
-        <div>
-
-          <div class="project-category">
-            Software Engineering
           </div>
 
-          <h3 class="project-title">
-            Flagship Software Project
-          </h3>
-
-          <p class="project-description">
-            A product-focused software system designed
-            around real users, clear architecture and
-            meaningful digital experiences.
+          <p>
+            Every product starts with a problem. I turn that
+            problem into a system that is useful, scalable,
+            secure, and continuously improvable.
           </p>
 
-          <div class="project-tags">
+        </div>
 
-            <span class="project-tag">
-              Software
+
+        <div class="mindset-process">
+
+          <article class="process-step reveal">
+
+            <span>01</span>
+
+            <h3>UNDERSTAND</h3>
+
+            <p>User / Problem / Requirements / Constraints</p>
+
+          </article>
+
+
+          <article class="process-step reveal">
+
+            <span>02</span>
+
+            <h3>DESIGN</h3>
+
+            <p>Architecture / UX / Data Flow / System Boundaries</p>
+
+          </article>
+
+
+          <article class="process-step reveal">
+
+            <span>03</span>
+
+            <h3>BUILD</h3>
+
+            <p>Code / API / Database / Deployment</p>
+
+          </article>
+
+
+          <article class="process-step reveal">
+
+            <span>04</span>
+
+            <h3>PROTECT</h3>
+
+            <p>Threat Model / Validation / Permissions / Security</p>
+
+          </article>
+
+
+          <article class="process-step reveal">
+
+            <span>05</span>
+
+            <h3>IMPROVE</h3>
+
+            <p>Observe / Measure / Learn / Iterate</p>
+
+          </article>
+
+        </div>
+
+
+        <div class="mindset-signature reveal">
+
+          Understand the problem.
+          Design the system.
+          Build with intention.
+          Protect what matters.
+          Improve continuously.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         EXPERTISE
+    ========================================================== -->
+
+    <section class="section section-expertise" id="expertise">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <span class="section-number">
+              04 / EXPERTISE
             </span>
 
-            <span class="project-tag">
-              Product
-            </span>
-
-            <span class="project-tag">
-              UX
-            </span>
-
-            <span class="project-tag">
-              Engineering
-            </span>
+            <h2>
+              WHAT I BRING<br>
+              <em>TO THE TABLE.</em>
+            </h2>
 
           </div>
 
-          <div class="project-links">
+          <p>
+            Technology is evidence of capability — not the
+            identity itself. The goal is to solve the right
+            problem with the right system.
+          </p>
 
-            <!-- Replace # when real project URL is ready -->
+        </div>
 
-            <a
-              href="#"
-              class="btn btn-secondary"
-              aria-label="View flagship project case study"
-            >
-              Case Study
-              <span class="arrow">→</span>
-            </a>
 
-            <a
-              href="#"
-              class="btn btn-ghost"
-              aria-label="View flagship project"
-            >
-              View Project
-              <span class="arrow">↗</span>
-            </a>
+        <div class="expertise-grid">
+
+          <article class="expertise-card reveal">
+
+            <span>01</span>
+
+            <h3>Software Engineering</h3>
+
+            <p>
+              Building maintainable software, APIs,
+              applications, and digital systems.
+            </p>
+
+            <div class="expertise-meta">
+              SOFTWARE / WEB / API
+            </div>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span>02</span>
+
+            <h3>AI / Context Engineering</h3>
+
+            <p>
+              Designing context, retrieval, memory,
+              tools, validation, and AI application layers.
+            </p>
+
+            <div class="expertise-meta">
+              AI / RAG / AGENTS
+            </div>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span>03</span>
+
+            <h3>Product &amp; UX</h3>
+
+            <p>
+              Translating user needs into clear interfaces,
+              flows, interactions, and product experiences.
+            </p>
+
+            <div class="expertise-meta">
+              UX / UI / PRODUCT
+            </div>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span>04</span>
+
+            <h3>System Design</h3>
+
+            <p>
+              Thinking through architecture, boundaries,
+              data flow, dependencies, and scalability.
+            </p>
+
+            <div class="expertise-meta">
+              ARCHITECTURE / DATA
+            </div>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span>05</span>
+
+            <h3>Cybersecurity</h3>
+
+            <p>
+              Considering threats, permissions, validation,
+              trust boundaries, and secure system behavior.
+            </p>
+
+            <div class="expertise-meta">
+              SECURITY / THREAT MODEL
+            </div>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span>06</span>
+
+            <h3>DevOps &amp; Cloud</h3>
+
+            <p>
+              Connecting development with deployment,
+              infrastructure, automation, and reliability.
+            </p>
+
+            <div class="expertise-meta">
+              CLOUD / DEPLOYMENT
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         EXPERIENCE
+    ========================================================== -->
+
+    <section class="section section-experience" id="experience">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <span class="section-number">
+              05 / EXPERIENCE
+            </span>
+
+            <h2>
+              WHERE I'VE BUILT<br>
+              <em>&amp; CONTRIBUTED.</em>
+            </h2>
+
+          </div>
+
+          <a href="experience.html" class="text-link">
+            View Full Experience <span>↗</span>
+          </a>
+
+        </div>
+
+
+        <article class="experience-feature reveal">
+
+          <div class="experience-date">
+            2026 — PRESENT
+          </div>
+
+
+          <div class="experience-main">
+
+            <span class="experience-role">
+              UX LEAD DIGITAL EXPERT
+            </span>
+
+            <h3>
+              Yaqeen Institute
+            </h3>
+
+            <p class="experience-location">
+              Texas, USA · Remote
+            </p>
+
+            <p>
+              Working across digital experience, UX thinking,
+              interface design, and product-oriented problem
+              solving.
+            </p>
+
+          </div>
+
+
+          <a href="experience.html" class="experience-arrow">
+            →
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================== -->
+
+    <section class="section section-about" id="about">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <span class="section-number">
+              06 / ABOUT
+            </span>
+
+            <h2>
+              I BUILD WITH<br>
+              <em>CURIOSITY, DISCIPLINE &amp; PURPOSE.</em>
+            </h2>
 
           </div>
 
         </div>
 
-      </article>
 
+        <div class="about-layout">
 
-      <!-- PROJECT 02 -->
+          <div class="about-copy reveal">
 
-      <article
-        class="project-card reveal"
-        data-tilt
-      >
+            <p class="about-lead">
+              I'm Shah Neil Khan, a software engineer focused
+              on building intelligent digital experiences across
+              software, AI, product, and UX.
+            </p>
 
-        <span class="project-number">
-          02 / AI
-        </span>
+            <p>
+              I enjoy working on difficult problems where
+              technology needs more than code — where systems,
+              people, context, and product decisions all have
+              to work together.
+            </p>
 
-        <div>
-
-          <div class="project-category">
-            AI / Context Engineering
-          </div>
-
-          <h3 class="project-title">
-            AI System
-          </h3>
-
-          <p class="project-description">
-            An intelligent system exploring context,
-            retrieval, memory, tools and model-driven
-            workflows.
-          </p>
-
-          <div class="project-tags">
-
-            <span class="project-tag">
-              AI
-            </span>
-
-            <span class="project-tag">
-              RAG
-            </span>
-
-            <span class="project-tag">
-              Context
-            </span>
-
-            <span class="project-tag">
-              Tools
-            </span>
+            <p>
+              My approach combines engineering discipline with
+              product thinking and a strong focus on clarity,
+              usability, security, and continuous improvement.
+            </p>
 
           </div>
 
-          <div class="project-links">
 
-            <a
-              href="#"
-              class="btn btn-secondary"
-              aria-label="View AI system case study"
-            >
-              Case Study
-              <span class="arrow">→</span>
-            </a>
+          <div class="principles-grid reveal">
 
-            <a
-              href="#"
-              class="btn btn-ghost"
-              aria-label="View AI system"
-            >
-              View Project
-              <span class="arrow">↗</span>
-            </a>
+            <div class="principle">
 
-          </div>
+              <span>01</span>
 
-        </div>
+              <h3>CLARITY</h3>
 
-      </article>
+              <p>
+                Make complex systems easier to understand,
+                use, and improve.
+              </p>
+
+            </div>
 
 
-      <!-- PROJECT 03 -->
+            <div class="principle">
 
-      <article
-        class="project-card reveal"
-        data-tilt
-      >
+              <span>02</span>
 
-        <span class="project-number">
-          03 / PRODUCT
-        </span>
+              <h3>CRAFT</h3>
 
-        <div>
+              <p>
+                Care about the details that make software
+                feel intentional and complete.
+              </p>
 
-          <div class="project-category">
-            Product &amp; UX
-          </div>
+            </div>
 
-          <h3 class="project-title">
-            Product Experience
-          </h3>
 
-          <p class="project-description">
-            A human-centered digital experience combining
-            interface design, product thinking and
-            engineering execution.
-          </p>
+            <div class="principle">
 
-          <div class="project-tags">
+              <span>03</span>
 
-            <span class="project-tag">
-              UX
-            </span>
+              <h3>IMPACT</h3>
 
-            <span class="project-tag">
-              Product
-            </span>
+              <p>
+                Build technology that solves a meaningful
+                problem rather than simply adding complexity.
+              </p>
 
-            <span class="project-tag">
-              Interface
-            </span>
-
-          </div>
-
-          <div class="project-links">
-
-            <a
-              href="#"
-              class="btn btn-secondary"
-              aria-label="View product experience case study"
-            >
-              Case Study
-              <span class="arrow">→</span>
-            </a>
-
-            <a
-              href="#"
-              class="btn btn-ghost"
-              aria-label="View product experience"
-            >
-              View Project
-              <span class="arrow">↗</span>
-            </a>
+            </div>
 
           </div>
 
         </div>
 
-      </article>
+
+        <div class="identity-line reveal">
+
+          <span>SHAH NEIL KHAN</span>
+
+          <span>SOFTWARE</span>
+
+          <span>↓</span>
+
+          <span>INTELLIGENCE</span>
+
+          <span>↓</span>
+
+          <span>EXPERIENCE</span>
+
+          <span>↓</span>
+
+          <span>IMPACT</span>
+
+        </div>
+
+      </div>
+
+    </section>
 
 
-      <!-- PROJECT 04 -->
+    <!-- =========================================================
+         TABAYYUN EXTERNAL PLATFORM
+    ========================================================== -->
 
-      <article
-        class="project-card reveal"
-        data-tilt
-      >
+    <section class="platform-section">
 
-        <span class="project-number">
-          04 / FULL-STACK
-        </span>
+      <div class="container">
 
-        <div>
+        <div class="platform-card reveal">
 
-          <div class="project-category">
-            Full-Stack Engineering
+          <div>
+
+            <span class="section-number">
+              EXTERNAL PLATFORM
+            </span>
+
+            <h2>
+              TABAYYUN TV
+            </h2>
+
+            <p>
+              Visit the Tabayyun Institute platform.
+            </p>
+
           </div>
 
-          <h3 class="project-title">
-            Full-Stack System
-          </h3>
 
-          <p class="project-description">
-            An end-to-end application connecting interface,
-            backend services, data and deployment into one
-            coherent system.
-          </p>
+          <a
+            href="https://www.tabayyuninstitute.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            Visit Website
+            <span>↗</span>
+          </a>
 
-          <div class="project-tags">
+        </div>
 
-            <span class="project-tag">
-              Full-Stack
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================== -->
+
+    <section class="section section-contact" id="contact">
+
+      <div class="container">
+
+        <div class="contact-card reveal">
+
+          <div class="contact-heading">
+
+            <span class="section-number">
+              07 / CONTACT
             </span>
 
-            <span class="project-tag">
-              API
-            </span>
+            <h2>
+              HAVE AN IDEA?<br>
+              <em>LET'S BUILD IT.</em>
+            </h2>
 
-            <span class="project-tag">
-              Database
-            </span>
-
-            <span class="project-tag">
-              Cloud
-            </span>
+            <p>
+              Open to thoughtful conversations around software,
+              AI, UX, product, engineering, and digital systems.
+            </p>
 
           </div>
 
-          <div class="project-links">
 
-            <a
-              href="#"
-              class="btn btn-secondary"
-              aria-label="View full-stack project case study"
-            >
-              Case Study
-              <span class="arrow">→</span>
+          <div class="contact-options">
+
+            <span>PROJECT</span>
+            <span>COLLABORATION</span>
+            <span>ENGINEERING</span>
+            <span>AI</span>
+            <span>UX</span>
+            <span>PRODUCT</span>
+
+          </div>
+
+
+          <div class="contact-actions">
+
+            <a href="contact.html" class="btn btn-primary">
+              Start a Conversation
+              <span>↗</span>
             </a>
 
             <a
-              href="#"
-              class="btn btn-ghost"
-              aria-label="View full-stack project"
+              href="https://github.com/shahneilkhan"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
             >
               GitHub
-              <span class="arrow">↗</span>
+              <span>↗</span>
             </a>
 
           </div>
 
         </div>
 
-      </article>
+      </div>
+
+    </section>
+
+  </main>
 
 
-    </div>
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
 
+  <footer class="site-footer">
 
-    <!-- =================================================
-         WORK CTA
-         ================================================= -->
+    <div class="container footer-inner">
 
-    <div
-      class="section-sm reveal"
-      style="text-align:center;"
-    >
+      <a href="#home" class="footer-brand">
 
-      <a
-        href="projects.html"
-        class="btn btn-secondary"
-      >
-        View All Work
-        <span class="arrow">→</span>
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="SNK"
+        >
+
+        <span>
+          SHAH NEIL KHAN
+        </span>
+
       </a>
 
-    </div>
 
-  </div>
+      <div class="footer-center">
 
-</section>
-
-
-<!-- =======================================================
-     AI / CONTEXT ENGINEERING
-     ======================================================= -->
-
-<section
-  id="ai"
-  class="section"
->
-
-  <div class="container">
-
-    <div class="section-header reveal">
-
-      <span class="section-kicker">
-        AI / Context Engineering
-      </span>
-
-      <h2 class="section-title">
-        AI THAT<br>
-        UNDERSTANDS CONTEXT.
-      </h2>
-
-      <p class="section-copy">
-        Modern AI isn't only about choosing a powerful
-        model. It's about giving the model the right
-        context, memory, knowledge, tools and constraints
-        to produce useful results.
-      </p>
-
-    </div>
-
-
-    <!-- Pipeline -->
-
-    <div class="context-pipeline reveal">
-
-      <div class="pipeline-node">
-        User
-      </div>
-
-      <div class="pipeline-arrow">
-        →
-      </div>
-
-      <div class="context-engine">
-
-        <strong>
-          Context Engine
-        </strong>
-
-        <div class="context-items">
-
-          <span class="context-item">
-            Memory
-          </span>
-
-          <span class="context-item">
-            Knowledge
-          </span>
-
-          <span class="context-item">
-            Retrieval
-          </span>
-
-          <span class="context-item">
-            Tools
-          </span>
-
-        </div>
-
-      </div>
-
-      <div class="pipeline-arrow">
-        →
-      </div>
-
-      <div class="pipeline-node">
-        AI / Model
-      </div>
-
-    </div>
-
-
-    <!-- AI Cards -->
-
-    <div class="ai-cards">
-
-      <article class="ai-card reveal">
-
-        <span class="ai-card-number">
-          01
+        <span>
+          SOFTWARE · AI · EXPERIENCE
         </span>
 
-        <h3 class="ai-card-title">
-          Context
-        </h3>
-
-        <p>
-          Structure the information an AI system needs
-          to understand the task, user and environment.
-        </p>
-
-      </article>
-
-
-      <article class="ai-card reveal">
-
-        <span class="ai-card-number">
-          02
-        </span>
-
-        <h3 class="ai-card-title">
-          Retrieval
-        </h3>
-
-        <p>
-          Connect models with relevant knowledge through
-          retrieval and grounded information.
-        </p>
-
-      </article>
-
-
-      <article class="ai-card reveal">
-
-        <span class="ai-card-number">
-          03
-        </span>
-
-        <h3 class="ai-card-title">
-          Memory
-        </h3>
-
-        <p>
-          Design persistent context that allows systems
-          to maintain useful continuity.
-        </p>
-
-      </article>
-
-
-      <article class="ai-card reveal">
-
-        <span class="ai-card-number">
-          04
-        </span>
-
-        <h3 class="ai-card-title">
-          Tools
-        </h3>
-
-        <p>
-          Give intelligent systems controlled access to
-          APIs, data and external capabilities.
-        </p>
-
-      </article>
-
-    </div>
-
-
-    <div class="ai-equation reveal">
-
-      MODEL + CONTEXT + MEMORY + TOOLS + VALIDATION
-      = USEFUL AI SYSTEM
-
-    </div>
-
-
-    <p class="ai-signature reveal">
-      Better context creates better intelligence.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     ENGINEERING MINDSET
-     ======================================================= -->
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="section-header reveal">
-
-      <span class="section-kicker">
-        Engineering Mindset
-      </span>
-
-      <h2 class="section-title">
-        I DON'T JUST BUILD.<br>
-        I THINK FIRST.
-      </h2>
-
-      <p class="section-copy">
-        Every product starts with a problem. I turn that
-        problem into a system that is useful, scalable,
-        secure and continuously improvable.
-      </p>
-
-    </div>
-
-
-    <div class="engineering-process">
-
-      <div class="process-step reveal">
-
-        <span class="process-number">
-          01
-        </span>
-
-        <h3>
-          Understand
-        </h3>
-
-        <ul class="process-list">
-
-          <li>User</li>
-          <li>Problem</li>
-          <li>Requirements</li>
-          <li>Constraints</li>
-
-        </ul>
-
       </div>
 
 
-      <div class="process-step reveal">
+      <div class="footer-right">
 
-        <span class="process-number">
-          02
+        <span>
+          © <span id="current-year">2026</span>
+          SHAH NEIL KHAN
         </span>
 
-        <h3>
-          Design
-        </h3>
-
-        <ul class="process-list">
-
-          <li>Architecture</li>
-          <li>UX</li>
-          <li>Data Flow</li>
-          <li>System Boundaries</li>
-
-        </ul>
-
-      </div>
-
-
-      <div class="process-step reveal">
-
-        <span class="process-number">
-          03
-        </span>
-
-        <h3>
-          Build
-        </h3>
-
-        <ul class="process-list">
-
-          <li>Code</li>
-          <li>API</li>
-          <li>Database</li>
-          <li>Deployment</li>
-
-        </ul>
-
-      </div>
-
-
-      <div class="process-step reveal">
-
-        <span class="process-number">
-          04
-        </span>
-
-        <h3>
-          Protect
-        </h3>
-
-        <ul class="process-list">
-
-          <li>Threat Model</li>
-          <li>Validation</li>
-          <li>Permissions</li>
-          <li>Security</li>
-
-        </ul>
-
-      </div>
-
-
-      <div class="process-step reveal">
-
-        <span class="process-number">
-          05
-        </span>
-
-        <h3>
-          Improve
-        </h3>
-
-        <ul class="process-list">
-
-          <li>Observe</li>
-          <li>Measure</li>
-          <li>Learn</li>
-          <li>Iterate</li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-
-    <p class="engineering-signature reveal">
-      Understand the problem. Design the system.
-      Build with intention. Protect what matters.
-      Improve continuously.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     EXPERTISE
-     ======================================================= -->
-
-<section
-  id="expertise"
-  class="section"
->
-
-  <div class="container">
-
-    <div class="section-header reveal">
-
-      <span class="section-kicker">
-        Expertise
-      </span>
-
-      <h2 class="section-title">
-        WHAT I BRING<br>
-        TO THE TABLE.
-      </h2>
-
-    </div>
-
-
-    <div class="expertise-grid">
-
-
-      <article class="expertise-card reveal">
-
-        <div class="expertise-header">
-
-          <span class="expertise-number">
-            01
-          </span>
-
-          <h3 class="expertise-title">
-            Software Engineering
-          </h3>
-
-          <button
-            class="expertise-toggle"
-            type="button"
-            aria-label="Expand Software Engineering"
-          >
-            +
-          </button>
-
-        </div>
-
-        <div class="expertise-body">
-
-          <div class="expertise-block">
-
-            <strong>
-              What I Do
-            </strong>
-
-            <p>
-              Build maintainable applications, APIs,
-              backend systems and production-ready
-              digital products.
-            </p>
-
-          </div>
-
-          <div class="expertise-block">
-
-            <strong>
-              Technical Depth
-            </strong>
-
-            <div class="expertise-tags">
-
-              <span>JavaScript</span>
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>APIs</span>
-              <span>Databases</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="expertise-card reveal">
-
-        <div class="expertise-header">
-
-          <span class="expertise-number">
-            02
-          </span>
-
-          <h3 class="expertise-title">
-            AI / Context Engineering
-          </h3>
-
-          <button
-            class="expertise-toggle"
-            type="button"
-            aria-label="Expand AI and Context Engineering"
-          >
-            +
-          </button>
-
-        </div>
-
-        <div class="expertise-body">
-
-          <div class="expertise-block">
-
-            <strong>
-              What I Do
-            </strong>
-
-            <p>
-              Design AI applications around context,
-              retrieval, memory, tools, validation and
-              reliable user outcomes.
-            </p>
-
-          </div>
-
-          <div class="expertise-block">
-
-            <strong>
-              Technical Depth
-            </strong>
-
-            <div class="expertise-tags">
-
-              <span>LLMs</span>
-              <span>RAG</span>
-              <span>Agents</span>
-              <span>Context</span>
-              <span>AI Apps</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="expertise-card reveal">
-
-        <div class="expertise-header">
-
-          <span class="expertise-number">
-            03
-          </span>
-
-          <h3 class="expertise-title">
-            Product &amp; UX
-          </h3>
-
-          <button
-            class="expertise-toggle"
-            type="button"
-            aria-label="Expand Product and UX"
-          >
-            +
-          </button>
-
-        </div>
-
-        <div class="expertise-body">
-
-          <div class="expertise-block">
-
-            <strong>
-              What I Do
-            </strong>
-
-            <p>
-              Connect product thinking, interface design
-              and engineering to create useful experiences.
-            </p>
-
-          </div>
-
-          <div class="expertise-block">
-
-            <strong>
-              Focus
-            </strong>
-
-            <div class="expertise-tags">
-
-              <span>UX</span>
-              <span>UI</span>
-              <span>Product</span>
-              <span>Design Systems</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="expertise-card reveal">
-
-        <div class="expertise-header">
-
-          <span class="expertise-number">
-            04
-          </span>
-
-          <h3 class="expertise-title">
-            System Design
-          </h3>
-
-          <button
-            class="expertise-toggle"
-            type="button"
-            aria-label="Expand System Design"
-          >
-            +
-          </button>
-
-        </div>
-
-        <div class="expertise-body">
-
-          <div class="expertise-block">
-
-            <strong>
-              What I Do
-            </strong>
-
-            <p>
-              Think in systems, boundaries, data flows,
-              dependencies and long-term maintainability.
-            </p>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="expertise-card reveal">
-
-        <div class="expertise-header">
-
-          <span class="expertise-number">
-            05
-          </span>
-
-          <h3 class="expertise-title">
-            Cybersecurity
-          </h3>
-
-          <button
-            class="expertise-toggle"
-            type="button"
-            aria-label="Expand Cybersecurity"
-          >
-            +
-          </button>
-
-        </div>
-
-        <div class="expertise-body">
-
-          <div class="expertise-block">
-
-            <strong>
-              What I Do
-            </strong>
-
-            <p>
-              Apply security thinking across application
-              architecture, permissions, validation and
-              threat awareness.
-            </p>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="expertise-card reveal">
-
-        <div class="expertise-header">
-
-          <span class="expertise-number">
-            06
-          </span>
-
-          <h3 class="expertise-title">
-            DevOps &amp; Cloud
-          </h3>
-
-          <button
-            class="expertise-toggle"
-            type="button"
-            aria-label="Expand DevOps and Cloud"
-          >
-            +
-          </button>
-
-        </div>
-
-        <div class="expertise-body">
-
-          <div class="expertise-block">
-
-            <strong>
-              What I Do
-            </strong>
-
-            <p>
-              Think beyond code into deployment,
-              environments, reliability and continuous
-              improvement.
-            </p>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     EXPERIENCE
-     ======================================================= -->
-
-<section
-  id="experience"
-  class="section"
->
-
-  <div class="container">
-
-    <div class="section-header reveal">
-
-      <span class="section-kicker">
-        Experience
-      </span>
-
-      <h2 class="section-title">
-        WHERE I'VE BUILT<br>
-        &amp; CONTRIBUTED.
-      </h2>
-
-    </div>
-
-
-    <div class="experience-list">
-
-
-      <article class="experience-item reveal">
-
-        <div class="experience-meta">
-
-          <span class="experience-date">
-            2026 — Present
-          </span>
-
-          <span class="experience-company">
-            Yaqeen Institute
-          </span>
-
-          <span class="experience-location">
-            Remote · Texas, USA
-          </span>
-
-        </div>
-
-
-        <h3 class="experience-role">
-          UX Lead Digital Expert
-        </h3>
-
-
-        <p class="experience-summary">
-          Working across digital experience, UX and
-          product-oriented problem solving with a focus
-          on creating clearer and more effective digital
-          experiences.
-        </p>
-
-
-        <div class="experience-detail-grid">
-
-          <div class="experience-detail">
-
-            <strong>
-              Role
-            </strong>
-
-            <p>
-              UX leadership and digital experience.
-            </p>
-
-          </div>
-
-
-          <div class="experience-detail">
-
-            <strong>
-              Contribution
-            </strong>
-
-            <p>
-              Product thinking, UX direction and
-              digital experience improvement.
-            </p>
-
-          </div>
-
-
-          <div class="experience-detail">
-
-            <strong>
-              Focus
-            </strong>
-
-            <p>
-              User experience, clarity and digital
-              product quality.
-            </p>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     ABOUT
-     ======================================================= -->
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="about-layout">
-
-      <div class="reveal">
-
-        <span class="section-kicker">
-          About
-        </span>
-
-        <h2 class="about-statement">
-          I BUILD WITH CURIOSITY,
-          ENGINEERING DISCIPLINE,
-          AND PURPOSE.
-        </h2>
-
-      </div>
-
-
-      <div class="about-copy reveal">
-
-        <p>
-          I'm Shah Neil Khan, a software engineer focused
-          on building intelligent digital experiences across
-          software, AI, product and UX.
-        </p>
-
-        <p>
-          My approach combines engineering thinking with
-          product awareness and human-centered design.
-          I care about understanding the problem before
-          choosing the technology.
-        </p>
-
-        <a
-          href="about.html"
-          class="btn btn-secondary"
-        >
-          More About Me
-          <span class="arrow">→</span>
+        <a href="#home">
+          BACK TO TOP ↑
         </a>
 
       </div>
 
     </div>
 
+  </footer>
 
-    <div class="principles-grid">
 
-      <article class="principle reveal">
-
-        <span class="principle-number">
-          01
-        </span>
-
-        <h3>
-          Clarity
-        </h3>
-
-        <p>
-          Make complex systems easier to understand,
-          use and improve.
-        </p>
-
-      </article>
-
-
-      <article class="principle reveal">
-
-        <span class="principle-number">
-          02
-        </span>
-
-        <h3>
-          Craft
-        </h3>
-
-        <p>
-          Care about the details that turn functional
-          software into thoughtful products.
-        </p>
-
-      </article>
-
-
-      <article class="principle reveal">
-
-        <span class="principle-number">
-          03
-        </span>
-
-        <h3>
-          Impact
-        </h3>
-
-        <p>
-          Build technology that solves real problems
-          and creates meaningful outcomes.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     TABAYYUN TV — EXTERNAL PLATFORM
-     ======================================================= -->
-
-<section class="section-sm">
-
-  <div class="container">
-
-    <div
-      class="card reveal"
-      style="
-        padding: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 2rem;
-      "
-    >
-
-      <div>
-
-        <span class="section-kicker">
-          External Platform
-        </span>
-
-        <h2
-          style="
-            margin: 0.8rem 0 0.5rem;
-            font-size: clamp(1.6rem, 3vw, 2.5rem);
-          "
-        >
-          Tabayyun TV
-        </h2>
-
-        <p
-          style="
-            margin: 0;
-            color: var(--text-muted);
-          "
-        >
-          Visit the Tabayyun Institute platform.
-        </p>
-
-      </div>
-
-
-      <a
-        href="https://www.tabayyuninstitute.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-secondary"
-      >
-        Visit Website
-        <span class="arrow">↗</span>
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     FINAL CTA
-     ======================================================= -->
-
-<section class="cta-section">
-
-  <div class="container">
-
-    <div class="reveal">
-
-      <span class="section-kicker">
-        Let's Build
-      </span>
-
-      <h2 class="cta-title">
-        HAVE AN IDEA?<br>
-        LET'S BUILD IT.
-      </h2>
-
-      <p class="cta-copy">
-        Whether it's software, AI, UX or a product
-        problem worth solving, let's turn the idea
-        into something real.
-      </p>
-
-      <a
-        href="contact.html"
-        class="btn btn-primary"
-      >
-        Start a Conversation
-        <span class="arrow">→</span>
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
-
-<footer class="site-footer">
-
-  <div class="container">
-
-    <div
-      style="
-        display:flex;
-        align-items:center;
-        gap:0.8rem;
-      "
-    >
-
-      <img
-        src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-        alt="SNK"
-        style="
-          width:32px;
-          height:32px;
-          object-fit:contain;
-        "
-      >
-
-      <p class="footer-copy">
-        © <span id="current-year"></span>
-        Shah Neil Khan. All rights reserved.
-      </p>
-
-    </div>
-
-
-    <div class="footer-links">
-
-      <a
-        href="projects.html"
-        class="footer-link"
-      >
-        Work
-      </a>
-
-      <a
-        href="experience.html"
-        class="footer-link"
-      >
-        Experience
-      </a>
-
-      <a
-        href="brand.html"
-        class="footer-link"
-      >
-        Brand
-      </a>
-
-      <a
-        href="contact.html"
-        class="footer-link"
-      >
-        Contact
-      </a>
-
-      <a
-        href="https://www.tabayyuninstitute.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="footer-link"
-      >
-        Tabayyun TV ↗
-      </a>
-
-    </div>
-
-  </div>
-
-</footer>
-
-
-<!-- =======================================================
-     SCRIPT
-     ======================================================= -->
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
