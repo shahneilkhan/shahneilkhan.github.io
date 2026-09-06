@@ -1,575 +1,1823 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
 
-  <title>Projects — Shah Neil Khan</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <meta
     name="description"
-    content="Selected software, AI, product, UX and engineering work by Shah Neil Khan."
-  />
+    content="Selected work and case studies — Shah Neil Khan"
+  >
+
+  <meta name="theme-color" content="#080808">
+
+  <title>Projects — Shah Neil Khan</title>
 
   <link
     rel="icon"
     type="image/svg+xml"
     href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-  />
+  >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <style>
 
-  <link rel="stylesheet" href="style.css" />
+    /* =========================================================
+       SNK PROJECTS PAGE
+       ========================================================= */
+
+    .projects-page {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .projects-hero {
+      position: relative;
+
+      min-height: 72vh;
+      min-height: 72svh;
+
+      display: flex;
+      align-items: center;
+
+      padding:
+        150px
+        clamp(24px, 7vw, 110px)
+        100px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 72% 42%,
+          rgba(208,164,92,0.12),
+          transparent 34%
+        ),
+        #080808;
+    }
+
+    .projects-hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 72px 72px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          black 25%,
+          black 75%,
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
+    .projects-hero-glow {
+      position: absolute;
+
+      width: 430px;
+      height: 430px;
+
+      right: 7%;
+      top: 48%;
+
+      transform: translateY(-50%);
+
+      border-radius: 50%;
+
+      background:
+        rgba(208,164,92,0.07);
+
+      filter: blur(100px);
+
+      pointer-events: none;
+    }
+
+    .projects-hero-content {
+      position: relative;
+      z-index: 2;
+
+      width: min(1050px, 100%);
+    }
+
+    .projects-eyebrow {
+      margin: 0 0 22px;
+
+      color: #d0a45c;
+
+      font-size: 0.7rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.22em;
+
+      text-transform: uppercase;
+    }
+
+    .projects-title {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          3.5rem,
+          9vw,
+          9rem
+        );
+
+      line-height: 0.86;
+
+      letter-spacing: -0.075em;
+
+      font-weight: 800;
+    }
+
+    .projects-title span {
+      color: #d0a45c;
+    }
+
+    .projects-intro {
+      max-width: 680px;
+
+      margin: 34px 0 0;
+
+      color:
+        rgba(242,238,231,0.61);
+
+      font-size:
+        clamp(
+          1rem,
+          1.5vw,
+          1.18rem
+        );
+
+      line-height: 1.8;
+    }
+
+    .projects-hero-meta {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-top: 32px;
+    }
+
+    .projects-pill {
+      display: inline-flex;
+
+      align-items: center;
+
+      min-height: 34px;
+
+      padding: 0 13px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+      border-radius: 999px;
+
+      color:
+        rgba(242,238,231,0.48);
+
+      background:
+        rgba(255,255,255,0.025);
+
+      font-size: 0.63rem;
+
+      font-weight: 600;
+
+      letter-spacing: 0.1em;
+
+      text-transform: uppercase;
+    }
+
+    .projects-pill.active {
+      color: #d0a45c;
+
+      border-color:
+        rgba(208,164,92,0.3);
+
+      background:
+        rgba(208,164,92,0.055);
+    }
+
+
+    /* =========================================================
+       PROJECTS SECTION
+       ========================================================= */
+
+    .projects-section {
+      padding:
+        110px
+        clamp(22px, 7vw, 110px)
+        130px;
+
+      background: #0b0b0b;
+    }
+
+    .projects-section-inner {
+      width: min(1200px, 100%);
+
+      margin: 0 auto;
+    }
+
+    .projects-section-head {
+      display: flex;
+
+      align-items: end;
+
+      justify-content: space-between;
+
+      gap: 30px;
+
+      margin-bottom: 48px;
+    }
+
+    .projects-section-label {
+      margin: 0 0 15px;
+
+      color: #d0a45c;
+
+      font-size: 0.67rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+
+      text-transform: uppercase;
+    }
+
+    .projects-section-head h2 {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2.2rem,
+          4.5vw,
+          4.5rem
+        );
+
+      line-height: 0.96;
+
+      letter-spacing: -0.055em;
+    }
+
+    .projects-section-head p {
+      max-width: 390px;
+
+      margin: 0;
+
+      color:
+        rgba(242,238,231,0.45);
+
+      font-size: 0.82rem;
+
+      line-height: 1.75;
+    }
+
+
+    /* =========================================================
+       PROJECT GRID
+       ========================================================= */
+
+    .projects-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 18px;
+    }
+
+
+    /* =========================================================
+       PROJECT CARD
+       ========================================================= */
+
+    .project-card {
+      position: relative;
+
+      min-height: 480px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.075);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.045),
+          rgba(255,255,255,0.012)
+        );
+
+      box-shadow:
+        0 25px 80px rgba(0,0,0,0.22);
+
+      transition:
+        transform 280ms ease,
+        border-color 280ms ease,
+        box-shadow 280ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(208,164,92,0.3);
+
+      box-shadow:
+        0 30px 90px rgba(0,0,0,0.35),
+        0 0 40px rgba(208,164,92,0.045);
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+
+      min-height: 580px;
+    }
+
+
+    /* =========================================================
+       PROJECT IMAGE
+       ========================================================= */
+
+    .project-visual {
+      position: relative;
+
+      width: 100%;
+
+      min-height: 280px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(208,164,92,0.09),
+          transparent 48%
+        ),
+        rgba(255,255,255,0.018);
+    }
+
+    .project-card.featured .project-visual {
+      min-height: 350px;
+    }
+
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      transition:
+        transform 500ms ease;
+    }
+
+    .project-card:hover .project-visual img {
+      transform: scale(1.025);
+    }
+
+    .project-placeholder {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 35px;
+
+      text-align: center;
+    }
+
+    .project-placeholder-inner {
+      max-width: 450px;
+    }
+
+    .project-placeholder-number {
+      display: block;
+
+      margin-bottom: 13px;
+
+      color: #d0a45c;
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.6rem;
+
+      letter-spacing: 0.16em;
+    }
+
+    .project-placeholder strong {
+      display: block;
+
+      color:
+        rgba(242,238,231,0.45);
+
+      font-size: 1rem;
+    }
+
+    .project-placeholder span {
+      display: block;
+
+      margin-top: 8px;
+
+      color:
+        rgba(242,238,231,0.25);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.62rem;
+    }
+
+
+    /* =========================================================
+       PROJECT INFO
+       ========================================================= */
+
+    .project-info {
+      padding: 27px 29px 30px;
+    }
+
+    .project-topline {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 17px;
+    }
+
+    .project-index {
+      color:
+        rgba(242,238,231,0.22);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.61rem;
+
+      letter-spacing: 0.1em;
+    }
+
+    .project-type {
+      color: #d0a45c;
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.59rem;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+    }
+
+    .project-name {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          1.6rem,
+          3vw,
+          2.8rem
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.045em;
+    }
+
+    .project-description {
+      max-width: 620px;
+
+      margin: 13px 0 0;
+
+      color:
+        rgba(242,238,231,0.48);
+
+      font-size: 0.79rem;
+
+      line-height: 1.75;
+    }
+
+    .project-bottom {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-top: 24px;
+    }
+
+    .project-tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+    }
+
+    .project-tag {
+      padding: 6px 9px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      border-radius: 999px;
+
+      color:
+        rgba(242,238,231,0.35);
+
+      font-size: 0.58rem;
+
+      letter-spacing: 0.04em;
+    }
+
+    .project-link {
+      flex-shrink: 0;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 40px;
+
+      padding: 0 15px;
+
+      border:
+        1px solid
+        rgba(208,164,92,0.25);
+
+      border-radius: 999px;
+
+      color: #d0a45c;
+
+      background:
+        rgba(208,164,92,0.045);
+
+      text-decoration: none;
+
+      font-size: 0.61rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.07em;
+
+      text-transform: uppercase;
+
+      transition:
+        background 200ms ease,
+        border-color 200ms ease;
+    }
+
+    .project-link:hover {
+      background:
+        rgba(208,164,92,0.1);
+
+      border-color:
+        rgba(208,164,92,0.45);
+    }
+
+
+    /* =========================================================
+       EMPTY / EDITOR NOTE
+       ========================================================= */
+
+    .projects-note {
+      margin-top: 22px;
+
+      padding: 18px 20px;
+
+      border:
+        1px dashed
+        rgba(208,164,92,0.2);
+
+      border-radius: 12px;
+
+      color:
+        rgba(242,238,231,0.35);
+
+      background:
+        rgba(208,164,92,0.018);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.64rem;
+
+      line-height: 1.7;
+    }
+
+    .projects-note strong {
+      color: #d0a45c;
+    }
+
+
+    /* =========================================================
+       CTA
+       ========================================================= */
+
+    .projects-cta {
+      padding:
+        130px 24px;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(208,164,92,0.09),
+          transparent 38%
+        ),
+        #080808;
+    }
+
+    .projects-cta-inner {
+      width: min(780px, 100%);
+
+      margin: 0 auto;
+    }
+
+    .projects-cta h2 {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2.5rem,
+          5.5vw,
+          5.5rem
+        );
+
+      line-height: 0.94;
+
+      letter-spacing: -0.06em;
+    }
+
+    .projects-cta h2 span {
+      color: #d0a45c;
+    }
+
+    .projects-cta p {
+      max-width: 560px;
+
+      margin: 23px auto 0;
+
+      color:
+        rgba(242,238,231,0.47);
+
+      line-height: 1.75;
+    }
+
+    .projects-cta-actions {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 30px;
+    }
+
+    .projects-btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+
+      padding: 0 22px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.11);
+
+      border-radius: 999px;
+
+      color: #f2eee7;
+
+      background:
+        rgba(255,255,255,0.03);
+
+      text-decoration: none;
+
+      font-size: 0.67rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+
+      transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease;
+    }
+
+    .projects-btn:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(208,164,92,0.45);
+
+      background:
+        rgba(208,164,92,0.07);
+    }
+
+    .projects-btn.primary {
+      color: #111;
+
+      background: #d0a45c;
+
+      border-color: #d0a45c;
+    }
+
+    .projects-btn.primary:hover {
+      background: #e0b875;
+
+      border-color: #e0b875;
+    }
+
+
+    /* =========================================================
+       LIGHT MODE
+       ========================================================= */
+
+    html.light .projects-hero,
+    html.light .projects-cta {
+      background:
+        radial-gradient(
+          circle at 72% 42%,
+          rgba(170,120,45,0.1),
+          transparent 34%
+        ),
+        #f4f1eb;
+    }
+
+    html.light .projects-section {
+      background: #eeebe5;
+    }
+
+    html.light .projects-title,
+    html.light .projects-section-head h2,
+    html.light .project-name,
+    html.light .projects-cta h2 {
+      color: #151515;
+    }
+
+    html.light .projects-intro,
+    html.light .projects-section-head p,
+    html.light .project-description,
+    html.light .projects-cta p {
+      color: rgba(21,21,21,0.56);
+    }
+
+    html.light .projects-pill {
+      color: rgba(21,21,21,0.45);
+
+      border-color:
+        rgba(0,0,0,0.09);
+
+      background:
+        rgba(255,255,255,0.35);
+    }
+
+    html.light .project-card {
+      border-color:
+        rgba(0,0,0,0.08);
+
+      background:
+        rgba(255,255,255,0.42);
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    html.light .project-card:hover {
+      border-color:
+        rgba(170,120,45,0.32);
+    }
+
+    html.light .project-visual {
+      background:
+        rgba(0,0,0,0.025);
+    }
+
+    html.light .project-placeholder strong {
+      color: rgba(21,21,21,0.5);
+    }
+
+    html.light .project-placeholder span {
+      color: rgba(21,21,21,0.3);
+    }
+
+    html.light .project-index,
+    html.light .project-tag {
+      color: rgba(21,21,21,0.38);
+    }
+
+    html.light .project-tag {
+      border-color:
+        rgba(0,0,0,0.08);
+    }
+
+    html.light .projects-note {
+      color: rgba(21,21,21,0.4);
+    }
+
+    html.light .projects-btn {
+      color: #151515;
+
+      border-color:
+        rgba(0,0,0,0.1);
+
+      background:
+        rgba(0,0,0,0.025);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .projects-section-head {
+        display: block;
+      }
+
+      .projects-section-head p {
+        margin-top: 18px;
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .projects-hero {
+        min-height: auto;
+
+        padding:
+          125px
+          22px
+          85px;
+      }
+
+      .projects-title {
+        font-size:
+          clamp(
+            3.2rem,
+            16vw,
+            6rem
+          );
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.featured {
+        grid-column: span 1;
+
+        min-height: 500px;
+      }
+
+      .project-card {
+        min-height: 430px;
+      }
+
+      .project-card.featured .project-visual,
+      .project-visual {
+        min-height: 260px;
+      }
+
+      .project-bottom {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+      .project-link {
+        width: 100%;
+      }
+
+      .projects-section {
+        padding-top: 85px;
+        padding-bottom: 95px;
+      }
+
+      .projects-cta {
+        padding:
+          100px
+          22px;
+      }
+
+    }
+
+
+    @media (max-width: 420px) {
+
+      .project-info {
+        padding: 23px 22px 25px;
+      }
+
+      .project-visual {
+        min-height: 230px;
+      }
+
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .project-card,
+      .project-visual img,
+      .project-link,
+      .projects-btn {
+        transition: none;
+      }
+
+      .project-card:hover,
+      .projects-btn:hover {
+        transform: none;
+      }
+
+      .project-card:hover .project-visual img {
+        transform: none;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
-  <header class="site-header" id="site-header">
-    <div class="header-inner">
 
-      <a class="brand" href="index.html" aria-label="Shah Neil Khan home">
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="site-header">
+
+    <div class="nav-wrap">
+
+      <a
+        href="./"
+        class="brand-logo"
+        aria-label="Shah Neil Khan — Home"
+      >
+
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
           alt="SNK"
-          class="brand-logo"
-        />
+        >
 
-        <span class="brand-meta">
-          <span>SNK</span>
-          <span>/ PERSONAL BRAND</span>
-        </span>
       </a>
 
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-label="Open navigation"
-        aria-expanded="false"
-        aria-controls="main-navigation"
+
+      <nav
+        class="main-nav"
+        aria-label="Primary navigation"
       >
-        <span></span>
-        <span></span>
-      </button>
 
-      <nav class="main-nav" id="main-navigation" aria-label="Primary navigation">
+        <a href="./#home">
+          Home
+        </a>
 
-        <a href="index.html">Home</a>
-        <a href="projects.html" class="active" aria-current="page">Work</a>
-        <a href="index.html#ai">AI</a>
-        <a href="expertise.html">Expertise</a>
-        <a href="experience.html">Experience</a>
-        <a href="about.html">About</a>
-        <a href="brand.html">Brand</a>
-        <a href="contact.html">Contact</a>
+        <a href="./#ecosystem">
+          Ecosystem
+        </a>
+
+        <a href="./#ai">
+          AI
+        </a>
+
+        <a href="./#expertise">
+          Expertise
+        </a>
+
+        <a href="./#experience">
+          Experience
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+        <a href="./brand.html">
+          Brand
+        </a>
+
+        <a
+          href="./projects.html"
+          class="active"
+        >
+          Projects
+        </a>
+
+        <a href="./#contact">
+          Contact
+        </a>
 
       </nav>
 
-      <a class="header-cta" href="contact.html">
-        Let's Build
-        <span>↗</span>
-      </a>
+
+      <div class="nav-actions">
+
+        <button
+          type="button"
+          class="icon-btn"
+          id="languageToggle"
+          aria-label="Switch language"
+        >
+          বাংলা
+        </button>
+
+        <button
+          type="button"
+          class="icon-btn"
+          id="themeToggle"
+          aria-label="Toggle theme"
+        >
+          ☼
+        </button>
+
+        <button
+          type="button"
+          class="icon-btn"
+          id="rainToggle"
+          aria-label="Toggle rain"
+        >
+          Rain
+        </button>
+
+      </div>
 
     </div>
+
   </header>
 
 
-  <main>
+  <!-- =======================================================
+       MAIN
+       ======================================================= -->
 
-    <!-- =========================
-         PAGE HERO
-    ========================== -->
-    <section class="page-hero">
-      <div class="container page-hero-grid">
+  <main class="projects-page">
 
-        <div class="page-hero-copy reveal">
 
-          <div class="eyebrow">
-            <span class="eyebrow-line"></span>
-            SELECTED WORK
-          </div>
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
 
-          <h1>
-            BUILDING
-            <span>SYSTEMS</span>
-            THAT MATTER.
-          </h1>
+    <section class="projects-hero">
 
-          <p class="page-hero-lead">
-            A focused collection of software, product, UX and engineering work.
-            Each project is treated as a system — not simply a visual interface.
-          </p>
+      <div class="projects-hero-glow"></div>
 
-        </div>
+      <div class="projects-hero-content reveal">
 
-        <div class="page-hero-mark reveal">
-          <span>WORK</span>
-          <strong>01—04</strong>
-          <small>SOFTWARE / AI / UX</small>
-        </div>
+        <p class="projects-eyebrow">
+          SNK · SELECTED WORK · CASE STUDIES
+        </p>
 
-      </div>
-    </section>
+        <h1 class="projects-title">
+          WORK<br>
+          <span>THAT THINKS.</span>
+        </h1>
 
+        <p class="projects-intro">
+          A collection of selected digital experiences,
+          interfaces, systems and experiments. Each project
+          is documented through the problem, thinking,
+          process and outcome behind the work.
+        </p>
 
-    <!-- =========================
-         PROJECT INDEX
-    ========================== -->
-    <section class="section projects-index">
-      <div class="container">
+        <div class="projects-hero-meta">
 
-        <div class="section-heading reveal">
-
-          <div>
-            <span class="section-number">01 / PROJECT INDEX</span>
-
-            <h2>
-              SELECTED
-              <span>WORK.</span>
-            </h2>
-          </div>
-
-          <p>
-            Real work, real systems, real outcomes.
-            Project details are intentionally kept focused on verified work.
-          </p>
-
-        </div>
-
-
-        <!-- PROJECT 01 -->
-        <article class="project-feature reveal">
-
-          <div class="project-number">
-            01
-          </div>
-
-          <div class="project-content">
-
-            <div class="project-meta">
-              <span>WEB / PRODUCT</span>
-              <span>01</span>
-            </div>
-
-            <h3>WebsitesDeal</h3>
-
-            <p class="project-description">
-              A web experience built as part of my digital work,
-              combining interface design, responsive implementation
-              and product-oriented thinking.
-            </p>
-
-            <div class="project-tags">
-              <span>WEB</span>
-              <span>UX</span>
-              <span>UI</span>
-              <span>ENGINEERING</span>
-            </div>
-
-            <div class="project-actions">
-
-              <a
-                href="https://shahneilkhan.github.io/demosite"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button button-primary"
-              >
-                VIEW PROJECT
-                <span>↗</span>
-              </a>
-
-              <a href="contact.html" class="button button-secondary">
-                DISCUSS WORK
-                <span>→</span>
-              </a>
-
-            </div>
-
-          </div>
-
-          <div class="project-visual project-visual-websitesdeal">
-
-            <div class="visual-browser">
-
-              <div class="browser-top">
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <div class="browser-address">
-                  shahneilkhan.github.io / demosite
-                </div>
-              </div>
-
-              <div class="browser-body">
-
-                <div class="visual-label">
-                  WEBSITESDEAL
-                </div>
-
-                <div class="visual-line visual-line-large"></div>
-                <div class="visual-line"></div>
-                <div class="visual-line visual-line-short"></div>
-
-                <div class="visual-grid">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- PROJECT 02 -->
-        <article class="project-placeholder reveal">
-
-          <div class="placeholder-index">
-            02
-          </div>
-
-          <div class="placeholder-copy">
-
-            <span class="project-status">
-              PROJECT DATA
-            </span>
-
-            <h3>Next System</h3>
-
-            <p>
-              The next verified project will appear here with its real
-              problem, system, contribution and outcome.
-            </p>
-
-          </div>
-
-          <div class="placeholder-arrow">
-            +
-          </div>
-
-        </article>
-
-
-        <!-- PROJECT 03 -->
-        <article class="project-placeholder reveal">
-
-          <div class="placeholder-index">
-            03
-          </div>
-
-          <div class="placeholder-copy">
-
-            <span class="project-status">
-              PROJECT DATA
-            </span>
-
-            <h3>Product Experience</h3>
-
-            <p>
-              A dedicated case-study space for product, UX or interface
-              work once the verified project material is available.
-            </p>
-
-          </div>
-
-          <div class="placeholder-arrow">
-            +
-          </div>
-
-        </article>
-
-
-        <!-- PROJECT 04 -->
-        <article class="project-placeholder reveal">
-
-          <div class="placeholder-index">
-            04
-          </div>
-
-          <div class="placeholder-copy">
-
-            <span class="project-status">
-              PROJECT DATA
-            </span>
-
-            <h3>Full-Stack System</h3>
-
-            <p>
-              A case-study slot for a software, AI or full-stack system
-              with its architecture and engineering story.
-            </p>
-
-          </div>
-
-          <div class="placeholder-arrow">
-            +
-          </div>
-
-        </article>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         CASE STUDY METHOD
-    ========================== -->
-    <section class="section case-method">
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-            <span class="section-number">02 / HOW I PRESENT WORK</span>
-
-            <h2>
-              EVERY PROJECT
-              <span>HAS A STORY.</span>
-            </h2>
-          </div>
-
-          <p>
-            A polished interface is only part of the work.
-            The important question is what problem the system solves
-            and why the decisions behind it matter.
-          </p>
-
-        </div>
-
-
-        <div class="method-grid">
-
-          <div class="method-card reveal">
-            <span>01</span>
-            <h3>PROBLEM</h3>
-            <p>
-              What needed to change, improve or be created?
-            </p>
-          </div>
-
-          <div class="method-card reveal">
-            <span>02</span>
-            <h3>CONTEXT</h3>
-            <p>
-              Who uses the system and what constraints shape it?
-            </p>
-          </div>
-
-          <div class="method-card reveal">
-            <span>03</span>
-            <h3>SYSTEM</h3>
-            <p>
-              How architecture, UX, data and technology come together.
-            </p>
-          </div>
-
-          <div class="method-card reveal">
-            <span>04</span>
-            <h3>EXECUTION</h3>
-            <p>
-              The actual design, engineering and implementation decisions.
-            </p>
-          </div>
-
-          <div class="method-card reveal">
-            <span>05</span>
-            <h3>OUTCOME</h3>
-            <p>
-              What changed, what worked and what was learned.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         AI / ENGINEERING
-    ========================== -->
-    <section class="section project-philosophy">
-      <div class="container">
-
-        <div class="philosophy-layout">
-
-          <div class="philosophy-title reveal">
-
-            <span class="section-number">03 / ENGINEERING VIEW</span>
-
-            <h2>
-              MORE THAN
-              <span>THE UI.</span>
-            </h2>
-
-          </div>
-
-          <div class="philosophy-copy reveal">
-
-            <p class="large-copy">
-              Good digital work sits at the intersection of
-              <strong>experience, engineering and intelligence.</strong>
-            </p>
-
-            <div class="philosophy-equation">
-              EXPERIENCE
-              <span>+</span>
-              ENGINEERING
-              <span>+</span>
-              INTELLIGENCE
-              <span>=</span>
-              IMPACT
-            </div>
-
-            <p>
-              I care about the complete system behind the interface:
-              architecture, data flow, context, security, usability,
-              performance and the people who ultimately depend on it.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         TABAYYUN EXTERNAL PLATFORM
-    ========================== -->
-    <section class="section external-platform">
-      <div class="container">
-
-        <div class="external-card reveal">
-
-          <div class="external-copy">
-
-            <span class="section-number">
-              EXTERNAL PLATFORM
-            </span>
-
-            <h2>
-              TABAYYUN
-              <span>TV.</span>
-            </h2>
-
-            <p>
-              Explore Tabayyun Institute's platform directly.
-              This is an external destination, not a portfolio case study.
-            </p>
-
-          </div>
-
-          <a
-            href="https://www.tabayyuninstitute.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-primary"
-          >
-            VISIT TABAYYUN TV
-            <span>↗</span>
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         FINAL CTA
-    ========================== -->
-    <section class="section final-cta">
-      <div class="container">
-
-        <div class="final-cta-inner reveal">
-
-          <span class="section-number">
-            HAVE A PROJECT?
+          <span class="projects-pill active">
+            Selected Work
           </span>
 
-          <h2>
-            LET'S BUILD
-            <span>SOMETHING USEFUL.</span>
-          </h2>
+          <span class="projects-pill">
+            UX
+          </span>
+
+          <span class="projects-pill">
+            UI
+          </span>
+
+          <span class="projects-pill">
+            Digital Products
+          </span>
+
+          <span class="projects-pill">
+            Systems
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROJECTS
+         ===================================================== -->
+
+    <section
+      class="projects-section"
+      id="projects"
+    >
+
+      <div class="projects-section-inner">
+
+
+        <div class="projects-section-head reveal">
+
+          <div>
+
+            <p class="projects-section-label">
+              SELECTED WORK
+            </p>
+
+            <h2>
+              Design with<br>
+              <span style="color:#d0a45c;">
+                intention.
+              </span>
+            </h2>
+
+          </div>
 
           <p>
-            If you have a difficult problem, a product idea,
-            an AI system or a digital experience worth building,
-            let's talk.
+            [EDIT: Replace this introduction with a short
+            description of your actual body of work.]
           </p>
 
-          <a href="contact.html" class="button button-primary">
-            START A CONVERSATION
-            <span>→</span>
+        </div>
+
+
+        <div class="projects-grid">
+
+
+          <!-- =================================================
+               PROJECT 01
+               ================================================= -->
+
+          <article class="project-card featured reveal">
+
+
+            <div class="project-visual">
+
+              <!--
+                EDIT IMAGE:
+
+                Replace the entire placeholder with:
+
+                <img
+                  src="assets/projects/project-01-cover.jpg"
+                  alt="[EDIT: Project name preview]"
+                >
+              -->
+
+              <div class="project-placeholder">
+
+                <div class="project-placeholder-inner">
+
+                  <span class="project-placeholder-number">
+                    PROJECT 01
+                  </span>
+
+                  <strong>
+                    [EDIT: Add Project Cover]
+                  </strong>
+
+                  <span>
+                    assets/projects/project-01-cover.jpg
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+
+                <span class="project-index">
+                  01 / SELECTED
+                </span>
+
+                <span class="project-type">
+                  [EDIT: UX / UI]
+                </span>
+
+              </div>
+
+
+              <h3 class="project-name">
+                [EDIT: Project Name]
+              </h3>
+
+
+              <p class="project-description">
+                [EDIT: Write a concise description of the
+                project. Explain what was designed, who it
+                was for and what problem it addressed.]
+              </p>
+
+
+              <div class="project-bottom">
+
+                <div class="project-tags">
+
+                  <span class="project-tag">
+                    [EDIT: UX]
+                  </span>
+
+                  <span class="project-tag">
+                    [EDIT: UI]
+                  </span>
+
+                  <span class="project-tag">
+                    [EDIT: Product]
+                  </span>
+
+                </div>
+
+
+                <!--
+                  EDIT LINK:
+
+                  Point this to the relevant case study:
+
+                  href="./casestudy.html"
+                -->
+
+                <a
+                  href="./casestudy.html"
+                  class="project-link"
+                >
+                  View Case Study ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- =================================================
+               PROJECT 02
+               ================================================= -->
+
+          <article class="project-card reveal">
+
+
+            <div class="project-visual">
+
+              <!--
+                EDIT:
+                <img
+                  src="assets/projects/project-02-cover.jpg"
+                  alt="[EDIT: Project name]"
+                >
+              -->
+
+              <div class="project-placeholder">
+
+                <div class="project-placeholder-inner">
+
+                  <span class="project-placeholder-number">
+                    PROJECT 02
+                  </span>
+
+                  <strong>
+                    [EDIT: Add Project Cover]
+                  </strong>
+
+                  <span>
+                    assets/projects/project-02-cover.jpg
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+
+                <span class="project-index">
+                  02 / SELECTED
+                </span>
+
+                <span class="project-type">
+                  [EDIT: TYPE]
+                </span>
+
+              </div>
+
+
+              <h3 class="project-name">
+                [EDIT: Project Name]
+              </h3>
+
+
+              <p class="project-description">
+                [EDIT: Project description.]
+              </p>
+
+
+              <div class="project-bottom">
+
+                <div class="project-tags">
+
+                  <span class="project-tag">
+                    [EDIT: UX]
+                  </span>
+
+                  <span class="project-tag">
+                    [EDIT: UI]
+                  </span>
+
+                </div>
+
+
+                <a
+                  href="./casestudy.html"
+                  class="project-link"
+                >
+                  View Case Study ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- =================================================
+               PROJECT 03
+               ================================================= -->
+
+          <article class="project-card reveal">
+
+
+            <div class="project-visual">
+
+              <!--
+                EDIT:
+                <img
+                  src="assets/projects/project-03-cover.jpg"
+                  alt="[EDIT: Project name]"
+                >
+              -->
+
+              <div class="project-placeholder">
+
+                <div class="project-placeholder-inner">
+
+                  <span class="project-placeholder-number">
+                    PROJECT 03
+                  </span>
+
+                  <strong>
+                    [EDIT: Add Project Cover]
+                  </strong>
+
+                  <span>
+                    assets/projects/project-03-cover.jpg
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+
+                <span class="project-index">
+                  03 / SELECTED
+                </span>
+
+                <span class="project-type">
+                  [EDIT: TYPE]
+                </span>
+
+              </div>
+
+
+              <h3 class="project-name">
+                [EDIT: Project Name]
+              </h3>
+
+
+              <p class="project-description">
+                [EDIT: Project description.]
+              </p>
+
+
+              <div class="project-bottom">
+
+                <div class="project-tags">
+
+                  <span class="project-tag">
+                    [EDIT: Product]
+                  </span>
+
+                  <span class="project-tag">
+                    [EDIT: Design]
+                  </span>
+
+                </div>
+
+
+                <a
+                  href="./casestudy.html"
+                  class="project-link"
+                >
+                  View Case Study ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- =================================================
+               PROJECT 04
+               ================================================= -->
+
+          <article class="project-card reveal">
+
+
+            <div class="project-visual">
+
+              <!--
+                EDIT:
+                <img
+                  src="assets/projects/project-04-cover.jpg"
+                  alt="[EDIT: Project name]"
+                >
+              -->
+
+              <div class="project-placeholder">
+
+                <div class="project-placeholder-inner">
+
+                  <span class="project-placeholder-number">
+                    PROJECT 04
+                  </span>
+
+                  <strong>
+                    [EDIT: Add Project Cover]
+                  </strong>
+
+                  <span>
+                    assets/projects/project-04-cover.jpg
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+
+                <span class="project-index">
+                  04 / SELECTED
+                </span>
+
+                <span class="project-type">
+                  [EDIT: TYPE]
+                </span>
+
+              </div>
+
+
+              <h3 class="project-name">
+                [EDIT: Project Name]
+              </h3>
+
+
+              <p class="project-description">
+                [EDIT: Project description.]
+              </p>
+
+
+              <div class="project-bottom">
+
+                <div class="project-tags">
+
+                  <span class="project-tag">
+                    [EDIT: Strategy]
+                  </span>
+
+                  <span class="project-tag">
+                    [EDIT: UX]
+                  </span>
+
+                </div>
+
+
+                <a
+                  href="./casestudy.html"
+                  class="project-link"
+                >
+                  View Case Study ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- =================================================
+               PROJECT 05
+               ================================================= -->
+
+          <article class="project-card reveal">
+
+
+            <div class="project-visual">
+
+              <!--
+                EDIT:
+                <img
+                  src="assets/projects/project-05-cover.jpg"
+                  alt="[EDIT: Project name]"
+                >
+              -->
+
+              <div class="project-placeholder">
+
+                <div class="project-placeholder-inner">
+
+                  <span class="project-placeholder-number">
+                    PROJECT 05
+                  </span>
+
+                  <strong>
+                    [EDIT: Add Project Cover]
+                  </strong>
+
+                  <span>
+                    assets/projects/project-05-cover.jpg
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+
+                <span class="project-index">
+                  05 / SELECTED
+                </span>
+
+                <span class="project-type">
+                  [EDIT: TYPE]
+                </span>
+
+              </div>
+
+
+              <h3 class="project-name">
+                [EDIT: Project Name]
+              </h3>
+
+
+              <p class="project-description">
+                [EDIT: Project description.]
+              </p>
+
+
+              <div class="project-bottom">
+
+                <div class="project-tags">
+
+                  <span class="project-tag">
+                    [EDIT: Design]
+                  </span>
+
+                  <span class="project-tag">
+                    [EDIT: Systems]
+                  </span>
+
+                </div>
+
+
+                <a
+                  href="./casestudy.html"
+                  class="project-link"
+                >
+                  View Case Study ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+
+        <!-- EDITOR NOTE -->
+
+        <div class="projects-note reveal">
+
+          <strong>EDITOR NOTE:</strong>
+
+          Replace the editable project cards above with
+          verified work only. Add real screenshots, project
+          descriptions, roles, process and outcomes.
+          Do not add invented metrics or claims.
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+         ===================================================== -->
+
+    <section class="projects-cta">
+
+      <div class="projects-cta-inner reveal">
+
+        <p class="projects-section-label">
+          KEEP EXPLORING
+        </p>
+
+        <h2>
+          Work is only<br>
+          <span>part of the story.</span>
+        </h2>
+
+        <p>
+          Explore the broader SNK ecosystem or learn more
+          about the thinking behind the work.
+        </p>
+
+
+        <div class="projects-cta-actions">
+
+          <a
+            href="./brand.html"
+            class="projects-btn primary"
+          >
+            Explore Ecosystem
+          </a>
+
+          <a
+            href="./about.html"
+            class="projects-btn"
+          >
+            About SNK
           </a>
 
         </div>
 
       </div>
+
     </section>
+
 
   </main>
 
 
-  <!-- =========================
+  <!-- =======================================================
        FOOTER
-  ========================== -->
+       ======================================================= -->
+
   <footer class="site-footer">
 
-    <div class="container">
+    <div class="footer-inner">
 
-      <div class="footer-top">
+      <div>
 
-        <a href="index.html" class="footer-brand">
+        <strong>SNK</strong>
 
-          <img
-            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-            alt="SNK"
-          />
-
-          <div>
-            <strong>SHAH NEIL KHAN</strong>
-            <span>SOFTWARE / AI / EXPERIENCE</span>
-          </div>
-
-        </a>
-
-        <div class="footer-links">
-
-          <a href="projects.html">Work</a>
-          <a href="expertise.html">Expertise</a>
-          <a href="experience.html">Experience</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-
-        </div>
+        <span>
+          · BUILD · LEARN · CREATE
+        </span>
 
       </div>
 
-      <div class="footer-bottom">
 
-        <span>
-          © <span data-current-year></span> SHAH NEIL KHAN
-        </span>
+      <div>
 
-        <span>
-          CODE → INTELLIGENCE → EXPERIENCE
-        </span>
+        ©
+        <span id="currentYear"></span>
+        Shah Neil Khan
 
       </div>
 
@@ -578,8 +1826,23 @@
   </footer>
 
 
+  <!-- =======================================================
+       SCRIPT
+       ======================================================= -->
+
   <script src="script.js"></script>
+
+  <script>
+
+    const yearElement =
+      document.getElementById("currentYear");
+
+    if (yearElement) {
+      yearElement.textContent =
+        new Date().getFullYear();
+    }
+
+  </script>
 
 </body>
 </html>
-```
