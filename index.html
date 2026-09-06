@@ -1,1117 +1,285 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<!-- =========================================================
+     SNK BRAND ECOSYSTEM
+     Replace your current Selected Work section with this
+========================================================= -->
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<section class="snk-ecosystem" id="work">
 
-  <meta
-    name="description"
-    content="Shah Neil Khan — Software Engineer, AI Engineer and UX Lead."
-  >
+  <div class="snk-section-head reveal">
+    <div>
+      <span class="snk-eyebrow">SHAH NEIL KHAN / ECOSYSTEM</span>
 
-  <meta
-    name="theme-color"
-    content="#080807"
-  >
-
-  <title>Shah Neil Khan — Software Engineer & AI Engineer</title>
-
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-  >
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-  <!-- =========================================================
-       BACKGROUND SYSTEM
-  ========================================================== -->
-
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-
-  <canvas id="rainCanvas" aria-hidden="true"></canvas>
-
-  <div
-    id="birdLayer"
-    class="bird-layer"
-    aria-hidden="true"
-  ></div>
-
-
-  <!-- =========================================================
-       HEADER
-  ========================================================== -->
-
-  <header class="site-header" id="siteHeader">
-
-    <div class="container nav-wrap">
-
-      <a
-        href="#home"
-        class="brand"
-        aria-label="Shah Neil Khan home"
-      >
-
-        <img
-          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-          alt="SNK"
-          class="brand-logo"
-        >
-
-        <span class="brand-meta">
-          <strong>SHAH NEIL KHAN</strong>
-          <small data-i18n="brandSubtitle">
-            PERSONAL BRAND
-          </small>
-        </span>
-
-      </a>
-
-
-      <nav class="main-nav" id="mainNav">
-
-        <a href="#home" data-nav data-i18n="navHome">Home</a>
-        <a href="#work" data-nav data-i18n="navWork">Work</a>
-        <a href="#ai" data-nav data-i18n="navAI">AI</a>
-        <a href="#expertise" data-nav data-i18n="navExpertise">Expertise</a>
-        <a href="#experience" data-nav data-i18n="navExperience">Experience</a>
-        <a href="#about" data-nav data-i18n="navAbout">About</a>
-        <a href="brand.html" data-i18n="navBrand">Brand</a>
-        <a href="#contact" data-nav data-i18n="navContact">Contact</a>
-
-      </nav>
-
-
-      <!-- Controls -->
-
-      <div class="site-controls">
-
-        <button
-          class="control-btn"
-          id="languageToggle"
-          type="button"
-          aria-label="Change language"
-        >
-          <span id="languageLabel">বাংলা</span>
-        </button>
-
-        <button
-          class="control-btn icon-control"
-          id="themeToggle"
-          type="button"
-          aria-label="Toggle dark and light mode"
-        >
-          <span id="themeIcon">☀</span>
-        </button>
-
-        <button
-          class="control-btn icon-control"
-          id="rainToggle"
-          type="button"
-          aria-label="Toggle rain"
-          aria-pressed="false"
-        >
-          <span>🌧</span>
-        </button>
-
-        <button
-          class="menu-toggle"
-          id="menuToggle"
-          type="button"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-      </div>
-
+      <h2>
+        THE WORK<br>
+        <span>BEYOND THE PORTFOLIO.</span>
+      </h2>
     </div>
 
-  </header>
-
-
-  <!-- =========================================================
-       MAIN
-  ========================================================== -->
-
-  <main id="home">
-
-
-    <!-- =======================================================
-         HERO
-    ======================================================== -->
-
-    <section class="hero section-dark">
-
-      <div class="hero-image-wrap">
-
-        <!-- Existing cinematic visual -->
-        <img
-          src="hero.svg"
-          alt=""
-          class="hero-image"
-          id="heroImage"
-        >
-
-      </div>
-
-
-      <div class="hero-overlay"></div>
-
-
-      <div class="container hero-inner">
-
-        <div class="hero-copy reveal">
-
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            SOFTWARE / AI / EXPERIENCE
-          </div>
-
-
-          <h1 class="hero-title">
-
-            <span
-              class="hero-line"
-              data-i18n="heroLineOne"
-            >
-              I BUILD SYSTEMS.
-            </span>
-
-            <span
-              class="hero-line accent"
-              data-i18n="heroLineTwo"
-            >
-              I TRAIN MINDS.
-            </span>
-
-            <span
-              class="hero-line"
-              data-i18n="heroLineThree"
-            >
-              I CREATE IMPACT.
-            </span>
-
-          </h1>
-
-
-          <p class="hero-signature">
-            Code → Intelligence → Experience
-          </p>
-
-
-          <p
-            class="hero-description"
-            data-i18n="heroDescription"
-          >
-            Software engineering, artificial intelligence,
-            product thinking and human-centered experiences —
-            connected through one personal vision.
-          </p>
-
-
-          <div class="hero-actions">
-
-            <a
-              href="#work"
-              class="btn btn-primary magnetic"
-              data-i18n="exploreWork"
-            >
-              EXPLORE MY WORK →
-            </a>
-
-            <a
-              href="#contact"
-              class="btn btn-ghost magnetic"
-              data-i18n="buildTogether"
-            >
-              LET'S BUILD →
-            </a>
-
-          </div>
-
-
-          <div class="hero-status">
-
-            <span class="status-dot"></span>
-
-            <span data-i18n="systemOnline">
-              SYSTEM / ONLINE
-            </span>
-
-            <span class="status-divider">/</span>
-
-            <span data-i18n="aiConnected">
-              AI CONNECTED
-            </span>
-
-            <span class="status-divider">/</span>
-
-            <span data-i18n="contextReady">
-              CONTEXT READY
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <!-- ===================================================
-             LIVE CODE TERMINAL
-        ==================================================== -->
-
-        <div class="terminal-card reveal">
-
-          <div class="terminal-top">
-
-            <div class="terminal-dots">
-              <i></i>
-              <i></i>
-              <i></i>
-            </div>
-
-            <span>snk-engine</span>
-
-            <span class="terminal-live">
-              LIVE
-            </span>
-
-          </div>
-
-
-          <div
-            class="terminal-body"
-            id="terminalBody"
-          >
-
-            <div class="terminal-line">
-              <span class="terminal-prompt">$</span>
-              <span id="typingText"></span>
-              <span class="typing-cursor"></span>
-            </div>
-
-            <div class="terminal-output" id="terminalOutput"></div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="hero-scroll">
-        <span>SCROLL</span>
-        <span class="scroll-line"></span>
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         PERSONAL BRAND ECOSYSTEM
-    ======================================================== -->
-
-    <section class="section ecosystem">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="section-number">01</span>
-
-          <h2 data-i18n="ecosystemTitle">
-            ONE PERSON. MULTIPLE WORLDS.
-          </h2>
-
-          <p data-i18n="ecosystemDescription">
-            Technology, intelligence and purpose — connected
-            through the Shah Neil Khan personal brand.
-          </p>
-
-        </div>
-
-
-        <div class="ecosystem-grid">
-
-
-          <article class="ecosystem-card reveal">
-
-            <span class="card-number">01</span>
-
-            <div class="ecosystem-icon">⌘</div>
-
-            <h3 data-i18n="techTitle">
-              TECHNOLOGY
-            </h3>
-
-            <p>
-              Software · AI · UX · Systems
-            </p>
-
-            <a
-              href="#work"
-              data-i18n="exploreTechnology"
-            >
-              BUILD DIGITAL SYSTEMS →
-            </a>
-
-          </article>
-
-
-          <article class="ecosystem-card reveal">
-
-            <span class="card-number">02</span>
-
-            <div class="ecosystem-icon">◉</div>
-
-            <h3 data-i18n="intelligenceTitle">
-              INTELLIGENCE
-            </h3>
-
-            <p>
-              AI · Context · Learning · Mind
-            </p>
-
-            <a
-              href="#ai"
-              data-i18n="exploreIntelligence"
-            >
-              EXPLORE INTELLIGENCE →
-            </a>
-
-          </article>
-
-
-          <article class="ecosystem-card reveal">
-
-            <span class="card-number">03</span>
-
-            <div class="ecosystem-icon">✦</div>
-
-            <h3 data-i18n="purposeTitle">
-              PURPOSE
-            </h3>
-
-            <p>
-              Knowledge · Impact · Purpose
-            </p>
-
-            <a
-              href="https://www.tabayyuninstitute.com/"
-              target="_blank"
-              rel="noopener"
-              data-i18n="exploreTabayyun"
-            >
-              EXPLORE TABAYYUN →
-            </a>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         SELECTED WORK
-    ======================================================== -->
-
-    <section
-      class="section section-dark work-section"
-      id="work"
+    <p>
+      A collection of digital platforms, brands, learning experiences
+      and creative systems built across technology, knowledge and design.
+    </p>
+  </div>
+
+
+  <div class="snk-brand-grid">
+
+    <!-- 01 — WEBSITESDEAL -->
+    <a
+      class="snk-brand-card brand-websitesdeal reveal"
+      href="https://shahneilkhan.github.io/demosite"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit WebsitesDeal"
     >
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="section-number">02</span>
-
-          <h2 data-i18n="workTitle">
-            SELECTED WORK.
-          </h2>
-
-          <p data-i18n="workDescription">
-            Real work first. No invented case studies.
-            Projects will grow here as the portfolio evolves.
-          </p>
-
-        </div>
-
-
-        <div class="featured-project reveal">
-
-          <div class="project-meta">
-            <span>PROJECT 01</span>
-            <span>WEB / PRODUCT</span>
-          </div>
-
-
-          <div class="project-content">
-
-            <div>
-
-              <h3>WebsitesDeal</h3>
-
-              <p data-i18n="websitesDealDescription">
-                A web experience built as part of my digital
-                work and experimentation.
-              </p>
-
-              <a
-                class="text-link"
-                href="https://shahneilkhan.github.io/demosite"
-                target="_blank"
-                rel="noopener"
-              >
-                VIEW PROJECT →
-              </a>
-
-            </div>
-
-
-            <div class="project-index">
-              01
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-placeholder-grid">
-
-          <article class="minimal-project reveal">
-            <span>02</span>
-            <h3>Your next system.</h3>
-            <p>Project details will be added with verified information.</p>
-          </article>
-
-          <article class="minimal-project reveal">
-            <span>03</span>
-            <h3>Product experience.</h3>
-            <p>Project details will be added with verified information.</p>
-          </article>
-
-          <article class="minimal-project reveal">
-            <span>04</span>
-            <h3>Full-stack system.</h3>
-            <p>Project details will be added with verified information.</p>
-          </article>
-
-        </div>
-
+      <div class="brand-card-top">
+        <span class="brand-number">01</span>
+        <span class="brand-type">DIGITAL / WEB</span>
       </div>
 
-    </section>
+      <div class="brand-visual">
+        <div class="brand-glow"></div>
 
-
-    <!-- =======================================================
-         AI / CONTEXT ENGINEERING
-    ======================================================== -->
-
-    <section class="section ai-section" id="ai">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="section-number">03</span>
-
-          <h2 data-i18n="aiTitle">
-            AI THAT UNDERSTANDS CONTEXT.
-          </h2>
-
-          <p data-i18n="aiDescription">
-            Modern AI isn't only about choosing a powerful
-            model. It's about giving the model the right
-            context, memory, knowledge, tools and constraints.
-          </p>
-
+        <div class="brand-logo-text">
+          <span>Websites</span><strong>Deal</strong>
         </div>
 
-
-        <div class="ai-pipeline reveal">
-
-          <span>USER</span>
-          <b>→</b>
-          <span>INTENT</span>
-          <b>→</b>
-          <strong>CONTEXT ENGINE</strong>
-          <b>→</b>
-          <span>AI / MODEL</span>
-          <b>→</b>
-          <span>VALIDATION</span>
-          <b>→</b>
-          <span>OUTPUT</span>
-
-        </div>
-
-
-        <div class="ai-support-row reveal">
-
-          <span>MEMORY</span>
-          <span>KNOWLEDGE</span>
-          <span>RETRIEVAL</span>
-          <span>TOOLS</span>
-
-        </div>
-
-
-        <div class="ai-card-grid">
-
-          <article class="ai-card reveal">
-            <span>01</span>
-            <h3>CONTEXT</h3>
-            <p>
-              Give intelligence the information it needs
-              to reason with relevance.
-            </p>
-          </article>
-
-          <article class="ai-card reveal">
-            <span>02</span>
-            <h3>RETRIEVAL</h3>
-            <p>
-              Connect models with useful knowledge instead
-              of relying only on static prompts.
-            </p>
-          </article>
-
-          <article class="ai-card reveal">
-            <span>03</span>
-            <h3>MEMORY</h3>
-            <p>
-              Preserve useful state and continuity across
-              interactions and workflows.
-            </p>
-          </article>
-
-          <article class="ai-card reveal">
-            <span>04</span>
-            <h3>TOOLS</h3>
-            <p>
-              Give AI controlled capabilities to interact
-              with systems and complete meaningful work.
-            </p>
-          </article>
-
-        </div>
-
-
-        <div class="ai-signature reveal">
-          Better context creates better intelligence.
-        </div>
-
-
-        <div class="ai-equation reveal">
-          MODEL + CONTEXT + MEMORY + TOOLS + VALIDATION
-          <span>= USEFUL AI SYSTEM</span>
-        </div>
-
+        <div class="brand-grid-lines"></div>
       </div>
 
-    </section>
-
-
-    <!-- =======================================================
-         ENGINEERING MINDSET
-    ======================================================== -->
-
-    <section class="section mindset section-dark">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="section-number">04</span>
-
-          <h2 data-i18n="mindsetTitle">
-            I DON'T JUST BUILD. I THINK FIRST.
-          </h2>
-
-          <p data-i18n="mindsetDescription">
-            Every product starts with a problem. I turn that
-            problem into a system that is useful, scalable,
-            secure and continuously improvable.
-          </p>
-
-        </div>
-
-
-        <div class="mindset-pipeline reveal">
-
-          <div>
-            <span>01</span>
-            <strong>UNDERSTAND</strong>
-            <small>User · Problem · Requirements · Constraints</small>
-          </div>
-
-          <i>→</i>
-
-          <div>
-            <span>02</span>
-            <strong>DESIGN</strong>
-            <small>Architecture · UX · Data Flow · Boundaries</small>
-          </div>
-
-          <i>→</i>
-
-          <div>
-            <span>03</span>
-            <strong>BUILD</strong>
-            <small>Code · API · Database · Deployment</small>
-          </div>
-
-          <i>→</i>
-
-          <div>
-            <span>04</span>
-            <strong>PROTECT</strong>
-            <small>Threat Model · Validation · Permissions</small>
-          </div>
-
-          <i>→</i>
-
-          <div>
-            <span>05</span>
-            <strong>IMPROVE</strong>
-            <small>Observe · Measure · Learn · Iterate</small>
-          </div>
-
-        </div>
-
-
-        <div class="mindset-signature reveal">
-          Understand the problem. Design the system.
-          Build with intention. Protect what matters.
-          Improve continuously.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         EXPERTISE
-    ======================================================== -->
-
-    <section class="section" id="expertise">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="section-number">05</span>
-
-          <h2 data-i18n="expertiseTitle">
-            WHAT I BRING TO THE TABLE.
-          </h2>
-
-        </div>
-
-
-        <div class="expertise-list">
-
-          <article class="expertise-row reveal">
-            <span>01</span>
-            <div>
-              <h3>SOFTWARE ENGINEERING</h3>
-              <p>
-                Architecture, applications, APIs, databases,
-                interfaces and reliable digital products.
-              </p>
-            </div>
-            <b>→</b>
-          </article>
-
-
-          <article class="expertise-row reveal">
-            <span>02</span>
-            <div>
-              <h3>AI / CONTEXT ENGINEERING</h3>
-              <p>
-                Context, retrieval, memory, tools,
-                validation and useful AI workflows.
-              </p>
-            </div>
-            <b>→</b>
-          </article>
-
-
-          <article class="expertise-row reveal">
-            <span>03</span>
-            <div>
-              <h3>PRODUCT & UX</h3>
-              <p>
-                User experience, interface thinking,
-                product structure and human-centered design.
-              </p>
-            </div>
-            <b>→</b>
-          </article>
-
-
-          <article class="expertise-row reveal">
-            <span>04</span>
-            <div>
-              <h3>SYSTEM DESIGN</h3>
-              <p>
-                Turning complex requirements into clear
-                systems, boundaries and flows.
-              </p>
-            </div>
-            <b>→</b>
-          </article>
-
-
-          <article class="expertise-row reveal">
-            <span>05</span>
-            <div>
-              <h3>CYBERSECURITY</h3>
-              <p>
-                Security-aware engineering, validation,
-                permissions and threat-oriented thinking.
-              </p>
-            </div>
-            <b>→</b>
-          </article>
-
-
-          <article class="expertise-row reveal">
-            <span>06</span>
-            <div>
-              <h3>DEVOPS & CLOUD</h3>
-              <p>
-                Deployment, environments, infrastructure
-                thinking and operational reliability.
-              </p>
-            </div>
-            <b>→</b>
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         EXPERIENCE
-    ======================================================== -->
-
-    <section
-      class="section section-dark"
-      id="experience"
-    >
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="section-number">06</span>
-
-          <h2 data-i18n="experienceTitle">
-            WHERE I'VE BUILT & CONTRIBUTED.
-          </h2>
-
-        </div>
-
-
-        <article class="experience-card reveal">
-
-          <div class="experience-top">
-
-            <span>2026 — PRESENT</span>
-
-            <span>
-              TEXAS, USA · REMOTE
-            </span>
-
-          </div>
-
-
-          <h3>UX LEAD DIGITAL EXPERT</h3>
-
-          <h4>Yaqeen Institute</h4>
-
+      <div class="brand-card-content">
+        <div>
+          <h3>WebsitesDeal</h3>
 
           <p>
-            Working across digital experience, UX thinking,
-            interface design and product-oriented problem
-            solving.
+            Digital websites, web experiences and solutions designed
+            for modern businesses.
           </p>
+        </div>
+
+        <span class="brand-arrow">↗</span>
+      </div>
+
+      <div class="brand-card-footer">
+        <span>EXPLORE WEBSITE</span>
+        <span>VISIT →</span>
+      </div>
+    </a>
 
 
-          <div class="experience-framework">
+    <!-- 02 — TABAYYUN TV -->
+    <a
+      class="snk-brand-card brand-tabayyun reveal"
+      href="https://www.tabayyuninstitute.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit Tabayyun TV"
+    >
+      <div class="brand-card-top">
+        <span class="brand-number">02</span>
+        <span class="brand-type">MEDIA / KNOWLEDGE</span>
+      </div>
 
-            <div>
-              <small>01</small>
-              <strong>UNDERSTAND</strong>
-            </div>
+      <div class="brand-visual">
 
-            <div>
-              <small>02</small>
-              <strong>STRUCTURE</strong>
-            </div>
+        <div class="tabayyun-orbit orbit-one"></div>
+        <div class="tabayyun-orbit orbit-two"></div>
 
-            <div>
-              <small>03</small>
-              <strong>EXECUTE</strong>
-            </div>
+        <div class="tabayyun-symbol">
+          T
+        </div>
 
-            <div>
-              <small>04</small>
-              <strong>IMPROVE</strong>
-            </div>
-
-          </div>
-
-        </article>
+        <div class="tabayyun-word">
+          TABAYYUN
+          <small>TV</small>
+        </div>
 
       </div>
 
-    </section>
+      <div class="brand-card-content">
+        <div>
+          <h3>Tabayyun TV</h3>
 
-
-    <!-- =======================================================
-         ABOUT
-    ======================================================== -->
-
-    <section class="section about-section" id="about">
-
-      <div class="container about-grid">
-
-        <div class="section-heading reveal">
-
-          <span class="section-number">07</span>
-
-          <h2 data-i18n="aboutTitle">
-            I BUILD WITH CURIOSITY,
-            ENGINEERING DISCIPLINE,
-            AND PURPOSE.
-          </h2>
-
-        </div>
-
-
-        <div class="about-copy reveal">
-
-          <p class="about-lead">
-            I'm Shah Neil Khan, a software engineer focused
-            on building intelligent digital experiences
-            across software, AI, product and UX.
+          <p>
+            A knowledge and media platform focused on thoughtful
+            content, learning and meaningful conversations.
           </p>
+        </div>
+
+        <span class="brand-arrow">↗</span>
+      </div>
+
+      <div class="brand-card-footer">
+        <span>EXTERNAL PLATFORM</span>
+        <span>VISIT →</span>
+      </div>
+    </a>
 
 
-          <div class="about-block">
+    <!-- 03 — SNK IT INSTITUTE -->
+    <a
+      class="snk-brand-card brand-institute reveal"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit SNK IT Institute"
+      data-url-required="true"
+    >
+      <div class="brand-card-top">
+        <span class="brand-number">03</span>
+        <span class="brand-type">EDUCATION / TECHNOLOGY</span>
+      </div>
 
-            <span>HOW I THINK</span>
+      <div class="brand-visual">
 
-            <p>
-              Curiosity asks better questions.
-              Engineering turns those questions into systems.
-              Design makes those systems understandable.
-            </p>
+        <div class="institute-mark">
+          <span>SNK</span>
+          <i></i>
+        </div>
 
-          </div>
-
-
-          <div class="about-block">
-
-            <span>WHAT I BUILD</span>
-
-            <p>
-              Digital products, intelligent workflows,
-              useful interfaces and systems designed around
-              real problems.
-            </p>
-
-          </div>
-
-
-          <div class="about-block">
-
-            <span>WHAT MATTERS</span>
-
-            <p>
-              Clarity. Craft. Impact.
-            </p>
-
-          </div>
-
+        <div class="institute-code">
+          <span>&lt;learn /&gt;</span>
+          <span>build()</span>
+          <span>create()</span>
         </div>
 
       </div>
 
+      <div class="brand-card-content">
+        <div>
+          <h3>SNK IT Institute</h3>
 
-      <div class="container identity-mark reveal">
-
-        <span>SHAH NEIL KHAN</span>
-
-        <strong>
-          SOFTWARE ↓ INTELLIGENCE ↓ EXPERIENCE ↓ IMPACT
-        </strong>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         TABAYYUN
-    ======================================================== -->
-
-    <section class="section tabayyun-section section-dark">
-
-      <div class="container">
-
-        <div class="tabayyun-card reveal">
-
-          <div>
-
-            <span class="section-number">08 / PLATFORM</span>
-
-            <h2>TABAYYUN</h2>
-
-            <p>
-              Knowledge, learning and purpose —
-              explore the platform.
-            </p>
-
-          </div>
-
-
-          <a
-            href="https://www.tabayyuninstitute.com/"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary magnetic"
-          >
-            VISIT TABAYYUN →
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         CONTACT
-    ======================================================== -->
-
-    <section class="section contact-section" id="contact">
-
-      <div class="container">
-
-        <div class="contact-big reveal">
-
-          <span class="section-number">09</span>
-
-          <h2 data-i18n="contactTitle">
-            HAVE AN IDEA?
-            LET'S BUILD IT.
-          </h2>
-
-          <p data-i18n="contactDescription">
-            For software, AI, product, UX or engineering
-            conversations.
+          <p>
+            Technology, digital skills and practical learning
+            for the next generation of builders.
           </p>
+        </div>
+
+        <span class="brand-arrow">↗</span>
+      </div>
+
+      <div class="brand-card-footer">
+        <span>EDUCATION PLATFORM</span>
+        <span>VISIT →</span>
+      </div>
+    </a>
 
 
-          <div class="contact-actions">
+    <!-- 04 — SARAKĀT AGENCY -->
+    <a
+      class="snk-brand-card brand-sarakat reveal"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit Sarakāt Agency"
+      data-url-required="true"
+    >
+      <div class="brand-card-top">
+        <span class="brand-number">04</span>
+        <span class="brand-type">CREATIVE / DIGITAL</span>
+      </div>
 
-            <a
-              href="contact.html"
-              class="btn btn-primary magnetic"
-            >
-              START A CONVERSATION →
-            </a>
+      <div class="brand-visual">
 
-            <a
-              href="cv.html"
-              class="btn btn-ghost magnetic"
-            >
-              VIEW CV →
-            </a>
+        <div class="sarakat-shape shape-one"></div>
+        <div class="sarakat-shape shape-two"></div>
 
-          </div>
-
+        <div class="sarakat-word">
+          SARAKĀT
+          <small>AGENCY</small>
         </div>
 
       </div>
 
-    </section>
+      <div class="brand-card-content">
+        <div>
+          <h3>Sarakāt Agency</h3>
 
-  </main>
+          <p>
+            Creative direction, digital experiences and brand-focused
+            solutions for modern organizations.
+          </p>
+        </div>
+
+        <span class="brand-arrow">↗</span>
+      </div>
+
+      <div class="brand-card-footer">
+        <span>CREATIVE AGENCY</span>
+        <span>VISIT →</span>
+      </div>
+    </a>
 
 
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
+    <!-- 05 — SNK DESIGN -->
+    <a
+      class="snk-brand-card brand-design reveal"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit SNK Design"
+      data-url-required="true"
+    >
+      <div class="brand-card-top">
+        <span class="brand-number">05</span>
+        <span class="brand-type">DESIGN / IDENTITY</span>
+      </div>
 
-  <footer class="site-footer">
+      <div class="brand-visual">
 
-    <div class="container footer-grid">
+        <div class="design-frame">
+          <div class="design-corner"></div>
+          <span>SNK</span>
+        </div>
 
-      <div class="footer-brand">
-
-        <img
-          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-          alt="SNK"
-        >
-
-        <span>
-          SHAH NEIL KHAN
-        </span>
+        <div class="design-lines">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
 
       </div>
 
+      <div class="brand-card-content">
+        <div>
+          <h3>SNK Design</h3>
 
-      <div class="footer-copy">
-        SOFTWARE · AI · MIND · PURPOSE
+          <p>
+            Visual identity, interface thinking and design systems
+            built around clarity, character and purpose.
+          </p>
+        </div>
+
+        <span class="brand-arrow">↗</span>
       </div>
 
-
-      <div class="footer-year">
-        © <span id="currentYear"></span>
+      <div class="brand-card-footer">
+        <span>DESIGN STUDIO</span>
+        <span>VISIT →</span>
       </div>
+    </a>
 
-    </div>
-
-  </footer>
+  </div>
 
 
-  <!-- =========================================================
-       SCRIPTS
-  ========================================================== -->
+  <!-- ecosystem statement -->
+  <div class="snk-ecosystem-statement reveal">
 
-  <script src="script.js"></script>
+    <span class="snk-eyebrow">ONE PERSONAL ECOSYSTEM</span>
 
-</body>
-</html>
+    <h3>
+      SOFTWARE.
+      <span>INTELLIGENCE.</span>
+      DESIGN.
+      <span>KNOWLEDGE.</span>
+      IMPACT.
+    </h3>
+
+    <p>
+      Different platforms. One vision — creating useful digital
+      experiences that connect technology, people and purpose.
+    </p>
+
+  </div>
+
+</section>
