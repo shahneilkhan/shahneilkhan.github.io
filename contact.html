@@ -2,211 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Contact — Shah Neil Khan</title>
 
   <meta
     name="description"
-    content="Get in touch with Shah Neil Khan for software engineering, AI, UX and product collaborations."
+    content="Get in touch with Shah Neil Khan for software engineering, AI systems, product, UX and digital engineering collaborations."
   />
 
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta
+    name="keywords"
+    content="Shah Neil Khan, Contact, Software Engineer, AI Engineer, Context Engineering, UX, Product, Collaboration"
+  />
+
+  <meta name="author" content="Shah Neil Khan" />
+
+  <meta property="og:title" content="Contact — Shah Neil Khan" />
+  <meta
+    property="og:description"
+    content="Have an idea, product or system worth building? Let's talk."
+  />
+  <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- =========================================================
+  <!-- =========================
        HEADER
-  ========================================================== -->
+  ========================== -->
 
-  <header class="site-header" id="site-header">
-    <div class="container navbar">
+  <header class="site-header" id="siteHeader">
 
-      <a href="index.html" class="brand" aria-label="Shah Neil Khan home">
+    <div class="container nav-container">
+
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="Shah Neil Khan home"
+      >
         <span class="brand-mark">SNK</span>
         <span class="brand-name">SHAH NEIL KHAN</span>
       </a>
 
       <button
-        class="menu-toggle"
+        class="nav-toggle"
         type="button"
-        aria-label="Toggle navigation"
+        aria-label="Open navigation"
         aria-expanded="false"
+        aria-controls="primaryNavigation"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <nav class="nav-menu" aria-label="Primary navigation">
-        <a href="index.html">HOME</a>
-        <a href="projects.html">WORK</a>
-        <a href="index.html#ai">AI</a>
-        <a href="expertise.html">EXPERTISE</a>
-        <a href="experience.html">EXPERIENCE</a>
-        <a href="about.html">ABOUT</a>
-        <a href="contact.html" class="active">CONTACT</a>
+      <nav
+        class="nav-menu"
+        id="primaryNavigation"
+        aria-hidden="false"
+      >
+
+        <a href="index.html">
+          HOME
+        </a>
+
+        <a href="projects.html">
+          WORK
+        </a>
+
+        <a href="index.html#ai">
+          AI
+        </a>
+
+        <a href="expertise.html">
+          EXPERTISE
+        </a>
+
+        <a href="experience.html">
+          EXPERIENCE
+        </a>
+
+        <a href="about.html">
+          ABOUT
+        </a>
+
+        <a
+          href="https://www.tabayyuninstitute.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          TABAYYUN TV ↗
+        </a>
+
+        <a
+          href="contact.html"
+          class="active"
+          aria-current="page"
+        >
+          CONTACT
+        </a>
+
       </nav>
 
     </div>
+
   </header>
 
 
   <main>
 
-    <!-- =========================================================
+    <!-- =========================
          CONTACT HERO
-    ========================================================== -->
+    ========================== -->
 
-    <section class="section page-hero contact-hero">
+    <section class="page-hero contact-page-hero">
+
       <div class="container">
 
-        <div class="section-eyebrow reveal">
-          CONTACT / 01
-        </div>
+        <div class="page-hero-grid">
 
-        <h1 class="reveal">
-          HAVE AN IDEA?<br />
-          <span>LET'S BUILD IT.</span>
-        </h1>
+          <div class="page-hero-copy reveal">
 
-        <p class="hero-description reveal">
-          Tell me what you're building, what problem you're solving,
-          or where you're stuck. We'll start from there.
-        </p>
-
-        <div class="hero-meta reveal">
-          <span>PROJECTS</span>
-          <span>COLLABORATION</span>
-          <span>ENGINEERING</span>
-          <span>AI</span>
-          <span>UX</span>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================================
-         CONTACT MAIN
-    ========================================================== -->
-
-    <section class="section">
-      <div class="container">
-
-        <div class="contact-layout">
-
-
-          <!-- =====================================================
-               LEFT — CONTACT INFO
-          ====================================================== -->
-
-          <div class="contact-info reveal">
-
-            <span class="section-eyebrow">
-              START HERE
+            <span class="eyebrow">
+              CONTACT / LET'S BUILD
             </span>
 
-            <h2>
-              LET'S TALK<br />
-              <span>ABOUT THE PROBLEM.</span>
-            </h2>
+            <h1>
+              HAVE AN IDEA?
+              <span>LET'S BUILD IT.</span>
+            </h1>
 
-            <p>
-              You don't need a perfectly defined brief.
-              A short explanation of the problem, idea or opportunity
-              is enough to start a useful conversation.
+            <p class="hero-description">
+              Whether you're exploring a product, building an AI
+              system, improving a digital experience or solving a
+              difficult engineering problem — let's start with the
+              problem.
             </p>
 
-
-            <div class="contact-methods">
+            <div class="hero-actions">
 
               <a
-                href="mailto:hello@shahneilkhan.com"
-                class="contact-method"
+                href="#project-form"
+                class="btn btn-primary"
               >
-
-                <span class="contact-method-label">
-                  EMAIL
-                </span>
-
-                <strong>
-                  hello@shahneilkhan.com
-                </strong>
-
-                <span class="contact-method-arrow">
-                  ↗
-                </span>
-
+                START A CONVERSATION
               </a>
 
-
               <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-method"
+                href="projects.html"
+                class="btn btn-secondary"
               >
-
-                <span class="contact-method-label">
-                  LINKEDIN
-                </span>
-
-                <strong>
-                  Professional Network
-                </strong>
-
-                <span class="contact-method-arrow">
-                  ↗
-                </span>
-
-              </a>
-
-
-              <a
-                href="https://github.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-method"
-              >
-
-                <span class="contact-method-label">
-                  GITHUB
-                </span>
-
-                <strong>
-                  Code &amp; Experiments
-                </strong>
-
-                <span class="contact-method-arrow">
-                  ↗
-                </span>
-
-              </a>
-
-
-              <a
-                href="https://wa.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-method"
-              >
-
-                <span class="contact-method-label">
-                  WHATSAPP
-                </span>
-
-                <strong>
-                  Direct Message
-                </strong>
-
-                <span class="contact-method-arrow">
-                  ↗
-                </span>
-
+                SEE MY WORK
               </a>
 
             </div>
@@ -214,20 +166,240 @@
           </div>
 
 
-          <!-- =====================================================
-               RIGHT — CONTACT FORM
-          ====================================================== -->
+          <div class="page-hero-visual reveal">
 
-          <div class="contact-form-wrapper reveal">
+            <div class="contact-hero-panel">
+
+              <div class="contact-panel-top">
+
+                <span>
+                  SNK / OPEN CHANNEL
+                </span>
+
+                <span>
+                  001
+                </span>
+
+              </div>
+
+
+              <div class="contact-terminal">
+
+                <div class="terminal-line">
+                  <span class="terminal-prompt">$</span>
+                  ./start-conversation
+                </div>
+
+                <div class="terminal-line muted">
+                  initializing...
+                </div>
+
+                <div class="terminal-line success">
+                  ✓ problem
+                </div>
+
+                <div class="terminal-line success">
+                  ✓ context
+                </div>
+
+                <div class="terminal-line success">
+                  ✓ ideas
+                </div>
+
+                <div class="terminal-line success">
+                  ✓ engineering
+                </div>
+
+                <div class="terminal-line">
+                  <span class="terminal-prompt">&gt;</span>
+                  system.ready()
+                </div>
+
+                <div class="terminal-cursor">
+                  _
+                </div>
+
+              </div>
+
+
+              <div class="contact-panel-bottom">
+
+                <span>
+                  AI READY
+                </span>
+
+                <span>
+                  UX ACTIVE
+                </span>
+
+                <span>
+                  BUILD MODE
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT GRID
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="contact-layout">
+
+          <!-- LEFT -->
+
+          <div class="contact-information reveal">
+
+            <span class="eyebrow">
+              GET IN TOUCH
+            </span>
+
+            <h2>
+              LET'S TALK ABOUT
+              <span>WHAT YOU'RE BUILDING.</span>
+            </h2>
+
+            <p>
+              A good first conversation doesn't need a perfect
+              brief. Tell me what you're trying to build, what
+              problem you're facing or simply what you're exploring.
+            </p>
+
+
+            <!-- DIRECT CONTACT -->
+
+            <div class="direct-contact">
+
+              <div class="direct-contact-item">
+
+                <span class="contact-label">
+                  EMAIL
+                </span>
+
+                <!-- Replace with your real email -->
+                <a
+                  href="mailto:hello@shahneilkhan.com"
+                  class="contact-value"
+                >
+                  hello@shahneilkhan.com
+                </a>
+
+              </div>
+
+
+              <div class="direct-contact-item">
+
+                <span class="contact-label">
+                  LINKEDIN
+                </span>
+
+                <!-- Replace with your real LinkedIn URL -->
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contact-value"
+                >
+                  LinkedIn ↗
+                </a>
+
+              </div>
+
+
+              <div class="direct-contact-item">
+
+                <span class="contact-label">
+                  GITHUB
+                </span>
+
+                <!-- Replace with your real GitHub URL -->
+                <a
+                  href="https://github.com/shahneilkhan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contact-value"
+                >
+                  GitHub ↗
+                </a>
+
+              </div>
+
+
+              <div class="direct-contact-item">
+
+                <span class="contact-label">
+                  WHATSAPP
+                </span>
+
+                <!-- Replace with your real WhatsApp link -->
+                <a
+                  href="https://wa.me/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contact-value"
+                >
+                  WhatsApp ↗
+                </a>
+
+              </div>
+
+            </div>
+
+
+            <!-- RESPONSE NOTE -->
+
+            <div class="contact-note">
+
+              <span class="note-mark">
+                →
+              </span>
+
+              <div>
+
+                <strong>
+                  KEEP IT SIMPLE.
+                </strong>
+
+                <p>
+                  Tell me the problem first. We can figure out the
+                  rest together.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- RIGHT / FORM -->
+
+          <div
+            class="contact-form-wrapper reveal"
+            id="project-form"
+          >
 
             <div class="form-header">
 
-              <span class="section-eyebrow">
+              <span class="eyebrow">
                 PROJECT INTAKE
               </span>
 
               <h2>
-                WHAT ARE YOU<br />
+                WHAT ARE YOU
                 <span>BUILDING?</span>
               </h2>
 
@@ -238,11 +410,12 @@
               class="contact-form"
               action="#"
               method="POST"
+              novalidate
             >
 
               <!-- NAME -->
 
-              <div class="form-group">
+              <div class="form-field">
 
                 <label for="name">
                   NAME
@@ -262,7 +435,7 @@
 
               <!-- EMAIL -->
 
-              <div class="form-group">
+              <div class="form-field">
 
                 <label for="email">
                   EMAIL
@@ -282,14 +455,14 @@
 
               <!-- PROJECT TYPE -->
 
-              <div class="form-group">
+              <div class="form-field">
 
-                <label for="project-type">
-                  PROJECT TYPE
+                <label for="projectType">
+                  WHAT ARE YOU BUILDING?
                 </label>
 
                 <select
-                  id="project-type"
+                  id="projectType"
                   name="project_type"
                   required
                 >
@@ -306,12 +479,16 @@
                     AI / Context Engineering
                   </option>
 
-                  <option value="ux">
-                    UX / Product
+                  <option value="product">
+                    Product
                   </option>
 
-                  <option value="full-stack">
-                    Full-Stack Product
+                  <option value="ux">
+                    UX / Digital Experience
+                  </option>
+
+                  <option value="security">
+                    Security
                   </option>
 
                   <option value="collaboration">
@@ -327,79 +504,19 @@
               </div>
 
 
-              <!-- WHAT ARE YOU BUILDING -->
-
-              <div class="form-group">
-
-                <label for="project">
-                  WHAT ARE YOU BUILDING?
-                </label>
-
-                <input
-                  type="text"
-                  id="project"
-                  name="project"
-                  placeholder="Product, platform, AI system..."
-                />
-
-              </div>
-
-
-              <!-- BUDGET -->
-
-              <div class="form-group">
-
-                <label for="budget">
-                  PROJECT STAGE
-                </label>
-
-                <select
-                  id="budget"
-                  name="project_stage"
-                >
-
-                  <option value="" selected disabled>
-                    Select current stage
-                  </option>
-
-                  <option value="idea">
-                    Just an idea
-                  </option>
-
-                  <option value="planning">
-                    Planning / Research
-                  </option>
-
-                  <option value="design">
-                    Design / Prototype
-                  </option>
-
-                  <option value="development">
-                    Development
-                  </option>
-
-                  <option value="existing">
-                    Existing product / Improvement
-                  </option>
-
-                </select>
-
-              </div>
-
-
               <!-- MESSAGE -->
 
-              <div class="form-group">
+              <div class="form-field">
 
                 <label for="message">
-                  TELL ME MORE
+                  MESSAGE
                 </label>
 
                 <textarea
                   id="message"
                   name="message"
                   rows="7"
-                  placeholder="What problem are you trying to solve?"
+                  placeholder="Tell me about the problem, idea or product..."
                   required
                 ></textarea>
 
@@ -408,21 +525,29 @@
 
               <!-- SUBMIT -->
 
-              <div class="form-submit">
+              <div class="form-submit-row">
 
                 <button
                   type="submit"
                   class="btn btn-primary"
                 >
-                  SEND MESSAGE
-                  <span>→</span>
+                  SEND MESSAGE →
                 </button>
 
-                <p>
-                  I’ll review the details and get back to you.
-                </p>
+                <span class="form-helper">
+                  Usually easier than writing a perfect brief.
+                </span>
 
               </div>
+
+
+              <!-- FORM STATUS -->
+
+              <div
+                class="form-status"
+                role="status"
+                aria-live="polite"
+              ></div>
 
             </form>
 
@@ -431,321 +556,381 @@
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- =========================================================
-         WHAT WE CAN TALK ABOUT
-    ========================================================== -->
+    <!-- =========================
+         CONVERSATION STARTERS
+    ========================== -->
 
-    <section class="section">
+    <section class="section section-dark">
+
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <div>
-            <span class="section-eyebrow">
-              CONVERSATION STARTERS
-            </span>
+          <span class="eyebrow">
+            CONVERSATION STARTERS
+          </span>
 
-            <h2>
-              WHAT CAN WE<br />
-              <span>BUILD TOGETHER?</span>
-            </h2>
-          </div>
+          <h2>
+            YOU CAN START
+            <span>WITH ANYTHING.</span>
+          </h2>
 
           <p>
-            Some problems are technical. Some are product problems.
-            Some are both.
+            Here are a few directions if you're not sure what to
+            write.
           </p>
 
         </div>
 
 
-        <div class="framework-grid">
+        <div class="conversation-grid">
 
+          <article class="conversation-card reveal">
 
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
+            <span>
               01
             </span>
 
             <h3>
-              SOFTWARE
+              BUILD A PRODUCT
             </h3>
 
             <p>
-              Web applications, platforms, APIs and full-stack
-              product development.
+              "I have an idea for a product and need help turning it
+              into something real."
             </p>
 
           </article>
 
 
-          <article class="framework-item reveal">
+          <article class="conversation-card reveal">
 
-            <span class="framework-number">
+            <span>
               02
             </span>
 
             <h3>
-              AI
+              ADD AI
             </h3>
 
             <p>
-              AI applications, context engineering, retrieval,
-              memory and intelligent workflows.
+              "I want to use AI in my product, but I'm not sure what
+              the right architecture should look like."
             </p>
 
           </article>
 
 
-          <article class="framework-item reveal">
+          <article class="conversation-card reveal">
 
-            <span class="framework-number">
+            <span>
               03
             </span>
 
             <h3>
-              PRODUCT
+              IMPROVE UX
             </h3>
 
             <p>
-              Turning an idea or complicated requirement into
-              a clearer product direction.
+              "Our product works, but the experience needs to become
+              clearer and more useful."
             </p>
 
           </article>
 
 
-          <article class="framework-item reveal">
+          <article class="conversation-card reveal">
 
-            <span class="framework-number">
+            <span>
               04
             </span>
 
             <h3>
-              UX
+              SOLVE A HARD PROBLEM
             </h3>
 
             <p>
-              User flows, information architecture, interfaces
-              and digital experience.
+              "We have an engineering problem and need another
+              perspective."
             </p>
 
           </article>
-
-
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
-              05
-            </span>
-
-            <h3>
-              SYSTEMS
-            </h3>
-
-            <p>
-              Architecture, data flow, integrations and
-              system-level problem solving.
-            </p>
-
-          </article>
-
-
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
-              06
-            </span>
-
-            <h3>
-              COLLABORATION
-            </h3>
-
-            <p>
-              Working with teams that need an engineering,
-              product or technical perspective.
-            </p>
-
-          </article>
-
 
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- =========================================================
-         RESPONSE EXPECTATION
-    ========================================================== -->
+    <!-- =========================
+         GOOD FIRST MESSAGE
+    ========================== -->
 
     <section class="section">
+
       <div class="container">
 
-        <div class="framework-panel reveal">
+        <div class="split-section">
 
-          <div class="section-eyebrow">
-            A GOOD FIRST MESSAGE
-          </div>
+          <div class="split-copy reveal">
 
-          <h2>
-            DON'T OVERTHINK<br />
-            <span>THE BRIEF.</span>
-          </h2>
-
-          <p>
-            A useful first message can be simple:
-            what you're building, who it's for, what problem exists,
-            and what you'd like to change.
-          </p>
-
-
-          <div class="project-tags">
-            <span>THE PROBLEM</span>
-            <span>THE USER</span>
-            <span>THE GOAL</span>
-            <span>THE CONSTRAINT</span>
-            <span>THE NEXT STEP</span>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================================
-         DIRECT CONTACT
-    ========================================================== -->
-
-    <section class="section">
-      <div class="container">
-
-        <div class="direct-contact reveal">
-
-          <div>
-            <span class="section-eyebrow">
-              PREFER DIRECT?
+            <span class="eyebrow">
+              GOOD FIRST MESSAGE
             </span>
 
             <h2>
-              FIND ME<br />
-              <span>ELSEWHERE.</span>
+              DON'T WRITE A
+              <span>PERFECT BRIEF.</span>
             </h2>
+
+            <p>
+              The most useful starting point is usually simple:
+              what you're trying to achieve, why it matters and
+              where you're currently stuck.
+            </p>
+
           </div>
 
 
-          <div class="direct-contact-links">
+          <div class="message-example-panel reveal">
 
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LINKEDIN
-              <span>↗</span>
-            </a>
+            <div class="message-example-header">
 
-            <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GITHUB
-              <span>↗</span>
-            </a>
+              <span>
+                EXAMPLE
+              </span>
 
-            <a href="mailto:hello@shahneilkhan.com">
-              EMAIL
-              <span>↗</span>
-            </a>
+              <button
+                type="button"
+                class="copy-button"
+                data-copy="Hey Shah, we're building [product]. The main problem we're trying to solve is [problem]. We're currently at [stage], and we'd like help with [specific area]."
+              >
+                COPY
+              </button>
 
-            <a href="index.html">
-              PORTFOLIO
-              <span>↗</span>
-            </a>
+            </div>
+
+
+            <div class="message-example-body">
+
+              <span class="message-prompt">
+                &gt;
+              </span>
+
+              <p>
+                Hey Shah, we're building
+                <strong>[product]</strong>.
+                The main problem we're trying to solve is
+                <strong>[problem]</strong>.
+                We're currently at
+                <strong>[stage]</strong>,
+                and we'd like help with
+                <strong>[specific area]</strong>.
+              </p>
+
+            </div>
 
           </div>
 
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- =========================================================
-         FINAL CTA
-    ========================================================== -->
+    <!-- =========================
+         DIRECT LINKS
+    ========================== -->
 
-    <section class="section final-cta">
+    <section class="section section-dark">
+
       <div class="container">
 
-        <div class="cta-content reveal">
+        <div class="section-heading reveal">
 
-          <span class="section-eyebrow">
-            CODE → INTELLIGENCE → EXPERIENCE
+          <span class="eyebrow">
+            FIND ME
           </span>
 
           <h2>
-            LET'S MAKE<br />
-            <span>SOMETHING MATTER.</span>
+            OTHER WAYS TO
+            <span>CONNECT.</span>
           </h2>
 
-          <p class="cta-description">
-            Good technology solves problems.
-            Great products make the solution feel inevitable.
-          </p>
+        </div>
 
-          <div class="cta-actions">
 
-            <a
-              href="mailto:hello@shahneilkhan.com"
-              class="btn btn-primary"
-            >
-              EMAIL ME
-              <span>→</span>
-            </a>
+        <div class="social-grid">
 
-            <a
-              href="projects.html"
-              class="btn btn-secondary"
-            >
-              VIEW MY WORK
-            </a>
+          <a
+            href="https://github.com/shahneilkhan"
+            class="social-card reveal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
 
-          </div>
+            <span class="social-number">
+              01
+            </span>
+
+            <strong>
+              GITHUB
+            </strong>
+
+            <span>
+              CODE & SYSTEMS ↗
+            </span>
+
+          </a>
+
+
+          <a
+            href="https://www.linkedin.com/"
+            class="social-card reveal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="social-number">
+              02
+            </span>
+
+            <strong>
+              LINKEDIN
+            </strong>
+
+            <span>
+              PROFESSIONAL ↗
+            </span>
+
+          </a>
+
+
+          <a
+            href="https://wa.me/"
+            class="social-card reveal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="social-number">
+              03
+            </span>
+
+            <strong>
+              WHATSAPP
+            </strong>
+
+            <span>
+              DIRECT MESSAGE ↗
+            </span>
+
+          </a>
+
+
+          <a
+            href="https://www.tabayyuninstitute.com/"
+            class="social-card reveal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="social-number">
+              04
+            </span>
+
+            <strong>
+              TABAYYUN TV
+            </strong>
+
+            <span>
+              EXTERNAL PLATFORM ↗
+            </span>
+
+          </a>
 
         </div>
 
       </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+
+    <section class="section cta-section">
+
+      <div class="container">
+
+        <div class="cta-panel reveal">
+
+          <div>
+
+            <span class="eyebrow">
+              SHAH NEIL KHAN / SNK
+            </span>
+
+            <h2>
+              HAVE A PROBLEM
+              <span>WORTH SOLVING?</span>
+            </h2>
+
+          </div>
+
+          <a
+            href="mailto:hello@shahneilkhan.com"
+            class="btn btn-primary"
+          >
+            EMAIL ME →
+          </a>
+
+        </div>
+
+      </div>
+
     </section>
 
   </main>
 
 
-  <!-- =========================================================
+  <!-- =========================
        FOOTER
-  ========================================================== -->
+  ========================== -->
 
   <footer class="site-footer">
 
     <div class="container">
 
-      <div class="footer-inner">
+      <div class="footer-grid">
 
         <div class="footer-brand">
 
-          <a href="index.html" class="brand">
-            <span class="brand-mark">SNK</span>
-            <span class="brand-name">SHAH NEIL KHAN</span>
+          <a
+            href="index.html"
+            class="brand"
+          >
+
+            <span class="brand-mark">
+              SNK
+            </span>
+
+            <span class="brand-name">
+              SHAH NEIL KHAN
+            </span>
+
           </a>
 
           <p>
-            Software Engineer &amp; AI Engineer
+            Software Engineer & AI Engineer building intelligent
+            digital experiences.
           </p>
 
         </div>
@@ -753,35 +938,49 @@
 
         <div class="footer-links">
 
-          <a href="index.html">HOME</a>
-          <a href="projects.html">WORK</a>
-          <a href="about.html">ABOUT</a>
-          <a href="experience.html">EXPERIENCE</a>
-          <a href="contact.html">CONTACT</a>
+          <span class="footer-label">
+            NAVIGATE
+          </span>
+
+          <a href="index.html">
+            Home
+          </a>
+
+          <a href="projects.html">
+            Work
+          </a>
+
+          <a href="expertise.html">
+            Expertise
+          </a>
+
+          <a href="experience.html">
+            Experience
+          </a>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
 
         </div>
 
 
-        <div class="footer-socials">
+        <div class="footer-links">
+
+          <span class="footer-label">
+            EXTERNAL
+          </span>
 
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.tabayyuninstitute.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            LINKEDIN
-          </a>
-
-          <a
-            href="https://github.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GITHUB
-          </a>
-
-          <a href="mailto:hello@shahneilkhan.com">
-            EMAIL
+            Tabayyun TV ↗
           </a>
 
         </div>
@@ -792,7 +991,7 @@
       <div class="footer-bottom">
 
         <span>
-          © <span id="current-year"></span> Shah Neil Khan
+          © <span data-current-year></span> Shah Neil Khan
         </span>
 
         <span>
@@ -805,10 +1004,6 @@
 
   </footer>
 
-
-  <!-- =========================================================
-       SCRIPT
-  ========================================================== -->
 
   <script src="script.js"></script>
 
