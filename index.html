@@ -1,65 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8" />
+
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
-  />
+  >
 
   <meta
     name="description"
     content="Shah Neil Khan — Software Engineer, AI Engineer, UX Lead and creator of digital systems, intelligent experiences and purposeful brands."
-  />
+  >
 
   <meta
     name="theme-color"
     content="#090909"
-  />
+  >
 
-  <title>Shah Neil Khan — Software · Intelligence · Experience</title>
+  <title>
+    Shah Neil Khan — Software · Intelligence · Experience
+  </title>
 
-  <!-- =========================================================
+
+  <!-- =====================================================
        FAVICON
-  ========================================================== -->
+  ====================================================== -->
 
   <link
     rel="icon"
     type="image/svg+xml"
     href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-  />
+  >
 
-  <!-- =========================================================
+
+  <!-- =====================================================
        FONTS
-  ========================================================== -->
+  ====================================================== -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
-  />
+  >
 
-  <!-- =========================================================
-       STYLES
-  ========================================================== -->
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- =====================================================
+       MAIN CSS
+  ====================================================== -->
 
-  <!-- =========================================================
-       PRELOAD HERO
-  ========================================================== -->
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 
-  <link rel="preload" href="hero.svg" as="image" />
+
+  <!-- HERO PRELOAD -->
+
+  <link
+    rel="preload"
+    href="hero.svg"
+    as="image"
+  >
+
 </head>
+
 
 <body>
 
-  <!-- =========================================================
-       RAIN CANVAS
-  ========================================================== -->
+
+  <!-- =====================================================
+       RAIN
+  ====================================================== -->
 
   <canvas
     id="rainCanvas"
@@ -67,17 +88,24 @@
   ></canvas>
 
 
-  <!-- =========================================================
-       AMBIENT BACKGROUND
-  ========================================================== -->
+  <!-- =====================================================
+       AMBIENT LIGHT
+  ====================================================== -->
 
-  <div class="ambient ambient-one" aria-hidden="true"></div>
-  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div
+    class="ambient ambient-one"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="ambient ambient-two"
+    aria-hidden="true"
+  ></div>
 
 
-  <!-- =========================================================
+  <!-- =====================================================
        HEADER
-  ========================================================== -->
+  ====================================================== -->
 
   <header
     class="site-header"
@@ -85,6 +113,7 @@
   >
 
     <div class="container header-inner">
+
 
       <!-- LOGO -->
 
@@ -97,19 +126,24 @@
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
           alt="SNK"
-        />
+        >
 
         <span class="brand-meta">
-          <strong>SHAH NEIL KHAN</strong>
+
+          <strong>
+            SHAH NEIL KHAN
+          </strong>
+
           <small data-i18n="brandSubtitle">
             PERSONAL BRAND
           </small>
+
         </span>
 
       </a>
 
 
-      <!-- DESKTOP NAV -->
+      <!-- NAV -->
 
       <nav
         class="main-nav"
@@ -185,15 +219,26 @@
 
       <div class="header-controls">
 
+
         <button
           type="button"
           class="control-btn"
           id="languageToggle"
           aria-label="Change language"
         >
-          <span class="lang-en">EN</span>
-          <span class="lang-divider">/</span>
-          <span class="lang-bn">বাংলা</span>
+
+          <span class="lang-en">
+            EN
+          </span>
+
+          <span class="lang-divider">
+            /
+          </span>
+
+          <span class="lang-bn">
+            বাংলা
+          </span>
+
         </button>
 
 
@@ -203,8 +248,15 @@
           id="themeToggle"
           aria-label="Toggle dark and light mode"
         >
-          <span class="theme-dark">◐</span>
-          <span class="theme-light">☼</span>
+
+          <span class="theme-dark">
+            ◐
+          </span>
+
+          <span class="theme-light">
+            ☼
+          </span>
+
         </button>
 
 
@@ -214,7 +266,7 @@
           id="rainToggle"
           aria-label="Toggle rain effect"
         >
-          <span>雨</span>
+          雨
         </button>
 
 
@@ -225,9 +277,11 @@
           aria-label="Open menu"
           aria-expanded="false"
         >
+
           <span></span>
           <span></span>
           <span></span>
+
         </button>
 
       </div>
@@ -237,31 +291,39 @@
   </header>
 
 
-  <!-- =========================================================
+
+  <!-- =====================================================
        MAIN
-  ========================================================== -->
+  ====================================================== -->
 
   <main>
 
 
-    <!-- =======================================================
+    <!-- ===================================================
          HERO
-    ======================================================== -->
+    ==================================================== -->
 
     <section
       class="hero section"
       id="home"
     >
 
-      <div class="hero-grid"></div>
+      <div
+        class="hero-grid"
+        aria-hidden="true"
+      ></div>
+
 
       <div class="container hero-container">
+
 
         <!-- HERO CONTENT -->
 
         <div class="hero-content reveal">
 
+
           <div class="eyebrow">
+
             <span class="eyebrow-line"></span>
 
             <span data-i18n="heroEyebrow">
@@ -273,17 +335,29 @@
 
           <h1 class="hero-title">
 
-            <span>I BUILD</span>
+            <span>
+              I BUILD
+            </span>
 
-            <span>SYSTEMS.</span>
+            <span>
+              SYSTEMS.
+            </span>
 
-            <span>I TRAIN</span>
+            <span>
+              I TRAIN
+            </span>
 
-            <span>MINDS.</span>
+            <span>
+              MINDS.
+            </span>
 
-            <span>I CREATE</span>
+            <span>
+              I CREATE
+            </span>
 
-            <span>IMPACT.</span>
+            <span>
+              IMPACT.
+            </span>
 
           </h1>
 
@@ -307,15 +381,20 @@
 
           <div class="hero-actions">
 
+
             <a
               href="#ecosystem"
               class="btn btn-primary magnetic"
             >
+
               <span data-i18n="exploreWork">
                 Explore My Ecosystem
               </span>
 
-              <span>↗</span>
+              <span>
+                ↗
+              </span>
+
             </a>
 
 
@@ -323,35 +402,53 @@
               href="contact.html"
               class="btn btn-ghost magnetic"
             >
+
               <span data-i18n="letsBuild">
                 Let's Build
               </span>
 
-              <span>→</span>
+              <span>
+                →
+              </span>
+
             </a>
 
           </div>
 
 
-          <!-- HERO STATUS -->
+          <!-- STATUS -->
 
           <div class="hero-status">
 
             <span class="status-dot"></span>
 
-            <span>SNK SYSTEM</span>
+            <span>
+              SNK SYSTEM
+            </span>
 
-            <span>/</span>
+            <span>
+              /
+            </span>
 
-            <span>ONLINE</span>
+            <span>
+              ONLINE
+            </span>
 
-            <span>/</span>
+            <span>
+              /
+            </span>
 
-            <span>AI CONNECTED</span>
+            <span>
+              AI CONNECTED
+            </span>
 
-            <span>/</span>
+            <span>
+              /
+            </span>
 
-            <span>CONTEXT READY</span>
+            <span>
+              CONTEXT READY
+            </span>
 
           </div>
 
@@ -362,21 +459,22 @@
 
         <div class="hero-visual reveal">
 
+
           <div class="hero-image-wrap">
 
             <img
               src="hero.svg"
-              alt="Cinematic Shah Neil Khan hero visual"
+              alt="Cinematic SNK hero visual"
               class="hero-image"
               id="heroImage"
-            />
+            >
 
             <div class="hero-image-overlay"></div>
 
           </div>
 
 
-          <!-- FLYING BIRD LAYER -->
+          <!-- BIRD -->
 
           <div
             class="bird-layer"
@@ -389,15 +487,20 @@
 
           <div class="hero-terminal">
 
+
             <div class="terminal-top">
 
               <div class="terminal-dots">
+
                 <span></span>
                 <span></span>
                 <span></span>
+
               </div>
 
-              <span>snk.engine</span>
+              <span>
+                snk.engine
+              </span>
 
             </div>
 
@@ -416,11 +519,17 @@
               </div>
 
               <div class="terminal-progress">
+
                 <span>
                   [██████████████████]
                 </span>
-                <strong>100%</strong>
+
+                <strong>
+                  100%
+                </strong>
+
               </div>
+
 
               <div class="terminal-check">
                 ✓ identity
@@ -450,9 +559,15 @@
                 &gt; system.ready()
               </div>
 
+
               <div class="terminal-typing">
+
                 <span id="typingText"></span>
-                <span class="typing-cursor">_</span>
+
+                <span class="typing-cursor">
+                  _
+                </span>
+
               </div>
 
             </div>
@@ -468,7 +583,9 @@
 
       <div class="scroll-indicator">
 
-        <span>SCROLL</span>
+        <span>
+          SCROLL
+        </span>
 
         <span class="scroll-line"></span>
 
@@ -478,9 +595,9 @@
 
 
 
-    <!-- =======================================================
-         PERSONAL ECOSYSTEM
-    ======================================================== -->
+    <!-- ===================================================
+         ECOSYSTEM
+    ==================================================== -->
 
     <section
       class="section ecosystem-section"
@@ -489,11 +606,13 @@
 
       <div class="container">
 
+
         <div class="section-heading reveal">
 
           <div class="section-number">
             01
           </div>
+
 
           <div>
 
@@ -502,7 +621,8 @@
             </p>
 
             <h2>
-              ONE MIND.<br />
+              ONE MIND.
+              <br>
               <em>MANY WORLDS.</em>
             </h2>
 
@@ -516,14 +636,12 @@
         </div>
 
 
-        <!-- ===================================================
-             ECOSYSTEM CARDS
-        ==================================================== -->
+        <!-- CARDS -->
 
         <div class="ecosystem-grid">
 
 
-          <!-- WEBSITESDEAL -->
+          <!-- 01 -->
 
           <a
             href="https://websitesdeal.com/"
@@ -566,7 +684,8 @@
               </p>
 
               <span class="visit-link">
-                VISIT WEBSITE <span>↗</span>
+                VISIT WEBSITE
+                <span>↗</span>
               </span>
 
             </div>
@@ -574,8 +693,7 @@
           </a>
 
 
-
-          <!-- TABAYYUN -->
+          <!-- 02 -->
 
           <a
             href="https://www.tabayyuninstitute.com/"
@@ -618,7 +736,8 @@
               </p>
 
               <span class="visit-link">
-                EXPLORE TABAYYUN <span>↗</span>
+                EXPLORE TABAYYUN
+                <span>↗</span>
               </span>
 
             </div>
@@ -626,8 +745,7 @@
           </a>
 
 
-
-          <!-- SNK IT INSTITUTE -->
+          <!-- 03 -->
 
           <a
             href="#"
@@ -663,12 +781,12 @@
               </h3>
 
               <p>
-                A technology and learning direction within the wider SNK
-                ecosystem.
+                Technology and learning within the wider SNK ecosystem.
               </p>
 
               <span class="visit-link">
-                VISIT INSTITUTE <span>↗</span>
+                VISIT INSTITUTE
+                <span>↗</span>
               </span>
 
             </div>
@@ -676,8 +794,7 @@
           </a>
 
 
-
-          <!-- SARAKAT -->
+          <!-- 04 -->
 
           <a
             href="#"
@@ -718,7 +835,8 @@
               </p>
 
               <span class="visit-link">
-                VISIT AGENCY <span>↗</span>
+                VISIT AGENCY
+                <span>↗</span>
               </span>
 
             </div>
@@ -726,8 +844,7 @@
           </a>
 
 
-
-          <!-- SNK DESIGN -->
+          <!-- 05 -->
 
           <a
             href="#"
@@ -768,7 +885,8 @@
               </p>
 
               <span class="visit-link">
-                VISIT DESIGN <span>↗</span>
+                VISIT DESIGN
+                <span>↗</span>
               </span>
 
             </div>
@@ -778,7 +896,7 @@
         </div>
 
 
-        <!-- ECOSYSTEM SIGNATURE -->
+        <!-- SIGNATURE -->
 
         <div class="ecosystem-signature reveal">
 
@@ -786,25 +904,33 @@
             TECHNOLOGY
           </span>
 
-          <span>+</span>
+          <span>
+            +
+          </span>
 
           <span>
             INTELLIGENCE
           </span>
 
-          <span>+</span>
+          <span>
+            +
+          </span>
 
           <span>
             CREATIVITY
           </span>
 
-          <span>+</span>
+          <span>
+            +
+          </span>
 
           <span>
             PURPOSE
           </span>
 
-          <span>=</span>
+          <span>
+            =
+          </span>
 
           <strong>
             IMPACT
@@ -818,9 +944,9 @@
 
 
 
-    <!-- =======================================================
-         AI / CONTEXT ENGINEERING
-    ======================================================== -->
+    <!-- ===================================================
+         AI
+    ==================================================== -->
 
     <section
       class="section ai-section"
@@ -828,6 +954,7 @@
     >
 
       <div class="container">
+
 
         <div class="section-heading reveal">
 
@@ -842,7 +969,8 @@
             </p>
 
             <h2>
-              AI THAT<br />
+              AI THAT
+              <br>
               <em>UNDERSTANDS CONTEXT.</em>
             </h2>
 
@@ -898,7 +1026,7 @@
         </div>
 
 
-        <!-- SUPPORT SYSTEM -->
+        <!-- SUPPORT -->
 
         <div class="ai-support-row reveal">
 
@@ -921,7 +1049,7 @@
         </div>
 
 
-        <!-- AI CARDS -->
+        <!-- CARDS -->
 
         <div class="ai-grid">
 
@@ -974,7 +1102,7 @@
 
             <p>
               Preserve useful information across interactions and workflows
-              when the system needs continuity.
+              when continuity matters.
             </p>
 
           </article>
@@ -1000,11 +1128,15 @@
         </div>
 
 
+        <!-- EQUATION -->
+
         <div class="ai-equation reveal">
 
           MODEL + CONTEXT + MEMORY + TOOLS + VALIDATION
 
-          <span>=</span>
+          <span>
+            =
+          </span>
 
           <strong>
             USEFUL AI SYSTEM
@@ -1018,9 +1150,9 @@
 
 
 
-    <!-- =======================================================
-         ENGINEERING MINDSET
-    ======================================================== -->
+    <!-- ===================================================
+         MINDSET
+    ==================================================== -->
 
     <section
       class="section mindset-section"
@@ -1028,6 +1160,7 @@
     >
 
       <div class="container">
+
 
         <div class="mindset-layout">
 
@@ -1039,18 +1172,20 @@
             </div>
 
             <p class="section-kicker">
-              ENGINEERING MINDSET
+              ENGINEERING / HUMAN THINKING
             </p>
 
             <h2>
-              I DON'T<br />
-              JUST BUILD.<br />
+              I DON'T
+              <br>
+              JUST BUILD.
+              <br>
               <em>I THINK FIRST.</em>
             </h2>
 
             <p>
-              Every product starts with a problem. I turn that problem into a
-              system that is useful, scalable, secure and continuously
+              Every product starts with a problem. I turn that problem into
+              a system that is useful, scalable, secure and continuously
               improvable.
             </p>
 
@@ -1067,6 +1202,7 @@
               </span>
 
               <div>
+
                 <h3>
                   UNDERSTAND
                 </h3>
@@ -1074,6 +1210,7 @@
                 <p>
                   User / Problem / Requirements / Constraints
                 </p>
+
               </div>
 
             </div>
@@ -1091,6 +1228,7 @@
               </span>
 
               <div>
+
                 <h3>
                   DESIGN
                 </h3>
@@ -1098,6 +1236,7 @@
                 <p>
                   Architecture / UX / Data Flow / System Boundaries
                 </p>
+
               </div>
 
             </div>
@@ -1115,6 +1254,7 @@
               </span>
 
               <div>
+
                 <h3>
                   BUILD
                 </h3>
@@ -1122,6 +1262,7 @@
                 <p>
                   Code / API / Database / Deployment
                 </p>
+
               </div>
 
             </div>
@@ -1139,6 +1280,7 @@
               </span>
 
               <div>
+
                 <h3>
                   PROTECT
                 </h3>
@@ -1146,6 +1288,7 @@
                 <p>
                   Threat Model / Validation / Permissions / Security
                 </p>
+
               </div>
 
             </div>
@@ -1163,6 +1306,7 @@
               </span>
 
               <div>
+
                 <h3>
                   IMPROVE
                 </h3>
@@ -1170,6 +1314,7 @@
                 <p>
                   Observe / Measure / Learn / Iterate
                 </p>
+
               </div>
 
             </div>
@@ -1180,8 +1325,13 @@
 
 
         <div class="mindset-signature reveal">
-          Understand the problem. Design the system. Build with intention.
-          Protect what matters. Improve continuously.
+
+          Understand the problem.
+          Design the system.
+          Build with intention.
+          Protect what matters.
+          Improve continuously.
+
         </div>
 
       </div>
@@ -1190,9 +1340,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- ===================================================
          EXPERTISE
-    ======================================================== -->
+    ==================================================== -->
 
     <section
       class="section expertise-section"
@@ -1200,6 +1350,7 @@
     >
 
       <div class="container">
+
 
         <div class="section-heading reveal">
 
@@ -1214,7 +1365,8 @@
             </p>
 
             <h2>
-              WHAT I BRING<br />
+              WHAT I BRING
+              <br>
               <em>TO THE TABLE.</em>
             </h2>
 
@@ -1252,25 +1404,11 @@
 
               <div class="expertise-tags">
 
-                <span>
-                  Architecture
-                </span>
-
-                <span>
-                  Frontend
-                </span>
-
-                <span>
-                  Backend
-                </span>
-
-                <span>
-                  APIs
-                </span>
-
-                <span>
-                  Databases
-                </span>
+                <span>Architecture</span>
+                <span>Frontend</span>
+                <span>Backend</span>
+                <span>APIs</span>
+                <span>Databases</span>
 
               </div>
 
@@ -1281,7 +1419,6 @@
             </span>
 
           </article>
-
 
 
           <article
@@ -1306,25 +1443,11 @@
 
               <div class="expertise-tags">
 
-                <span>
-                  LLM Systems
-                </span>
-
-                <span>
-                  Context
-                </span>
-
-                <span>
-                  RAG
-                </span>
-
-                <span>
-                  Memory
-                </span>
-
-                <span>
-                  AI Tools
-                </span>
+                <span>LLM Systems</span>
+                <span>Context</span>
+                <span>RAG</span>
+                <span>Memory</span>
+                <span>AI Tools</span>
 
               </div>
 
@@ -1335,7 +1458,6 @@
             </span>
 
           </article>
-
 
 
           <article
@@ -1360,21 +1482,10 @@
 
               <div class="expertise-tags">
 
-                <span>
-                  UX
-                </span>
-
-                <span>
-                  Product Thinking
-                </span>
-
-                <span>
-                  Interaction
-                </span>
-
-                <span>
-                  Design Systems
-                </span>
+                <span>UX</span>
+                <span>Product Thinking</span>
+                <span>Interaction</span>
+                <span>Design Systems</span>
 
               </div>
 
@@ -1385,7 +1496,6 @@
             </span>
 
           </article>
-
 
 
           <article
@@ -1410,21 +1520,10 @@
 
               <div class="expertise-tags">
 
-                <span>
-                  Architecture
-                </span>
-
-                <span>
-                  Data Flow
-                </span>
-
-                <span>
-                  Scalability
-                </span>
-
-                <span>
-                  Reliability
-                </span>
+                <span>Architecture</span>
+                <span>Data Flow</span>
+                <span>Scalability</span>
+                <span>Reliability</span>
 
               </div>
 
@@ -1435,7 +1534,6 @@
             </span>
 
           </article>
-
 
 
           <article
@@ -1460,21 +1558,10 @@
 
               <div class="expertise-tags">
 
-                <span>
-                  Threat Modeling
-                </span>
-
-                <span>
-                  Validation
-                </span>
-
-                <span>
-                  Permissions
-                </span>
-
-                <span>
-                  Secure Systems
-                </span>
+                <span>Threat Modeling</span>
+                <span>Validation</span>
+                <span>Permissions</span>
+                <span>Secure Systems</span>
 
               </div>
 
@@ -1485,7 +1572,6 @@
             </span>
 
           </article>
-
 
 
           <article
@@ -1510,21 +1596,10 @@
 
               <div class="expertise-tags">
 
-                <span>
-                  Deployment
-                </span>
-
-                <span>
-                  Cloud
-                </span>
-
-                <span>
-                  CI/CD
-                </span>
-
-                <span>
-                  Infrastructure
-                </span>
+                <span>Deployment</span>
+                <span>Cloud</span>
+                <span>CI/CD</span>
+                <span>Infrastructure</span>
 
               </div>
 
@@ -1544,135 +1619,352 @@
 
 
 
-    <!-- =======================================================
+    <!-- ===================================================
          EXPERIENCE
-    ======================================================== -->
+    ==================================================== -->
 
     <section
-      class="section experience-section"
+      class="section experience-section snk-experience"
       id="experience"
     >
 
       <div class="container">
 
-        <div class="section-heading reveal">
 
-          <div class="section-number">
-            05
+        <!-- HEADING -->
+
+        <div class="experience-heading reveal">
+
+
+          <div class="experience-heading-meta">
+
+            <span class="section-number">
+              05
+            </span>
+
+            <span class="section-kicker">
+              EXPERIENCE / CONTRIBUTION
+            </span>
+
           </div>
 
-          <div>
 
-            <p class="section-kicker">
-              EXPERIENCE
+          <div class="experience-heading-main">
+
+            <p class="experience-overline">
+              THE WORK BEHIND THE THINKING
             </p>
 
             <h2>
-              WHERE I'VE<br />
-              <em>BUILT & CONTRIBUTED.</em>
+              EXPERIENCE
+              <br>
+              <em>SHAPES THE MIND.</em>
             </h2>
+
+            <p class="experience-intro">
+              Every role is more than a title. It's an opportunity to
+              understand people, solve difficult problems, build better
+              systems and turn experience into something useful.
+            </p>
 
           </div>
 
         </div>
 
 
-        <div class="experience-card reveal">
+        <!-- TIMELINE -->
 
-          <div class="experience-meta">
+        <div class="experience-timeline reveal">
 
-            <span>
-              2026 — PRESENT
-            </span>
 
-            <span>
-              TEXAS, USA · REMOTE
-            </span>
+          <div
+            class="experience-line"
+            aria-hidden="true"
+          ></div>
 
+
+          <article class="experience-item">
+
+
+            <!-- DATE -->
+
+            <div class="experience-date">
+
+              <span>
+                2026
+              </span>
+
+              <small>
+                PRESENT
+              </small>
+
+            </div>
+
+
+            <!-- DOT -->
+
+            <div
+              class="experience-dot"
+              aria-hidden="true"
+            >
+
+              <span></span>
+
+            </div>
+
+
+            <!-- CARD -->
+
+            <div class="experience-card">
+
+
+              <div class="experience-card-top">
+
+
+                <div>
+
+                  <p class="experience-label">
+                    CURRENT ROLE
+                  </p>
+
+                  <h3>
+                    UX Lead Digital Expert
+                  </h3>
+
+                  <p class="experience-company">
+                    Yaqeen Institute
+                  </p>
+
+                </div>
+
+
+                <div class="experience-location">
+
+                  <span>
+                    TEXAS, USA
+                  </span>
+
+                  <span>
+                    REMOTE
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- STATEMENT -->
+
+              <div class="experience-statement">
+
+                <span class="statement-mark">
+                  “
+                </span>
+
+                <p>
+                  Working across digital experience, UX thinking, interface
+                  design and product-oriented problem solving.
+                </p>
+
+              </div>
+
+
+              <!-- CONTRIBUTION -->
+
+              <div class="experience-contribution">
+
+                <p class="contribution-title">
+                  HOW I APPROACH THE WORK
+                </p>
+
+
+                <div class="contribution-grid">
+
+
+                  <div class="contribution-card">
+
+                    <span>
+                      01
+                    </span>
+
+                    <h4>
+                      UNDERSTAND
+                    </h4>
+
+                    <p>
+                      Start with people, problems, context and constraints.
+                    </p>
+
+                  </div>
+
+
+                  <div class="contribution-card">
+
+                    <span>
+                      02
+                    </span>
+
+                    <h4>
+                      STRUCTURE
+                    </h4>
+
+                    <p>
+                      Turn complexity into clear systems, flows and
+                      experiences.
+                    </p>
+
+                  </div>
+
+
+                  <div class="contribution-card">
+
+                    <span>
+                      03
+                    </span>
+
+                    <h4>
+                      EXECUTE
+                    </h4>
+
+                    <p>
+                      Translate ideas into thoughtful digital experiences.
+                    </p>
+
+                  </div>
+
+
+                  <div class="contribution-card">
+
+                    <span>
+                      04
+                    </span>
+
+                    <h4>
+                      IMPROVE
+                    </h4>
+
+                    <p>
+                      Learn from the work and continuously make the system
+                      better.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- TAGS -->
+
+              <div class="experience-card-footer">
+
+                <span>
+                  UX
+                </span>
+
+                <span>
+                  DIGITAL EXPERIENCE
+                </span>
+
+                <span>
+                  PRODUCT THINKING
+                </span>
+
+                <span>
+                  SYSTEMS
+                </span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <!-- PHILOSOPHY -->
+
+        <div class="experience-philosophy reveal">
+
+
+          <div class="philosophy-index">
+            05 / 05
           </div>
 
 
-          <div class="experience-role">
+          <div class="philosophy-content">
 
-            <p class="experience-label">
-              CURRENT ROLE
+            <p class="section-kicker">
+              THE SNK PRINCIPLE
             </p>
 
             <h3>
-              UX Lead Digital Expert
+              DON'T JUST
+              <em>DO THE WORK.</em>
+              <br>
+              UNDERSTAND IT.
             </h3>
 
-            <p class="experience-company">
-              Yaqeen Institute
-            </p>
-
-          </div>
-
-
-          <div class="experience-description">
-
             <p>
-              Working across digital experience, UX thinking, interface
-              design and product-oriented problem solving.
+              Good work begins with curiosity. It becomes valuable through
+              discipline, thoughtful execution and the willingness to keep
+              learning.
             </p>
 
           </div>
 
 
-          <div class="experience-framework">
+          <div class="philosophy-mark">
 
-            <div>
-              <span>
-                01
-              </span>
+            <span>
+              +
+            </span>
 
-              <strong>
-                UNDERSTAND
-              </strong>
-            </div>
+            <span>
+              →
+            </span>
 
-            <div>
-              <span>
-                02
-              </span>
-
-              <strong>
-                STRUCTURE
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                03
-              </span>
-
-              <strong>
-                EXECUTE
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                04
-              </span>
-
-              <strong>
-                IMPROVE
-              </strong>
-            </div>
+            <span>
+              ∞
+            </span>
 
           </div>
 
         </div>
 
 
-        <div class="experience-link reveal">
+        <!-- CTA -->
+
+        <div class="experience-cta reveal">
+
+
+          <div>
+
+            <span class="section-kicker">
+              WANT THE FULL STORY?
+            </span>
+
+            <h3>
+              EXPLORE MY
+              <em>EXPERIENCE.</em>
+            </h3>
+
+          </div>
+
 
           <a
             href="experience.html"
-            class="text-link"
+            class="btn btn-primary magnetic"
           >
-            VIEW EXPERIENCE <span>↗</span>
+
+            VIEW EXPERIENCE
+
+            <span>
+              ↗
+            </span>
+
           </a>
 
         </div>
@@ -1683,9 +1975,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- ===================================================
          ABOUT
-    ======================================================== -->
+    ==================================================== -->
 
     <section
       class="section about-section"
@@ -1694,27 +1986,40 @@
 
       <div class="container">
 
+
         <div class="about-layout">
 
+
+          <!-- VISUAL -->
 
           <div class="about-visual reveal">
 
             <div class="identity-frame">
 
               <span>
-                SHAН NEIL KHAN
+                SHAH NEIL KHAN
               </span>
+
 
               <div class="identity-arrows">
 
                 SOFTWARE
-                <span>↓</span>
+
+                <span>
+                  ↓
+                </span>
 
                 INTELLIGENCE
-                <span>↓</span>
+
+                <span>
+                  ↓
+                </span>
 
                 EXPERIENCE
-                <span>↓</span>
+
+                <span>
+                  ↓
+                </span>
 
                 IMPACT
 
@@ -1725,6 +2030,8 @@
           </div>
 
 
+          <!-- CONTENT -->
+
           <div class="about-content reveal">
 
             <p class="section-kicker">
@@ -1732,8 +2039,10 @@
             </p>
 
             <h2>
-              I BUILD WITH<br />
-              <em>CURIOSITY, DISCIPLINE</em><br />
+              I BUILD WITH
+              <br>
+              <em>CURIOSITY, DISCIPLINE</em>
+              <br>
               AND PURPOSE.
             </h2>
 
@@ -1746,6 +2055,7 @@
 
 
             <div class="about-columns">
+
 
               <div>
 
@@ -1795,7 +2105,13 @@
               href="about.html"
               class="text-link"
             >
-              MORE ABOUT ME <span>↗</span>
+
+              MORE ABOUT ME
+
+              <span>
+                ↗
+              </span>
+
             </a>
 
           </div>
@@ -1808,13 +2124,14 @@
 
 
 
-    <!-- =======================================================
-         TABAYYUN PLATFORM
-    ======================================================== -->
+    <!-- ===================================================
+         TABAYYUN
+    ==================================================== -->
 
     <section class="section tabayyun-section">
 
       <div class="container">
+
 
         <a
           href="https://www.tabayyuninstitute.com/"
@@ -1823,6 +2140,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
+
 
           <div class="tabayyun-left">
 
@@ -1862,9 +2180,9 @@
 
 
 
-    <!-- =======================================================
-         CONTACT CTA
-    ======================================================== -->
+    <!-- ===================================================
+         CONTACT
+    ==================================================== -->
 
     <section
       class="section contact-section"
@@ -1873,32 +2191,42 @@
 
       <div class="container">
 
+
         <div class="contact-cta reveal">
 
           <p class="section-kicker">
             LET'S CREATE
           </p>
 
+
           <h2>
             HAVE AN IDEA?
-            <br />
+            <br>
             <em>LET'S BUILD IT.</em>
           </h2>
 
+
           <p>
             Software. AI. Product. UX. Systems. Brands.
-            <br />
+            <br>
             If the problem is interesting, let's talk.
           </p>
 
 
           <div class="contact-actions">
 
+
             <a
               href="contact.html"
               class="btn btn-primary magnetic"
             >
-              START A CONVERSATION <span>↗</span>
+
+              START A CONVERSATION
+
+              <span>
+                ↗
+              </span>
+
             </a>
 
 
@@ -1906,7 +2234,13 @@
               href="cv.html"
               class="btn btn-ghost magnetic"
             >
-              VIEW CV <span>→</span>
+
+              VIEW CV
+
+              <span>
+                →
+              </span>
+
             </a>
 
           </div>
@@ -1921,9 +2255,9 @@
 
 
 
-  <!-- =========================================================
+  <!-- =====================================================
        FOOTER
-  ========================================================== -->
+  ====================================================== -->
 
   <footer class="site-footer">
 
@@ -1935,7 +2269,8 @@
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
           alt="SNK"
-        />
+        >
+
 
         <div>
 
@@ -1980,7 +2315,9 @@
       <div class="footer-bottom">
 
         <span>
-          © <span id="currentYear"></span> Shah Neil Khan
+          ©
+          <span id="currentYear"></span>
+          Shah Neil Khan
         </span>
 
         <span>
@@ -1995,26 +2332,28 @@
 
 
 
-  <!-- =========================================================
-       ACCESSIBILITY / NOSCRIPT
-  ========================================================== -->
+  <!-- =====================================================
+       NOSCRIPT
+  ====================================================== -->
 
   <noscript>
 
     <div class="noscript-message">
-      This website uses JavaScript for interactive effects. The core
-      content remains available without it.
+      This website uses JavaScript for interactive effects.
+      The core content remains available without it.
     </div>
 
   </noscript>
 
 
 
-  <!-- =========================================================
-       SCRIPT
-  ========================================================== -->
+  <!-- =====================================================
+       JS
+  ====================================================== -->
 
   <script src="script.js"></script>
 
+
 </body>
+
 </html>
