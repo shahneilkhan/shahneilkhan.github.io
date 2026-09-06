@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080807"
+  >
+
+  <meta
+    name="robots"
+    content="noindex"
+  >
+
+  <title>404 — Shah Neil Khan</title>
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .error-page {
+      min-height: 100svh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        100px 24px 60px;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .error-page::before {
+      content: "";
+
+      position: absolute;
+
+      width: 700px;
+      height: 700px;
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(201, 139, 77, .09),
+          transparent 68%
+        );
+
+      pointer-events: none;
+    }
+
+    .error-content {
+      position: relative;
+      z-index: 2;
+
+      width: min(800px, 100%);
+
+      text-align: center;
+    }
+
+    .error-logo {
+      width: 95px;
+      margin: 0 auto 55px;
+
+      filter:
+        drop-shadow(
+          0 0 25px
+          rgba(201, 139, 77, .16)
+        );
+    }
+
+    .error-code {
+      margin: 0;
+
+      color: var(--amber-light);
+
+      font-family:
+        "DM Mono",
+        monospace;
+
+      font-size:
+        clamp(5rem, 18vw, 12rem);
+
+      line-height: .8;
+
+      letter-spacing: -.08em;
+    }
+
+    .error-title {
+      margin:
+        35px 0 18px;
+
+      font-size:
+        clamp(2rem, 5vw, 4.5rem);
+
+      text-transform: uppercase;
+    }
+
+    .error-copy {
+      max-width: 540px;
+
+      margin:
+        0 auto 35px;
+
+      color: var(--text-muted);
+
+      line-height: 1.8;
+    }
+
+    .error-terminal {
+      width: min(520px, 100%);
+
+      margin: 0 auto 35px;
+
+      padding: 18px 20px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        var(--radius-md);
+
+      background:
+        rgba(201, 139, 77, .025);
+
+      color: var(--text-muted);
+
+      font-family:
+        "DM Mono",
+        monospace;
+
+      font-size: .68rem;
+
+      text-align: left;
+    }
+
+    .error-terminal .prompt {
+      color: var(--amber);
+    }
+
+    .error-terminal .status {
+      margin-top: 5px;
+    }
+
+    .error-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .error-footer {
+      position: absolute;
+
+      bottom: 25px;
+      left: 0;
+      right: 0;
+
+      color: var(--text-faint);
+
+      font-family:
+        "DM Mono",
+        monospace;
+
+      font-size: .55rem;
+
+      letter-spacing: .08em;
+
+      text-align: center;
+
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .error-logo {
+        width: 75px;
+        margin-bottom: 45px;
+      }
+
+      .error-title {
+        margin-top: 28px;
+      }
+
+      .error-actions {
+        display: grid;
+      }
+
+      .error-actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="error-page">
+
+    <div class="error-content">
+
+      <img
+        class="error-logo"
+        src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+        alt="SNK"
+      >
+
+      <div
+        class="error-code"
+        aria-label="404"
+      >
+        404
+      </div>
+
+      <h1 class="error-title">
+        SYSTEM PATH NOT FOUND.
+      </h1>
+
+      <p class="error-copy">
+        The page you're looking for doesn't exist,
+        has moved, or the route is no longer available.
+        Let's get you back to the system.
+      </p>
+
+      <div class="error-terminal">
+
+        <div>
+          <span class="prompt">$</span>
+          snk-engine route --resolve
+        </div>
+
+        <div>
+          searching requested path...
+        </div>
+
+        <div>
+          <span class="prompt">!</span>
+          route.not_found()
+        </div>
+
+        <div class="status">
+          SYSTEM STATUS / ONLINE
+        </div>
+
+      </div>
+
+      <div class="error-actions">
+
+        <a
+          class="btn btn-primary"
+          href="./"
+        >
+          BACK TO HOME
+          <span class="btn-arrow">→</span>
+        </a>
+
+        <a
+          class="btn btn-secondary"
+          href="./projects.html"
+        >
+          VIEW WORK
+          <span class="btn-arrow">→</span>
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="error-footer">
+      SNK / SOFTWARE / INTELLIGENCE / EXPERIENCE
+    </div>
+
+  </main>
+
+</body>
+</html>
