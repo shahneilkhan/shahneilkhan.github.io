@@ -1,53 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>About — Shah Neil Khan</title>
 
   <meta
     name="description"
-    content="About Shah Neil Khan — Software Engineer & AI Engineer focused on intelligent digital experiences, product engineering, UX, and secure systems."
-  />
+    content="About Shah Neil Khan — Software Engineer & AI Engineer focused on intelligent software, product experience, UX, and secure digital systems."
+  >
 
-  <meta
-    name="keywords"
-    content="Shah Neil Khan, Software Engineer, AI Engineer, Context Engineering, UX, Product Engineering, Cybersecurity, SNK"
-  />
+  <meta name="theme-color" content="#090909">
 
-  <meta name="author" content="Shah Neil Khan" />
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+  >
 
-  <meta property="og:title" content="About — Shah Neil Khan" />
-  <meta
-    property="og:description"
-    content="Software Engineer & AI Engineer building intelligent digital experiences."
-  />
-  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
 
-  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
 
-    <div class="container nav-container">
+      <a href="index.html" class="brand" aria-label="Shah Neil Khan home">
 
-      <a
-        href="index.html"
-        class="brand"
-        aria-label="Shah Neil Khan home"
-      >
-        <span class="brand-mark">SNK</span>
-        <span class="brand-name">SHAH NEIL KHAN</span>
+        <span class="brand-logo">
+          <img
+            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+            alt="SNK"
+          >
+        </span>
+
+        <span class="brand-copy">
+          <strong>SHAH NEIL KHAN</strong>
+          <small>SNK / PERSONAL BRAND</small>
+        </span>
+
       </a>
 
       <button
@@ -55,44 +58,26 @@
         type="button"
         aria-label="Open navigation"
         aria-expanded="false"
-        aria-controls="primaryNavigation"
       >
-        <span></span>
-        <span></span>
         <span></span>
       </button>
 
-      <nav
-        class="nav-menu"
-        id="primaryNavigation"
-        aria-hidden="false"
-      >
+      <nav class="main-nav" aria-label="Main navigation">
 
-        <a href="index.html">HOME</a>
-        <a href="projects.html">WORK</a>
+        <a href="index.html">Home</a>
+        <a href="index.html#work">Work</a>
         <a href="index.html#ai">AI</a>
-        <a href="expertise.html">EXPERTISE</a>
-        <a href="experience.html">EXPERIENCE</a>
-
-        <a
-          href="about.html"
-          class="active"
-          aria-current="page"
-        >
-          ABOUT
-        </a>
-
-        <a
-          href="https://www.tabayyuninstitute.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          TABAYYUN TV ↗
-        </a>
-
-        <a href="contact.html">CONTACT</a>
+        <a href="index.html#expertise">Expertise</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="about.html" class="active">About</a>
+        <a href="brand.html">Brand</a>
+        <a href="contact.html">Contact</a>
 
       </nav>
+
+      <a href="contact.html" class="header-cta">
+        Let's Talk <span>↗</span>
+      </a>
 
     </div>
 
@@ -101,11 +86,8 @@
 
   <main>
 
-    <!-- =========================
-         ABOUT HERO
-    ========================== -->
-
-    <section class="page-hero about-page-hero">
+    <!-- ABOUT HERO -->
+    <section class="page-hero section-dark">
 
       <div class="container">
 
@@ -113,69 +95,35 @@
 
           <div class="page-hero-copy reveal">
 
-            <span class="eyebrow">
-              ABOUT / SHAH NEIL KHAN
+            <span class="section-number">
+              01 / ABOUT
             </span>
 
             <h1>
-              I BUILD WITH
-              <span>CURIOUSITY.</span>
-              ENGINEERING DISCIPLINE.
-              AND PURPOSE.
+              I BUILD WITH<br>
+              <em>CURIOSITY, DISCIPLINE &amp; PURPOSE.</em>
             </h1>
 
-            <p class="hero-description">
+            <p>
               I'm Shah Neil Khan, a software engineer focused on
               building intelligent digital experiences across
-              software, AI, product and UX.
+              software, AI, product, and UX.
             </p>
-
-            <div class="hero-actions">
-
-              <a
-                href="projects.html"
-                class="btn btn-primary"
-              >
-                EXPLORE MY WORK
-              </a>
-
-              <a
-                href="contact.html"
-                class="btn btn-secondary"
-              >
-                LET'S TALK
-              </a>
-
-            </div>
 
           </div>
 
 
-          <div class="page-hero-visual reveal">
+          <div class="page-hero-mark reveal">
 
-            <div class="identity-frame">
+            <div class="identity-mark">
 
-              <div class="identity-frame-top">
-                <span>SNK / PERSONAL BRAND</span>
-                <span>001</span>
-              </div>
+              <span>SHAH</span>
+              <span>NEIL</span>
+              <span>KHAN</span>
 
-              <div class="identity-stack">
+              <div class="identity-line-small"></div>
 
-                <span>SOFTWARE</span>
-                <span>↓</span>
-                <span>INTELLIGENCE</span>
-                <span>↓</span>
-                <span>EXPERIENCE</span>
-                <span>↓</span>
-                <span>IMPACT</span>
-
-              </div>
-
-              <div class="identity-frame-bottom">
-                <span>SHAH NEIL KHAN</span>
-                <span>SNK</span>
-              </div>
+              <strong>SNK</strong>
 
             </div>
 
@@ -188,97 +136,42 @@
     </section>
 
 
-    <!-- =========================
-         SHORT VERSION
-    ========================== -->
-
-    <section class="section about-intro-section">
+    <!-- INTRO -->
+    <section class="section about-introduction">
 
       <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="eyebrow">
-            THE SHORT VERSION
-          </span>
-
-          <h2>
-            ENGINEER FIRST.
-            <span>DESIGN AWARE.</span>
-            AI CURIOUS.
-          </h2>
-
-        </div>
-
 
         <div class="about-intro-grid">
 
-          <div class="about-intro-main reveal">
+          <div class="section-label reveal">
 
-            <p class="large-copy">
-              I care about what happens between an idea and the
-              system that eventually brings it to life.
-            </p>
-
-            <p>
-              That means thinking beyond individual screens or
-              isolated pieces of code. I look at the problem,
-              understand the people using the product, design the
-              system behind it, build the experience, and think
-              about how it can become better over time.
-            </p>
+            <span class="section-number">
+              02 / THE APPROACH
+            </span>
 
           </div>
 
 
-          <div class="about-intro-side reveal">
+          <div class="about-intro-copy reveal">
 
-            <div class="mini-statement">
+            <p class="about-lead">
+              I don't see software as just code.
+              I see it as a system connecting people,
+              information, decisions, and experiences.
+            </p>
 
-              <span>01</span>
+            <p>
+              That's why my work sits at the intersection of
+              engineering, artificial intelligence, product
+              thinking, and user experience.
+            </p>
 
-              <strong>
-                THINK
-              </strong>
-
-              <p>
-                Understand the real problem before reaching for
-                the obvious solution.
-              </p>
-
-            </div>
-
-
-            <div class="mini-statement">
-
-              <span>02</span>
-
-              <strong>
-                BUILD
-              </strong>
-
-              <p>
-                Turn ideas into useful, maintainable digital
-                systems.
-              </p>
-
-            </div>
-
-
-            <div class="mini-statement">
-
-              <span>03</span>
-
-              <strong>
-                IMPROVE
-              </strong>
-
-              <p>
-                Treat every product as something that can learn,
-                evolve and become more useful.
-              </p>
-
-            </div>
+            <p>
+              Whether I'm working on a software system,
+              an AI workflow, a digital product, or an interface,
+              I care about understanding the problem before
+              jumping into implementation.
+            </p>
 
           </div>
 
@@ -289,489 +182,285 @@
     </section>
 
 
-    <!-- =========================
-         HOW I THINK
-    ========================== -->
-
-    <section class="section section-dark">
+    <!-- HOW I THINK -->
+    <section class="section about-thinking">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <span class="eyebrow">
-            01 / HOW I THINK
-          </span>
+          <div>
 
-          <h2>
-            I DON'T START
-            <span>WITH TECHNOLOGY.</span>
-          </h2>
+            <span class="section-number">
+              03 / HOW I THINK
+            </span>
+
+            <h2>
+              THINK IN<br>
+              <em>SYSTEMS.</em>
+            </h2>
+
+          </div>
 
           <p>
-            Technology is the tool. The problem is the starting
-            point.
+            Good engineering starts before the first line of
+            code. I try to understand the problem, the people
+            involved, the constraints, and the system around it.
           </p>
 
         </div>
 
 
-        <div class="about-thinking-grid">
+        <div class="thinking-grid">
 
-          <article class="about-principle-card reveal">
+          <article class="thinking-card reveal">
 
-            <span class="card-number">01</span>
+            <span class="card-number">
+              01
+            </span>
+
+            <h3>
+              QUESTION
+            </h3>
+
+            <p>
+              What problem are we actually solving?
+              What assumptions are we making?
+            </p>
+
+          </article>
+
+
+          <article class="thinking-card reveal">
+
+            <span class="card-number">
+              02
+            </span>
+
+            <h3>
+              STRUCTURE
+            </h3>
+
+            <p>
+              Break complexity into understandable systems,
+              boundaries, flows, and responsibilities.
+            </p>
+
+          </article>
+
+
+          <article class="thinking-card reveal">
+
+            <span class="card-number">
+              03
+            </span>
+
+            <h3>
+              BUILD
+            </h3>
+
+            <p>
+              Turn the architecture into software that is
+              useful, maintainable, and intentional.
+            </p>
+
+          </article>
+
+
+          <article class="thinking-card reveal">
+
+            <span class="card-number">
+              04
+            </span>
+
+            <h3>
+              LEARN
+            </h3>
+
+            <p>
+              Observe what works, understand what doesn't,
+              and keep improving the system.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- WHAT I BUILD -->
+    <section class="section about-build">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <span class="section-number">
+              04 / WHAT I BUILD
+            </span>
+
+            <h2>
+              FROM SOFTWARE<br>
+              <em>TO INTELLIGENCE.</em>
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="build-list">
+
+          <div class="build-item reveal">
+
+            <span>01</span>
+
+            <div>
+              <h3>Software Systems</h3>
+              <p>
+                Applications, APIs, web experiences, and
+                full-stack systems designed around real needs.
+              </p>
+            </div>
+
+            <strong>↗</strong>
+
+          </div>
+
+
+          <div class="build-item reveal">
+
+            <span>02</span>
+
+            <div>
+              <h3>AI Applications</h3>
+              <p>
+                AI systems built around context, retrieval,
+                memory, tools, validation, and useful workflows.
+              </p>
+            </div>
+
+            <strong>↗</strong>
+
+          </div>
+
+
+          <div class="build-item reveal">
+
+            <span>03</span>
+
+            <div>
+              <h3>Digital Experiences</h3>
+              <p>
+                Interfaces and product experiences where
+                usability, clarity, and visual quality matter.
+              </p>
+            </div>
+
+            <strong>↗</strong>
+
+          </div>
+
+
+          <div class="build-item reveal">
+
+            <span>04</span>
+
+            <div>
+              <h3>Secure Systems</h3>
+              <p>
+                Systems designed with permissions, validation,
+                trust boundaries, and security considerations.
+              </p>
+            </div>
+
+            <strong>↗</strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRINCIPLES -->
+    <section class="section about-principles">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <span class="section-number">
+              05 / PRINCIPLES
+            </span>
+
+            <h2>
+              WHAT<br>
+              <em>MATTERS.</em>
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="principles-grid about-principles-grid">
+
+          <article class="principle reveal">
+
+            <span>01</span>
 
             <h3>
               CLARITY
             </h3>
 
             <p>
-              Before building anything, I want to understand what
-              we're actually trying to solve, who we're solving it
-              for and what constraints matter.
+              Complexity is inevitable. Confusion isn't.
+              I value systems and interfaces that make sense.
             </p>
 
           </article>
 
 
-          <article class="about-principle-card reveal">
+          <article class="principle reveal">
 
-            <span class="card-number">02</span>
+            <span>02</span>
 
             <h3>
-              SYSTEMS
+              CRAFT
             </h3>
 
             <p>
-              A good interface is only one part of a product. I
-              think about architecture, data, APIs, workflows,
-              security and the boundaries between systems.
+              Small details compound. Good work should feel
+              considered from architecture to interaction.
             </p>
 
           </article>
 
 
-          <article class="about-principle-card reveal">
+          <article class="principle reveal">
 
-            <span class="card-number">03</span>
+            <span>03</span>
 
             <h3>
-              INTENTION
-            </h3>
-
-            <p>
-              I prefer deliberate engineering over unnecessary
-              complexity. Every component should have a reason to
-              exist.
-            </p>
-
-          </article>
-
-
-          <article class="about-principle-card reveal">
-
-            <span class="card-number">04</span>
-
-            <h3>
-              ITERATION
-            </h3>
-
-            <p>
-              The first version is rarely the final version.
-              Observe what works, learn from what doesn't and keep
-              improving.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         WHAT I BUILD
-    ========================== -->
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="eyebrow">
-            02 / WHAT I BUILD
-          </span>
-
-          <h2>
-            FROM DIGITAL
-            <span>PRODUCTS</span>
-            TO INTELLIGENT SYSTEMS.
-          </h2>
-
-          <p>
-            My work sits at the intersection of engineering,
-            intelligence, product thinking and experience design.
-          </p>
-
-        </div>
-
-
-        <div class="about-build-grid">
-
-          <article class="build-card reveal">
-
-            <div class="build-card-top">
-              <span>01</span>
-              <span>SOFTWARE</span>
-            </div>
-
-            <h3>
-              SOFTWARE SYSTEMS
-            </h3>
-
-            <p>
-              Full-stack applications, APIs, backend systems,
-              interfaces and the infrastructure connecting them.
-            </p>
-
-            <div class="tag-list">
-
-              <span>WEB</span>
-              <span>API</span>
-              <span>BACKEND</span>
-              <span>DATABASE</span>
-
-            </div>
-
-          </article>
-
-
-          <article class="build-card reveal">
-
-            <div class="build-card-top">
-              <span>02</span>
-              <span>AI</span>
-            </div>
-
-            <h3>
-              INTELLIGENT SYSTEMS
-            </h3>
-
-            <p>
-              AI applications designed around context, retrieval,
-              memory, tools, validation and useful workflows.
-            </p>
-
-            <div class="tag-list">
-
-              <span>AI</span>
-              <span>RAG</span>
-              <span>CONTEXT</span>
-              <span>AGENTS</span>
-
-            </div>
-
-          </article>
-
-
-          <article class="build-card reveal">
-
-            <div class="build-card-top">
-              <span>03</span>
-              <span>PRODUCT</span>
-            </div>
-
-            <h3>
-              DIGITAL EXPERIENCES
-            </h3>
-
-            <p>
-              Interfaces and product experiences that connect
-              human needs with technical systems.
-            </p>
-
-            <div class="tag-list">
-
-              <span>UX</span>
-              <span>UI</span>
-              <span>PRODUCT</span>
-              <span>RESEARCH</span>
-
-            </div>
-
-          </article>
-
-
-          <article class="build-card reveal">
-
-            <div class="build-card-top">
-              <span>04</span>
-              <span>SECURITY</span>
-            </div>
-
-            <h3>
-              RESILIENT SYSTEMS
-            </h3>
-
-            <p>
-              Security-conscious engineering with attention to
-              permissions, validation, threat surfaces and system
-              boundaries.
-            </p>
-
-            <div class="tag-list">
-
-              <span>SECURITY</span>
-              <span>AUTH</span>
-              <span>VALIDATION</span>
-              <span>THREATS</span>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         AI PERSPECTIVE
-    ========================== -->
-
-    <section class="section section-dark">
-
-      <div class="container">
-
-        <div class="split-section">
-
-          <div class="split-copy reveal">
-
-            <span class="eyebrow">
-              03 / AI PERSPECTIVE
-            </span>
-
-            <h2>
-              AI IS NOT
-              JUST THE
-              <span>MODEL.</span>
-            </h2>
-
-            <p>
-              A powerful model can still produce a weak product if
-              the surrounding system does not provide the right
-              context.
-            </p>
-
-            <p>
-              I think about AI as an engineered system where the
-              model is one component inside a larger architecture.
-            </p>
-
-            <a
-              href="index.html#ai"
-              class="text-link"
-            >
-              EXPLORE AI / CONTEXT ENGINEERING →
-            </a>
-
-          </div>
-
-
-          <div class="split-visual reveal">
-
-            <div class="ai-equation-panel">
-
-              <span class="equation-label">
-                SYSTEM MODEL
-              </span>
-
-              <div class="equation">
-                MODEL
-                <span>+</span>
-                CONTEXT
-                <span>+</span>
-                MEMORY
-                <span>+</span>
-                TOOLS
-                <span>+</span>
-                VALIDATION
-              </div>
-
-              <div class="equation-result">
-                = USEFUL AI
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         PRINCIPLES
-    ========================== -->
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="eyebrow">
-            04 / PRINCIPLES
-          </span>
-
-          <h2>
-            THREE THINGS
-            <span>MATTER.</span>
-          </h2>
-
-        </div>
-
-
-        <div class="principles-list">
-
-          <div class="principle-row reveal">
-
-            <div class="principle-number">
-              01
-            </div>
-
-            <div class="principle-content">
-
-              <h3>
-                CLARITY
-              </h3>
-
-              <p>
-                Make the problem, architecture and experience easier
-                to understand.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="principle-row reveal">
-
-            <div class="principle-number">
-              02
-            </div>
-
-            <div class="principle-content">
-
-              <h3>
-                CRAFT
-              </h3>
-
-              <p>
-                Write thoughtful software and create interfaces
-                that feel intentional rather than accidental.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="principle-row reveal">
-
-            <div class="principle-number">
-              03
-            </div>
-
-            <div class="principle-content">
-
-              <h3>
-                IMPACT
-              </h3>
-
-              <p>
-                Technology should ultimately make something better:
-                a workflow, a product, a decision or an experience.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         IDENTITY
-    ========================== -->
-
-    <section class="section identity-section">
-
-      <div class="container">
-
-        <div class="identity-large reveal">
-
-          <div class="identity-large-label">
-            SHAH NEIL KHAN / SNK
-          </div>
-
-          <div class="identity-large-stack">
-
-            <div>
-              SOFTWARE
-            </div>
-
-            <div class="identity-arrow">
-              ↓
-            </div>
-
-            <div>
-              INTELLIGENCE
-            </div>
-
-            <div class="identity-arrow">
-              ↓
-            </div>
-
-            <div>
-              EXPERIENCE
-            </div>
-
-            <div class="identity-arrow">
-              ↓
-            </div>
-
-            <div>
               IMPACT
-            </div>
+            </h3>
 
-          </div>
+            <p>
+              Technology should solve a meaningful problem.
+              More complexity is not automatically more value.
+            </p>
 
-          <div class="identity-large-footer">
-
-            <span>
-              CODE → INTELLIGENCE
-            </span>
-
-            <span>
-              SNK
-            </span>
-
-          </div>
+          </article>
 
         </div>
 
@@ -780,76 +469,30 @@
     </section>
 
 
-    <!-- =========================
-         WHAT'S NEXT
-    ========================== -->
-
-    <section class="section section-dark">
+    <!-- IDENTITY -->
+    <section class="identity-section">
 
       <div class="container">
 
-        <div class="split-section reverse-mobile">
+        <div class="identity-system reveal">
 
-          <div class="split-copy reveal">
+          <span>SHAH NEIL KHAN</span>
 
-            <span class="eyebrow">
-              05 / WHAT'S NEXT
-            </span>
+          <div class="identity-flow">
 
-            <h2>
-              BUILDING
-              <span>WHAT'S NEXT.</span>
-            </h2>
+            <strong>SOFTWARE</strong>
 
-            <p>
-              I'm interested in difficult problems, thoughtful
-              products and technology that actually matters.
-            </p>
+            <span>↓</span>
 
-            <p>
-              The goal isn't to use the newest technology simply
-              because it exists. The goal is to understand what it
-              enables and use it where it creates real value.
-            </p>
+            <strong>INTELLIGENCE</strong>
 
-          </div>
+            <span>↓</span>
 
+            <strong>EXPERIENCE</strong>
 
-          <div class="focus-panel reveal">
+            <span>↓</span>
 
-            <div class="focus-panel-header">
-              <span>CURRENT FOCUS</span>
-              <span>SNK / 2026</span>
-            </div>
-
-            <ul class="focus-list">
-
-              <li>
-                <span>01</span>
-                <strong>AI SYSTEMS</strong>
-              </li>
-
-              <li>
-                <span>02</span>
-                <strong>CONTEXT ENGINEERING</strong>
-              </li>
-
-              <li>
-                <span>03</span>
-                <strong>SOFTWARE ENGINEERING</strong>
-              </li>
-
-              <li>
-                <span>04</span>
-                <strong>PRODUCT & UX</strong>
-              </li>
-
-              <li>
-                <span>05</span>
-                <strong>SECURITY</strong>
-              </li>
-
-            </ul>
+            <strong>IMPACT</strong>
 
           </div>
 
@@ -860,67 +503,30 @@
     </section>
 
 
-    <!-- =========================
-         CLOSING
-    ========================== -->
-
+    <!-- CLOSING -->
     <section class="section about-closing">
 
       <div class="container">
 
-        <div class="closing-statement reveal">
+        <div class="closing-card reveal">
 
-          <span class="eyebrow">
-            FINAL THOUGHT
+          <span class="section-number">
+            06 / THE NEXT PROBLEM
           </span>
 
           <h2>
-            UNDERSTAND THE PROBLEM.
-            <br />
-            DESIGN THE SYSTEM.
-            <br />
-            BUILD WITH INTENTION.
+            I'M INTERESTED IN<br>
+            <em>DIFFICULT PROBLEMS.</em>
           </h2>
 
           <p>
-            That's the kind of engineering I want to practice.
+            Thoughtful products. Intelligent systems.
+            Technology that actually matters.
           </p>
 
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CTA
-    ========================== -->
-
-    <section class="section cta-section">
-
-      <div class="container">
-
-        <div class="cta-panel reveal">
-
-          <div>
-
-            <span class="eyebrow">
-              LET'S BUILD
-            </span>
-
-            <h2>
-              HAVE A PROBLEM
-              <span>WORTH SOLVING?</span>
-            </h2>
-
-          </div>
-
-          <a
-            href="contact.html"
-            class="btn btn-primary"
-          >
-            START A CONVERSATION →
+          <a href="contact.html" class="btn btn-primary">
+            Let's Build Something
+            <span>↗</span>
           </a>
 
         </div>
@@ -932,78 +538,42 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
+  <!-- FOOTER -->
   <footer class="site-footer">
 
-    <div class="container">
+    <div class="container footer-inner">
 
-      <div class="footer-grid">
+      <a href="index.html" class="footer-brand">
 
-        <div class="footer-brand">
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="SNK"
+        >
 
-          <a
-            href="index.html"
-            class="brand"
-          >
-            <span class="brand-mark">SNK</span>
-            <span class="brand-name">SHAH NEIL KHAN</span>
-          </a>
+        <span>
+          SHAH NEIL KHAN
+        </span>
 
-          <p>
-            Software Engineer & AI Engineer building intelligent
-            digital experiences.
-          </p>
-
-        </div>
+      </a>
 
 
-        <div class="footer-links">
-
-          <span class="footer-label">
-            NAVIGATE
-          </span>
-
-          <a href="index.html">Home</a>
-          <a href="projects.html">Work</a>
-          <a href="expertise.html">Expertise</a>
-          <a href="experience.html">Experience</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-
-        </div>
-
-
-        <div class="footer-links">
-
-          <span class="footer-label">
-            EXTERNAL
-          </span>
-
-          <a
-            href="https://www.tabayyuninstitute.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Tabayyun TV ↗
-          </a>
-
-        </div>
-
+      <div class="footer-center">
+        <span>
+          SOFTWARE · AI · EXPERIENCE
+        </span>
       </div>
 
 
-      <div class="footer-bottom">
+      <div class="footer-right">
 
         <span>
-          © <span data-current-year></span> Shah Neil Khan
+          © <span id="current-year">2026</span>
+          SHAH NEIL KHAN
         </span>
 
-        <span>
-          CODE → INTELLIGENCE → EXPERIENCE
-        </span>
+        <a href="#top">
+          BACK TO TOP ↑
+        </a>
 
       </div>
 
