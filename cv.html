@@ -1,32 +1,29 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>CV — Shah Neil Khan</title>
-
   <meta
     name="description"
-    content="Curriculum Vitae of Shah Neil Khan — Software Engineer & AI Engineer."
+    content="Professional CV and career profile of Shah Neil Khan."
   />
 
-  <meta
-    name="keywords"
-    content="Shah Neil Khan, CV, Resume, Software Engineer, AI Engineer, Context Engineering, UX"
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
   />
 
-  <meta name="author" content="Shah Neil Khan" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <meta property="og:title" content="CV — Shah Neil Khan" />
-  <meta
-    property="og:description"
-    content="Professional profile and CV of Shah Neil Khan."
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
   />
-  <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -36,23 +33,27 @@
   <!-- =========================
        HEADER
   ========================== -->
+  <header class="site-header" id="site-header">
 
-  <header class="site-header" id="siteHeader">
-
-    <div class="container nav-container">
+    <div class="header-inner">
 
       <a
-        href="index.html"
         class="brand"
+        href="index.html"
         aria-label="Shah Neil Khan home"
       >
-        <span class="brand-mark">
-          SNK
+
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="SNK"
+          class="brand-logo"
+        />
+
+        <span class="brand-meta">
+          <span>SNK</span>
+          <span>/ PERSONAL BRAND</span>
         </span>
 
-        <span class="brand-name">
-          SHAH NEIL KHAN
-        </span>
       </a>
 
 
@@ -61,69 +62,35 @@
         type="button"
         aria-label="Open navigation"
         aria-expanded="false"
-        aria-controls="primaryNavigation"
+        aria-controls="main-navigation"
       >
-        <span></span>
         <span></span>
         <span></span>
       </button>
 
 
       <nav
-        class="nav-menu"
-        id="primaryNavigation"
-        aria-hidden="false"
+        class="main-nav"
+        id="main-navigation"
+        aria-label="Primary navigation"
       >
 
-        <a href="index.html">
-          HOME
-        </a>
-
-        <a href="projects.html">
-          WORK
-        </a>
-
-        <a href="index.html#ai">
-          AI
-        </a>
-
-        <a href="expertise.html">
-          EXPERTISE
-        </a>
-
-        <a href="experience.html">
-          EXPERIENCE
-        </a>
-
-        <a href="about.html">
-          ABOUT
-        </a>
-
-        <a
-          href="cv.html"
-          class="active"
-          aria-current="page"
-        >
-          CV
-        </a>
-
-        <a href="brand.html">
-          BRAND
-        </a>
-
-        <a
-          href="https://www.tabayyuninstitute.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          TABAYYUN TV ↗
-        </a>
-
-        <a href="contact.html">
-          CONTACT
-        </a>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Work</a>
+        <a href="index.html#ai">AI</a>
+        <a href="expertise.html">Expertise</a>
+        <a href="experience.html">Experience</a>
+        <a href="about.html">About</a>
+        <a href="brand.html">Brand</a>
+        <a href="contact.html">Contact</a>
 
       </nav>
+
+
+      <a class="header-cta" href="contact.html">
+        Let's Build
+        <span>↗</span>
+      </a>
 
     </div>
 
@@ -133,111 +100,38 @@
   <main>
 
     <!-- =========================
-         CV HERO
+         HERO
     ========================== -->
+    <section class="page-hero cv-hero">
 
-    <section class="page-hero cv-page-hero">
+      <div class="container page-hero-grid">
 
-      <div class="container">
+        <div class="page-hero-copy reveal">
 
-        <div class="page-hero-grid">
-
-          <div class="page-hero-copy reveal">
-
-            <span class="eyebrow">
-              CV / SHAH NEIL KHAN
-            </span>
-
-            <h1>
-              THE WORK
-              <span>BEHIND THE WORK.</span>
-            </h1>
-
-            <p class="hero-description">
-              A structured professional profile covering engineering,
-              AI, product, UX and digital systems.
-            </p>
-
-            <div class="hero-actions">
-
-              <!--
-                Future admin system:
-                Replace this link with the generated CV URL.
-              -->
-
-              <a
-                href="#cv-document"
-                class="btn btn-primary"
-              >
-                VIEW CV
-              </a>
-
-              <a
-                href="contact.html"
-                class="btn btn-secondary"
-              >
-                CONTACT ME
-              </a>
-
-            </div>
-
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            CURRICULUM VITAE
           </div>
 
+          <h1>
+            THE
+            <span>CAREER</span>
+            BEHIND THE WORK.
+          </h1>
 
-          <div class="page-hero-visual reveal">
+          <p class="page-hero-lead">
+            A concise professional profile covering experience,
+            capabilities, education and selected technical focus.
+          </p>
 
-            <div class="cv-hero-panel">
-
-              <div class="cv-panel-top">
-
-                <span>
-                  SNK / CV
-                </span>
-
-                <span>
-                  001
-                </span>
-
-              </div>
+        </div>
 
 
-              <div class="cv-panel-content">
+        <div class="page-hero-mark reveal">
 
-                <div class="cv-panel-name">
-                  SHAH
-                  <br />
-                  NEIL
-                  <br />
-                  KHAN
-                </div>
-
-
-                <div class="cv-panel-role">
-                  SOFTWARE ENGINEER
-                  <br />
-                  &
-                  <br />
-                  AI ENGINEER
-                </div>
-
-              </div>
-
-
-              <div class="cv-panel-bottom">
-
-                <span>
-                  PROFESSIONAL PROFILE
-                </span>
-
-                <span>
-                  SNK
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
+          <span>CV</span>
+          <strong>PROFILE</strong>
+          <small>SOFTWARE / AI / UX</small>
 
         </div>
 
@@ -249,187 +143,52 @@
     <!-- =========================
          PROFILE
     ========================== -->
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <span class="eyebrow">
-            01 / PROFILE
-          </span>
-
-          <h2>
-            SOFTWARE ENGINEER
-            <span>× AI ENGINEER.</span>
-          </h2>
-
-        </div>
-
-
-        <div class="cv-profile-grid">
-
-          <div class="cv-profile-main reveal">
-
-            <p class="large-copy">
-              I build digital experiences and systems across
-              software engineering, AI, product and UX.
-            </p>
-
-            <p>
-              My engineering approach combines technical thinking
-              with product context: understand the problem, design
-              the system, build intentionally and continuously
-              improve the result.
-            </p>
-
-          </div>
-
-
-          <div class="cv-profile-side reveal">
-
-            <div class="cv-meta-row">
-
-              <span>
-                NAME
-              </span>
-
-              <strong>
-                SHAH NEIL KHAN
-              </strong>
-
-            </div>
-
-
-            <div class="cv-meta-row">
-
-              <span>
-                PRIMARY ROLE
-              </span>
-
-              <strong>
-                SOFTWARE ENGINEER
-              </strong>
-
-            </div>
-
-
-            <div class="cv-meta-row">
-
-              <span>
-                AI FOCUS
-              </span>
-
-              <strong>
-                CONTEXT ENGINEERING
-              </strong>
-
-            </div>
-
-
-            <div class="cv-meta-row">
-
-              <span>
-                PRODUCT
-              </span>
-
-              <strong>
-                UX / DIGITAL EXPERIENCE
-              </strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         EXPERIENCE SNAPSHOT
-    ========================== -->
-
-    <section class="section section-dark">
+    <section class="section cv-profile">
 
       <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="cv-header-card reveal">
 
-          <span class="eyebrow">
-            02 / EXPERIENCE
-          </span>
+          <div class="cv-person">
 
-          <h2>
-            PROFESSIONAL
-            <span>EXPERIENCE.</span>
-          </h2>
-
-        </div>
-
-
-        <article class="cv-experience-card reveal">
-
-          <div class="cv-experience-header">
+            <img
+              src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+              alt="SNK"
+              class="cv-logo"
+            />
 
             <div>
 
-              <span class="cv-label">
-                CURRENT ROLE
+              <span class="section-number">
+                PROFESSIONAL PROFILE
               </span>
 
-              <h3>
-                UX Lead Digital Expert
-              </h3>
+              <h2>
+                SHAH NEIL KHAN
+              </h2>
 
               <p>
-                Yaqeen Institute
+                SOFTWARE ENGINEER & AI ENGINEER
               </p>
 
             </div>
 
-
-            <div class="cv-experience-meta">
-
-              <span>
-                Texas, USA
-              </span>
-
-              <span>
-                Remote
-              </span>
-
-              <span>
-                2026 – Present
-              </span>
-
-            </div>
-
           </div>
 
 
-          <div class="cv-experience-body">
+          <div class="cv-signature">
 
-            <p>
-              Working across digital experience and product
-              context with a focus on creating clearer and more
-              intentional digital experiences.
-            </p>
+            <span>
+              CODE → INTELLIGENCE → EXPERIENCE
+            </span>
+
+            <small>
+              SNK / PERSONAL BRAND
+            </small>
 
           </div>
 
-
-          <a
-            href="experience.html"
-            class="text-link"
-          >
-            VIEW EXPERIENCE DETAILS →
-          </a>
-
-        </article>
+        </div>
 
       </div>
 
@@ -437,147 +196,147 @@
 
 
     <!-- =========================
-         EXPERTISE SNAPSHOT
+         EXPERIENCE
     ========================== -->
-
-    <section class="section">
+    <section class="section cv-section">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <span class="eyebrow">
-            03 / CORE EXPERTISE
-          </span>
+          <div>
 
-          <h2>
-            WHAT I BRING
-            <span>TO THE TABLE.</span>
-          </h2>
+            <span class="section-number">
+              01 / EXPERIENCE
+            </span>
+
+            <h2>
+              WHERE I'VE
+              <span>BUILT.</span>
+            </h2>
+
+          </div>
+
+          <p>
+            Professional experience presented around responsibility,
+            contribution and measurable outcomes.
+          </p>
 
         </div>
 
 
-        <div class="cv-expertise-grid">
+        <div class="cv-timeline">
 
-          <div class="cv-expertise-item reveal">
+          <!-- VERIFIED CURRENT ROLE -->
+          <article class="cv-role reveal">
 
-            <span>
+            <div class="cv-role-index">
               01
-            </span>
+            </div>
 
-            <strong>
-              SOFTWARE ENGINEERING
-            </strong>
+            <div class="cv-role-main">
 
-            <p>
-              Full-stack applications, APIs, backend systems and
-              digital products.
-            </p>
+              <div class="cv-role-top">
 
-          </div>
+                <div>
+
+                  <span class="cv-role-kicker">
+                    CURRENT ROLE
+                  </span>
+
+                  <h3>
+                    UX LEAD DIGITAL EXPERT
+                  </h3>
+
+                  <strong>
+                    Yaqeen Institute
+                  </strong>
+
+                </div>
+
+                <div class="cv-role-date">
+                  2026 — PRESENT
+                </div>
+
+              </div>
 
 
-          <div class="cv-expertise-item reveal">
+              <div class="cv-role-location">
+                TEXAS, USA · REMOTE
+              </div>
 
-            <span>
+
+              <p class="cv-role-description">
+                Digital experience, UX thinking, interface design
+                and product-oriented problem solving.
+              </p>
+
+
+              <div class="cv-role-focus">
+
+                <span>UX</span>
+                <span>DIGITAL EXPERIENCE</span>
+                <span>PRODUCT</span>
+                <span>DESIGN</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- FUTURE VERIFIED EXPERIENCE -->
+          <article class="cv-role cv-role-placeholder reveal">
+
+            <div class="cv-role-index">
               02
-            </span>
+            </div>
 
-            <strong>
-              AI / CONTEXT ENGINEERING
-            </strong>
+            <div class="cv-role-main">
 
-            <p>
-              AI systems designed around context, retrieval,
-              memory, tools and validation.
-            </p>
+              <span class="cv-role-kicker">
+                ADD VERIFIED EXPERIENCE
+              </span>
 
-          </div>
+              <h3>
+                PROFESSIONAL EXPERIENCE
+              </h3>
+
+              <p>
+                Additional roles will be added here once the
+                verified CV information is provided.
+              </p>
+
+            </div>
+
+          </article>
 
 
-          <div class="cv-expertise-item reveal">
+          <article class="cv-role cv-role-placeholder reveal">
 
-            <span>
+            <div class="cv-role-index">
               03
-            </span>
+            </div>
 
-            <strong>
-              PRODUCT & UX
-            </strong>
+            <div class="cv-role-main">
 
-            <p>
-              Human-centred product thinking and digital
-              experiences.
-            </p>
+              <span class="cv-role-kicker">
+                ADD VERIFIED EXPERIENCE
+              </span>
 
-          </div>
+              <h3>
+                PROFESSIONAL EXPERIENCE
+              </h3>
 
+              <p>
+                This section is reserved for another verified
+                professional role or contribution.
+              </p>
 
-          <div class="cv-expertise-item reveal">
+            </div>
 
-            <span>
-              04
-            </span>
-
-            <strong>
-              SYSTEM DESIGN
-            </strong>
-
-            <p>
-              Architecture, data flow, system boundaries and
-              technical decision-making.
-            </p>
-
-          </div>
-
-
-          <div class="cv-expertise-item reveal">
-
-            <span>
-              05
-            </span>
-
-            <strong>
-              CYBERSECURITY
-            </strong>
-
-            <p>
-              Security-conscious engineering, validation,
-              permissions and threat awareness.
-            </p>
-
-          </div>
-
-
-          <div class="cv-expertise-item reveal">
-
-            <span>
-              06
-            </span>
-
-            <strong>
-              DEVOPS & CLOUD
-            </strong>
-
-            <p>
-              Deployment, infrastructure and the systems supporting
-              modern digital products.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-action reveal">
-
-          <a
-            href="expertise.html"
-            class="text-link"
-          >
-            EXPLORE FULL EXPERTISE →
-          </a>
+          </article>
 
         </div>
 
@@ -587,118 +346,94 @@
 
 
     <!-- =========================
-         AI PROFILE
+         EXPERTISE
     ========================== -->
-
-    <section class="section section-dark">
+    <section class="section cv-section">
 
       <div class="container">
 
-        <div class="split-section">
+        <div class="section-heading reveal">
 
-          <div class="split-copy reveal">
+          <div>
 
-            <span class="eyebrow">
-              04 / AI SPECIALIZATION
+            <span class="section-number">
+              02 / CORE EXPERTISE
             </span>
 
             <h2>
-              BUILDING AI
-              <span>AROUND CONTEXT.</span>
+              WHAT I
+              <span>WORK WITH.</span>
             </h2>
-
-            <p>
-              My interest in AI goes beyond model integration. I
-              focus on the surrounding system that determines what
-              information an AI system receives, how it retrieves
-              knowledge, how it uses tools and how its output is
-              validated.
-            </p>
-
-            <a
-              href="index.html#ai"
-              class="text-link"
-            >
-              EXPLORE AI / CONTEXT ENGINEERING →
-            </a>
 
           </div>
 
+          <p>
+            The professional profile spans software engineering,
+            AI, UX, systems and digital infrastructure.
+          </p>
 
-          <div class="split-visual reveal">
-
-            <div class="cv-ai-panel">
-
-              <div class="cv-ai-header">
-
-                <span>
-                  AI SYSTEM
-                </span>
-
-                <span class="status-online">
-                  ● ONLINE
-                </span>
-
-              </div>
+        </div>
 
 
-              <div class="cv-ai-flow">
+        <div class="cv-skills-grid">
 
-                <div>
-                  USER
-                </div>
-
-                <span>
-                  →
-                </span>
-
-                <div>
-                  INTENT
-                </div>
-
-                <span>
-                  →
-                </span>
-
-                <div>
-                  CONTEXT
-                </div>
-
-                <span>
-                  →
-                </span>
-
-                <div>
-                  AI
-                </div>
-
-                <span>
-                  →
-                </span>
-
-                <div>
-                  OUTPUT
-                </div>
-
-              </div>
+          <div class="cv-skill reveal">
+            <span>01</span>
+            <strong>SOFTWARE ENGINEERING</strong>
+            <p>
+              Applications, APIs, backend systems and
+              full-stack product development.
+            </p>
+          </div>
 
 
-              <div class="cv-ai-footer">
+          <div class="cv-skill reveal">
+            <span>02</span>
+            <strong>AI & CONTEXT ENGINEERING</strong>
+            <p>
+              Context, retrieval, memory, tools,
+              validation and useful AI workflows.
+            </p>
+          </div>
 
-                MODEL
-                +
-                CONTEXT
-                +
-                MEMORY
-                +
-                TOOLS
-                +
-                VALIDATION
 
-              </div>
+          <div class="cv-skill reveal">
+            <span>03</span>
+            <strong>PRODUCT & UX</strong>
+            <p>
+              Product thinking, interaction design,
+              interface systems and digital experiences.
+            </p>
+          </div>
 
-            </div>
 
+          <div class="cv-skill reveal">
+            <span>04</span>
+            <strong>SYSTEM DESIGN</strong>
+            <p>
+              Architecture, data flow, boundaries
+              and scalable system foundations.
+            </p>
+          </div>
+
+
+          <div class="cv-skill reveal">
+            <span>05</span>
+            <strong>CYBERSECURITY</strong>
+            <p>
+              Threat awareness, validation, permissions
+              and security-minded engineering.
+            </p>
+          </div>
+
+
+          <div class="cv-skill reveal">
+            <span>06</span>
+            <strong>DEVOPS & CLOUD</strong>
+            <p>
+              Deployment, infrastructure, automation
+              and operational thinking.
+            </p>
           </div>
 
         </div>
@@ -711,130 +446,81 @@
     <!-- =========================
          SELECTED WORK
     ========================== -->
-
-    <section
-      class="section"
-      id="cv-document"
-    >
+    <section class="section cv-section">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <span class="eyebrow">
-            05 / SELECTED WORK
-          </span>
+          <div>
 
-          <h2>
-            PROOF THROUGH
-            <span>REAL WORK.</span>
-          </h2>
+            <span class="section-number">
+              03 / SELECTED WORK
+            </span>
+
+            <h2>
+              WORK THAT
+              <span>SHOWS THE SYSTEM.</span>
+            </h2>
+
+          </div>
 
           <p>
-            The portfolio is the visual and technical layer of the
-            professional profile.
+            Selected projects can provide deeper evidence
+            of engineering, product and design capability.
           </p>
 
         </div>
 
 
-        <div class="cv-work-grid">
+        <div class="cv-work-list">
 
           <a
-            href="projects.html"
-            class="cv-work-card reveal"
+            href="https://shahneilkhan.github.io/demosite"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cv-work-item reveal"
           >
 
-            <span>
-              01
+            <span>01</span>
+
+            <div>
+
+              <strong>WEBSITESDEAL</strong>
+
+              <small>
+                WEB / UX / ENGINEERING
+              </small>
+
+            </div>
+
+            <span class="cv-work-arrow">
+              ↗
             </span>
-
-            <h3>
-              SOFTWARE
-            </h3>
-
-            <p>
-              Selected software systems and engineering work.
-            </p>
-
-            <strong>
-              VIEW WORK →
-            </strong>
 
           </a>
 
 
           <a
             href="projects.html"
-            class="cv-work-card reveal"
+            class="cv-work-item reveal"
           >
 
-            <span>
-              02
+            <span>02</span>
+
+            <div>
+
+              <strong>VIEW PROJECT PORTFOLIO</strong>
+
+              <small>
+                SELECTED WORK
+              </small>
+
+            </div>
+
+            <span class="cv-work-arrow">
+              →
             </span>
-
-            <h3>
-              AI SYSTEMS
-            </h3>
-
-            <p>
-              AI and context-engineering work as verified projects
-              are added.
-            </p>
-
-            <strong>
-              VIEW WORK →
-            </strong>
-
-          </a>
-
-
-          <a
-            href="projects.html"
-            class="cv-work-card reveal"
-          >
-
-            <span>
-              03
-            </span>
-
-            <h3>
-              PRODUCT & UX
-            </h3>
-
-            <p>
-              Digital experiences connecting users, products and
-              engineering.
-            </p>
-
-            <strong>
-              VIEW WORK →
-            </strong>
-
-          </a>
-
-
-          <a
-            href="projects.html"
-            class="cv-work-card reveal"
-          >
-
-            <span>
-              04
-            </span>
-
-            <h3>
-              SYSTEMS
-            </h3>
-
-            <p>
-              Architecture, security and technical systems behind
-              digital products.
-            </p>
-
-            <strong>
-              VIEW WORK →
-            </strong>
 
           </a>
 
@@ -846,45 +532,49 @@
 
 
     <!-- =========================
-         ADMIN CV PLACEHOLDER
+         EDUCATION / CREDENTIALS
     ========================== -->
-
-    <section class="section section-dark">
+    <section class="section cv-section">
 
       <div class="container">
 
-        <div class="cv-admin-panel reveal">
+        <div class="section-heading reveal">
 
-          <div class="cv-admin-header">
+          <div>
 
-            <span>
-              CV DELIVERY SYSTEM
+            <span class="section-number">
+              04 / EDUCATION & CREDENTIALS
             </span>
 
-            <span>
-              ADMIN / READY
-            </span>
+            <h2>
+              THE
+              <span>FOUNDATION.</span>
+            </h2>
 
           </div>
 
+          <p>
+            Education, certifications and additional credentials
+            should be listed here using verified information.
+          </p>
 
-          <div class="cv-admin-content">
+        </div>
 
-            <div class="cv-admin-icon">
-              →
-            </div>
+
+        <div class="credential-list">
+
+          <div class="credential-placeholder reveal">
+
+            <span>01</span>
 
             <div>
 
-              <h2>
-                YOUR OFFICIAL CV
-                <span>WILL LIVE HERE.</span>
-              </h2>
+              <strong>
+                ADD VERIFIED EDUCATION
+              </strong>
 
               <p>
-                This page is intentionally structured so an
-                admin-managed CV document can be connected later
-                without redesigning the portfolio.
+                Institution, degree or program and relevant dates.
               </p>
 
             </div>
@@ -892,43 +582,38 @@
           </div>
 
 
-          <div class="cv-admin-status">
+          <div class="credential-placeholder reveal">
+
+            <span>02</span>
 
             <div>
 
-              <span>
-                DOCUMENT
-              </span>
-
               <strong>
-                ADMIN MANAGED
+                ADD VERIFIED CERTIFICATION
               </strong>
+
+              <p>
+                Certification, issuing organization and date.
+              </p>
 
             </div>
 
+          </div>
+
+
+          <div class="credential-placeholder reveal">
+
+            <span>03</span>
 
             <div>
 
-              <span>
-                VERSION
-              </span>
-
               <strong>
-                DYNAMIC
+                ADD VERIFIED CREDENTIAL
               </strong>
 
-            </div>
-
-
-            <div>
-
-              <span>
-                STATUS
-              </span>
-
-              <strong>
-                READY FOR INTEGRATION
-              </strong>
+              <p>
+                Additional professional qualification or credential.
+              </p>
 
             </div>
 
@@ -942,66 +627,89 @@
 
 
     <!-- =========================
-         PROFESSIONAL PHILOSOPHY
+         CV DOCUMENT
     ========================== -->
-
-    <section class="section">
+    <section class="section cv-download">
 
       <div class="container">
 
-        <div class="cv-philosophy reveal">
-
-          <span class="eyebrow">
-            06 / ENGINEERING PHILOSOPHY
-          </span>
-
-          <blockquote>
-            Understand the problem.
-            <br />
-            Design the system.
-            <br />
-            Build with intention.
-            <br />
-            Protect what matters.
-            <br />
-            Improve continuously.
-          </blockquote>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CTA
-    ========================== -->
-
-    <section class="section cta-section">
-
-      <div class="container">
-
-        <div class="cta-panel reveal">
+        <div class="cv-document-card reveal">
 
           <div>
 
-            <span class="eyebrow">
-              SHAH NEIL KHAN / SNK
+            <span class="section-number">
+              DOCUMENT
             </span>
 
             <h2>
-              WANT TO BUILD
-              <span>SOMETHING MEANINGFUL?</span>
+              FULL CV
+              <span>DOCUMENT.</span>
             </h2>
+
+            <p>
+              The downloadable CV can be connected here once
+              the final verified PDF is available.
+            </p>
 
           </div>
 
-          <a
-            href="contact.html"
-            class="btn btn-primary"
-          >
-            START A CONVERSATION →
+
+          <div class="cv-document-action">
+
+            <!--
+              Replace "#" with the real CV PDF path.
+              Example:
+              href="assets/Shah-Neil-Khan-CV.pdf"
+            -->
+
+            <a
+              href="#"
+              class="button button-primary"
+              data-cv-download
+            >
+              DOWNLOAD CV
+              <span>↓</span>
+            </a>
+
+            <small>
+              PDF / VERIFIED VERSION
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+    <section class="section final-cta">
+
+      <div class="container">
+
+        <div class="final-cta-inner reveal">
+
+          <span class="section-number">
+            PROFESSIONAL INQUIRIES
+          </span>
+
+          <h2>
+            WANT TO
+            <span>BUILD TOGETHER?</span>
+          </h2>
+
+          <p>
+            For projects, collaboration or engineering opportunities,
+            start a conversation.
+          </p>
+
+          <a href="contact.html" class="button button-primary">
+            CONTACT ME
+            <span>→</span>
           </a>
 
         </div>
@@ -1016,92 +724,41 @@
   <!-- =========================
        FOOTER
   ========================== -->
-
   <footer class="site-footer">
 
     <div class="container">
 
-      <div class="footer-grid">
+      <div class="footer-top">
 
-        <div class="footer-brand">
+        <a href="index.html" class="footer-brand">
 
-          <a
-            href="index.html"
-            class="brand"
-          >
+          <img
+            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+            alt="SNK"
+          />
 
-            <span class="brand-mark">
-              SNK
-            </span>
+          <div>
 
-            <span class="brand-name">
+            <strong>
               SHAH NEIL KHAN
+            </strong>
+
+            <span>
+              SOFTWARE / AI / EXPERIENCE
             </span>
 
-          </a>
+          </div>
 
-          <p>
-            Software Engineer & AI Engineer building intelligent
-            digital experiences.
-          </p>
-
-        </div>
+        </a>
 
 
         <div class="footer-links">
 
-          <span class="footer-label">
-            NAVIGATE
-          </span>
-
-          <a href="index.html">
-            Home
-          </a>
-
-          <a href="projects.html">
-            Work
-          </a>
-
-          <a href="expertise.html">
-            Expertise
-          </a>
-
-          <a href="experience.html">
-            Experience
-          </a>
-
-          <a href="about.html">
-            About
-          </a>
-
-          <a href="cv.html">
-            CV
-          </a>
-
-          <a href="brand.html">
-            Brand
-          </a>
-
-          <a href="contact.html">
-            Contact
-          </a>
-
-        </div>
-
-
-        <div class="footer-links">
-
-          <span class="footer-label">
-            EXTERNAL
-          </span>
-
-          <a
-            href="https://www.tabayyuninstitute.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Tabayyun TV ↗
-          </a>
+          <a href="projects.html">Work</a>
+          <a href="expertise.html">Expertise</a>
+          <a href="experience.html">Experience</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
 
         </div>
 
@@ -1111,7 +768,7 @@
       <div class="footer-bottom">
 
         <span>
-          © <span data-current-year></span> Shah Neil Khan
+          © <span data-current-year></span> SHAH NEIL KHAN
         </span>
 
         <span>
@@ -1129,3 +786,4 @@
 
 </body>
 </html>
+```
