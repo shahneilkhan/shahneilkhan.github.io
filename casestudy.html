@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="[EDIT: Short case study description]"
+  >
+
+  <meta name="theme-color" content="#080808">
+
+  <title>
+    [EDIT: Project Name] — Case Study | Shah Neil Khan
+  </title>
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =========================================================
+       SNK CASE STUDY PAGE
+       ========================================================= */
+
+    .case-page {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .case-hero {
+      position: relative;
+
+      min-height: 82vh;
+      min-height: 82svh;
+
+      display: flex;
+      align-items: center;
+
+      padding:
+        150px
+        clamp(24px, 7vw, 110px)
+        100px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 75% 40%,
+          rgba(208,164,92,0.12),
+          transparent 34%
+        ),
+        #080808;
+    }
+
+    .case-hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 72px 72px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          black 25%,
+          black 75%,
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
+    .case-hero-glow {
+      position: absolute;
+
+      width: 460px;
+      height: 460px;
+
+      right: 5%;
+      top: 45%;
+
+      transform: translateY(-50%);
+
+      border-radius: 50%;
+
+      background:
+        rgba(208,164,92,0.07);
+
+      filter: blur(100px);
+
+      pointer-events: none;
+    }
+
+    .case-hero-content {
+      position: relative;
+      z-index: 2;
+
+      width: min(1150px, 100%);
+    }
+
+    .case-back {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 38px;
+
+      color:
+        rgba(242,238,231,0.42);
+
+      text-decoration: none;
+
+      font-size: 0.68rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+
+      transition:
+        color 200ms ease,
+        transform 200ms ease;
+    }
+
+    .case-back:hover {
+      color: #d0a45c;
+
+      transform: translateX(-3px);
+    }
+
+    .case-eyebrow {
+      margin: 0 0 20px;
+
+      color: #d0a45c;
+
+      font-size: 0.7rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.22em;
+
+      text-transform: uppercase;
+    }
+
+    .case-title {
+      max-width: 1050px;
+
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          3.4rem,
+          8vw,
+          8.5rem
+        );
+
+      line-height: 0.88;
+
+      letter-spacing: -0.07em;
+
+      font-weight: 800;
+    }
+
+    .case-title span {
+      color: #d0a45c;
+    }
+
+    .case-summary {
+      max-width: 700px;
+
+      margin: 32px 0 0;
+
+      color:
+        rgba(242,238,231,0.62);
+
+      font-size:
+        clamp(
+          1rem,
+          1.5vw,
+          1.2rem
+        );
+
+      line-height: 1.8;
+    }
+
+    .case-meta {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 1px;
+
+      width: min(900px, 100%);
+
+      margin-top: 50px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+      border-radius: 14px;
+
+      overflow: hidden;
+
+      background:
+        rgba(255,255,255,0.08);
+    }
+
+    .case-meta-item {
+      padding: 19px 20px;
+
+      background:
+        rgba(255,255,255,0.025);
+    }
+
+    .case-meta-label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color:
+        rgba(242,238,231,0.3);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.6rem;
+
+      letter-spacing: 0.1em;
+
+      text-transform: uppercase;
+    }
+
+    .case-meta-value {
+      color:
+        rgba(242,238,231,0.78);
+
+      font-size: 0.76rem;
+
+      line-height: 1.4;
+    }
+
+
+    /* =========================================================
+       PROJECT COVER
+       ========================================================= */
+
+    .case-cover {
+      padding:
+        0
+        clamp(20px, 6vw, 100px)
+        120px;
+
+      background: #080808;
+    }
+
+    .case-cover-frame {
+      position: relative;
+
+      width: min(1250px, 100%);
+
+      min-height: 560px;
+
+      margin: 0 auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+      border-radius: 24px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(208,164,92,0.08),
+          transparent 45%
+        ),
+        rgba(255,255,255,0.025);
+
+      box-shadow:
+        0 35px 100px rgba(0,0,0,0.35);
+    }
+
+    .case-cover-frame img {
+      width: 100%;
+      height: 100%;
+
+      min-height: 560px;
+
+      object-fit: cover;
+
+      display: block;
+    }
+
+    .case-cover-placeholder {
+      padding: 50px;
+
+      text-align: center;
+    }
+
+    .case-cover-placeholder .placeholder-number {
+      display: block;
+
+      margin-bottom: 15px;
+
+      color: #d0a45c;
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.65rem;
+
+      letter-spacing: 0.16em;
+    }
+
+    .case-cover-placeholder h2 {
+      margin: 0;
+
+      color:
+        rgba(242,238,231,0.72);
+
+      font-size:
+        clamp(
+          1.8rem,
+          4vw,
+          3.8rem
+        );
+
+      letter-spacing: -0.04em;
+    }
+
+    .case-cover-placeholder p {
+      max-width: 500px;
+
+      margin: 18px auto 0;
+
+      color:
+        rgba(242,238,231,0.36);
+
+      line-height: 1.7;
+
+      font-size: 0.8rem;
+    }
+
+
+    /* =========================================================
+       CONTENT LAYOUT
+       ========================================================= */
+
+    .case-section {
+      padding:
+        115px
+        clamp(24px, 7vw, 110px);
+
+      background: #0b0b0b;
+    }
+
+    .case-section:nth-child(even) {
+      background: #080808;
+    }
+
+    .case-section-inner {
+      width: min(1100px, 100%);
+
+      margin: 0 auto;
+    }
+
+    .case-section-grid {
+      display: grid;
+
+      grid-template-columns:
+        0.7fr 1.6fr;
+
+      gap: 70px;
+    }
+
+    .case-section-label {
+      color: #d0a45c;
+
+      font-size: 0.68rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+
+      text-transform: uppercase;
+    }
+
+    .case-section-number {
+      display: block;
+
+      margin-top: 10px;
+
+      color:
+        rgba(242,238,231,0.2);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.62rem;
+    }
+
+    .case-section-content h2 {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2rem,
+          4.5vw,
+          4.6rem
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+    }
+
+    .case-section-content h2 span {
+      color:
+        rgba(242,238,231,0.4);
+    }
+
+    .case-section-content > p {
+      margin: 24px 0 0;
+
+      color:
+        rgba(242,238,231,0.57);
+
+      font-size: 0.96rem;
+
+      line-height: 1.9;
+    }
+
+    .case-section-content p + p {
+      margin-top: 17px;
+    }
+
+
+    /* =========================================================
+       BULLET LIST
+       ========================================================= */
+
+    .case-list {
+      display: grid;
+
+      gap: 11px;
+
+      margin: 28px 0 0;
+
+      padding: 0;
+
+      list-style: none;
+    }
+
+    .case-list li {
+      position: relative;
+
+      padding-left: 22px;
+
+      color:
+        rgba(242,238,231,0.57);
+
+      font-size: 0.86rem;
+
+      line-height: 1.7;
+    }
+
+    .case-list li::before {
+      content: "→";
+
+      position: absolute;
+
+      left: 0;
+
+      color: #d0a45c;
+    }
+
+
+    /* =========================================================
+       PROCESS
+       ========================================================= */
+
+    .case-process {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 12px;
+
+      margin-top: 42px;
+    }
+
+    .case-process-card {
+      min-height: 190px;
+
+      padding: 23px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      border-radius: 15px;
+
+      background:
+        rgba(255,255,255,0.018);
+    }
+
+    .case-process-number {
+      color: #d0a45c;
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.62rem;
+    }
+
+    .case-process-card h3 {
+      margin: 34px 0 10px;
+
+      color: #f2eee7;
+
+      font-size: 0.95rem;
+    }
+
+    .case-process-card p {
+      margin: 0;
+
+      color:
+        rgba(242,238,231,0.4);
+
+      font-size: 0.73rem;
+
+      line-height: 1.65;
+    }
+
+
+    /* =========================================================
+       IMAGE SHOWCASE
+       ========================================================= */
+
+    .case-gallery {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 16px;
+
+      margin-top: 45px;
+    }
+
+    .case-gallery-item {
+      position: relative;
+
+      min-height: 360px;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.075);
+
+      border-radius: 18px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(208,164,92,0.07),
+          transparent 45%
+        ),
+        rgba(255,255,255,0.025);
+    }
+
+    .case-gallery-item.large {
+      grid-column: span 2;
+
+      min-height: 520px;
+    }
+
+    .case-gallery-item img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+    }
+
+    .case-image-placeholder {
+      width: 100%;
+      height: 100%;
+
+      min-height: inherit;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+
+      text-align: center;
+    }
+
+    .case-image-placeholder div {
+      max-width: 400px;
+    }
+
+    .case-image-placeholder strong {
+      display: block;
+
+      color:
+        rgba(242,238,231,0.5);
+
+      font-size: 1rem;
+    }
+
+    .case-image-placeholder span {
+      display: block;
+
+      margin-top: 8px;
+
+      color:
+        rgba(242,238,231,0.28);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.63rem;
+    }
+
+
+    /* =========================================================
+       OUTCOME
+       ========================================================= */
+
+    .case-outcome {
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 70% 45%,
+          rgba(208,164,92,0.09),
+          transparent 35%
+        ),
+        #080808;
+    }
+
+    .case-outcome::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px
+        );
+
+      background-size: 65px 65px;
+
+      pointer-events: none;
+    }
+
+    .case-outcome .case-section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .case-outcome-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 14px;
+
+      margin-top: 45px;
+    }
+
+    .case-outcome-card {
+      padding: 28px;
+
+      min-height: 190px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.075);
+
+      border-radius: 16px;
+
+      background:
+        rgba(255,255,255,0.025);
+    }
+
+    .case-outcome-card h3 {
+      margin: 0;
+
+      color: #d0a45c;
+
+      font-size: 1rem;
+    }
+
+    .case-outcome-card p {
+      margin: 13px 0 0;
+
+      color:
+        rgba(242,238,231,0.48);
+
+      font-size: 0.78rem;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       LEARNINGS
+       ========================================================= */
+
+    .case-learning {
+      padding-bottom: 130px;
+    }
+
+    .case-learning-quote {
+      margin-top: 40px;
+
+      padding:
+        35px
+        40px;
+
+      border-left:
+        2px solid
+        #d0a45c;
+
+      background:
+        rgba(255,255,255,0.025);
+    }
+
+    .case-learning-quote p {
+      margin: 0;
+
+      color:
+        rgba(242,238,231,0.7);
+
+      font-size:
+        clamp(
+          1.2rem,
+          2.3vw,
+          2rem
+        );
+
+      line-height: 1.45;
+
+      letter-spacing: -0.025em;
+    }
+
+
+    /* =========================================================
+       NEXT PROJECT
+       ========================================================= */
+
+    .case-next {
+      padding:
+        120px
+        24px;
+
+      text-align: center;
+
+      background: #080808;
+    }
+
+    .case-next-inner {
+      width: min(800px, 100%);
+
+      margin: 0 auto;
+    }
+
+    .case-next h2 {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2.5rem,
+          5.5vw,
+          5.5rem
+        );
+
+      line-height: 0.94;
+
+      letter-spacing: -0.06em;
+    }
+
+    .case-next h2 span {
+      color: #d0a45c;
+    }
+
+    .case-next p {
+      max-width: 550px;
+
+      margin: 23px auto 0;
+
+      color:
+        rgba(242,238,231,0.48);
+
+      line-height: 1.75;
+    }
+
+    .case-next-actions {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 30px;
+    }
+
+    .case-btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+
+      padding: 0 22px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.11);
+
+      border-radius: 999px;
+
+      color: #f2eee7;
+
+      background:
+        rgba(255,255,255,0.03);
+
+      text-decoration: none;
+
+      font-size: 0.68rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+
+      transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease;
+    }
+
+    .case-btn:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(208,164,92,0.45);
+
+      background:
+        rgba(208,164,92,0.07);
+    }
+
+    .case-btn.primary {
+      color: #111;
+
+      background: #d0a45c;
+
+      border-color: #d0a45c;
+    }
+
+    .case-btn.primary:hover {
+      background: #e0b875;
+
+      border-color: #e0b875;
+    }
+
+
+    /* =========================================================
+       LIGHT MODE
+       ========================================================= */
+
+    html.light .case-hero,
+    html.light .case-cover,
+    html.light .case-outcome,
+    html.light .case-next {
+      background:
+        radial-gradient(
+          circle at 75% 40%,
+          rgba(170,120,45,0.09),
+          transparent 34%
+        ),
+        #f4f1eb;
+    }
+
+    html.light .case-section {
+      background: #eeebe5;
+    }
+
+    html.light .case-section:nth-child(even) {
+      background: #f4f1eb;
+    }
+
+    html.light .case-title,
+    html.light .case-section-content h2,
+    html.light .case-process-card h3,
+    html.light .case-outcome-card h3,
+    html.light .case-next h2 {
+      color: #151515;
+    }
+
+    html.light .case-summary,
+    html.light .case-section-content > p,
+    html.light .case-list li,
+    html.light .case-process-card p,
+    html.light .case-outcome-card p,
+    html.light .case-next p {
+      color: rgba(21,21,21,0.56);
+    }
+
+    html.light .case-meta,
+    html.light .case-meta-item,
+    html.light .case-process-card,
+    html.light .case-gallery-item,
+    html.light .case-outcome-card {
+      border-color:
+        rgba(0,0,0,0.08);
+    }
+
+    html.light .case-meta-item,
+    html.light .case-process-card,
+    html.light .case-gallery-item,
+    html.light .case-outcome-card {
+      background:
+        rgba(255,255,255,0.4);
+    }
+
+    html.light .case-meta-label,
+    html.light .case-meta-value {
+      color: rgba(21,21,21,0.42);
+    }
+
+    html.light .case-meta-value {
+      color: rgba(21,21,21,0.72);
+    }
+
+    html.light .case-cover-frame {
+      border-color:
+        rgba(0,0,0,0.09);
+
+      background:
+        rgba(255,255,255,0.35);
+    }
+
+    html.light .case-cover-placeholder h2,
+    html.light .case-image-placeholder strong {
+      color: rgba(21,21,21,0.65);
+    }
+
+    html.light .case-cover-placeholder p,
+    html.light .case-image-placeholder span {
+      color: rgba(21,21,21,0.38);
+    }
+
+    html.light .case-learning-quote {
+      background:
+        rgba(0,0,0,0.025);
+    }
+
+    html.light .case-learning-quote p {
+      color: rgba(21,21,21,0.68);
+    }
+
+    html.light .case-btn {
+      color: #151515;
+
+      border-color:
+        rgba(0,0,0,0.10);
+
+      background:
+        rgba(0,0,0,0.025);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .case-meta {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .case-section-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+      }
+
+      .case-process {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .case-outcome-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 680px) {
+
+      .case-hero {
+        min-height: auto;
+
+        padding:
+          125px
+          22px
+          80px;
+      }
+
+      .case-title {
+        font-size:
+          clamp(
+            3.2rem,
+            16vw,
+            6rem
+          );
+      }
+
+      .case-summary {
+        font-size: 0.92rem;
+      }
+
+      .case-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .case-cover {
+        padding:
+          0
+          18px
+          85px;
+      }
+
+      .case-cover-frame {
+        min-height: 350px;
+
+        border-radius: 17px;
+      }
+
+      .case-cover-frame img {
+        min-height: 350px;
+      }
+
+      .case-section {
+        padding:
+          85px
+          22px;
+      }
+
+      .case-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .case-gallery-item,
+      .case-gallery-item.large {
+        grid-column: span 1;
+
+        min-height: 300px;
+      }
+
+      .case-process {
+        grid-template-columns: 1fr;
+      }
+
+      .case-learning-quote {
+        padding:
+          25px
+          25px;
+      }
+
+      .case-next {
+        padding:
+          95px
+          22px;
+      }
+
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .case-back,
+      .case-btn {
+        transition: none;
+      }
+
+      .case-back:hover,
+      .case-btn:hover {
+        transform: none;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="site-header">
+
+    <div class="nav-wrap">
+
+      <a
+        href="./"
+        class="brand-logo"
+        aria-label="Shah Neil Khan — Home"
+      >
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="SNK"
+        >
+      </a>
+
+
+      <nav class="main-nav" aria-label="Primary navigation">
+
+        <a href="./#home">
+          Home
+        </a>
+
+        <a href="./#ecosystem">
+          Ecosystem
+        </a>
+
+        <a href="./#ai">
+          AI
+        </a>
+
+        <a href="./#expertise">
+          Expertise
+        </a>
+
+        <a href="./#experience">
+          Experience
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+        <a href="./brand.html">
+          Brand
+        </a>
+
+        <a href="./#contact">
+          Contact
+        </a>
+
+      </nav>
+
+
+      <div class="nav-actions">
+
+        <button
+          type="button"
+          class="icon-btn"
+          id="languageToggle"
+          aria-label="Switch language"
+        >
+          বাংলা
+        </button>
+
+        <button
+          type="button"
+          class="icon-btn"
+          id="themeToggle"
+          aria-label="Toggle theme"
+        >
+          ☼
+        </button>
+
+        <button
+          type="button"
+          class="icon-btn"
+          id="rainToggle"
+          aria-label="Toggle rain"
+        >
+          Rain
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       CASE STUDY
+       ======================================================= -->
+
+  <main class="case-page">
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="case-hero">
+
+      <div class="case-hero-glow"></div>
+
+      <div class="case-hero-content reveal">
+
+        <a
+          href="./"
+          class="case-back"
+        >
+          ← Back to Portfolio
+        </a>
+
+        <!-- EDIT: Category -->
+
+        <p class="case-eyebrow">
+          [EDIT: UX DESIGN · DIGITAL PRODUCT · CASE STUDY]
+        </p>
+
+        <!-- EDIT: Project name -->
+
+        <h1 class="case-title">
+          [EDIT: PROJECT<br>
+          <span>NAME HERE.</span>]
+        </h1>
+
+        <!-- EDIT: Short project summary -->
+
+        <p class="case-summary">
+          [EDIT: Write a short 2–3 sentence description of
+          the project. Explain what it was, who it was for,
+          and what you were trying to solve.]
+        </p>
+
+
+        <!-- EDIT: Project metadata -->
+
+        <div class="case-meta">
+
+          <div class="case-meta-item">
+
+            <span class="case-meta-label">
+              Role
+            </span>
+
+            <span class="case-meta-value">
+              [EDIT: Your role]
+            </span>
+
+          </div>
+
+
+          <div class="case-meta-item">
+
+            <span class="case-meta-label">
+              Timeline
+            </span>
+
+            <span class="case-meta-value">
+              [EDIT: Month / Year]
+            </span>
+
+          </div>
+
+
+          <div class="case-meta-item">
+
+            <span class="case-meta-label">
+              Type
+            </span>
+
+            <span class="case-meta-value">
+              [EDIT: Website / App / Product]
+            </span>
+
+          </div>
+
+
+          <div class="case-meta-item">
+
+            <span class="case-meta-label">
+              Tools
+            </span>
+
+            <span class="case-meta-value">
+              [EDIT: Figma / Adobe / AI / etc.]
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COVER IMAGE
+         ===================================================== -->
+
+    <section class="case-cover">
+
+      <div class="case-cover-frame reveal">
+
+        <!--
+          EDIT:
+          Replace the placeholder below with:
+
+          <img
+            src="assets/case-study-cover.jpg"
+            alt="[EDIT: Project preview]"
+          >
+        -->
+
+        <div class="case-cover-placeholder">
+
+          <span class="placeholder-number">
+            PROJECT COVER
+          </span>
+
+          <h2>
+            [EDIT: Add your main project image]
+          </h2>
+
+          <p>
+            Replace this block with your actual project
+            screenshot, mockup, website preview or hero visual.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         01 — OVERVIEW
+         ===================================================== -->
+
+    <section class="case-section">
+
+      <div class="case-section-inner">
+
+        <div class="case-section-grid reveal">
+
+          <div>
+
+            <span class="case-section-label">
+              Overview
+            </span>
+
+            <span class="case-section-number">
+              01 / 07
+            </span>
+
+          </div>
+
+
+          <div class="case-section-content">
+
+            <h2>
+              Start with<br>
+              <span>the context.</span>
+            </h2>
+
+            <p>
+              [EDIT: Explain the project background. What was
+              happening before this project? Why did the project
+              exist? What was the business, product or user context?]
+            </p>
+
+            <p>
+              [EDIT: Add another paragraph if necessary.
+              Keep this focused on facts rather than exaggerated
+              claims.]
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         02 — CHALLENGE
+         ===================================================== -->
+
+    <section class="case-section">
+
+      <div class="case-section-inner">
+
+        <div class="case-section-grid reveal">
+
+          <div>
+
+            <span class="case-section-label">
+              Challenge
+            </span>
+
+            <span class="case-section-number">
+              02 / 07
+            </span>
+
+          </div>
+
+
+          <div class="case-section-content">
+
+            <h2>
+              Define<br>
+              <span>the problem.</span>
+            </h2>
+
+            <p>
+              [EDIT: Describe the core challenge you were trying
+              to solve. Be specific about the user, product,
+              business or communication problem.]
+            </p>
+
+
+            <ul class="case-list">
+
+              <li>
+                [EDIT: Challenge or constraint #1]
+              </li>
+
+              <li>
+                [EDIT: Challenge or constraint #2]
+              </li>
+
+              <li>
+                [EDIT: Challenge or constraint #3]
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         03 — THINKING / RESEARCH
+         ===================================================== -->
+
+    <section class="case-section">
+
+      <div class="case-section-inner">
+
+        <div class="case-section-grid reveal">
+
+          <div>
+
+            <span class="case-section-label">
+              Thinking
+            </span>
+
+            <span class="case-section-number">
+              03 / 07
+            </span>
+
+          </div>
+
+
+          <div class="case-section-content">
+
+            <h2>
+              Understand<br>
+              <span>before designing.</span>
+            </h2>
+
+            <p>
+              [EDIT: Explain your research, discovery or
+              problem-framing process.]
+            </p>
+
+            <p>
+              [EDIT: What did you learn? What assumptions changed?
+              What insights influenced the design direction?]
+            </p>
+
+
+            <ul class="case-list">
+
+              <li>
+                [EDIT: Key insight]
+              </li>
+
+              <li>
+                [EDIT: Key observation]
+              </li>
+
+              <li>
+                [EDIT: Important design consideration]
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         04 — PROCESS
+         ===================================================== -->
+
+    <section class="case-section">
+
+      <div class="case-section-inner">
+
+        <div class="case-section-grid reveal">
+
+          <div>
+
+            <span class="case-section-label">
+              Process
+            </span>
+
+            <span class="case-section-number">
+              04 / 07
+            </span>
+
+          </div>
+
+
+          <div class="case-section-content">
+
+            <h2>
+              From idea<br>
+              <span>to execution.</span>
+            </h2>
+
+            <p>
+              [EDIT: Briefly explain how you moved from the
+              problem definition into the actual solution.]
+            </p>
+
+
+            <div class="case-process">
+
+
+              <article class="case-process-card">
+
+                <span class="case-process-number">
+                  01
+                </span>
+
+                <h3>
+                  Discover
+                </h3>
+
+                <p>
+                  [EDIT: Research, discovery or problem framing.]
+                </p>
+
+              </article>
+
+
+              <article class="case-process-card">
+
+                <span class="case-process-number">
+                  02
+                </span>
+
+                <h3>
+                  Structure
+                </h3>
+
+                <p>
+                  [EDIT: Information architecture, flows or strategy.]
+                </p>
+
+              </article>
+
+
+              <article class="case-process-card">
+
+                <span class="case-process-number">
+                  03
+                </span>
+
+                <h3>
+                  Design
+                </h3>
+
+                <p>
+                  [EDIT: Wireframes, UI, visual direction or prototype.]
+                </p>
+
+              </article>
+
+
+              <article class="case-process-card">
+
+                <span class="case-process-number">
+                  04
+                </span>
+
+                <h3>
+                  Refine
+                </h3>
+
+                <p>
+                  [EDIT: Testing, iteration, feedback or final polish.]
+                </p>
+
+              </article>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         05 — DESIGN SHOWCASE
+         ===================================================== -->
+
+    <section class="case-section">
+
+      <div class="case-section-inner">
+
+        <div class="case-section-grid reveal">
+
+          <div>
+
+            <span class="case-section-label">
+              Showcase
+            </span>
+
+            <span class="case-section-number">
+              05 / 07
+            </span>
+
+          </div>
+
+
+          <div class="case-section-content">
+
+            <h2>
+              Show<br>
+              <span>the work.</span>
+            </h2>
+
+            <p>
+              [EDIT: Introduce the visual work shown below.
+              Explain what changed and why.]
+            </p>
+
+
+            <div class="case-gallery">
+
+
+              <!-- LARGE IMAGE -->
+
+              <div class="case-gallery-item large">
+
+                <!--
+                  EDIT:
+
+                  Replace this placeholder with:
+
+                  <img
+                    src="assets/case-01.jpg"
+                    alt="[EDIT: Project screen]"
+                  >
+                -->
+
+                <div class="case-image-placeholder">
+
+                  <div>
+
+                    <strong>
+                      [EDIT: Main Design Screenshot]
+                    </strong>
+
+                    <span>
+                      Replace with your actual image
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- IMAGE 02 -->
+
+              <div class="case-gallery-item">
+
+                <!--
+                  EDIT:
+                  <img
+                    src="assets/case-02.jpg"
+                    alt="[EDIT: Project detail]"
+                  >
+                -->
+
+                <div class="case-image-placeholder">
+
+                  <div>
+
+                    <strong>
+                      [EDIT: Design Detail]
+                    </strong>
+
+                    <span>
+                      Replace with image
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- IMAGE 03 -->
+
+              <div class="case-gallery-item">
+
+                <!--
+                  EDIT:
+                  <img
+                    src="assets/case-03.jpg"
+                    alt="[EDIT: Project detail]"
+                  >
+                -->
+
+                <div class="case-image-placeholder">
+
+                  <div>
+
+                    <strong>
+                      [EDIT: Design Detail]
+                    </strong>
+
+                    <span>
+                      Replace with image
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         06 — SOLUTION / OUTCOME
+         ===================================================== -->
+
+    <section class="case-section case-outcome">
+
+      <div class="case-section-inner">
+
+        <div class="case-section-grid reveal">
+
+          <div>
+
+            <span class="case-section-label">
+              Solution
+            </span>
+
+            <span class="case-section-number">
+              06 / 07
+            </span>
+
+          </div>
+
+
+          <div class="case-section-content">
+
+            <h2>
+              Make the<br>
+              <span>solution clear.</span>
+            </h2>
+
+            <p>
+              [EDIT: Explain the final solution. What did you
+              actually create or change? Connect the design
+              decisions back to the original problem.]
+            </p>
+
+
+            <div class="case-outcome-grid">
+
+
+              <article class="case-outcome-card">
+
+                <h3>
+                  [EDIT: Result 01]
+                </h3>
+
+                <p>
+                  [EDIT: Describe a real outcome, improvement,
+                  deliverable or observation.]
+                </p>
+
+              </article>
+
+
+              <article class="case-outcome-card">
+
+                <h3>
+                  [EDIT: Result 02]
+                </h3>
+
+                <p>
+                  [EDIT: Describe a real outcome, improvement,
+                  deliverable or observation.]
+                </p>
+
+              </article>
+
+
+              <article class="case-outcome-card">
+
+                <h3>
+                  [EDIT: Result 03]
+                </h3>
+
+                <p>
+                  [EDIT: Describe a real outcome, improvement,
+                  deliverable or observation.]
+                </p>
+
+              </article>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         07 — LEARNINGS
+         ===================================================== -->
+
+    <section class="case-section case-learning">
+
+      <div class="case-section-inner">
+
+        <div class="case-section-grid reveal">
+
+          <div>
+
+            <span class="case-section-label">
+              Learning
+            </span>
+
+            <span class="case-section-number">
+              07 / 07
+            </span>
+
+          </div>
+
+
+          <div class="case-section-content">
+
+            <h2>
+              What the<br>
+              <span>work taught me.</span>
+            </h2>
+
+            <p>
+              [EDIT: Explain what you learned from this project.
+              This can be about UX, communication, technology,
+              collaboration, design or your own process.]
+            </p>
+
+
+            <div class="case-learning-quote">
+
+              <p>
+                “[EDIT: Add one strong, authentic takeaway
+                from this project.]”
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NEXT
+         ===================================================== -->
+
+    <section class="case-next">
+
+      <div class="case-next-inner reveal">
+
+        <p class="case-section-label">
+          KEEP EXPLORING
+        </p>
+
+        <h2>
+          More work.<br>
+          <span>More thinking.</span>
+        </h2>
+
+        <p>
+          [EDIT: Optional short closing statement.]
+        </p>
+
+
+        <div class="case-next-actions">
+
+          <a
+            href="./"
+            class="case-btn primary"
+          >
+            ← Back to Portfolio
+          </a>
+
+          <a
+            href="./brand.html"
+            class="case-btn"
+          >
+            Explore Ecosystem
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <div>
+
+        <strong>SNK</strong>
+
+        <span>
+          · BUILD · LEARN · CREATE
+        </span>
+
+      </div>
+
+
+      <div>
+
+        ©
+        <span id="currentYear"></span>
+        Shah Neil Khan
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       SCRIPT
+       ======================================================= -->
+
+  <script src="script.js"></script>
+
+  <script>
+
+    const yearElement =
+      document.getElementById("currentYear");
+
+    if (yearElement) {
+      yearElement.textContent =
+        new Date().getFullYear();
+    }
+
+  </script>
+
+</body>
+</html>
