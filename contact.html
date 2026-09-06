@@ -1,277 +1,969 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Contact — Shah Neil Khan</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
   <meta
     name="description"
-    content="Contact Shah Neil Khan for software engineering, AI, UX, product and digital projects."
+    content="Contact Shah Neil Khan — UX, digital experience, systems and creative technology."
   />
+
+  <title>Contact — Shah Neil Khan</title>
 
   <link
     rel="icon"
-    type="image/svg+xml"
     href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
   />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="./style.css" />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <style>
+    /* =========================================================
+       CONTACT PAGE
+       ========================================================= */
 
-  <link rel="stylesheet" href="style.css" />
+    .contact-page {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* HERO -------------------------------------------------- */
+
+    .contact-hero {
+      position: relative;
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      padding: 150px 7vw 90px;
+      isolation: isolate;
+    }
+
+    .contact-hero::before {
+      content: "";
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      right: -230px;
+      top: 20px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(216,166,75,.14),
+        transparent 68%
+      );
+      filter: blur(20px);
+      z-index: -2;
+    }
+
+    .contact-hero::after {
+      content: "";
+      position: absolute;
+      left: 7vw;
+      right: 7vw;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.12),
+        transparent
+      );
+    }
+
+    .contact-hero-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .contact-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: rgba(255,255,255,.55);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .contact-kicker::before {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: #d8a64b;
+    }
+
+    .contact-title {
+      max-width: 1000px;
+      margin: 0;
+      font-size: clamp(55px, 8vw, 110px);
+      line-height: .9;
+      letter-spacing: -.065em;
+      font-weight: 800;
+    }
+
+    .contact-title span {
+      color: #d8a64b;
+    }
+
+    .contact-lead {
+      max-width: 680px;
+      margin: 30px 0 0;
+      color: rgba(255,255,255,.6);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    /* CONTACT AREA ----------------------------------------- */
+
+    .contact-section {
+      padding: 100px 7vw 115px;
+    }
+
+    .contact-grid {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    /* LEFT -------------------------------------------------- */
+
+    .contact-info h2 {
+      margin: 0 0 17px;
+      font-size: clamp(35px, 4vw, 52px);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .contact-info > p {
+      max-width: 470px;
+      margin: 0 0 35px;
+      color: rgba(255,255,255,.52);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .contact-methods {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 17px 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 15px;
+      background: rgba(255,255,255,.018);
+      color: rgba(255,255,255,.65);
+      text-decoration: none;
+      transition: .3s ease;
+    }
+
+    .contact-method:hover {
+      border-color: rgba(216,166,75,.3);
+      background: rgba(216,166,75,.05);
+      transform: translateX(4px);
+    }
+
+    .contact-method-label {
+      display: block;
+      margin-bottom: 4px;
+      color: rgba(255,255,255,.3);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .contact-method-value {
+      font-size: 13px;
+    }
+
+    .contact-method-arrow {
+      color: #d8a64b;
+      font-size: 16px;
+    }
+
+    /* FORM -------------------------------------------------- */
+
+    .contact-form-wrap {
+      position: relative;
+      padding: 35px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 23px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.012)
+        );
+      box-shadow: 0 25px 80px rgba(0,0,0,.22);
+    }
+
+    .contact-form-wrap::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 30px;
+      right: 30px;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(216,166,75,.65),
+        transparent
+      );
+    }
+
+    .contact-form-heading {
+      margin-bottom: 28px;
+    }
+
+    .contact-form-heading small {
+      color: #d8a64b;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .contact-form-heading h2 {
+      margin: 10px 0 0;
+      font-size: 29px;
+      letter-spacing: -.035em;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 17px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-group label {
+      color: rgba(255,255,255,.43);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 15px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 11px;
+      outline: none;
+      background: rgba(0,0,0,.18);
+      color: #fff;
+      font: inherit;
+      font-size: 13px;
+      transition: .25s ease;
+    }
+
+    .form-group textarea {
+      min-height: 145px;
+      resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,.23);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: rgba(216,166,75,.55);
+      box-shadow: 0 0 0 3px rgba(216,166,75,.06);
+    }
+
+    .contact-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 47px;
+      padding: 0 21px;
+      border: 1px solid rgba(216,166,75,.45);
+      border-radius: 999px;
+      background: rgba(216,166,75,.08);
+      color: #fff;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+
+    .contact-submit:hover {
+      background: rgba(216,166,75,.15);
+      border-color: #d8a64b;
+      transform: translateY(-2px);
+    }
+
+    .form-note {
+      margin: 0;
+      color: rgba(255,255,255,.28);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    /* SOCIAL ------------------------------------------------ */
+
+    .contact-social {
+      padding: 95px 7vw;
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(255,255,255,.018),
+          transparent
+        );
+    }
+
+    .contact-social-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .social-heading {
+      margin-bottom: 38px;
+    }
+
+    .social-heading small {
+      color: #d8a64b;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .social-heading h2 {
+      margin: 13px 0 0;
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: .98;
+      letter-spacing: -.05em;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 80px;
+      padding: 18px 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 15px;
+      background: rgba(255,255,255,.018);
+      color: #fff;
+      text-decoration: none;
+      transition: .3s ease;
+    }
+
+    .social-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(216,166,75,.3);
+    }
+
+    .social-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .social-card span {
+      color: rgba(255,255,255,.36);
+      font-size: 10px;
+    }
+
+    .social-arrow {
+      color: #d8a64b;
+      font-size: 17px;
+    }
+
+    /* CTA --------------------------------------------------- */
+
+    .contact-cta {
+      width: min(1180px, calc(100% - 14vw));
+      margin: 60px auto 110px;
+      padding: 65px;
+      border: 1px solid rgba(216,166,75,.18);
+      border-radius: 25px;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(216,166,75,.11),
+          transparent 50%
+        ),
+        rgba(255,255,255,.018);
+    }
+
+    .contact-cta small {
+      color: #d8a64b;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .contact-cta h2 {
+      max-width: 780px;
+      margin: 17px auto 0;
+      font-size: clamp(37px, 5vw, 64px);
+      line-height: .96;
+      letter-spacing: -.055em;
+    }
+
+    .contact-cta h2 span {
+      color: #d8a64b;
+    }
+
+    /* LIGHT MODE ------------------------------------------- */
+
+    :root[data-theme="light"] .contact-kicker,
+    :root[data-theme="light"] .contact-lead,
+    :root[data-theme="light"] .contact-info > p,
+    :root[data-theme="light"] .contact-method,
+    :root[data-theme="light"] .form-group label,
+    :root[data-theme="light"] .form-note,
+    :root[data-theme="light"] .social-card span {
+      color: rgba(0,0,0,.56);
+    }
+
+    :root[data-theme="light"] .contact-form-wrap,
+    :root[data-theme="light"] .contact-method,
+    :root[data-theme="light"] .social-card,
+    :root[data-theme="light"] .contact-cta {
+      border-color: rgba(0,0,0,.09);
+      background: rgba(0,0,0,.025);
+    }
+
+    :root[data-theme="light"] .form-group input,
+    :root[data-theme="light"] .form-group textarea,
+    :root[data-theme="light"] .form-group select {
+      background: rgba(0,0,0,.025);
+      color: #111;
+      border-color: rgba(0,0,0,.1);
+    }
+
+    :root[data-theme="light"] .form-group input::placeholder,
+    :root[data-theme="light"] .form-group textarea::placeholder {
+      color: rgba(0,0,0,.3);
+    }
+
+    :root[data-theme="light"] .social-card {
+      color: #111;
+    }
+
+    /* RESPONSIVE ------------------------------------------- */
+
+    @media (max-width: 900px) {
+
+      .contact-hero {
+        min-height: auto;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .contact-hero,
+      .contact-section,
+      .contact-social {
+        padding-left: 5vw;
+        padding-right: 5vw;
+      }
+
+      .contact-hero {
+        padding-top: 115px;
+        padding-bottom: 70px;
+      }
+
+      .contact-title {
+        font-size: clamp(47px, 13vw, 72px);
+      }
+
+      .contact-lead {
+        font-size: 15px;
+      }
+
+      .contact-form-wrap {
+        padding: 27px 21px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-cta {
+        width: calc(100% - 10vw);
+        margin-top: 40px;
+        padding: 43px 23px;
+      }
+    }
+
+    @media (max-width: 390px) {
+
+      .contact-title {
+        font-size: 43px;
+      }
+
+      .contact-form-heading h2 {
+        font-size: 26px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .contact-method,
+      .social-card,
+      .contact-submit {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header" id="site-header">
-    <div class="header-inner">
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
 
-      <a class="brand" href="index.html" aria-label="Shah Neil Khan home">
+  <header class="site-header">
 
+    <div class="nav-wrap">
+
+      <a
+        href="./index.html"
+        class="brand-logo"
+        aria-label="Shah Neil Khan Home"
+      >
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
           alt="SNK"
-          class="brand-logo"
         />
-
-        <span class="brand-meta">
-          <span>SNK</span>
-          <span>/ PERSONAL BRAND</span>
-        </span>
-
       </a>
 
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-label="Open navigation"
-        aria-expanded="false"
-        aria-controls="main-navigation"
-      >
-        <span></span>
-        <span></span>
-      </button>
+      <nav class="main-nav" aria-label="Main navigation">
 
-      <nav class="main-nav" id="main-navigation" aria-label="Primary navigation">
+        <a href="./index.html#home">
+          Home
+        </a>
 
-        <a href="index.html">Home</a>
-        <a href="projects.html">Work</a>
-        <a href="index.html#ai">AI</a>
-        <a href="expertise.html">Expertise</a>
-        <a href="experience.html">Experience</a>
-        <a href="about.html">About</a>
-        <a href="brand.html">Brand</a>
-        <a href="contact.html" class="active" aria-current="page">Contact</a>
+        <a href="./brand.html">
+          Ecosystem
+        </a>
+
+        <a href="./index.html#ai">
+          AI
+        </a>
+
+        <a href="./expertise.html">
+          Expertise
+        </a>
+
+        <a href="./experience.html">
+          Experience
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+        <a href="./projects.html">
+          Projects
+        </a>
+
+        <a href="./cv.html">
+          CV
+        </a>
+
+        <a href="./contact.html" class="active">
+          Contact
+        </a>
 
       </nav>
 
-      <a class="header-cta" href="#contact-form">
-        Start a Project
-        <span>↗</span>
-      </a>
+      <div class="nav-actions">
+
+        <button
+          id="languageToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Change language"
+        >
+          বাংলা
+        </button>
+
+        <button
+          id="themeToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          ☼
+        </button>
+
+        <button
+          id="rainToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle rain"
+        >
+          Rain
+        </button>
+
+      </div>
 
     </div>
+
   </header>
 
 
-  <main>
+  <main class="contact-page">
 
-    <!-- PAGE HERO -->
-    <section class="page-hero contact-hero">
 
-      <div class="container page-hero-grid">
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-        <div class="page-hero-copy reveal">
+    <section class="contact-hero">
 
-          <div class="eyebrow">
-            <span class="eyebrow-line"></span>
-            CONTACT
-          </div>
+      <div class="contact-hero-inner reveal">
 
-          <h1>
-            HAVE AN
-            <span>IDEA?</span>
-            LET'S BUILD IT.
-          </h1>
-
-          <p class="page-hero-lead">
-            Whether you're building a product, exploring an AI system,
-            improving a digital experience or solving a difficult
-            engineering problem — start the conversation.
-          </p>
-
+        <div class="contact-kicker">
+          Contact / Collaboration / Ideas
         </div>
 
-        <div class="page-hero-mark reveal">
+        <h1 class="contact-title">
+          LET'S BUILD
+          <span>SOMETHING</span>
+          MEANINGFUL.
+        </h1>
 
-          <span>CONTACT</span>
-          <strong>LET'S TALK</strong>
-          <small>SOFTWARE / AI / UX</small>
-
-        </div>
+        <p class="contact-lead">
+          Have an idea, a digital problem, a product challenge or
+          something worth exploring? Start the conversation.
+        </p>
 
       </div>
 
     </section>
 
 
-    <!-- CONTACT MAIN -->
-    <section class="section contact-main">
+    <!-- =====================================================
+         CONTACT AREA
+    ====================================================== -->
 
-      <div class="container">
+    <section class="contact-section">
 
-        <div class="contact-layout">
+      <div class="contact-grid">
 
-          <!-- LEFT -->
-          <div class="contact-intro reveal">
 
-            <span class="section-number">
-              01 / START HERE
-            </span>
+        <!-- LEFT -->
+
+        <div class="contact-info reveal">
+
+          <h2>
+            Start with<br />
+            a conversation.
+          </h2>
+
+          <p>
+            The best projects usually begin with a simple question.
+            Tell me what you are building, what is not working,
+            or what you are trying to figure out.
+          </p>
+
+
+          <div class="contact-methods">
+
+            <a
+              href="https://www.linkedin.com/company/iamsnkbd"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-method"
+            >
+
+              <div>
+
+                <span class="contact-method-label">
+                  LinkedIn
+                </span>
+
+                <span class="contact-method-value">
+                  @iamsnkbd
+                </span>
+
+              </div>
+
+              <span class="contact-method-arrow">
+                ↗
+              </span>
+
+            </a>
+
+
+            <a
+              href="https://github.com/shahneilkhan"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-method"
+            >
+
+              <div>
+
+                <span class="contact-method-label">
+                  GitHub
+                </span>
+
+                <span class="contact-method-value">
+                  github.com/shahneilkhan
+                </span>
+
+              </div>
+
+              <span class="contact-method-arrow">
+                ↗
+              </span>
+
+            </a>
+
+
+            <a
+              href="https://instagram.com/iamsnkbd"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-method"
+            >
+
+              <div>
+
+                <span class="contact-method-label">
+                  Instagram
+                </span>
+
+                <span class="contact-method-value">
+                  @iamsnkbd
+                </span>
+
+              </div>
+
+              <span class="contact-method-arrow">
+                ↗
+              </span>
+
+            </a>
+
+
+            <a
+              href="https://youtube.com/c/shahneilkhan"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-method"
+            >
+
+              <div>
+
+                <span class="contact-method-label">
+                  YouTube
+                </span>
+
+                <span class="contact-method-value">
+                  Shah Neil Khan
+                </span>
+
+              </div>
+
+              <span class="contact-method-arrow">
+                ↗
+              </span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <div class="contact-form-wrap reveal">
+
+          <div class="contact-form-heading">
+
+            <small>
+              Send a message
+            </small>
 
             <h2>
-              TELL ME WHAT
-              <span>YOU'RE BUILDING.</span>
+              What are you working on?
             </h2>
-
-            <p>
-              You don't need a perfectly defined brief.
-              A problem, idea, rough direction or question is enough
-              to begin.
-            </p>
-
-            <div class="contact-categories">
-
-              <span>PROJECT</span>
-              <span>COLLABORATION</span>
-              <span>ENGINEERING</span>
-              <span>AI</span>
-              <span>UX</span>
-              <span>PRODUCT</span>
-
-            </div>
 
           </div>
 
 
-          <!-- FORM -->
-          <div class="contact-form-wrap reveal">
+          <form
+            class="contact-form"
+            id="contactForm"
+            action="#"
+            method="POST"
+          >
 
-            <form
-              class="contact-form"
-              id="contact-form"
-              data-contact-form
-              action="#"
-              method="post"
-            >
+            <div class="form-row">
 
-              <div class="form-row">
+              <div class="form-group">
 
                 <label for="name">
-                  <span>01</span>
-                  YOUR NAME
+                  Name
                 </label>
 
                 <input
                   id="name"
                   name="name"
                   type="text"
+                  placeholder="Your name"
                   autocomplete="name"
-                  placeholder="Enter your name"
                   required
                 />
 
               </div>
 
 
-              <div class="form-row">
+              <div class="form-group">
 
                 <label for="email">
-                  <span>02</span>
-                  EMAIL
+                  Email
                 </label>
 
                 <input
                   id="email"
                   name="email"
                   type="email"
-                  autocomplete="email"
                   placeholder="you@example.com"
+                  autocomplete="email"
                   required
                 />
 
               </div>
 
-
-              <div class="form-row">
-
-                <label for="project">
-                  <span>03</span>
-                  WHAT ARE YOU BUILDING?
-                </label>
-
-                <input
-                  id="project"
-                  name="project"
-                  type="text"
-                  placeholder="Product, AI system, website..."
-                />
-
-              </div>
+            </div>
 
 
-              <div class="form-row form-row-message">
+            <div class="form-group">
 
-                <label for="message">
-                  <span>04</span>
-                  MESSAGE
-                </label>
+              <label for="subject">
+                Subject
+              </label>
 
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="7"
-                  placeholder="Tell me a little about the problem, idea or project..."
-                  required
-                ></textarea>
+              <select
+                id="subject"
+                name="subject"
+              >
 
-              </div>
+                <option value="">
+                  Select a topic
+                </option>
+
+                <option value="ux">
+                  UX / Digital Experience
+                </option>
+
+                <option value="design">
+                  Design / Creative
+                </option>
+
+                <option value="ai">
+                  AI / Digital Systems
+                </option>
+
+                <option value="collaboration">
+                  Collaboration
+                </option>
+
+                <option value="other">
+                  Something else
+                </option>
+
+              </select>
+
+            </div>
 
 
-              <div class="form-submit">
+            <div class="form-group">
 
-                <button
-                  type="submit"
-                  class="button button-primary"
-                >
-                  SEND MESSAGE
-                  <span>→</span>
-                </button>
+              <label for="message">
+                Message
+              </label>
 
-                <p class="form-note">
-                  I'll review the details and respond through
-                  the contact method configured for this site.
-                </p>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me a little about your idea..."
+                required
+              ></textarea>
 
-              </div>
+            </div>
 
-              <div
-                class="form-status"
-                role="status"
-                aria-live="polite"
-              ></div>
 
-            </form>
+            <button
+              class="contact-submit"
+              type="submit"
+            >
+              Send message →
+            </button>
 
-          </div>
+
+            <p class="form-note">
+              This form is currently a front-end template.
+              Connect it to your preferred form service or backend
+              before publishing as a live submission form.
+            </p>
+
+          </form>
 
         </div>
 
@@ -280,210 +972,142 @@
     </section>
 
 
-    <!-- DIRECT CONTACT -->
-    <section class="section direct-contact">
+    <!-- =====================================================
+         SOCIAL
+    ====================================================== -->
 
-      <div class="container">
+    <section class="contact-social">
 
-        <div class="section-heading reveal">
+      <div class="contact-social-inner">
 
-          <div>
+        <div class="social-heading reveal">
 
-            <span class="section-number">
-              02 / DIRECT
-            </span>
-
-            <h2>
-              OR CONNECT
-              <span>DIRECTLY.</span>
-            </h2>
-
-          </div>
-
-          <p>
-            Prefer a direct conversation? Use one of the
-            verified channels below.
-          </p>
-
-        </div>
-
-
-        <div class="contact-links-grid">
-
-          <!-- EMAIL -->
-          <div class="contact-link-card reveal">
-
-            <span class="contact-link-index">01</span>
-
-            <div>
-              <span class="contact-link-label">EMAIL</span>
-              <strong>DIRECT CONTACT</strong>
-            </div>
-
-            <!-- Add verified email URL/address here -->
-            <span class="contact-link-arrow">→</span>
-
-          </div>
-
-
-          <!-- LINKEDIN -->
-          <div class="contact-link-card reveal">
-
-            <span class="contact-link-index">02</span>
-
-            <div>
-              <span class="contact-link-label">LINKEDIN</span>
-              <strong>PROFESSIONAL NETWORK</strong>
-            </div>
-
-            <!-- Add verified LinkedIn URL here -->
-            <span class="contact-link-arrow">↗</span>
-
-          </div>
-
-
-          <!-- GITHUB -->
-          <div class="contact-link-card reveal">
-
-            <span class="contact-link-index">03</span>
-
-            <div>
-              <span class="contact-link-label">GITHUB</span>
-              <strong>CODE / SYSTEMS</strong>
-            </div>
-
-            <!-- Add verified GitHub URL here -->
-            <span class="contact-link-arrow">↗</span>
-
-          </div>
-
-
-          <!-- WHATSAPP -->
-          <div class="contact-link-card reveal">
-
-            <span class="contact-link-index">04</span>
-
-            <div>
-              <span class="contact-link-label">WHATSAPP</span>
-              <strong>QUICK CONVERSATION</strong>
-            </div>
-
-            <!-- Add verified WhatsApp URL here -->
-            <span class="contact-link-arrow">↗</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- WORK TYPES -->
-    <section class="section contact-scope">
-
-      <div class="container">
-
-        <div class="scope-layout">
-
-          <div class="scope-title reveal">
-
-            <span class="section-number">
-              03 / WHAT WE CAN BUILD
-            </span>
-
-            <h2>
-              FROM
-              <span>IDEA</span>
-              TO SYSTEM.
-            </h2>
-
-          </div>
-
-
-          <div class="scope-list">
-
-            <div class="scope-item reveal">
-              <span>01</span>
-              <div>
-                <strong>SOFTWARE</strong>
-                <p>
-                  Web applications, APIs, backend systems
-                  and full-stack digital products.
-                </p>
-              </div>
-            </div>
-
-
-            <div class="scope-item reveal">
-              <span>02</span>
-              <div>
-                <strong>AI SYSTEMS</strong>
-                <p>
-                  Context engineering, retrieval, memory,
-                  tools and useful AI workflows.
-                </p>
-              </div>
-            </div>
-
-
-            <div class="scope-item reveal">
-              <span>03</span>
-              <div>
-                <strong>PRODUCT & UX</strong>
-                <p>
-                  Product thinking, interaction design,
-                  interface systems and digital experiences.
-                </p>
-              </div>
-            </div>
-
-
-            <div class="scope-item reveal">
-              <span>04</span>
-              <div>
-                <strong>SYSTEM DESIGN</strong>
-                <p>
-                  Architecture, data flow, boundaries,
-                  security and scalable foundations.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- FINAL CTA -->
-    <section class="section final-cta">
-
-      <div class="container">
-
-        <div class="final-cta-inner reveal">
-
-          <span class="section-number">
-            READY WHEN YOU ARE
-          </span>
+          <small>
+            Find SNK Online
+          </small>
 
           <h2>
-            LET'S TURN
-            <span>THE IDEA INTO SOMETHING REAL.</span>
+            Different platforms.<br />
+            Same thinking.
           </h2>
 
-          <p>
-            Start with the problem.
-            We'll figure out the system together.
-          </p>
+        </div>
 
-          <a href="#contact-form" class="button button-primary">
-            START THE CONVERSATION
-            <span>↓</span>
+
+        <div class="social-grid">
+
+
+          <a
+            href="https://www.linkedin.com/company/iamsnkbd"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div>
+              <strong>LinkedIn</strong>
+              <span>Professional / Digital</span>
+            </div>
+
+            <div class="social-arrow">
+              ↗
+            </div>
+
+          </a>
+
+
+          <a
+            href="https://instagram.com/iamsnkbd"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div>
+              <strong>Instagram</strong>
+              <span>Visual / Personal Brand</span>
+            </div>
+
+            <div class="social-arrow">
+              ↗
+            </div>
+
+          </a>
+
+
+          <a
+            href="https://facebook.com/iamsnkbd"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div>
+              <strong>Facebook</strong>
+              <span>Community / Updates</span>
+            </div>
+
+            <div class="social-arrow">
+              ↗
+            </div>
+
+          </a>
+
+
+          <a
+            href="https://youtube.com/c/shahneilkhan"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div>
+              <strong>YouTube</strong>
+              <span>Video / Ideas</span>
+            </div>
+
+            <div class="social-arrow">
+              ↗
+            </div>
+
+          </a>
+
+
+          <a
+            href="https://behance.net/thesnkdesign"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div>
+              <strong>Behance</strong>
+              <span>Design / Portfolio</span>
+            </div>
+
+            <div class="social-arrow">
+              ↗
+            </div>
+
+          </a>
+
+
+          <a
+            href="https://dribbble.com/thesnkdesign"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div>
+              <strong>Dribbble</strong>
+              <span>Design / Interface</span>
+            </div>
+
+            <div class="social-arrow">
+              ↗
+            </div>
+
           </a>
 
         </div>
@@ -492,63 +1116,88 @@
 
     </section>
 
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="contact-cta reveal">
+
+      <small>
+        SNK
+      </small>
+
+      <h2>
+        Good ideas deserve
+        <span>good execution.</span>
+      </h2>
+
+    </section>
+
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
   <footer class="site-footer">
 
-    <div class="container">
+    <div>
+      © <span id="year"></span> Shah Neil Khan
+    </div>
 
-      <div class="footer-top">
-
-        <a href="index.html" class="footer-brand">
-
-          <img
-            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-            alt="SNK"
-          />
-
-          <div>
-            <strong>SHAH NEIL KHAN</strong>
-            <span>SOFTWARE / AI / EXPERIENCE</span>
-          </div>
-
-        </a>
-
-
-        <div class="footer-links">
-
-          <a href="projects.html">Work</a>
-          <a href="expertise.html">Expertise</a>
-          <a href="experience.html">Experience</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <span>
-          © <span data-current-year></span> SHAH NEIL KHAN
-        </span>
-
-        <span>
-          CODE → INTELLIGENCE → EXPERIENCE
-        </span>
-
-      </div>
-
+    <div>
+      PERSONAL BRAND · DIGITAL EXPERIENCE · SYSTEMS THINKING
     </div>
 
   </footer>
 
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /*
+      FRONT-END FORM HANDLER
+
+      Prevents a fake submission and clearly tells the visitor
+      that the form needs a backend/service connection.
+    */
+
+    const contactForm =
+      document.getElementById("contactForm");
+
+    if (contactForm) {
+
+      contactForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const submitButton =
+          contactForm.querySelector(".contact-submit");
+
+        submitButton.textContent =
+          "Form ready — connect a backend →";
+
+        submitButton.disabled = true;
+
+        setTimeout(() => {
+
+          submitButton.textContent =
+            "Send message →";
+
+          submitButton.disabled = false;
+
+        }, 3500);
+
+      });
+
+    }
+  </script>
 
 </body>
 </html>
-```
