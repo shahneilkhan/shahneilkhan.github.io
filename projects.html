@@ -1,1328 +1,585 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Projects — Shah Neil Khan</title>
-
-    <meta
-        name="description"
-        content="Selected software engineering, AI, product, UX and digital projects by Shah Neil Khan."
-    >
-
-    <meta name="author" content="Shah Neil Khan">
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* =========================================================
-           PROJECTS PAGE — PAGE-SPECIFIC POLISH
-           ========================================================= */
-
-        .projects-page {
-            overflow: hidden;
-        }
-
-        .projects-hero {
-            min-height: 76vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .projects-hero::before {
-            content: "";
-            position: absolute;
-            width: 520px;
-            height: 520px;
-            right: -180px;
-            top: 80px;
-            border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(201, 149, 91, 0.14),
-                transparent 68%
-            );
-            pointer-events: none;
-        }
-
-        .projects-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 24px;
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent, #c9955b);
-        }
-
-        .projects-kicker::before {
-            content: "";
-            width: 34px;
-            height: 1px;
-            background: currentColor;
-        }
-
-        .projects-hero h1 {
-            max-width: 1000px;
-            margin-bottom: 28px;
-            font-size: clamp(3.5rem, 8vw, 8.5rem);
-            line-height: 0.9;
-            letter-spacing: -0.06em;
-        }
-
-        .projects-hero h1 span {
-            display: block;
-            color: var(--accent, #c9955b);
-        }
-
-        .projects-hero-copy {
-            max-width: 720px;
-            font-size: clamp(1rem, 1.5vw, 1.25rem);
-            line-height: 1.8;
-            color: rgba(242, 240, 234, 0.68);
-        }
-
-        .project-index {
-            margin-top: 42px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .project-index span {
-            border: 1px solid rgba(242, 240, 234, 0.12);
-            padding: 10px 14px;
-            border-radius: 999px;
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(242, 240, 234, 0.58);
-        }
-
-        /* Intro */
-
-        .projects-intro {
-            display: grid;
-            grid-template-columns: 0.7fr 1.3fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .projects-intro-label {
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent, #c9955b);
-        }
-
-        .projects-intro h2 {
-            max-width: 850px;
-            margin: 0;
-            font-size: clamp(2.2rem, 4vw, 4.5rem);
-            line-height: 1;
-            letter-spacing: -0.045em;
-        }
-
-        .projects-intro p {
-            max-width: 760px;
-            margin-top: 28px;
-            color: rgba(242, 240, 234, 0.62);
-            line-height: 1.85;
-        }
-
-        /* Project grid */
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
-            margin-top: 70px;
-        }
-
-        .project-card {
-            position: relative;
-            min-height: 520px;
-            padding: 34px;
-            border: 1px solid rgba(242, 240, 234, 0.1);
-            border-radius: 24px;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255, 255, 255, 0.045),
-                    rgba(255, 255, 255, 0.015)
-                );
-            overflow: hidden;
-            transition:
-                transform 0.45s ease,
-                border-color 0.45s ease,
-                background 0.45s ease;
-        }
-
-        .project-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(
-                    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                    rgba(201, 149, 91, 0.1),
-                    transparent 34%
-                );
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(201, 149, 91, 0.32);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-card.featured {
-            grid-column: 1 / -1;
-            min-height: 580px;
-        }
-
-        .project-number {
-            position: absolute;
-            top: 30px;
-            right: 34px;
-            font-family: monospace;
-            font-size: 0.7rem;
-            color: rgba(242, 240, 234, 0.35);
-            letter-spacing: 0.12em;
-        }
-
-        .project-category {
-            display: inline-block;
-            margin-bottom: 70px;
-            font-size: 0.68rem;
-            letter-spacing: 0.17em;
-            text-transform: uppercase;
-            color: var(--accent, #c9955b);
-        }
-
-        .project-card h3 {
-            max-width: 720px;
-            margin: 0;
-            font-size: clamp(2rem, 4vw, 4.3rem);
-            line-height: 0.98;
-            letter-spacing: -0.045em;
-        }
-
-        .project-card p {
-            max-width: 650px;
-            margin-top: 24px;
-            color: rgba(242, 240, 234, 0.6);
-            line-height: 1.75;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 28px;
-        }
-
-        .project-tags span {
-            padding: 8px 11px;
-            border: 1px solid rgba(242, 240, 234, 0.1);
-            border-radius: 999px;
-            font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: rgba(242, 240, 234, 0.55);
-        }
-
-        .project-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 38px;
-        }
-
-        .project-card-visual {
-            position: absolute;
-            right: 34px;
-            bottom: 34px;
-            width: min(40%, 420px);
-            height: 190px;
-            border: 1px solid rgba(242, 240, 234, 0.08);
-            border-radius: 16px;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(201, 149, 91, 0.08),
-                    rgba(255, 255, 255, 0.025)
-                );
-            overflow: hidden;
-        }
-
-        .project-card-visual::before {
-            content: "";
-            position: absolute;
-            inset: 18px;
-            border: 1px dashed rgba(242, 240, 234, 0.12);
-            border-radius: 10px;
-        }
-
-        .visual-grid {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(
-                    rgba(242, 240, 234, 0.04) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(242, 240, 234, 0.04) 1px,
-                    transparent 1px
-                );
-            background-size: 28px 28px;
-        }
-
-        .visual-label {
-            position: absolute;
-            left: 30px;
-            bottom: 26px;
-            font-family: monospace;
-            font-size: 0.68rem;
-            color: rgba(242, 240, 234, 0.48);
-            letter-spacing: 0.1em;
-        }
-
-        /* External platform */
-
-        .external-platform {
-            margin-top: 80px;
-            padding: 34px;
-            border: 1px solid rgba(242, 240, 234, 0.1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .external-platform small {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--accent, #c9955b);
-            font-size: 0.65rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-        }
-
-        .external-platform strong {
-            font-size: clamp(1.3rem, 2vw, 2rem);
-            font-weight: 500;
-        }
-
-        .external-platform p {
-            margin-top: 8px;
-            color: rgba(242, 240, 234, 0.52);
-        }
-
-        /* Proof framework */
-
-        .proof-section {
-            margin-top: 130px;
-        }
-
-        .proof-header {
-            max-width: 760px;
-        }
-
-        .proof-header h2 {
-            margin-top: 18px;
-            font-size: clamp(2.5rem, 5vw, 5rem);
-            line-height: 0.95;
-            letter-spacing: -0.05em;
-        }
-
-        .proof-header p {
-            margin-top: 24px;
-            color: rgba(242, 240, 234, 0.6);
-            line-height: 1.8;
-        }
-
-        .proof-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1px;
-            margin-top: 60px;
-            border: 1px solid rgba(242, 240, 234, 0.1);
-            background: rgba(242, 240, 234, 0.1);
-        }
-
-        .proof-step {
-            min-height: 220px;
-            padding: 26px;
-            background: #0b0b0b;
-        }
-
-        .proof-step span {
-            font-family: monospace;
-            font-size: 0.65rem;
-            color: var(--accent, #c9955b);
-        }
-
-        .proof-step h3 {
-            margin-top: 42px;
-            font-size: 1rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .proof-step p {
-            margin-top: 12px;
-            font-size: 0.82rem;
-            line-height: 1.65;
-            color: rgba(242, 240, 234, 0.48);
-        }
-
-        /* Principles */
-
-        .project-principles {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .project-principles h2 {
-            max-width: 700px;
-            font-size: clamp(2.5rem, 5vw, 5.5rem);
-            line-height: 0.95;
-            letter-spacing: -0.05em;
-        }
-
-        .principle-list {
-            display: grid;
-            gap: 1px;
-            border: 1px solid rgba(242, 240, 234, 0.1);
-            background: rgba(242, 240, 234, 0.1);
-        }
-
-        .principle-item {
-            padding: 25px;
-            background: #0b0b0b;
-        }
-
-        .principle-item strong {
-            display: block;
-            font-size: 0.78rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .principle-item p {
-            margin-top: 9px;
-            color: rgba(242, 240, 234, 0.5);
-            line-height: 1.65;
-            font-size: 0.85rem;
-        }
-
-        /* CTA */
-
-        .projects-cta {
-            text-align: center;
-            padding: 120px 30px;
-            border-top: 1px solid rgba(242, 240, 234, 0.08);
-            border-bottom: 1px solid rgba(242, 240, 234, 0.08);
-        }
-
-        .projects-cta h2 {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: clamp(3rem, 7vw, 7rem);
-            line-height: 0.9;
-            letter-spacing: -0.06em;
-        }
-
-        .projects-cta p {
-            max-width: 600px;
-            margin: 28px auto 0;
-            color: rgba(242, 240, 234, 0.58);
-            line-height: 1.75;
-        }
-
-        .projects-cta .button-group {
-            justify-content: center;
-            margin-top: 38px;
-        }
-
-        /* Responsive */
-
-        @media (max-width: 1000px) {
-            .projects-intro,
-            .project-principles {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-
-            .proof-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .project-card-visual {
-                position: relative;
-                right: auto;
-                bottom: auto;
-                width: 100%;
-                margin-top: 45px;
-            }
-        }
-
-        @media (max-width: 760px) {
-            .projects-hero {
-                min-height: 70vh;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card.featured {
-                grid-column: auto;
-            }
-
-            .project-card {
-                min-height: auto;
-                padding: 26px;
-            }
-
-            .project-category {
-                margin-bottom: 55px;
-            }
-
-            .project-number {
-                right: 26px;
-                top: 26px;
-            }
-
-            .external-platform {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .proof-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-cta {
-                padding: 90px 20px;
-            }
-        }
-
-        @media (max-width: 520px) {
-            .project-index {
-                gap: 7px;
-            }
-
-            .project-index span {
-                font-size: 0.58rem;
-                padding: 8px 10px;
-            }
-
-            .project-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .project-actions .button {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Projects — Shah Neil Khan</title>
+  <meta
+    name="description"
+    content="Selected software, AI, product, UX and engineering work by Shah Neil Khan."
+  />
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="projects-page">
+<body>
 
-    <!-- =========================================================
-         HEADER
-         ========================================================= -->
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
 
-    <header class="site-header" id="siteHeader">
-        <div class="container nav-container">
+      <a class="brand" href="index.html" aria-label="Shah Neil Khan home">
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="SNK"
+          class="brand-logo"
+        />
 
-            <a href="index.html" class="site-logo" aria-label="Shah Neil Khan home">
-                <span class="logo-name">SHAH NEIL KHAN</span>
-                <span class="logo-brand">SNK</span>
-            </a>
+        <span class="brand-meta">
+          <span>SNK</span>
+          <span>/ PERSONAL BRAND</span>
+        </span>
+      </a>
 
-            <button
-                class="nav-toggle"
-                id="navToggle"
-                type="button"
-                aria-label="Open navigation"
-                aria-expanded="false"
-                aria-controls="navMenu"
-            >
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="main-navigation"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" id="main-navigation" aria-label="Primary navigation">
+
+        <a href="index.html">Home</a>
+        <a href="projects.html" class="active" aria-current="page">Work</a>
+        <a href="index.html#ai">AI</a>
+        <a href="expertise.html">Expertise</a>
+        <a href="experience.html">Experience</a>
+        <a href="about.html">About</a>
+        <a href="brand.html">Brand</a>
+        <a href="contact.html">Contact</a>
+
+      </nav>
+
+      <a class="header-cta" href="contact.html">
+        Let's Build
+        <span>↗</span>
+      </a>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         PAGE HERO
+    ========================== -->
+    <section class="page-hero">
+      <div class="container page-hero-grid">
+
+        <div class="page-hero-copy reveal">
+
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            SELECTED WORK
+          </div>
+
+          <h1>
+            BUILDING
+            <span>SYSTEMS</span>
+            THAT MATTER.
+          </h1>
+
+          <p class="page-hero-lead">
+            A focused collection of software, product, UX and engineering work.
+            Each project is treated as a system — not simply a visual interface.
+          </p>
+
+        </div>
+
+        <div class="page-hero-mark reveal">
+          <span>WORK</span>
+          <strong>01—04</strong>
+          <small>SOFTWARE / AI / UX</small>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         PROJECT INDEX
+    ========================== -->
+    <section class="section projects-index">
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div>
+            <span class="section-number">01 / PROJECT INDEX</span>
+
+            <h2>
+              SELECTED
+              <span>WORK.</span>
+            </h2>
+          </div>
+
+          <p>
+            Real work, real systems, real outcomes.
+            Project details are intentionally kept focused on verified work.
+          </p>
+
+        </div>
+
+
+        <!-- PROJECT 01 -->
+        <article class="project-feature reveal">
+
+          <div class="project-number">
+            01
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-meta">
+              <span>WEB / PRODUCT</span>
+              <span>01</span>
+            </div>
+
+            <h3>WebsitesDeal</h3>
+
+            <p class="project-description">
+              A web experience built as part of my digital work,
+              combining interface design, responsive implementation
+              and product-oriented thinking.
+            </p>
+
+            <div class="project-tags">
+              <span>WEB</span>
+              <span>UX</span>
+              <span>UI</span>
+              <span>ENGINEERING</span>
+            </div>
+
+            <div class="project-actions">
+
+              <a
+                href="https://shahneilkhan.github.io/demosite"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-primary"
+              >
+                VIEW PROJECT
+                <span>↗</span>
+              </a>
+
+              <a href="contact.html" class="button button-secondary">
+                DISCUSS WORK
+                <span>→</span>
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="project-visual project-visual-websitesdeal">
+
+            <div class="visual-browser">
+
+              <div class="browser-top">
                 <span></span>
                 <span></span>
-            </button>
+                <span></span>
 
-            <nav
-                class="nav-menu"
-                id="navMenu"
-                aria-hidden="true"
-            >
-                <a href="index.html">HOME</a>
-                <a href="projects.html" class="active">WORK</a>
-                <a href="expertise.html">EXPERTISE</a>
-                <a href="experience.html">EXPERIENCE</a>
-                <a href="about.html">ABOUT</a>
-                <a
-                    href="https://www.tabayyuninstitute.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    TABAYYUN TV ↗
-                </a>
-                <a href="contact.html">CONTACT</a>
-            </nav>
+                <div class="browser-address">
+                  shahneilkhan.github.io / demosite
+                </div>
+              </div>
 
-        </div>
-    </header>
+              <div class="browser-body">
 
-
-    <main>
-
-        <!-- =====================================================
-             HERO
-             ===================================================== -->
-
-        <section class="section projects-hero">
-            <div class="container">
-
-                <div class="reveal">
-                    <div class="projects-kicker">
-                        Selected Work
-                    </div>
-
-                    <h1>
-                        SYSTEMS
-                        <span>WORTH BUILDING.</span>
-                    </h1>
-
-                    <p class="projects-hero-copy">
-                        A collection of software, AI, product and digital
-                        experiences built around real problems — with
-                        engineering thinking behind the interface.
-                    </p>
-
-                    <div class="project-index">
-                        <span>Software</span>
-                        <span>AI</span>
-                        <span>Product</span>
-                        <span>UX</span>
-                        <span>Systems</span>
-                    </div>
+                <div class="visual-label">
+                  WEBSITESDEAL
                 </div>
 
-            </div>
-        </section>
+                <div class="visual-line visual-line-large"></div>
+                <div class="visual-line"></div>
+                <div class="visual-line visual-line-short"></div>
 
-
-        <!-- =====================================================
-             INTRO
-             ===================================================== -->
-
-        <section class="section">
-            <div class="container">
-
-                <div class="projects-intro reveal">
-
-                    <div>
-                        <div class="projects-intro-label">
-                            00 / Philosophy
-                        </div>
-                    </div>
-
-                    <div>
-                        <h2>
-                            NOT JUST
-                            PRETTY SCREENS.
-                        </h2>
-
-                        <p>
-                            I approach projects as systems rather than
-                            isolated interfaces. The goal is to understand
-                            the problem, define the right structure, build
-                            the experience, and leave room for the product
-                            to evolve.
-                        </p>
-
-                        <p>
-                            The work below represents the kind of problems
-                            I want to solve across software engineering,
-                            AI, product experience, system design and
-                            human-centered UX.
-                        </p>
-                    </div>
-
+                <div class="visual-grid">
+                  <div></div>
+                  <div></div>
+                  <div></div>
                 </div>
 
-
-                <!-- =================================================
-                     PROJECTS
-                     Replace these placeholders with actual projects
-                     ================================================= -->
-
-                <div class="projects-grid">
-
-
-                    <!-- PROJECT 01 -->
-
-                    <article class="project-card featured reveal">
-
-                        <span class="project-number">
-                            01
-                        </span>
-
-                        <div class="project-category">
-                            Software Engineering / Product
-                        </div>
-
-                        <h3>
-                            YOUR FLAGSHIP
-                            PROJECT
-                        </h3>
-
-                        <p>
-                            Replace this section with your strongest
-                            verified project. Explain the problem,
-                            what you built, your role, and the most
-                            meaningful technical or product decision.
-                        </p>
-
-                        <div class="project-tags">
-                            <span>Software</span>
-                            <span>Product</span>
-                            <span>UX</span>
-                        </div>
-
-                        <div class="project-actions">
-
-                            <a
-                                href="#"
-                                class="button button-primary"
-                                data-project-link
-                            >
-                                CASE STUDY →
-                            </a>
-
-                            <a
-                                href="#"
-                                class="button button-secondary"
-                                data-project-link
-                            >
-                                LIVE PROJECT ↗
-                            </a>
-
-                            <a
-                                href="#"
-                                class="button button-secondary"
-                                data-project-link
-                            >
-                                GITHUB ↗
-                            </a>
-
-                        </div>
-
-                        <div class="project-card-visual" aria-hidden="true">
-                            <div class="visual-grid"></div>
-                            <div class="visual-label">
-                                SYSTEM / PROJECT_01
-                            </div>
-                        </div>
-
-                    </article>
-
-
-                    <!-- PROJECT 02 -->
-
-                    <article class="project-card reveal">
-
-                        <span class="project-number">
-                            02
-                        </span>
-
-                        <div class="project-category">
-                            AI / Context Engineering
-                        </div>
-
-                        <h3>
-                            AI SYSTEM
-                        </h3>
-
-                        <p>
-                            A verified AI-related project can be presented
-                            here with its actual use case, architecture,
-                            context strategy, retrieval flow and result.
-                        </p>
-
-                        <div class="project-tags">
-                            <span>AI</span>
-                            <span>Context</span>
-                            <span>RAG</span>
-                        </div>
-
-                        <div class="project-actions">
-
-                            <a
-                                href="#"
-                                class="button button-secondary"
-                                data-project-link
-                            >
-                                VIEW WORK ↗
-                            </a>
-
-                        </div>
-
-                        <div class="project-card-visual" aria-hidden="true">
-                            <div class="visual-grid"></div>
-                            <div class="visual-label">
-                                CONTEXT / AI_02
-                            </div>
-                        </div>
-
-                    </article>
-
-
-                    <!-- PROJECT 03 -->
-
-                    <article class="project-card reveal">
-
-                        <span class="project-number">
-                            03
-                        </span>
-
-                        <div class="project-category">
-                            Product / UX
-                        </div>
-
-                        <h3>
-                            PRODUCT
-                            EXPERIENCE
-                        </h3>
-
-                        <p>
-                            Use this space for a real product or UX
-                            project where research, information
-                            architecture, interaction design and
-                            engineering came together.
-                        </p>
-
-                        <div class="project-tags">
-                            <span>UX</span>
-                            <span>Product</span>
-                            <span>Design</span>
-                        </div>
-
-                        <div class="project-actions">
-
-                            <a
-                                href="#"
-                                class="button button-secondary"
-                                data-project-link
-                            >
-                                VIEW WORK ↗
-                            </a>
-
-                        </div>
-
-                        <div class="project-card-visual" aria-hidden="true">
-                            <div class="visual-grid"></div>
-                            <div class="visual-label">
-                                EXPERIENCE / UX_03
-                            </div>
-                        </div>
-
-                    </article>
-
-
-                    <!-- PROJECT 04 -->
-
-                    <article class="project-card reveal">
-
-                        <span class="project-number">
-                            04
-                        </span>
-
-                        <div class="project-category">
-                            Full-Stack / Systems
-                        </div>
-
-                        <h3>
-                            FULL-STACK
-                            SYSTEM
-                        </h3>
-
-                        <p>
-                            Add a real full-stack project here. Focus on
-                            architecture, APIs, database decisions,
-                            authentication, deployment and the actual
-                            problem the system solved.
-                        </p>
-
-                        <div class="project-tags">
-                            <span>Full-Stack</span>
-                            <span>API</span>
-                            <span>Database</span>
-                        </div>
-
-                        <div class="project-actions">
-
-                            <a
-                                href="#"
-                                class="button button-secondary"
-                                data-project-link
-                            >
-                                VIEW WORK ↗
-                            </a>
-
-                        </div>
-
-                        <div class="project-card-visual" aria-hidden="true">
-                            <div class="visual-grid"></div>
-                            <div class="visual-label">
-                                SYSTEM / FULLSTACK_04
-                            </div>
-                        </div>
-
-                    </article>
-
-
-                </div>
-
-
-                <!-- =================================================
-                     TABAYYUN EXTERNAL BUTTON
-                     ================================================= -->
-
-                <div class="external-platform reveal">
-
-                    <div>
-                        <small>
-                            External Platform
-                        </small>
-
-                        <strong>
-                            Tabayyun TV
-                        </strong>
-
-                        <p>
-                            Visit the official Tabayyun Institute website.
-                        </p>
-                    </div>
-
-                    <a
-                        href="https://www.tabayyuninstitute.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="button button-primary"
-                    >
-                        VISIT TABAYYUN TV ↗
-                    </a>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             CASE STUDY FRAMEWORK
-             ===================================================== -->
-
-        <section class="section proof-section">
-            <div class="container">
-
-                <div class="proof-header reveal">
-
-                    <div class="section-eyebrow">
-                        HOW I SHOW THE WORK
-                    </div>
-
-                    <h2>
-                        FROM PROBLEM
-                        TO PROOF.
-                    </h2>
-
-                    <p>
-                        When a project deserves a deeper case study,
-                        the story should show more than the final UI.
-                        It should explain the thinking behind the work.
-                    </p>
-
-                </div>
-
-
-                <div class="proof-grid">
-
-                    <div class="proof-step reveal">
-                        <span>01</span>
-                        <h3>Problem</h3>
-                        <p>
-                            What needed to be solved and why it mattered.
-                        </p>
-                    </div>
-
-                    <div class="proof-step reveal">
-                        <span>02</span>
-                        <h3>Research</h3>
-                        <p>
-                            Users, requirements, constraints and context.
-                        </p>
-                    </div>
-
-                    <div class="proof-step reveal">
-                        <span>03</span>
-                        <h3>Design</h3>
-                        <p>
-                            Architecture, UX, data flow and system decisions.
-                        </p>
-                    </div>
-
-                    <div class="proof-step reveal">
-                        <span>04</span>
-                        <h3>Build</h3>
-                        <p>
-                            Engineering implementation, integration and
-                            deployment.
-                        </p>
-                    </div>
-
-                    <div class="proof-step reveal">
-                        <span>05</span>
-                        <h3>Result</h3>
-                        <p>
-                            Verified outcomes, lessons and what changed.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             SOFTWARE + AI
-             ===================================================== -->
-
-        <section class="section">
-            <div class="container">
-
-                <div class="project-principles reveal">
-
-                    <div>
-
-                        <div class="section-eyebrow">
-                            ENGINEERING + INTELLIGENCE
-                        </div>
-
-                        <h2>
-                            SOFTWARE SHOULD
-                            FEEL INTENTIONAL.
-                        </h2>
-
-                    </div>
-
-                    <div class="principle-list">
-
-                        <div class="principle-item">
-                            <strong>
-                                Context Before Complexity
-                            </strong>
-
-                            <p>
-                                Understand the actual problem before
-                                adding technology.
-                            </p>
-                        </div>
-
-                        <div class="principle-item">
-                            <strong>
-                                Systems Over Features
-                            </strong>
-
-                            <p>
-                                Build foundations that allow products
-                                to evolve instead of creating isolated
-                                features.
-                            </p>
-                        </div>
-
-                        <div class="principle-item">
-                            <strong>
-                                UX Is Part of Engineering
-                            </strong>
-
-                            <p>
-                                The interface, information architecture
-                                and system behavior should work together.
-                            </p>
-                        </div>
-
-                        <div class="principle-item">
-                            <strong>
-                                Security From The Start
-                            </strong>
-
-                            <p>
-                                Permissions, validation and threat
-                                awareness belong in the architecture.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             WORK PRINCIPLES
-             ===================================================== -->
-
-        <section class="section">
-            <div class="container">
-
-                <div class="projects-intro reveal">
-
-                    <div>
-                        <div class="projects-intro-label">
-                            06 / Working Style
-                        </div>
-                    </div>
-
-                    <div>
-
-                        <h2>
-                            BUILD LESS.
-                            THINK BETTER.
-                        </h2>
-
-                        <p>
-                            Good engineering is not about making a
-                            project unnecessarily complicated. It is
-                            about making the right decisions early,
-                            communicating clearly and building only
-                            what creates meaningful value.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             CTA
-             ===================================================== -->
-
-        <section class="section">
-            <div class="container">
-
-                <div class="projects-cta reveal">
-
-                    <h2>
-                        HAVE A
-                        PROBLEM WORTH
-                        SOLVING?
-                    </h2>
-
-                    <p>
-                        Tell me what you're building, what is difficult,
-                        and where you want to go. We can start from
-                        the problem and work toward the right system.
-                    </p>
-
-                    <div class="button-group">
-
-                        <a
-                            href="contact.html"
-                            class="button button-primary"
-                        >
-                            START A CONVERSATION →
-                        </a>
-
-                        <a
-                            href="expertise.html"
-                            class="button button-secondary"
-                        >
-                            EXPLORE EXPERTISE
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-
-    <!-- =========================================================
-         FOOTER
-         ========================================================= -->
-
-    <footer class="site-footer">
-
-        <div class="container footer-inner">
-
-            <div class="footer-brand">
-
-                <a href="index.html" class="site-logo">
-                    <span class="logo-name">
-                        SHAH NEIL KHAN
-                    </span>
-
-                    <span class="logo-brand">
-                        SNK
-                    </span>
-                </a>
-
-                <p>
-                    Software Engineer & AI Engineer
-                    building digital experiences
-                    with intelligence and intention.
-                </p>
+              </div>
 
             </div>
 
+          </div>
 
-            <div class="footer-links">
-
-                <div>
-                    <span class="footer-heading">
-                        EXPLORE
-                    </span>
-
-                    <a href="index.html">Home</a>
-                    <a href="projects.html">Work</a>
-                    <a href="expertise.html">Expertise</a>
-                    <a href="experience.html">Experience</a>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                </div>
+        </article>
 
 
-                <div>
-                    <span class="footer-heading">
-                        EXTERNAL
-                    </span>
+        <!-- PROJECT 02 -->
+        <article class="project-placeholder reveal">
 
-                    <a
-                        href="https://www.tabayyuninstitute.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Tabayyun TV ↗
-                    </a>
-                </div>
+          <div class="placeholder-index">
+            02
+          </div>
 
-            </div>
+          <div class="placeholder-copy">
 
-        </div>
-
-
-        <div class="container footer-bottom">
-
-            <span>
-                © <span data-current-year></span>
-                Shah Neil Khan. All rights reserved.
+            <span class="project-status">
+              PROJECT DATA
             </span>
 
-            <span>
-                SNK / SOFTWARE · INTELLIGENCE · EXPERIENCE
+            <h3>Next System</h3>
+
+            <p>
+              The next verified project will appear here with its real
+              problem, system, contribution and outcome.
+            </p>
+
+          </div>
+
+          <div class="placeholder-arrow">
+            +
+          </div>
+
+        </article>
+
+
+        <!-- PROJECT 03 -->
+        <article class="project-placeholder reveal">
+
+          <div class="placeholder-index">
+            03
+          </div>
+
+          <div class="placeholder-copy">
+
+            <span class="project-status">
+              PROJECT DATA
             </span>
+
+            <h3>Product Experience</h3>
+
+            <p>
+              A dedicated case-study space for product, UX or interface
+              work once the verified project material is available.
+            </p>
+
+          </div>
+
+          <div class="placeholder-arrow">
+            +
+          </div>
+
+        </article>
+
+
+        <!-- PROJECT 04 -->
+        <article class="project-placeholder reveal">
+
+          <div class="placeholder-index">
+            04
+          </div>
+
+          <div class="placeholder-copy">
+
+            <span class="project-status">
+              PROJECT DATA
+            </span>
+
+            <h3>Full-Stack System</h3>
+
+            <p>
+              A case-study slot for a software, AI or full-stack system
+              with its architecture and engineering story.
+            </p>
+
+          </div>
+
+          <div class="placeholder-arrow">
+            +
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         CASE STUDY METHOD
+    ========================== -->
+    <section class="section case-method">
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div>
+            <span class="section-number">02 / HOW I PRESENT WORK</span>
+
+            <h2>
+              EVERY PROJECT
+              <span>HAS A STORY.</span>
+            </h2>
+          </div>
+
+          <p>
+            A polished interface is only part of the work.
+            The important question is what problem the system solves
+            and why the decisions behind it matter.
+          </p>
 
         </div>
 
-    </footer>
+
+        <div class="method-grid">
+
+          <div class="method-card reveal">
+            <span>01</span>
+            <h3>PROBLEM</h3>
+            <p>
+              What needed to change, improve or be created?
+            </p>
+          </div>
+
+          <div class="method-card reveal">
+            <span>02</span>
+            <h3>CONTEXT</h3>
+            <p>
+              Who uses the system and what constraints shape it?
+            </p>
+          </div>
+
+          <div class="method-card reveal">
+            <span>03</span>
+            <h3>SYSTEM</h3>
+            <p>
+              How architecture, UX, data and technology come together.
+            </p>
+          </div>
+
+          <div class="method-card reveal">
+            <span>04</span>
+            <h3>EXECUTION</h3>
+            <p>
+              The actual design, engineering and implementation decisions.
+            </p>
+          </div>
+
+          <div class="method-card reveal">
+            <span>05</span>
+            <h3>OUTCOME</h3>
+            <p>
+              What changed, what worked and what was learned.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
 
 
-    <!-- =========================================================
-         PAGE SCRIPT
-         ========================================================= -->
+    <!-- =========================
+         AI / ENGINEERING
+    ========================== -->
+    <section class="section project-philosophy">
+      <div class="container">
 
-    <script src="script.js"></script>
+        <div class="philosophy-layout">
 
-    <script>
-        /*
-         * Project page safety:
-         * Placeholder project links should not navigate anywhere
-         * until real URLs are added.
-         */
+          <div class="philosophy-title reveal">
 
-        document.querySelectorAll("[data-project-link]").forEach(link => {
-            link.addEventListener("click", event => {
-                const href = link.getAttribute("href");
+            <span class="section-number">03 / ENGINEERING VIEW</span>
 
-                if (!href || href === "#") {
-                    event.preventDefault();
+            <h2>
+              MORE THAN
+              <span>THE UI.</span>
+            </h2>
 
-                    link.classList.add("is-disabled");
+          </div>
 
-                    const originalText = link.textContent;
+          <div class="philosophy-copy reveal">
 
-                    link.textContent = "LINK NOT ADDED";
+            <p class="large-copy">
+              Good digital work sits at the intersection of
+              <strong>experience, engineering and intelligence.</strong>
+            </p>
 
-                    setTimeout(() => {
-                        link.textContent = originalText;
-                        link.classList.remove("is-disabled");
-                    }, 1600);
-                }
-            });
-        });
+            <div class="philosophy-equation">
+              EXPERIENCE
+              <span>+</span>
+              ENGINEERING
+              <span>+</span>
+              INTELLIGENCE
+              <span>=</span>
+              IMPACT
+            </div>
+
+            <p>
+              I care about the complete system behind the interface:
+              architecture, data flow, context, security, usability,
+              performance and the people who ultimately depend on it.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
 
 
-        /*
-         * Subtle pointer tracking for project cards.
-         */
+    <!-- =========================
+         TABAYYUN EXTERNAL PLATFORM
+    ========================== -->
+    <section class="section external-platform">
+      <div class="container">
 
-        if (window.matchMedia("(pointer: fine)").matches) {
+        <div class="external-card reveal">
 
-            document.querySelectorAll(".project-card").forEach(card => {
+          <div class="external-copy">
 
-                card.addEventListener("pointermove", event => {
+            <span class="section-number">
+              EXTERNAL PLATFORM
+            </span>
 
-                    const rect = card.getBoundingClientRect();
+            <h2>
+              TABAYYUN
+              <span>TV.</span>
+            </h2>
 
-                    const x =
-                        ((event.clientX - rect.left) / rect.width) * 100;
+            <p>
+              Explore Tabayyun Institute's platform directly.
+              This is an external destination, not a portfolio case study.
+            </p>
 
-                    const y =
-                        ((event.clientY - rect.top) / rect.height) * 100;
+          </div>
 
-                    card.style.setProperty("--mouse-x", `${x}%`);
-                    card.style.setProperty("--mouse-y", `${y}%`);
+          <a
+            href="https://www.tabayyuninstitute.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-primary"
+          >
+            VISIT TABAYYUN TV
+            <span>↗</span>
+          </a>
 
-                });
+        </div>
 
-            });
+      </div>
+    </section>
 
-        }
-    </script>
+
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+    <section class="section final-cta">
+      <div class="container">
+
+        <div class="final-cta-inner reveal">
+
+          <span class="section-number">
+            HAVE A PROJECT?
+          </span>
+
+          <h2>
+            LET'S BUILD
+            <span>SOMETHING USEFUL.</span>
+          </h2>
+
+          <p>
+            If you have a difficult problem, a product idea,
+            an AI system or a digital experience worth building,
+            let's talk.
+          </p>
+
+          <a href="contact.html" class="button button-primary">
+            START A CONVERSATION
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <div class="footer-top">
+
+        <a href="index.html" class="footer-brand">
+
+          <img
+            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+            alt="SNK"
+          />
+
+          <div>
+            <strong>SHAH NEIL KHAN</strong>
+            <span>SOFTWARE / AI / EXPERIENCE</span>
+          </div>
+
+        </a>
+
+        <div class="footer-links">
+
+          <a href="projects.html">Work</a>
+          <a href="expertise.html">Expertise</a>
+          <a href="experience.html">Experience</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span data-current-year></span> SHAH NEIL KHAN
+        </span>
+
+        <span>
+          CODE → INTELLIGENCE → EXPERIENCE
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script src="script.js"></script>
 
 </body>
 </html>
+```
