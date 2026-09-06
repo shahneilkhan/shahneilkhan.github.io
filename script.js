@@ -1,53 +1,92 @@
 /* =========================================================
-   SNK PERSONAL BRAND — FINAL SCRIPT.JS
+   SHAH NEIL KHAN — V3.1
+   MAIN JAVASCRIPT
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-  "use strict";
-
 
   /* =======================================================
      01. ELEMENTS
   ======================================================= */
 
-  const html = document.documentElement;
   const body = document.body;
 
+  const header =
+    document.querySelector(".site-header");
+
   const themeToggle =
-    document.querySelector("[data-theme-toggle]");
+    document.querySelector(".theme-toggle");
 
   const languageToggle =
-    document.querySelector("[data-language-toggle]");
+    document.querySelector(".language-toggle");
 
   const rainToggle =
-    document.querySelector("[data-rain-toggle]");
+    document.querySelector(".rain-toggle");
 
   const rainContainer =
-    document.getElementById("rain");
+    document.querySelector(".rain-container");
 
   const birdsContainer =
-    document.getElementById("birds");
+    document.querySelector(".birds");
 
-  const terminalText =
-    document.getElementById("terminalText");
+  const typingText =
+    document.querySelector(".typing-text");
+
+  const navLinks =
+    document.querySelectorAll(".main-nav a");
+
+  const sections =
+    document.querySelectorAll("main section[id]");
 
 
   /* =======================================================
-     02. THEME — DARK / LIGHT
+     02. STORAGE HELPERS
+  ======================================================= */
+
+  const storage = {
+    get(key, fallback = null) {
+      try {
+        const value =
+          localStorage.getItem(key);
+
+        return value === null
+          ? fallback
+          : value;
+      } catch {
+        return fallback;
+      }
+    },
+
+    set(key, value) {
+      try {
+        localStorage.setItem(
+          key,
+          value
+        );
+      } catch {
+        // Ignore storage errors
+      }
+    }
+  };
+
+
+  /* =======================================================
+     03. THEME
   ======================================================= */
 
   const savedTheme =
-    localStorage.getItem("snk-theme");
+    storage.get("snk-theme", "dark");
 
   if (savedTheme === "light") {
-    html.classList.add("light");
+    body.classList.add("light");
   }
 
   function updateThemeButton() {
+
     if (!themeToggle) return;
 
     const isLight =
-      html.classList.contains("light");
+      body.classList.contains("light");
 
     themeToggle.textContent =
       isLight ? "☾" : "☼";
@@ -62,136 +101,468 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateThemeButton();
 
+
   if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
 
-      html.classList.toggle("light");
+    themeToggle.addEventListener(
+      "click",
+      () => {
 
-      const isLight =
-        html.classList.contains("light");
+        body.classList.toggle("light");
 
-      localStorage.setItem(
-        "snk-theme",
-        isLight ? "light" : "dark"
-      );
+        const theme =
+          body.classList.contains("light")
+            ? "light"
+            : "dark";
 
-      updateThemeButton();
-    });
+        storage.set(
+          "snk-theme",
+          theme
+        );
+
+        updateThemeButton();
+
+      }
+    );
+
   }
 
 
   /* =======================================================
-     03. LANGUAGE — ENGLISH / BANGLA
+     04. LANGUAGE
   ======================================================= */
 
   const translations = {
 
     en: {
-      navHome: "Home",
-      navEcosystem: "Ecosystem",
-      navAI: "AI",
-      navExpertise: "Expertise",
-      navExperience: "Experience",
-      navAbout: "About",
-      navBrand: "Brand",
-      navContact: "Contact",
+
+      nav: [
+        "Home",
+        "Ecosystem",
+        "AI",
+        "Expertise",
+        "Experience",
+        "About",
+        "Brand",
+        "Contact"
+      ],
 
       heroEyebrow:
-        "PERSONAL BRAND · DIGITAL EXPERIENCE · SYSTEMS THINKING",
+        "UX · DIGITAL EXPERIENCE · SYSTEMS · AI",
+
+      heroTitle:
+        `I BUILD SYSTEMS.<br>
+         I TRAIN MINDS.<br>
+         I CREATE <span>IMPACT.</span>`,
 
       heroDescription:
-        "UX thinking, digital experiences, AI-assisted systems and a growing ecosystem of ideas, products and brands.",
+        "I design digital experiences, build systems, explore AI and create ideas that move people forward.",
 
       explore:
-        "Explore Ecosystem",
+        "Explore My World",
 
-      experience:
-        "My Experience"
+      connect:
+        "Let's Connect",
+
+      ecosystemKicker:
+        "MY ECOSYSTEM",
+
+      ecosystemTitle:
+        "One mind.<br>Multiple directions.",
+
+      ecosystemDescription:
+        "Different platforms, different missions — connected by one vision.",
+
+      aiKicker:
+        "AI & THINKING",
+
+      aiTitle:
+        "I don't just use AI. I think with it.",
+
+      aiDescription:
+        "AI is becoming part of how I explore ideas, solve problems, automate workflows and understand what's possible next.",
+
+      aiLink:
+        "Let's build with intelligence ↗",
+
+      expertiseKicker:
+        "EXPERTISE",
+
+      expertiseTitle:
+        "Where design meets systems.",
+
+      expertiseDescription:
+        "A multidisciplinary approach to digital experience, product thinking and execution.",
+
+      experienceKicker:
+        "EXPERIENCE",
+
+      experienceTitle:
+        "EXPERIENCE<br>SHAPES THE MIND.",
+
+      experienceDescription:
+        "Every role teaches something. Every project changes how I think.",
+
+      aboutKicker:
+        "ABOUT",
+
+      aboutTitle:
+        "Curiosity drives<br>everything.",
+
+      brandKicker:
+        "BEYOND PORTFOLIO",
+
+      brandTitle:
+        "Ideas need a place<br>to travel.",
+
+      contactKicker:
+        "CONTACT",
+
+      contactTitle:
+        "Let's make something<br>meaningful.",
+
+      contactDescription:
+        "Have an idea, project or opportunity? Let's start a conversation."
+
     },
 
+
     bn: {
-      navHome: "হোম",
-      navEcosystem: "ইকোসিস্টেম",
-      navAI: "এআই",
-      navExpertise: "দক্ষতা",
-      navExperience: "অভিজ্ঞতা",
-      navAbout: "সম্পর্কে",
-      navBrand: "ব্র্যান্ড",
-      navContact: "যোগাযোগ",
+
+      nav: [
+        "হোম",
+        "ইকোসিস্টেম",
+        "AI",
+        "দক্ষতা",
+        "অভিজ্ঞতা",
+        "আমার সম্পর্কে",
+        "ব্র্যান্ড",
+        "যোগাযোগ"
+      ],
 
       heroEyebrow:
-        "পার্সোনাল ব্র্যান্ড · ডিজিটাল এক্সপেরিয়েন্স · সিস্টেমস থিংকিং",
+        "UX · DIGITAL EXPERIENCE · SYSTEMS · AI",
+
+      heroTitle:
+        `আমি সিস্টেম তৈরি করি।<br>
+         আমি চিন্তা গড়ে তুলি।<br>
+         আমি <span>প্রভাব তৈরি করি।</span>`,
 
       heroDescription:
-        "UX চিন্তা, ডিজিটাল এক্সপেরিয়েন্স, AI-সহায়ক সিস্টেম এবং বিভিন্ন আইডিয়া, প্রোডাক্ট ও ব্র্যান্ডের একটি ক্রমবর্ধমান ইকোসিস্টেম।",
+        "আমি ডিজিটাল অভিজ্ঞতা ডিজাইন করি, সিস্টেম তৈরি করি, AI নিয়ে কাজ করি এবং এমন আইডিয়া তৈরি করি যা মানুষকে সামনে এগিয়ে নিয়ে যায়।",
 
       explore:
-        "ইকোসিস্টেম দেখুন",
+        "আমার জগত দেখুন",
 
-      experience:
-        "আমার অভিজ্ঞতা"
+      connect:
+        "যোগাযোগ করুন",
+
+      ecosystemKicker:
+        "আমার ইকোসিস্টেম",
+
+      ecosystemTitle:
+        "একটি মন।<br>বহু দিক।",
+
+      ecosystemDescription:
+        "বিভিন্ন প্ল্যাটফর্ম, বিভিন্ন উদ্দেশ্য — একটি ভিশনের মাধ্যমে সংযুক্ত।",
+
+      aiKicker:
+        "AI ও চিন্তাভাবনা",
+
+      aiTitle:
+        "আমি শুধু AI ব্যবহার করি না। AI-এর সাথে চিন্তা করি।",
+
+      aiDescription:
+        "আইডিয়া অন্বেষণ, সমস্যা সমাধান, workflow automation এবং ভবিষ্যতের সম্ভাবনা বোঝার ক্ষেত্রে AI আমার চিন্তার অংশ হয়ে উঠছে।",
+
+      aiLink:
+        "Intelligence দিয়ে তৈরি করি ↗",
+
+      expertiseKicker:
+        "দক্ষতা",
+
+      expertiseTitle:
+        "যেখানে design এবং systems একসাথে কাজ করে।",
+
+      expertiseDescription:
+        "Digital experience, product thinking এবং execution-এর একটি multidisciplinary approach।",
+
+      experienceKicker:
+        "অভিজ্ঞতা",
+
+      experienceTitle:
+        "অভিজ্ঞতা<br>চিন্তাকে গড়ে তোলে।",
+
+      experienceDescription:
+        "প্রতিটি role কিছু শেখায়। প্রতিটি project চিন্তার ধরন বদলে দেয়।",
+
+      aboutKicker:
+        "আমার সম্পর্কে",
+
+      aboutTitle:
+        "কৌতূহলই<br>সবকিছুর চালিকা শক্তি।",
+
+      brandKicker:
+        "PORTFOLIO-এর বাইরে",
+
+      brandTitle:
+        "আইডিয়ারও<br>একটি গন্তব্য দরকার।",
+
+      contactKicker:
+        "যোগাযোগ",
+
+      contactTitle:
+        "চলুন অর্থবহ কিছু<br>তৈরি করি।",
+
+      contactDescription:
+        "কোনো idea, project বা opportunity আছে? চলুন কথা বলি।"
+
     }
 
   };
 
 
   let currentLanguage =
-    localStorage.getItem("snk-language") || "en";
+    storage.get(
+      "snk-language",
+      "en"
+    );
+
+  if (
+    currentLanguage !== "en" &&
+    currentLanguage !== "bn"
+  ) {
+    currentLanguage = "en";
+  }
+
+
+  function setHTML(
+    selector,
+    value
+  ) {
+
+    const element =
+      document.querySelector(selector);
+
+    if (!element) return;
+
+    element.innerHTML = value;
+  }
+
+
+  function setText(
+    selector,
+    value
+  ) {
+
+    const element =
+      document.querySelector(selector);
+
+    if (!element) return;
+
+    element.textContent = value;
+  }
 
 
   function applyLanguage(language) {
 
-    currentLanguage = language;
+    const t =
+      translations[language];
 
-    localStorage.setItem(
-      "snk-language",
-      language
-    );
-
-    html.setAttribute(
-      "lang",
-      language === "bn" ? "bn" : "en"
-    );
+    if (!t) return;
 
 
-    /*
-      Optional translation support.
+    /* NAV */
 
-      Any element with:
-      data-i18n="key"
+    navLinks.forEach(
+      (link, index) => {
 
-      will automatically receive
-      the matching translation.
-    */
-
-    document
-      .querySelectorAll("[data-i18n]")
-      .forEach((element) => {
-
-        const key =
-          element.dataset.i18n;
-
-        if (
-          translations[language] &&
-          translations[language][key]
-        ) {
-          element.textContent =
-            translations[language][key];
+        if (t.nav[index]) {
+          link.textContent =
+            t.nav[index];
         }
 
-      });
+      }
+    );
 
+
+    /* HERO */
+
+    setText(
+      ".hero .eyebrow",
+      t.heroEyebrow
+    );
+
+    setHTML(
+      ".hero h1",
+      t.heroTitle
+    );
+
+    setText(
+      ".hero-description",
+      t.heroDescription
+    );
+
+    setText(
+      ".hero-actions .btn-primary",
+      t.explore
+    );
+
+    setText(
+      ".hero-actions .btn-secondary",
+      t.connect
+    );
+
+
+    /* ECOSYSTEM */
+
+    setText(
+      ".ecosystem-section .section-kicker",
+      t.ecosystemKicker
+    );
+
+    setHTML(
+      ".ecosystem-section .section-heading h2",
+      t.ecosystemTitle
+    );
+
+    setText(
+      ".ecosystem-section .section-heading p",
+      t.ecosystemDescription
+    );
+
+
+    /* AI */
+
+    setText(
+      ".ai-section .section-kicker",
+      t.aiKicker
+    );
+
+    setText(
+      ".ai-copy h2",
+      t.aiTitle
+    );
+
+    setText(
+      ".ai-copy > p:not(.section-kicker)",
+      t.aiDescription
+    );
+
+    setText(
+      ".ai-copy .text-link",
+      t.aiLink
+    );
+
+
+    /* EXPERTISE */
+
+    setText(
+      ".expertise-section .section-kicker",
+      t.expertiseKicker
+    );
+
+    setText(
+      ".expertise-section .section-heading h2",
+      t.expertiseTitle
+    );
+
+    setText(
+      ".expertise-section .section-heading p",
+      t.expertiseDescription
+    );
+
+
+    /* EXPERIENCE */
+
+    setText(
+      ".experience-heading .section-kicker",
+      t.experienceKicker
+    );
+
+    setHTML(
+      ".experience-heading h2",
+      t.experienceTitle
+    );
+
+    setText(
+      ".experience-heading > p:not(.section-kicker)",
+      t.experienceDescription
+    );
+
+
+    /* ABOUT */
+
+    setText(
+      ".about-section .section-kicker",
+      t.aboutKicker
+    );
+
+    setHTML(
+      ".about-section .section-heading h2",
+      t.aboutTitle
+    );
+
+
+    /* BRAND */
+
+    setText(
+      ".brand-section .section-kicker",
+      t.brandKicker
+    );
+
+    setHTML(
+      ".brand-section .section-heading h2",
+      t.brandTitle
+    );
+
+
+    /* CONTACT */
+
+    setText(
+      ".contact-section .section-kicker",
+      t.contactKicker
+    );
+
+    setHTML(
+      ".contact-heading h2",
+      t.contactTitle
+    );
+
+    setText(
+      ".contact-heading > p:not(.section-kicker)",
+      t.contactDescription
+    );
+
+
+    /* BUTTON */
 
     if (languageToggle) {
+
       languageToggle.textContent =
         language === "en"
           ? "বাংলা"
           : "EN";
+
     }
+
+
+    document.documentElement.lang =
+      language === "bn"
+        ? "bn"
+        : "en";
+
+    storage.set(
+      "snk-language",
+      language
+    );
 
   }
 
-  applyLanguage(currentLanguage);
+
+  applyLanguage(
+    currentLanguage
+  );
 
 
   if (languageToggle) {
@@ -200,12 +571,14 @@ document.addEventListener("DOMContentLoaded", () => {
       "click",
       () => {
 
-        const nextLanguage =
+        currentLanguage =
           currentLanguage === "en"
             ? "bn"
             : "en";
 
-        applyLanguage(nextLanguage);
+        applyLanguage(
+          currentLanguage
+        );
 
       }
     );
@@ -214,50 +587,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     04. TERMINAL TYPING
+     05. TERMINAL TYPING
   ======================================================= */
 
-  const terminalMessages = [
-    "thinking_in_systems()",
-    "designing_better_experiences()",
-    "building_digital_ecosystems()",
-    "learning_with_ai()",
-    "creating_meaningful_impact()"
+  const typingWords = [
+
+    "thinking...",
+    "designing...",
+    "building...",
+    "learning...",
+    "creating...",
+    "solving..."
+
   ];
 
-  let terminalMessageIndex = 0;
-  let terminalCharacterIndex = 0;
-  let terminalDeleting = false;
+  let wordIndex = 0;
+  let characterIndex = 0;
+  let deleting = false;
+
 
   function typeTerminal() {
 
-    if (!terminalText) return;
+    if (!typingText) return;
 
-    const message =
-      terminalMessages[
-        terminalMessageIndex
-      ];
+    const word =
+      typingWords[wordIndex];
 
-    if (!terminalDeleting) {
+    if (!deleting) {
 
-      terminalCharacterIndex++;
+      characterIndex++;
 
-      terminalText.textContent =
-        message.substring(
+      typingText.textContent =
+        word.substring(
           0,
-          terminalCharacterIndex
+          characterIndex
         );
 
       if (
-        terminalCharacterIndex >=
-        message.length
+        characterIndex >=
+        word.length
       ) {
 
-        terminalDeleting = true;
+        deleting = true;
 
         setTimeout(
           typeTerminal,
-          1800
+          1100
         );
 
         return;
@@ -265,23 +640,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
 
-      terminalCharacterIndex--;
+      characterIndex--;
 
-      terminalText.textContent =
-        message.substring(
+      typingText.textContent =
+        word.substring(
           0,
-          terminalCharacterIndex
+          characterIndex
         );
 
-      if (
-        terminalCharacterIndex <= 0
-      ) {
+      if (characterIndex <= 0) {
 
-        terminalDeleting = false;
+        deleting = false;
 
-        terminalMessageIndex =
-          (terminalMessageIndex + 1) %
-          terminalMessages.length;
+        wordIndex =
+          (wordIndex + 1) %
+          typingWords.length;
 
       }
 
@@ -289,26 +662,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(
       typeTerminal,
-      terminalDeleting ? 35 : 70
+      deleting ? 45 : 75
     );
+
   }
+
 
   typeTerminal();
 
 
   /* =======================================================
-     05. RAIN SYSTEM
+     06. RAIN
   ======================================================= */
 
-  let rainEnabled =
-    localStorage.getItem("snk-rain") === "true";
-
-
-  function random(min, max) {
-    return Math.random() *
-      (max - min) +
-      min;
-  }
+  let rainActive =
+    storage.get(
+      "snk-rain",
+      "off"
+    ) === "on";
 
 
   function createRain() {
@@ -317,22 +688,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     rainContainer.innerHTML = "";
 
-    const screenWidth =
-      window.innerWidth;
+    if (!rainActive) return;
 
-    const dropCount =
-      Math.min(
-        170,
-        Math.max(
-          65,
-          Math.floor(screenWidth / 8)
-        )
-      );
+
+    const amount =
+      window.innerWidth < 700
+        ? 55
+        : 110;
 
 
     for (
       let i = 0;
-      i < dropCount;
+      i < amount;
       i++
     ) {
 
@@ -343,21 +710,24 @@ document.addEventListener("DOMContentLoaded", () => {
         "rain-drop";
 
       drop.style.left =
-        `${random(0, 100)}%`;
+        `${Math.random() * 100}%`;
 
       drop.style.height =
-        `${random(35, 95)}px`;
+        `${12 + Math.random() * 22}px`;
 
       drop.style.opacity =
-        random(0.12, 0.42);
+        `${.12 + Math.random() * .28}`;
 
       drop.style.animationDuration =
-        `${random(0.55, 1.25)}s`;
+        `${.55 + Math.random() * .65}s`;
 
       drop.style.animationDelay =
-        `${random(-2, 0)}s`;
+        `${Math.random() * 1.5}s`;
 
-      rainContainer.appendChild(drop);
+      rainContainer.appendChild(
+        drop
+      );
+
     }
 
   }
@@ -365,34 +735,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateRain() {
 
-    if (!rainContainer) return;
-
-    rainContainer.classList.toggle(
-      "active",
-      rainEnabled
+    body.classList.toggle(
+      "rain-active",
+      rainActive
     );
 
     if (rainToggle) {
 
       rainToggle.textContent =
-        rainEnabled
+        rainActive
           ? "Rain ✓"
           : "Rain";
 
-      rainToggle.setAttribute(
-        "aria-pressed",
-        rainEnabled
-          ? "true"
-          : "false"
-      );
     }
 
-  }
+    storage.set(
+      "snk-rain",
+      rainActive
+        ? "on"
+        : "off"
+    );
 
-
-  if (rainEnabled) {
     createRain();
+
   }
+
 
   updateRain();
 
@@ -403,17 +770,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "click",
       () => {
 
-        rainEnabled =
-          !rainEnabled;
-
-        localStorage.setItem(
-          "snk-rain",
-          rainEnabled
-        );
-
-        if (rainEnabled) {
-          createRain();
-        }
+        rainActive =
+          !rainActive;
 
         updateRain();
 
@@ -424,7 +782,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     06. FLYING BIRDS
+     07. FLYING BIRDS
   ======================================================= */
 
   function createBirds() {
@@ -433,15 +791,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     birdsContainer.innerHTML = "";
 
-    const birdCount =
-      window.innerWidth < 700
-        ? 4
-        : 7;
+
+    const amount =
+      window.innerWidth < 600
+        ? 3
+        : 6;
 
 
     for (
       let i = 0;
-      i < birdCount;
+      i < amount;
       i++
     ) {
 
@@ -451,66 +810,143 @@ document.addEventListener("DOMContentLoaded", () => {
       bird.className =
         "bird";
 
-      bird.style.top =
-        `${random(8, 52)}%`;
-
       bird.style.left =
-        `${random(-15, 75)}%`;
+        `${10 + Math.random() * 80}%`;
 
-      bird.style.transform =
-        `scale(${random(0.55, 1.1)})`;
+      bird.style.top =
+        `${8 + Math.random() * 42}%`;
 
-      bird.style.animationDuration =
-        `${random(18, 32)}s`;
+      bird.style.animation =
+        `birdFly ${
+          18 + Math.random() * 18
+        }s linear infinite`;
 
       bird.style.animationDelay =
-        `${random(-25, 0)}s`;
+        `${Math.random() * -20}s`;
 
-      birdsContainer.appendChild(bird);
+      bird.style.transform =
+        `scale(${
+          .65 + Math.random() * .65
+        })`;
+
+      birdsContainer.appendChild(
+        bird
+      );
+
     }
 
   }
+
+
+  const birdAnimationStyle =
+    document.createElement("style");
+
+  birdAnimationStyle.textContent = `
+
+    @keyframes birdFly {
+
+      0% {
+        transform:
+          translate3d(
+            -120px,
+            0,
+            0
+          )
+          scale(.7);
+      }
+
+      50% {
+        transform:
+          translate3d(
+            35vw,
+            -35px,
+            0
+          )
+          scale(1);
+      }
+
+      100% {
+        transform:
+          translate3d(
+            100vw,
+            20px,
+            0
+          )
+          scale(.65);
+      }
+
+    }
+
+  `;
+
+  document.head.appendChild(
+    birdAnimationStyle
+  );
 
   createBirds();
 
 
   /* =======================================================
-     07. SCROLL REVEAL
+     08. SCROLL REVEAL
   ======================================================= */
 
   const revealElements =
-    document.querySelectorAll(".reveal");
+    document.querySelectorAll(
+      ".section-heading, " +
+      ".ecosystem-card, " +
+      ".expertise-card, " +
+      ".experience-card, " +
+      ".about-copy, " +
+      ".brand-banner, " +
+      ".social-card, " +
+      ".ai-copy, " +
+      ".ai-visual"
+    );
+
+
+  revealElements.forEach(
+    (element) => {
+
+      element.classList.add(
+        "reveal"
+      );
+
+    }
+  );
 
 
   if (
-    "IntersectionObserver" in window
+    "IntersectionObserver"
+    in window
   ) {
 
     const revealObserver =
       new IntersectionObserver(
         (entries, observer) => {
 
-          entries.forEach((entry) => {
+          entries.forEach(
+            (entry) => {
 
-            if (
-              entry.isIntersecting
-            ) {
+              if (
+                entry.isIntersecting
+              ) {
 
-              entry.target.classList.add(
-                "visible"
-              );
+                entry.target.classList.add(
+                  "visible"
+                );
 
-              observer.unobserve(
-                entry.target
-              );
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
 
             }
-
-          });
+          );
 
         },
         {
-          threshold: 0.12,
+          threshold: .12,
           rootMargin:
             "0px 0px -40px 0px"
         }
@@ -519,7 +955,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(
       (element) => {
-        revealObserver.observe(element);
+
+        revealObserver.observe(
+          element
+        );
+
       }
     );
 
@@ -527,7 +967,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(
       (element) => {
-        element.classList.add("visible");
+
+        element.classList.add(
+          "visible"
+        );
+
       }
     );
 
@@ -535,66 +979,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     08. SMOOTH ANCHOR NAVIGATION
+     09. HEADER SCROLL STATE
   ======================================================= */
 
-  document
-    .querySelectorAll(
-      'a[href^="#"]'
-    )
-    .forEach((link) => {
+  function updateHeader() {
 
-      link.addEventListener(
-        "click",
-        (event) => {
+    if (!header) return;
 
-          const targetId =
-            link.getAttribute("href");
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 30
+    );
 
-          if (
-            !targetId ||
-            targetId === "#"
-          ) {
-            return;
-          }
+  }
 
-          const target =
-            document.querySelector(
-              targetId
-            );
 
-          if (!target) return;
+  updateHeader();
 
-          event.preventDefault();
-
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-        }
-      );
-
-    });
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    {
+      passive: true
+    }
+  );
 
 
   /* =======================================================
-     09. ACTIVE NAVIGATION
+     10. ACTIVE NAV
   ======================================================= */
 
-  const sections =
-    document.querySelectorAll(
-      "main section[id]"
-    );
-
-  const navLinks =
-    document.querySelectorAll(
-      ".main-nav a"
-    );
-
-
   if (
-    "IntersectionObserver" in window
+    "IntersectionObserver"
+    in window
   ) {
 
     const navObserver =
@@ -605,47 +1022,49 @@ document.addEventListener("DOMContentLoaded", () => {
             (entry) => {
 
               if (
-                !entry.isIntersecting
+                entry.isIntersecting
               ) {
-                return;
-              }
 
-              const currentId =
-                entry.target.id;
+                const id =
+                  entry.target.id;
 
+                navLinks.forEach(
+                  (link) => {
 
-              navLinks.forEach(
-                (link) => {
+                    const href =
+                      link.getAttribute(
+                        "href"
+                      );
 
-                  const linkTarget =
-                    link.getAttribute(
-                      "href"
+                    link.classList.toggle(
+                      "active",
+                      href ===
+                      `#${id}`
                     );
 
-                  link.classList.toggle(
-                    "active",
-                    linkTarget ===
-                      `#${currentId}`
-                  );
+                  }
+                );
 
-                }
-              );
+              }
 
             }
           );
 
         },
         {
-          threshold: 0.25,
           rootMargin:
-            "-20% 0px -60% 0px"
+            "-30% 0px -55% 0px"
         }
       );
 
 
     sections.forEach(
       (section) => {
-        navObserver.observe(section);
+
+        navObserver.observe(
+          section
+        );
+
       }
     );
 
@@ -653,182 +1072,209 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     10. HEADER SCROLL EFFECT
+     11. SMOOTH ANCHOR NAVIGATION
   ======================================================= */
 
-  let lastScrollY =
-    window.scrollY;
+  const internalLinks =
+    document.querySelectorAll(
+      'a[href^="#"]'
+    );
 
 
-  function handleHeaderScroll() {
+  internalLinks.forEach(
+    (link) => {
 
-    const header =
-      document.querySelector(
-        ".site-header"
-      );
+      link.addEventListener(
+        "click",
+        (event) => {
 
-    if (!header) return;
+          const targetId =
+            link
+              .getAttribute("href")
+              .substring(1);
 
-    const currentScroll =
-      window.scrollY;
+          if (!targetId) return;
 
+          const target =
+            document.getElementById(
+              targetId
+            );
 
-    if (currentScroll > 30) {
+          if (!target) return;
 
-      header.classList.add(
-        "scrolled"
-      );
-
-    } else {
-
-      header.classList.remove(
-        "scrolled"
-      );
-
-    }
+          event.preventDefault();
 
 
-    lastScrollY =
-      currentScroll;
-
-  }
-
-
-  window.addEventListener(
-    "scroll",
-    handleHeaderScroll,
-    {
-      passive: true
-    }
-  );
-
-  handleHeaderScroll();
+          const headerHeight =
+            header
+              ? header.offsetHeight
+              : 0;
 
 
-  /* =======================================================
-     11. RAIN RESIZE
-  ======================================================= */
+          const targetPosition =
+            target.getBoundingClientRect()
+              .top +
+            window.scrollY -
+            headerHeight;
 
-  let resizeTimer;
 
-  window.addEventListener(
-    "resize",
-    () => {
+          window.scrollTo({
+            top:
+              Math.max(
+                targetPosition,
+                0
+              ),
+            behavior:
+              "smooth"
+          });
 
-      clearTimeout(resizeTimer);
 
-      resizeTimer =
-        setTimeout(() => {
+          try {
 
-          if (rainEnabled) {
-            createRain();
+            history.replaceState(
+              null,
+              "",
+              `#${targetId}`
+            );
+
+          } catch {
+            // Ignore history errors
           }
 
-          createBirds();
-
-        }, 250);
+        }
+      );
 
     }
   );
 
 
   /* =======================================================
-     12. CARD POINTER EFFECT
+     12. HOME HASH FIX
   ======================================================= */
 
-  const cards =
-    document.querySelectorAll(
-      ".ecosystem-card, .social-card, .expertise-card"
-    );
+  if (
+    window.location.hash === "#home"
+  ) {
 
-
-  cards.forEach((card) => {
-
-    card.addEventListener(
-      "pointermove",
-      (event) => {
-
-        if (
-          window.innerWidth < 760
-        ) {
-          return;
-        }
-
-        const rect =
-          card.getBoundingClientRect();
-
-        const x =
-          event.clientX -
-          rect.left;
-
-        const y =
-          event.clientY -
-          rect.top;
-
-        const rotateX =
-          ((y / rect.height) - 0.5) *
-          -3;
-
-        const rotateY =
-          ((x / rect.width) - 0.5) *
-          3;
-
-        card.style.transform =
-          `perspective(800px)
-           rotateX(${rotateX}deg)
-           rotateY(${rotateY}deg)
-           translateY(-5px)`;
-
-      }
-    );
-
-
-    card.addEventListener(
-      "pointerleave",
+    setTimeout(
       () => {
 
-        card.style.transform = "";
+        window.scrollTo({
+          top: 0,
+          behavior: "auto"
+        });
 
-      }
+      },
+      50
     );
 
-  });
+  }
 
 
   /* =======================================================
-     13. KEYBOARD ACCESSIBILITY
+     13. CARD POINTER EFFECT
+  ======================================================= */
+
+  const interactiveCards =
+    document.querySelectorAll(
+      ".ecosystem-card, " +
+      ".expertise-card, " +
+      ".social-card, " +
+      ".brand-banner"
+    );
+
+
+  interactiveCards.forEach(
+    (card) => {
+
+      card.addEventListener(
+        "pointermove",
+        (event) => {
+
+          if (
+            window.innerWidth < 800
+          ) {
+            return;
+          }
+
+          const rect =
+            card.getBoundingClientRect();
+
+          const x =
+            event.clientX -
+            rect.left;
+
+          const y =
+            event.clientY -
+            rect.top;
+
+          const rotateX =
+            ((y / rect.height) -
+              .5) * -3;
+
+          const rotateY =
+            ((x / rect.width) -
+              .5) * 3;
+
+
+          card.style.transform =
+            `
+              perspective(900px)
+              translateY(-7px)
+              rotateX(${rotateX}deg)
+              rotateY(${rotateY}deg)
+            `;
+
+        }
+      );
+
+
+      card.addEventListener(
+        "pointerleave",
+        () => {
+
+          card.style.transform = "";
+
+        }
+      );
+
+    }
+  );
+
+
+  /* =======================================================
+     14. KEYBOARD SHORTCUT
   ======================================================= */
 
   document.addEventListener(
     "keydown",
     (event) => {
 
-      /*
-        Press "T" to toggle theme.
-        Avoid triggering while typing.
-      */
-
-      const activeElement =
-        document.activeElement;
-
-      const isTyping =
-        activeElement &&
-        (
-          activeElement.tagName ===
-            "INPUT" ||
-          activeElement.tagName ===
-            "TEXTAREA" ||
-          activeElement.isContentEditable
-        );
-
-
       if (
         event.key.toLowerCase() === "t" &&
-        !isTyping &&
-        themeToggle
+        !event.ctrlKey &&
+        !event.metaKey &&
+        !event.altKey
       ) {
 
-        themeToggle.click();
+        const activeElement =
+          document.activeElement;
+
+        const isTyping =
+          activeElement &&
+          (
+            activeElement.tagName ===
+              "INPUT" ||
+            activeElement.tagName ===
+              "TEXTAREA" ||
+            activeElement.isContentEditable
+          );
+
+        if (isTyping) return;
+
+        if (themeToggle) {
+          themeToggle.click();
+        }
 
       }
 
@@ -837,20 +1283,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     14. CONSOLE BRAND MESSAGE
+     15. RESIZE
+  ======================================================= */
+
+  let resizeTimer;
+
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      clearTimeout(
+        resizeTimer
+      );
+
+      resizeTimer =
+        setTimeout(
+          () => {
+
+            createRain();
+            createBirds();
+
+          },
+          250
+        );
+
+    }
+  );
+
+
+  /* =======================================================
+     16. CONSOLE BRANDING
   ======================================================= */
 
   console.log(
-    "%c SNK ",
-    "background:#e6a35b;color:#080909;font-weight:800;padding:5px 9px;border-radius:5px;"
+    "%c SHAH NEIL KHAN ",
+    "background:#d89a55;color:#080808;font-size:18px;font-weight:800;padding:8px 14px;"
   );
 
   console.log(
-    "Shah Neil Khan — Personal Brand"
+    "%cI BUILD SYSTEMS. I TRAIN MINDS. I CREATE IMPACT.",
+    "color:#d89a55;font-size:12px;font-weight:600;"
   );
 
-  console.log(
-    "Build. Learn. Share."
-  );
 
 });
