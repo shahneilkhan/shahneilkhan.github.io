@@ -2,787 +2,1085 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>CV — Shah Neil Khan</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
   <meta
     name="description"
-    content="Professional CV and career profile of Shah Neil Khan."
+    content="CV — Shah Neil Khan, UX Lead Digital Expert and digital experience professional."
   />
+
+  <title>CV — Shah Neil Khan</title>
 
   <link
     rel="icon"
-    type="image/svg+xml"
     href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
   />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="./style.css" />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <style>
+    /* =========================================================
+       CV PAGE
+       ========================================================= */
 
-  <link rel="stylesheet" href="style.css" />
+    .cv-page {
+      min-height: 100vh;
+      padding: 145px 5vw 90px;
+    }
+
+    .cv-shell {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+    }
+
+    /* CV HEADER --------------------------------------------- */
+
+    .cv-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: end;
+      padding-bottom: 38px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .cv-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: #d8a64b;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .cv-kicker::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: #d8a64b;
+    }
+
+    .cv-name {
+      margin: 0;
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: .9;
+      letter-spacing: -.06em;
+    }
+
+    .cv-title {
+      margin: 17px 0 0;
+      color: rgba(255,255,255,.58);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .cv-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .cv-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.025);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+
+    .cv-button:hover {
+      border-color: rgba(216,166,75,.5);
+      background: rgba(216,166,75,.08);
+      transform: translateY(-2px);
+    }
+
+    .cv-button.primary {
+      border-color: rgba(216,166,75,.45);
+    }
+
+    /* MAIN GRID --------------------------------------------- */
+
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 65px;
+      padding-top: 48px;
+    }
+
+    .cv-main {
+      min-width: 0;
+    }
+
+    .cv-sidebar {
+      min-width: 0;
+    }
+
+    /* SECTION ----------------------------------------------- */
+
+    .cv-section {
+      margin-bottom: 52px;
+    }
+
+    .cv-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .cv-section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 24px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #d8a64b;
+    }
+
+    .cv-section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.08);
+    }
+
+    /* PROFILE ---------------------------------------------- */
+
+    .cv-profile {
+      max-width: 720px;
+      color: rgba(255,255,255,.62);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* EXPERIENCE ------------------------------------------- */
+
+    .cv-experience {
+      position: relative;
+      padding-left: 25px;
+      border-left: 1px solid rgba(216,166,75,.25);
+    }
+
+    .cv-job {
+      position: relative;
+      margin-bottom: 38px;
+    }
+
+    .cv-job:last-child {
+      margin-bottom: 0;
+    }
+
+    .cv-job::before {
+      content: "";
+      position: absolute;
+      left: -31px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border: 2px solid #d8a64b;
+      border-radius: 50%;
+      background: #0a0a0a;
+    }
+
+    .cv-job-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .cv-job h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+
+    .cv-company {
+      margin-top: 7px;
+      color: #d8a64b;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .cv-date {
+      flex-shrink: 0;
+      color: rgba(255,255,255,.43);
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .cv-location {
+      margin-top: 7px;
+      color: rgba(255,255,255,.38);
+      font-size: 11px;
+    }
+
+    .cv-job-description {
+      margin: 18px 0 0;
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* SIDEBAR ---------------------------------------------- */
+
+    .cv-side-block {
+      margin-bottom: 42px;
+    }
+
+    .cv-side-block h2 {
+      margin: 0 0 18px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #d8a64b;
+    }
+
+    .cv-contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .cv-contact-item {
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      line-height: 1.6;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .cv-contact-item:hover {
+      color: #d8a64b;
+    }
+
+    /* SKILLS ------------------------------------------------ */
+
+    .cv-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .cv-skill {
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 999px;
+      color: rgba(255,255,255,.52);
+      font-size: 10px;
+    }
+
+    /* LINKS ------------------------------------------------- */
+
+    .cv-links {
+      display: grid;
+      gap: 9px;
+    }
+
+    .cv-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      color: rgba(255,255,255,.58);
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .cv-link::after {
+      content: "↗";
+      color: #d8a64b;
+    }
+
+    .cv-link:hover {
+      color: #fff;
+    }
+
+    /* EDUCATION / OTHER ------------------------------------ */
+
+    .cv-entry {
+      margin-bottom: 24px;
+    }
+
+    .cv-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .cv-entry h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .cv-entry p {
+      margin: 6px 0 0;
+      color: rgba(255,255,255,.48);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    /* NOTE -------------------------------------------------- */
+
+    .cv-edit-note {
+      margin-top: 55px;
+      padding: 17px 19px;
+      border: 1px dashed rgba(216,166,75,.28);
+      border-radius: 14px;
+      color: rgba(255,255,255,.38);
+      font-family: ui-monospace, monospace;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .cv-edit-note strong {
+      color: #d8a64b;
+    }
+
+    /* LIGHT MODE ------------------------------------------- */
+
+    :root[data-theme="light"] .cv-title,
+    :root[data-theme="light"] .cv-profile,
+    :root[data-theme="light"] .cv-job-description,
+    :root[data-theme="light"] .cv-contact-item,
+    :root[data-theme="light"] .cv-skill,
+    :root[data-theme="light"] .cv-link,
+    :root[data-theme="light"] .cv-entry p,
+    :root[data-theme="light"] .cv-edit-note {
+      color: rgba(0,0,0,.56);
+    }
+
+    :root[data-theme="light"] .cv-button {
+      color: #111;
+      border-color: rgba(0,0,0,.1);
+      background: rgba(0,0,0,.025);
+    }
+
+    :root[data-theme="light"] .cv-job::before {
+      background: #f4f4f4;
+    }
+
+    /* PRINT ------------------------------------------------- */
+
+    @media print {
+
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+
+      body {
+        background: #fff !important;
+        color: #111 !important;
+      }
+
+      .site-header,
+      .cv-actions,
+      .rain-layer,
+      .cv-edit-note {
+        display: none !important;
+      }
+
+      .cv-page {
+        padding: 0;
+      }
+
+      .cv-header {
+        padding-top: 0;
+        border-color: #ccc;
+      }
+
+      .cv-name,
+      .cv-job h3,
+      .cv-entry h3 {
+        color: #111 !important;
+      }
+
+      .cv-title,
+      .cv-profile,
+      .cv-job-description,
+      .cv-contact-item,
+      .cv-skill,
+      .cv-link,
+      .cv-entry p,
+      .cv-date,
+      .cv-location {
+        color: #444 !important;
+      }
+
+      .cv-section-title,
+      .cv-company,
+      .cv-kicker,
+      .cv-side-block h2,
+      .cv-link::after {
+        color: #8b641c !important;
+      }
+
+      .cv-grid {
+        grid-template-columns: 1fr 270px;
+        gap: 40px;
+      }
+
+      .cv-job::before {
+        background: #fff !important;
+      }
+
+      a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+    }
+
+    /* RESPONSIVE ------------------------------------------- */
+
+    @media (max-width: 850px) {
+
+      .cv-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .cv-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .cv-side-block {
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .cv-page {
+        padding: 115px 5vw 60px;
+      }
+
+      .cv-header {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .cv-actions {
+        justify-content: flex-start;
+      }
+
+      .cv-grid {
+        padding-top: 35px;
+      }
+
+      .cv-sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .cv-job-top {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .cv-job h3 {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- =========================
+  <!-- =======================================================
        HEADER
-  ========================== -->
-  <header class="site-header" id="site-header">
+  ======================================================== -->
 
-    <div class="header-inner">
+  <header class="site-header">
+
+    <div class="nav-wrap">
 
       <a
-        class="brand"
-        href="index.html"
-        aria-label="Shah Neil Khan home"
+        href="./index.html"
+        class="brand-logo"
+        aria-label="Shah Neil Khan Home"
       >
-
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
           alt="SNK"
-          class="brand-logo"
         />
-
-        <span class="brand-meta">
-          <span>SNK</span>
-          <span>/ PERSONAL BRAND</span>
-        </span>
-
       </a>
 
+      <nav class="main-nav" aria-label="Main navigation">
 
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-label="Open navigation"
-        aria-expanded="false"
-        aria-controls="main-navigation"
-      >
-        <span></span>
-        <span></span>
-      </button>
-
-
-      <nav
-        class="main-nav"
-        id="main-navigation"
-        aria-label="Primary navigation"
-      >
-
-        <a href="index.html">Home</a>
-        <a href="projects.html">Work</a>
-        <a href="index.html#ai">AI</a>
-        <a href="expertise.html">Expertise</a>
-        <a href="experience.html">Experience</a>
-        <a href="about.html">About</a>
-        <a href="brand.html">Brand</a>
-        <a href="contact.html">Contact</a>
+        <a href="./index.html#home">Home</a>
+        <a href="./brand.html">Ecosystem</a>
+        <a href="./index.html#ai">AI</a>
+        <a href="./expertise.html">Expertise</a>
+        <a href="./experience.html">Experience</a>
+        <a href="./about.html">About</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./cv.html" class="active">CV</a>
+        <a href="./index.html#contact">Contact</a>
 
       </nav>
 
+      <div class="nav-actions">
 
-      <a class="header-cta" href="contact.html">
-        Let's Build
-        <span>↗</span>
-      </a>
+        <button
+          id="languageToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Change language"
+        >
+          বাংলা
+        </button>
+
+        <button
+          id="themeToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          ☼
+        </button>
+
+        <button
+          id="rainToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle rain"
+        >
+          Rain
+        </button>
+
+      </div>
 
     </div>
 
   </header>
 
 
-  <main>
+  <!-- =======================================================
+       CV
+  ======================================================== -->
 
-    <!-- =========================
-         HERO
-    ========================== -->
-    <section class="page-hero cv-hero">
+  <main class="cv-page">
 
-      <div class="container page-hero-grid">
+    <div class="cv-shell">
 
-        <div class="page-hero-copy reveal">
 
-          <div class="eyebrow">
-            <span class="eyebrow-line"></span>
-            CURRICULUM VITAE
+      <!-- CV HEADER -->
+
+      <header class="cv-header reveal">
+
+        <div>
+
+          <div class="cv-kicker">
+            Curriculum Vitae
           </div>
 
-          <h1>
-            THE
-            <span>CAREER</span>
-            BEHIND THE WORK.
+          <h1 class="cv-name">
+            Shah Neil Khan
           </h1>
 
-          <p class="page-hero-lead">
-            A concise professional profile covering experience,
-            capabilities, education and selected technical focus.
+          <p class="cv-title">
+            UX Lead Digital Expert · Digital Experience ·
+            Systems Thinking
           </p>
 
         </div>
 
 
-        <div class="page-hero-mark reveal">
+        <div class="cv-actions">
 
-          <span>CV</span>
-          <strong>PROFILE</strong>
-          <small>SOFTWARE / AI / UX</small>
+          <button
+            class="cv-button primary"
+            type="button"
+            onclick="window.print()"
+          >
+            Print / Save PDF
+          </button>
 
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         PROFILE
-    ========================== -->
-    <section class="section cv-profile">
-
-      <div class="container">
-
-        <div class="cv-header-card reveal">
-
-          <div class="cv-person">
-
-            <img
-              src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-              alt="SNK"
-              class="cv-logo"
-            />
-
-            <div>
-
-              <span class="section-number">
-                PROFESSIONAL PROFILE
-              </span>
-
-              <h2>
-                SHAH NEIL KHAN
-              </h2>
-
-              <p>
-                SOFTWARE ENGINEER & AI ENGINEER
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="cv-signature">
-
-            <span>
-              CODE → INTELLIGENCE → EXPERIENCE
-            </span>
-
-            <small>
-              SNK / PERSONAL BRAND
-            </small>
-
-          </div>
+          <a
+            class="cv-button"
+            href="./index.html#contact"
+          >
+            Contact
+          </a>
 
         </div>
 
-      </div>
-
-    </section>
+      </header>
 
 
-    <!-- =========================
-         EXPERIENCE
-    ========================== -->
-    <section class="section cv-section">
+      <div class="cv-grid">
 
-      <div class="container">
 
-        <div class="section-heading reveal">
+        <!-- =================================================
+             MAIN
+        ================================================== -->
 
-          <div>
+        <div class="cv-main">
 
-            <span class="section-number">
-              01 / EXPERIENCE
-            </span>
 
-            <h2>
-              WHERE I'VE
-              <span>BUILT.</span>
+          <!-- PROFILE -->
+
+          <section class="cv-section reveal">
+
+            <h2 class="cv-section-title">
+              Profile
             </h2>
 
-          </div>
+            <p class="cv-profile">
+              UX and digital experience professional focused on
+              understanding complex problems, designing clearer
+              experiences and thinking across people, products,
+              technology and systems.
+            </p>
 
-          <p>
-            Professional experience presented around responsibility,
-            contribution and measurable outcomes.
-          </p>
-
-        </div>
+          </section>
 
 
-        <div class="cv-timeline">
+          <!-- EXPERIENCE -->
 
-          <!-- VERIFIED CURRENT ROLE -->
-          <article class="cv-role reveal">
+          <section class="cv-section reveal">
 
-            <div class="cv-role-index">
-              01
-            </div>
+            <h2 class="cv-section-title">
+              Experience
+            </h2>
 
-            <div class="cv-role-main">
 
-              <div class="cv-role-top">
+            <div class="cv-experience">
 
-                <div>
 
-                  <span class="cv-role-kicker">
-                    CURRENT ROLE
-                  </span>
+              <!-- VERIFIED EXPERIENCE -->
 
-                  <h3>
-                    UX LEAD DIGITAL EXPERT
-                  </h3>
+              <article class="cv-job">
 
-                  <strong>
-                    Yaqeen Institute
-                  </strong>
+                <div class="cv-job-top">
+
+                  <div>
+
+                    <h3>
+                      UX Lead Digital Expert
+                    </h3>
+
+                    <div class="cv-company">
+                      Yaqeen Institute
+                    </div>
+
+                  </div>
+
+                  <div class="cv-date">
+                    2026 — Present
+                  </div>
 
                 </div>
 
-                <div class="cv-role-date">
-                  2026 — PRESENT
+                <div class="cv-location">
+                  Texas, USA · Remote
                 </div>
 
-              </div>
+                <p class="cv-job-description">
+                  Working at the intersection of UX, digital
+                  experience and systems thinking, with a focus
+                  on creating clearer and more purposeful digital
+                  experiences.
+                </p>
+
+              </article>
 
 
-              <div class="cv-role-location">
-                TEXAS, USA · REMOTE
-              </div>
+              <!--
+                ADD VERIFIED EXPERIENCE HERE
 
+                <article class="cv-job">
 
-              <p class="cv-role-description">
-                Digital experience, UX thinking, interface design
-                and product-oriented problem solving.
-              </p>
+                  <div class="cv-job-top">
 
+                    <div>
+                      <h3>[ROLE]</h3>
 
-              <div class="cv-role-focus">
+                      <div class="cv-company">
+                        [COMPANY]
+                      </div>
+                    </div>
 
-                <span>UX</span>
-                <span>DIGITAL EXPERIENCE</span>
-                <span>PRODUCT</span>
-                <span>DESIGN</span>
+                    <div class="cv-date">
+                      [YEAR] — [YEAR]
+                    </div>
 
-              </div>
+                  </div>
+
+                  <div class="cv-location">
+                    [LOCATION]
+                  </div>
+
+                  <p class="cv-job-description">
+                    [VERIFIED DESCRIPTION]
+                  </p>
+
+                </article>
+              -->
 
             </div>
 
-          </article>
+          </section>
 
 
-          <!-- FUTURE VERIFIED EXPERIENCE -->
-          <article class="cv-role cv-role-placeholder reveal">
+          <!-- EDUCATION -->
 
-            <div class="cv-role-index">
-              02
-            </div>
+          <section class="cv-section reveal">
 
-            <div class="cv-role-main">
+            <h2 class="cv-section-title">
+              Education
+            </h2>
 
-              <span class="cv-role-kicker">
-                ADD VERIFIED EXPERIENCE
-              </span>
+
+            <div class="cv-entry">
 
               <h3>
-                PROFESSIONAL EXPERIENCE
+                [Add Education]
               </h3>
 
               <p>
-                Additional roles will be added here once the
-                verified CV information is provided.
+                [Institution · Degree / Program · Year]
               </p>
 
             </div>
 
-          </article>
+          </section>
 
 
-          <article class="cv-role cv-role-placeholder reveal">
+          <!-- SELECTED WORK -->
 
-            <div class="cv-role-index">
-              03
-            </div>
+          <section class="cv-section reveal">
 
-            <div class="cv-role-main">
+            <h2 class="cv-section-title">
+              Selected Work
+            </h2>
 
-              <span class="cv-role-kicker">
-                ADD VERIFIED EXPERIENCE
-              </span>
+            <div class="cv-entry">
 
               <h3>
-                PROFESSIONAL EXPERIENCE
+                SNK Digital Ecosystem
               </h3>
 
               <p>
-                This section is reserved for another verified
-                professional role or contribution.
+                WebsitesDeal · TabayyunTV · SNK IT Institute ·
+                Sarakāt Agency · SNK Design
               </p>
 
             </div>
 
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         EXPERTISE
-    ========================== -->
-    <section class="section cv-section">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <span class="section-number">
-              02 / CORE EXPERTISE
-            </span>
-
-            <h2>
-              WHAT I
-              <span>WORK WITH.</span>
-            </h2>
-
-          </div>
-
-          <p>
-            The professional profile spans software engineering,
-            AI, UX, systems and digital infrastructure.
-          </p>
-
-        </div>
-
-
-        <div class="cv-skills-grid">
-
-          <div class="cv-skill reveal">
-            <span>01</span>
-            <strong>SOFTWARE ENGINEERING</strong>
-            <p>
-              Applications, APIs, backend systems and
-              full-stack product development.
-            </p>
-          </div>
-
-
-          <div class="cv-skill reveal">
-            <span>02</span>
-            <strong>AI & CONTEXT ENGINEERING</strong>
-            <p>
-              Context, retrieval, memory, tools,
-              validation and useful AI workflows.
-            </p>
-          </div>
-
-
-          <div class="cv-skill reveal">
-            <span>03</span>
-            <strong>PRODUCT & UX</strong>
-            <p>
-              Product thinking, interaction design,
-              interface systems and digital experiences.
-            </p>
-          </div>
-
-
-          <div class="cv-skill reveal">
-            <span>04</span>
-            <strong>SYSTEM DESIGN</strong>
-            <p>
-              Architecture, data flow, boundaries
-              and scalable system foundations.
-            </p>
-          </div>
-
-
-          <div class="cv-skill reveal">
-            <span>05</span>
-            <strong>CYBERSECURITY</strong>
-            <p>
-              Threat awareness, validation, permissions
-              and security-minded engineering.
-            </p>
-          </div>
-
-
-          <div class="cv-skill reveal">
-            <span>06</span>
-            <strong>DEVOPS & CLOUD</strong>
-            <p>
-              Deployment, infrastructure, automation
-              and operational thinking.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         SELECTED WORK
-    ========================== -->
-    <section class="section cv-section">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <span class="section-number">
-              03 / SELECTED WORK
-            </span>
-
-            <h2>
-              WORK THAT
-              <span>SHOWS THE SYSTEM.</span>
-            </h2>
-
-          </div>
-
-          <p>
-            Selected projects can provide deeper evidence
-            of engineering, product and design capability.
-          </p>
-
-        </div>
-
-
-        <div class="cv-work-list">
-
-          <a
-            href="https://shahneilkhan.github.io/demosite"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cv-work-item reveal"
-          >
-
-            <span>01</span>
-
-            <div>
-
-              <strong>WEBSITESDEAL</strong>
-
-              <small>
-                WEB / UX / ENGINEERING
-              </small>
-
-            </div>
-
-            <span class="cv-work-arrow">
-              ↗
-            </span>
-
-          </a>
-
-
-          <a
-            href="projects.html"
-            class="cv-work-item reveal"
-          >
-
-            <span>02</span>
-
-            <div>
-
-              <strong>VIEW PROJECT PORTFOLIO</strong>
-
-              <small>
-                SELECTED WORK
-              </small>
-
-            </div>
-
-            <span class="cv-work-arrow">
-              →
-            </span>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         EDUCATION / CREDENTIALS
-    ========================== -->
-    <section class="section cv-section">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <span class="section-number">
-              04 / EDUCATION & CREDENTIALS
-            </span>
-
-            <h2>
-              THE
-              <span>FOUNDATION.</span>
-            </h2>
-
-          </div>
-
-          <p>
-            Education, certifications and additional credentials
-            should be listed here using verified information.
-          </p>
-
-        </div>
-
-
-        <div class="credential-list">
-
-          <div class="credential-placeholder reveal">
-
-            <span>01</span>
-
-            <div>
-
-              <strong>
-                ADD VERIFIED EDUCATION
-              </strong>
+            <div class="cv-entry">
+
+              <h3>
+                Portfolio & Digital Systems
+              </h3>
 
               <p>
-                Institution, degree or program and relevant dates.
+                Personal digital experience, brand systems,
+                design thinking and AI-assisted workflows.
               </p>
 
             </div>
 
-          </div>
+          </section>
 
 
-          <div class="credential-placeholder reveal">
+          <!-- ADDITIONAL -->
 
-            <span>02</span>
+          <section class="cv-section reveal">
 
-            <div>
-
-              <strong>
-                ADD VERIFIED CERTIFICATION
-              </strong>
-
-              <p>
-                Certification, issuing organization and date.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="credential-placeholder reveal">
-
-            <span>03</span>
-
-            <div>
-
-              <strong>
-                ADD VERIFIED CREDENTIAL
-              </strong>
-
-              <p>
-                Additional professional qualification or credential.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CV DOCUMENT
-    ========================== -->
-    <section class="section cv-download">
-
-      <div class="container">
-
-        <div class="cv-document-card reveal">
-
-          <div>
-
-            <span class="section-number">
-              DOCUMENT
-            </span>
-
-            <h2>
-              FULL CV
-              <span>DOCUMENT.</span>
+            <h2 class="cv-section-title">
+              Additional Information
             </h2>
 
-            <p>
-              The downloadable CV can be connected here once
-              the final verified PDF is available.
+            <p class="cv-profile">
+              [EDIT: Add certifications, publications, awards,
+              speaking, training, languages or other verified
+              professional information here.]
             </p>
 
-          </div>
+          </section>
 
-
-          <div class="cv-document-action">
-
-            <!--
-              Replace "#" with the real CV PDF path.
-              Example:
-              href="assets/Shah-Neil-Khan-CV.pdf"
-            -->
-
-            <a
-              href="#"
-              class="button button-primary"
-              data-cv-download
-            >
-              DOWNLOAD CV
-              <span>↓</span>
-            </a>
-
-            <small>
-              PDF / VERIFIED VERSION
-            </small>
-
-          </div>
 
         </div>
 
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="cv-sidebar">
+
+
+          <!-- CONTACT -->
+
+          <section class="cv-side-block reveal">
+
+            <h2>
+              Contact
+            </h2>
+
+            <div class="cv-contact-list">
+
+              <!--
+                Add your preferred direct contact details here.
+                Do not publish private information unless intended.
+              -->
+
+              <a
+                class="cv-contact-item"
+                href="https://www.linkedin.com/company/iamsnkbd"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn / @iamsnkbd
+              </a>
+
+              <a
+                class="cv-contact-item"
+                href="https://github.com/shahneilkhan"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub / shahneilkhan
+              </a>
+
+              <a
+                class="cv-contact-item"
+                href="https://instagram.com/iamsnkbd"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram / @iamsnkbd
+              </a>
+
+            </div>
+
+          </section>
+
+
+          <!-- EXPERTISE -->
+
+          <section class="cv-side-block reveal">
+
+            <h2>
+              Expertise
+            </h2>
+
+            <div class="cv-skills">
+
+              <span class="cv-skill">
+                UX Strategy
+              </span>
+
+              <span class="cv-skill">
+                Digital Experience
+              </span>
+
+              <span class="cv-skill">
+                AI-Assisted Systems
+              </span>
+
+              <span class="cv-skill">
+                Design Systems
+              </span>
+
+              <span class="cv-skill">
+                Creative Direction
+              </span>
+
+              <span class="cv-skill">
+                Systems Thinking
+              </span>
+
+            </div>
+
+          </section>
+
+
+          <!-- ONLINE -->
+
+          <section class="cv-side-block reveal">
+
+            <h2>
+              Online
+            </h2>
+
+            <div class="cv-links">
+
+              <a
+                class="cv-link"
+                href="https://github.com/shahneilkhan"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+
+              <a
+                class="cv-link"
+                href="https://www.linkedin.com/company/iamsnkbd"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+
+              <a
+                class="cv-link"
+                href="https://instagram.com/iamsnkbd"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+
+              <a
+                class="cv-link"
+                href="https://youtube.com/c/shahneilkhan"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTube
+              </a>
+
+              <a
+                class="cv-link"
+                href="https://behance.net/thesnkdesign"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Behance
+              </a>
+
+              <a
+                class="cv-link"
+                href="https://dribbble.com/thesnkdesign"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Dribbble
+              </a>
+
+            </div>
+
+          </section>
+
+
+          <!-- ECOSYSTEM -->
+
+          <section class="cv-side-block reveal">
+
+            <h2>
+              Ecosystem
+            </h2>
+
+            <div class="cv-links">
+
+              <a
+                class="cv-link"
+                href="https://websitesdeal.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WebsitesDeal
+              </a>
+
+              <a
+                class="cv-link"
+                href="https://www.tabayyuninstitute.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                TabayyunTV
+              </a>
+
+              <a
+                class="cv-link"
+                href="https://snkitinstitute.github.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SNK IT Institute
+              </a>
+
+              <a
+                class="cv-link"
+                href="./brand.html"
+              >
+                SNK Brand Ecosystem
+              </a>
+
+            </div>
+
+          </section>
+
+
+        </aside>
+
       </div>
 
-    </section>
 
+      <!-- EDITOR NOTE -->
 
-    <!-- =========================
-         FINAL CTA
-    ========================== -->
-    <section class="section final-cta">
+      <div class="cv-edit-note reveal">
 
-      <div class="container">
+        <strong>EDITOR NOTE:</strong>
 
-        <div class="final-cta-inner reveal">
-
-          <span class="section-number">
-            PROFESSIONAL INQUIRIES
-          </span>
-
-          <h2>
-            WANT TO
-            <span>BUILD TOGETHER?</span>
-          </h2>
-
-          <p>
-            For projects, collaboration or engineering opportunities,
-            start a conversation.
-          </p>
-
-          <a href="contact.html" class="button button-primary">
-            CONTACT ME
-            <span>→</span>
-          </a>
-
-        </div>
+        This CV is intentionally kept conservative.
+        Replace bracketed fields with verified information
+        from the final CV before publishing.
 
       </div>
 
-    </section>
+
+    </div>
 
   </main>
 
 
-  <!-- =========================
+  <!-- =======================================================
        FOOTER
-  ========================== -->
+  ======================================================== -->
+
   <footer class="site-footer">
 
-    <div class="container">
+    <div>
+      © <span id="year"></span> Shah Neil Khan
+    </div>
 
-      <div class="footer-top">
-
-        <a href="index.html" class="footer-brand">
-
-          <img
-            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-            alt="SNK"
-          />
-
-          <div>
-
-            <strong>
-              SHAH NEIL KHAN
-            </strong>
-
-            <span>
-              SOFTWARE / AI / EXPERIENCE
-            </span>
-
-          </div>
-
-        </a>
-
-
-        <div class="footer-links">
-
-          <a href="projects.html">Work</a>
-          <a href="expertise.html">Expertise</a>
-          <a href="experience.html">Experience</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <span>
-          © <span data-current-year></span> SHAH NEIL KHAN
-        </span>
-
-        <span>
-          CODE → INTELLIGENCE → EXPERIENCE
-        </span>
-
-      </div>
-
+    <div>
+      PERSONAL BRAND · DIGITAL EXPERIENCE · SYSTEMS THINKING
     </div>
 
   </footer>
 
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 
 </body>
 </html>
-```
