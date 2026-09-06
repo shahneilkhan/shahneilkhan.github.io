@@ -1,747 +1,868 @@
 /* =========================================================
-   SHAH NEIL KHAN — PORTFOLIO
-   Main JavaScript
+   SHAH NEIL KHAN — SNK V2
+   COMPLETE JAVASCRIPT
+========================================================= */
+
+"use strict";
+
+
+/* =========================================================
+   DOM READY
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  /* =======================================================
-     1. SMOOTH SCROLL
-  ======================================================= */
-
-  const internalLinks = document.querySelectorAll(
-    'a[href^="#"]'
-  );
-
-  internalLinks.forEach((link) => {
-
-    link.addEventListener("click", function (event) {
-
-      const targetId = this.getAttribute("href");
-
-      if (
-        !targetId ||
-        targetId === "#" ||
-        targetId.length < 2
-      ) {
-        return;
-      }
-
-      const target = document.querySelector(targetId);
-
-      if (!target) {
-        return;
-      }
-
-      event.preventDefault();
-
-      const navbar = document.querySelector(".navbar");
-
-      const navbarHeight = navbar
-        ? navbar.offsetHeight
-        : 0;
-
-      const targetPosition =
-        target.getBoundingClientRect().top +
-        window.pageYOffset -
-        navbarHeight;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-      });
-
-    });
-
-  });
-
-
-  /* =======================================================
-     2. NAVBAR SCROLL EFFECT
-  ======================================================= */
-
-  const navbar = document.querySelector(".navbar");
-
-  function updateNavbar() {
-
-    if (!navbar) {
-      return;
-    }
-
-    if (window.scrollY > 30) {
-
-      navbar.style.background =
-        "rgba(6, 6, 6, 0.88)";
-
-      navbar.style.borderBottom =
-        "1px solid rgba(255,255,255,0.10)";
-
-      navbar.style.backdropFilter =
-        "blur(18px)";
-
-      navbar.style.webkitBackdropFilter =
-        "blur(18px)";
-
-    } else {
-
-      navbar.style.background =
-        "linear-gradient(to bottom, rgba(5,5,5,0.94), rgba(5,5,5,0.65))";
-
-      navbar.style.borderBottom =
-        "1px solid rgba(255,255,255,0.06)";
-
-    }
-
-  }
-
-  updateNavbar();
-
-  window.addEventListener(
-    "scroll",
-    updateNavbar,
-    { passive: true }
-  );
-
-
-  /* =======================================================
-     3. ACTIVE NAVIGATION LINK
-  ======================================================= */
-
-  const sections = document.querySelectorAll(
-    "section[id]"
-  );
-
-  const navLinks = document.querySelectorAll(
-    '.nav-menu a[href^="#"]'
-  );
-
-  function updateActiveNav() {
-
-    if (!sections.length || !navLinks.length) {
-      return;
-    }
-
-    const scrollPosition =
-      window.scrollY +
-      (navbar ? navbar.offsetHeight : 70) +
-      100;
-
-    let currentSection = "";
-
-    sections.forEach((section) => {
-
-      const sectionTop =
-        section.offsetTop;
-
-      const sectionHeight =
-        section.offsetHeight;
-
-      if (
-        scrollPosition >= sectionTop &&
-        scrollPosition <
-          sectionTop + sectionHeight
-      ) {
-
-        currentSection =
-          section.getAttribute("id");
-
-      }
-
-    });
-
-    navLinks.forEach((link) => {
-
-      const href =
-        link.getAttribute("href");
-
-      if (
-        href === "#" + currentSection
-      ) {
-
-        link.style.color =
-          "#ffe0a0";
-
-      } else {
-
-        link.style.color =
-          "";
-
-      }
-
-    });
-
-  }
-
-  updateActiveNav();
-
-  window.addEventListener(
-    "scroll",
-    updateActiveNav,
-    { passive: true }
-  );
-
-
-  /* =======================================================
-     4. SCROLL REVEAL ANIMATION
-  ======================================================= */
-
-  const revealElements = document.querySelectorAll(
-    ".skill-card, " +
-    ".project-card, " +
-    ".case-block, " +
-    ".experience-item, " +
-    ".contact-links, " +
-    ".section > h2"
-  );
-
-  if (
-    "IntersectionObserver" in window &&
-    revealElements.length
-  ) {
-
-    const revealObserver =
-      new IntersectionObserver(
-        (entries, observer) => {
-
-          entries.forEach((entry) => {
-
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            entry.target.classList.add(
-              "is-visible"
-            );
-
-            observer.unobserve(
-              entry.target
-            );
-
-          });
-
-        },
-        {
-          threshold: 0.12,
-          rootMargin: "0px 0px -40px 0px"
+    initHeader();
+    initMobileMenu();
+    initSmoothScroll();
+    initRevealAnimations();
+    initActiveNavigation();
+    initButtonInteractions();
+    initExternalLinks();
+    initCurrentYear();
+    initHeroEffects();
+    initProjectInteractions();
+});
+
+
+/* =========================================================
+   HEADER / NAVBAR
+========================================================= */
+
+function initHeader() {
+    const header = document.querySelector(".site-header");
+
+    if (!header) return;
+
+    const updateHeader = () => {
+        if (window.scrollY > 40) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
         }
-      );
+    };
 
-    revealElements.forEach((element, index) => {
+    updateHeader();
 
-      element.style.opacity = "0";
-
-      element.style.transform =
-        "translateY(22px)";
-
-      element.style.transition =
-        "opacity 0.7s ease, transform 0.7s ease";
-
-      element.style.transitionDelay =
-        `${Math.min(index * 0.04, 0.35)}s`;
-
-      revealObserver.observe(
-        element
-      );
-
-    });
-
-  }
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
+}
 
 
-  /* =======================================================
-     5. ADD REVEAL CSS BEHAVIOR
-  ======================================================= */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-  const revealStyle =
-    document.createElement("style");
+function initMobileMenu() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-menu");
 
-  revealStyle.textContent = `
-    .is-visible {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-  `;
+    if (!menuToggle || !navMenu) return;
 
-  document.head.appendChild(
-    revealStyle
-  );
+    const closeMenu = () => {
+        navMenu.classList.remove("open");
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+    };
 
-
-  /* =======================================================
-     6. SKILL BAR ANIMATION
-  ======================================================= */
-
-  const skillFills =
-    document.querySelectorAll(
-      ".skill-fill"
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
     );
 
-  if (skillFills.length) {
+    menuToggle.addEventListener("click", () => {
+        const isOpen =
+            navMenu.classList.toggle("open");
 
-    skillFills.forEach((fill) => {
-
-      const finalWidth =
-        fill.style.width;
-
-      fill.style.width = "0%";
-
-      fill.dataset.width =
-        finalWidth;
-
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
     });
 
-    if (
-      "IntersectionObserver" in window
-    ) {
+    navMenu
+        .querySelectorAll("a")
+        .forEach(link => {
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+        });
 
-      const skillObserver =
+    document.addEventListener(
+        "click",
+        event => {
+            if (
+                !navMenu.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+                closeMenu();
+            }
+        }
+    );
+
+    window.addEventListener(
+        "resize",
+        () => {
+            if (window.innerWidth > 760) {
+                closeMenu();
+            }
+        }
+    );
+}
+
+
+/* =========================================================
+   SMOOTH SCROLL
+========================================================= */
+
+function initSmoothScroll() {
+    const links =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
+
+    if (!links.length) return;
+
+    links.forEach(link => {
+        link.addEventListener(
+            "click",
+            event => {
+                const targetId =
+                    link.getAttribute("href");
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+                if (!target) return;
+
+                event.preventDefault();
+
+                const header =
+                    document.querySelector(
+                        ".site-header"
+                    );
+
+                const headerHeight =
+                    header
+                        ? header.offsetHeight
+                        : 0;
+
+                const targetPosition =
+                    target.getBoundingClientRect()
+                        .top +
+                    window.scrollY -
+                    headerHeight -
+                    12;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth"
+                });
+
+                history.replaceState(
+                    null,
+                    "",
+                    targetId
+                );
+            }
+        );
+    });
+}
+
+
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
+
+function initRevealAnimations() {
+    const elements =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+    if (!elements.length) return;
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+    if (reduceMotion) {
+        elements.forEach(element => {
+            element.classList.remove("hidden");
+        });
+
+        return;
+    }
+
+    elements.forEach(element => {
+        element.classList.add("hidden");
+    });
+
+    if (!("IntersectionObserver" in window)) {
+        elements.forEach(element => {
+            element.classList.remove("hidden");
+        });
+
+        return;
+    }
+
+    const observer =
         new IntersectionObserver(
-          (entries, observer) => {
+            entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
 
-            entries.forEach((entry) => {
+                    entry.target.classList.remove(
+                        "hidden"
+                    );
 
-              if (
-                !entry.isIntersecting
-              ) {
-                return;
-              }
-
-              const fill =
-                entry.target;
-
-              const width =
-                fill.dataset.width;
-
-              setTimeout(() => {
-
-                fill.style.width =
-                  width;
-
-              }, 150);
-
-              observer.unobserve(
-                fill
-              );
-
-            });
-
-          },
-          {
-            threshold: 0.5
-          }
+                    observer.unobserve(
+                        entry.target
+                    );
+                });
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -60px 0px"
+            }
         );
 
-      skillFills.forEach((fill) => {
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+}
 
-        skillObserver.observe(
-          fill
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+function initActiveNavigation() {
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-menu a"
         );
 
-      });
+    if (!navLinks.length) return;
 
-    } else {
+    const sections =
+        document.querySelectorAll(
+            "section[id]"
+        );
 
-      skillFills.forEach((fill) => {
+    if (!sections.length) return;
 
-        fill.style.width =
-          fill.dataset.width;
+    const linkMap = {};
 
-      });
+    navLinks.forEach(link => {
+        const href =
+            link.getAttribute("href");
 
-    }
+        if (
+            href &&
+            href.startsWith("#")
+        ) {
+            linkMap[href] = link;
+        }
+    });
 
-  }
+    const observer =
+        new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    const id =
+                        `#${entry.target.id}`;
+
+                    navLinks.forEach(link => {
+                        link.classList.remove(
+                            "active"
+                        );
+                    });
+
+                    if (linkMap[id]) {
+                        linkMap[id].classList.add(
+                            "active"
+                        );
+                    }
+                });
+            },
+            {
+                threshold: 0.15,
+                rootMargin:
+                    "-25% 0px -60% 0px"
+            }
+        );
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+}
 
 
-  /* =======================================================
-     7. HERO PARALLAX
-  ======================================================= */
+/* =========================================================
+   BUTTON INTERACTIONS
+========================================================= */
 
-  const heroScene =
-    document.querySelector(
-      ".hero-scene"
-    );
+function initButtonInteractions() {
+    const buttons =
+        document.querySelectorAll(
+            ".btn, .project-link"
+        );
 
-  const hero =
-    document.querySelector(
-      ".hero"
-    );
+    if (!buttons.length) return;
 
-  const reducedMotion =
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
 
-  if (
-    heroScene &&
-    hero &&
-    !reducedMotion
-  ) {
+    if (reduceMotion) return;
+
+    buttons.forEach(button => {
+        button.addEventListener(
+            "mouseenter",
+            () => {
+                button.style.transform =
+                    "translateY(-3px)";
+            }
+        );
+
+        button.addEventListener(
+            "mouseleave",
+            () => {
+                button.style.transform = "";
+            }
+        );
+    });
+}
+
+
+/* =========================================================
+   EXTERNAL LINKS
+========================================================= */
+
+function initExternalLinks() {
+    const links =
+        document.querySelectorAll(
+            'a[href^="http"]'
+        );
+
+    links.forEach(link => {
+        const href =
+            link.getAttribute("href");
+
+        if (!href) return;
+
+        try {
+            const url =
+                new URL(href);
+
+            if (
+                url.hostname !==
+                window.location.hostname
+            ) {
+                link.setAttribute(
+                    "target",
+                    "_blank"
+                );
+
+                link.setAttribute(
+                    "rel",
+                    "noopener noreferrer"
+                );
+            }
+        } catch (error) {
+            // Invalid URL — leave unchanged.
+        }
+    });
+}
+
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+function initCurrentYear() {
+    const yearElements =
+        document.querySelectorAll(
+            "[data-current-year]"
+        );
+
+    if (!yearElements.length) return;
+
+    const currentYear =
+        new Date().getFullYear();
+
+    yearElements.forEach(element => {
+        element.textContent =
+            currentYear;
+    });
+}
+
+
+/* =========================================================
+   HERO EFFECTS
+========================================================= */
+
+function initHeroEffects() {
+    const hero =
+        document.querySelector(
+            ".hero"
+        );
+
+    if (!hero) return;
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+    if (reduceMotion) return;
+
+    const visual =
+        hero.querySelector(
+            ".hero-visual"
+        );
+
+    if (!visual) return;
 
     let ticking = false;
 
-    function updateHeroParallax() {
+    const updateParallax = () => {
+        const scrollY =
+            window.scrollY;
 
-      const scrollY =
-        window.scrollY;
-
-      const heroHeight =
-        hero.offsetHeight;
-
-      if (
-        scrollY <= heroHeight
-      ) {
+        if (scrollY > window.innerHeight) {
+            ticking = false;
+            return;
+        }
 
         const movement =
-          scrollY * 0.12;
+            scrollY * 0.08;
 
-        heroScene.style.transform =
-          `translateY(${movement}px)`;
+        visual.style.transform =
+            `translate3d(0, ${movement}px, 0)`;
 
-      }
-
-      ticking = false;
-
-    }
+        ticking = false;
+    };
 
     window.addEventListener(
-      "scroll",
-      () => {
+        "scroll",
+        () => {
+            if (!ticking) {
+                window.requestAnimationFrame(
+                    updateParallax
+                );
 
-        if (!ticking) {
-
-          window.requestAnimationFrame(
-            updateHeroParallax
-          );
-
-          ticking = true;
-
-        }
-
-      },
-      { passive: true }
+                ticking = true;
+            }
+        },
+        { passive: true }
     );
-
-  }
-
-
-  /* =======================================================
-     8. BUTTON HOVER MICRO INTERACTION
-  ======================================================= */
-
-  const buttons =
-    document.querySelectorAll(
-      ".btn-primary, .btn-secondary, .talk-btn"
-    );
-
-  buttons.forEach((button) => {
-
-    button.addEventListener(
-      "mouseenter",
-      () => {
-
-        if (reducedMotion) {
-          return;
-        }
-
-        button.style.transition =
-          "transform 0.25s ease";
-
-      }
-    );
-
-  });
+}
 
 
-  /* =======================================================
-     9. EXTERNAL LINKS
-  ======================================================= */
+/* =========================================================
+   PROJECT INTERACTIONS
+========================================================= */
 
-  const externalLinks =
-    document.querySelectorAll(
-      'a[href^="http://"], a[href^="https://"]'
-    );
-
-  externalLinks.forEach((link) => {
-
-    const currentHost =
-      window.location.hostname;
-
-    try {
-
-      const url =
-        new URL(
-          link.href,
-          window.location.href
+function initProjectInteractions() {
+    const cards =
+        document.querySelectorAll(
+            ".project-card"
         );
 
-      if (
-        url.hostname &&
-        url.hostname !== currentHost
-      ) {
+    if (!cards.length) return;
 
-        link.setAttribute(
-          "rel",
-          "noopener noreferrer"
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+    if (reduceMotion) return;
+
+    cards.forEach(card => {
+        const visual =
+            card.querySelector(
+                ".project-visual"
+            );
+
+        if (!visual) return;
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    event.clientX -
+                    rect.left;
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+                const rotateX =
+                    ((y / rect.height) - 0.5) *
+                    -2;
+
+                const rotateY =
+                    ((x / rect.width) - 0.5) *
+                    2;
+
+                card.style.transform =
+                    `perspective(1200px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-5px)`;
+            }
         );
 
-      }
+        card.addEventListener(
+            "mouseleave",
+            () => {
+                card.style.transform = "";
+            }
+        );
+    });
+}
 
-    } catch (error) {
 
-      /* Ignore invalid URLs */
+/* =========================================================
+   TERMINAL ANIMATION
+========================================================= */
 
-    }
-
-  });
-
-
-  /* =======================================================
-     10. CURRENT YEAR
-  ======================================================= */
-
-  const footer =
-    document.querySelector(
-      ".footer"
-    );
-
-  if (footer) {
-
-    const year =
-      new Date().getFullYear();
-
-    const yearText =
-      footer.querySelector(
-        "p"
-      );
-
-    if (yearText) {
-
-      yearText.textContent =
-        yearText.textContent.replace(
-          /\b20\d{2}\b/,
-          year
+function initTerminal() {
+    const terminal =
+        document.querySelector(
+            "[data-terminal]"
         );
 
+    if (!terminal) return;
+
+    const output =
+        terminal.querySelector(
+            "[data-terminal-output]"
+        );
+
+    if (!output) return;
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+    const lines = [
+        "✓ identity",
+        "✓ context",
+        "✓ memory",
+        "✓ retrieval",
+        "✓ tools",
+        "✓ intelligence"
+    ];
+
+    if (reduceMotion) {
+        output.innerHTML =
+            lines.join("<br>");
+
+        return;
     }
 
-  }
+    output.innerHTML = "";
 
+    let index = 0;
 
-  /* =======================================================
-     11. TABAYYUN TV HOVER EFFECT
-  ======================================================= */
-
-  const tvBanner =
-    document.querySelector(
-      ".tv-banner"
-    );
-
-  if (
-    tvBanner &&
-    !reducedMotion
-  ) {
-
-    tvBanner.addEventListener(
-      "mousemove",
-      (event) => {
-
-        const rect =
-          tvBanner.getBoundingClientRect();
-
-        const x =
-          event.clientX -
-          rect.left;
-
-        const y =
-          event.clientY -
-          rect.top;
-
-        const centerX =
-          rect.width / 2;
-
-        const centerY =
-          rect.height / 2;
-
-        const rotateX =
-          ((y - centerY) /
-            centerY) *
-          -1.5;
-
-        const rotateY =
-          ((x - centerX) /
-            centerX) *
-          1.5;
-
-        tvBanner.style.transform =
-          `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-      }
-    );
-
-    tvBanner.addEventListener(
-      "mouseleave",
-      () => {
-
-        tvBanner.style.transform =
-          "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-
-        tvBanner.style.transition =
-          "transform 0.4s ease";
-
-      }
-    );
-
-  }
-
-
-  /* =======================================================
-     12. MOUSE PARALLAX FOR HERO TEXT
-  ======================================================= */
-
-  const heroContent =
-    document.querySelector(
-      ".hero-overlay"
-    );
-
-  if (
-    heroContent &&
-    hero &&
-    !reducedMotion &&
-    window.innerWidth > 900
-  ) {
-
-    hero.addEventListener(
-      "mousemove",
-      (event) => {
-
-        const rect =
-          hero.getBoundingClientRect();
-
-        const x =
-          (event.clientX -
-            rect.left) /
-          rect.width;
-
-        const y =
-          (event.clientY -
-            rect.top) /
-          rect.height;
-
-        const moveX =
-          (x - 0.5) * 8;
-
-        const moveY =
-          (y - 0.5) * 5;
-
-        heroContent.style.transform =
-          `translate(${moveX}px, ${moveY}px)`;
-
-      }
-    );
-
-    hero.addEventListener(
-      "mouseleave",
-      () => {
-
-        heroContent.style.transform =
-          "translate(0, 0)";
-
-        heroContent.style.transition =
-          "transform 0.4s ease";
-
-      }
-    );
-
-  }
-
-
-  /* =======================================================
-     13. ESC KEY — RESET HOVER EFFECTS
-  ======================================================= */
-
-  document.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (
-        event.key === "Escape"
-      ) {
-
-        if (heroContent) {
-
-          heroContent.style.transform =
-            "translate(0, 0)";
-
+    const addLine = () => {
+        if (index >= lines.length) {
+            return;
         }
 
-        if (tvBanner) {
+        const line =
+            document.createElement("div");
 
-          tvBanner.style.transform =
-            "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+        line.textContent =
+            lines[index];
 
-        }
+        output.appendChild(line);
 
-      }
+        index++;
 
+        setTimeout(
+            addLine,
+            280
+        );
+    };
+
+    setTimeout(
+        addLine,
+        500
+    );
+}
+
+
+/* =========================================================
+   MAGNETIC CURSOR EFFECT
+========================================================= */
+
+function initMagneticElements() {
+    const elements =
+        document.querySelectorAll(
+            "[data-magnetic]"
+        );
+
+    if (!elements.length) return;
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+    if (reduceMotion) return;
+
+    elements.forEach(element => {
+        element.addEventListener(
+            "mousemove",
+            event => {
+                const rect =
+                    element.getBoundingClientRect();
+
+                const x =
+                    event.clientX -
+                    rect.left -
+                    rect.width / 2;
+
+                const y =
+                    event.clientY -
+                    rect.top -
+                    rect.height / 2;
+
+                element.style.transform =
+                    `translate(
+                        ${x * 0.08}px,
+                        ${y * 0.08}px
+                    )`;
+            }
+        );
+
+        element.addEventListener(
+            "mouseleave",
+            () => {
+                element.style.transform = "";
+            }
+        );
+    });
+}
+
+
+/* =========================================================
+   IMAGE LAZY LOADING
+========================================================= */
+
+function initLazyImages() {
+    const images =
+        document.querySelectorAll(
+            "img[data-src]"
+        );
+
+    if (!images.length) return;
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+        images.forEach(image => {
+            image.src =
+                image.dataset.src;
+        });
+
+        return;
     }
-  );
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    const image =
+                        entry.target;
+
+                    image.src =
+                        image.dataset.src;
+
+                    image.removeAttribute(
+                        "data-src"
+                    );
+
+                    observer.unobserve(
+                        image
+                    );
+                });
+            },
+            {
+                rootMargin:
+                    "200px 0px"
+            }
+        );
+
+    images.forEach(image => {
+        observer.observe(image);
+    });
+}
 
 
-  /* =======================================================
-     14. IMAGE ERROR HANDLING
-  ======================================================= */
+/* =========================================================
+   CONTACT FORM
+========================================================= */
 
-  const images =
-    document.querySelectorAll(
-      "img"
+function initContactForm() {
+    const form =
+        document.querySelector(
+            "[data-contact-form]"
+        );
+
+    if (!form) return;
+
+    form.addEventListener(
+        "submit",
+        event => {
+            const action =
+                form.getAttribute("action");
+
+            /*
+             * If the form has a real backend
+             * or Formspree/FormSubmit endpoint,
+             * allow normal submission.
+             */
+
+            if (
+                action &&
+                action !== "#" &&
+                action.trim() !== ""
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+
+            const button =
+                form.querySelector(
+                    'button[type="submit"], input[type="submit"]'
+                );
+
+            if (!button) return;
+
+            const originalText =
+                button.textContent;
+
+            button.textContent =
+                "MESSAGE READY ✓";
+
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.textContent =
+                    originalText;
+
+                button.disabled = false;
+            }, 2500);
+        }
     );
+}
 
-  images.forEach((image) => {
 
-    image.addEventListener(
-      "error",
-      () => {
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+========================================================= */
 
-        image.style.opacity =
-          "0.4";
+function initKeyboardAccessibility() {
+    document.addEventListener(
+        "keydown",
+        event => {
+            if (
+                event.key !== "Escape"
+            ) {
+                return;
+            }
 
-      }
+            const navMenu =
+                document.querySelector(
+                    ".nav-menu"
+                );
+
+            const menuToggle =
+                document.querySelector(
+                    ".menu-toggle"
+                );
+
+            if (!navMenu) return;
+
+            navMenu.classList.remove(
+                "open"
+            );
+
+            if (menuToggle) {
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.focus();
+            }
+        }
     );
-
-  });
-
-
-  /* =======================================================
-     15. PAGE LOADED STATE
-  ======================================================= */
-
-  document.body.classList.add(
-    "page-loaded"
-  );
+}
 
 
-  /* =======================================================
-     16. CONSOLE BRANDING
-  ======================================================= */
+/* =========================================================
+   INITIALIZE OPTIONAL FEATURES
+========================================================= */
 
-  console.log(
-    "%cSHAH NEIL KHAN",
-    `
-      color: #ffe0a0;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 3px;
-    `
-  );
-
-  console.log(
-    "%cSoftware Engineer • AI / Context Engineer • UI/UX",
-    `
-      color: #999;
-      font-size: 12px;
-    `
-  );
+initTerminal();
+initMagneticElements();
+initLazyImages();
+initContactForm();
+initKeyboardAccessibility();
 
 
-});
+/* =========================================================
+   CONSOLE BRANDING
+========================================================= */
+
+console.log(
+    "%c SHAH NEIL KHAN ",
+    "font-weight:800;font-size:18px;"
+);
+
+console.log(
+    "%c SOFTWARE ENGINEER × AI ENGINEER ",
+    "font-weight:700;font-size:11px;"
+);
+
+console.log(
+    "%c Building software, intelligence & experience.",
+    "font-size:11px;"
+);
