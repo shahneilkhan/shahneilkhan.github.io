@@ -9,69 +9,88 @@
   >
 
   <meta
-    name="theme-color"
-    content="#080807"
+    name="description"
+    content="Page not found — Shah Neil Khan"
   >
 
-  <meta
-    name="robots"
-    content="noindex"
-  >
+  <meta name="theme-color" content="#080808">
 
-  <title>404 — Shah Neil Khan</title>
+  <title>404 — Page Not Found | Shah Neil Khan</title>
 
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-  >
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link rel="icon" type="image/svg+xml"
+    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg">
 
   <link rel="stylesheet" href="style.css">
 
   <style>
+    /* =========================================================
+       SNK 404 PAGE
+       ========================================================= */
+
     .error-page {
+      min-height: 100vh;
       min-height: 100svh;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding:
-        100px 24px 60px;
-
       position: relative;
       overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      padding: 120px 24px 60px;
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          rgba(208, 164, 92, 0.10),
+          transparent 34%
+        ),
+        #080808;
     }
 
     .error-page::before {
       content: "";
+      position: absolute;
+      inset: 0;
 
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 70px 70px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          black 25%,
+          black 75%,
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
+    .error-glow {
       position: absolute;
 
-      width: 700px;
-      height: 700px;
-
-      top: 50%;
-      left: 50%;
-
-      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 420px;
 
       border-radius: 50%;
 
-      background:
-        radial-gradient(
-          circle,
-          rgba(201, 139, 77, .09),
-          transparent 68%
-        );
+      background: rgba(208, 164, 92, 0.06);
+
+      filter: blur(90px);
 
       pointer-events: none;
     }
@@ -80,148 +99,376 @@
       position: relative;
       z-index: 2;
 
-      width: min(800px, 100%);
-
-      text-align: center;
+      width: min(760px, 100%);
     }
 
     .error-logo {
-      width: 95px;
-      margin: 0 auto 55px;
+      width: 54px;
+      height: auto;
+
+      margin: 0 auto 30px;
+
+      opacity: 0.92;
 
       filter:
         drop-shadow(
-          0 0 25px
-          rgba(201, 139, 77, .16)
+          0 0 18px rgba(208, 164, 92, 0.18)
         );
     }
 
     .error-code {
       margin: 0;
 
-      color: var(--amber-light);
+      font-size: clamp(7rem, 19vw, 13rem);
 
-      font-family:
-        "DM Mono",
-        monospace;
+      line-height: 0.78;
 
-      font-size:
-        clamp(5rem, 18vw, 12rem);
+      letter-spacing: -0.08em;
 
-      line-height: .8;
+      font-weight: 800;
 
-      letter-spacing: -.08em;
+      color: #f2eee7;
+
+      text-shadow:
+        0 0 40px rgba(208, 164, 92, 0.08);
+    }
+
+    .error-code span {
+      color: #d0a45c;
+    }
+
+    .error-eyebrow {
+      margin: 38px 0 14px;
+
+      font-size: 0.72rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.22em;
+
+      text-transform: uppercase;
+
+      color: #d0a45c;
     }
 
     .error-title {
-      margin:
-        35px 0 18px;
+      margin: 0;
 
-      font-size:
-        clamp(2rem, 5vw, 4.5rem);
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
 
-      text-transform: uppercase;
+      line-height: 1.05;
+
+      letter-spacing: -0.04em;
+
+      color: #f2eee7;
     }
 
-    .error-copy {
-      max-width: 540px;
+    .error-text {
+      max-width: 560px;
 
-      margin:
-        0 auto 35px;
+      margin: 22px auto 0;
 
-      color: var(--text-muted);
+      color: rgba(242, 238, 231, 0.62);
+
+      font-size: 1rem;
 
       line-height: 1.8;
     }
 
     .error-terminal {
-      width: min(520px, 100%);
+      width: min(480px, 100%);
 
-      margin: 0 auto 35px;
+      margin: 34px auto 0;
 
-      padding: 18px 20px;
+      padding: 15px 18px;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid rgba(255,255,255,0.08);
 
-      border-radius:
-        var(--radius-md);
+      border-radius: 12px;
 
-      background:
-        rgba(201, 139, 77, .025);
+      background: rgba(255,255,255,0.025);
 
-      color: var(--text-muted);
-
-      font-family:
-        "DM Mono",
-        monospace;
-
-      font-size: .68rem;
+      box-shadow:
+        0 20px 70px rgba(0,0,0,0.35);
 
       text-align: left;
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+      font-size: 0.78rem;
+
+      color: rgba(242, 238, 231, 0.55);
     }
 
     .error-terminal .prompt {
-      color: var(--amber);
+      color: #d0a45c;
+    }
+
+    .error-terminal .command {
+      color: #f2eee7;
     }
 
     .error-terminal .status {
-      margin-top: 5px;
+      color: #73c991;
     }
 
     .error-actions {
       display: flex;
+
       justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
+
       gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 32px;
+    }
+
+    .error-btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+
+      padding: 0 22px;
+
+      border-radius: 999px;
+
+      border: 1px solid rgba(255,255,255,0.12);
+
+      color: #f2eee7;
+
+      background: rgba(255,255,255,0.035);
+
+      text-decoration: none;
+
+      font-size: 0.78rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+
+      transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease,
+        box-shadow 220ms ease;
+    }
+
+    .error-btn:hover {
+      transform: translateY(-3px);
+
+      border-color: rgba(208,164,92,0.5);
+
+      background: rgba(208,164,92,0.08);
+
+      box-shadow:
+        0 12px 30px rgba(208,164,92,0.08);
+    }
+
+    .error-btn.primary {
+      border-color: rgba(208,164,92,0.55);
+
+      background: #d0a45c;
+
+      color: #111;
+    }
+
+    .error-btn.primary:hover {
+      background: #e0b875;
+
+      border-color: #e0b875;
+
+      color: #111;
     }
 
     .error-footer {
       position: absolute;
 
-      bottom: 25px;
-      left: 0;
-      right: 0;
+      z-index: 2;
 
-      color: var(--text-faint);
+      left: 24px;
+      right: 24px;
+      bottom: 28px;
 
-      font-family:
-        "DM Mono",
-        monospace;
+      display: flex;
 
-      font-size: .55rem;
+      justify-content: center;
 
-      letter-spacing: .08em;
+      color: rgba(242,238,231,0.35);
 
-      text-align: center;
+      font-size: 0.7rem;
+
+      letter-spacing: 0.12em;
 
       text-transform: uppercase;
     }
 
-    @media (max-width: 600px) {
+    .error-footer strong {
+      color: rgba(242,238,231,0.6);
+    }
+
+
+    /* =========================================================
+       LIGHT MODE
+       ========================================================= */
+
+    html.light .error-page {
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          rgba(170, 120, 45, 0.10),
+          transparent 34%
+        ),
+        #f4f1eb;
+    }
+
+    html.light .error-page::before {
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.035) 1px,
+          transparent 1px
+        );
+    }
+
+    html.light .error-code,
+    html.light .error-title {
+      color: #151515;
+    }
+
+    html.light .error-text {
+      color: rgba(21,21,21,0.62);
+    }
+
+    html.light .error-terminal {
+      background: rgba(0,0,0,0.025);
+
+      border-color: rgba(0,0,0,0.10);
+
+      color: rgba(21,21,21,0.55);
+    }
+
+    html.light .error-terminal .command {
+      color: #151515;
+    }
+
+    html.light .error-btn {
+      color: #151515;
+
+      border-color: rgba(0,0,0,0.12);
+
+      background: rgba(0,0,0,0.025);
+    }
+
+    html.light .error-footer {
+      color: rgba(21,21,21,0.38);
+    }
+
+    html.light .error-footer strong {
+      color: rgba(21,21,21,0.62);
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 640px) {
+
+      .error-page {
+        padding: 100px 20px 70px;
+      }
+
       .error-logo {
-        width: 75px;
-        margin-bottom: 45px;
+        width: 44px;
+        margin-bottom: 25px;
+      }
+
+      .error-code {
+        font-size: clamp(6rem, 28vw, 9rem);
+      }
+
+      .error-eyebrow {
+        margin-top: 32px;
+
+        font-size: 0.62rem;
+
+        letter-spacing: 0.16em;
       }
 
       .error-title {
-        margin-top: 28px;
+        font-size: 1.75rem;
+      }
+
+      .error-text {
+        font-size: 0.9rem;
+
+        line-height: 1.7;
+      }
+
+      .error-terminal {
+        font-size: 0.68rem;
+
+        padding: 13px 14px;
+
+        overflow-x: auto;
       }
 
       .error-actions {
-        display: grid;
+        width: 100%;
       }
 
-      .error-actions .btn {
+      .error-btn {
         width: 100%;
+
+        max-width: 280px;
+      }
+
+      .error-footer {
+        bottom: 20px;
+
+        font-size: 0.58rem;
+      }
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .error-btn {
+        transition: none;
+      }
+
+      .error-btn:hover {
+        transform: none;
       }
     }
   </style>
 </head>
 
+
 <body>
 
   <main class="error-page">
+
+    <div class="error-glow"></div>
 
     <div class="error-content">
 
@@ -231,72 +478,97 @@
         alt="SNK"
       >
 
-      <div
-        class="error-code"
-        aria-label="404"
-      >
-        404
-      </div>
-
-      <h1 class="error-title">
-        SYSTEM PATH NOT FOUND.
+      <h1 class="error-code">
+        4<span>0</span>4
       </h1>
 
-      <p class="error-copy">
-        The page you're looking for doesn't exist,
-        has moved, or the route is no longer available.
-        Let's get you back to the system.
+      <p class="error-eyebrow">
+        ROUTE NOT FOUND
       </p>
 
-      <div class="error-terminal">
+      <h2 class="error-title">
+        This path doesn't exist.
+      </h2>
+
+      <p class="error-text">
+        The page you're looking for may have moved, changed,
+        or never existed. Let's get you back to something useful.
+      </p>
+
+
+      <div class="error-terminal" aria-label="404 status">
 
         <div>
           <span class="prompt">$</span>
-          snk-engine route --resolve
+          <span class="command">snk locate --page</span>
         </div>
 
-        <div>
-          searching requested path...
+        <div style="margin-top: 7px;">
+          <span class="status">✓</span>
+          route search completed
         </div>
 
-        <div>
-          <span class="prompt">!</span>
-          route.not_found()
-        </div>
-
-        <div class="status">
-          SYSTEM STATUS / ONLINE
+        <div style="margin-top: 5px;">
+          <span class="status">!</span>
+          requested resource not found
         </div>
 
       </div>
+
 
       <div class="error-actions">
 
         <a
-          class="btn btn-primary"
           href="./"
+          class="error-btn primary"
         >
-          BACK TO HOME
-          <span class="btn-arrow">→</span>
+          ← Back Home
         </a>
 
         <a
-          class="btn btn-secondary"
-          href="./projects.html"
+          href="./#ecosystem"
+          class="error-btn"
         >
-          VIEW WORK
-          <span class="btn-arrow">→</span>
+          Explore Ecosystem
         </a>
 
       </div>
 
     </div>
 
-    <div class="error-footer">
-      SNK / SOFTWARE / INTELLIGENCE / EXPERIENCE
-    </div>
+
+    <footer class="error-footer">
+      <span>
+        <strong>SNK</strong>&nbsp; · &nbsp;BUILD · LEARN · CREATE
+      </span>
+    </footer>
 
   </main>
+
+
+  <script>
+    /*
+      Keep the 404 page compatible with the main SNK
+      theme preference.
+    */
+
+    (function () {
+
+      try {
+
+        const savedTheme =
+          localStorage.getItem("snk-theme");
+
+        if (savedTheme === "light") {
+          document.documentElement.classList.add("light");
+        }
+
+      } catch (error) {
+        // Ignore localStorage restrictions.
+      }
+
+    })();
+  </script>
 
 </body>
 </html>
