@@ -2,20 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Shah Neil Khan — Personal Brand</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Shah Neil Khan — UX, Systems & Digital Experience</title>
 
   <meta
     name="description"
     content="Shah Neil Khan — UX, digital experience, systems thinking, AI and personal brand ecosystem."
   >
 
+  <meta name="author" content="Shah Neil Khan">
+
+  <meta
+    name="theme-color"
+    content="#0a0907"
+  >
+
+  <meta
+    property="og:title"
+    content="Shah Neil Khan — UX, Systems & Digital Experience"
+  >
+
+  <meta
+    property="og:description"
+    content="I build systems. I train minds. I create impact."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:url"
+    content="https://shahneilkhan.github.io/"
+  >
+
+  <link
+    rel="canonical"
+    href="https://shahneilkhan.github.io/"
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
@@ -24,282 +61,149 @@
 
 <body>
 
-  <!-- =========================================
-       BACKGROUND EFFECTS
-  ========================================== -->
+  <!-- Ambient effects -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="rain-layer" id="rainLayer" aria-hidden="true"></div>
+  <div class="birds" id="birds" aria-hidden="true"></div>
 
-  <div class="ambient-glow"></div>
-  <div class="rain-container" aria-hidden="true"></div>
-  <div class="birds" aria-hidden="true"></div>
+  <!-- ================= HEADER ================= -->
 
+  <header class="site-header" id="siteHeader">
 
-  <!-- =========================================
-       HEADER
-  ========================================== -->
+    <div class="container nav-wrap">
 
-  <header class="site-header">
-
-    <div class="nav-wrap">
-
-      <a href="#home" class="logo" aria-label="Shah Neil Khan Home">
+      <a
+        class="logo"
+        href="#home"
+        aria-label="Shah Neil Khan home"
+      >
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
           alt="SNK"
         >
       </a>
 
-      <nav class="main-nav" aria-label="Main navigation">
-
-        <a href="#home">Home</a>
-        <a href="#ecosystem">Ecosystem</a>
-        <a href="#ai">AI</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#experience">Experience</a>
-        <a href="#about">About</a>
-        <a href="#brand">Brand</a>
-        <a href="#contact">Contact</a>
-
+      <nav
+        class="main-nav"
+        id="mainNav"
+        aria-label="Primary navigation"
+      >
+        <a href="#home" data-nav="home" data-i18n="navHome">Home</a>
+        <a href="#ecosystem" data-nav="ecosystem" data-i18n="navEcosystem">Ecosystem</a>
+        <a href="#ai" data-nav="ai" data-i18n="navAI">AI</a>
+        <a href="#expertise" data-nav="expertise" data-i18n="navExpertise">Expertise</a>
+        <a href="#experience" data-nav="experience" data-i18n="navExperience">Experience</a>
+        <a href="#about" data-nav="about" data-i18n="navAbout">About</a>
+        <a href="#contact" data-nav="contact" data-i18n="navContact">Contact</a>
       </nav>
 
       <div class="nav-actions">
 
         <button
-          class="icon-btn language-toggle"
+          class="text-control"
+          id="languageToggle"
           type="button"
-          aria-label="Change language"
+          aria-label="Switch language"
         >
           বাংলা
         </button>
 
         <button
-          class="icon-btn theme-toggle"
+          class="icon-btn"
+          id="themeToggle"
           type="button"
-          aria-label="Toggle theme"
+          aria-label="Toggle light and dark mode"
+          title="Toggle theme"
         >
           ☼
         </button>
 
         <button
-          class="icon-btn rain-toggle"
+          class="rain-btn"
+          id="rainToggle"
           type="button"
           aria-label="Toggle rain"
         >
-          Rain
+          <span class="rain-dot"></span>
+          <span data-i18n="rain">Rain</span>
         </button>
 
       </div>
+
+      <button
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
     </div>
 
   </header>
 
 
-  <!-- =========================================
-       MAIN
-  ========================================== -->
-
   <main>
 
+    <!-- ================= HERO ================= -->
 
-    <!-- =====================================
-         HERO
-    ====================================== -->
-
-    <section id="home" class="hero">
+    <section class="hero section" id="home">
 
       <div class="hero-bg" aria-hidden="true">
 
-        <svg
-          class="sunset-scene"
-          viewBox="0 0 1600 900"
-          preserveAspectRatio="xMidYMid slice"
-          role="presentation"
-        >
+        <div class="hero-sky"></div>
 
-          <defs>
+        <div class="hero-sun"></div>
 
-            <linearGradient
-              id="skyGradient"
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="1"
-            >
-              <stop offset="0%" stop-color="#10100f"/>
-              <stop offset="45%" stop-color="#34241c"/>
-              <stop offset="75%" stop-color="#a75f31"/>
-              <stop offset="100%" stop-color="#16100d"/>
-            </linearGradient>
+        <div class="hero-moon"></div>
 
-            <radialGradient
-              id="sunGlow"
-              cx="50%"
-              cy="70%"
-              r="35%"
-            >
-              <stop offset="0%" stop-color="#ffd89a" stop-opacity=".9"/>
-              <stop offset="40%" stop-color="#e8994e" stop-opacity=".35"/>
-              <stop offset="100%" stop-color="#000" stop-opacity="0"/>
-            </radialGradient>
+        <div class="hero-horizon"></div>
 
-            <linearGradient
-              id="groundGradient"
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="1"
-            >
-              <stop offset="0%" stop-color="#251812"/>
-              <stop offset="100%" stop-color="#080808"/>
-            </linearGradient>
+        <div class="hero-minaret minaret-one">
+          <span></span>
+        </div>
 
-          </defs>
+        <div class="hero-minaret minaret-two">
+          <span></span>
+        </div>
 
-          <rect
-            width="1600"
-            height="900"
-            fill="url(#skyGradient)"
-          />
+        <div class="hero-mosque">
+          <div class="dome"></div>
+          <div class="mosque-body"></div>
+        </div>
 
-          <rect
-            width="1600"
-            height="900"
-            fill="url(#sunGlow)"
-          />
+        <div class="hero-ground"></div>
 
-          <!-- Sun -->
-
-          <circle
-            cx="820"
-            cy="580"
-            r="125"
-            fill="#f7c77e"
-            opacity=".8"
-          />
-
-          <!-- Mosque silhouette -->
-
-          <g
-            fill="#100d0b"
-            opacity=".9"
-          >
-
-            <rect
-              x="600"
-              y="570"
-              width="450"
-              height="190"
-            />
-
-            <path
-              d="M560 570 Q825 380 1090 570 Z"
-            />
-
-            <rect
-              x="775"
-              y="420"
-              width="90"
-              height="155"
-            />
-
-            <path
-              d="M770 420 L820 350 L870 420 Z"
-            />
-
-            <rect
-              x="520"
-              y="420"
-              width="34"
-              height="250"
-            />
-
-            <path
-              d="M510 420 L537 355 L564 420 Z"
-            />
-
-            <rect
-              x="1090"
-              y="420"
-              width="34"
-              height="250"
-            />
-
-            <path
-              d="M1080 420 L1107 355 L1134 420 Z"
-            />
-
-            <circle
-              cx="820"
-              cy="530"
-              r="70"
-              fill="#050505"
-            />
-
-          </g>
-
-          <!-- Horizon -->
-
-          <path
-            d="
-              M0 690
-              C220 645 380 700 560 675
-              C760 645 930 700 1120 665
-              C1310 630 1450 690 1600 650
-              L1600 900
-              L0 900 Z
-            "
-            fill="url(#groundGradient)"
-          />
-
-          <!-- Walking figures -->
-
-          <g
-            fill="#050505"
-            opacity=".95"
-          >
-
-            <circle cx="380" cy="680" r="15"/>
-            <path d="M374 694 L366 748 L384 748 L392 694 Z"/>
-            <path d="M370 740 L350 780 L362 785 L378 748 Z"/>
-            <path d="M383 740 L399 782 L411 777 L392 744 Z"/>
-
-            <circle cx="440" cy="690" r="12"/>
-            <path d="M435 702 L430 748 L446 748 L450 702 Z"/>
-            <path d="M434 745 L416 779 L426 784 L441 750 Z"/>
-            <path d="M444 745 L458 779 L468 775 L450 744 Z"/>
-
-            <circle cx="1160" cy="690" r="13"/>
-            <path d="M1154 703 L1148 752 L1165 752 L1169 703 Z"/>
-            <path d="M1153 749 L1137 782 L1147 787 L1160 753 Z"/>
-            <path d="M1163 749 L1178 782 L1188 777 L1170 749 Z"/>
-
-          </g>
-
-        </svg>
+        <div class="hero-walker walker-one"></div>
+        <div class="hero-walker walker-two"></div>
+        <div class="hero-walker walker-three"></div>
 
       </div>
 
-
-      <div class="hero-overlay"></div>
-
-
       <div class="container hero-content">
 
-        <div class="hero-copy">
+        <div class="hero-copy reveal">
 
-          <p class="eyebrow">
-            UX · DIGITAL EXPERIENCE · SYSTEMS · AI
-          </p>
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            <span data-i18n="heroEyebrow">
+              UX / SYSTEMS / DIGITAL EXPERIENCE
+            </span>
+          </div>
 
-          <h1>
+          <h1 data-i18n="heroTitle">
             I BUILD SYSTEMS.<br>
             I TRAIN MINDS.<br>
-            I CREATE <span>IMPACT.</span>
+            I CREATE IMPACT.
           </h1>
 
-          <p class="hero-description">
-            I design digital experiences, build systems,
-            explore AI and create ideas that move people forward.
+          <p class="hero-description" data-i18n="heroDescription">
+            I work where design, technology, systems thinking and human
+            development meet.
           </p>
 
           <div class="hero-actions">
@@ -307,15 +211,17 @@
             <a
               href="#ecosystem"
               class="btn btn-primary"
+              data-i18n="explore"
             >
-              Explore My World
+              Explore the ecosystem
             </a>
 
             <a
               href="#contact"
-              class="btn btn-secondary"
+              class="btn btn-ghost"
+              data-i18n="connect"
             >
-              Let's Connect
+              Connect
             </a>
 
           </div>
@@ -323,50 +229,38 @@
         </div>
 
 
-        <!-- Terminal -->
+        <div class="hero-terminal reveal">
 
-        <div class="hero-terminal">
+          <div class="terminal-head">
 
-          <div class="terminal-top">
+            <div class="terminal-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
 
-            <span></span>
-            <span></span>
-            <span></span>
+            <span>SNK.SYSTEM</span>
 
-            <small>SNK.SYSTEM</small>
+            <span class="terminal-status">
+              <i></i>
+              ONLINE
+            </span>
 
           </div>
 
           <div class="terminal-body">
 
-            <p>
-              <span class="terminal-green">></span>
-              initializing...
-            </p>
+            <div>
+              <span class="terminal-prompt">$</span>
+              <span data-i18n="terminalInit">
+                initialize mindset
+              </span>
+            </div>
 
-            <p>
-              <span class="terminal-green">></span>
-              loading mindset
-            </p>
-
-            <p>
-              <span class="terminal-green">></span>
-              loading systems
-            </p>
-
-            <p>
-              <span class="terminal-green">></span>
-              loading creativity
-            </p>
-
-            <p class="terminal-status">
-              <span class="terminal-green">●</span>
-              system online
-            </p>
-
-            <div class="terminal-typing">
-              <span class="typing-text"></span>
-              <span class="cursor">▋</span>
+            <div class="terminal-output">
+              <span>&gt;</span>
+              <span id="terminalTyping">thinking...</span>
+              <span class="cursor"></span>
             </div>
 
           </div>
@@ -375,34 +269,41 @@
 
       </div>
 
+      <a
+        href="#ecosystem"
+        class="scroll-indicator"
+        aria-label="Scroll to ecosystem"
+      >
+        <span></span>
+        <small data-i18n="scroll">SCROLL</small>
+      </a>
+
     </section>
 
 
-    <!-- =====================================
-         ECOSYSTEM
-    ====================================== -->
+    <!-- ================= ECOSYSTEM ================= -->
 
     <section
+      class="ecosystem section"
       id="ecosystem"
-      class="section ecosystem-section"
     >
 
       <div class="container">
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
-          <p class="section-kicker">
-            MY ECOSYSTEM
-          </p>
+          <div class="section-kicker" data-i18n="kicker01">
+            01 / ECOSYSTEM
+          </div>
 
-          <h2>
+          <h2 data-i18n="ecosystemTitle">
             One mind.<br>
             Multiple directions.
           </h2>
 
-          <p>
-            Different platforms, different missions —
-            connected by one vision.
+          <p data-i18n="ecosystemDescription">
+            A connected ecosystem of digital products, education,
+            design and mission-driven platforms.
           </p>
 
         </div>
@@ -410,38 +311,38 @@
 
         <div class="ecosystem-grid">
 
-
           <!-- WebsitesDeal -->
 
           <a
-            class="ecosystem-card ecosystem-card-large"
+            class="ecosystem-card ecosystem-card-large reveal"
             href="https://websitesdeal.com/"
             target="_blank"
             rel="noopener noreferrer"
+            data-brand="websitesdeal"
           >
 
             <span class="card-number">01</span>
 
-            <div class="card-content">
+            <div class="card-top">
+              <span class="card-label" data-i18n="websitesLabel">
+                DIGITAL BUSINESS
+              </span>
+              <span class="card-arrow">↗</span>
+            </div>
 
-              <p class="card-label">
-                DIGITAL PLATFORM
-              </p>
+            <div class="card-content">
 
               <h3>
                 WebsitesDeal<span>.com</span>
               </h3>
 
-              <p>
-                Websites, digital solutions and online
-                business infrastructure.
+              <p data-i18n="websitesDescription">
+                Digital websites and online business solutions.
               </p>
 
-              <span class="card-link">
-                Visit Platform ↗
-              </span>
-
             </div>
+
+            <div class="card-line"></div>
 
           </a>
 
@@ -449,34 +350,35 @@
           <!-- Tabayyun -->
 
           <a
-            class="ecosystem-card ecosystem-card-large"
+            class="ecosystem-card ecosystem-card-large reveal"
             href="https://www.tabayyuninstitute.com/"
             target="_blank"
             rel="noopener noreferrer"
+            data-brand="tabayyun"
           >
 
             <span class="card-number">02</span>
 
-            <div class="card-content">
+            <div class="card-top">
+              <span class="card-label" data-i18n="tabayyunLabel">
+                MEDIA / KNOWLEDGE
+              </span>
+              <span class="card-arrow">↗</span>
+            </div>
 
-              <p class="card-label">
-                MEDIA PLATFORM
-              </p>
+            <div class="card-content">
 
               <h3>
                 TabayyunTV<span>.com</span>
               </h3>
 
-              <p>
-                A destination for thoughtful Islamic
-                media and educational content.
+              <p data-i18n="tabayyunDescription">
+                A knowledge and media destination powered by Tabayyun Institute.
               </p>
 
-              <span class="card-link">
-                Visit Website ↗
-              </span>
-
             </div>
+
+            <div class="card-line"></div>
 
           </a>
 
@@ -484,34 +386,35 @@
           <!-- SNK IT -->
 
           <a
-            class="ecosystem-card"
+            class="ecosystem-card reveal"
             href="https://snkitinstitute.github.io/"
             target="_blank"
             rel="noopener noreferrer"
+            data-brand="snkit"
           >
 
             <span class="card-number">03</span>
 
+            <div class="card-top">
+              <span class="card-label" data-i18n="snkitLabel">
+                EDUCATION
+              </span>
+              <span class="card-arrow">↗</span>
+            </div>
+
             <div class="card-content">
 
-              <p class="card-label">
-                EDUCATION
-              </p>
-
               <h3>
-                SNK IT Institute
+                SNK IT<span> Institute</span>
               </h3>
 
-              <p>
-                Technology, digital skills and
-                practical learning.
+              <p data-i18n="snkitDescription">
+                Practical digital and technology education.
               </p>
 
-              <span class="card-link">
-                Visit Institute ↗
-              </span>
-
             </div>
+
+            <div class="card-line"></div>
 
           </a>
 
@@ -519,34 +422,35 @@
           <!-- Sarakat -->
 
           <a
-            class="ecosystem-card"
+            class="ecosystem-card reveal"
             href="https://sarakatagency.github.io/"
             target="_blank"
             rel="noopener noreferrer"
+            data-brand="sarakat"
           >
 
             <span class="card-number">04</span>
 
+            <div class="card-top">
+              <span class="card-label" data-i18n="sarakatLabel">
+                AGENCY
+              </span>
+              <span class="card-arrow">↗</span>
+            </div>
+
             <div class="card-content">
 
-              <p class="card-label">
-                AGENCY
-              </p>
-
               <h3>
-                Sarakāt Agency
+                Sarakāt<span> Agency</span>
               </h3>
 
-              <p>
-                Creative, digital and strategic
-                direction for modern brands.
+              <p data-i18n="sarakatDescription">
+                A creative direction for digital brands and experiences.
               </p>
 
-              <span class="card-link">
-                Explore Agency ↗
-              </span>
-
             </div>
+
+            <div class="card-line"></div>
 
           </a>
 
@@ -554,34 +458,35 @@
           <!-- SNK Design -->
 
           <a
-            class="ecosystem-card"
+            class="ecosystem-card ecosystem-card-wide reveal"
             href="https://snkdesign.github.io/"
             target="_blank"
             rel="noopener noreferrer"
+            data-brand="snkdesign"
           >
 
             <span class="card-number">05</span>
 
+            <div class="card-top">
+              <span class="card-label" data-i18n="snkdesignLabel">
+                DESIGN
+              </span>
+              <span class="card-arrow">↗</span>
+            </div>
+
             <div class="card-content">
 
-              <p class="card-label">
-                DESIGN
-              </p>
-
               <h3>
-                SNK Design
+                SNK<span> Design</span>
               </h3>
 
-              <p>
-                Visual design, branding and
-                digital creative work.
+              <p data-i18n="snkdesignDescription">
+                Visual identity, interface and creative design.
               </p>
 
-              <span class="card-link">
-                View Design ↗
-              </span>
-
             </div>
+
+            <div class="card-line"></div>
 
           </a>
 
@@ -592,94 +497,95 @@
     </section>
 
 
-    <!-- =====================================
-         AI
-    ====================================== -->
+    <!-- ================= AI ================= -->
 
-    <section
-      id="ai"
-      class="section ai-section"
-    >
+    <section class="ai section" id="ai">
 
       <div class="container ai-layout">
 
-        <div class="ai-copy">
+        <div class="ai-copy reveal">
 
-          <p class="section-kicker">
-            AI & THINKING
-          </p>
+          <div class="section-kicker" data-i18n="kicker02">
+            02 / AI & THINKING
+          </div>
 
-          <h2>
-            I don't just use AI.
-            I think with it.
+          <h2 data-i18n="aiTitle">
+            Technology should<br>
+            amplify thinking.
           </h2>
 
-          <p>
-            AI is becoming part of how I explore ideas,
-            solve problems, automate workflows and
-            understand what's possible next.
+          <p data-i18n="aiDescription">
+            I explore AI as a thinking partner — for research,
+            systems, creativity, learning and better decisions.
           </p>
 
-          <a
-            href="#contact"
-            class="text-link"
-          >
-            Let's build with intelligence ↗
-          </a>
+          <div class="ai-points">
 
-        </div>
-
-
-        <div class="ai-visual">
-
-          <div class="ai-orbit">
-
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-            <div class="orbit orbit-three"></div>
-
-            <div class="ai-core">
-              AI
+            <div>
+              <strong>01</strong>
+              <span data-i18n="aiPoint1">Research</span>
             </div>
 
-            <span class="orbit-node node-one">UX</span>
-            <span class="orbit-node node-two">DATA</span>
-            <span class="orbit-node node-three">IDEAS</span>
-            <span class="orbit-node node-four">SYSTEMS</span>
+            <div>
+              <strong>02</strong>
+              <span data-i18n="aiPoint2">Systems</span>
+            </div>
+
+            <div>
+              <strong>03</strong>
+              <span data-i18n="aiPoint3">Creative Intelligence</span>
+            </div>
 
           </div>
 
         </div>
 
+
+        <div class="ai-visual reveal">
+
+          <div class="ai-orbit orbit-one"></div>
+          <div class="ai-orbit orbit-two"></div>
+          <div class="ai-orbit orbit-three"></div>
+
+          <div class="ai-core">
+            <span>AI</span>
+            <small>THINK</small>
+          </div>
+
+          <span class="orbit-node node-one">UX</span>
+          <span class="orbit-node node-two">SYS</span>
+          <span class="orbit-node node-three">AI</span>
+          <span class="orbit-node node-four">LAB</span>
+
+        </div>
+
       </div>
 
     </section>
 
 
-    <!-- =====================================
-         EXPERTISE
-    ====================================== -->
+    <!-- ================= EXPERTISE ================= -->
 
     <section
+      class="expertise section"
       id="expertise"
-      class="section expertise-section"
     >
 
       <div class="container">
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
-          <p class="section-kicker">
-            EXPERTISE
-          </p>
+          <div class="section-kicker" data-i18n="kicker03">
+            03 / EXPERTISE
+          </div>
 
-          <h2>
-            Where design meets systems.
+          <h2 data-i18n="expertiseTitle">
+            I connect the pieces.
           </h2>
 
-          <p>
-            A multidisciplinary approach to digital
-            experience, product thinking and execution.
+          <p data-i18n="expertiseDescription">
+            Design is not an isolated skill. It becomes powerful
+            when connected to strategy, technology and people.
           </p>
 
         </div>
@@ -687,99 +593,52 @@
 
         <div class="expertise-grid">
 
-          <article class="expertise-card">
-
+          <article class="expertise-card reveal">
             <span>01</span>
-
-            <h3>
-              UX Strategy
-            </h3>
-
-            <p>
-              Understanding people, problems,
-              journeys and product opportunities.
+            <h3 data-i18n="exp1Title">UX Strategy</h3>
+            <p data-i18n="exp1Text">
+              Turning complex problems into clearer experiences.
             </p>
-
           </article>
 
-
-          <article class="expertise-card">
-
+          <article class="expertise-card reveal">
             <span>02</span>
-
-            <h3>
-              UI Design
-            </h3>
-
-            <p>
-              Interfaces that feel intentional,
-              clear and visually refined.
+            <h3 data-i18n="exp2Title">Product Thinking</h3>
+            <p data-i18n="exp2Text">
+              Connecting user needs, business goals and execution.
             </p>
-
           </article>
 
-
-          <article class="expertise-card">
-
+          <article class="expertise-card reveal">
             <span>03</span>
-
-            <h3>
-              Digital Experience
-            </h3>
-
-            <p>
-              Connecting brand, content,
-              interaction and technology.
+            <h3 data-i18n="exp3Title">Digital Experience</h3>
+            <p data-i18n="exp3Text">
+              Designing digital journeys that feel intentional.
             </p>
-
           </article>
 
-
-          <article class="expertise-card">
-
+          <article class="expertise-card reveal">
             <span>04</span>
-
-            <h3>
-              Systems Thinking
-            </h3>
-
-            <p>
-              Turning disconnected problems
-              into structured systems.
+            <h3 data-i18n="exp4Title">Visual Design</h3>
+            <p data-i18n="exp4Text">
+              Creating visual systems with clarity and character.
             </p>
-
           </article>
 
-
-          <article class="expertise-card">
-
+          <article class="expertise-card reveal">
             <span>05</span>
-
-            <h3>
-              AI Exploration
-            </h3>
-
-            <p>
-              Exploring AI-assisted workflows,
-              ideas and future possibilities.
+            <h3 data-i18n="exp5Title">Systems Thinking</h3>
+            <p data-i18n="exp5Text">
+              Seeing relationships instead of isolated tasks.
             </p>
-
           </article>
 
-
-          <article class="expertise-card">
-
+          <article class="expertise-card reveal">
             <span>06</span>
-
-            <h3>
-              Creative Direction
-            </h3>
-
-            <p>
-              Building visual and strategic direction
-              across digital brands.
+            <h3 data-i18n="exp6Title">AI Exploration</h3>
+            <p data-i18n="exp6Text">
+              Exploring practical ways AI can improve creative work.
             </p>
-
           </article>
 
         </div>
@@ -789,31 +648,29 @@
     </section>
 
 
-    <!-- =====================================
-         EXPERIENCE
-    ====================================== -->
+    <!-- ================= EXPERIENCE ================= -->
 
     <section
+      class="snk-experience section"
       id="experience"
-      class="section snk-experience"
     >
 
       <div class="container">
 
-        <div class="experience-heading">
+        <div class="experience-heading reveal">
 
-          <p class="section-kicker">
-            EXPERIENCE
-          </p>
+          <div class="section-kicker" data-i18n="kicker04">
+            04 / EXPERIENCE
+          </div>
 
-          <h2>
+          <h2 data-i18n="experienceTitle">
             EXPERIENCE<br>
             SHAPES THE MIND.
           </h2>
 
-          <p>
-            Every role teaches something.
-            Every project changes how I think.
+          <p data-i18n="experienceIntro">
+            Every role is an opportunity to understand people,
+            systems and the work behind meaningful digital experiences.
           </p>
 
         </div>
@@ -821,65 +678,43 @@
 
         <div class="experience-timeline">
 
-          <article class="experience-card">
+          <div class="experience-line"></div>
 
-            <div class="experience-meta">
+          <article class="experience-card reveal">
 
-              <span class="experience-date">
-                2026 — PRESENT
-              </span>
-
-              <span class="experience-location">
-                TEXAS, USA · REMOTE
-              </span>
-
+            <div class="experience-marker">
+              <span></span>
             </div>
 
+            <div class="experience-meta">
+              <span>2026 — PRESENT</span>
+              <span>REMOTE</span>
+            </div>
 
             <div class="experience-main">
 
-              <p class="experience-label">
-                CURRENT ROLE
+              <p class="experience-company">
+                Yaqeen Institute
               </p>
 
               <h3>
                 UX Lead Digital Expert
               </h3>
 
-              <p class="experience-company">
-                Yaqeen Institute
+              <p
+                class="experience-location"
+                data-i18n="experienceLocation"
+              >
+                Texas, USA · Remote
               </p>
 
-              <p class="experience-description">
-                Working across digital experience,
-                UX thinking, interface design and
-                product-oriented problem solving.
+              <p
+                class="experience-description"
+                data-i18n="experienceDescription"
+              >
+                Working across digital experience, UX thinking,
+                interface design and product-oriented problem solving.
               </p>
-
-            </div>
-
-
-            <div class="experience-principles">
-
-              <div>
-                <span>01</span>
-                <strong>Understand</strong>
-              </div>
-
-              <div>
-                <span>02</span>
-                <strong>Structure</strong>
-              </div>
-
-              <div>
-                <span>03</span>
-                <strong>Execute</strong>
-              </div>
-
-              <div>
-                <span>04</span>
-                <strong>Improve</strong>
-              </div>
 
             </div>
 
@@ -888,15 +723,51 @@
         </div>
 
 
-        <div class="experience-philosophy">
+        <div class="experience-system reveal">
 
-          <p>
-            DON'T JUST DO THE WORK.
-          </p>
+          <div class="system-item">
+            <span>01</span>
+            <strong data-i18n="systemUnderstand">Understand</strong>
+            <p data-i18n="systemUnderstandText">
+              Find the real problem.
+            </p>
+          </div>
 
-          <h3>
+          <div class="system-item">
+            <span>02</span>
+            <strong data-i18n="systemStructure">Structure</strong>
+            <p data-i18n="systemStructureText">
+              Make complexity understandable.
+            </p>
+          </div>
+
+          <div class="system-item">
+            <span>03</span>
+            <strong data-i18n="systemExecute">Execute</strong>
+            <p data-i18n="systemExecuteText">
+              Turn thinking into useful work.
+            </p>
+          </div>
+
+          <div class="system-item">
+            <span>04</span>
+            <strong data-i18n="systemImprove">Improve</strong>
+            <p data-i18n="systemImproveText">
+              Keep learning and refining.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="experience-philosophy reveal">
+
+          <span class="philosophy-mark">“</span>
+
+          <blockquote data-i18n="philosophy">
+            DON'T JUST DO THE WORK.<br>
             UNDERSTAND IT.
-          </h3>
+          </blockquote>
 
         </div>
 
@@ -905,50 +776,51 @@
     </section>
 
 
-    <!-- =====================================
-         ABOUT
-    ====================================== -->
+    <!-- ================= ABOUT ================= -->
 
-    <section
-      id="about"
-      class="section about-section"
-    >
+    <section class="about section" id="about">
 
-      <div class="container about-layout">
+      <div class="container about-grid">
 
-        <div class="section-heading">
+        <div class="about-heading reveal">
 
-          <p class="section-kicker">
-            ABOUT
-          </p>
+          <div class="section-kicker" data-i18n="kicker05">
+            05 / ABOUT
+          </div>
 
-          <h2>
-            Curiosity drives<br>
-            everything.
+          <h2 data-i18n="aboutTitle">
+            Beyond the screen.
           </h2>
 
         </div>
 
 
-        <div class="about-copy">
+        <div class="about-copy reveal">
 
-          <p>
-            I am interested in the space where
-            people, technology, design and ideas
-            intersect.
+          <p
+            class="about-lead"
+            data-i18n="aboutLead"
+          >
+            I believe good digital work begins with good thinking.
           </p>
 
-          <p>
-            My work moves between UX, digital
-            experiences, systems, education,
-            creative direction and emerging
-            technology.
+          <p data-i18n="aboutText1">
+            My work sits between UX, digital products, visual
+            communication, systems thinking and continuous learning.
           </p>
 
-          <p>
-            The goal is simple:
-            <strong>create useful things that matter.</strong>
+          <p data-i18n="aboutText2">
+            The goal is not simply to make things look good.
+            The goal is to make them meaningful, understandable
+            and useful.
           </p>
+
+          <div class="about-signature">
+            <span>SNK</span>
+            <small data-i18n="aboutSignature">
+              DESIGN / THINK / BUILD
+            </small>
+          </div>
 
         </div>
 
@@ -957,53 +829,36 @@
     </section>
 
 
-    <!-- =====================================
-         BRAND
-    ====================================== -->
+    <!-- ================= TABAYYUN BRAND ================= -->
 
-    <section
-      id="brand"
-      class="section brand-section"
-    >
+    <section class="brand section">
 
       <div class="container">
 
-        <div class="section-heading">
-
-          <p class="section-kicker">
-            BEYOND PORTFOLIO
-          </p>
-
-          <h2>
-            Ideas need a place<br>
-            to travel.
-          </h2>
-
-        </div>
-
-
         <a
+          class="brand-banner reveal"
           href="https://www.tabayyuninstitute.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="brand-banner"
         >
 
           <div>
 
-            <p>
-              TABAYYUN TV
-            </p>
+            <span class="brand-eyebrow" data-i18n="brandEyebrow">
+              VISIT THE PLATFORM
+            </span>
 
-            <h3>
-              Explore the platform ↗
+            <h3 data-i18n="brandTitle">
+              TabayyunTV.com
             </h3>
+
+            <p data-i18n="brandDescription">
+              Explore the Tabayyun Institute ecosystem.
+            </p>
 
           </div>
 
-          <span>
-            VISIT
-          </span>
+          <span class="brand-arrow">↗</span>
 
         </a>
 
@@ -1012,114 +867,105 @@
     </section>
 
 
-    <!-- =====================================
-         CONTACT
-    ====================================== -->
+    <!-- ================= CONTACT ================= -->
 
     <section
+      class="contact section"
       id="contact"
-      class="section contact-section"
     >
 
       <div class="container">
 
-        <div class="contact-heading">
+        <div class="contact-inner reveal">
 
-          <p class="section-kicker">
-            CONTACT
-          </p>
+          <div class="section-kicker" data-i18n="kicker06">
+            06 / CONTACT
+          </div>
 
-          <h2>
-            Let's make something<br>
-            meaningful.
+          <h2 data-i18n="contactTitle">
+            Let's build something<br>
+            worth remembering.
           </h2>
 
-          <p>
-            Have an idea, project or opportunity?
-            Let's start a conversation.
+          <p data-i18n="contactDescription">
+            For collaborations, digital experience, design,
+            systems or creative work.
           </p>
 
-        </div>
 
+          <div class="social-grid">
 
-        <div class="social-grid">
+            <a
+              class="social-card"
+              href="https://www.linkedin.com/company/iamsnkbd"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>LinkedIn</span>
+              <strong>↗</strong>
+            </a>
 
+            <a
+              class="social-card"
+              href="https://instagram.com/iamsnkbd"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Instagram</span>
+              <strong>↗</strong>
+            </a>
 
-          <a
-            class="social-card"
-            href="https://www.linkedin.com/company/iamsnkbd"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>LinkedIn</span>
-            <strong>↗</strong>
-          </a>
+            <a
+              class="social-card"
+              href="https://facebook.com/iamsnkbd"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Facebook</span>
+              <strong>↗</strong>
+            </a>
 
+            <a
+              class="social-card"
+              href="https://youtube.com/c/shahneilkhan"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>YouTube</span>
+              <strong>↗</strong>
+            </a>
 
-          <a
-            class="social-card"
-            href="https://instagram.com/iamsnkbd"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>Instagram</span>
-            <strong>↗</strong>
-          </a>
+            <a
+              class="social-card"
+              href="https://github.com/shahneilkhan"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>GitHub</span>
+              <strong>↗</strong>
+            </a>
 
+            <a
+              class="social-card"
+              href="https://behance.net/thesnkdesign"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Behance</span>
+              <strong>↗</strong>
+            </a>
 
-          <a
-            class="social-card"
-            href="https://facebook.com/iamsnkbd"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>Facebook</span>
-            <strong>↗</strong>
-          </a>
+            <a
+              class="social-card"
+              href="https://dribbble.com/thesnkdesign"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Dribbble</span>
+              <strong>↗</strong>
+            </a>
 
-
-          <a
-            class="social-card"
-            href="https://youtube.com/c/shahneilkhan"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>YouTube</span>
-            <strong>↗</strong>
-          </a>
-
-
-          <a
-            class="social-card"
-            href="https://github.com/shahneilkhan"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>GitHub</span>
-            <strong>↗</strong>
-          </a>
-
-
-          <a
-            class="social-card"
-            href="https://behance.net/thesnkdesign"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>SNK Design · Behance</span>
-            <strong>↗</strong>
-          </a>
-
-
-          <a
-            class="social-card"
-            href="https://dribbble.com/thesnkdesign"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>SNK Design · Dribbble</span>
-            <strong>↗</strong>
-          </a>
+          </div>
 
         </div>
 
@@ -1130,39 +976,32 @@
   </main>
 
 
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
+  <!-- ================= FOOTER ================= -->
 
   <footer class="site-footer">
 
     <div class="container footer-inner">
 
       <div class="footer-brand">
-
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
           alt="SNK"
         >
-
-        <span>
-          SHAH NEIL KHAN
-        </span>
-
+        <span>SHAH NEIL KHAN</span>
       </div>
 
-      <p>
-        © 2026 Shah Neil Khan. Built with intention.
+      <p data-i18n="footerText">
+        Built with intention. Designed for impact.
       </p>
+
+      <span class="footer-copy">
+        © <span id="year"></span> SNK
+      </span>
 
     </div>
 
   </footer>
 
-
-  <!-- =========================================
-       SCRIPT
-  ========================================== -->
 
   <script src="script.js"></script>
 
