@@ -1,1369 +1,1794 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* =========================================================
+   SNK PERSONAL BRAND — FINAL VISUAL POLISH CSS
+   ========================================================= */
+
+:root {
+  --bg: #070807;
+  --bg-soft: #0d0f0d;
+  --surface: rgba(17, 19, 17, 0.78);
+  --surface-2: #111411;
+
+  --text: #f3f2ec;
+  --muted: #a3a69f;
+  --muted-2: #737871;
+
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.15);
+
+  --amber: #d6a15c;
+  --amber-soft: rgba(214, 161, 92, 0.16);
+
+  --green: #76d49b;
+  --green-soft: rgba(118, 212, 155, 0.12);
+
+  --radius: 22px;
+  --radius-sm: 14px;
+
+  --container: 1180px;
+
+  --shadow:
+    0 20px 70px rgba(0, 0, 0, 0.34);
+
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(214, 161, 92, 0.07),
+      transparent 34%
+    ),
+    var(--bg);
+
+  color: var(--text);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  line-height: 1.6;
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(214, 161, 92, 0.25);
+  color: #fff;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+.container {
+  width: min(var(--container), calc(100% - 48px));
+  margin-inline: auto;
+}
+
+section {
+  position: relative;
+  padding: 110px 0;
+}
+
+section + section {
+  border-top: 1px solid rgba(255, 255, 255, 0.025);
+}
+
+.section-label,
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  color: var(--amber);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.section-label::before,
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.section-title {
+  max-width: 850px;
+  margin-top: 18px;
+
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 750;
+}
+
+.section-description {
+  max-width: 650px;
+  margin-top: 24px;
+
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 16px 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(7, 8, 7, 0.88),
+      rgba(7, 8, 7, 0.58)
+    );
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+.header-inner {
+  width: min(var(--container), calc(100% - 48px));
+  margin-inline: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 42px;
+  height: 42px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 5px 16px rgba(0, 0, 0, 0.3));
+
+  transition:
+    transform 0.3s var(--ease),
+    filter 0.3s var(--ease);
+}
+
+.logo:hover img {
+  transform: scale(1.05);
+  filter:
+    drop-shadow(0 0 18px rgba(214, 161, 92, 0.16));
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.nav a {
+  position: relative;
+
+  color: #aeb1ab;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.nav a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+
+  width: 100%;
+  height: 1px;
+
+  background: var(--amber);
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition: transform 0.3s var(--ease);
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-controls button {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--muted);
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.header-controls button:hover {
+  color: #fff;
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  min-height: 100svh;
+  padding-top: 150px;
+  padding-bottom: 70px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 75% 70%,
+      rgba(214, 161, 92, 0.13),
+      transparent 36%
+    ),
+    radial-gradient(
+      ellipse at 25% 10%,
+      rgba(255, 255, 255, 0.035),
+      transparent 35%
+    );
+}
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 8, 7, 0.95) 0%,
+      rgba(7, 8, 7, 0.72) 42%,
+      rgba(7, 8, 7, 0.15) 100%
+    );
+
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+
+  width: min(760px, 100%);
+}
+
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  background: var(--green);
+
+  box-shadow:
+    0 0 0 5px rgba(118, 212, 155, 0.06),
+    0 0 14px rgba(118, 212, 155, 0.45);
+
+  animation: statusPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin-top: 22px;
+
+  font-size: clamp(50px, 8vw, 104px);
+  line-height: 0.91;
+
+  letter-spacing: -0.065em;
+  font-weight: 800;
+
+  text-wrap: balance;
+}
+
+.hero h1 span {
+  color: var(--amber);
+}
+
+.hero-subtitle {
+  max-width: 610px;
+  margin-top: 30px;
+
+  color: var(--muted);
+
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-top: 36px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 48px;
+  padding: 0 19px;
+
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
 
-  <title>Shah Neil Khan — Digital Experience, Systems & Creative Technology</title>
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  transition:
+    transform 0.3s var(--ease),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
 
-  <meta
-    name="description"
-    content="Shah Neil Khan — UX, digital experience, systems thinking, creative technology and brand ecosystems."
-  >
+.btn:hover {
+  transform: translateY(-3px);
+}
 
-  <meta name="theme-color" content="#070807">
+.btn-primary {
+  background: var(--text);
+  color: #0a0b0a;
 
-  <link rel="icon" type="image/svg+xml"
-    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg">
+  border-color: var(--text);
+}
 
-  <link rel="stylesheet" href="style.css">
-</head>
+.btn-primary:hover {
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.08);
+}
 
-<body>
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text);
+}
 
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.25);
+}
 
-  <header class="site-header">
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
 
-    <div class="container header-inner">
+  margin-top: 42px;
 
-      <a href="#home" class="logo" aria-label="Shah Neil Khan home">
+  color: var(--muted-2);
+
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-        <img
-          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-          alt="SNK Logo"
-        >
 
-      </a>
+/* =========================================================
+   HERO VISUAL / SVG
+   ========================================================= */
 
+.hero-visual {
+  position: absolute;
+  z-index: 1;
 
-      <nav class="main-nav" id="mainNav">
+  right: -2%;
+  bottom: 0;
 
-        <a href="#home">Home</a>
-        <a href="#ecosystem">Ecosystem</a>
-        <a href="#ai">AI</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#experience">Experience</a>
-        <a href="#about">About</a>
-        <a href="#brand">Brand</a>
-        <a href="#contact">Contact</a>
+  width: min(62vw, 900px);
+  height: 90%;
 
-      </nav>
+  pointer-events: none;
 
+  opacity: 0.96;
+}
 
-      <div class="header-controls">
+.hero-visual svg {
+  width: 100%;
+  height: 100%;
+}
 
-        <button
-          class="control-btn"
-          id="languageToggle"
-          type="button"
-          aria-label="Change language"
-        >
-          EN
-        </button>
 
-        <button
-          class="control-btn"
-          id="themeToggle"
-          type="button"
-          aria-label="Toggle dark and light mode"
-        >
-          ☼
-        </button>
+/* =========================================================
+   TERMINAL
+   ========================================================= */
 
-        <button
-          class="control-btn"
-          id="rainToggle"
-          type="button"
-          aria-label="Toggle rain"
-        >
-          ≋
-        </button>
+.terminal {
+  margin-top: 28px;
 
-        <button
-          class="mobile-toggle"
-          id="mobileToggle"
-          type="button"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >
-          ☰
-        </button>
+  width: min(520px, 100%);
 
-      </div>
+  border: 1px solid rgba(118, 212, 155, 0.13);
+  border-radius: 12px;
 
-    </div>
+  background: rgba(3, 6, 4, 0.65);
 
-  </header>
+  box-shadow:
+    0 18px 60px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.025);
 
+  overflow: hidden;
+}
 
-  <!-- =====================================================
-       RAIN
-       ===================================================== -->
+.terminal-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 
-  <div
-    class="rain-container"
-    id="rainContainer"
-    aria-hidden="true"
-  ></div>
+  padding: 9px 12px;
 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-  <!-- =====================================================
-       HERO
-       ===================================================== -->
+.terminal-top span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
 
-  <main>
+  background: #666;
+}
 
-    <section class="hero" id="home">
+.terminal-body {
+  padding: 14px 16px;
 
-      <div class="container hero-grid">
+  color: var(--green);
 
-        <div class="hero-copy">
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
 
-          <div class="hero-kicker">
-            <span class="status-dot"></span>
-            DIGITAL EXPERIENCE · SYSTEMS · CREATIVE TECHNOLOGY
-          </div>
+  font-size: 11px;
+  line-height: 1.9;
+}
 
 
-          <h1 class="hero-title">
-            I BUILD
-            <span>SYSTEMS.</span>
-            <br>
+/* =========================================================
+   ECOSYSTEM
+   ========================================================= */
 
-            I TRAIN
-            <span>MINDS.</span>
-            <br>
+.ecosystem {
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(214, 161, 92, 0.045),
+      transparent 30%
+    ),
+    var(--bg-soft);
+}
 
-            I CREATE
-            <span>IMPACT.</span>
-          </h1>
+.ecosystem-grid {
+  display: grid;
 
+  grid-template-columns:
+    repeat(12, 1fr);
 
-          <p class="hero-subtitle">
-            I work where technology, design, intelligence and human
-            thinking meet — turning ideas into useful digital experiences,
-            systems and brands.
-          </p>
+  gap: 14px;
 
+  margin-top: 54px;
+}
 
-          <div class="hero-signature">
+.ecosystem-card {
+  position: relative;
 
-            <strong>Code</strong>
-            <span>→</span>
+  grid-column: span 4;
 
-            <strong>Intelligence</strong>
-            <span>→</span>
+  min-height: 250px;
+  padding: 28px;
 
-            <strong>Experience</strong>
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-          </div>
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.012)
+    );
 
-          <div class="hero-actions">
+  overflow: hidden;
 
-            <a href="#ecosystem" class="btn btn-primary">
-              Explore My Ecosystem
-              <span>↗</span>
-            </a>
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+}
 
-            <a href="#experience" class="btn btn-secondary">
-              View Experience
-            </a>
+.ecosystem-card:nth-child(1),
+.ecosystem-card:nth-child(2) {
+  grid-column: span 6;
+}
 
-          </div>
+.ecosystem-card::before {
+  content: "";
 
+  position: absolute;
+  top: -80px;
+  right: -70px;
 
-          <div class="terminal">
+  width: 180px;
+  height: 180px;
 
-            <div class="terminal-top">
+  border-radius: 50%;
 
-              <span class="terminal-dot"></span>
-              <span class="terminal-dot"></span>
-              <span class="terminal-dot"></span>
+  background: radial-gradient(
+    circle,
+    rgba(214, 161, 92, 0.12),
+    transparent 68%
+  );
 
-            </div>
+  opacity: 0;
 
-            <div class="terminal-body">
+  transition: opacity 0.4s ease;
+}
 
-              <div>
-                <span class="green-text">$</span>
-                whoami
-              </div>
+.ecosystem-card:hover {
+  transform: translateY(-7px);
 
-              <div>
-                digital-experience-builder
-              </div>
+  border-color: rgba(214, 161, 92, 0.28);
 
-              <div>
-                <span class="green-text">$</span>
-                focus
-              </div>
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.065),
+      rgba(255, 255, 255, 0.018)
+    );
 
-              <div>
-                UX / Systems / AI / Design / Learning
-              </div>
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.28);
+}
 
-              <div>
-                <span class="green-text">$</span>
-                status
-              </div>
+.ecosystem-card:hover::before {
+  opacity: 1;
+}
 
-              <div>
-                building the next system...
-              </div>
+.card-number {
+  color: var(--muted-2);
 
-            </div>
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
 
-          </div>
+.ecosystem-card h3 {
+  margin-top: 40px;
 
-        </div>
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1;
 
+  letter-spacing: -0.04em;
+}
 
-        <!-- HERO VISUAL -->
+.ecosystem-card p {
+  max-width: 340px;
+  margin-top: 13px;
 
-        <div class="hero-visual">
+  color: var(--muted);
 
-          <!-- Existing cinematic hero artwork -->
-          <svg
-            viewBox="0 0 700 700"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Cinematic sunset landscape"
-          >
+  font-size: 13px;
+  line-height: 1.7;
+}
 
-            <defs>
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 
-              <linearGradient
-                id="skyGradient"
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
+  margin-top: 30px;
 
-                <stop
-                  offset="0%"
-                  stop-color="#111712"
-                />
+  color: var(--amber);
 
-                <stop
-                  offset="55%"
-                  stop-color="#5b4b35"
-                />
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
 
-                <stop
-                  offset="100%"
-                  stop-color="#c58f4d"
-                />
+.card-link span {
+  transition: transform 0.3s var(--ease);
+}
 
-              </linearGradient>
+.ecosystem-card:hover .card-link span {
+  transform: translateX(5px);
+}
 
 
-              <radialGradient
-                id="sunGradient"
-              >
+/* =========================================================
+   GENERIC CARDS
+   ========================================================= */
 
-                <stop
-                  offset="0%"
-                  stop-color="#ffe6a3"
-                />
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 
-                <stop
-                  offset="55%"
-                  stop-color="#d6a05a"
-                />
+  margin-top: 50px;
+}
 
-                <stop
-                  offset="100%"
-                  stop-color="#b56f3b"
-                  stop-opacity="0"
-                />
+.card {
+  padding: 28px;
 
-              </radialGradient>
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 
-            </defs>
+  background: rgba(255, 255, 255, 0.025);
 
+  transition:
+    transform 0.35s var(--ease),
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
 
-            <rect
-              width="700"
-              height="700"
-              rx="30"
-              fill="url(#skyGradient)"
-            />
+.card:hover {
+  transform: translateY(-5px);
 
+  border-color: rgba(255, 255, 255, 0.15);
 
-            <circle
-              cx="350"
-              cy="360"
-              r="105"
-              fill="url(#sunGradient)"
-            />
+  background: rgba(255, 255, 255, 0.04);
+}
 
+.card h3 {
+  font-size: 21px;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
 
-            <!-- distant hills -->
+.card p {
+  margin-top: 13px;
 
-            <path
-              d="
-                M0 510
-                C100 450 170 470 250 500
-                C330 530 390 450 470 470
-                C550 490 610 455 700 430
-                L700 700
-                L0 700
-                Z
-              "
-              fill="#10130f"
-              opacity="0.8"
-            />
+  color: var(--muted);
 
+  font-size: 13px;
+  line-height: 1.75;
+}
 
-            <!-- mosque -->
 
-            <g
-              fill="#0b0d0b"
-              opacity="0.95"
-            >
+/* =========================================================
+   AI / CONTEXT ENGINEERING
+   ========================================================= */
 
-              <rect
-                x="235"
-                y="430"
-                width="230"
-                height="105"
-                rx="5"
-              />
+.ai-section {
+  background:
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(118, 212, 155, 0.045),
+      transparent 30%
+    );
+}
 
-              <path
-                d="
-                  M220 430
-                  Q350 340 480 430
-                  Z
-                "
-              />
+.ai-panel {
+  margin-top: 50px;
+  padding: 38px;
 
-              <rect
-                x="330"
-                y="350"
-                width="40"
-                height="80"
-              />
+  border: 1px solid rgba(118, 212, 155, 0.12);
+  border-radius: var(--radius);
 
-              <path
-                d="
-                  M325 350
-                  L350 325
-                  L375 350
-                  Z
-                "
-              />
+  background:
+    linear-gradient(
+      135deg,
+      rgba(118, 212, 155, 0.035),
+      rgba(255, 255, 255, 0.018)
+    );
+}
 
-              <rect
-                x="190"
-                y="350"
-                width="22"
-                height="185"
-              />
+.ai-panel-title {
+  color: var(--green);
 
-              <path
-                d="
-                  M184 350
-                  L201 325
-                  L218 350
-                  Z
-                "
-              />
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
 
-              <rect
-                x="478"
-                y="350"
-                width="22"
-                height="185"
-              />
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
 
-              <path
-                d="
-                  M472 350
-                  L489 325
-                  L506 350
-                  Z
-                "
-              />
+.ai-panel h3 {
+  max-width: 780px;
+  margin-top: 17px;
 
-              <circle
-                cx="201"
-                cy="322"
-                r="5"
-              />
+  font-size: clamp(27px, 4vw, 48px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
 
-              <circle
-                cx="489"
-                cy="322"
-                r="5"
-              />
+.ai-panel p {
+  max-width: 680px;
+  margin-top: 20px;
 
-            </g>
+  color: var(--muted);
 
+  font-size: 15px;
+  line-height: 1.8;
+}
 
-            <!-- foreground -->
 
-            <path
-              d="
-                M0 550
-                C120 520 200 555 300 535
-                C410 515 500 565 700 520
-                L700 700
-                L0 700
-                Z
-              "
-              fill="#080a08"
-            />
+/* =========================================================
+   EXPERTISE
+   ========================================================= */
 
+.expertise-grid {
+  display: grid;
 
-            <!-- walking figures -->
+  grid-template-columns: repeat(4, 1fr);
 
-            <g
-              stroke="#030403"
-              stroke-width="8"
-              stroke-linecap="round"
-              fill="none"
-            >
+  gap: 1px;
 
-              <path
-                d="M280 565 L280 610"
-              />
+  margin-top: 55px;
 
-              <path
-                d="M280 580 L263 600"
-              />
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 
-              <path
-                d="M280 580 L298 600"
-              />
+  overflow: hidden;
 
-              <path
-                d="M280 610 L265 640"
-              />
+  background: var(--line);
+}
 
-              <path
-                d="M280 610 L298 640"
-              />
+.expertise-item {
+  min-height: 210px;
 
+  padding: 28px;
 
-              <path
-                d="M330 565 L330 610"
-              />
+  background: var(--bg-soft);
 
-              <path
-                d="M330 580 L312 600"
-              />
+  transition:
+    background 0.3s ease;
+}
 
-              <path
-                d="M330 580 L348 598"
-              />
+.expertise-item:hover {
+  background: #121511;
+}
 
-              <path
-                d="M330 610 L314 640"
-              />
+.expertise-index {
+  color: var(--muted-2);
 
-              <path
-                d="M330 610 L348 638"
-              />
+  font-family: monospace;
+  font-size: 10px;
+}
 
-            </g>
+.expertise-item h3 {
+  margin-top: 58px;
 
+  font-size: 21px;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
 
-            <!-- atmospheric lines -->
+.expertise-item p {
+  margin-top: 11px;
 
-            <g
-              stroke="#e8c98b"
-              stroke-width="1"
-              opacity="0.16"
-            >
+  color: var(--muted);
 
-              <path d="M90 170 H610" />
-              <path d="M120 190 H580" />
-              <path d="M160 210 H540" />
+  font-size: 12px;
+}
 
-            </g>
 
-          </svg>
+/* =========================================================
+   EXPERIENCE
+   ========================================================= */
 
+.snk-experience {
+  background:
+    radial-gradient(
+      ellipse at 85% 40%,
+      rgba(214, 161, 92, 0.055),
+      transparent 32%
+    );
+}
 
-          <!-- Flying birds -->
+.experience-heading {
+  max-width: 800px;
+}
 
-          <span
-            class="bird"
-            style="top:18%;left:12%;animation-delay:-2s"
-          ></span>
+.experience-timeline {
+  position: relative;
 
-          <span
-            class="bird"
-            style="top:29%;left:55%;animation-delay:-8s"
-          ></span>
+  margin-top: 65px;
+  padding-left: 34px;
+}
 
-          <span
-            class="bird"
-            style="top:13%;left:70%;animation-delay:-13s"
-          ></span>
+.experience-timeline::before {
+  content: "";
 
-        </div>
+  position: absolute;
 
-      </div>
+  left: 5px;
+  top: 0;
+  bottom: 0;
 
-    </section>
+  width: 1px;
 
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(214, 161, 92, 0.55),
+      rgba(255, 255, 255, 0.05)
+    );
+}
 
-    <!-- ===================================================
-         ECOSYSTEM
-         =================================================== -->
+.experience-card {
+  position: relative;
 
-    <section class="ecosystem" id="ecosystem">
+  max-width: 900px;
 
-      <div class="container">
+  padding: 34px;
 
-        <div class="section-head">
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 
-          <div class="eyebrow">
-            PERSONAL ECOSYSTEM
-          </div>
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.012)
+    );
 
-          <h2 class="section-title">
-            FIVE WORLDS.
-            <br>
-            ONE DIRECTION.
-          </h2>
+  box-shadow: var(--shadow);
+}
 
-          <p class="section-description">
-            A growing ecosystem of digital products, education,
-            creative work, agencies and technology-driven initiatives.
-          </p>
+.experience-card::before {
+  content: "";
 
-        </div>
+  position: absolute;
 
+  left: -34px;
+  top: 38px;
 
-        <div class="ecosystem-grid">
+  width: 9px;
+  height: 9px;
 
+  border-radius: 50%;
 
-          <!-- 01 -->
+  background: var(--amber);
 
-          <a
-            class="ecosystem-card"
-            href="https://websitesdeal.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  box-shadow:
+    0 0 0 6px rgba(214, 161, 92, 0.07),
+    0 0 20px rgba(214, 161, 92, 0.3);
+}
 
-            <span class="ecosystem-number">
-              01 / WEB
-            </span>
+.experience-date {
+  color: var(--amber);
 
-            <div>
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
 
-              <h3>
-                WebsitesDeal.com
-              </h3>
+.experience-card h3 {
+  margin-top: 14px;
 
-              <p>
-                Websites, digital products and online solutions.
-              </p>
+  font-size: clamp(25px, 4vw, 40px);
+  line-height: 1;
 
-            </div>
+  letter-spacing: -0.045em;
+}
 
-            <span class="card-link">
-              Visit Website ↗
-            </span>
+.experience-company {
+  margin-top: 10px;
 
-          </a>
+  color: var(--muted);
 
+  font-size: 13px;
+}
 
-          <!-- 02 -->
+.experience-card p {
+  max-width: 700px;
+  margin-top: 24px;
 
-          <a
-            class="ecosystem-card"
-            href="https://www.tabayyuninstitute.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  color: var(--muted);
 
-            <span class="ecosystem-number">
-              02 / MEDIA
-            </span>
+  font-size: 15px;
+  line-height: 1.8;
+}
 
-            <div>
+.experience-contributions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 
-              <h3>
-                TabayyunTV.com
-              </h3>
+  gap: 10px;
 
-              <p>
-                A direct destination for Tabayyun TV.
-              </p>
+  margin-top: 30px;
+}
 
-            </div>
+.experience-contribution {
+  padding: 17px;
 
-            <span class="card-link">
-              Visit Website ↗
-            </span>
+  border: 1px solid var(--line);
+  border-radius: 13px;
 
-          </a>
+  background: rgba(255, 255, 255, 0.018);
+}
 
+.experience-contribution strong {
+  display: block;
 
-          <!-- 03 -->
+  color: var(--text);
 
-          <a
-            class="ecosystem-card"
-            href="#"
-            aria-label="SNK IT Institute"
-          >
+  font-size: 12px;
+}
 
-            <span class="ecosystem-number">
-              03 / LEARN
-            </span>
+.experience-contribution span {
+  display: block;
 
-            <div>
+  margin-top: 5px;
 
-              <h3>
-                SNKITInstitute.com
-              </h3>
+  color: var(--muted-2);
 
-              <p>
-                Technology, digital skills and learning.
-              </p>
+  font-size: 10px;
+}
 
-            </div>
+.experience-philosophy {
+  max-width: 850px;
 
-            <span class="card-link">
-              Explore ↗
-            </span>
+  margin-top: 50px;
+  padding-top: 30px;
 
-          </a>
+  border-top: 1px solid var(--line);
+}
 
+.experience-philosophy p {
+  color: var(--muted);
 
-          <!-- 04 -->
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-          <a
-            class="ecosystem-card"
-            href="#"
-            aria-label="Sarakāt Agency"
-          >
+.experience-philosophy strong {
+  display: block;
 
-            <span class="ecosystem-number">
-              04 / AGENCY
-            </span>
+  margin-top: 8px;
 
-            <div>
+  font-size: clamp(25px, 4vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
 
-              <h3>
-                SarakatAgency.com
-              </h3>
 
-              <p>
-                Creative, digital and strategic agency work.
-              </p>
+/* =========================================================
+   ABOUT
+   ========================================================= */
 
-            </div>
+.about-grid {
+  display: grid;
 
-            <span class="card-link">
-              Explore ↗
-            </span>
+  grid-template-columns: 1fr 1fr;
 
-          </a>
+  gap: 70px;
 
+  margin-top: 55px;
+}
 
-          <!-- 05 -->
+.about-grid p {
+  color: var(--muted);
 
-          <a
-            class="ecosystem-card"
-            href="#"
-            aria-label="SNK Design"
-          >
+  font-size: 16px;
+  line-height: 1.9;
+}
 
-            <span class="ecosystem-number">
-              05 / DESIGN
-            </span>
+.about-grid p + p {
+  margin-top: 20px;
+}
 
-            <div>
+.about-highlight {
+  padding: 30px;
 
-              <h3>
-                SNKDesign.com
-              </h3>
+  border-left: 1px solid var(--amber);
 
-              <p>
-                Visual identity, design and creative direction.
-              </p>
+  background:
+    linear-gradient(
+      90deg,
+      rgba(214, 161, 92, 0.06),
+      transparent
+    );
+}
 
-            </div>
+.about-highlight strong {
+  display: block;
 
-            <span class="card-link">
-              Explore ↗
-            </span>
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1;
 
-          </a>
+  letter-spacing: -0.05em;
+}
 
+.about-highlight span {
+  display: block;
 
-        </div>
+  margin-top: 12px;
 
-      </div>
+  color: var(--muted);
 
-    </section>
+  font-size: 12px;
+}
 
 
-    <!-- ===================================================
-         AI / SYSTEM THINKING
-         =================================================== -->
+/* =========================================================
+   TABAYYUN BANNER
+   ========================================================= */
 
-    <section
-      class="system-section"
-      id="ai"
-    >
+.tabayyun-banner {
+  position: relative;
 
-      <div class="container">
+  padding: 50px;
 
-        <div class="section-head">
+  border: 1px solid rgba(214, 161, 92, 0.18);
+  border-radius: var(--radius);
 
-          <div class="eyebrow">
-            INTELLIGENCE
-          </div>
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(214, 161, 92, 0.13),
+      transparent 32%
+    ),
+    rgba(255, 255, 255, 0.025);
 
-          <h2 class="section-title">
-            AI IS NOT
-            <br>
-            THE PRODUCT.
-          </h2>
+  overflow: hidden;
+}
 
-          <p class="section-description">
-            The real value comes from understanding the problem,
-            designing the system and applying intelligence where
-            it creates meaningful leverage.
-          </p>
+.tabayyun-banner h2 {
+  max-width: 700px;
 
-        </div>
+  font-size: clamp(30px, 5vw, 60px);
+  line-height: 0.98;
 
+  letter-spacing: -0.05em;
+}
 
-        <div class="system-grid">
+.tabayyun-banner p {
+  max-width: 600px;
+  margin-top: 18px;
 
+  color: var(--muted);
+}
 
-          <article class="system-card">
 
-            <h3>
-              Context Engineering
-            </h3>
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
-            <p>
-              Designing the right context around AI so that
-              information, instructions, tools and human judgment
-              work together.
-            </p>
+.contact-section {
+  padding-bottom: 80px;
+}
 
+.contact-grid {
+  display: grid;
 
-            <div class="system-list">
+  grid-template-columns: 1.2fr 0.8fr;
 
-              <div>
-                Context before prompts
-              </div>
+  gap: 70px;
 
-              <div>
-                Systems before shortcuts
-              </div>
+  margin-top: 55px;
+}
 
-              <div>
-                Human judgment in the loop
-              </div>
+.contact-title {
+  max-width: 750px;
 
-              <div>
-                Useful output over impressive output
-              </div>
+  font-size: clamp(45px, 8vw, 100px);
+  line-height: 0.9;
 
-            </div>
+  letter-spacing: -0.065em;
+}
 
-          </article>
+.contact-copy {
+  max-width: 580px;
+  margin-top: 25px;
 
+  color: var(--muted);
 
-          <article class="system-card">
+  font-size: 16px;
+  line-height: 1.8;
+}
 
-            <h3>
-              Human + Machine
-            </h3>
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
-            <p>
-              The future is not about replacing thinking.
-              It is about extending what people can understand,
-              create and execute.
-            </p>
+  gap: 10px;
+}
 
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-            <div class="system-list">
+  min-height: 55px;
+  padding: 0 17px;
 
-              <div>
-                Think
-              </div>
+  border: 1px solid var(--line);
+  border-radius: 12px;
 
-              <div>
-                Structure
-              </div>
+  color: var(--muted);
 
-              <div>
-                Automate
-              </div>
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 
-              <div>
-                Improve
-              </div>
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s var(--ease);
+}
 
-            </div>
+.social-links a:hover {
+  color: #fff;
 
-          </article>
+  border-color: rgba(214, 161, 92, 0.25);
 
+  background: rgba(214, 161, 92, 0.04);
 
-        </div>
+  transform: translateY(-3px);
+}
 
-      </div>
+.social-links a span {
+  color: var(--amber);
 
-    </section>
+  transition: transform 0.3s var(--ease);
+}
 
+.social-links a:hover span {
+  transform: translateX(4px);
+}
 
-    <!-- ===================================================
-         EXPERTISE
-         =================================================== -->
 
-    <section id="expertise">
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
-      <div class="container">
+footer {
+  padding: 28px 0 35px;
 
-        <div class="section-head">
+  border-top: 1px solid var(--line);
 
-          <div class="eyebrow">
-            EXPERTISE
-          </div>
+  color: var(--muted-2);
 
-          <h2 class="section-title">
-            WHERE I
-            <br>
-            CREATE VALUE.
-          </h2>
+  font-size: 10px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
 
-          <p class="section-description">
-            A multidisciplinary approach connecting design,
-            technology, digital experience and strategic thinking.
-          </p>
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
 
-        </div>
+.footer-brand {
+  color: var(--muted);
+}
 
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-        <div class="expertise-grid">
+.footer-status::before {
+  content: "";
 
+  width: 5px;
+  height: 5px;
 
-          <article class="expertise-card">
+  border-radius: 50%;
 
-            <span class="expertise-index">
-              01
-            </span>
+  background: var(--green);
 
-            <h3>
-              UX & Digital Experience
-            </h3>
+  box-shadow: 0 0 10px rgba(118, 212, 155, 0.4);
+}
 
-            <p>
-              Designing experiences that are clear, useful,
-              human and purposeful.
-            </p>
 
-          </article>
+/* =========================================================
+   RAIN EFFECT
+   ========================================================= */
 
+.rain {
+  position: fixed;
+  z-index: 999;
 
-          <article class="expertise-card">
+  inset: 0;
 
-            <span class="expertise-index">
-              02
-            </span>
+  pointer-events: none;
 
-            <h3>
-              Product Thinking
-            </h3>
+  opacity: 0.08;
 
-            <p>
-              Connecting user needs, business goals and
-              practical execution.
-            </p>
+  overflow: hidden;
+}
 
-          </article>
+.rain span {
+  position: absolute;
 
+  top: -20%;
 
-          <article class="expertise-card">
+  width: 1px;
+  height: 80px;
 
-            <span class="expertise-index">
-              03
-            </span>
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.45)
+    );
 
-            <h3>
-              Creative Technology
-            </h3>
+  animation: rainFall linear infinite;
+}
 
-            <p>
-              Using technology as a creative medium for
-              useful digital systems.
-            </p>
+@keyframes rainFall {
+  to {
+    transform: translateY(140vh);
+  }
+}
 
-          </article>
 
+/* =========================================================
+   FLYING BIRDS
+   ========================================================= */
 
-          <article class="expertise-card">
+.bird {
+  position: absolute;
 
-            <span class="expertise-index">
-              04
-            </span>
+  width: 30px;
+  height: 12px;
 
-            <h3>
-              AI & Automation
-            </h3>
+  opacity: 0.35;
 
-            <p>
-              Exploring intelligent workflows, context,
-              automation and human-AI collaboration.
-            </p>
+  pointer-events: none;
 
-          </article>
+  animation:
+    birdFly 18s linear infinite;
+}
 
+.bird::before,
+.bird::after {
+  content: "";
 
-          <article class="expertise-card">
+  position: absolute;
+  top: 4px;
 
-            <span class="expertise-index">
-              05
-            </span>
+  width: 15px;
+  height: 6px;
 
-            <h3>
-              Brand Systems
-            </h3>
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
 
-            <p>
-              Building consistent visual and digital
-              identities across platforms.
-            </p>
+  border-radius: 50%;
+}
 
-          </article>
+.bird::before {
+  left: 0;
 
+  transform: rotate(18deg);
+}
 
-          <article class="expertise-card">
+.bird::after {
+  right: 0;
 
-            <span class="expertise-index">
-              06
-            </span>
+  transform: rotate(-18deg);
+}
 
-            <h3>
-              Learning & Mindset
-            </h3>
+@keyframes birdFly {
+  from {
+    transform: translateX(-15vw) translateY(0);
+  }
 
-            <p>
-              Turning knowledge into practical thinking,
-              systems and better execution.
-            </p>
+  50% {
+    transform: translateX(50vw) translateY(-30px);
+  }
 
-          </article>
+  to {
+    transform: translateX(120vw) translateY(10px);
+  }
+}
 
 
-        </div>
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
 
-      </div>
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
 
-    </section>
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+}
 
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    <!-- ===================================================
-         EXPERIENCE
-         =================================================== -->
 
-    <section
-      class="snk-experience"
-      id="experience"
-    >
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
 
-      <div class="container">
+body.light {
+  --bg: #f3f1ea;
+  --bg-soft: #ebe9e1;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-2: #fff;
 
+  --text: #11130f;
+  --muted: #656960;
+  --muted-2: #858a81;
 
-        <div class="experience-heading">
+  --line: rgba(17, 19, 15, 0.1);
+  --line-strong: rgba(17, 19, 15, 0.16);
 
-          <div class="eyebrow">
-            EXPERIENCE
-          </div>
+  --amber: #a66d2d;
+}
 
-          <h2>
-            EXPERIENCE
-            <br>
-            <span>SHAPES THE MIND.</span>
-          </h2>
+body.light .site-header {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(243, 241, 234, 0.92),
+      rgba(243, 241, 234, 0.7)
+    );
+}
 
-          <p>
-            Every role is more than a title. It is a place to
-            understand problems, structure ideas, execute with
-            intention and continuously improve.
-          </p>
+body.light .hero::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(243, 241, 234, 0.94) 0%,
+      rgba(243, 241, 234, 0.7) 45%,
+      rgba(243, 241, 234, 0.1) 100%
+    );
+}
 
-        </div>
+body.light .terminal {
+  background: rgba(255, 255, 255, 0.7);
+}
 
+body.light .ecosystem-card,
+body.light .card,
+body.light .experience-card,
+body.light .tabayyun-banner {
+  background: rgba(255, 255, 255, 0.5);
+}
 
-        <div class="experience-timeline">
 
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
 
-          <article class="experience-card">
+@media (max-width: 1050px) {
 
-            <div class="experience-date">
-              2026 — PRESENT
-            </div>
+  .nav {
+    gap: 15px;
+  }
 
+  .nav a {
+    font-size: 10px;
+  }
 
-            <h3 class="experience-role">
-              UX Lead Digital Expert
-            </h3>
+  .hero-visual {
+    right: -18%;
+    width: 70vw;
+    opacity: 0.72;
+  }
 
+  .expertise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-            <div class="experience-company">
-              Yaqeen Institute · Texas, USA · Remote
-            </div>
+  .experience-contributions {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
+  .contact-grid {
+    gap: 40px;
+  }
+}
 
-            <p class="experience-description">
-              Working across digital experience, UX thinking,
-              interface design and product-oriented problem solving.
-            </p>
 
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
 
-            <div class="experience-contributions">
+@media (max-width: 760px) {
 
+  :root {
+    --container: 100%;
+  }
 
-              <div class="experience-step">
+  .container,
+  .header-inner {
+    width: calc(100% - 32px);
+  }
 
-                <small>
-                  01
-                </small>
+  section {
+    padding: 78px 0;
+  }
 
-                <strong>
-                  Understand
-                </strong>
+  /* Header */
 
-              </div>
+  .site-header {
+    padding: 11px 0;
+  }
 
+  .header-inner {
+    gap: 12px;
+  }
 
-              <div class="experience-step">
+  .logo img {
+    width: 36px;
+    height: 36px;
+  }
 
-                <small>
-                  02
-                </small>
+  .nav {
+    display: none;
+  }
 
-                <strong>
-                  Structure
-                </strong>
+  .header-controls {
+    margin-left: auto;
+  }
 
-              </div>
+  /* Hero */
 
+  .hero {
+    min-height: 850px;
 
-              <div class="experience-step">
+    padding-top: 125px;
+    padding-bottom: 45px;
 
-                <small>
-                  03
-                </small>
+    align-items: flex-start;
+  }
 
-                <strong>
-                  Execute
-                </strong>
+  .hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 8, 7, 0.88) 0%,
+        rgba(7, 8, 7, 0.72) 55%,
+        rgba(7, 8, 7, 0.3) 100%
+      );
+  }
 
-              </div>
+  .hero-content {
+    width: 100%;
+  }
 
+  .hero h1 {
+    max-width: 100%;
 
-              <div class="experience-step">
+    font-size: clamp(46px, 14vw, 74px);
 
-                <small>
-                  04
-                </small>
+    line-height: 0.91;
+  }
 
-                <strong>
-                  Improve
-                </strong>
+  .hero-subtitle {
+    font-size: 15px;
+    line-height: 1.7;
+  }
 
-              </div>
+  .hero-actions {
+    margin-top: 28px;
+  }
 
+  .btn {
+    min-height: 45px;
+    padding-inline: 16px;
+  }
 
-            </div>
+  .hero-meta {
+    margin-top: 28px;
+  }
 
-          </article>
+  .hero-visual {
+    right: -48%;
+    bottom: -5%;
 
+    width: 125vw;
+    height: 60%;
 
-        </div>
+    opacity: 0.58;
+  }
 
+  .terminal {
+    max-width: 100%;
+  }
 
-        <div class="experience-philosophy">
+  /* Ecosystem */
 
-          <span>
-            Working Philosophy
-          </span>
+  .ecosystem-grid {
+    grid-template-columns: 1fr;
+  }
 
-          <h3>
-            DON'T JUST DO THE WORK.
-            <br>
-            <span>UNDERSTAND IT.</span>
-          </h3>
+  .ecosystem-card,
+  .ecosystem-card:nth-child(1),
+  .ecosystem-card:nth-child(2) {
+    grid-column: auto;
 
-        </div>
+    min-height: 220px;
+  }
 
+  .ecosystem-card h3 {
+    margin-top: 30px;
+  }
 
-      </div>
+  /* Generic */
 
-    </section>
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 
+  /* Expertise */
 
-    <!-- ===================================================
-         ABOUT
-         =================================================== -->
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
 
-    <section id="about">
+  .expertise-item {
+    min-height: 175px;
+  }
 
-      <div class="container">
+  .expertise-item h3 {
+    margin-top: 40px;
+  }
 
-        <div class="about-grid">
+  /* Experience */
 
+  .experience-timeline {
+    padding-left: 24px;
+  }
 
-          <div>
+  .experience-timeline::before {
+    left: 3px;
+  }
 
-            <div class="about-label">
-              ABOUT / 01
-            </div>
+  .experience-card {
+    padding: 24px;
+  }
 
-          </div>
+  .experience-card::before {
+    left: -25px;
+  }
 
+  .experience-contributions {
+    grid-template-columns: 1fr 1fr;
+  }
 
-          <div class="about-copy">
+  /* About */
 
-            <h2>
-              BUILD WITH
-              <br>
-              PURPOSE.
-            </h2>
+  .about-grid {
+    grid-template-columns: 1fr;
 
+    gap: 35px;
+  }
 
-            <p>
-              I am interested in the space between technology,
-              design, intelligence and people.
-            </p>
+  /* Tabayyun */
 
+  .tabayyun-banner {
+    padding: 30px 24px;
+  }
 
-            <p>
-              My approach is simple: understand deeply,
-              simplify complexity and build things that
-              actually help people.
-            </p>
+  /* Contact */
 
+  .contact-grid {
+    grid-template-columns: 1fr;
 
-            <div class="about-points">
+    gap: 38px;
+  }
 
+  .social-links {
+    grid-template-columns: 1fr;
+  }
 
-              <div class="about-point">
+  /* Footer */
 
-                <strong>
-                  Systems over noise
-                </strong>
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
 
-                <span>
-                  Build structures that can grow.
-                </span>
 
-              </div>
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
 
+@media (max-width: 430px) {
 
-              <div class="about-point">
+  .container,
+  .header-inner {
+    width: calc(100% - 26px);
+  }
 
-                <strong>
-                  People over technology
-                </strong>
+  section {
+    padding: 68px 0;
+  }
 
-                <span>
-                  Technology should serve human goals.
-                </span>
+  .hero {
+    min-height: 820px;
+  }
 
-              </div>
+  .hero h1 {
+    font-size: 45px;
+  }
 
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-              <div class="about-point">
+  .btn {
+    width: 100%;
+  }
 
-                <strong>
-                  Continuous learning
-                </strong>
+  .experience-contributions {
+    grid-template-columns: 1fr;
+  }
 
-                <span>
-                  Every project should make the next one better.
-                </span>
+  .experience-card h3 {
+    font-size: 29px;
+  }
+}
 
-              </div>
 
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-            </div>
+@media (prefers-reduced-motion: reduce) {
 
-          </div>
+  html {
+    scroll-behavior: auto;
+  }
 
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         BRAND / TABAYYUN
-         =================================================== -->
-
-    <section id="brand">
-
-      <div class="container">
-
-        <div class="brand-banner">
-
-          <div class="eyebrow">
-            EXTERNAL DESTINATION
-          </div>
-
-
-          <h2>
-            EXPLORE
-            <br>
-            TABAYYUN TV.
-          </h2>
-
-
-          <p>
-            Visit the official Tabayyun TV website directly.
-          </p>
-
-
-          <a
-            class="btn btn-primary"
-            href="https://www.tabayyuninstitute.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit Tabayyun TV
-            <span>↗</span>
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         CONTACT
-         =================================================== -->
-
-    <section
-      class="contact-section"
-      id="contact"
-    >
-
-      <div class="container">
-
-        <div class="contact-box">
-
-          <div class="eyebrow">
-            LET'S CONNECT
-          </div>
-
-
-          <h2>
-            HAVE AN IDEA?
-            <br>
-            LET'S BUILD.
-          </h2>
-
-
-          <p>
-            Whether it is a digital experience, a new system,
-            a brand or an idea that needs structure — let's talk.
-          </p>
-
-
-          <div class="contact-actions">
-
-            <!-- Replace these with your actual profiles/email -->
-
-            <a
-              href="#"
-              class="btn btn-primary"
-            >
-              LinkedIn ↗
-            </a>
-
-
-            <a
-              href="#"
-              class="btn btn-secondary"
-            >
-              GitHub ↗
-            </a>
-
-
-            <a
-              href="#"
-              class="btn btn-secondary"
-            >
-              Contact ↗
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-       ===================================================== -->
-
-  <footer class="site-footer">
-
-    <div class="container footer-inner">
-
-      <div class="footer-copy">
-        © 2026 Shah Neil Khan. Built with intention.
-      </div>
-
-
-      <div class="footer-links">
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#ecosystem">
-          Ecosystem
-        </a>
-
-        <a href="#experience">
-          Experience
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =====================================================
-       SCRIPT
-       ===================================================== -->
-
-  <script src="script.js"></script>
-
-</body>
-</html>
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
