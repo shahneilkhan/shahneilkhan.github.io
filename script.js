@@ -1,1836 +1,856 @@
 /* =========================================================
-   SHAH NEIL KHAN — V3
-   PREMIUM INTERACTION ENGINE
+   SNK PERSONAL BRAND — FINAL SCRIPT.JS
 ========================================================= */
 
-(() => {
+document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
-  /* =======================================================
-     CONFIG
-  ======================================================= */
-
-  const CONFIG = {
-    storage: {
-      theme: "snk-theme",
-      language: "snk-language",
-      rain: "snk-rain",
-      color: "snk-color"
-    },
-
-    colors: [
-      "#c98b4d",
-      "#e0ad70",
-      "#b9783e",
-      "#b88f72",
-      "#8eaf8e",
-      "#9c8fbe",
-      "#c98b4d"
-    ],
-
-    typingSpeed: 32,
-
-    birdDelayMin: 6000,
-    birdDelayMax: 16000
-  };
-
 
   /* =======================================================
-     DOM HELPERS
+     01. ELEMENTS
   ======================================================= */
 
-  const $ = (selector, parent = document) =>
-    parent.querySelector(selector);
-
-  const $$ = (selector, parent = document) =>
-    [...parent.querySelectorAll(selector)];
-
-  const root = document.documentElement;
+  const html = document.documentElement;
   const body = document.body;
 
+  const themeToggle =
+    document.querySelector("[data-theme-toggle]");
 
-  /* =======================================================
-     REDUCED MOTION
-  ======================================================= */
+  const languageToggle =
+    document.querySelector("[data-language-toggle]");
 
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  const rainToggle =
+    document.querySelector("[data-rain-toggle]");
 
+  const rainContainer =
+    document.getElementById("rain");
 
-  /* =======================================================
-     LOCAL STORAGE SAFE
-  ======================================================= */
+  const birdsContainer =
+    document.getElementById("birds");
 
-  const storageGet = (key, fallback = null) => {
-    try {
-      return localStorage.getItem(key) ?? fallback;
-    } catch {
-      return fallback;
-    }
-  };
-
-  const storageSet = (key, value) => {
-    try {
-      localStorage.setItem(key, value);
-    } catch {
-      /* ignore */
-    }
-  };
+  const terminalText =
+    document.getElementById("terminalText");
 
 
   /* =======================================================
-     THEME
+     02. THEME — DARK / LIGHT
   ======================================================= */
 
-  const themeButton =
-    $("#themeToggle") ||
-    $("[data-theme-toggle]") ||
-    $('[aria-label*="theme" i]');
+  const savedTheme =
+    localStorage.getItem("snk-theme");
 
-  function getInitialTheme() {
-    const saved = storageGet(CONFIG.storage.theme);
-
-    if (saved === "dark" || saved === "light") {
-      return saved;
-    }
-
-    return window.matchMedia(
-      "(prefers-color-scheme: light)"
-    ).matches
-      ? "light"
-      : "dark";
+  if (savedTheme === "light") {
+    html.classList.add("light");
   }
 
-  function setTheme(theme) {
-    const finalTheme =
-      theme === "light"
-        ? "light"
-        : "dark";
+  function updateThemeButton() {
+    if (!themeToggle) return;
 
-    root.dataset.theme = finalTheme;
+    const isLight =
+      html.classList.contains("light");
 
-    storageSet(
-      CONFIG.storage.theme,
-      finalTheme
+    themeToggle.textContent =
+      isLight ? "☾" : "☼";
+
+    themeToggle.setAttribute(
+      "aria-label",
+      isLight
+        ? "Switch to dark mode"
+        : "Switch to light mode"
     );
+  }
 
-    if (themeButton) {
-      themeButton.classList.toggle(
-        "active",
-        finalTheme === "light"
+  updateThemeButton();
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+
+      html.classList.toggle("light");
+
+      const isLight =
+        html.classList.contains("light");
+
+      localStorage.setItem(
+        "snk-theme",
+        isLight ? "light" : "dark"
       );
 
-      themeButton.setAttribute(
+      updateThemeButton();
+    });
+  }
+
+
+  /* =======================================================
+     03. LANGUAGE — ENGLISH / BANGLA
+  ======================================================= */
+
+  const translations = {
+
+    en: {
+      navHome: "Home",
+      navEcosystem: "Ecosystem",
+      navAI: "AI",
+      navExpertise: "Expertise",
+      navExperience: "Experience",
+      navAbout: "About",
+      navBrand: "Brand",
+      navContact: "Contact",
+
+      heroEyebrow:
+        "PERSONAL BRAND · DIGITAL EXPERIENCE · SYSTEMS THINKING",
+
+      heroDescription:
+        "UX thinking, digital experiences, AI-assisted systems and a growing ecosystem of ideas, products and brands.",
+
+      explore:
+        "Explore Ecosystem",
+
+      experience:
+        "My Experience"
+    },
+
+    bn: {
+      navHome: "হোম",
+      navEcosystem: "ইকোসিস্টেম",
+      navAI: "এআই",
+      navExpertise: "দক্ষতা",
+      navExperience: "অভিজ্ঞতা",
+      navAbout: "সম্পর্কে",
+      navBrand: "ব্র্যান্ড",
+      navContact: "যোগাযোগ",
+
+      heroEyebrow:
+        "পার্সোনাল ব্র্যান্ড · ডিজিটাল এক্সপেরিয়েন্স · সিস্টেমস থিংকিং",
+
+      heroDescription:
+        "UX চিন্তা, ডিজিটাল এক্সপেরিয়েন্স, AI-সহায়ক সিস্টেম এবং বিভিন্ন আইডিয়া, প্রোডাক্ট ও ব্র্যান্ডের একটি ক্রমবর্ধমান ইকোসিস্টেম।",
+
+      explore:
+        "ইকোসিস্টেম দেখুন",
+
+      experience:
+        "আমার অভিজ্ঞতা"
+    }
+
+  };
+
+
+  let currentLanguage =
+    localStorage.getItem("snk-language") || "en";
+
+
+  function applyLanguage(language) {
+
+    currentLanguage = language;
+
+    localStorage.setItem(
+      "snk-language",
+      language
+    );
+
+    html.setAttribute(
+      "lang",
+      language === "bn" ? "bn" : "en"
+    );
+
+
+    /*
+      Optional translation support.
+
+      Any element with:
+      data-i18n="key"
+
+      will automatically receive
+      the matching translation.
+    */
+
+    document
+      .querySelectorAll("[data-i18n]")
+      .forEach((element) => {
+
+        const key =
+          element.dataset.i18n;
+
+        if (
+          translations[language] &&
+          translations[language][key]
+        ) {
+          element.textContent =
+            translations[language][key];
+        }
+
+      });
+
+
+    if (languageToggle) {
+      languageToggle.textContent =
+        language === "en"
+          ? "বাংলা"
+          : "EN";
+    }
+
+  }
+
+  applyLanguage(currentLanguage);
+
+
+  if (languageToggle) {
+
+    languageToggle.addEventListener(
+      "click",
+      () => {
+
+        const nextLanguage =
+          currentLanguage === "en"
+            ? "bn"
+            : "en";
+
+        applyLanguage(nextLanguage);
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     04. TERMINAL TYPING
+  ======================================================= */
+
+  const terminalMessages = [
+    "thinking_in_systems()",
+    "designing_better_experiences()",
+    "building_digital_ecosystems()",
+    "learning_with_ai()",
+    "creating_meaningful_impact()"
+  ];
+
+  let terminalMessageIndex = 0;
+  let terminalCharacterIndex = 0;
+  let terminalDeleting = false;
+
+  function typeTerminal() {
+
+    if (!terminalText) return;
+
+    const message =
+      terminalMessages[
+        terminalMessageIndex
+      ];
+
+    if (!terminalDeleting) {
+
+      terminalCharacterIndex++;
+
+      terminalText.textContent =
+        message.substring(
+          0,
+          terminalCharacterIndex
+        );
+
+      if (
+        terminalCharacterIndex >=
+        message.length
+      ) {
+
+        terminalDeleting = true;
+
+        setTimeout(
+          typeTerminal,
+          1800
+        );
+
+        return;
+      }
+
+    } else {
+
+      terminalCharacterIndex--;
+
+      terminalText.textContent =
+        message.substring(
+          0,
+          terminalCharacterIndex
+        );
+
+      if (
+        terminalCharacterIndex <= 0
+      ) {
+
+        terminalDeleting = false;
+
+        terminalMessageIndex =
+          (terminalMessageIndex + 1) %
+          terminalMessages.length;
+
+      }
+
+    }
+
+    setTimeout(
+      typeTerminal,
+      terminalDeleting ? 35 : 70
+    );
+  }
+
+  typeTerminal();
+
+
+  /* =======================================================
+     05. RAIN SYSTEM
+  ======================================================= */
+
+  let rainEnabled =
+    localStorage.getItem("snk-rain") === "true";
+
+
+  function random(min, max) {
+    return Math.random() *
+      (max - min) +
+      min;
+  }
+
+
+  function createRain() {
+
+    if (!rainContainer) return;
+
+    rainContainer.innerHTML = "";
+
+    const screenWidth =
+      window.innerWidth;
+
+    const dropCount =
+      Math.min(
+        170,
+        Math.max(
+          65,
+          Math.floor(screenWidth / 8)
+        )
+      );
+
+
+    for (
+      let i = 0;
+      i < dropCount;
+      i++
+    ) {
+
+      const drop =
+        document.createElement("span");
+
+      drop.className =
+        "rain-drop";
+
+      drop.style.left =
+        `${random(0, 100)}%`;
+
+      drop.style.height =
+        `${random(35, 95)}px`;
+
+      drop.style.opacity =
+        random(0.12, 0.42);
+
+      drop.style.animationDuration =
+        `${random(0.55, 1.25)}s`;
+
+      drop.style.animationDelay =
+        `${random(-2, 0)}s`;
+
+      rainContainer.appendChild(drop);
+    }
+
+  }
+
+
+  function updateRain() {
+
+    if (!rainContainer) return;
+
+    rainContainer.classList.toggle(
+      "active",
+      rainEnabled
+    );
+
+    if (rainToggle) {
+
+      rainToggle.textContent =
+        rainEnabled
+          ? "Rain ✓"
+          : "Rain";
+
+      rainToggle.setAttribute(
         "aria-pressed",
-        finalTheme === "light"
+        rainEnabled
           ? "true"
           : "false"
       );
-
-      themeButton.textContent =
-        finalTheme === "light"
-          ? "DARK"
-          : "LIGHT";
     }
+
   }
 
-  setTheme(getInitialTheme());
 
-  if (themeButton) {
-    themeButton.addEventListener(
+  if (rainEnabled) {
+    createRain();
+  }
+
+  updateRain();
+
+
+  if (rainToggle) {
+
+    rainToggle.addEventListener(
       "click",
       () => {
-        setTheme(
-          root.dataset.theme === "dark"
-            ? "light"
-            : "dark"
-        );
-      }
-    );
-  }
 
+        rainEnabled =
+          !rainEnabled;
 
-  /* =======================================================
-     AUTO COLOR ENGINE
-  ======================================================= */
-
-  let colorIndex = 0;
-  let colorTimer = null;
-
-  function hexToRgb(hex) {
-    const clean = hex.replace("#", "");
-
-    const value =
-      clean.length === 3
-        ? clean
-            .split("")
-            .map(x => x + x)
-            .join("")
-        : clean;
-
-    const number =
-      parseInt(value, 16);
-
-    return {
-      r: (number >> 16) & 255,
-      g: (number >> 8) & 255,
-      b: number & 255
-    };
-  }
-
-  function rgba(hex, alpha) {
-    const { r, g, b } =
-      hexToRgb(hex);
-
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  }
-
-  function applyAutoColor(color) {
-    root.style.setProperty(
-      "--snk-auto",
-      color
-    );
-
-    root.style.setProperty(
-      "--snk-auto-soft",
-      rgba(color, 0.16)
-    );
-
-    root.style.setProperty(
-      "--snk-auto-glow",
-      rgba(color, 0.10)
-    );
-
-    storageSet(
-      CONFIG.storage.color,
-      color
-    );
-
-    document
-      .dispatchEvent(
-        new CustomEvent(
-          "snk:color-change",
-          {
-            detail: { color }
-          }
-        )
-      );
-  }
-
-  function nextColor() {
-    colorIndex =
-      (colorIndex + 1) %
-      CONFIG.colors.length;
-
-    applyAutoColor(
-      CONFIG.colors[colorIndex]
-    );
-  }
-
-  function startAutoColor() {
-    const savedColor =
-      storageGet(
-        CONFIG.storage.color
-      );
-
-    if (
-      savedColor &&
-      CONFIG.colors.includes(savedColor)
-    ) {
-      colorIndex =
-        CONFIG.colors.indexOf(
-          savedColor
+        localStorage.setItem(
+          "snk-rain",
+          rainEnabled
         );
 
-      applyAutoColor(savedColor);
-    } else {
-      applyAutoColor(
-        CONFIG.colors[0]
-      );
-    }
-
-    clearInterval(colorTimer);
-
-    colorTimer = setInterval(
-      nextColor,
-      6500
-    );
-  }
-
-  startAutoColor();
-
-
-  /* =======================================================
-     HEADER SCROLL
-  ======================================================= */
-
-  const header =
-    $(".site-header");
-
-  function updateHeader() {
-    if (!header) return;
-
-    header.classList.toggle(
-      "scrolled",
-      window.scrollY > 35
-    );
-  }
-
-  updateHeader();
-
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    {
-      passive: true
-    }
-  );
-
-
-  /* =======================================================
-     MOBILE MENU
-  ======================================================= */
-
-  const menuToggle =
-    $(".menu-toggle");
-
-  const nav =
-    $(".main-nav");
-
-  function closeMenu() {
-    if (!nav) return;
-
-    nav.classList.remove(
-      "is-open"
-    );
-
-    if (menuToggle) {
-      menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-    }
-  }
-
-  if (menuToggle && nav) {
-    menuToggle.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-    menuToggle.addEventListener(
-      "click",
-      () => {
-        const open =
-          nav.classList.toggle(
-            "is-open"
-          );
-
-        menuToggle.setAttribute(
-          "aria-expanded",
-          open
-            ? "true"
-            : "false"
-        );
-      }
-    );
-
-    $$(".main-nav a").forEach(link => {
-      link.addEventListener(
-        "click",
-        closeMenu
-      );
-    });
-
-    document.addEventListener(
-      "click",
-      event => {
-        if (
-          !nav.contains(event.target) &&
-          !menuToggle.contains(
-            event.target
-          )
-        ) {
-          closeMenu();
+        if (rainEnabled) {
+          createRain();
         }
+
+        updateRain();
+
       }
     );
+
   }
 
 
   /* =======================================================
-     SMOOTH INTERNAL LINKS
+     06. FLYING BIRDS
   ======================================================= */
 
-  $$('a[href^="#"]').forEach(
-    link => {
+  function createBirds() {
+
+    if (!birdsContainer) return;
+
+    birdsContainer.innerHTML = "";
+
+    const birdCount =
+      window.innerWidth < 700
+        ? 4
+        : 7;
+
+
+    for (
+      let i = 0;
+      i < birdCount;
+      i++
+    ) {
+
+      const bird =
+        document.createElement("span");
+
+      bird.className =
+        "bird";
+
+      bird.style.top =
+        `${random(8, 52)}%`;
+
+      bird.style.left =
+        `${random(-15, 75)}%`;
+
+      bird.style.transform =
+        `scale(${random(0.55, 1.1)})`;
+
+      bird.style.animationDuration =
+        `${random(18, 32)}s`;
+
+      bird.style.animationDelay =
+        `${random(-25, 0)}s`;
+
+      birdsContainer.appendChild(bird);
+    }
+
+  }
+
+  createBirds();
+
+
+  /* =======================================================
+     07. SCROLL REVEAL
+  ======================================================= */
+
+  const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+  if (
+    "IntersectionObserver" in window
+  ) {
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach((entry) => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12,
+          rootMargin:
+            "0px 0px -40px 0px"
+        }
+      );
+
+
+    revealElements.forEach(
+      (element) => {
+        revealObserver.observe(element);
+      }
+    );
+
+  } else {
+
+    revealElements.forEach(
+      (element) => {
+        element.classList.add("visible");
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     08. SMOOTH ANCHOR NAVIGATION
+  ======================================================= */
+
+  document
+    .querySelectorAll(
+      'a[href^="#"]'
+    )
+    .forEach((link) => {
+
       link.addEventListener(
         "click",
-        event => {
-          const id =
-            link.getAttribute(
-              "href"
-            );
+        (event) => {
+
+          const targetId =
+            link.getAttribute("href");
 
           if (
-            !id ||
-            id === "#"
+            !targetId ||
+            targetId === "#"
           ) {
             return;
           }
 
           const target =
-            $(id);
+            document.querySelector(
+              targetId
+            );
 
-          if (!target) {
-            return;
-          }
+          if (!target) return;
 
           event.preventDefault();
 
           target.scrollIntoView({
-            behavior:
-              prefersReducedMotion
-                ? "auto"
-                : "smooth",
+            behavior: "smooth",
             block: "start"
           });
 
-          history.replaceState(
-            null,
-            "",
-            id
-          );
         }
       );
-    }
-  );
+
+    });
 
 
   /* =======================================================
-     ACTIVE NAV
+     09. ACTIVE NAVIGATION
   ======================================================= */
 
   const sections =
-    $$("section[id]");
+    document.querySelectorAll(
+      "main section[id]"
+    );
 
   const navLinks =
-    $$(".main-nav a[href*='#']");
+    document.querySelectorAll(
+      ".main-nav a"
+    );
+
 
   if (
-    sections.length &&
-    navLinks.length
-  ) {
-    const sectionObserver =
-      new IntersectionObserver(
-        entries => {
-          entries.forEach(
-            entry => {
-              if (!entry.isIntersecting) {
-                return;
-              }
-
-              const id =
-                entry.target.id;
-
-              navLinks.forEach(
-                link => {
-                  const href =
-                    link.getAttribute(
-                      "href"
-                    );
-
-                  link.classList.toggle(
-                    "active",
-                    href.endsWith(
-                      `#${id}`
-                    )
-                  );
-                }
-              );
-            }
-          );
-        },
-        {
-          rootMargin:
-            "-35% 0px -55% 0px"
-        }
-      );
-
-    sections.forEach(
-      section =>
-        sectionObserver.observe(
-          section
-        )
-    );
-  }
-
-
-  /* =======================================================
-     SCROLL REVEAL
-  ======================================================= */
-
-  const revealItems =
-    $$(".reveal");
-
-  if (
-    prefersReducedMotion
-  ) {
-    revealItems.forEach(
-      item =>
-        item.classList.add(
-          "is-visible"
-        )
-    );
-  } else if (
     "IntersectionObserver" in window
   ) {
-    const revealObserver =
+
+    const navObserver =
       new IntersectionObserver(
-        entries => {
+        (entries) => {
+
           entries.forEach(
-            entry => {
+            (entry) => {
+
               if (
                 !entry.isIntersecting
               ) {
                 return;
               }
 
-              entry.target.classList.add(
-                "is-visible"
+              const currentId =
+                entry.target.id;
+
+
+              navLinks.forEach(
+                (link) => {
+
+                  const linkTarget =
+                    link.getAttribute(
+                      "href"
+                    );
+
+                  link.classList.toggle(
+                    "active",
+                    linkTarget ===
+                      `#${currentId}`
+                  );
+
+                }
               );
 
-              revealObserver.unobserve(
-                entry.target
-              );
             }
           );
+
         },
         {
-          threshold: 0.12,
+          threshold: 0.25,
           rootMargin:
-            "0px 0px -50px 0px"
+            "-20% 0px -60% 0px"
         }
       );
 
-    revealItems.forEach(
-      item =>
-        revealObserver.observe(
-          item
-        )
+
+    sections.forEach(
+      (section) => {
+        navObserver.observe(section);
+      }
     );
-  } else {
-    revealItems.forEach(
-      item =>
-        item.classList.add(
-          "is-visible"
-        )
-    );
+
   }
 
 
   /* =======================================================
-     HERO IMAGE LOAD
+     10. HEADER SCROLL EFFECT
   ======================================================= */
 
-  const hero =
-    $(".hero");
+  let lastScrollY =
+    window.scrollY;
 
-  const heroImage =
-    $(".hero-visual img");
 
-  if (hero) {
-    if (
-      heroImage &&
-      !heroImage.complete
-    ) {
-      heroImage.addEventListener(
-        "load",
-        () => {
-          hero.classList.add(
-            "is-loaded"
-          );
-        }
+  function handleHeaderScroll() {
+
+    const header =
+      document.querySelector(
+        ".site-header"
       );
 
-      heroImage.addEventListener(
-        "error",
-        () => {
-          hero.classList.add(
-            "is-loaded"
-          );
-        }
+    if (!header) return;
+
+    const currentScroll =
+      window.scrollY;
+
+
+    if (currentScroll > 30) {
+
+      header.classList.add(
+        "scrolled"
       );
+
     } else {
-      requestAnimationFrame(
-        () =>
-          hero.classList.add(
-            "is-loaded"
-          )
-      );
-    }
-  }
 
-
-  /* =======================================================
-     LIVE CODING TERMINAL
-  ======================================================= */
-
-  const terminal =
-    $(".hero-terminal");
-
-  const terminalLines =
-    terminal
-      ? $$(".terminal-line", terminal)
-      : [];
-
-  const codeSequences = [
-    [
-      "$ snk.engine.start()",
-      "→ initializing intelligence...",
-      "✓ context ready",
-      "✓ memory connected",
-      "✓ tools connected",
-      "> system.ready()"
-    ],
-
-    [
-      "$ build({ intelligence: AI })",
-      "→ understanding context...",
-      "→ retrieving knowledge...",
-      "→ validating output...",
-      "✓ useful intelligence",
-      "> build.complete()"
-    ],
-
-    [
-      "$ experience.build()",
-      "→ software",
-      "→ AI",
-      "→ UX",
-      "→ systems",
-      "✓ experience ready"
-    ],
-
-    [
-      "$ mind.learn({ curiosity: true })",
-      "→ observe",
-      "→ question",
-      "→ understand",
-      "→ improve",
-      "> growth.loop()"
-    ]
-  ];
-
-  let terminalSequence = 0;
-  let terminalRunning = false;
-
-  async function sleep(ms) {
-    return new Promise(
-      resolve =>
-        setTimeout(
-          resolve,
-          ms
-        )
-    );
-  }
-
-  async function typeLine(
-    element,
-    text
-  ) {
-    if (!element) return;
-
-    if (
-      prefersReducedMotion
-    ) {
-      element.textContent =
-        text;
-
-      return;
-    }
-
-    element.textContent = "";
-
-    for (
-      let i = 0;
-      i < text.length;
-      i++
-    ) {
-      element.textContent +=
-        text[i];
-
-      await sleep(
-        CONFIG.typingSpeed
-      );
-    }
-  }
-
-  async function runTerminal() {
-    if (
-      !terminal ||
-      terminalRunning
-    ) {
-      return;
-    }
-
-    terminalRunning = true;
-
-    while (
-      document.body.contains(
-        terminal
-      )
-    ) {
-      const sequence =
-        codeSequences[
-          terminalSequence
-        ];
-
-      terminalSequence =
-        (terminalSequence + 1) %
-        codeSequences.length;
-
-      terminalLines.forEach(
-        line => {
-          line.textContent = "";
-        }
+      header.classList.remove(
+        "scrolled"
       );
 
-      for (
-        let i = 0;
-        i < sequence.length &&
-        i < terminalLines.length;
-        i++
-      ) {
-        await typeLine(
-          terminalLines[i],
-          sequence[i]
-        );
-
-        await sleep(
-          prefersReducedMotion
-            ? 150
-            : 260
-        );
-      }
-
-      await sleep(
-        prefersReducedMotion
-          ? 800
-          : 2200
-      );
     }
 
-    terminalRunning = false;
+
+    lastScrollY =
+      currentScroll;
+
   }
 
-  if (terminal) {
-    runTerminal();
-  }
-
-
-  /* =======================================================
-     RAIN ENGINE
-  ======================================================= */
-
-  const rainCanvas =
-    $("#rainCanvas");
-
-  const rainButton =
-    $("#rainToggle") ||
-    $("[data-rain-toggle]");
-
-  let rainEnabled =
-    storageGet(
-      CONFIG.storage.rain,
-      "false"
-    ) === "true";
-
-  let rainAnimation = null;
-
-  if (prefersReducedMotion) {
-    rainEnabled = false;
-  }
-
-  const rain =
-    rainCanvas
-      ? {
-          canvas: rainCanvas,
-          ctx:
-            rainCanvas.getContext(
-              "2d"
-            ),
-          drops: [],
-          width: 0,
-          height: 0,
-          dpr:
-            Math.min(
-              window.devicePixelRatio ||
-                1,
-              2
-            )
-        }
-      : null;
-
-  function resizeRain() {
-    if (!rain) return;
-
-    rain.width =
-      window.innerWidth;
-
-    rain.height =
-      window.innerHeight;
-
-    rain.canvas.width =
-      rain.width *
-      rain.dpr;
-
-    rain.canvas.height =
-      rain.height *
-      rain.dpr;
-
-    rain.canvas.style.width =
-      `${rain.width}px`;
-
-    rain.canvas.style.height =
-      `${rain.height}px`;
-
-    rain.ctx.setTransform(
-      rain.dpr,
-      0,
-      0,
-      rain.dpr,
-      0,
-      0
-    );
-
-    const count =
-      Math.min(
-        240,
-        Math.floor(
-          rain.width / 5
-        )
-      );
-
-    rain.drops =
-      Array.from(
-        {
-          length: count
-        },
-        () => ({
-          x:
-            Math.random() *
-            rain.width,
-
-          y:
-            Math.random() *
-            rain.height,
-
-          length:
-            7 +
-            Math.random() * 18,
-
-          speed:
-            7 +
-            Math.random() * 10,
-
-          opacity:
-            .08 +
-            Math.random() * .18
-        })
-      );
-  }
-
-  function drawRain() {
-    if (
-      !rain ||
-      !rainEnabled
-    ) {
-      return;
-    }
-
-    const ctx =
-      rain.ctx;
-
-    ctx.clearRect(
-      0,
-      0,
-      rain.width,
-      rain.height
-    );
-
-    ctx.lineWidth = 1;
-
-    rain.drops.forEach(
-      drop => {
-        ctx.beginPath();
-
-        ctx.strokeStyle =
-          `rgba(220,225,220,${drop.opacity})`;
-
-        ctx.moveTo(
-          drop.x,
-          drop.y
-        );
-
-        ctx.lineTo(
-          drop.x - 1,
-          drop.y +
-            drop.length
-        );
-
-        ctx.stroke();
-
-        drop.y +=
-          drop.speed;
-
-        drop.x -= .35;
-
-        if (
-          drop.y >
-          rain.height
-        ) {
-          drop.y =
-            -drop.length;
-
-          drop.x =
-            Math.random() *
-            rain.width;
-        }
-
-        if (
-          drop.x < -20
-        ) {
-          drop.x =
-            rain.width + 10;
-        }
-      }
-    );
-
-    rainAnimation =
-      requestAnimationFrame(
-        drawRain
-      );
-  }
-
-  function stopRain() {
-    if (
-      rainAnimation
-    ) {
-      cancelAnimationFrame(
-        rainAnimation
-      );
-
-      rainAnimation = null;
-    }
-
-    if (rain) {
-      rain.ctx.clearRect(
-        0,
-        0,
-        rain.width,
-        rain.height
-      );
-    }
-
-    body.classList.remove(
-      "rain-active"
-    );
-  }
-
-  function startRain() {
-    if (
-      !rain ||
-      prefersReducedMotion
-    ) {
-      return;
-    }
-
-    resizeRain();
-
-    body.classList.add(
-      "rain-active"
-    );
-
-    cancelAnimationFrame(
-      rainAnimation
-    );
-
-    drawRain();
-  }
-
-  function setRain(enabled) {
-    rainEnabled =
-      Boolean(enabled);
-
-    storageSet(
-      CONFIG.storage.rain,
-      String(rainEnabled)
-    );
-
-    if (
-      rainEnabled &&
-      !prefersReducedMotion
-    ) {
-      startRain();
-    } else {
-      stopRain();
-    }
-
-    if (rainButton) {
-      rainButton.classList.toggle(
-        "active",
-        rainEnabled
-      );
-
-      rainButton.setAttribute(
-        "aria-pressed",
-        rainEnabled
-          ? "true"
-          : "false"
-      );
-
-      rainButton.textContent =
-        rainEnabled
-          ? "RAIN ON"
-          : "RAIN";
-    }
-  }
-
-  if (rain) {
-    window.addEventListener(
-      "resize",
-      () => {
-        if (rainEnabled) {
-          resizeRain();
-        }
-      },
-      {
-        passive: true
-      }
-    );
-  }
-
-  if (rainButton) {
-    rainButton.addEventListener(
-      "click",
-      () => {
-        setRain(
-          !rainEnabled
-        );
-      }
-    );
-  }
-
-  setRain(rainEnabled);
-
-
-  /* =======================================================
-     FLYING BIRD ENGINE
-  ======================================================= */
-
-  const birdLayer =
-    $(".bird-layer");
-
-  function randomBetween(
-    min,
-    max
-  ) {
-    return (
-      Math.random() *
-        (max - min) +
-      min
-    );
-  }
-
-  function createBird() {
-    if (
-      !birdLayer ||
-      prefersReducedMotion
-    ) {
-      return;
-    }
-
-    const bird =
-      document.createElement(
-        "div"
-      );
-
-    bird.className =
-      "bird";
-
-    const top =
-      randomBetween(
-        8,
-        45
-      );
-
-    const scale =
-      randomBetween(
-        .55,
-        1.15
-      );
-
-    const duration =
-      randomBetween(
-        12,
-        22
-      );
-
-    bird.style.top =
-      `${top}%`;
-
-    bird.style.animationDuration =
-      `${duration}s`;
-
-    bird.style.transform =
-      `scale(${scale})`;
-
-    birdLayer.appendChild(
-      bird
-    );
-
-    setTimeout(
-      () => {
-        bird.remove();
-      },
-      (duration + 1) * 1000
-    );
-  }
-
-  function scheduleBird() {
-    if (
-      prefersReducedMotion
-    ) {
-      return;
-    }
-
-    const delay =
-      randomBetween(
-        CONFIG.birdDelayMin,
-        CONFIG.birdDelayMax
-      );
-
-    setTimeout(
-      () => {
-        createBird();
-
-        scheduleBird();
-      },
-      delay
-    );
-  }
-
-  if (
-    birdLayer &&
-    !prefersReducedMotion
-  ) {
-    setTimeout(
-      createBird,
-      2500
-    );
-
-    scheduleBird();
-  }
-
-
-  /* =======================================================
-     MAGNETIC BUTTONS
-  ======================================================= */
-
-  const magneticButtons =
-    $$(".magnetic, .btn");
-
-  if (
-    !prefersReducedMotion
-  ) {
-    magneticButtons.forEach(
-      button => {
-        button.addEventListener(
-          "mousemove",
-          event => {
-            const rect =
-              button.getBoundingClientRect();
-
-            const x =
-              event.clientX -
-              rect.left -
-              rect.width / 2;
-
-            const y =
-              event.clientY -
-              rect.top -
-              rect.height / 2;
-
-            button.style.transform =
-              `translate(${x * .10}px, ${y * .10}px)`;
-          }
-        );
-
-        button.addEventListener(
-          "mouseleave",
-          () => {
-            button.style.transform =
-              "";
-          }
-        );
-      }
-    );
-  }
-
-
-  /* =======================================================
-     CARD TILT
-  ======================================================= */
-
-  const tiltCards =
-    $$(".snk-brand-card, .ai-card");
-
-  if (
-    !prefersReducedMotion
-  ) {
-    tiltCards.forEach(
-      card => {
-        card.addEventListener(
-          "mousemove",
-          event => {
-            const rect =
-              card.getBoundingClientRect();
-
-            const x =
-              event.clientX -
-              rect.left;
-
-            const y =
-              event.clientY -
-              rect.top;
-
-            const rotateX =
-              ((y -
-                rect.height / 2) /
-                rect.height) *
-              -3;
-
-            const rotateY =
-              ((x -
-                rect.width / 2) /
-                rect.width) *
-              3;
-
-            card.style.transform =
-              `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-7px)`;
-          }
-        );
-
-        card.addEventListener(
-          "mouseleave",
-          () => {
-            card.style.transform =
-              "";
-          }
-        );
-      }
-    );
-  }
-
-
-  /* =======================================================
-     HERO PARALLAX
-  ======================================================= */
-
-  const heroVisual =
-    $(".hero-visual");
-
-  if (
-    heroVisual &&
-    !prefersReducedMotion
-  ) {
-    window.addEventListener(
-      "mousemove",
-      event => {
-        const x =
-          (event.clientX /
-            window.innerWidth -
-            .5) *
-          2;
-
-        const y =
-          (event.clientY /
-            window.innerHeight -
-            .5) *
-          2;
-
-        heroVisual.style.transform =
-          `translate3d(${x * -8}px, ${y * -5}px, 0)`;
-      },
-      {
-        passive: true
-      }
-    );
-  }
-
-
-  /* =======================================================
-     EXTERNAL LINKS
-  ======================================================= */
-
-  $$(
-    'a[href^="http://"], a[href^="https://"]'
-  ).forEach(
-    link => {
-      const href =
-        link.getAttribute(
-          "href"
-        );
-
-      if (
-        !href ||
-        href.startsWith(
-          "javascript:"
-        )
-      ) {
-        return;
-      }
-
-      link.target = "_blank";
-
-      link.rel =
-        "noopener noreferrer";
-    }
-  );
-
-
-  /* =======================================================
-     5 BRAND / ECOSYSTEM LINKS
-     
-     Update these only if your URLs differ.
-  ======================================================= */
-
-  const BRAND_LINKS = {
-    websitesdeal:
-      "https://websitesdeal.com/",
-
-    tabayyun:
-      "https://www.tabayyuninstitute.com/",
-
-    snkInstitute:
-      "#",
-
-    sarakat:
-      "#",
-
-    snkDesign:
-      "#"
-  };
-
-  function bindBrandLink(
-    selector,
-    url
-  ) {
-    if (
-      !url ||
-      url === "#"
-    ) {
-      return;
-    }
-
-    const elements =
-      $$(selector);
-
-    elements.forEach(
-      element => {
-        element.href = url;
-
-        element.target =
-          "_blank";
-
-        element.rel =
-          "noopener noreferrer";
-      }
-    );
-  }
-
-  bindBrandLink(
-    '[data-brand="websitesdeal"]',
-    BRAND_LINKS.websitesdeal
-  );
-
-  bindBrandLink(
-    '[data-brand="tabayyun"]',
-    BRAND_LINKS.tabayyun
-  );
-
-  bindBrandLink(
-    '[data-brand="snk-institute"]',
-    BRAND_LINKS.snkInstitute
-  );
-
-  bindBrandLink(
-    '[data-brand="sarakat"]',
-    BRAND_LINKS.sarakat
-  );
-
-  bindBrandLink(
-    '[data-brand="snk-design"]',
-    BRAND_LINKS.snkDesign
-  );
-
-
-  /* =======================================================
-     LANGUAGE ENGINE
-  ======================================================= */
-
-  const languageButton =
-    $("#languageToggle") ||
-    $("[data-language-toggle]");
-
-  const translations = {
-    en: {
-      home: "Home",
-      work: "Work",
-      ai: "AI",
-      expertise: "Expertise",
-      experience: "Experience",
-      about: "About",
-      brand: "Brand",
-      contact: "Contact",
-
-      heroKicker:
-        "SOFTWARE / AI / EXPERIENCE",
-
-      heroTitle:
-        "I BUILD SYSTEMS. I TRAIN MINDS. I CREATE IMPACT.",
-
-      heroDescription:
-        "Software, artificial intelligence, UX and thoughtful digital experiences — connected through one personal ecosystem.",
-
-      selectedWork:
-        "SELECTED WORK",
-
-      aiTitle:
-        "AI THAT UNDERSTANDS CONTEXT.",
-
-      mindsetTitle:
-        "I DON'T JUST BUILD. I THINK FIRST.",
-
-      expertiseTitle:
-        "WHAT I BRING TO THE TABLE",
-
-      experienceTitle:
-        "WHERE I'VE BUILT & CONTRIBUTED",
-
-      aboutTitle:
-        "I BUILD WITH CURIOSITY, ENGINEERING DISCIPLINE, AND PURPOSE.",
-
-      contactTitle:
-        "HAVE AN IDEA? LET'S BUILD IT."
-    },
-
-    bn: {
-      home: "হোম",
-      work: "কাজ",
-      ai: "এআই",
-      expertise: "দক্ষতা",
-      experience: "অভিজ্ঞতা",
-      about: "আমার সম্পর্কে",
-      brand: "ব্র্যান্ড",
-      contact: "যোগাযোগ",
-
-      heroKicker:
-        "সফটওয়্যার / এআই / এক্সপেরিয়েন্স",
-
-      heroTitle:
-        "আমি সিস্টেম তৈরি করি। মনকে প্রশিক্ষণ দিই। প্রভাব তৈরি করি।",
-
-      heroDescription:
-        "সফটওয়্যার, কৃত্রিম বুদ্ধিমত্তা, UX এবং চিন্তাশীল ডিজিটাল এক্সপেরিয়েন্স—একটি ব্যক্তিগত ইকোসিস্টেমের মাধ্যমে সংযুক্ত।",
-
-      selectedWork:
-        "নির্বাচিত কাজ",
-
-      aiTitle:
-        "এআই, যা কনটেক্সট বোঝে।",
-
-      mindsetTitle:
-        "আমি শুধু তৈরি করি না। আগে চিন্তা করি।",
-
-      expertiseTitle:
-        "আমি যা নিয়ে আসি",
-
-      experienceTitle:
-        "যেখানে আমি কাজ করেছি ও অবদান রেখেছি",
-
-      aboutTitle:
-        "কৌতূহল, ইঞ্জিনিয়ারিং ডিসিপ্লিন এবং উদ্দেশ্য নিয়ে আমি তৈরি করি।",
-
-      contactTitle:
-        "কোনো আইডিয়া আছে? চলুন তৈরি করি।"
-    }
-  };
-
-  function translateElement(
-    element,
-    key,
-    language
-  ) {
-    if (
-      !element ||
-      !translations[language] ||
-      !translations[language][key]
-    ) {
-      return;
-    }
-
-    element.textContent =
-      translations[language][key];
-  }
-
-  function applyLanguage(
-    language
-  ) {
-    const lang =
-      language === "bn"
-        ? "bn"
-        : "en";
-
-    root.dataset.language =
-      lang;
-
-    document.documentElement.lang =
-      lang === "bn"
-        ? "bn"
-        : "en";
-
-    storageSet(
-      CONFIG.storage.language,
-      lang
-    );
-
-    if (languageButton) {
-      languageButton.classList.toggle(
-        "active",
-        lang === "bn"
-      );
-
-      languageButton.setAttribute(
-        "aria-pressed",
-        lang === "bn"
-          ? "true"
-          : "false"
-      );
-
-      languageButton.textContent =
-        lang === "bn"
-          ? "EN"
-          : "বাংলা";
-    }
-
-    $$("[data-i18n]").forEach(
-      element => {
-        const key =
-          element.dataset.i18n;
-
-        translateElement(
-          element,
-          key,
-          lang
-        );
-      }
-    );
-  }
-
-  const savedLanguage =
-    storageGet(
-      CONFIG.storage.language,
-      "en"
-    );
-
-  applyLanguage(
-    savedLanguage
-  );
-
-  if (languageButton) {
-    languageButton.addEventListener(
-      "click",
-      () => {
-        applyLanguage(
-          root.dataset.language === "en"
-            ? "bn"
-            : "en"
-        );
-      }
-    );
-  }
-
-
-  /* =======================================================
-     KEYBOARD ACCESSIBILITY
-  ======================================================= */
-
-  document.addEventListener(
-    "keydown",
-    event => {
-      if (
-        event.key === "Escape"
-      ) {
-        closeMenu();
-      }
-    }
-  );
-
-
-  /* =======================================================
-     IMAGE ERROR HANDLING
-  ======================================================= */
-
-  $$("img").forEach(
-    image => {
-      image.addEventListener(
-        "error",
-        () => {
-          image.classList.add(
-            "image-error"
-          );
-        }
-      );
-    }
-  );
-
-
-  /* =======================================================
-     CONTACT FORM
-  ======================================================= */
-
-  const contactForms =
-    $$(
-      "form[data-contact-form]"
-    );
-
-  contactForms.forEach(
-    form => {
-      form.addEventListener(
-        "submit",
-        event => {
-          const action =
-            form.getAttribute(
-              "action"
-            );
-
-          /*
-             If no backend/form endpoint
-             exists, prevent fake submission.
-          */
-
-          if (
-            !action ||
-            action === "#" ||
-            action === ""
-          ) {
-            event.preventDefault();
-
-            const button =
-              form.querySelector(
-                'button[type="submit"]'
-              );
-
-            if (button) {
-              const original =
-                button.textContent;
-
-              button.textContent =
-                "ADD CONTACT ENDPOINT →";
-
-              button.disabled = true;
-
-              setTimeout(
-                () => {
-                  button.textContent =
-                    original;
-
-                  button.disabled =
-                    false;
-                },
-                2200
-              );
-            }
-          }
-        }
-      );
-    }
-  );
-
-
-  /* =======================================================
-     TABAYYUN EXTERNAL PLATFORM
-  ======================================================= */
-
-  $$(
-    '[data-tabayyun-link]'
-  ).forEach(
-    link => {
-      link.href =
-        "https://www.tabayyuninstitute.com/";
-
-      link.target =
-        "_blank";
-
-      link.rel =
-        "noopener noreferrer";
-    }
-  );
-
-
-  /* =======================================================
-     CURRENT YEAR
-  ======================================================= */
-
-  $$(
-    "[data-current-year]"
-  ).forEach(
-    element => {
-      element.textContent =
-        new Date().getFullYear();
-    }
-  );
-
-  const year =
-    $("#year");
-
-  if (year) {
-    year.textContent =
-      new Date().getFullYear();
-  }
-
-
-  /* =======================================================
-     CUSTOM EVENT — COLOR CHANGE
-  ======================================================= */
-
-  document.addEventListener(
-    "snk:color-change",
-    event => {
-      const color =
-        event.detail.color;
-
-      $$(
-        "[data-auto-color]"
-      ).forEach(
-        element => {
-          element.style.color =
-            color;
-        }
-      );
-    }
-  );
-
-
-  /* =======================================================
-     PAGE VISIBILITY
-     
-     Save CPU when tab is hidden.
-  ======================================================= */
-
-  document.addEventListener(
-    "visibilitychange",
-    () => {
-      if (
-        document.hidden
-      ) {
-        if (rainAnimation) {
-          cancelAnimationFrame(
-            rainAnimation
-          );
-
-          rainAnimation = null;
-        }
-      } else if (
-        rainEnabled &&
-        !prefersReducedMotion
-      ) {
-        drawRain();
-      }
-    }
-  );
-
-
-  /* =======================================================
-     RESIZE CLEANUP
-  ======================================================= */
 
   window.addEventListener(
-    "resize",
-    () => {
-      if (
-        window.innerWidth > 900
-      ) {
-        closeMenu();
-      }
-    },
+    "scroll",
+    handleHeaderScroll,
     {
       passive: true
     }
   );
 
+  handleHeaderScroll();
+
 
   /* =======================================================
-     DEBUG API
+     11. RAIN RESIZE
   ======================================================= */
 
-  window.SNK = {
-    version: "3.1",
-    theme: {
-      get:
-        () =>
-          root.dataset.theme,
+  let resizeTimer;
 
-      set:
-        setTheme
-    },
+  window.addEventListener(
+    "resize",
+    () => {
 
-    language: {
-      get:
-        () =>
-          root.dataset.language,
+      clearTimeout(resizeTimer);
 
-      set:
-        applyLanguage
-    },
+      resizeTimer =
+        setTimeout(() => {
 
-    rain: {
-      get:
-        () =>
-          rainEnabled,
+          if (rainEnabled) {
+            createRain();
+          }
 
-      set:
-        setRain
-    },
+          createBirds();
 
-    color: {
-      get:
-        () =>
-          root.style.getPropertyValue(
-            "--snk-auto"
-          ),
+        }, 250);
 
-      next:
-        nextColor
     }
-  };
+  );
 
 
   /* =======================================================
-     READY
+     12. CARD POINTER EFFECT
   ======================================================= */
 
-  document.body.classList.add(
-    "snk-ready"
+  const cards =
+    document.querySelectorAll(
+      ".ecosystem-card, .social-card, .expertise-card"
+    );
+
+
+  cards.forEach((card) => {
+
+    card.addEventListener(
+      "pointermove",
+      (event) => {
+
+        if (
+          window.innerWidth < 760
+        ) {
+          return;
+        }
+
+        const rect =
+          card.getBoundingClientRect();
+
+        const x =
+          event.clientX -
+          rect.left;
+
+        const y =
+          event.clientY -
+          rect.top;
+
+        const rotateX =
+          ((y / rect.height) - 0.5) *
+          -3;
+
+        const rotateY =
+          ((x / rect.width) - 0.5) *
+          3;
+
+        card.style.transform =
+          `perspective(800px)
+           rotateX(${rotateX}deg)
+           rotateY(${rotateY}deg)
+           translateY(-5px)`;
+
+      }
+    );
+
+
+    card.addEventListener(
+      "pointerleave",
+      () => {
+
+        card.style.transform = "";
+
+      }
+    );
+
+  });
+
+
+  /* =======================================================
+     13. KEYBOARD ACCESSIBILITY
+  ======================================================= */
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      /*
+        Press "T" to toggle theme.
+        Avoid triggering while typing.
+      */
+
+      const activeElement =
+        document.activeElement;
+
+      const isTyping =
+        activeElement &&
+        (
+          activeElement.tagName ===
+            "INPUT" ||
+          activeElement.tagName ===
+            "TEXTAREA" ||
+          activeElement.isContentEditable
+        );
+
+
+      if (
+        event.key.toLowerCase() === "t" &&
+        !isTyping &&
+        themeToggle
+      ) {
+
+        themeToggle.click();
+
+      }
+
+    }
   );
 
-  document.dispatchEvent(
-    new CustomEvent(
-      "snk:ready"
-    )
+
+  /* =======================================================
+     14. CONSOLE BRAND MESSAGE
+  ======================================================= */
+
+  console.log(
+    "%c SNK ",
+    "background:#e6a35b;color:#080909;font-weight:800;padding:5px 9px;border-radius:5px;"
   );
 
-})();
+  console.log(
+    "Shah Neil Khan — Personal Brand"
+  );
+
+  console.log(
+    "Build. Learn. Share."
+  );
+
+});
