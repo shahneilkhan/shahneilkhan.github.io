@@ -1,549 +1,1068 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>About — Shah Neil Khan</title>
 
   <meta
     name="description"
-    content="About Shah Neil Khan — Software Engineer & AI Engineer focused on intelligent software, product experience, UX, and secure digital systems."
+    content="About Shah Neil Khan — UX thinking, digital experiences, systems thinking, AI-assisted work and creative direction."
   >
 
-  <meta name="theme-color" content="#090909">
+  <meta
+    name="author"
+    content="Shah Neil Khan"
+  >
 
+  <meta
+    name="theme-color"
+    content="#080808"
+  >
+
+  <!-- Open Graph -->
+  <meta
+    property="og:title"
+    content="About — Shah Neil Khan"
+  >
+
+  <meta
+    property="og:description"
+    content="UX thinking, digital experiences, systems thinking and creative direction."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:url"
+    content="https://shahneilkhan.github.io/about.html"
+  >
+
+  <!-- Favicon -->
   <link
     rel="icon"
     type="image/svg+xml"
     href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
   >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+  <!-- Styles -->
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
+    href="style.css"
   >
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* =====================================================
+       ABOUT PAGE ONLY
+    ===================================================== */
+
+    .about-page {
+      padding-top: 150px;
+      min-height: 100vh;
+    }
+
+    .about-hero {
+      position: relative;
+      padding-bottom: 100px;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: "ABOUT";
+
+      position: absolute;
+
+      top: -30px;
+      right: -30px;
+
+      font-size:
+        clamp(130px, 25vw, 340px);
+
+      line-height: .8;
+
+      font-weight: 900;
+
+      letter-spacing: -.1em;
+
+      color: rgba(215, 168, 75, .035);
+
+      pointer-events: none;
+    }
+
+    .about-hero-grid {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+
+      grid-template-columns:
+        .8fr 1.2fr;
+
+      gap: 80px;
+
+      align-items: end;
+    }
+
+    .about-label {
+      color: var(--accent);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .2em;
+
+      text-transform: uppercase;
+    }
+
+    .about-main-title {
+      margin: 18px 0 0;
+
+      font-size:
+        clamp(65px, 11vw, 150px);
+
+      line-height: .82;
+
+      letter-spacing: -.075em;
+
+      font-weight: 850;
+    }
+
+    .about-main-title span {
+      color: var(--accent);
+    }
+
+    .about-intro {
+      max-width: 680px;
+
+      margin: 0;
+
+      color: var(--text-soft);
+
+      font-size:
+        clamp(17px, 2vw, 21px);
+
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       INTRO CARD
+    ===================================================== */
+
+    .about-intro-card {
+      position: relative;
+
+      margin-top: 70px;
+
+      padding:
+        clamp(30px, 5vw, 65px);
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        var(--radius-lg);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(215, 168, 75, .09),
+          rgba(255,255,255,.025) 50%,
+          transparent
+        );
+
+      overflow: hidden;
+    }
+
+    .about-intro-card::after {
+      content: "";
+
+      position: absolute;
+
+      right: -80px;
+      bottom: -80px;
+
+      width: 250px;
+      height: 250px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(215,168,75,.12),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .about-intro-card h2 {
+      position: relative;
+      z-index: 2;
+
+      max-width: 900px;
+
+      margin: 0;
+
+      font-size:
+        clamp(38px, 6vw, 75px);
+
+      line-height: .95;
+
+      letter-spacing: -.06em;
+    }
+
+    .about-intro-card h2 span {
+      color: var(--accent);
+    }
+
+    .about-intro-card p {
+      position: relative;
+      z-index: 2;
+
+      max-width: 720px;
+
+      margin: 25px 0 0;
+
+      color: var(--text-soft);
+
+      font-size: 16px;
+
+      line-height: 1.85;
+    }
+
+
+    /* =====================================================
+       MINDSET
+    ===================================================== */
+
+    .about-mindset {
+      display: grid;
+
+      grid-template-columns:
+        .75fr 1.25fr;
+
+      gap: 90px;
+
+      align-items: start;
+    }
+
+    .about-section-number {
+      color: var(--accent);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 11px;
+
+      letter-spacing: .15em;
+    }
+
+    .about-section-title {
+      margin: 12px 0 0;
+
+      font-size:
+        clamp(38px, 5vw, 65px);
+
+      line-height: .95;
+
+      letter-spacing: -.055em;
+    }
+
+    .about-section-copy {
+      margin: 0;
+
+      color: var(--text-soft);
+
+      font-size: 16px;
+
+      line-height: 1.85;
+    }
+
+    .about-section-copy + .about-section-copy {
+      margin-top: 20px;
+    }
+
+
+    /* =====================================================
+       PRINCIPLES
+    ===================================================== */
+
+    .about-principles {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+
+      margin-top: 60px;
+    }
+
+    .principle-card {
+      position: relative;
+
+      min-height: 250px;
+
+      padding: 27px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        var(--radius-md);
+
+      background:
+        var(--bg-card);
+
+      overflow: hidden;
+
+      transition:
+        transform .4s var(--ease),
+        border-color .3s ease;
+    }
+
+    .principle-card:hover {
+      transform:
+        translateY(-7px);
+
+      border-color:
+        rgba(215,168,75,.35);
+    }
+
+    .principle-number {
+      color: var(--accent);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 10px;
+
+      letter-spacing: .12em;
+    }
+
+    .principle-card h3 {
+      margin: 55px 0 0;
+
+      font-size: 25px;
+
+      letter-spacing: -.04em;
+    }
+
+    .principle-card p {
+      margin: 12px 0 0;
+
+      color: var(--text-muted);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       EXPERIENCE SNAPSHOT
+    ===================================================== */
+
+    .about-experience {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 14px;
+    }
+
+    .about-role-card {
+      padding:
+        clamp(25px, 4vw, 45px);
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        var(--radius-md);
+
+      background:
+        rgba(255,255,255,.025);
+    }
+
+    .about-role-card small {
+      display: block;
+
+      color: var(--accent);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .15em;
+
+      text-transform: uppercase;
+    }
+
+    .about-role-card h3 {
+      margin: 15px 0 0;
+
+      font-size:
+        clamp(28px, 4vw, 48px);
+
+      line-height: .95;
+
+      letter-spacing: -.05em;
+    }
+
+    .about-role-card p {
+      margin: 15px 0 0;
+
+      color: var(--text-muted);
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .about-cta {
+      position: relative;
+
+      text-align: center;
+
+      padding:
+        clamp(50px, 9vw, 110px)
+        20px;
+
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
+      overflow: hidden;
+    }
+
+    .about-cta::before {
+      content: "";
+
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      width: 500px;
+      height: 300px;
+
+      transform:
+        translate(-50%, -50%);
+
+      background:
+        radial-gradient(
+          ellipse,
+          rgba(215,168,75,.09),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .about-cta h2 {
+      position: relative;
+
+      margin: 0;
+
+      font-size:
+        clamp(45px, 8vw, 100px);
+
+      line-height: .88;
+
+      letter-spacing: -.07em;
+    }
+
+    .about-cta h2 span {
+      color: var(--accent);
+    }
+
+    .about-cta p {
+      position: relative;
+
+      max-width: 550px;
+
+      margin: 25px auto 30px;
+
+      color: var(--text-soft);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 800px) {
+
+      .about-page {
+        padding-top: 120px;
+      }
+
+      .about-hero-grid,
+      .about-mindset,
+      .about-experience {
+        grid-template-columns: 1fr;
+      }
+
+      .about-hero-grid,
+      .about-mindset {
+        gap: 40px;
+      }
+
+      .about-principles {
+        grid-template-columns: 1fr;
+      }
+
+      .about-intro-card {
+        margin-top: 45px;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      .about-page {
+        padding-top: 105px;
+      }
+
+      .about-hero {
+        padding-bottom: 70px;
+      }
+
+      .about-main-title {
+        font-size:
+          clamp(58px, 18vw, 90px);
+      }
+
+      .about-intro {
+        font-size: 15px;
+      }
+
+      .about-intro-card {
+        padding: 25px 21px;
+      }
+
+      .about-intro-card h2 {
+        font-size:
+          clamp(35px, 12vw, 55px);
+      }
+
+      .about-intro-card p,
+      .about-section-copy {
+        font-size: 14px;
+      }
+
+      .principle-card {
+        min-height: 210px;
+
+        padding: 22px;
+      }
+
+      .principle-card h3 {
+        margin-top: 40px;
+      }
+
+      .about-role-card {
+        padding: 25px 21px;
+      }
+
+      .about-cta {
+        padding: 70px 15px;
+      }
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header" id="site-header">
 
-    <div class="container header-inner">
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
 
-      <a href="index.html" class="brand" aria-label="Shah Neil Khan home">
+  <header class="site-header">
 
-        <span class="brand-logo">
-          <img
-            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-            alt="SNK"
-          >
-        </span>
+    <div class="container nav-wrap">
 
-        <span class="brand-copy">
-          <strong>SHAH NEIL KHAN</strong>
-          <small>SNK / PERSONAL BRAND</small>
-        </span>
-
+      <a
+        href="index.html"
+        class="logo"
+        aria-label="Shah Neil Khan — Home"
+      >
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="SNK"
+        >
       </a>
 
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-label="Open navigation"
-        aria-expanded="false"
+
+      <nav
+        class="main-nav"
+        aria-label="Main navigation"
       >
-        <span></span>
-      </button>
 
-      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">
+          Home
+        </a>
 
-        <a href="index.html">Home</a>
-        <a href="index.html#work">Work</a>
-        <a href="index.html#ai">AI</a>
-        <a href="index.html#expertise">Expertise</a>
-        <a href="index.html#experience">Experience</a>
-        <a href="about.html" class="active">About</a>
-        <a href="brand.html">Brand</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html#ecosystem">
+          Ecosystem
+        </a>
+
+        <a href="index.html#ai">
+          AI
+        </a>
+
+        <a href="index.html#expertise">
+          Expertise
+        </a>
+
+        <a
+          href="index.html#experience"
+        >
+          Experience
+        </a>
+
+        <a
+          href="about.html"
+          class="active"
+        >
+          About
+        </a>
+
+        <a href="index.html#brand">
+          Brand
+        </a>
+
+        <a href="index.html#contact">
+          Contact
+        </a>
 
       </nav>
 
-      <a href="contact.html" class="header-cta">
-        Let's Talk <span>↗</span>
-      </a>
+
+      <div class="nav-actions">
+
+        <button
+          class="icon-btn"
+          id="languageToggle"
+          type="button"
+          aria-label="Switch language"
+        >
+          বাংলা
+        </button>
+
+        <button
+          class="icon-btn"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch theme"
+        >
+          ☼
+        </button>
+
+        <button
+          class="icon-btn"
+          id="rainToggle"
+          type="button"
+          aria-label="Toggle rain"
+        >
+          Rain
+        </button>
+
+      </div>
 
     </div>
 
   </header>
 
 
-  <main>
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
 
-    <!-- ABOUT HERO -->
-    <section class="page-hero section-dark">
-
-      <div class="container">
-
-        <div class="page-hero-grid">
-
-          <div class="page-hero-copy reveal">
-
-            <span class="section-number">
-              01 / ABOUT
-            </span>
-
-            <h1>
-              I BUILD WITH<br>
-              <em>CURIOSITY, DISCIPLINE &amp; PURPOSE.</em>
-            </h1>
-
-            <p>
-              I'm Shah Neil Khan, a software engineer focused on
-              building intelligent digital experiences across
-              software, AI, product, and UX.
-            </p>
-
-          </div>
+  <main class="about-page">
 
 
-          <div class="page-hero-mark reveal">
+    <!-- ===================================================
+         ABOUT HERO
+    =================================================== -->
 
-            <div class="identity-mark">
-
-              <span>SHAH</span>
-              <span>NEIL</span>
-              <span>KHAN</span>
-
-              <div class="identity-line-small"></div>
-
-              <strong>SNK</strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- INTRO -->
-    <section class="section about-introduction">
+    <section class="about-hero">
 
       <div class="container">
 
-        <div class="about-intro-grid">
-
-          <div class="section-label reveal">
-
-            <span class="section-number">
-              02 / THE APPROACH
-            </span>
-
-          </div>
-
-
-          <div class="about-intro-copy reveal">
-
-            <p class="about-lead">
-              I don't see software as just code.
-              I see it as a system connecting people,
-              information, decisions, and experiences.
-            </p>
-
-            <p>
-              That's why my work sits at the intersection of
-              engineering, artificial intelligence, product
-              thinking, and user experience.
-            </p>
-
-            <p>
-              Whether I'm working on a software system,
-              an AI workflow, a digital product, or an interface,
-              I care about understanding the problem before
-              jumping into implementation.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- HOW I THINK -->
-    <section class="section about-thinking">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
+        <div class="about-hero-grid reveal">
 
           <div>
 
-            <span class="section-number">
-              03 / HOW I THINK
-            </span>
+            <div class="about-label">
+              PERSONAL PROFILE
+            </div>
 
-            <h2>
-              THINK IN<br>
-              <em>SYSTEMS.</em>
-            </h2>
+            <h1 class="about-main-title">
+              ABOUT<br>
+              <span>SNK.</span>
+            </h1>
 
           </div>
 
-          <p>
-            Good engineering starts before the first line of
-            code. I try to understand the problem, the people
-            involved, the constraints, and the system around it.
+
+          <p class="about-intro">
+            I'm interested in the space where
+            design, technology, learning and
+            systems thinking meet.
+            <br><br>
+            I like turning ideas into structured
+            digital experiences — while continuously
+            learning from the process.
           </p>
 
         </div>
 
 
-        <div class="thinking-grid">
-
-          <article class="thinking-card reveal">
-
-            <span class="card-number">
-              01
-            </span>
-
-            <h3>
-              QUESTION
-            </h3>
-
-            <p>
-              What problem are we actually solving?
-              What assumptions are we making?
-            </p>
-
-          </article>
-
-
-          <article class="thinking-card reveal">
-
-            <span class="card-number">
-              02
-            </span>
-
-            <h3>
-              STRUCTURE
-            </h3>
-
-            <p>
-              Break complexity into understandable systems,
-              boundaries, flows, and responsibilities.
-            </p>
-
-          </article>
-
-
-          <article class="thinking-card reveal">
-
-            <span class="card-number">
-              03
-            </span>
-
-            <h3>
-              BUILD
-            </h3>
-
-            <p>
-              Turn the architecture into software that is
-              useful, maintainable, and intentional.
-            </p>
-
-          </article>
-
-
-          <article class="thinking-card reveal">
-
-            <span class="card-number">
-              04
-            </span>
-
-            <h3>
-              LEARN
-            </h3>
-
-            <p>
-              Observe what works, understand what doesn't,
-              and keep improving the system.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- WHAT I BUILD -->
-    <section class="section about-build">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <span class="section-number">
-              04 / WHAT I BUILD
-            </span>
-
-            <h2>
-              FROM SOFTWARE<br>
-              <em>TO INTELLIGENCE.</em>
-            </h2>
-
-          </div>
-
-        </div>
-
-
-        <div class="build-list">
-
-          <div class="build-item reveal">
-
-            <span>01</span>
-
-            <div>
-              <h3>Software Systems</h3>
-              <p>
-                Applications, APIs, web experiences, and
-                full-stack systems designed around real needs.
-              </p>
-            </div>
-
-            <strong>↗</strong>
-
-          </div>
-
-
-          <div class="build-item reveal">
-
-            <span>02</span>
-
-            <div>
-              <h3>AI Applications</h3>
-              <p>
-                AI systems built around context, retrieval,
-                memory, tools, validation, and useful workflows.
-              </p>
-            </div>
-
-            <strong>↗</strong>
-
-          </div>
-
-
-          <div class="build-item reveal">
-
-            <span>03</span>
-
-            <div>
-              <h3>Digital Experiences</h3>
-              <p>
-                Interfaces and product experiences where
-                usability, clarity, and visual quality matter.
-              </p>
-            </div>
-
-            <strong>↗</strong>
-
-          </div>
-
-
-          <div class="build-item reveal">
-
-            <span>04</span>
-
-            <div>
-              <h3>Secure Systems</h3>
-              <p>
-                Systems designed with permissions, validation,
-                trust boundaries, and security considerations.
-              </p>
-            </div>
-
-            <strong>↗</strong>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PRINCIPLES -->
-    <section class="section about-principles">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <span class="section-number">
-              05 / PRINCIPLES
-            </span>
-
-            <h2>
-              WHAT<br>
-              <em>MATTERS.</em>
-            </h2>
-
-          </div>
-
-        </div>
-
-
-        <div class="principles-grid about-principles-grid">
-
-          <article class="principle reveal">
-
-            <span>01</span>
-
-            <h3>
-              CLARITY
-            </h3>
-
-            <p>
-              Complexity is inevitable. Confusion isn't.
-              I value systems and interfaces that make sense.
-            </p>
-
-          </article>
-
-
-          <article class="principle reveal">
-
-            <span>02</span>
-
-            <h3>
-              CRAFT
-            </h3>
-
-            <p>
-              Small details compound. Good work should feel
-              considered from architecture to interaction.
-            </p>
-
-          </article>
-
-
-          <article class="principle reveal">
-
-            <span>03</span>
-
-            <h3>
-              IMPACT
-            </h3>
-
-            <p>
-              Technology should solve a meaningful problem.
-              More complexity is not automatically more value.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- IDENTITY -->
-    <section class="identity-section">
-
-      <div class="container">
-
-        <div class="identity-system reveal">
-
-          <span>SHAH NEIL KHAN</span>
-
-          <div class="identity-flow">
-
-            <strong>SOFTWARE</strong>
-
-            <span>↓</span>
-
-            <strong>INTELLIGENCE</strong>
-
-            <span>↓</span>
-
-            <strong>EXPERIENCE</strong>
-
-            <span>↓</span>
-
-            <strong>IMPACT</strong>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CLOSING -->
-    <section class="section about-closing">
-
-      <div class="container">
-
-        <div class="closing-card reveal">
-
-          <span class="section-number">
-            06 / THE NEXT PROBLEM
-          </span>
+        <div
+          class="about-intro-card reveal reveal-delay-1"
+        >
 
           <h2>
-            I'M INTERESTED IN<br>
-            <em>DIFFICULT PROBLEMS.</em>
+            Build with intention.
+            <span>Learn continuously.</span>
           </h2>
 
           <p>
-            Thoughtful products. Intelligent systems.
-            Technology that actually matters.
+            My approach is simple: understand the
+            problem, create structure, execute with
+            purpose, and keep improving.
+            The goal is not simply to make something
+            look good — it is to make it useful,
+            understandable and meaningful.
           </p>
-
-          <a href="contact.html" class="btn btn-primary">
-            Let's Build Something
-            <span>↗</span>
-          </a>
 
         </div>
 
       </div>
 
     </section>
+
+
+    <!-- ===================================================
+         MINDSET
+    =================================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="about-mindset reveal">
+
+          <div>
+
+            <div class="about-section-number">
+              01 / MINDSET
+            </div>
+
+            <h2 class="about-section-title">
+              How I<br>
+              think.
+            </h2>
+
+          </div>
+
+
+          <div>
+
+            <p class="about-section-copy">
+              Good digital work starts before the
+              design screen. It starts with understanding
+              people, context, constraints and the
+              actual problem.
+            </p>
+
+            <p class="about-section-copy">
+              I enjoy breaking complex ideas into
+              smaller systems, finding patterns and
+              turning those patterns into practical
+              experiences.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PRINCIPLES -->
+
+        <div class="about-principles">
+
+          <article
+            class="principle-card reveal reveal-delay-1"
+          >
+
+            <div class="principle-number">
+              01
+            </div>
+
+            <h3>
+              Understand
+            </h3>
+
+            <p>
+              Before building anything, understand
+              the problem behind it.
+            </p>
+
+          </article>
+
+
+          <article
+            class="principle-card reveal reveal-delay-2"
+          >
+
+            <div class="principle-number">
+              02
+            </div>
+
+            <h3>
+              Structure
+            </h3>
+
+            <p>
+              Turn complexity into a clear,
+              understandable direction.
+            </p>
+
+          </article>
+
+
+          <article
+            class="principle-card reveal reveal-delay-3"
+          >
+
+            <div class="principle-number">
+              03
+            </div>
+
+            <h3>
+              Improve
+            </h3>
+
+            <p>
+              Learn from every iteration and make
+              the next version better.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         EXPERIENCE SNAPSHOT
+    =================================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <p class="eyebrow">
+            EXPERIENCE
+          </p>
+
+          <h2 class="section-title">
+            Work shapes
+            <br>
+            thinking.
+          </h2>
+
+        </div>
+
+
+        <div class="about-experience">
+
+          <article
+            class="about-role-card reveal"
+          >
+
+            <small>
+              Current Role
+            </small>
+
+            <h3>
+              UX Lead<br>
+              Digital Expert
+            </h3>
+
+            <p>
+              Yaqeen Institute
+              <br>
+              Texas, USA · Remote
+              <br>
+              2026 — Present
+            </p>
+
+          </article>
+
+
+          <article
+            class="about-role-card reveal reveal-delay-1"
+          >
+
+            <small>
+              Focus
+            </small>
+
+            <h3>
+              UX · Digital<br>
+              Systems
+            </h3>
+
+            <p>
+              Digital experience, UX thinking,
+              interface design and
+              product-oriented problem solving.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         PERSONAL ECOSYSTEM
+    =================================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="about-mindset reveal">
+
+          <div>
+
+            <div class="about-section-number">
+              02 / ECOSYSTEM
+            </div>
+
+            <h2 class="about-section-title">
+              One mind.<br>
+              Many directions.
+            </h2>
+
+          </div>
+
+
+          <div>
+
+            <p class="about-section-copy">
+              SNK is growing as a personal ecosystem
+              across design, technology, learning,
+              digital products and creative work.
+            </p>
+
+            <p class="about-section-copy">
+              Each direction can have its own identity
+              and mission while remaining connected
+              through the same underlying mindset.
+            </p>
+
+            <br>
+
+            <a
+              href="index.html#ecosystem"
+              class="btn btn-primary"
+            >
+              Explore Ecosystem ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         CTA
+    =================================================== -->
+
+    <section class="about-cta">
+
+      <div class="container reveal">
+
+        <h2>
+          Let's create<br>
+          <span>something meaningful.</span>
+        </h2>
+
+        <p>
+          If you're building something interesting,
+          exploring an idea or looking for a thoughtful
+          digital collaboration, let's start a conversation.
+        </p>
+
+        <a
+          href="index.html#contact"
+          class="btn btn-primary"
+        >
+          Start a Conversation
+        </a>
+
+      </div>
+
+    </section>
+
 
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+
   <footer class="site-footer">
 
     <div class="container footer-inner">
 
-      <a href="index.html" class="footer-brand">
+      <div class="footer-brand">
 
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
@@ -551,36 +1070,60 @@
         >
 
         <span>
-          SHAH NEIL KHAN
+          Shah Neil Khan
         </span>
 
-      </a>
-
-
-      <div class="footer-center">
-        <span>
-          SOFTWARE · AI · EXPERIENCE
-        </span>
       </div>
 
 
-      <div class="footer-right">
+      <div class="footer-links">
 
-        <span>
-          © <span id="current-year">2026</span>
-          SHAH NEIL KHAN
-        </span>
-
-        <a href="#top">
-          BACK TO TOP ↑
+        <a
+          href="https://github.com/shahneilkhan"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
         </a>
 
+        <a
+          href="https://www.linkedin.com/company/iamsnkbd"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="https://instagram.com/iamsnkbd"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
+
+        <a
+          href="index.html"
+        >
+          Home
+        </a>
+
+      </div>
+
+
+      <div class="footer-copy">
+        © <span data-year></span>
+        Shah Neil Khan
       </div>
 
     </div>
 
   </footer>
 
+
+  <!-- =====================================================
+       SCRIPT
+  ===================================================== -->
 
   <script src="script.js"></script>
 
