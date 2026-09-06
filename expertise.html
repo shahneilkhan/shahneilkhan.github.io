@@ -1,473 +1,1017 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
 
-  <title>Expertise — Shah Neil Khan</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <meta
     name="description"
-    content="Expertise of Shah Neil Khan across software engineering, AI, product and UX, system design, cybersecurity, and DevOps."
-  >
+    content="Shah Neil Khan — Expertise in UX, Digital Experience, AI-assisted systems, design, strategy and creative technology."
+  />
 
-  <meta name="theme-color" content="#090909">
+  <title>Expertise — Shah Neil Khan</title>
 
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-  >
+  <link rel="icon" href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg" />
+  <link rel="stylesheet" href="./style.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* =========================================================
+       EXPERTISE PAGE
+       Page-only styles
+    ========================================================= */
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+    .expertise-page {
+      min-height: 100vh;
+      overflow: hidden;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    /* HERO --------------------------------------------------- */
+
+    .expertise-hero {
+      position: relative;
+      min-height: 76vh;
+      display: flex;
+      align-items: center;
+      padding: 150px 7vw 90px;
+      isolation: isolate;
+    }
+
+    .expertise-hero::before {
+      content: "";
+      position: absolute;
+      width: 620px;
+      height: 620px;
+      right: -220px;
+      top: 80px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(216, 166, 75, 0.13),
+        transparent 68%
+      );
+      filter: blur(20px);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .expertise-hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.12),
+        transparent
+      );
+    }
+
+    .expertise-hero-grid {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .expertise-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .expertise-kicker::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: #d8a64b;
+    }
+
+    .expertise-title {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(48px, 7vw, 94px);
+      line-height: .94;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+
+    .expertise-title span {
+      color: #d8a64b;
+    }
+
+    .expertise-lead {
+      max-width: 680px;
+      margin: 28px 0 0;
+      color: rgba(255,255,255,.66);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .expertise-command {
+      position: relative;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.018)
+        );
+      border-radius: 22px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.28);
+      overflow: hidden;
+    }
+
+    .expertise-command::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -80px;
+      top: -80px;
+      border-radius: 50%;
+      background: rgba(216,166,75,.12);
+      filter: blur(5px);
+    }
+
+    .command-top {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .command-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.28);
+    }
+
+    .command-dot:last-child {
+      background: #8fd18f;
+      box-shadow: 0 0 12px rgba(143,209,143,.55);
+    }
+
+    .command-body {
+      padding-top: 22px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      line-height: 2;
+      color: rgba(255,255,255,.65);
+    }
+
+    .command-body strong {
+      color: #d8a64b;
+      font-weight: 600;
+    }
+
+    .command-status {
+      margin-top: 18px;
+      color: #8fd18f;
+    }
+
+    /* CORE EXPERTISE ---------------------------------------- */
+
+    .expertise-section {
+      padding: 105px 7vw;
+    }
+
+    .expertise-section-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 52px;
+    }
+
+    .section-heading small {
+      display: block;
+      margin-bottom: 13px;
+      color: #d8a64b;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(34px, 4.5vw, 58px);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .section-heading p {
+      margin: 20px 0 0;
+      max-width: 680px;
+      color: rgba(255,255,255,.56);
+      line-height: 1.75;
+    }
+
+    /* CARDS ------------------------------------------------- */
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .expertise-page-card {
+      position: relative;
+      min-height: 280px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.012)
+        );
+      overflow: hidden;
+      transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .expertise-page-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(216,166,75,.75),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .expertise-page-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -100px;
+      bottom: -100px;
+      border-radius: 50%;
+      background: rgba(216,166,75,.07);
+      filter: blur(10px);
+      transition: transform .4s ease;
+    }
+
+    .expertise-page-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(216,166,75,.28);
+      box-shadow: 0 22px 60px rgba(0,0,0,.24);
+    }
+
+    .expertise-page-card:hover::before {
+      opacity: 1;
+    }
+
+    .expertise-page-card:hover::after {
+      transform: scale(1.4);
+    }
+
+    .card-number {
+      position: absolute;
+      top: 22px;
+      right: 25px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,.23);
+      letter-spacing: .12em;
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 30px;
+      border: 1px solid rgba(216,166,75,.22);
+      border-radius: 13px;
+      color: #d8a64b;
+      background: rgba(216,166,75,.06);
+      font-size: 19px;
+    }
+
+    .expertise-page-card h3 {
+      margin: 0 0 13px;
+      font-size: 21px;
+      letter-spacing: -.025em;
+    }
+
+    .expertise-page-card p {
+      margin: 0;
+      color: rgba(255,255,255,.54);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 23px;
+    }
+
+    .card-tags span {
+      padding: 5px 9px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      color: rgba(255,255,255,.42);
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    /* PROCESS ------------------------------------------------ */
+
+    .expertise-process {
+      padding: 110px 7vw;
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(255,255,255,.018),
+          transparent
+        );
+    }
+
+    .process-grid {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .process-title {
+      position: sticky;
+      top: 130px;
+    }
+
+    .process-title small {
+      color: #d8a64b;
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .process-title h2 {
+      margin: 15px 0 20px;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: .96;
+      letter-spacing: -.05em;
+    }
+
+    .process-title p {
+      max-width: 430px;
+      color: rgba(255,255,255,.52);
+      line-height: 1.8;
+    }
+
+    .process-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 22px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 17px;
+      background: rgba(255,255,255,.018);
+    }
+
+    .process-number {
+      color: #d8a64b;
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      padding-top: 4px;
+    }
+
+    .process-item h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .process-item p {
+      margin: 0;
+      color: rgba(255,255,255,.5);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* CTA ---------------------------------------------------- */
+
+    .expertise-cta {
+      width: min(1180px, calc(100% - 14vw));
+      margin: 70px auto 110px;
+      padding: 60px;
+      border: 1px solid rgba(216,166,75,.18);
+      border-radius: 25px;
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(216,166,75,.12),
+          transparent 35%
+        ),
+        rgba(255,255,255,.025);
+      text-align: center;
+    }
+
+    .expertise-cta small {
+      color: #d8a64b;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .expertise-cta h2 {
+      max-width: 720px;
+      margin: 16px auto;
+      font-size: clamp(35px, 5vw, 62px);
+      line-height: .98;
+      letter-spacing: -.05em;
+    }
+
+    .expertise-cta p {
+      max-width: 590px;
+      margin: 0 auto 28px;
+      color: rgba(255,255,255,.54);
+      line-height: 1.75;
+    }
+
+    .expertise-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border: 1px solid rgba(216,166,75,.4);
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      transition: .3s ease;
+    }
+
+    .expertise-cta-link:hover {
+      background: rgba(216,166,75,.1);
+      border-color: #d8a64b;
+      transform: translateY(-2px);
+    }
+
+    /* LIGHT MODE -------------------------------------------- */
+
+    :root[data-theme="light"] .expertise-kicker,
+    :root[data-theme="light"] .expertise-lead,
+    :root[data-theme="light"] .section-heading p,
+    :root[data-theme="light"] .expertise-page-card p,
+    :root[data-theme="light"] .process-title p,
+    :root[data-theme="light"] .process-item p,
+    :root[data-theme="light"] .expertise-cta p {
+      color: rgba(0,0,0,.58);
+    }
+
+    :root[data-theme="light"] .expertise-command,
+    :root[data-theme="light"] .expertise-page-card,
+    :root[data-theme="light"] .process-item,
+    :root[data-theme="light"] .expertise-cta {
+      border-color: rgba(0,0,0,.09);
+      background: rgba(0,0,0,.025);
+    }
+
+    :root[data-theme="light"] .command-body {
+      color: rgba(0,0,0,.6);
+    }
+
+    :root[data-theme="light"] .card-tags span {
+      color: rgba(0,0,0,.45);
+      border-color: rgba(0,0,0,.09);
+    }
+
+    /* RESPONSIVE -------------------------------------------- */
+
+    @media (max-width: 900px) {
+      .expertise-hero {
+        min-height: auto;
+        padding-top: 130px;
+      }
+
+      .expertise-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .expertise-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .process-title {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .expertise-hero,
+      .expertise-section,
+      .expertise-process {
+        padding-left: 5vw;
+        padding-right: 5vw;
+      }
+
+      .expertise-hero {
+        padding-top: 115px;
+        padding-bottom: 65px;
+      }
+
+      .expertise-title {
+        font-size: clamp(43px, 13vw, 70px);
+      }
+
+      .expertise-lead {
+        font-size: 15px;
+      }
+
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .expertise-page-card {
+        min-height: auto;
+      }
+
+      .expertise-cta {
+        width: calc(100% - 10vw);
+        margin-top: 45px;
+        padding: 42px 24px;
+      }
+
+      .process-item {
+        grid-template-columns: 45px 1fr;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .expertise-title {
+        font-size: 42px;
+      }
+
+      .expertise-command {
+        padding: 19px;
+      }
+
+      .expertise-page-card {
+        padding: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .expertise-page-card,
+      .expertise-cta-link {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- =========================================================
+  <!-- =======================================================
        HEADER
-  ========================================================== -->
+  ======================================================== -->
 
-  <header class="site-header" id="site-header">
+  <header class="site-header">
+    <div class="nav-wrap">
 
-    <div class="container header-inner">
-
-      <a href="index.html" class="brand" aria-label="Shah Neil Khan home">
-
-        <span class="brand-logo">
-          <img
-            src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-            alt="SNK"
-          >
-        </span>
-
-        <span class="brand-copy">
-          <strong>SHAH NEIL KHAN</strong>
-          <small>SNK / PERSONAL BRAND</small>
-        </span>
-
+      <a href="./index.html" class="brand-logo" aria-label="Shah Neil Khan Home">
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="SNK"
+        />
       </a>
-
-
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-label="Open navigation"
-        aria-expanded="false"
-      >
-        <span></span>
-      </button>
-
 
       <nav class="main-nav" aria-label="Main navigation">
-
-        <a href="index.html">Home</a>
-        <a href="index.html#work">Work</a>
-        <a href="index.html#ai">AI</a>
-        <a href="expertise.html" class="active">Expertise</a>
-        <a href="experience.html">Experience</a>
-        <a href="about.html">About</a>
-        <a href="brand.html">Brand</a>
-        <a href="contact.html">Contact</a>
-
+        <a href="./index.html#home">Home</a>
+        <a href="./brand.html">Ecosystem</a>
+        <a href="./index.html#ai">AI</a>
+        <a href="./expertise.html" class="active">Expertise</a>
+        <a href="./index.html#experience">Experience</a>
+        <a href="./about.html">About</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./index.html#contact">Contact</a>
       </nav>
 
+      <div class="nav-actions">
+        <button
+          id="languageToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Change language"
+        >
+          বাংলা
+        </button>
 
-      <a href="contact.html" class="header-cta">
-        Let's Talk <span>↗</span>
-      </a>
+        <button
+          id="themeToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          ☼
+        </button>
+
+        <button
+          id="rainToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle rain"
+        >
+          Rain
+        </button>
+      </div>
 
     </div>
-
   </header>
 
 
-  <main>
+  <main class="expertise-page">
 
-    <!-- =========================================================
+    <!-- =====================================================
          HERO
-    ========================================================== -->
+    ====================================================== -->
 
-    <section class="page-hero section-dark">
+    <section class="expertise-hero">
 
-      <div class="container">
+      <div class="expertise-hero-grid">
 
-        <div class="page-hero-grid">
+        <div class="reveal">
 
-          <div class="page-hero-copy reveal">
-
-            <span class="section-number">
-              01 / EXPERTISE
-            </span>
-
-            <h1>
-              WHAT I BRING<br>
-              <em>TO THE TABLE.</em>
-            </h1>
-
-            <p>
-              Six connected areas of capability that shape how
-              I approach software, intelligent systems, products,
-              and digital experiences.
-            </p>
-
+          <div class="expertise-kicker">
+            Expertise / Systems / Experience
           </div>
 
+          <h1 class="expertise-title">
+            I DESIGN THE
+            <span>THINKING</span>
+            BEHIND DIGITAL.
+          </h1>
 
-          <div class="page-hero-mark reveal">
-
-            <div class="expertise-mark">
-
-              <span>SOFTWARE</span>
-              <span>INTELLIGENCE</span>
-              <span>EXPERIENCE</span>
-
-              <div class="expertise-mark-line"></div>
-
-              <strong>06</strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         INTRO
-    ========================================================== -->
-
-    <section class="section expertise-intro">
-
-      <div class="container">
-
-        <div class="expertise-intro-grid">
-
-          <div class="section-label reveal">
-
-            <span class="section-number">
-              02 / CAPABILITY
-            </span>
-
-          </div>
-
-
-          <div class="expertise-intro-copy reveal">
-
-            <p class="about-lead">
-              I don't believe expertise is a list of tools.
-              It's the ability to understand a problem,
-              choose the right approach, and build something
-              that works in the real world.
-            </p>
-
-            <p>
-              These domains overlap by design. Software enables
-              AI. AI changes products. UX shapes how systems are
-              experienced. Security protects them. Cloud and
-              infrastructure make them operational.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         EXPERTISE SYSTEM
-    ========================================================== -->
-
-    <section class="section expertise-system">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <span class="section-number">
-              03 / SIX DOMAINS
-            </span>
-
-            <h2>
-              ONE SYSTEM.<br>
-              <em>SIX PERSPECTIVES.</em>
-            </h2>
-
-          </div>
-
-          <p>
-            Each capability answers a different part of the
-            product and engineering problem.
+          <p class="expertise-lead">
+            My work sits where UX thinking, digital experience,
+            technology, AI and creative strategy meet. I focus on
+            turning complexity into clear, useful and meaningful
+            digital systems.
           </p>
 
         </div>
 
 
-        <div class="expertise-list">
+        <div class="expertise-command reveal">
 
+          <div class="command-top">
+            <span class="command-dot"></span>
+            <span class="command-dot"></span>
+            <span class="command-dot"></span>
+          </div>
+
+          <div class="command-body">
+
+            <div>
+              <strong>SNK</strong> / expertise.system
+            </div>
+
+            <div>
+              focus = ["people", "systems", "experience"]
+            </div>
+
+            <div>
+              approach = "think → design → build → improve"
+            </div>
+
+            <div>
+              mode = "human-centered"
+            </div>
+
+            <div class="command-status">
+              ● system.ready
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CORE EXPERTISE
+    ====================================================== -->
+
+    <section class="expertise-section">
+
+      <div class="expertise-section-inner">
+
+        <div class="section-heading reveal">
+
+          <small>Core Expertise</small>
+
+          <h2>
+            Six disciplines.
+            One way of thinking.
+          </h2>
+
+          <p>
+            These are the areas where I bring the strongest combination
+            of design thinking, systems thinking, technology and
+            creative problem solving.
+          </p>
+
+        </div>
+
+
+        <div class="expertise-grid">
 
           <!-- 01 -->
-          <article class="expertise-detail reveal">
 
-            <div class="expertise-detail-number">
-              01
-            </div>
+          <article class="expertise-page-card reveal">
 
-            <div class="expertise-detail-main">
+            <span class="card-number">01</span>
 
-              <span class="expertise-kicker">
-                SOFTWARE / ENGINEERING
-              </span>
+            <div class="card-icon">UX</div>
 
-              <h3>
-                Software Engineering
-              </h3>
+            <h3>UX Strategy</h3>
 
-              <p>
-                Designing and building software that is
-                understandable, maintainable, and useful.
-              </p>
+            <p>
+              Understanding people, problems and product goals to
+              create digital experiences that are clear, purposeful
+              and easier to use.
+            </p>
 
-              <div class="expertise-points">
-
-                <span>APPLICATIONS</span>
-                <span>WEB SYSTEMS</span>
-                <span>APIs</span>
-                <span>DATABASES</span>
-
-              </div>
-
-            </div>
-
-            <div class="expertise-detail-arrow">
-              ↗
+            <div class="card-tags">
+              <span>User Thinking</span>
+              <span>Flows</span>
+              <span>Structure</span>
             </div>
 
           </article>
 
 
           <!-- 02 -->
-          <article class="expertise-detail reveal">
 
-            <div class="expertise-detail-number">
-              02
-            </div>
+          <article class="expertise-page-card reveal">
 
-            <div class="expertise-detail-main">
+            <span class="card-number">02</span>
 
-              <span class="expertise-kicker">
-                AI / CONTEXT ENGINEERING
-              </span>
+            <div class="card-icon">◈</div>
 
-              <h3>
-                AI &amp; Context Engineering
-              </h3>
+            <h3>Digital Experience</h3>
 
-              <p>
-                Designing the context layer around models:
-                retrieval, memory, tools, instructions,
-                validation, and controlled workflows.
-              </p>
+            <p>
+              Designing connected digital experiences across websites,
+              interfaces, content systems and brand touchpoints.
+            </p>
 
-              <div class="expertise-points">
-
-                <span>RAG</span>
-                <span>AGENTS</span>
-                <span>MEMORY</span>
-                <span>TOOLS</span>
-                <span>VALIDATION</span>
-
-              </div>
-
-            </div>
-
-            <div class="expertise-detail-arrow">
-              ↗
+            <div class="card-tags">
+              <span>Web</span>
+              <span>Interface</span>
+              <span>Experience</span>
             </div>
 
           </article>
 
 
           <!-- 03 -->
-          <article class="expertise-detail reveal">
 
-            <div class="expertise-detail-number">
-              03
-            </div>
+          <article class="expertise-page-card reveal">
 
-            <div class="expertise-detail-main">
+            <span class="card-number">03</span>
 
-              <span class="expertise-kicker">
-                PRODUCT / EXPERIENCE
-              </span>
+            <div class="card-icon">AI</div>
 
-              <h3>
-                Product &amp; UX
-              </h3>
+            <h3>AI-Assisted Systems</h3>
 
-              <p>
-                Connecting user needs, product decisions,
-                information architecture, interaction, and
-                visual experience.
-              </p>
+            <p>
+              Exploring practical ways AI can support research,
+              ideation, workflows, content and digital product
+              development.
+            </p>
 
-              <div class="expertise-points">
-
-                <span>UX</span>
-                <span>UI</span>
-                <span>PRODUCT</span>
-                <span>INTERACTION</span>
-
-              </div>
-
-            </div>
-
-            <div class="expertise-detail-arrow">
-              ↗
+            <div class="card-tags">
+              <span>AI</span>
+              <span>Automation</span>
+              <span>Workflows</span>
             </div>
 
           </article>
 
 
           <!-- 04 -->
-          <article class="expertise-detail reveal">
 
-            <div class="expertise-detail-number">
-              04
-            </div>
+          <article class="expertise-page-card reveal">
 
-            <div class="expertise-detail-main">
+            <span class="card-number">04</span>
 
-              <span class="expertise-kicker">
-                ARCHITECTURE / SYSTEMS
-              </span>
+            <div class="card-icon">⌘</div>
 
-              <h3>
-                System Design
-              </h3>
+            <h3>Design Systems</h3>
 
-              <p>
-                Thinking about architecture, boundaries,
-                dependencies, data flow, scalability, and
-                how individual components work together.
-              </p>
+            <p>
+              Creating reusable visual and interaction foundations
+              that make digital products more consistent, scalable
+              and easier to evolve.
+            </p>
 
-              <div class="expertise-points">
-
-                <span>ARCHITECTURE</span>
-                <span>DATA FLOW</span>
-                <span>SCALABILITY</span>
-                <span>SYSTEM BOUNDARIES</span>
-
-              </div>
-
-            </div>
-
-            <div class="expertise-detail-arrow">
-              ↗
+            <div class="card-tags">
+              <span>Components</span>
+              <span>Systems</span>
+              <span>Consistency</span>
             </div>
 
           </article>
 
 
           <!-- 05 -->
-          <article class="expertise-detail reveal">
 
-            <div class="expertise-detail-number">
-              05
-            </div>
+          <article class="expertise-page-card reveal">
 
-            <div class="expertise-detail-main">
+            <span class="card-number">05</span>
 
-              <span class="expertise-kicker">
-                SECURITY / TRUST
-              </span>
+            <div class="card-icon">↗</div>
 
-              <h3>
-                Cybersecurity
-              </h3>
+            <h3>Creative Direction</h3>
 
-              <p>
-                Building with security awareness across
-                permissions, validation, trust boundaries,
-                threat modeling, and system behavior.
-              </p>
+            <p>
+              Connecting visual direction, brand thinking and digital
+              experience into a coherent creative language.
+            </p>
 
-              <div class="expertise-points">
-
-                <span>THREAT MODEL</span>
-                <span>PERMISSIONS</span>
-                <span>VALIDATION</span>
-                <span>TRUST</span>
-
-              </div>
-
-            </div>
-
-            <div class="expertise-detail-arrow">
-              ↗
+            <div class="card-tags">
+              <span>Direction</span>
+              <span>Brand</span>
+              <span>Visuals</span>
             </div>
 
           </article>
 
 
           <!-- 06 -->
-          <article class="expertise-detail reveal">
 
-            <div class="expertise-detail-number">
-              06
-            </div>
+          <article class="expertise-page-card reveal">
 
-            <div class="expertise-detail-main">
+            <span class="card-number">06</span>
 
-              <span class="expertise-kicker">
-                INFRASTRUCTURE / DELIVERY
-              </span>
+            <div class="card-icon">⌁</div>
 
-              <h3>
-                DevOps &amp; Cloud
-              </h3>
+            <h3>Systems Thinking</h3>
 
-              <p>
-                Understanding the path from development to
-                deployment, automation, infrastructure, and
-                reliable operation.
-              </p>
+            <p>
+              Looking beyond individual screens or tasks to understand
+              how people, processes, products and technology work
+              together.
+            </p>
 
-              <div class="expertise-points">
-
-                <span>DEPLOYMENT</span>
-                <span>CLOUD</span>
-                <span>AUTOMATION</span>
-                <span>RELIABILITY</span>
-
-              </div>
-
-            </div>
-
-            <div class="expertise-detail-arrow">
-              ↗
+            <div class="card-tags">
+              <span>Strategy</span>
+              <span>Processes</span>
+              <span>Systems</span>
             </div>
 
           </article>
 
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOW I WORK
+    ====================================================== -->
+
+    <section class="expertise-process">
+
+      <div class="process-grid">
+
+        <div class="process-title reveal">
+
+          <small>How I Work</small>
+
+          <h2>
+            THINK<br />
+            BEFORE<br />
+            YOU BUILD.
+          </h2>
+
+          <p>
+            Good digital work is not only about making something
+            beautiful. It is about understanding why it exists,
+            who it serves and how the whole system should work.
+          </p>
+
+        </div>
+
+
+        <div class="process-list">
+
+          <article class="process-item reveal">
+            <div class="process-number">01</div>
+            <div>
+              <h3>Understand</h3>
+              <p>
+                Start with the problem, people, context and goals
+                before jumping into execution.
+              </p>
+            </div>
+          </article>
+
+
+          <article class="process-item reveal">
+            <div class="process-number">02</div>
+            <div>
+              <h3>Structure</h3>
+              <p>
+                Turn complexity into a clear information,
+                experience and system structure.
+              </p>
+            </div>
+          </article>
+
+
+          <article class="process-item reveal">
+            <div class="process-number">03</div>
+            <div>
+              <h3>Design</h3>
+              <p>
+                Translate the thinking into interfaces, experiences
+                and visual systems people can actually understand.
+              </p>
+            </div>
+          </article>
+
+
+          <article class="process-item reveal">
+            <div class="process-number">04</div>
+            <div>
+              <h3>Build</h3>
+              <p>
+                Work with technology and practical implementation
+                to move ideas from concept toward reality.
+              </p>
+            </div>
+          </article>
+
+
+          <article class="process-item reveal">
+            <div class="process-number">05</div>
+            <div>
+              <h3>Improve</h3>
+              <p>
+                Learn from the outcome, identify friction and keep
+                improving the system over time.
+              </p>
+            </div>
+          </article>
 
         </div>
 
@@ -476,258 +1020,60 @@
     </section>
 
 
-    <!-- =========================================================
-         CONNECTION
-    ========================================================== -->
-
-    <section class="section expertise-connection">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <span class="section-number">
-              04 / THE CONNECTION
-            </span>
-
-            <h2>
-              THE VALUE IS<br>
-              <em>IN THE OVERLAP.</em>
-            </h2>
-
-          </div>
-
-        </div>
-
-
-        <div class="connection-system reveal">
-
-          <div class="connection-node">
-            SOFTWARE
-          </div>
-
-          <span>+</span>
-
-          <div class="connection-node">
-            AI
-          </div>
-
-          <span>+</span>
-
-          <div class="connection-node">
-            UX
-          </div>
-
-          <span>+</span>
-
-          <div class="connection-node">
-            SECURITY
-          </div>
-
-          <span>+</span>
-
-          <div class="connection-node">
-            SYSTEMS
-          </div>
-
-          <span>+</span>
-
-          <div class="connection-node">
-            CLOUD
-          </div>
-
-        </div>
-
-
-        <div class="connection-result reveal">
-
-          <span>↓</span>
-
-          <strong>
-            USEFUL DIGITAL SYSTEMS
-          </strong>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         AI SPECIALIZATION
-    ========================================================== -->
-
-    <section class="section expertise-ai">
-
-      <div class="container">
-
-        <div class="specialization-card reveal">
-
-          <div class="specialization-copy">
-
-            <span class="section-number">
-              05 / SPECIALIZATION
-            </span>
-
-            <h2>
-              AI IS NOT<br>
-              <em>JUST THE MODEL.</em>
-            </h2>
-
-            <p>
-              A useful AI application needs more than a model.
-              It needs context, knowledge, retrieval, memory,
-              tools, validation, and a product experience that
-              makes the result useful.
-            </p>
-
-            <a href="index.html#ai" class="text-link">
-              Explore Context Engineering <span>↗</span>
-            </a>
-
-          </div>
-
-
-          <div class="specialization-stack">
-
-            <div>
-              <span>01</span>
-              CONTEXT
-            </div>
-
-            <div>
-              <span>02</span>
-              RETRIEVAL
-            </div>
-
-            <div>
-              <span>03</span>
-              MEMORY
-            </div>
-
-            <div>
-              <span>04</span>
-              TOOLS
-            </div>
-
-            <div>
-              <span>05</span>
-              VALIDATION
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
+    <!-- =====================================================
          CTA
-    ========================================================== -->
+    ====================================================== -->
 
-    <section class="section expertise-cta">
+    <section class="expertise-cta reveal">
 
-      <div class="container">
+      <small>Let's Build</small>
 
-        <div class="cta-card reveal">
+      <h2>
+        Have a complex problem?
+        Let's make it clear.
+      </h2>
 
-          <div>
+      <p>
+        Whether it is a digital experience, product idea, design
+        system or something still taking shape — meaningful work
+        starts with a meaningful conversation.
+      </p>
 
-            <span class="section-number">
-              NEXT
-            </span>
-
-            <h2>
-              HAVE A<br>
-              <em>HARD PROBLEM?</em>
-            </h2>
-
-            <p>
-              Let's understand the problem first, then design
-              the right system around it.
-            </p>
-
-          </div>
-
-
-          <div class="cta-actions">
-
-            <a href="contact.html" class="btn btn-primary">
-              Start a Conversation
-              <span>↗</span>
-            </a>
-
-            <a href="projects.html" class="btn btn-secondary">
-              View Work
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
+      <a
+        href="./index.html#contact"
+        class="expertise-cta-link"
+      >
+        Start a conversation →
+      </a>
 
     </section>
 
   </main>
 
 
-  <!-- =========================================================
+  <!-- =======================================================
        FOOTER
-  ========================================================== -->
+  ======================================================== -->
 
   <footer class="site-footer">
 
-    <div class="container footer-inner">
+    <div>
+      © <span id="year"></span> Shah Neil Khan
+    </div>
 
-      <a href="index.html" class="footer-brand">
-
-        <img
-          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-          alt="SNK"
-        >
-
-        <span>
-          SHAH NEIL KHAN
-        </span>
-
-      </a>
-
-
-      <div class="footer-center">
-
-        <span>
-          SOFTWARE · AI · EXPERIENCE
-        </span>
-
-      </div>
-
-
-      <div class="footer-right">
-
-        <span>
-          © <span id="current-year">2026</span>
-          SHAH NEIL KHAN
-        </span>
-
-        <a href="#site-header">
-          BACK TO TOP ↑
-        </a>
-
-      </div>
-
+    <div>
+      PERSONAL BRAND · DIGITAL EXPERIENCE · SYSTEMS THINKING
     </div>
 
   </footer>
 
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 
 </body>
 </html>
