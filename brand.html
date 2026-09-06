@@ -2,29 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Brand — Shah Neil Khan</title>
 
   <meta
     name="description"
-    content="The brand identity, visual language, design system and creative direction behind Shah Neil Khan."
+    content="SNK brand identity — the visual language, principles, design system and creative direction behind Shah Neil Khan."
   />
 
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta
+    name="keywords"
+    content="SNK, Shah Neil Khan, Brand Identity, Design System, Visual Identity, Logo, Typography, Personal Brand"
+  />
+
+  <meta name="author" content="Shah Neil Khan" />
+
+  <meta property="og:title" content="Brand — Shah Neil Khan" />
+  <meta
+    property="og:description"
+    content="The SNK personal brand identity, visual language and design system."
+  />
+  <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- =========================================================
+  <!-- =========================
        HEADER
-  ========================================================== -->
+  ========================== -->
 
-  <header class="site-header" id="site-header">
+  <header class="site-header" id="siteHeader">
 
-    <div class="container navbar">
+    <div class="container nav-container">
 
       <a
         href="index.html"
@@ -35,31 +50,68 @@
         <span class="brand-name">SHAH NEIL KHAN</span>
       </a>
 
-
       <button
-        class="menu-toggle"
+        class="nav-toggle"
         type="button"
-        aria-label="Toggle navigation"
+        aria-label="Open navigation"
         aria-expanded="false"
+        aria-controls="primaryNavigation"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-
       <nav
         class="nav-menu"
-        aria-label="Primary navigation"
+        id="primaryNavigation"
+        aria-hidden="false"
       >
-        <a href="index.html">HOME</a>
-        <a href="projects.html">WORK</a>
-        <a href="index.html#ai">AI</a>
-        <a href="expertise.html">EXPERTISE</a>
-        <a href="experience.html">EXPERIENCE</a>
-        <a href="about.html">ABOUT</a>
-        <a href="brand.html" class="active">BRAND</a>
-        <a href="index.html#contact">CONTACT</a>
+
+        <a href="index.html">
+          HOME
+        </a>
+
+        <a href="projects.html">
+          WORK
+        </a>
+
+        <a href="index.html#ai">
+          AI
+        </a>
+
+        <a href="expertise.html">
+          EXPERTISE
+        </a>
+
+        <a href="experience.html">
+          EXPERIENCE
+        </a>
+
+        <a href="about.html">
+          ABOUT
+        </a>
+
+        <a
+          href="brand.html"
+          class="active"
+          aria-current="page"
+        >
+          BRAND
+        </a>
+
+        <a
+          href="https://www.tabayyuninstitute.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          TABAYYUN TV ↗
+        </a>
+
+        <a href="contact.html">
+          CONTACT
+        </a>
+
       </nav>
 
     </div>
@@ -69,38 +121,108 @@
 
   <main>
 
-    <!-- =========================================================
-         HERO
-    ========================================================== -->
+    <!-- =========================
+         BRAND HERO
+    ========================== -->
 
-    <section class="section page-hero brand-hero">
+    <section class="page-hero brand-page-hero">
 
       <div class="container">
 
-        <div class="section-eyebrow reveal">
-          SNK / BRAND SYSTEM
-        </div>
+        <div class="page-hero-grid">
+
+          <div class="page-hero-copy reveal">
+
+            <span class="eyebrow">
+              BRAND / SNK
+            </span>
+
+            <h1>
+              CODE.
+              <span>INTELLIGENCE.</span>
+              EXPERIENCE.
+            </h1>
+
+            <p class="hero-description">
+              SNK is the personal brand system behind Shah Neil Khan —
+              connecting software engineering, intelligent systems,
+              product thinking and digital experience.
+            </p>
+
+            <div class="hero-actions">
+
+              <a
+                href="#identity"
+                class="btn btn-primary"
+              >
+                EXPLORE THE SYSTEM
+              </a>
+
+              <a
+                href="contact.html"
+                class="btn btn-secondary"
+              >
+                WORK WITH ME
+              </a>
+
+            </div>
+
+          </div>
 
 
-        <h1 class="reveal">
-          CODE.<br />
-          <span>INTELLIGENCE.</span><br />
-          EXPERIENCE.
-        </h1>
+          <div class="page-hero-visual reveal">
+
+            <div class="brand-logo-display">
+
+              <div class="brand-logo-meta">
+
+                <span>
+                  SNK / PRIMARY MARK
+                </span>
+
+                <span>
+                  001
+                </span>
+
+              </div>
 
 
-        <p class="hero-description reveal">
-          The visual and strategic language behind Shah Neil Khan —
-          where software engineering, intelligence and human experience
-          meet.
-        </p>
+              <div class="brand-logo-placeholder">
+
+                <!--
+                  Replace this with your actual logo file once
+                  it is available in your repository.
+
+                  Example:
+                  <img
+                    src="assets/SNK LOGO.svg"
+                    alt="SNK logo"
+                  />
+                -->
+
+                <div class="snk-mark-large">
+                  SNK
+                </div>
+
+              </div>
 
 
-        <div class="hero-meta reveal">
-          <span>SOFTWARE</span>
-          <span>INTELLIGENCE</span>
-          <span>DESIGN</span>
-          <span>EXPERIENCE</span>
+              <div class="brand-logo-footer">
+
+                <span>
+                  SHAH NEIL KHAN
+                </span>
+
+                <span>
+                  PERSONAL BRAND
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
       </div>
@@ -108,9 +230,9 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          BRAND STORY
-    ========================================================== -->
+    ========================== -->
 
     <section class="section">
 
@@ -118,24 +240,19 @@
 
         <div class="section-heading reveal">
 
-          <div>
+          <span class="eyebrow">
+            01 / BRAND STORY
+          </span>
 
-            <span class="section-eyebrow">
-              01 / BRAND STORY
-            </span>
-
-            <h2>
-              A PERSONAL BRAND<br />
-              <span>BUILT AROUND THINKING.</span>
-            </h2>
-
-          </div>
-
+          <h2>
+            ONE IDENTITY.
+            <span>MULTIPLE DIMENSIONS.</span>
+          </h2>
 
           <p>
-            SNK represents a way of approaching technology:
-            understand the problem, design the system, build with
-            intention and create an experience that people can actually use.
+            Software, AI, product and UX may look like separate
+            disciplines. For SNK, they are connected parts of the
+            same engineering mindset.
           </p>
 
         </div>
@@ -143,76 +260,78 @@
 
         <div class="brand-story-grid">
 
-          <article class="framework-item reveal">
+          <div class="brand-story-main reveal">
 
-            <span class="framework-number">
-              01
-            </span>
-
-            <h3>
-              WHO
-            </h3>
-
-            <p>
-              Shah Neil Khan — software engineer working across
-              software, AI, UX, product and digital systems.
+            <p class="large-copy">
+              SNK represents how I approach digital work:
+              engineering with curiosity, designing with intention
+              and building toward meaningful outcomes.
             </p>
 
-          </article>
-
-
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
-              02
-            </span>
-
-            <h3>
-              WHAT
-            </h3>
-
             <p>
-              Building digital products and intelligent systems
-              that connect engineering capability with human needs.
+              The brand is deliberately minimal. It should feel
+              technical without becoming cold, premium without
+              becoming excessive, and intelligent without relying
+              on generic futuristic visuals.
             </p>
 
-          </article>
+          </div>
 
 
-          <article class="framework-item reveal">
+          <div class="brand-story-side reveal">
 
-            <span class="framework-number">
-              03
-            </span>
+            <div class="brand-story-item">
 
-            <h3>
-              HOW
-            </h3>
+              <span>
+                01
+              </span>
 
-            <p>
-              Through curiosity, systems thinking, engineering discipline
-              and attention to experience.
-            </p>
+              <strong>
+                ENGINEERING
+              </strong>
 
-          </article>
+              <p>
+                Systems, software and technical depth.
+              </p>
+
+            </div>
 
 
-          <article class="framework-item reveal">
+            <div class="brand-story-item">
 
-            <span class="framework-number">
-              04
-            </span>
+              <span>
+                02
+              </span>
 
-            <h3>
-              WHY
-            </h3>
+              <strong>
+                INTELLIGENCE
+              </strong>
 
-            <p>
-              Technology is most valuable when complexity becomes
-              something useful, understandable and meaningful.
-            </p>
+              <p>
+                AI, context and better ways of working with
+                information.
+              </p>
 
-          </article>
+            </div>
+
+
+            <div class="brand-story-item">
+
+              <span>
+                03
+              </span>
+
+              <strong>
+                EXPERIENCE
+              </strong>
+
+              <p>
+                Human-centred interfaces and product thinking.
+              </p>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -221,63 +340,93 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          BRAND IDENTITY
-    ========================================================== -->
+    ========================== -->
 
-    <section class="section">
+    <section
+      class="section section-dark"
+      id="identity"
+    >
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <div>
+          <span class="eyebrow">
+            02 / BRAND IDENTITY
+          </span>
 
-            <span class="section-eyebrow">
-              02 / BRAND IDENTITY
-            </span>
-
-            <h2>
-              THE IDENTITY IS<br />
-              <span>QUIET. PRECISE. HUMAN.</span>
-            </h2>
-
-          </div>
-
+          <h2>
+            THE <span>SNK</span> SYSTEM.
+          </h2>
 
           <p>
-            The visual identity avoids generic tech aesthetics.
-            It uses contrast, restraint, cinematic imagery and
-            structured typography to communicate confidence without noise.
+            A visual identity built around clarity, structure,
+            contrast and controlled detail.
           </p>
 
         </div>
 
 
-        <div class="identity-lockup reveal">
+        <div class="brand-identity-panel reveal">
 
-          <div class="identity-line">
-            <span>SNK</span>
+          <div class="brand-identity-top">
+
+            <span>
+              SHAH NEIL KHAN
+            </span>
+
+            <span>
+              SNK / IDENTITY
+            </span>
+
           </div>
 
-          <div class="identity-line identity-large">
-            SOFTWARE
+
+          <div class="brand-identity-center">
+
+            <div class="identity-word">
+              SOFTWARE
+            </div>
+
+            <div class="identity-symbol">
+              ↓
+            </div>
+
+            <div class="identity-word">
+              INTELLIGENCE
+            </div>
+
+            <div class="identity-symbol">
+              ↓
+            </div>
+
+            <div class="identity-word">
+              EXPERIENCE
+            </div>
+
+            <div class="identity-symbol">
+              ↓
+            </div>
+
+            <div class="identity-word">
+              IMPACT
+            </div>
+
           </div>
 
-          <div class="identity-line identity-large">
-            INTELLIGENCE
-          </div>
 
-          <div class="identity-line identity-large">
-            EXPERIENCE
-          </div>
+          <div class="brand-identity-bottom">
 
-          <div class="identity-line">
-            ↓
-          </div>
+            <span>
+              CODE → INTELLIGENCE
+            </span>
 
-          <div class="identity-line identity-impact">
-            IMPACT
+            <span>
+              SNK
+            </span>
+
           </div>
 
         </div>
@@ -287,9 +436,9 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          BRAND PILLARS
-    ========================================================== -->
+    ========================== -->
 
     <section class="section">
 
@@ -297,187 +446,87 @@
 
         <div class="section-heading reveal">
 
-          <div>
+          <span class="eyebrow">
+            03 / BRAND PILLARS
+          </span>
 
-            <span class="section-eyebrow">
-              03 / BRAND PILLARS
-            </span>
-
-            <h2>
-              THREE IDEAS<br />
-              <span>DRIVE THE SYSTEM.</span>
-            </h2>
-
-          </div>
+          <h2>
+            WHAT SNK
+            <span>STANDS FOR.</span>
+          </h2>
 
         </div>
 
 
-        <div class="process-grid">
+        <div class="brand-pillars-grid">
 
+          <article class="brand-pillar-card reveal">
 
-          <article class="process-item reveal">
-
-            <div class="process-number">
+            <span class="card-number">
               01
-            </div>
+            </span>
 
             <h3>
               CLARITY
             </h3>
 
             <p>
-              Make complex ideas easier to understand.
-              Remove noise before adding decoration.
+              Complex ideas should become easier to understand,
+              navigate and use.
             </p>
 
           </article>
 
 
-          <article class="process-item reveal">
+          <article class="brand-pillar-card reveal">
 
-            <div class="process-number">
+            <span class="card-number">
               02
-            </div>
+            </span>
 
             <h3>
               CRAFT
             </h3>
 
             <p>
-              Care about the details — architecture,
-              interaction, typography and implementation.
+              Details matter when they improve the system,
+              experience or outcome.
             </p>
 
           </article>
 
 
-          <article class="process-item reveal">
+          <article class="brand-pillar-card reveal">
 
-            <div class="process-number">
-              03
-            </div>
-
-            <h3>
-              IMPACT
-            </h3>
-
-            <p>
-              Technology should ultimately produce something
-              useful, meaningful or valuable.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         VISUAL LANGUAGE
-    ========================================================== -->
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <span class="section-eyebrow">
-              04 / VISUAL LANGUAGE
-            </span>
-
-            <h2>
-              CINEMATIC.<br />
-              <span>TECHNICAL. HUMAN.</span>
-            </h2>
-
-          </div>
-
-
-          <p>
-            The visual language combines the atmosphere of the existing
-            SNK identity with a more refined engineering-oriented system.
-          </p>
-
-        </div>
-
-
-        <div class="framework-grid">
-
-
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
-              01
-            </span>
-
-            <h3>
-              CINEMATIC
-            </h3>
-
-            <p>
-              Dark environments, depth, atmosphere and carefully
-              controlled visual moments.
-            </p>
-
-          </article>
-
-
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
-              02
-            </span>
-
-            <h3>
-              STRUCTURED
-            </h3>
-
-            <p>
-              Grids, alignment, numbered systems and clear hierarchy
-              create an engineering feel.
-            </p>
-
-          </article>
-
-
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
+            <span class="card-number">
               03
             </span>
 
             <h3>
-              HUMAN
+              INTELLIGENCE
             </h3>
 
             <p>
-              Warm visual moments prevent the system from feeling
-              cold, sterile or purely technical.
+              Technology becomes more useful when it understands
+              context instead of simply producing output.
             </p>
 
           </article>
 
 
-          <article class="framework-item reveal">
+          <article class="brand-pillar-card reveal">
 
-            <span class="framework-number">
+            <span class="card-number">
               04
             </span>
 
             <h3>
-              RESTRAINED
+              PURPOSE
             </h3>
 
             <p>
-              Effects are used to guide attention rather than
-              compete with the content.
+              Good engineering should ultimately create something
+              useful and meaningful.
             </p>
 
           </article>
@@ -489,9 +538,117 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
+         VISUAL LANGUAGE
+    ========================== -->
+
+    <section class="section section-dark">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="eyebrow">
+            04 / VISUAL LANGUAGE
+          </span>
+
+          <h2>
+            DARK.
+            <span>CINEMATIC.</span>
+            PRECISE.
+          </h2>
+
+          <p>
+            The visual language balances technical structure with
+            warmth and human character.
+          </p>
+
+        </div>
+
+
+        <div class="visual-language-grid">
+
+          <article class="visual-language-card reveal">
+
+            <div class="visual-number">
+              01
+            </div>
+
+            <h3>
+              DARK FOUNDATION
+            </h3>
+
+            <p>
+              Deep blacks and charcoal surfaces create a focused
+              environment for content.
+            </p>
+
+          </article>
+
+
+          <article class="visual-language-card reveal">
+
+            <div class="visual-number">
+              02
+            </div>
+
+            <h3>
+              WARM ACCENT
+            </h3>
+
+            <p>
+              Muted amber introduces warmth without turning the
+              interface into a neon-heavy cyber aesthetic.
+            </p>
+
+          </article>
+
+
+          <article class="visual-language-card reveal">
+
+            <div class="visual-number">
+              03
+            </div>
+
+            <h3>
+              SOFT CONTRAST
+            </h3>
+
+            <p>
+              Off-white typography and controlled contrast keep the
+              interface readable and premium.
+            </p>
+
+          </article>
+
+
+          <article class="visual-language-card reveal">
+
+            <div class="visual-number">
+              04
+            </div>
+
+            <h3>
+              TECHNICAL DETAIL
+            </h3>
+
+            <p>
+              Grid lines, terminal elements and system labels add
+              engineering character without overwhelming the page.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
          TYPOGRAPHY
-    ========================================================== -->
+    ========================== -->
 
     <section class="section">
 
@@ -499,78 +656,69 @@
 
         <div class="section-heading reveal">
 
-          <div>
+          <span class="eyebrow">
+            05 / TYPOGRAPHY
+          </span>
 
-            <span class="section-eyebrow">
-              05 / TYPOGRAPHY
-            </span>
-
-            <h2>
-              TYPE SHOULD<br />
-              <span>CREATE HIERARCHY.</span>
-            </h2>
-
-          </div>
-
-
-          <p>
-            Typography is treated as part of the information architecture,
-            not simply decoration.
-          </p>
+          <h2>
+            TYPE SHOULD FEEL
+            <span>ENGINEERED.</span>
+          </h2>
 
         </div>
 
 
-        <div class="type-system reveal">
+        <div class="type-system">
 
-          <div class="type-row">
+          <div class="type-display reveal">
 
             <span class="type-label">
               DISPLAY
             </span>
 
-            <span class="type-display">
+            <div class="type-sample display-sample">
               SOFTWARE
-            </span>
+            </div>
+
+            <p>
+              Large, confident typography for major statements.
+            </p>
 
           </div>
 
 
-          <div class="type-row">
-
-            <span class="type-label">
-              HEADLINE
-            </span>
-
-            <span class="type-headline">
-              Intelligence
-            </span>
-
-          </div>
-
-
-          <div class="type-row">
+          <div class="type-display reveal">
 
             <span class="type-label">
               BODY
             </span>
 
-            <span class="type-body">
-              Technology becomes useful when people can understand it.
-            </span>
+            <div class="type-sample body-sample">
+              Intelligent digital experiences.
+            </div>
+
+            <p>
+              Clear, comfortable typography for explanations and
+              supporting information.
+            </p>
 
           </div>
 
 
-          <div class="type-row">
+          <div class="type-display reveal">
 
             <span class="type-label">
-              MONO
+              SYSTEM
             </span>
 
-            <span class="type-mono">
-              SYSTEM.STATUS / ONLINE
-            </span>
+            <div class="type-sample system-sample">
+              SYSTEM.READY()
+            </div>
+
+            <p>
+              Compact technical labels for metadata and system
+              states.
+            </p>
 
           </div>
 
@@ -581,155 +729,143 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          COLOR SYSTEM
-    ========================================================== -->
+    ========================== -->
 
-    <section class="section">
+    <section class="section section-dark">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <div>
+          <span class="eyebrow">
+            06 / COLOR SYSTEM
+          </span>
 
-            <span class="section-eyebrow">
-              06 / COLOR SYSTEM
-            </span>
-
-            <h2>
-              DARK BASE.<br />
-              <span>WARM SIGNAL.</span>
-            </h2>
-
-          </div>
-
-
-          <p>
-            The palette is intentionally restrained. Warm tones create
-            identity while neutral tones keep the interface readable.
-          </p>
+          <h2>
+            QUIET COLORS.
+            <span>STRONG CONTRAST.</span>
+          </h2>
 
         </div>
 
 
-        <div class="color-system reveal">
+        <div class="color-system-grid">
 
+          <div class="color-card color-black reveal">
 
-          <div class="color-card color-dark">
+            <div class="color-swatch"></div>
 
-            <div class="color-preview"></div>
-
-            <div class="color-info">
+            <div class="color-card-info">
 
               <strong>
-                DEEP BLACK
+                VOID
               </strong>
 
               <span>
-                PRIMARY BACKGROUND
+                #0B0B0B
               </span>
 
-              <code>
-                #0B0B0B
-              </code>
+              <p>
+                Primary background.
+              </p>
 
             </div>
 
           </div>
 
 
-          <div class="color-card color-surface">
+          <div class="color-card color-charcoal reveal">
 
-            <div class="color-preview"></div>
+            <div class="color-swatch"></div>
 
-            <div class="color-info">
+            <div class="color-card-info">
 
               <strong>
                 CHARCOAL
               </strong>
 
               <span>
-                SURFACE / PANELS
-              </span>
-
-              <code>
                 #151515
-              </code>
+              </span>
+
+              <p>
+                Secondary surfaces.
+              </p>
 
             </div>
 
           </div>
 
 
-          <div class="color-card color-light">
+          <div class="color-card color-white reveal">
 
-            <div class="color-preview"></div>
+            <div class="color-swatch"></div>
 
-            <div class="color-info">
+            <div class="color-card-info">
 
               <strong>
-                SOFT WHITE
+                BONE
               </strong>
 
               <span>
-                PRIMARY TEXT
-              </span>
-
-              <code>
                 #F2F0EA
-              </code>
+              </span>
+
+              <p>
+                Primary typography.
+              </p>
 
             </div>
 
           </div>
 
 
-          <div class="color-card color-warm">
+          <div class="color-card color-amber reveal">
 
-            <div class="color-preview"></div>
+            <div class="color-swatch"></div>
 
-            <div class="color-info">
+            <div class="color-card-info">
 
               <strong>
-                WARM AMBER
+                AMBER
               </strong>
 
               <span>
-                IDENTITY / ACCENT
-              </span>
-
-              <code>
                 #C9955B
-              </code>
+              </span>
+
+              <p>
+                Primary accent.
+              </p>
 
             </div>
 
           </div>
 
 
-          <div class="color-card color-green">
+          <div class="color-card color-green reveal">
 
-            <div class="color-preview"></div>
+            <div class="color-swatch"></div>
 
-            <div class="color-info">
+            <div class="color-card-info">
 
               <strong>
-                TERMINAL GREEN
+                SIGNAL
               </strong>
 
               <span>
-                STATUS / SYSTEM SIGNAL
+                #8FBF8F
               </span>
 
-              <code>
-                #8FBF8F
-              </code>
+              <p>
+                System status.
+              </p>
 
             </div>
 
           </div>
-
 
         </div>
 
@@ -738,60 +874,87 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          LOGO / MARK
-    ========================================================== -->
+    ========================== -->
 
     <section class="section">
 
       <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="split-section">
 
-          <div>
+          <div class="split-copy reveal">
 
-            <span class="section-eyebrow">
-              07 / LOGO &amp; MARK
+            <span class="eyebrow">
+              07 / LOGO & MARK
             </span>
 
             <h2>
-              SIMPLE MARK.<br />
-              <span>STRONG PRESENCE.</span>
+              THE <span>SNK</span>
+              SIGNATURE.
             </h2>
 
+            <p>
+              The SNK mark is the primary visual identifier of the
+              personal brand. It should remain simple, recognisable
+              and consistent across digital surfaces.
+            </p>
+
+            <p>
+              The official logo asset should always be preferred over
+              manually recreated text.
+            </p>
+
           </div>
 
 
-          <p>
-            SNK is intentionally compact. It works as a signature,
-            navigation mark and visual anchor across the ecosystem.
-          </p>
+          <div class="split-visual reveal">
 
-        </div>
+            <div class="logo-spec-panel">
+
+              <div class="logo-spec-top">
+
+                <span>
+                  PRIMARY MARK
+                </span>
+
+                <span>
+                  SNK
+                </span>
+
+              </div>
 
 
-        <div class="logo-showcase reveal">
-
-          <div class="logo-mark-large">
-            SNK
-          </div>
+              <div class="logo-spec-mark">
+                SNK
+              </div>
 
 
-          <div class="logo-spec">
+              <div class="logo-spec-rules">
 
-            <div>
-              <span>MARK</span>
-              <strong>SNK</strong>
-            </div>
+                <div>
+                  <span>01</span>
+                  KEEP CLEAR SPACE
+                </div>
 
-            <div>
-              <span>TYPE</span>
-              <strong>MONOGRAM</strong>
-            </div>
+                <div>
+                  <span>02</span>
+                  DO NOT DISTORT
+                </div>
 
-            <div>
-              <span>USE</span>
-              <strong>IDENTITY / NAV / SOCIAL</strong>
+                <div>
+                  <span>03</span>
+                  DO NOT RECREATE
+                </div>
+
+                <div>
+                  <span>04</span>
+                  PRESERVE CONTRAST
+                </div>
+
+              </div>
+
             </div>
 
           </div>
@@ -803,121 +966,138 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          DESIGN SYSTEM
-    ========================================================== -->
+    ========================== -->
 
-    <section class="section">
+    <section class="section section-dark">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <div>
+          <span class="eyebrow">
+            08 / DESIGN SYSTEM
+          </span>
 
-            <span class="section-eyebrow">
-              08 / DESIGN SYSTEM
-            </span>
-
-            <h2>
-              CONSISTENCY<br />
-              <span>WITHOUT MONOTONY.</span>
-            </h2>
-
-          </div>
-
+          <h2>
+            A SYSTEM,
+            <span>NOT A DECORATION.</span>
+          </h2>
 
           <p>
-            Reusable patterns keep the portfolio coherent while
-            allowing each page and project to have its own character.
+            Every visual decision should support hierarchy,
+            usability and identity.
           </p>
 
         </div>
 
 
-        <div class="process-grid">
+        <div class="design-system-grid">
 
+          <article class="system-card reveal">
 
-          <article class="process-item reveal">
-
-            <div class="process-number">
+            <span>
               01
-            </div>
+            </span>
+
+            <h3>
+              SPACING
+            </h3>
+
+            <p>
+              Generous spacing creates hierarchy and gives important
+              content room to breathe.
+            </p>
+
+          </article>
+
+
+          <article class="system-card reveal">
+
+            <span>
+              02
+            </span>
 
             <h3>
               GRID
             </h3>
 
             <p>
-              Strong alignment and generous spacing create structure.
+              Strong alignment creates a sense of order across
+              pages and sections.
             </p>
 
           </article>
 
 
-          <article class="process-item reveal">
+          <article class="system-card reveal">
 
-            <div class="process-number">
-              02
-            </div>
+            <span>
+              03
+            </span>
 
             <h3>
               MOTION
             </h3>
 
             <p>
-              Subtle movement communicates hierarchy and interaction.
+              Animation should communicate state and interaction,
+              not distract from content.
             </p>
 
           </article>
 
 
-          <article class="process-item reveal">
+          <article class="system-card reveal">
 
-            <div class="process-number">
-              03
-            </div>
+            <span>
+              04
+            </span>
 
             <h3>
               COMPONENTS
             </h3>
 
             <p>
-              Buttons, cards, tags and navigation share consistent behaviour.
+              Buttons, cards, labels and panels should feel like
+              parts of the same system.
             </p>
 
           </article>
 
 
-          <article class="process-item reveal">
+          <article class="system-card reveal">
 
-            <div class="process-number">
-              04
-            </div>
-
-            <h3>
-              CONTENT
-            </h3>
-
-            <p>
-              Copy remains concise, direct and structured around meaning.
-            </p>
-
-          </article>
-
-
-          <article class="process-item reveal">
-
-            <div class="process-number">
+            <span>
               05
-            </div>
+            </span>
 
             <h3>
-              CONTRAST
+              ACCESSIBILITY
             </h3>
 
             <p>
-              Large type and quiet surfaces create visual rhythm.
+              Visual identity should never come at the expense of
+              readable, usable interfaces.
+            </p>
+
+          </article>
+
+
+          <article class="system-card reveal">
+
+            <span>
+              06
+            </span>
+
+            <h3>
+              RESPONSIVENESS
+            </h3>
+
+            <p>
+              The system should maintain its identity across
+              desktop, tablet and mobile experiences.
             </p>
 
           </article>
@@ -929,52 +1109,9 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          INTERACTION LANGUAGE
-    ========================================================== -->
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="framework-panel reveal">
-
-          <div class="section-eyebrow">
-            INTERACTION LANGUAGE
-          </div>
-
-
-          <h2>
-            MOTION SHOULD<br />
-            <span>EXPLAIN SOMETHING.</span>
-          </h2>
-
-
-          <p>
-            Hover states, reveals, transitions and micro-interactions
-            should make the interface feel alive without turning it
-            into visual noise.
-          </p>
-
-
-          <div class="project-tags">
-            <span>SUBTLE</span>
-            <span>RESPONSIVE</span>
-            <span>INTENTIONAL</span>
-            <span>ACCESSIBLE</span>
-            <span>REDUCED MOTION</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         BRAND VOICE
-    ========================================================== -->
+    ========================== -->
 
     <section class="section">
 
@@ -982,92 +1119,106 @@
 
         <div class="section-heading reveal">
 
-          <div>
+          <span class="eyebrow">
+            09 / INTERACTION LANGUAGE
+          </span>
 
-            <span class="section-eyebrow">
-              09 / BRAND VOICE
-            </span>
-
-            <h2>
-              SAY MORE<br />
-              <span>WITH LESS.</span>
-            </h2>
-
-          </div>
+          <h2>
+            QUIET MOTION.
+            <span>CONFIDENT FEEDBACK.</span>
+          </h2>
 
         </div>
 
 
-        <div class="voice-grid">
+        <div class="interaction-list">
 
+          <div class="interaction-row reveal">
 
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
-              DO
+            <span>
+              01
             </span>
 
-            <h3>
-              BE DIRECT
-            </h3>
+            <div>
 
-            <p>
-              Clear statements. Strong verbs. Specific ideas.
-            </p>
+              <h3>
+                HOVER
+              </h3>
 
-          </article>
+              <p>
+                Small shifts, subtle elevation and controlled
+                highlights reveal interactive elements.
+              </p>
+
+            </div>
+
+          </div>
 
 
-          <article class="framework-item reveal">
+          <div class="interaction-row reveal">
 
-            <span class="framework-number">
-              DO
+            <span>
+              02
             </span>
 
-            <h3>
-              SHOW THE THINKING
-            </h3>
+            <div>
 
-            <p>
-              Explain decisions instead of hiding behind buzzwords.
-            </p>
+              <h3>
+                SCROLL
+              </h3>
 
-          </article>
+              <p>
+                Content enters progressively to create rhythm and
+                maintain focus.
+              </p>
+
+            </div>
+
+          </div>
 
 
-          <article class="framework-item reveal">
+          <div class="interaction-row reveal">
 
-            <span class="framework-number">
-              AVOID
+            <span>
+              03
             </span>
 
-            <h3>
-              EMPTY HYPE
-            </h3>
+            <div>
 
-            <p>
-              Avoid vague claims such as “revolutionary”
-              without evidence.
-            </p>
+              <h3>
+                SYSTEM STATES
+              </h3>
 
-          </article>
+              <p>
+                Green signal indicators and terminal feedback
+                communicate active system states.
+              </p>
+
+            </div>
+
+          </div>
 
 
-          <article class="framework-item reveal">
+          <div class="interaction-row reveal">
 
-            <span class="framework-number">
-              AVOID
+            <span>
+              04
             </span>
 
-            <h3>
-              TECH BUZZWORD STACKS
-            </h3>
+            <div>
 
-            <p>
-              Technology should support the story, not become the story.
-            </p>
+              <h3>
+                REDUCED MOTION
+              </h3>
 
-          </article>
+              <p>
+                The experience remains complete and understandable
+                without animation.
+              </p>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -1076,34 +1227,136 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
+         BRAND VOICE
+    ========================== -->
+
+    <section class="section section-dark">
+
+      <div class="container">
+
+        <div class="split-section">
+
+          <div class="split-copy reveal">
+
+            <span class="eyebrow">
+              10 / BRAND VOICE
+            </span>
+
+            <h2>
+              TECHNICAL.
+              <span>HUMAN.</span>
+              DIRECT.
+            </h2>
+
+            <p>
+              SNK communicates with confidence without unnecessary
+              jargon. The language should feel intelligent,
+              practical and intentional.
+            </p>
+
+          </div>
+
+
+          <div class="voice-panel reveal">
+
+            <div class="voice-row">
+
+              <span>
+                SHOULD FEEL
+              </span>
+
+              <strong>
+                CLEAR
+              </strong>
+
+            </div>
+
+            <div class="voice-row">
+
+              <span>
+                SHOULD FEEL
+              </span>
+
+              <strong>
+                CURIOUS
+              </strong>
+
+            </div>
+
+            <div class="voice-row">
+
+              <span>
+                SHOULD FEEL
+              </span>
+
+              <strong>
+                CONFIDENT
+              </strong>
+
+            </div>
+
+            <div class="voice-row">
+
+              <span>
+                SHOULD FEEL
+              </span>
+
+              <strong>
+                PURPOSEFUL
+              </strong>
+
+            </div>
+
+            <div class="voice-row">
+
+              <span>
+                AVOID
+              </span>
+
+              <strong>
+                EMPTY HYPE
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
          BRAND FORMULA
-    ========================================================== -->
+    ========================== -->
 
     <section class="section">
 
       <div class="container">
 
-        <div class="brand-formula reveal">
+        <div class="brand-formula-panel reveal">
 
-          <span class="section-eyebrow">
-            THE SNK FORMULA
-          </span>
+          <div class="brand-formula-label">
+            SNK / BRAND FORMULA
+          </div>
 
-
-          <div class="formula-main">
-            CODE
+          <div class="brand-formula">
+            SOFTWARE
             <span>+</span>
             INTELLIGENCE
             <span>+</span>
             EXPERIENCE
+            <span>=</span>
+            IMPACT
           </div>
 
-
-          <div class="formula-result">
-            <span>↓</span>
-            USEFUL IMPACT
-          </div>
+          <p>
+            Build the technology. Understand the context. Design the
+            experience. Create something that matters.
+          </p>
 
         </div>
 
@@ -1112,110 +1365,162 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          BRAND ASSETS
-    ========================================================== -->
+    ========================== -->
 
-    <section class="section">
+    <section class="section section-dark">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <div>
+          <span class="eyebrow">
+            11 / BRAND ASSETS
+          </span>
 
-            <span class="section-eyebrow">
-              10 / BRAND ASSETS
-            </span>
-
-            <h2>
-              THE SYSTEM<br />
-              <span>KEEPS EXPANDING.</span>
-            </h2>
-
-          </div>
-
+          <h2>
+            THE SYSTEM
+            <span>IN PRACTICE.</span>
+          </h2>
 
           <p>
-            The brand system is designed to extend beyond the portfolio
-            into professional profiles, presentations, case studies,
-            project documentation and future digital products.
+            The brand should eventually provide a consistent visual
+            foundation across portfolio, social presence,
+            presentations and professional materials.
           </p>
 
         </div>
 
 
-        <div class="framework-grid">
+        <div class="asset-grid">
 
+          <div class="asset-card reveal">
 
-          <article class="framework-item reveal">
-
-            <span class="framework-number">
+            <span>
               01
             </span>
 
             <h3>
-              PORTFOLIO
+              LOGO
             </h3>
 
             <p>
-              Website, project pages and case studies.
+              Official SNK primary mark and approved variations.
             </p>
 
-          </article>
+            <span class="asset-status">
+              PRIMARY
+            </span>
+
+          </div>
 
 
-          <article class="framework-item reveal">
+          <div class="asset-card reveal">
 
-            <span class="framework-number">
+            <span>
               02
             </span>
 
             <h3>
-              CASE STUDIES
+              TYPOGRAPHY
             </h3>
 
             <p>
-              Structured documentation of problems,
-              decisions, systems and outcomes.
+              Display, body and system typography hierarchy.
             </p>
 
-          </article>
+            <span class="asset-status">
+              SYSTEM
+            </span>
+
+          </div>
 
 
-          <article class="framework-item reveal">
+          <div class="asset-card reveal">
 
-            <span class="framework-number">
+            <span>
               03
             </span>
 
             <h3>
-              PROFESSIONAL PRESENCE
+              COLOR
             </h3>
 
             <p>
-              Consistent identity across professional platforms.
+              Dark foundation, warm accent and system signal colors.
             </p>
 
-          </article>
+            <span class="asset-status">
+              SYSTEM
+            </span>
+
+          </div>
 
 
-          <article class="framework-item reveal">
+          <div class="asset-card reveal">
 
-            <span class="framework-number">
+            <span>
               04
             </span>
 
             <h3>
-              DIGITAL PRODUCTS
+              COMPONENTS
             </h3>
 
             <p>
-              A visual language that can extend into future products
-              and experiments.
+              Buttons, cards, panels, labels and interaction patterns.
             </p>
 
-          </article>
+            <span class="asset-status">
+              SYSTEM
+            </span>
+
+          </div>
+
+
+          <div class="asset-card reveal">
+
+            <span>
+              05
+            </span>
+
+            <h3>
+              SOCIAL
+            </h3>
+
+            <p>
+              Consistent identity for professional and creative
+              platforms.
+            </p>
+
+            <span class="asset-status">
+              READY
+            </span>
+
+          </div>
+
+
+          <div class="asset-card reveal">
+
+            <span>
+              06
+            </span>
+
+            <h3>
+              PRESENTATION
+            </h3>
+
+            <p>
+              A future foundation for proposals, case studies and
+              professional documents.
+            </p>
+
+            <span class="asset-status">
+              FUTURE
+            </span>
+
+          </div>
 
         </div>
 
@@ -1224,93 +1529,67 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =========================
          CLOSING STATEMENT
-    ========================================================== -->
+    ========================== -->
 
-    <section class="section">
-
-      <div class="container">
-
-        <div class="framework-panel reveal">
-
-          <div class="section-eyebrow">
-            BRAND STATEMENT
-          </div>
-
-
-          <h2>
-            BUILD WITH<br />
-            <span>CURIOSITY.</span>
-          </h2>
-
-
-          <p>
-            Think deeply. Engineer carefully. Design intentionally.
-            Use technology to make something that matters.
-          </p>
-
-
-          <div class="project-tags">
-            <span>CURIOUS</span>
-            <span>ENGINEERED</span>
-            <span>HUMAN</span>
-            <span>INTENTIONAL</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         FINAL CTA
-    ========================================================== -->
-
-    <section class="section final-cta">
+    <section class="section brand-closing">
 
       <div class="container">
 
-        <div class="cta-content reveal">
+        <div class="closing-statement reveal">
 
-          <span class="section-eyebrow">
-            SNK / END OF SYSTEM
+          <span class="eyebrow">
+            SNK / FINAL STATEMENT
           </span>
 
-
           <h2>
-            NOW LET'S<br />
-            <span>BUILD SOMETHING.</span>
+            BUILDING
+            <span>WITH INTENTION.</span>
           </h2>
 
-
-          <p class="cta-description">
-            Explore the work, understand the thinking,
-            or start a conversation.
+          <p>
+            SNK is not just a visual identity. It is a way of
+            presenting the work, the thinking behind it and the
+            direction it is moving toward.
           </p>
 
+        </div>
 
-          <div class="cta-actions">
+      </div>
 
-            <a
-              href="projects.html"
-              class="btn btn-primary"
-            >
-              VIEW MY WORK
-              <span>→</span>
-            </a>
+    </section>
 
 
-            <a
-              href="index.html#contact"
-              class="btn btn-secondary"
-            >
-              CONTACT ME
-            </a>
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="section cta-section">
+
+      <div class="container">
+
+        <div class="cta-panel reveal">
+
+          <div>
+
+            <span class="eyebrow">
+              SHAH NEIL KHAN / SNK
+            </span>
+
+            <h2>
+              READY TO BUILD
+              <span>SOMETHING MEANINGFUL?</span>
+            </h2>
 
           </div>
+
+          <a
+            href="contact.html"
+            class="btn btn-primary"
+          >
+            START A CONVERSATION →
+          </a>
 
         </div>
 
@@ -1321,20 +1600,22 @@
   </main>
 
 
-  <!-- =========================================================
+  <!-- =========================
        FOOTER
-  ========================================================== -->
+  ========================== -->
 
   <footer class="site-footer">
 
     <div class="container">
 
-      <div class="footer-inner">
-
+      <div class="footer-grid">
 
         <div class="footer-brand">
 
-          <a href="index.html" class="brand">
+          <a
+            href="index.html"
+            class="brand"
+          >
 
             <span class="brand-mark">
               SNK
@@ -1346,9 +1627,9 @@
 
           </a>
 
-
           <p>
-            Software Engineer &amp; AI Engineer
+            Software Engineer & AI Engineer building intelligent
+            digital experiences.
           </p>
 
         </div>
@@ -1356,53 +1637,53 @@
 
         <div class="footer-links">
 
+          <span class="footer-label">
+            NAVIGATE
+          </span>
+
           <a href="index.html">
-            HOME
+            Home
           </a>
 
           <a href="projects.html">
-            WORK
+            Work
           </a>
 
-          <a href="about.html">
-            ABOUT
+          <a href="expertise.html">
+            Expertise
           </a>
 
           <a href="experience.html">
-            EXPERIENCE
+            Experience
+          </a>
+
+          <a href="about.html">
+            About
           </a>
 
           <a href="brand.html">
-            BRAND
+            Brand
           </a>
 
           <a href="contact.html">
-            CONTACT
+            Contact
           </a>
 
         </div>
 
 
-        <div class="footer-socials">
+        <div class="footer-links">
+
+          <span class="footer-label">
+            EXTERNAL
+          </span>
 
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.tabayyuninstitute.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            LINKEDIN
-          </a>
-
-          <a
-            href="https://github.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GITHUB
-          </a>
-
-          <a href="contact.html">
-            CONTACT
+            Tabayyun TV ↗
           </a>
 
         </div>
@@ -1413,9 +1694,8 @@
       <div class="footer-bottom">
 
         <span>
-          © <span id="current-year"></span> Shah Neil Khan
+          © <span data-current-year></span> Shah Neil Khan
         </span>
-
 
         <span>
           CODE → INTELLIGENCE → EXPERIENCE
@@ -1427,10 +1707,6 @@
 
   </footer>
 
-
-  <!-- =========================================================
-       SCRIPT
-  ========================================================== -->
 
   <script src="script.js"></script>
 
