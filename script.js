@@ -1,36 +1,16 @@
 /* =========================================================
    SNK PORTFOLIO V2
-   Shah Neil Khan
-   Software Engineer & AI Engineer
+   Interactive Experience
    ========================================================= */
 
 (() => {
   "use strict";
 
   /* =======================================================
-     01. GLOBAL STATE
+     INITIALIZATION
      ======================================================= */
 
-  const root = document.documentElement;
-  const body = document.body;
-
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  );
-
-  const isTouchDevice =
-    "ontouchstart" in window ||
-    navigator.maxTouchPoints > 0;
-
-  const state = {
-    menuOpen: false,
-    ticking: false,
-    destroyed: false
-  };
-
-  /* =======================================================
-     02. HELPERS
-     ======================================================= */
+  document.documentElement.classList.add("js-enabled");
 
   const $ = (selector, scope = document) =>
     scope.querySelector(selector);
@@ -38,183 +18,172 @@
   const $$ = (selector, scope = document) =>
     Array.from(scope.querySelectorAll(selector));
 
-  const on = (element, event, handler, options = {}) => {
-    if (!element) return;
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-    element.addEventListener(event, handler, options);
-  };
+  const isTouch =
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0;
 
-  const isInternalLink = (link) => {
-    if (!link || !link.href) return false;
+  const isDesktop = () =>
+    window.innerWidth > 900 && !isTouch && !reducedMotion;
 
-    try {
-      const url = new URL(link.href, window.location.href);
-
-      return (
-        url.origin === window.location.origin &&
-        url.pathname === window.location.pathname
-      );
-    } catch {
-      return false;
-    }
-  };
-
-  const isExternalLink = (link) => {
-    if (!link || !link.href) return false;
-
-    try {
-      const url = new URL(link.href, window.location.href);
-
-      return (
-        url.protocol === "http:" ||
-        url.protocol === "https:"
-      ) && url.origin !== window.location.origin;
-    } catch {
-      return false;
-    }
-  };
 
   /* =======================================================
-     03. ENABLE JS STATE
-     ======================================================= */
-
-  root.classList.add("js-enabled");
-
-  /* =======================================================
-     04. HEADER / NAVIGATION
+     HEADER
      ======================================================= */
 
   const header = $(".site-header");
-  const navMenu = $(".nav-menu");
-  const navToggle = $(".nav-toggle");
-  const navLinks = $$(".nav-link");
-
-  const setMenuState = (open) => {
-    if (!navMenu || !navToggle) return;
-
-    state.menuOpen = open;
-
-    navMenu.classList.toggle("open", open);
-    navMenu.classList.toggle("active", open);
-
-    navMenu.setAttribute("aria-hidden", String(!open));
-    navToggle.setAttribute("aria-expanded", String(open));
-
-    body.classList.toggle("menu-open", open);
-
-    const bars = $$("span", navToggle);
-
-    if (bars.length >= 3) {
-      bars[0].style.transform = open
-        ? "translateY(5px) rotate(45deg)"
-        : "";
-
-      bars[1].style.opacity = open ? "0" : "";
-
-      bars[2].style.transform = open
-        ? "translateY(-5px) rotate(-45deg)"
-        : "";
-    }
-  };
-
-  const closeMenu = () => {
-    setMenuState(false);
-  };
-
-  const toggleMenu = () => {
-    setMenuState(!state.menuOpen);
-  };
-
-  if (navMenu) {
-    navMenu.setAttribute("aria-hidden", "true");
-  }
-
-  if (navToggle) {
-    navToggle.setAttribute("aria-expanded", "false");
-
-    on(navToggle, "click", (event) => {
-      event.preventDefault();
-      toggleMenu();
-    });
-  }
-
-  navLinks.forEach((link) => {
-    on(link, "click", () => {
-      closeMenu();
-    });
-  });
-
-  on(document, "keydown", (event) => {
-    if (event.key === "Escape" && state.menuOpen) {
-      closeMenu();
-    }
-  });
-
-  on(document, "click", (event) => {
-    if (!state.menuOpen || !navMenu || !navToggle) return;
-
-    if (
-      !navMenu.contains(event.target) &&
-      !navToggle.contains(event.target)
-    ) {
-      closeMenu();
-    }
-  });
-
-  /* =======================================================
-     05. HEADER SCROLL STATE
-     ======================================================= */
 
   const updateHeader = () => {
     if (!header) return;
 
-    const scrolled = window.scrollY > 30;
-
-    header.classList.toggle("scrolled", scrolled);
-    header.classList.toggle("is-scrolled", scrolled);
+    header.classList.toggle(
+      "is-scrolled",
+      window.scrollY > 30
+    );
   };
 
   updateHeader();
 
-  on(window, "scroll", () => {
-    if (state.ticking) return;
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
 
-    state.ticking = true;
-
-    window.requestAnimationFrame(() => {
-      updateHeader();
-      state.ticking = false;
-    });
-  }, { passive: true });
 
   /* =======================================================
-     06. SMOOTH INTERNAL SCROLLING
+     MOBILE NAVIGATION
+     ======================================================= */
+
+  const nav = $(".main-nav");
+  const navToggle = $(".nav-toggle");
+
+  const openNav = () => {
+    if (!nav || !navToggle) return;
+
+    nav.classList.add("is-open");
+
+    navToggle.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+    document.body.classList.add("nav-open");
+  };
+
+  const closeNav = () => {
+    if (!nav || !navToggle) return;
+
+    nav.classList.remove("is-open");
+
+    navToggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    document.body.classList.remove("nav-open");
+  };
+
+  const toggleNav = () => {
+    if (!nav) return;
+
+    if (nav.classList.contains("is-open")) {
+      closeNav();
+    } else {
+      openNav();
+    }
+  };
+
+  if (navToggle) {
+    navToggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    navToggle.setAttribute(
+      "aria-label",
+      "Toggle navigation"
+    );
+
+    navToggle.addEventListener(
+      "click",
+      toggleNav
+    );
+  }
+
+  $$(".main-nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      closeNav();
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeNav();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!nav || !navToggle) return;
+
+    if (
+      nav.classList.contains("is-open") &&
+      !nav.contains(event.target) &&
+      !navToggle.contains(event.target)
+    ) {
+      closeNav();
+    }
+  });
+
+
+  /* =======================================================
+     RESIZE CLEANUP
+     ======================================================= */
+
+  let resizeTimer;
+
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > 900) {
+        closeNav();
+      }
+    }, 120);
+  });
+
+
+  /* =======================================================
+     SMOOTH INTERNAL LINKS
      ======================================================= */
 
   $$('a[href^="#"]').forEach((link) => {
-    on(link, "click", (event) => {
-      const targetId = link.getAttribute("href");
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
 
-      if (!targetId || targetId === "#") return;
+      if (!href || href === "#") return;
 
-      const target = $(targetId);
+      const target = document.querySelector(href);
 
       if (!target) return;
 
       event.preventDefault();
 
-      const headerOffset = header
-        ? header.offsetHeight + 12
-        : 20;
+      const headerHeight =
+        header?.offsetHeight || 0;
 
-      const targetPosition =
+      const targetTop =
         target.getBoundingClientRect().top +
         window.scrollY -
-        headerOffset;
+        headerHeight -
+        15;
 
       window.scrollTo({
-        top: targetPosition,
-        behavior: prefersReducedMotion.matches
+        top: targetTop,
+        behavior: reducedMotion
           ? "auto"
           : "smooth"
       });
@@ -222,81 +191,80 @@
       history.replaceState(
         null,
         "",
-        targetId
+        href
       );
-
-      closeMenu();
     });
   });
 
+
   /* =======================================================
-     07. ACTIVE NAVIGATION
+     ACTIVE NAVIGATION
      ======================================================= */
 
-  const sectionTargets = $$(
-    "main section[id], section[id]"
-  );
+  const navLinks = $$(".main-nav a");
 
-  if (
-    sectionTargets.length &&
-    "IntersectionObserver" in window
-  ) {
-    const navObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+  const sectionMap = new Map();
 
-          const id = entry.target.id;
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
 
-          navLinks.forEach((link) => {
-            const href = link.getAttribute("href");
+    if (!href || !href.startsWith("#")) {
+      return;
+    }
 
-            if (!href) return;
+    const section = document.querySelector(href);
 
-            const matches =
-              href === `#${id}` ||
-              href.endsWith(`#${id}`);
+    if (section) {
+      sectionMap.set(section, link);
+    }
+  });
 
-            link.classList.toggle(
-              "active",
-              matches
-            );
+  if ("IntersectionObserver" in window) {
+    const navObserver =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
 
-            if (matches) {
-              link.setAttribute(
-                "aria-current",
-                "page"
-              );
-            } else {
-              link.removeAttribute(
-                "aria-current"
-              );
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+            });
+
+            const activeLink =
+              sectionMap.get(entry.target);
+
+            if (activeLink) {
+              activeLink.classList.add("active");
             }
           });
-        });
-      },
-      {
-        rootMargin: "-30% 0px -60% 0px",
-        threshold: 0
-      }
-    );
+        },
+        {
+          rootMargin:
+            "-25% 0px -60% 0px",
+          threshold: 0
+        }
+      );
 
-    sectionTargets.forEach((section) => {
+    sectionMap.forEach((_, section) => {
       navObserver.observe(section);
     });
   }
 
+
   /* =======================================================
-     08. REVEAL ON SCROLL
+     REVEAL ON SCROLL
      ======================================================= */
 
   const revealItems = $$(".reveal");
 
   if (
-    revealItems.length &&
-    "IntersectionObserver" in window &&
-    !prefersReducedMotion.matches
+    reducedMotion ||
+    !("IntersectionObserver" in window)
   ) {
+    revealItems.forEach((item) => {
+      item.classList.add("is-visible");
+    });
+  } else {
     const revealObserver =
       new IntersectionObserver(
         (entries, observer) => {
@@ -307,128 +275,258 @@
               "is-visible"
             );
 
-            observer.unobserve(entry.target);
+            observer.unobserve(
+              entry.target
+            );
           });
         },
         {
-          rootMargin: "0px 0px -8% 0px",
-          threshold: 0.08
+          threshold: 0.12,
+          rootMargin: "0px 0px -50px"
         }
       );
 
     revealItems.forEach((item) => {
       revealObserver.observe(item);
     });
-  } else {
-    revealItems.forEach((item) => {
-      item.classList.add("is-visible");
-    });
   }
 
+
   /* =======================================================
-     09. AUTOMATIC STAGGER
+     STAGGERED ELEMENTS
      ======================================================= */
 
-  const staggerGroups = [
-    ".projects-grid",
-    ".ai-cards",
-    ".expertise-grid",
-    ".principles-grid",
-    ".brand-pillars",
-    ".brand-colors"
-  ];
+  $$(".stagger").forEach((group) => {
+    const children = Array.from(
+      group.children
+    );
 
-  staggerGroups.forEach((selector) => {
-    $$(selector).forEach((group) => {
-      const children = Array.from(
-        group.children
+    children.forEach((child, index) => {
+      child.style.setProperty(
+        "--i",
+        index
       );
 
-      children.forEach((child, index) => {
-        if (!child.classList.contains("reveal")) {
-          child.classList.add("reveal");
-        }
-
-        child.style.transitionDelay =
-          `${Math.min(index * 0.07, 0.35)}s`;
-      });
+      child.classList.add("reveal");
     });
   });
 
+  if (!reducedMotion) {
+    const staggerItems =
+      $$(".stagger > .reveal");
+
+    if ("IntersectionObserver" in window) {
+      const staggerObserver =
+        new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              entry.target.classList.add(
+                "is-visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+            });
+          },
+          {
+            threshold: 0.08
+          }
+        );
+
+      staggerItems.forEach((item) => {
+        staggerObserver.observe(item);
+      });
+    }
+  }
+
+
   /* =======================================================
-     10. AI EXPANDABLES
+     HERO IMAGE / SVG LOAD
      ======================================================= */
 
-  const aiExpandables = $$(".ai-expandable");
+  const heroImages = $$(
+    ".hero-image, .hero-svg"
+  );
 
-  const closeAiItems = (except = null) => {
-    aiExpandables.forEach((item) => {
-      if (item === except) return;
+  heroImages.forEach((image) => {
+    if (
+      image.tagName.toLowerCase() === "img"
+    ) {
+      if (image.complete) {
+        image.classList.add(
+          "is-loaded"
+        );
+      } else {
+        image.addEventListener(
+          "load",
+          () => {
+            image.classList.add(
+              "is-loaded"
+            );
+          },
+          { once: true }
+        );
 
-      item.classList.remove("open");
-
-      const trigger = $(
-        ".ai-expandable-trigger",
-        item
-      );
-
-      if (trigger) {
-        trigger.setAttribute(
-          "aria-expanded",
-          "false"
+        image.addEventListener(
+          "error",
+          () => {
+            image.classList.add(
+              "image-error"
+            );
+          },
+          { once: true }
         );
       }
+    } else {
+      requestAnimationFrame(() => {
+        image.classList.add(
+          "is-loaded"
+        );
+      });
+    }
+  });
+
+
+  /* =======================================================
+     TERMINAL
+     ======================================================= */
+
+  const terminal = $(".terminal");
+
+  if (terminal) {
+    const terminalLines =
+      $$(".terminal-line", terminal);
+
+    terminalLines.forEach((line) => {
+      line.style.opacity = "0";
+      line.style.transform =
+        "translateY(5px)";
+      line.style.transition =
+        "opacity .35s ease, transform .35s ease";
     });
-  };
 
-  aiExpandables.forEach((item) => {
-    const trigger = $(
-      ".ai-expandable-trigger",
-      item
-    );
+    const revealTerminal = () => {
+      terminalLines.forEach(
+        (line, index) => {
+          setTimeout(() => {
+            line.style.opacity = "1";
+            line.style.transform =
+              "translateY(0)";
+          }, index * 110);
+        }
+      );
+    };
 
-    if (!trigger) return;
+    if (
+      reducedMotion ||
+      !("IntersectionObserver" in window)
+    ) {
+      terminalLines.forEach((line) => {
+        line.style.opacity = "1";
+        line.style.transform =
+          "translateY(0)";
+      });
+    } else {
+      const terminalObserver =
+        new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
 
-    trigger.setAttribute(
+              revealTerminal();
+
+              observer.unobserve(
+                entry.target
+              );
+            });
+          },
+          {
+            threshold: 0.35
+          }
+        );
+
+      terminalObserver.observe(
+        terminal
+      );
+    }
+  }
+
+
+  /* =======================================================
+     AI EXPANDABLES
+     ======================================================= */
+
+  const expandableButtons = $$(
+    ".ai-expandable button"
+  );
+
+  expandableButtons.forEach((button) => {
+    button.setAttribute(
       "aria-expanded",
       "false"
     );
 
-    on(trigger, "click", () => {
-      const isOpen =
-        item.classList.contains("open");
+    button.addEventListener(
+      "click",
+      () => {
+        const parent =
+          button.closest(
+            ".ai-expandable"
+          );
 
-      closeAiItems(item);
+        if (!parent) return;
 
-      item.classList.toggle(
-        "open",
-        !isOpen
-      );
+        const isOpen =
+          parent.classList.contains(
+            "is-open"
+          );
 
-      trigger.setAttribute(
-        "aria-expanded",
-        String(!isOpen)
-      );
-    });
+        $$(".ai-expandable").forEach(
+          (item) => {
+            item.classList.remove(
+              "is-open"
+            );
+
+            const itemButton =
+              $("button", item);
+
+            if (itemButton) {
+              itemButton.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+            }
+          }
+        );
+
+        if (!isOpen) {
+          parent.classList.add(
+            "is-open"
+          );
+
+          button.setAttribute(
+            "aria-expanded",
+            "true"
+          );
+        }
+      }
+    );
   });
 
+
   /* =======================================================
-     11. EXPERTISE ACCORDION
+     EXPERTISE ACCORDION
      ======================================================= */
 
   const expertiseCards =
     $$(".expertise-card");
 
   expertiseCards.forEach((card) => {
-    const toggle = $(
-      ".expertise-toggle",
-      card
-    );
-
-    const body = $(
-      ".expertise-body",
-      card
-    );
+    const toggle =
+      $(".expertise-toggle", card);
 
     if (!toggle) return;
 
@@ -437,204 +535,112 @@
       "false"
     );
 
-    if (body) {
-      body.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-    }
+    toggle.addEventListener(
+      "click",
+      () => {
+        const isOpen =
+          card.classList.contains(
+            "is-open"
+          );
 
-    on(toggle, "click", () => {
-      const isOpen =
-        card.classList.contains("open");
+        if (window.innerWidth <= 800) {
+          expertiseCards.forEach(
+            (item) => {
+              item.classList.remove(
+                "is-open"
+              );
 
-      expertiseCards.forEach((other) => {
-        if (other === card) return;
+              const itemToggle =
+                $(".expertise-toggle", item);
 
-        other.classList.remove("open");
-
-        const otherToggle = $(
-          ".expertise-toggle",
-          other
-        );
-
-        const otherBody = $(
-          ".expertise-body",
-          other
-        );
-
-        if (otherToggle) {
-          otherToggle.setAttribute(
-            "aria-expanded",
-            "false"
+              if (itemToggle) {
+                itemToggle.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+              }
+            }
           );
         }
 
-        if (otherBody) {
-          otherBody.setAttribute(
-            "aria-hidden",
+        if (!isOpen) {
+          card.classList.add(
+            "is-open"
+          );
+
+          toggle.setAttribute(
+            "aria-expanded",
             "true"
           );
         }
-      });
-
-      card.classList.toggle(
-        "open",
-        !isOpen
-      );
-
-      toggle.setAttribute(
-        "aria-expanded",
-        String(!isOpen)
-      );
-
-      if (body) {
-        body.setAttribute(
-          "aria-hidden",
-          String(isOpen)
-        );
       }
-    });
+    );
   });
 
-  /* =======================================================
-     12. TERMINAL ANIMATION
-     ======================================================= */
-
-  const terminal =
-    $(".terminal");
-
-  const terminalLines =
-    $$(".terminal-line", terminal || document);
-
-  const terminalProgress =
-    $(".terminal-progress");
-
-  const sleep = (ms) =>
-    new Promise((resolve) =>
-      window.setTimeout(resolve, ms)
-    );
-
-  const runTerminal = async () => {
-    if (!terminal) return;
-
-    if (prefersReducedMotion.matches) {
-      terminalLines.forEach((line) => {
-        line.style.opacity = "1";
-      });
-
-      if (terminalProgress) {
-        terminalProgress.textContent =
-          "[██████████████████] 100%";
-      }
-
-      return;
-    }
-
-    terminalLines.forEach((line) => {
-      line.style.opacity = "0";
-      line.style.transform =
-        "translateY(4px)";
-    });
-
-    for (const line of terminalLines) {
-      await sleep(120);
-
-      line.style.transition =
-        "opacity .35s ease, transform .35s ease";
-
-      line.style.opacity = "1";
-      line.style.transform =
-        "translateY(0)";
-    }
-
-    if (terminalProgress) {
-      const progressChars =
-        "██████████████████";
-
-      for (let i = 0; i <= progressChars.length; i++) {
-        await sleep(35);
-
-        terminalProgress.textContent =
-          `[${progressChars.slice(0, i)}${" ".repeat(
-            progressChars.length - i
-          )}] ${Math.round(
-            (i / progressChars.length) * 100
-          )}%`;
-      }
-    }
-  };
-
-  if (terminal) {
-    if ("IntersectionObserver" in window) {
-      const terminalObserver =
-        new IntersectionObserver(
-          (entries, observer) => {
-            if (!entries[0].isIntersecting) {
-              return;
-            }
-
-            runTerminal();
-            observer.disconnect();
-          },
-          {
-            threshold: 0.25
-          }
-        );
-
-      terminalObserver.observe(terminal);
-    } else {
-      runTerminal();
-    }
-  }
 
   /* =======================================================
-     13. PROJECT CARD MICRO INTERACTION
+     PROJECT CARD TILT
      ======================================================= */
 
-  if (
-    !isTouchDevice &&
-    !prefersReducedMotion.matches
-  ) {
-    $$(".project-card, .card").forEach((card) => {
-      on(card, "mousemove", (event) => {
+  const projectCards =
+    $$(".project-card");
+
+  projectCards.forEach((card) => {
+    card.addEventListener(
+      "pointermove",
+      (event) => {
+        if (!isDesktop()) return;
+
         const rect =
           card.getBoundingClientRect();
 
         const x =
-          (event.clientX - rect.left) /
-          rect.width;
+          event.clientX -
+          rect.left;
 
         const y =
-          (event.clientY - rect.top) /
-          rect.height;
+          event.clientY -
+          rect.top;
 
         const rotateX =
-          (0.5 - y) * 3;
+          ((y / rect.height) - 0.5) *
+          -4;
 
         const rotateY =
-          (x - 0.5) * 3;
+          ((x / rect.width) - 0.5) *
+          4;
 
-        card.style.transform =
-          `translateY(-5px) perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
+        card.style.transform = `
+          perspective(1000px)
+          rotateX(${rotateX}deg)
+          rotateY(${rotateY}deg)
+          translateY(-5px)
+        `;
+      }
+    );
 
-      on(card, "mouseleave", () => {
+    card.addEventListener(
+      "pointerleave",
+      () => {
         card.style.transform = "";
-      });
-    });
-  }
+      }
+    );
+  });
+
 
   /* =======================================================
-     14. BUTTON MAGNETIC EFFECT
+     MAGNETIC BUTTON EFFECT
      ======================================================= */
 
-  if (
-    !isTouchDevice &&
-    !prefersReducedMotion.matches
-  ) {
-    $$(".btn").forEach((button) => {
-      on(button, "mousemove", (event) => {
+  const magneticButtons =
+    $$(".btn");
+
+  magneticButtons.forEach((button) => {
+    button.addEventListener(
+      "pointermove",
+      (event) => {
+        if (!isDesktop()) return;
+
         const rect =
           button.getBoundingClientRect();
 
@@ -648,248 +654,284 @@
           rect.top -
           rect.height / 2;
 
-        button.style.transform =
-          `translate(${x * 0.08}px, ${y * 0.08}px)`;
-      });
+        button.style.transform = `
+          translate(
+            ${x * 0.08}px,
+            ${y * 0.08}px
+          )
+        `;
+      }
+    );
 
-      on(button, "mouseleave", () => {
+    button.addEventListener(
+      "pointerleave",
+      () => {
         button.style.transform = "";
-      });
-    });
-  }
+      }
+    );
+  });
+
 
   /* =======================================================
-     15. HERO PARALLAX
+     HERO PARALLAX
      ======================================================= */
 
   const heroVisual =
     $(".hero-visual");
 
+  const heroContent =
+    $(".hero-content");
+
   if (
     heroVisual &&
-    !isTouchDevice &&
-    !prefersReducedMotion.matches
+    !reducedMotion &&
+    !isTouch
   ) {
-    let heroFrame = null;
+    let ticking = false;
 
-    on(window, "mousemove", (event) => {
-      if (heroFrame) return;
+    const updateParallax = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(
+          () => {
+            const scroll =
+              window.scrollY;
 
-      heroFrame =
-        window.requestAnimationFrame(() => {
-          const x =
-            (event.clientX /
-              window.innerWidth -
-              0.5) *
-            2;
+            if (scroll < window.innerHeight * 1.2) {
+              const visualY =
+                scroll * 0.08;
 
-          const y =
-            (event.clientY /
-              window.innerHeight -
-              0.5) *
-            2;
+              const contentY =
+                scroll * -0.025;
 
-          heroVisual.style.transform =
-            `translate3d(${x * 5}px, ${y * 5}px, 0)`;
+              heroVisual.style.transform =
+                `translateY(${visualY}px)`;
 
-          heroFrame = null;
-        });
-    });
+              if (heroContent) {
+                heroContent.style.transform =
+                  `translateY(${contentY}px)`;
+              }
+            }
 
-    on(window, "mouseleave", () => {
-      heroVisual.style.transform = "";
-    });
+            ticking = false;
+          }
+        );
+
+        ticking = true;
+      }
+    };
+
+    window.addEventListener(
+      "scroll",
+      updateParallax,
+      { passive: true }
+    );
   }
 
-  /* =======================================================
-     16. HERO IMAGE / SVG LOAD
-     ======================================================= */
-
-  const heroImages =
-    $$(".hero-image, .hero-svg");
-
-  heroImages.forEach((image) => {
-    on(image, "load", () => {
-      image.classList.add("is-loaded");
-    });
-
-    on(image, "error", () => {
-      image.classList.add("image-error");
-    });
-  });
 
   /* =======================================================
-     17. EXTERNAL LINKS
+     EXTERNAL LINKS
      ======================================================= */
 
-  $$("a").forEach((link) => {
-    if (!isExternalLink(link)) return;
+  $$("a[href]").forEach((link) => {
+    const href =
+      link.getAttribute("href");
 
-    if (
-      !link.hasAttribute("target")
-    ) {
+    if (!href) return;
+
+    const isExternal =
+      /^https?:\/\//i.test(href);
+
+    if (isExternal) {
       link.setAttribute(
         "target",
         "_blank"
       );
+
+      link.setAttribute(
+        "rel",
+        "noopener noreferrer"
+      );
     }
-
-    const existingRel =
-      link.getAttribute("rel") || "";
-
-    const relParts =
-      existingRel
-        .split(" ")
-        .filter(Boolean);
-
-    if (!relParts.includes("noopener")) {
-      relParts.push("noopener");
-    }
-
-    if (!relParts.includes("noreferrer")) {
-      relParts.push("noreferrer");
-    }
-
-    link.setAttribute(
-      "rel",
-      relParts.join(" ")
-    );
   });
 
+
   /* =======================================================
-     18. CONTACT FORM
+     CONTACT FORM FALLBACK
      ======================================================= */
 
   const contactForms =
     $$("form");
 
   contactForms.forEach((form) => {
-    on(form, "submit", (event) => {
-      const action =
-        form.getAttribute("action");
+    const hasRealAction =
+      form.getAttribute("action") &&
+      form.getAttribute("action") !== "#";
 
-      /*
-       * The portfolio currently has no connected
-       * backend/form service.
-       *
-       * Prevent accidental submission when action
-       * is missing or points to "#".
-       */
+    if (hasRealAction) return;
 
-      if (
-        !action ||
-        action === "#" ||
-        action.trim() === ""
-      ) {
+    form.addEventListener(
+      "submit",
+      (event) => {
         event.preventDefault();
 
-        const existingStatus =
+        let status =
           $(".form-status", form);
 
-        if (existingStatus) {
-          existingStatus.textContent =
-            "FORM NOT CONNECTED YET — PLEASE USE DIRECT CONTACT.";
+        if (!status) {
+          status =
+            document.createElement(
+              "div"
+            );
+
+          status.className =
+            "form-status";
+
+          form.appendChild(status);
         }
 
-        form.classList.add(
-          "form-not-connected"
-        );
+        status.textContent =
+          "FORM NOT CONNECTED YET — CONTACT METHOD WILL BE CONFIGURED.";
 
-        window.setTimeout(() => {
-          form.classList.remove(
-            "form-not-connected"
+        status.style.color =
+          "var(--amber-light)";
+
+        setTimeout(() => {
+          status.textContent = "";
+        }, 5000);
+      }
+    );
+  });
+
+
+  /* =======================================================
+     CURRENT YEAR
+     ======================================================= */
+
+  $$("[data-year]").forEach((element) => {
+    element.textContent =
+      new Date().getFullYear();
+  });
+
+  const yearElements = $$(".current-year");
+
+  yearElements.forEach((element) => {
+    element.textContent =
+      new Date().getFullYear();
+  });
+
+
+  /* =======================================================
+     COPY TO CLIPBOARD
+     ======================================================= */
+
+  $$("[data-copy]").forEach((button) => {
+    button.addEventListener(
+      "click",
+      async () => {
+        const value =
+          button.getAttribute(
+            "data-copy"
           );
-        }, 3500);
+
+        if (!value) return;
+
+        try {
+          await navigator.clipboard.writeText(
+            value
+          );
+
+          const original =
+            button.textContent;
+
+          button.textContent =
+            "COPIED ✓";
+
+          setTimeout(() => {
+            button.textContent =
+              original;
+          }, 1800);
+        } catch (error) {
+          console.warn(
+            "Clipboard unavailable:",
+            error
+          );
+        }
       }
-    });
+    );
   });
 
+
   /* =======================================================
-     19. COPY TO CLIPBOARD
+     IMAGE ERROR HANDLING
      ======================================================= */
 
-  $$("[data-copy]").forEach((element) => {
-    on(element, "click", async () => {
-      const value =
-        element.getAttribute("data-copy");
-
-      if (!value) return;
-
-      try {
-        await navigator.clipboard.writeText(
-          value
+  $$("img").forEach((image) => {
+    image.addEventListener(
+      "error",
+      () => {
+        image.classList.add(
+          "image-error"
         );
-
-        const original =
-          element.textContent;
-
-        element.textContent =
-          "COPIED ✓";
-
-        window.setTimeout(() => {
-          element.textContent =
-            original;
-        }, 1500);
-      } catch {
-        /*
-         * Clipboard access may be blocked
-         * by browser security.
-         */
       }
-    });
-  });
-
-  /* =======================================================
-     20. CURRENT YEAR
-     ======================================================= */
-
-  const year =
-    new Date().getFullYear();
-
-  $$("[data-current-year]").forEach(
-    (element) => {
-      element.textContent =
-        String(year);
-    }
-  );
-
-  /* =======================================================
-     21. TABAYYUN EXTERNAL BUTTON
-     ======================================================= */
-
-  const tabayyunLinks =
-    $$(
-      'a[href*="tabayyuninstitute.com"]'
-    );
-
-  tabayyunLinks.forEach((link) => {
-    link.setAttribute(
-      "target",
-      "_blank"
-    );
-
-    link.setAttribute(
-      "rel",
-      "noopener noreferrer"
     );
   });
 
+
   /* =======================================================
-     22. KEYBOARD ACCESSIBILITY
+     TABAYYUN / EXTERNAL PLATFORM MICRO INTERACTION
      ======================================================= */
 
-  $$(".project-card").forEach((card) => {
-    const links =
-      $$("a", card);
+  const externalPlatforms =
+    $$(".external-platform");
 
-    if (!links.length) return;
+  externalPlatforms.forEach((platform) => {
+    platform.addEventListener(
+      "pointermove",
+      (event) => {
+        if (!isDesktop()) return;
 
-    card.setAttribute(
-      "tabindex",
-      "0"
+        const rect =
+          platform.getBoundingClientRect();
+
+        const x =
+          ((event.clientX -
+            rect.left) /
+            rect.width -
+            0.5) *
+          2;
+
+        const y =
+          ((event.clientY -
+            rect.top) /
+            rect.height -
+            0.5) *
+          2;
+
+        platform.style.transform = `
+          translate(
+            ${x * 2}px,
+            ${y * 2}px
+          )
+        `;
+      }
     );
 
-    on(card, "keydown", (event) => {
+    platform.addEventListener(
+      "pointerleave",
+      () => {
+        platform.style.transform = "";
+      }
+    );
+  });
+
+
+  /* =======================================================
+     KEYBOARD ACCESSIBILITY
+     ======================================================= */
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
       if (
         event.key !== "Enter" &&
         event.key !== " "
@@ -897,58 +939,50 @@
         return;
       }
 
-      if (event.target !== card) {
-        return;
-      }
+      const target =
+        event.target;
 
-      event.preventDefault();
-
-      links[0].click();
-    });
-  });
-
-  /* =======================================================
-     23. RESIZE CLEANUP
-     ======================================================= */
-
-  let resizeTimer = null;
-
-  on(window, "resize", () => {
-    window.clearTimeout(resizeTimer);
-
-    resizeTimer = window.setTimeout(() => {
       if (
-        window.innerWidth > 900 &&
-        state.menuOpen
+        target.matches(
+          ".expertise-toggle"
+        )
       ) {
-        closeMenu();
+        event.preventDefault();
+        target.click();
       }
-    }, 120);
-  });
 
-  /* =======================================================
-     24. PAGE VISIBILITY
-     ======================================================= */
-
-  on(document, "visibilitychange", () => {
-    if (
-      document.visibilityState === "hidden"
-    ) {
-      return;
+      if (
+        target.matches(
+          ".ai-expandable button"
+        )
+      ) {
+        event.preventDefault();
+        target.click();
+      }
     }
+  );
 
-    updateHeader();
-  });
 
   /* =======================================================
-     25. DEBUG HOOK
+     DEBUG / GLOBAL HOOKS
      ======================================================= */
 
   window.SNK = {
     version: "2.0",
-    state,
-    reducedMotion:
-      prefersReducedMotion.matches
+    reducedMotion,
+    isTouch,
+    isDesktop,
+    closeNav,
+    openNav
   };
+
+
+  /* =======================================================
+     READY
+     ======================================================= */
+
+  document.body.classList.add(
+    "snk-ready"
+  );
 
 })();
