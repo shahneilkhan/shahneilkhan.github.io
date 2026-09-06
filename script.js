@@ -1,701 +1,1152 @@
 /* =========================================================
-   SHAH NEIL KHAN — V3.1
-   MAIN JAVASCRIPT
-========================================================= */
+   SNK PORTFOLIO — V3.2
+   Interactive Personal Brand System
+   ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
+  "use strict";
 
   /* =======================================================
-     01. ELEMENTS
+     HELPERS
   ======================================================= */
 
+  const $ = (selector, parent = document) =>
+    parent.querySelector(selector);
+
+  const $$ = (selector, parent = document) =>
+    [...parent.querySelectorAll(selector)];
+
+  const root = document.documentElement;
   const body = document.body;
 
-  const header =
-    document.querySelector(".site-header");
 
-  const themeToggle =
-    document.querySelector(".theme-toggle");
+  /* =======================================================
+     YEAR
+  ======================================================= */
 
-  const languageToggle =
-    document.querySelector(".language-toggle");
-
-  const rainToggle =
-    document.querySelector(".rain-toggle");
-
-  const rainContainer =
-    document.querySelector(".rain-container");
-
-  const birdsContainer =
-    document.querySelector(".birds");
-
-  const typingText =
-    document.querySelector(".typing-text");
-
-  const navLinks =
-    document.querySelectorAll(".main-nav a");
-
-  const sections =
-    document.querySelectorAll("main section[id]");
+  $$("[data-year]").forEach((el) => {
+    el.textContent = new Date().getFullYear();
+  });
 
 
   /* =======================================================
-     02. STORAGE HELPERS
+     THEME
   ======================================================= */
 
-  const storage = {
-    get(key, fallback = null) {
-      try {
-        const value =
-          localStorage.getItem(key);
+  const THEME_KEY = "snk-theme";
 
-        return value === null
-          ? fallback
-          : value;
-      } catch {
-        return fallback;
-      }
-    },
+  const themeButton =
+    $("[data-theme-toggle]") ||
+    $("#themeToggle") ||
+    $("[aria-label*='theme' i]");
 
-    set(key, value) {
-      try {
-        localStorage.setItem(
-          key,
-          value
-        );
-      } catch {
-        // Ignore storage errors
-      }
+  function getPreferredTheme() {
+    const saved = localStorage.getItem(THEME_KEY);
+
+    if (saved === "light" || saved === "dark") {
+      return saved;
     }
-  };
 
-
-  /* =======================================================
-     03. THEME
-  ======================================================= */
-
-  const savedTheme =
-    storage.get("snk-theme", "dark");
-
-  if (savedTheme === "light") {
-    body.classList.add("light");
+    return window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark";
   }
 
-  function updateThemeButton() {
+  function updateThemeButton(theme) {
+    if (!themeButton) return;
 
-    if (!themeToggle) return;
+    const isLight = theme === "light";
 
-    const isLight =
-      body.classList.contains("light");
+    themeButton.textContent = isLight ? "☾" : "☼";
 
-    themeToggle.textContent =
-      isLight ? "☾" : "☼";
-
-    themeToggle.setAttribute(
+    themeButton.setAttribute(
       "aria-label",
       isLight
         ? "Switch to dark mode"
         : "Switch to light mode"
     );
+
+    themeButton.setAttribute(
+      "title",
+      isLight
+        ? "Dark mode"
+        : "Light mode"
+    );
   }
 
-  updateThemeButton();
+  function setTheme(theme, save = true) {
+    root.setAttribute("data-theme", theme);
 
+    if (save) {
+      localStorage.setItem(THEME_KEY, theme);
+    }
 
-  if (themeToggle) {
+    updateThemeButton(theme);
+  }
 
-    themeToggle.addEventListener(
-      "click",
-      () => {
+  setTheme(getPreferredTheme(), false);
 
-        body.classList.toggle("light");
+  if (themeButton) {
+    themeButton.addEventListener("click", () => {
+      const current =
+        root.getAttribute("data-theme") || "dark";
 
-        const theme =
-          body.classList.contains("light")
-            ? "light"
-            : "dark";
-
-        storage.set(
-          "snk-theme",
-          theme
-        );
-
-        updateThemeButton();
-
-      }
-    );
-
+      setTheme(
+        current === "dark"
+          ? "light"
+          : "dark"
+      );
+    });
   }
 
 
   /* =======================================================
-     04. LANGUAGE
+     LANGUAGE
   ======================================================= */
 
+  const LANGUAGE_KEY = "snk-language";
+
   const translations = {
-
     en: {
+      navHome: "Home",
+      navEcosystem: "Ecosystem",
+      navAI: "AI",
+      navExpertise: "Expertise",
+      navExperience: "Experience",
+      navAbout: "About",
+      navBrand: "Brand",
+      navContact: "Contact",
 
-      nav: [
-        "Home",
-        "Ecosystem",
-        "AI",
-        "Expertise",
-        "Experience",
-        "About",
-        "Brand",
-        "Contact"
-      ],
-
-      heroEyebrow:
-        "UX · DIGITAL EXPERIENCE · SYSTEMS · AI",
+      heroKicker:
+        "PERSONAL BRAND · DIGITAL EXPERIENCE · SYSTEMS THINKING",
 
       heroTitle:
-        `I BUILD SYSTEMS.<br>
-         I TRAIN MINDS.<br>
-         I CREATE <span>IMPACT.</span>`,
+        "I BUILD SYSTEMS. I TRAIN MINDS. I CREATE IMPACT.",
 
       heroDescription:
-        "I design digital experiences, build systems, explore AI and create ideas that move people forward.",
+        "UX thinking, digital experiences, AI-assisted systems and a growing ecosystem of ideas, products and brands.",
 
-      explore:
-        "Explore My World",
+      heroPrimary:
+        "Explore the Ecosystem",
 
-      connect:
+      heroSecondary:
         "Let's Connect",
 
       ecosystemKicker:
-        "MY ECOSYSTEM",
+        "THE SNK ECOSYSTEM",
 
       ecosystemTitle:
-        "One mind.<br>Multiple directions.",
+        "One mind. Multiple directions.",
 
       ecosystemDescription:
-        "Different platforms, different missions — connected by one vision.",
+        "Different brands. Different missions. One connected way of thinking.",
+
+      websitesDeal:
+        "WebsitesDeal",
+
+      websitesDealDesc:
+        "Digital solutions and website-focused experiences.",
+
+      tabayyunTV:
+        "TabayyunTV",
+
+      tabayyunTVDesc:
+        "A destination for meaningful Islamic media and content.",
+
+      snkInstitute:
+        "SNK IT Institute",
+
+      snkInstituteDesc:
+        "Learning, technology and practical digital skills.",
+
+      sarakat:
+        "Sarakat Agency",
+
+      sarakatDesc:
+        "Creative direction, digital strategy and agency thinking.",
+
+      snkDesign:
+        "SNK Design",
+
+      snkDesignDesc:
+        "Design thinking, visual systems and digital creativity.",
+
+      visitSite:
+        "Visit Site",
 
       aiKicker:
-        "AI & THINKING",
+        "AI · SYSTEMS · FUTURE",
 
       aiTitle:
-        "I don't just use AI. I think with it.",
+        "I don't just use AI. I design with it.",
 
       aiDescription:
-        "AI is becoming part of how I explore ideas, solve problems, automate workflows and understand what's possible next.",
+        "AI becomes powerful when it is connected to human thinking, structured workflows and real-world problems.",
 
-      aiLink:
-        "Let's build with intelligence ↗",
+      aiCore:
+        "AI",
+
+      aiNode1:
+        "Strategy",
+
+      aiNode2:
+        "UX Thinking",
+
+      aiNode3:
+        "Automation",
+
+      aiNode4:
+        "Research",
+
+      aiNode5:
+        "Creation",
 
       expertiseKicker:
-        "EXPERTISE",
+        "WHAT I WORK WITH",
 
       expertiseTitle:
-        "Where design meets systems.",
+        "Thinking across disciplines.",
 
-      expertiseDescription:
-        "A multidisciplinary approach to digital experience, product thinking and execution.",
+      expertise1:
+        "UX Strategy",
+
+      expertise1Desc:
+        "Turning complex problems into clearer digital experiences.",
+
+      expertise2:
+        "Product Thinking",
+
+      expertise2Desc:
+        "Connecting user needs, business goals and product direction.",
+
+      expertise3:
+        "Interface Design",
+
+      expertise3Desc:
+        "Designing interfaces that feel intentional, useful and refined.",
+
+      expertise4:
+        "Digital Systems",
+
+      expertise4Desc:
+        "Creating repeatable structures for products, content and workflows.",
+
+      expertise5:
+        "AI-Assisted Work",
+
+      expertise5Desc:
+        "Using AI to accelerate research, ideation and execution.",
+
+      expertise6:
+        "Creative Direction",
+
+      expertise6Desc:
+        "Building visual language and direction across digital brands.",
 
       experienceKicker:
         "EXPERIENCE",
 
       experienceTitle:
-        "EXPERIENCE<br>SHAPES THE MIND.",
+        "EXPERIENCE SHAPES THE MIND.",
+
+      experienceRole:
+        "UX Lead Digital Expert",
+
+      experienceCompany:
+        "Yaqeen Institute",
+
+      experienceLocation:
+        "Texas, USA · Remote",
+
+      experienceDate:
+        "2026 — PRESENT",
 
       experienceDescription:
-        "Every role teaches something. Every project changes how I think.",
+        "Working across digital experience, UX thinking, interface design and product-oriented problem solving.",
+
+      contribution1:
+        "Understand",
+
+      contribution1Desc:
+        "Find the real problem.",
+
+      contribution2:
+        "Structure",
+
+      contribution2Desc:
+        "Turn complexity into direction.",
+
+      contribution3:
+        "Execute",
+
+      contribution3Desc:
+        "Design and build with purpose.",
+
+      contribution4:
+        "Improve",
+
+      contribution4Desc:
+        "Learn, refine and repeat.",
+
+      philosophyLabel:
+        "WORK PHILOSOPHY",
+
+      philosophy:
+        "DON'T JUST DO THE WORK. UNDERSTAND IT.",
 
       aboutKicker:
         "ABOUT",
 
       aboutTitle:
-        "Curiosity drives<br>everything.",
+        "Build. Learn. Share.",
+
+      aboutDescription:
+        "I enjoy working at the intersection of design, technology, learning and systems thinking — creating things that are useful today while building knowledge for tomorrow.",
 
       brandKicker:
-        "BEYOND PORTFOLIO",
+        "THE BRAND",
 
       brandTitle:
-        "Ideas need a place<br>to travel.",
+        "SNK IS MORE THAN A NAME.",
+
+      brandDescription:
+        "It represents a way of thinking: build with intention, learn continuously and create work that leaves something behind.",
 
       contactKicker:
-        "CONTACT",
+        "LET'S CONNECT",
 
       contactTitle:
-        "Let's make something<br>meaningful.",
+        "Let's build something meaningful.",
 
       contactDescription:
-        "Have an idea, project or opportunity? Let's start a conversation."
+        "Have an idea, project or collaboration in mind? Start a conversation.",
 
+      contactButton:
+        "Start a Conversation",
+
+      footer:
+        "Built with curiosity, systems thinking and intention."
     },
 
 
     bn: {
+      navHome: "হোম",
+      navEcosystem: "ইকোসিস্টেম",
+      navAI: "এআই",
+      navExpertise: "দক্ষতা",
+      navExperience: "অভিজ্ঞতা",
+      navAbout: "পরিচিতি",
+      navBrand: "ব্র্যান্ড",
+      navContact: "যোগাযোগ",
 
-      nav: [
-        "হোম",
-        "ইকোসিস্টেম",
-        "AI",
-        "দক্ষতা",
-        "অভিজ্ঞতা",
-        "আমার সম্পর্কে",
-        "ব্র্যান্ড",
-        "যোগাযোগ"
-      ],
-
-      heroEyebrow:
-        "UX · DIGITAL EXPERIENCE · SYSTEMS · AI",
+      heroKicker:
+        "পার্সোনাল ব্র্যান্ড · ডিজিটাল এক্সপেরিয়েন্স · সিস্টেমস থিংকিং",
 
       heroTitle:
-        `আমি সিস্টেম তৈরি করি।<br>
-         আমি চিন্তা গড়ে তুলি।<br>
-         আমি <span>প্রভাব তৈরি করি।</span>`,
+        "আমি সিস্টেম তৈরি করি। মানুষকে শেখাই। প্রভাব তৈরি করি।",
 
       heroDescription:
-        "আমি ডিজিটাল অভিজ্ঞতা ডিজাইন করি, সিস্টেম তৈরি করি, AI নিয়ে কাজ করি এবং এমন আইডিয়া তৈরি করি যা মানুষকে সামনে এগিয়ে নিয়ে যায়।",
+        "UX thinking, digital experience, AI-assisted systems এবং ক্রমবর্ধমান ideas, products ও brands-এর একটি connected ecosystem।",
 
-      explore:
-        "আমার জগত দেখুন",
+      heroPrimary:
+        "ইকোসিস্টেম দেখুন",
 
-      connect:
+      heroSecondary:
         "যোগাযোগ করুন",
 
       ecosystemKicker:
-        "আমার ইকোসিস্টেম",
+        "SNK ইকোসিস্টেম",
 
       ecosystemTitle:
-        "একটি মন।<br>বহু দিক।",
+        "একটি চিন্তা। একাধিক দিক।",
 
       ecosystemDescription:
-        "বিভিন্ন প্ল্যাটফর্ম, বিভিন্ন উদ্দেশ্য — একটি ভিশনের মাধ্যমে সংযুক্ত।",
+        "ভিন্ন ব্র্যান্ড। ভিন্ন উদ্দেশ্য। কিন্তু চিন্তার ভিত্তি এক।",
+
+      websitesDeal:
+        "WebsitesDeal",
+
+      websitesDealDesc:
+        "ডিজিটাল সলিউশন এবং ওয়েবসাইট-কেন্দ্রিক অভিজ্ঞতা।",
+
+      tabayyunTV:
+        "TabayyunTV",
+
+      tabayyunTVDesc:
+        "অর্থবহ ইসলামিক মিডিয়া ও কনটেন্টের একটি destination।",
+
+      snkInstitute:
+        "SNK IT Institute",
+
+      snkInstituteDesc:
+        "লার্নিং, প্রযুক্তি এবং practical digital skills।",
+
+      sarakat:
+        "Sarakat Agency",
+
+      sarakatDesc:
+        "Creative direction, digital strategy এবং agency thinking।",
+
+      snkDesign:
+        "SNK Design",
+
+      snkDesignDesc:
+        "Design thinking, visual systems এবং digital creativity।",
+
+      visitSite:
+        "সাইট দেখুন",
 
       aiKicker:
-        "AI ও চিন্তাভাবনা",
+        "এআই · সিস্টেম · ভবিষ্যৎ",
 
       aiTitle:
-        "আমি শুধু AI ব্যবহার করি না। AI-এর সাথে চিন্তা করি।",
+        "আমি শুধু AI ব্যবহার করি না। AI দিয়ে design করি।",
 
       aiDescription:
-        "আইডিয়া অন্বেষণ, সমস্যা সমাধান, workflow automation এবং ভবিষ্যতের সম্ভাবনা বোঝার ক্ষেত্রে AI আমার চিন্তার অংশ হয়ে উঠছে।",
+        "AI সবচেয়ে powerful হয় যখন human thinking, structured workflow এবং real-world problem-এর সাথে যুক্ত হয়।",
 
-      aiLink:
-        "Intelligence দিয়ে তৈরি করি ↗",
+      aiCore:
+        "AI",
+
+      aiNode1:
+        "Strategy",
+
+      aiNode2:
+        "UX Thinking",
+
+      aiNode3:
+        "Automation",
+
+      aiNode4:
+        "Research",
+
+      aiNode5:
+        "Creation",
 
       expertiseKicker:
-        "দক্ষতা",
+        "আমি যেগুলো নিয়ে কাজ করি",
 
       expertiseTitle:
-        "যেখানে design এবং systems একসাথে কাজ করে।",
+        "বিভিন্ন discipline-এর মধ্যে চিন্তা করি।",
 
-      expertiseDescription:
-        "Digital experience, product thinking এবং execution-এর একটি multidisciplinary approach।",
+      expertise1:
+        "UX Strategy",
+
+      expertise1Desc:
+        "জটিল সমস্যাকে সহজ ও পরিষ্কার digital experience-এ রূপ দেওয়া।",
+
+      expertise2:
+        "Product Thinking",
+
+      expertise2Desc:
+        "User needs, business goals এবং product direction-কে একসাথে দেখা।",
+
+      expertise3:
+        "Interface Design",
+
+      expertise3Desc:
+        "ব্যবহারযোগ্য, intentional এবং refined interface তৈরি করা।",
+
+      expertise4:
+        "Digital Systems",
+
+      expertise4Desc:
+        "Products, content এবং workflow-এর জন্য repeatable structure তৈরি করা।",
+
+      expertise5:
+        "AI-Assisted Work",
+
+      expertise5Desc:
+        "Research, ideation এবং execution দ্রুত করতে AI ব্যবহার করা।",
+
+      expertise6:
+        "Creative Direction",
+
+      expertise6Desc:
+        "Digital brand-এর visual language ও creative direction তৈরি করা।",
 
       experienceKicker:
         "অভিজ্ঞতা",
 
       experienceTitle:
-        "অভিজ্ঞতা<br>চিন্তাকে গড়ে তোলে।",
+        "EXPERIENCE SHAPES THE MIND.",
+
+      experienceRole:
+        "UX Lead Digital Expert",
+
+      experienceCompany:
+        "Yaqeen Institute",
+
+      experienceLocation:
+        "Texas, USA · Remote",
+
+      experienceDate:
+        "২০২৬ — বর্তমান",
 
       experienceDescription:
-        "প্রতিটি role কিছু শেখায়। প্রতিটি project চিন্তার ধরন বদলে দেয়।",
+        "Digital experience, UX thinking, interface design এবং product-oriented problem solving নিয়ে কাজ করছি।",
+
+      contribution1:
+        "Understand",
+
+      contribution1Desc:
+        "আসল সমস্যাটি খুঁজে বের করা।",
+
+      contribution2:
+        "Structure",
+
+      contribution2Desc:
+        "জটিলতাকে direction-এ রূপ দেওয়া।",
+
+      contribution3:
+        "Execute",
+
+      contribution3Desc:
+        "উদ্দেশ্য নিয়ে design ও build করা।",
+
+      contribution4:
+        "Improve",
+
+      contribution4Desc:
+        "শেখা, refine করা এবং আবার প্রয়োগ করা।",
+
+      philosophyLabel:
+        "কাজের দর্শন",
+
+      philosophy:
+        "শুধু কাজটি করবেন না। কাজটিকে বুঝুন।",
 
       aboutKicker:
-        "আমার সম্পর্কে",
+        "পরিচিতি",
 
       aboutTitle:
-        "কৌতূহলই<br>সবকিছুর চালিকা শক্তি।",
+        "Build. Learn. Share.",
+
+      aboutDescription:
+        "Design, technology, learning এবং systems thinking-এর intersection-এ কাজ করতে ভালোবাসি — এমন কিছু তৈরি করতে চাই যা আজ useful এবং আগামীকাল knowledge তৈরি করে।",
 
       brandKicker:
-        "PORTFOLIO-এর বাইরে",
+        "ব্র্যান্ড",
 
       brandTitle:
-        "আইডিয়ারও<br>একটি গন্তব্য দরকার।",
+        "SNK শুধু একটি নাম নয়।",
+
+      brandDescription:
+        "এটি একটি চিন্তার পদ্ধতি: intention নিয়ে build করা, continuously শেখা এবং এমন কাজ তৈরি করা যার impact থেকে যায়।",
 
       contactKicker:
         "যোগাযোগ",
 
       contactTitle:
-        "চলুন অর্থবহ কিছু<br>তৈরি করি।",
+        "চলুন meaningful কিছু তৈরি করি।",
 
       contactDescription:
-        "কোনো idea, project বা opportunity আছে? চলুন কথা বলি।"
+        "কোনো idea, project অথবা collaboration আছে? একটি conversation দিয়ে শুরু করি।",
 
+      contactButton:
+        "কথা শুরু করুন",
+
+      footer:
+        "Curiosity, systems thinking এবং intention দিয়ে তৈরি।"
     }
-
   };
 
 
-  let currentLanguage =
-    storage.get(
-      "snk-language",
-      "en"
+  /* =======================================================
+     LANGUAGE ELEMENT MAPPING
+  ======================================================= */
+
+  const selectorMap = {
+    navHome: [
+      "#homeLink",
+      "[data-nav-home]"
+    ],
+
+    navEcosystem: [
+      "#ecosystemLink",
+      "[data-nav-ecosystem]"
+    ],
+
+    navAI: [
+      "#aiLink",
+      "[data-nav-ai]"
+    ],
+
+    navExpertise: [
+      "#expertiseLink",
+      "[data-nav-expertise]"
+    ],
+
+    navExperience: [
+      "#experienceLink",
+      "[data-nav-experience]"
+    ],
+
+    navAbout: [
+      "#aboutLink",
+      "[data-nav-about]"
+    ],
+
+    navBrand: [
+      "#brandLink",
+      "[data-nav-brand]"
+    ],
+
+    navContact: [
+      "#contactLink",
+      "[data-nav-contact]"
+    ]
+  };
+
+
+  function setText(selector, value) {
+    const elements = $$(selector);
+
+    elements.forEach((el) => {
+      el.textContent = value;
+    });
+  }
+
+  function applyLanguage(lang) {
+    const dictionary =
+      translations[lang] || translations.en;
+
+    root.setAttribute(
+      "lang",
+      lang === "bn"
+        ? "bn"
+        : "en"
     );
 
-  if (
-    currentLanguage !== "en" &&
-    currentLanguage !== "bn"
-  ) {
-    currentLanguage = "en";
-  }
+    /*
+     * Preferred method:
+     * Add data-i18n="heroTitle"
+     * to any element.
+     */
+
+    $$("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+
+      if (
+        dictionary[key] !== undefined
+      ) {
+        el.textContent =
+          dictionary[key];
+      }
+    });
 
 
-  function setHTML(
-    selector,
-    value
-  ) {
+    /*
+     * Fallback selectors for
+     * existing V3 markup.
+     */
 
-    const element =
-      document.querySelector(selector);
+    const fallbacks = {
 
-    if (!element) return;
+      heroKicker:
+        ".hero-kicker",
 
-    element.innerHTML = value;
-  }
+      heroTitle:
+        ".hero-title",
+
+      heroDescription:
+        ".hero-description",
+
+      heroPrimary:
+        ".hero-actions .btn-primary",
+
+      heroSecondary:
+        ".hero-actions .btn-secondary",
+
+      ecosystemKicker:
+        "#ecosystem .eyebrow",
+
+      ecosystemTitle:
+        "#ecosystem .section-title",
+
+      ecosystemDescription:
+        "#ecosystem .section-copy",
+
+      aiKicker:
+        "#ai .eyebrow",
+
+      aiTitle:
+        "#ai h2",
+
+      aiDescription:
+        "#ai .ai-copy > p",
+
+      expertiseKicker:
+        "#expertise .eyebrow",
+
+      expertiseTitle:
+        "#expertise .section-title",
+
+      experienceKicker:
+        "#experience .eyebrow",
+
+      experienceTitle:
+        "#experience .experience-heading",
+
+      experienceRole:
+        "#experience .experience-card h3",
+
+      experienceCompany:
+        "#experience .experience-company",
+
+      experienceLocation:
+        "#experience .experience-location",
+
+      experienceDate:
+        "#experience .experience-date",
+
+      experienceDescription:
+        "#experience .experience-card > p",
+
+      philosophyLabel:
+        "#experience .experience-philosophy small",
+
+      philosophy:
+        "#experience .experience-philosophy h4",
+
+      aboutKicker:
+        "#about .eyebrow",
+
+      aboutTitle:
+        "#about h2",
+
+      aboutDescription:
+        "#about .about-copy > p",
+
+      brandKicker:
+        "#brand .eyebrow",
+
+      brandTitle:
+        "#brand .brand-banner h3",
+
+      brandDescription:
+        "#brand .brand-banner p",
+
+      contactKicker:
+        "#contact .eyebrow",
+
+      contactTitle:
+        "#contact h2",
+
+      contactDescription:
+        "#contact .contact-copy",
+
+      contactButton:
+        "#contact .btn"
+    };
 
 
-  function setText(
-    selector,
-    value
-  ) {
+    Object.entries(fallbacks).forEach(
+      ([key, selector]) => {
+        if (
+          dictionary[key] === undefined
+        ) return;
 
-    const element =
-      document.querySelector(selector);
+        const elements =
+          $$(selector);
 
-    if (!element) return;
+        elements.forEach((el) => {
+          /*
+           * Don't destroy nested spans
+           * if the element contains
+           * highlighted text.
+           */
+          if (
+            key === "heroTitle" ||
+            key === "aiTitle" ||
+            key === "experienceTitle" ||
+            key === "aboutTitle" ||
+            key === "brandTitle" ||
+            key === "contactTitle"
+          ) {
+            if (el.children.length > 0) {
+              return;
+            }
+          }
 
-    element.textContent = value;
-  }
-
-
-  function applyLanguage(language) {
-
-    const t =
-      translations[language];
-
-    if (!t) return;
-
-
-    /* NAV */
-
-    navLinks.forEach(
-      (link, index) => {
-
-        if (t.nav[index]) {
-          link.textContent =
-            t.nav[index];
-        }
-
+          el.textContent =
+            dictionary[key];
+        });
       }
     );
 
 
-    /* HERO */
+    /*
+     * Ecosystem cards
+     */
 
-    setText(
-      ".hero .eyebrow",
-      t.heroEyebrow
-    );
+    const ecosystemData = [
+      ["websitesDeal", 0],
+      ["tabayyunTV", 1],
+      ["snkInstitute", 2],
+      ["sarakat", 3],
+      ["snkDesign", 4]
+    ];
 
-    setHTML(
-      ".hero h1",
-      t.heroTitle
-    );
+    const ecosystemCards =
+      $$(".ecosystem-card");
 
-    setText(
-      ".hero-description",
-      t.heroDescription
-    );
+    ecosystemCards.forEach(
+      (card, index) => {
+        const item =
+          ecosystemData.find(
+            (entry) =>
+              entry[1] === index
+          );
 
-    setText(
-      ".hero-actions .btn-primary",
-      t.explore
-    );
+        if (!item) return;
 
-    setText(
-      ".hero-actions .btn-secondary",
-      t.connect
-    );
+        const [key] = item;
 
+        const title =
+          $(".ecosystem-card h3", card);
 
-    /* ECOSYSTEM */
+        const description =
+          $(".ecosystem-card p", card);
 
-    setText(
-      ".ecosystem-section .section-kicker",
-      t.ecosystemKicker
-    );
+        const link =
+          $(".ecosystem-link", card);
 
-    setHTML(
-      ".ecosystem-section .section-heading h2",
-      t.ecosystemTitle
-    );
+        if (title) {
+          title.textContent =
+            dictionary[key];
+        }
 
-    setText(
-      ".ecosystem-section .section-heading p",
-      t.ecosystemDescription
-    );
+        const descKey =
+          `${key}Desc`;
 
+        if (
+          description &&
+          dictionary[descKey]
+        ) {
+          description.textContent =
+            dictionary[descKey];
+        }
 
-    /* AI */
-
-    setText(
-      ".ai-section .section-kicker",
-      t.aiKicker
-    );
-
-    setText(
-      ".ai-copy h2",
-      t.aiTitle
-    );
-
-    setText(
-      ".ai-copy > p:not(.section-kicker)",
-      t.aiDescription
-    );
-
-    setText(
-      ".ai-copy .text-link",
-      t.aiLink
+        if (link) {
+          link.textContent =
+            dictionary.visitSite;
+        }
+      }
     );
 
 
-    /* EXPERTISE */
+    /*
+     * Expertise cards
+     */
 
-    setText(
-      ".expertise-section .section-kicker",
-      t.expertiseKicker
-    );
+    const expertiseCards =
+      $$(".expertise-card");
 
-    setText(
-      ".expertise-section .section-heading h2",
-      t.expertiseTitle
-    );
+    expertiseCards.forEach(
+      (card, index) => {
 
-    setText(
-      ".expertise-section .section-heading p",
-      t.expertiseDescription
-    );
+        const number =
+          index + 1;
 
+        const title =
+          $(".expertise-card h3", card);
 
-    /* EXPERIENCE */
+        const description =
+          $(".expertise-card p", card);
 
-    setText(
-      ".experience-heading .section-kicker",
-      t.experienceKicker
-    );
+        const titleKey =
+          `expertise${number}`;
 
-    setHTML(
-      ".experience-heading h2",
-      t.experienceTitle
-    );
+        const descKey =
+          `expertise${number}Desc`;
 
-    setText(
-      ".experience-heading > p:not(.section-kicker)",
-      t.experienceDescription
-    );
+        if (
+          title &&
+          dictionary[titleKey]
+        ) {
+          title.textContent =
+            dictionary[titleKey];
+        }
 
-
-    /* ABOUT */
-
-    setText(
-      ".about-section .section-kicker",
-      t.aboutKicker
-    );
-
-    setHTML(
-      ".about-section .section-heading h2",
-      t.aboutTitle
+        if (
+          description &&
+          dictionary[descKey]
+        ) {
+          description.textContent =
+            dictionary[descKey];
+        }
+      }
     );
 
 
-    /* BRAND */
+    /*
+     * Experience contributions
+     */
 
-    setText(
-      ".brand-section .section-kicker",
-      t.brandKicker
+    const contributionCards =
+      $$(".experience-contribution");
+
+    contributionCards.forEach(
+      (card, index) => {
+
+        const number =
+          index + 1;
+
+        const strong =
+          $("strong", card);
+
+        const span =
+          $("span", card);
+
+        const titleKey =
+          `contribution${number}`;
+
+        const descKey =
+          `contribution${number}Desc`;
+
+        if (
+          strong &&
+          dictionary[titleKey]
+        ) {
+          strong.textContent =
+            dictionary[titleKey];
+        }
+
+        if (
+          span &&
+          dictionary[descKey]
+        ) {
+          span.textContent =
+            dictionary[descKey];
+        }
+      }
     );
 
-    setHTML(
-      ".brand-section .section-heading h2",
-      t.brandTitle
+
+    /*
+     * AI nodes
+     */
+
+    const aiNodes =
+      $$(".ai-node");
+
+    aiNodes.forEach(
+      (node, index) => {
+
+        const key =
+          `aiNode${index + 1}`;
+
+        if (dictionary[key]) {
+          node.textContent =
+            dictionary[key];
+        }
+      }
     );
 
 
-    /* CONTACT */
+    /*
+     * Language button
+     */
 
-    setText(
-      ".contact-section .section-kicker",
-      t.contactKicker
-    );
+    const languageButton =
+      $("[data-language-toggle]") ||
+      $("#languageToggle") ||
+      $("[aria-label*='language' i]");
 
-    setHTML(
-      ".contact-heading h2",
-      t.contactTitle
-    );
+    if (languageButton) {
+      languageButton.textContent =
+        lang === "bn"
+          ? "EN"
+          : "বাংলা";
 
-    setText(
-      ".contact-heading > p:not(.section-kicker)",
-      t.contactDescription
-    );
-
-
-    /* BUTTON */
-
-    if (languageToggle) {
-
-      languageToggle.textContent =
-        language === "en"
-          ? "বাংলা"
-          : "EN";
-
+      languageButton.setAttribute(
+        "aria-label",
+        lang === "bn"
+          ? "Switch to English"
+          : "বাংলা ভাষায় পরিবর্তন করুন"
+      );
     }
 
-
-    document.documentElement.lang =
-      language === "bn"
-        ? "bn"
-        : "en";
-
-    storage.set(
-      "snk-language",
-      language
+    localStorage.setItem(
+      LANGUAGE_KEY,
+      lang
     );
-
   }
 
 
-  applyLanguage(
-    currentLanguage
-  );
+  const savedLanguage =
+    localStorage.getItem(
+      LANGUAGE_KEY
+    ) || "en";
+
+  applyLanguage(savedLanguage);
 
 
-  if (languageToggle) {
+  const languageButton =
+    $("[data-language-toggle]") ||
+    $("#languageToggle") ||
+    $("[aria-label*='language' i]");
 
-    languageToggle.addEventListener(
+  if (languageButton) {
+    languageButton.addEventListener(
       "click",
       () => {
 
-        currentLanguage =
-          currentLanguage === "en"
-            ? "bn"
-            : "en";
+        const current =
+          localStorage.getItem(
+            LANGUAGE_KEY
+          ) || "en";
 
         applyLanguage(
-          currentLanguage
+          current === "en"
+            ? "bn"
+            : "en"
         );
-
       }
     );
-
   }
 
 
   /* =======================================================
-     05. TERMINAL TYPING
+     TERMINAL TYPING
   ======================================================= */
 
-  const typingWords = [
+  const terminalText =
+    $(".terminal-text");
 
-    "thinking...",
-    "designing...",
-    "building...",
-    "learning...",
-    "creating...",
-    "solving..."
+  if (terminalText) {
 
-  ];
+    const messages = [
+      "thinking...",
+      "designing...",
+      "building...",
+      "learning...",
+      "creating...",
+      "solving..."
+    ];
 
-  let wordIndex = 0;
-  let characterIndex = 0;
-  let deleting = false;
+    let messageIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
+    function terminalLoop() {
 
-  function typeTerminal() {
+      const current =
+        messages[messageIndex];
 
-    if (!typingText) return;
+      if (!deleting) {
 
-    const word =
-      typingWords[wordIndex];
+        charIndex++;
 
-    if (!deleting) {
+        terminalText.textContent =
+          current.slice(
+            0,
+            charIndex
+          );
 
-      characterIndex++;
+        if (
+          charIndex >=
+          current.length
+        ) {
 
-      typingText.textContent =
-        word.substring(
-          0,
-          characterIndex
-        );
+          deleting = true;
 
-      if (
-        characterIndex >=
-        word.length
-      ) {
+          setTimeout(
+            terminalLoop,
+            1200
+          );
 
-        deleting = true;
+          return;
+        }
 
         setTimeout(
-          typeTerminal,
-          1100
+          terminalLoop,
+          65
         );
 
-        return;
-      }
+      } else {
 
-    } else {
+        charIndex--;
 
-      characterIndex--;
+        terminalText.textContent =
+          current.slice(
+            0,
+            charIndex
+          );
 
-      typingText.textContent =
-        word.substring(
-          0,
-          characterIndex
+        if (
+          charIndex <= 0
+        ) {
+
+          deleting = false;
+
+          messageIndex =
+            (messageIndex + 1) %
+            messages.length;
+
+          setTimeout(
+            terminalLoop,
+            250
+          );
+
+          return;
+        }
+
+        setTimeout(
+          terminalLoop,
+          35
         );
-
-      if (characterIndex <= 0) {
-
-        deleting = false;
-
-        wordIndex =
-          (wordIndex + 1) %
-          typingWords.length;
-
       }
-
     }
 
-    setTimeout(
-      typeTerminal,
-      deleting ? 45 : 75
-    );
-
+    terminalLoop();
   }
 
 
-  typeTerminal();
-
-
   /* =======================================================
-     06. RAIN
+     RAIN
   ======================================================= */
 
-  let rainActive =
-    storage.get(
-      "snk-rain",
-      "off"
-    ) === "on";
+  const RAIN_KEY =
+    "snk-rain";
+
+  let rainLayer =
+    $(".rain-layer");
+
+  if (!rainLayer) {
+
+    rainLayer =
+      document.createElement(
+        "div"
+      );
+
+    rainLayer.className =
+      "rain-layer";
+
+    rainLayer.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    body.appendChild(
+      rainLayer
+    );
+  }
 
 
   function createRain() {
 
-    if (!rainContainer) return;
-
-    rainContainer.innerHTML = "";
-
-    if (!rainActive) return;
-
+    rainLayer.innerHTML = "";
 
     const amount =
-      window.innerWidth < 700
+      window.innerWidth < 600
         ? 55
         : 110;
 
+    const fragment =
+      document.createDocumentFragment();
 
     for (
       let i = 0;
@@ -704,86 +1155,99 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
 
       const drop =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
 
       drop.className =
-        "rain-drop";
+        "raindrop";
 
       drop.style.left =
-        `${Math.random() * 100}%`;
-
-      drop.style.height =
-        `${12 + Math.random() * 22}px`;
-
-      drop.style.opacity =
-        `${.12 + Math.random() * .28}`;
+        `${Math.random() * 110}%`;
 
       drop.style.animationDuration =
-        `${.55 + Math.random() * .65}s`;
+        `${.45 + Math.random() * .8}s`;
 
       drop.style.animationDelay =
         `${Math.random() * 1.5}s`;
 
-      rainContainer.appendChild(
+      drop.style.height =
+        `${10 + Math.random() * 18}px`;
+
+      fragment.appendChild(
         drop
       );
-
     }
 
+    rainLayer.appendChild(
+      fragment
+    );
   }
 
 
-  function updateRain() {
+  function setRain(enabled) {
 
     body.classList.toggle(
       "rain-active",
-      rainActive
+      enabled
     );
 
-    if (rainToggle) {
+    localStorage.setItem(
+      RAIN_KEY,
+      enabled
+        ? "1"
+        : "0"
+    );
 
-      rainToggle.textContent =
-        rainActive
-          ? "Rain ✓"
-          : "Rain";
-
+    if (enabled) {
+      createRain();
     }
-
-    storage.set(
-      "snk-rain",
-      rainActive
-        ? "on"
-        : "off"
-    );
-
-    createRain();
-
   }
 
 
-  updateRain();
+  const rainButton =
+    $("[data-rain-toggle]") ||
+    $("#rainToggle") ||
+    $$("button").find(
+      (button) =>
+        button.textContent
+          .trim()
+          .toLowerCase()
+          .includes("rain")
+    );
 
 
-  if (rainToggle) {
+  if (rainButton) {
 
-    rainToggle.addEventListener(
+    rainButton.addEventListener(
       "click",
       () => {
 
-        rainActive =
-          !rainActive;
+        const active =
+          body.classList.contains(
+            "rain-active"
+          );
 
-        updateRain();
-
+        setRain(!active);
       }
     );
-
   }
 
 
+  const savedRain =
+    localStorage.getItem(
+      RAIN_KEY
+    ) === "1";
+
+  setRain(savedRain);
+
+
   /* =======================================================
-     07. FLYING BIRDS
+     FLYING BIRDS
   ======================================================= */
+
+  const birdsContainer =
+    $(".birds");
 
   function createBirds() {
 
@@ -791,133 +1255,118 @@ document.addEventListener("DOMContentLoaded", () => {
 
     birdsContainer.innerHTML = "";
 
-
-    const amount =
+    const count =
       window.innerWidth < 600
-        ? 3
-        : 6;
-
+        ? 4
+        : 7;
 
     for (
       let i = 0;
-      i < amount;
+      i < count;
       i++
     ) {
 
       const bird =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
 
       bird.className =
         "bird";
 
-      bird.style.left =
-        `${10 + Math.random() * 80}%`;
-
       bird.style.top =
         `${8 + Math.random() * 42}%`;
 
+      bird.style.left =
+        `${-10 - Math.random() * 20}%`;
+
       bird.style.animation =
         `birdFly ${
-          18 + Math.random() * 18
-        }s linear infinite`;
-
-      bird.style.animationDelay =
-        `${Math.random() * -20}s`;
+          16 + Math.random() * 12
+        }s linear ${
+          -Math.random() * 15
+        }s infinite`;
 
       bird.style.transform =
         `scale(${
-          .65 + Math.random() * .65
+          .55 + Math.random() * .7
         })`;
 
       birdsContainer.appendChild(
         bird
       );
-
     }
 
+
+    if (
+      !$("#snkBirdAnimation")
+    ) {
+
+      const style =
+        document.createElement(
+          "style"
+        );
+
+      style.id =
+        "snkBirdAnimation";
+
+      style.textContent = `
+        @keyframes birdFly {
+          0% {
+            transform:
+              translateX(-12vw)
+              translateY(0)
+              scale(.7);
+          }
+
+          25% {
+            transform:
+              translateX(28vw)
+              translateY(-14px)
+              scale(.8);
+          }
+
+          50% {
+            transform:
+              translateX(55vw)
+              translateY(8px)
+              scale(.9);
+          }
+
+          75% {
+            transform:
+              translateX(82vw)
+              translateY(-12px)
+              scale(1);
+          }
+
+          100% {
+            transform:
+              translateX(125vw)
+              translateY(0)
+              scale(1.05);
+          }
+        }
+      `;
+
+      document.head.appendChild(
+        style
+      );
+    }
   }
-
-
-  const birdAnimationStyle =
-    document.createElement("style");
-
-  birdAnimationStyle.textContent = `
-
-    @keyframes birdFly {
-
-      0% {
-        transform:
-          translate3d(
-            -120px,
-            0,
-            0
-          )
-          scale(.7);
-      }
-
-      50% {
-        transform:
-          translate3d(
-            35vw,
-            -35px,
-            0
-          )
-          scale(1);
-      }
-
-      100% {
-        transform:
-          translate3d(
-            100vw,
-            20px,
-            0
-          )
-          scale(.65);
-      }
-
-    }
-
-  `;
-
-  document.head.appendChild(
-    birdAnimationStyle
-  );
 
   createBirds();
 
 
   /* =======================================================
-     08. SCROLL REVEAL
+     SCROLL REVEAL
   ======================================================= */
 
   const revealElements =
-    document.querySelectorAll(
-      ".section-heading, " +
-      ".ecosystem-card, " +
-      ".expertise-card, " +
-      ".experience-card, " +
-      ".about-copy, " +
-      ".brand-banner, " +
-      ".social-card, " +
-      ".ai-copy, " +
-      ".ai-visual"
-    );
-
-
-  revealElements.forEach(
-    (element) => {
-
-      element.classList.add(
-        "reveal"
-      );
-
-    }
-  );
-
+    $$(".reveal");
 
   if (
-    "IntersectionObserver"
-    in window
+    "IntersectionObserver" in window
   ) {
 
     const revealObserver =
@@ -932,34 +1381,28 @@ document.addEventListener("DOMContentLoaded", () => {
               ) {
 
                 entry.target.classList.add(
-                  "visible"
+                  "is-visible"
                 );
 
                 observer.unobserve(
                   entry.target
                 );
-
               }
-
             }
           );
-
         },
         {
           threshold: .12,
           rootMargin:
-            "0px 0px -40px 0px"
+            "0px 0px -50px 0px"
         }
       );
 
-
     revealElements.forEach(
       (element) => {
-
         revealObserver.observe(
           element
         );
-
       }
     );
 
@@ -967,20 +1410,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(
       (element) => {
-
         element.classList.add(
-          "visible"
+          "is-visible"
         );
-
       }
     );
-
   }
 
 
   /* =======================================================
-     09. HEADER SCROLL STATE
+     HEADER SCROLL
   ======================================================= */
+
+  const header =
+    $(".site-header");
 
   function updateHeader() {
 
@@ -988,11 +1431,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     header.classList.toggle(
       "scrolled",
-      window.scrollY > 30
+      window.scrollY > 25
     );
-
   }
-
 
   updateHeader();
 
@@ -1006,15 +1447,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     10. ACTIVE NAV
+     ACTIVE NAV
   ======================================================= */
 
+  const navLinks =
+    $$(".main-nav a");
+
+  const sections =
+    $$(
+      "main section[id], section[id]"
+    );
+
   if (
-    "IntersectionObserver"
-    in window
+    navLinks.length &&
+    sections.length &&
+    "IntersectionObserver" in window
   ) {
 
-    const navObserver =
+    const sectionObserver =
       new IntersectionObserver(
         (entries) => {
 
@@ -1022,272 +1472,288 @@ document.addEventListener("DOMContentLoaded", () => {
             (entry) => {
 
               if (
-                entry.isIntersecting
-              ) {
+                !entry.isIntersecting
+              ) return;
 
-                const id =
-                  entry.target.id;
+              const id =
+                entry.target.id;
 
-                navLinks.forEach(
-                  (link) => {
+              navLinks.forEach(
+                (link) => {
 
-                    const href =
-                      link.getAttribute(
-                        "href"
-                      );
-
-                    link.classList.toggle(
-                      "active",
-                      href ===
-                      `#${id}`
+                  const href =
+                    link.getAttribute(
+                      "href"
                     );
 
-                  }
-                );
-
-              }
-
+                  link.classList.toggle(
+                    "active",
+                    href ===
+                      `#${id}`
+                  );
+                }
+              );
             }
           );
-
         },
         {
           rootMargin:
-            "-30% 0px -55% 0px"
+            "-30% 0px -55% 0px",
+          threshold: 0
         }
       );
 
-
     sections.forEach(
       (section) => {
-
-        navObserver.observe(
+        sectionObserver.observe(
           section
         );
-
       }
     );
-
   }
 
 
   /* =======================================================
-     11. SMOOTH ANCHOR NAVIGATION
+     SMOOTH ANCHOR NAVIGATION
   ======================================================= */
 
-  const internalLinks =
-    document.querySelectorAll(
-      'a[href^="#"]'
-    );
-
-
-  internalLinks.forEach(
+  $$(
+    'a[href^="#"]'
+  ).forEach(
     (link) => {
 
       link.addEventListener(
         "click",
         (event) => {
 
-          const targetId =
-            link
-              .getAttribute("href")
-              .substring(1);
+          const href =
+            link.getAttribute(
+              "href"
+            );
 
-          if (!targetId) return;
+          if (
+            !href ||
+            href === "#"
+          ) {
+            return;
+          }
 
           const target =
-            document.getElementById(
-              targetId
+            document.querySelector(
+              href
             );
 
           if (!target) return;
 
           event.preventDefault();
 
-
           const headerHeight =
             header
               ? header.offsetHeight
               : 0;
 
-
-          const targetPosition =
+          const targetTop =
             target.getBoundingClientRect()
               .top +
             window.scrollY -
-            headerHeight;
-
+            headerHeight -
+            15;
 
           window.scrollTo({
             top:
               Math.max(
-                targetPosition,
+                targetTop,
                 0
               ),
             behavior:
               "smooth"
           });
 
-
-          try {
-
-            history.replaceState(
-              null,
-              "",
-              `#${targetId}`
-            );
-
-          } catch {
-            // Ignore history errors
-          }
-
+          history.replaceState(
+            null,
+            "",
+            href
+          );
         }
       );
-
     }
   );
 
 
   /* =======================================================
-     12. HOME HASH FIX
+     HOME HASH FIX
   ======================================================= */
 
   if (
-    window.location.hash === "#home"
+    window.location.hash ===
+    "#home"
   ) {
 
     setTimeout(
       () => {
-
         window.scrollTo({
           top: 0,
           behavior: "auto"
         });
-
       },
       50
     );
-
   }
 
 
   /* =======================================================
-     13. CARD POINTER EFFECT
+     CARD TILT
   ======================================================= */
 
-  const interactiveCards =
-    document.querySelectorAll(
-      ".ecosystem-card, " +
-      ".expertise-card, " +
-      ".social-card, " +
-      ".brand-banner"
+  const tiltCards =
+    $(
+      ".ecosystem-card, .expertise-card, .social-card, .brand-banner"
     );
 
+  const supportsHover =
+    window.matchMedia &&
+    window.matchMedia(
+      "(hover: hover)"
+    ).matches;
 
-  interactiveCards.forEach(
-    (card) => {
 
-      card.addEventListener(
-        "pointermove",
-        (event) => {
+  if (supportsHover) {
 
-          if (
-            window.innerWidth < 800
-          ) {
-            return;
+    tiltCards.forEach(
+      (card) => {
+
+        card.addEventListener(
+          "mousemove",
+          (event) => {
+
+            const rect =
+              card.getBoundingClientRect();
+
+            const x =
+              event.clientX -
+              rect.left;
+
+            const y =
+              event.clientY -
+              rect.top;
+
+            const rotateY =
+              ((x / rect.width) -
+                .5) * 5;
+
+            const rotateX =
+              ((y / rect.height) -
+                .5) * -5;
+
+            card.classList.add(
+              "tilt-active"
+            );
+
+            card.style.transform =
+              `perspective(900px)
+               rotateX(${rotateX}deg)
+               rotateY(${rotateY}deg)
+               translateY(-5px)`;
           }
-
-          const rect =
-            card.getBoundingClientRect();
-
-          const x =
-            event.clientX -
-            rect.left;
-
-          const y =
-            event.clientY -
-            rect.top;
-
-          const rotateX =
-            ((y / rect.height) -
-              .5) * -3;
-
-          const rotateY =
-            ((x / rect.width) -
-              .5) * 3;
+        );
 
 
-          card.style.transform =
-            `
-              perspective(900px)
-              translateY(-7px)
-              rotateX(${rotateX}deg)
-              rotateY(${rotateY}deg)
-            `;
+        card.addEventListener(
+          "mouseleave",
+          () => {
 
-        }
-      );
+            card.classList.remove(
+              "tilt-active"
+            );
 
-
-      card.addEventListener(
-        "pointerleave",
-        () => {
-
-          card.style.transform = "";
-
-        }
-      );
-
-    }
-  );
+            card.style.transform =
+              "";
+          }
+        );
+      }
+    );
+  }
 
 
   /* =======================================================
-     14. KEYBOARD SHORTCUT
+     KEYBOARD SHORTCUTS
   ======================================================= */
 
   document.addEventListener(
     "keydown",
     (event) => {
 
+      /*
+       * T = Theme
+       */
+
       if (
-        event.key.toLowerCase() === "t" &&
-        !event.ctrlKey &&
-        !event.metaKey &&
-        !event.altKey
+        event.key.toLowerCase() ===
+        "t" &&
+        !isTypingTarget(event.target)
       ) {
 
-        const activeElement =
-          document.activeElement;
+        const current =
+          root.getAttribute(
+            "data-theme"
+          ) || "dark";
 
-        const isTyping =
-          activeElement &&
-          (
-            activeElement.tagName ===
-              "INPUT" ||
-            activeElement.tagName ===
-              "TEXTAREA" ||
-            activeElement.isContentEditable
-          );
-
-        if (isTyping) return;
-
-        if (themeToggle) {
-          themeToggle.click();
-        }
-
+        setTheme(
+          current === "dark"
+            ? "light"
+            : "dark"
+        );
       }
 
+
+      /*
+       * R = Rain
+       */
+
+      if (
+        event.key.toLowerCase() ===
+        "r" &&
+        !isTypingTarget(event.target)
+      ) {
+
+        const active =
+          body.classList.contains(
+            "rain-active"
+          );
+
+        setRain(!active);
+      }
     }
   );
 
 
+  function isTypingTarget(
+    element
+  ) {
+
+    if (!element) {
+      return false;
+    }
+
+    const tag =
+      element.tagName
+        ? element.tagName.toLowerCase()
+        : "";
+
+    return (
+      tag === "input" ||
+      tag === "textarea" ||
+      tag === "select" ||
+      element.isContentEditable
+    );
+  }
+
+
   /* =======================================================
-     15. RESIZE
+     RESIZE
   ======================================================= */
 
   let resizeTimer;
-
 
   window.addEventListener(
     "resize",
@@ -1301,30 +1767,125 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(
           () => {
 
-            createRain();
+            if (
+              body.classList.contains(
+                "rain-active"
+              )
+            ) {
+              createRain();
+            }
+
             createBirds();
 
           },
           250
         );
-
     }
   );
 
 
   /* =======================================================
-     16. CONSOLE BRANDING
+     EXTERNAL LINKS
+  ======================================================= */
+
+  $$(
+    'a[href^="http"]'
+  ).forEach(
+    (link) => {
+
+      const url =
+        link.getAttribute(
+          "href"
+        );
+
+      if (!url) return;
+
+      try {
+
+        const linkURL =
+          new URL(
+            url,
+            window.location.href
+          );
+
+        if (
+          linkURL.hostname !==
+          window.location.hostname
+        ) {
+
+          link.setAttribute(
+            "target",
+            "_blank"
+          );
+
+          link.setAttribute(
+            "rel",
+            "noopener noreferrer"
+          );
+        }
+
+      } catch {
+        // Ignore invalid URLs.
+      }
+    }
+  );
+
+
+  /* =======================================================
+     VISIBILITY / PAGE LOAD
+  ======================================================= */
+
+  window.addEventListener(
+    "load",
+    () => {
+
+      body.classList.add(
+        "page-loaded"
+      );
+
+      /*
+       * Trigger initial reveal
+       * for elements already visible.
+       */
+
+      revealElements.forEach(
+        (element) => {
+
+          const rect =
+            element.getBoundingClientRect();
+
+          if (
+            rect.top <
+            window.innerHeight * .9
+          ) {
+
+            element.classList.add(
+              "is-visible"
+            );
+          }
+        }
+      );
+    }
+  );
+
+
+  /* =======================================================
+     CONSOLE BRANDING
   ======================================================= */
 
   console.log(
-    "%c SHAH NEIL KHAN ",
-    "background:#d89a55;color:#080808;font-size:18px;font-weight:800;padding:8px 14px;"
+    "%c SNK Portfolio V3.2 ",
+    `
+      background:#d7a84b;
+      color:#080808;
+      padding:7px 12px;
+      border-radius:5px;
+      font-weight:800;
+    `
   );
 
   console.log(
-    "%cI BUILD SYSTEMS. I TRAIN MINDS. I CREATE IMPACT.",
-    "color:#d89a55;font-size:12px;font-weight:600;"
+    "Built with curiosity, systems thinking and intention."
   );
 
-
-});
+})();
