@@ -1,688 +1,1077 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shah Neil Khan — Software Engineer & UI/UX Design Expert</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --void:#07090a;
-    --panel:#0d1211;
-    --panel-2:#111817;
-    --line:#1c2523;
-    --teal-deep:#0f2d29;
-    --teal-glow:#2bb3a3;
-    --gold:#c9a24b;
-    --lime:#b7d33e;
-    --text:#eef1ee;
-    --muted:#8b948e;
-  }
-  html[data-theme="light"]{
-    --void:#f7f6f2;
-    --panel:#ffffff;
-    --panel-2:#f0efe9;
-    --line:#e3e1d8;
-    --teal-glow:#128a7c;
-    --gold:#a97f26;
-    --lime:#6f8a1b;
-    --text:#171916;
-    --muted:#5c6259;
-  }
-  html[data-theme="light"] body::after{ opacity:0.4; }
-  html[data-theme="light"] .badge-tag{ background:rgba(255,255,255,0.85); }
-  .icon-btn{
-    width:36px; height:36px; border-radius:8px; border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center; font-size:15px; cursor:pointer;
-    background:transparent; color:var(--text);
-  }
-  .icon-btn:hover{ border-color:var(--teal-glow); }
-  .nav-tools{ display:flex; align-items:center; gap:10px; position:relative; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  /* settings panel */
-  .settings-panel{
-    position:absolute; top:48px; right:0; width:230px;
-    background:var(--panel); border:1px solid var(--line); border-radius:12px;
-    padding:16px; box-shadow:0 20px 40px -12px rgba(0,0,0,0.5);
-    display:none; z-index:60;
-  }
-  .settings-panel.open{ display:block; }
-  .settings-group{ margin-bottom:14px; }
-  .settings-group:last-child{ margin-bottom:0; }
-  .settings-label{ font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:8px; }
-  .settings-options{ display:flex; flex-direction:column; gap:6px; }
-  .settings-option{ display:flex; align-items:center; gap:8px; font-size:13.5px; cursor:pointer; }
-  .settings-option input{ accent-color:var(--teal-glow); }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--void);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    overflow-x:hidden;
-    transition: background .3s ease, color .3s ease;
-  }
-  h1,h2,h3,.display{ font-family:'Space Grotesk',sans-serif; }
-  a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block;}
-  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  <title>Shah Neil Khan — UX Lead Digital Expert</title>
 
-  /* ambient background glow */
-  body::before{
-    content:"";
-    position:fixed; inset:0; z-index:-2;
-    background:
-      radial-gradient(700px 500px at 15% -5%, rgba(43,179,163,0.14), transparent 60%),
-      radial-gradient(600px 500px at 100% 10%, rgba(201,162,75,0.08), transparent 60%);
-  }
-  body::after{
-    content:"";
-    position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 34px 34px;
-    mask-image: radial-gradient(circle at 50% 0%, black, transparent 70%);
-  }
+  <meta
+    name="description"
+    content="Shah Neil Khan — UX Lead Digital Expert, Software Engineer and UI/UX Design Expert building digital experiences, systems and ideas."
+  >
 
-  /* nav */
-  header{
-    position:sticky; top:0; z-index:50;
-    backdrop-filter: blur(14px);
-    background: rgba(7,9,10,0.72);
-    border-bottom:1px solid var(--line);
-  }
-  nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1120px; margin:0 auto; }
-  .logo{ font-weight:700; font-size:17px; letter-spacing:0.3px; }
-  .logo span{ color:var(--teal-glow); }
-  .navlinks{ display:flex; gap:34px; font-size:14px; color:var(--muted); }
-  .navlinks a:hover{ color:var(--text); }
-  .nav-cta{
-    border:1px solid var(--gold); color:var(--gold); padding:8px 18px; border-radius:6px; font-size:13px; font-weight:600;
-    transition: all .2s ease;
-  }
-  .nav-cta:hover{ background:var(--gold); color:#07090a; }
-  .burger{ display:none; }
+  <meta name="author" content="Shah Neil Khan">
+  <meta name="theme-color" content="#080807">
 
-  /* hero */
-  .hero{ padding:96px 0 80px; position:relative; }
-  .hero-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center; }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:12.5px; letter-spacing:2px; text-transform:uppercase; color:var(--lime);
-    border:1px solid rgba(183,211,62,0.35); background:rgba(183,211,62,0.06);
-    padding:6px 14px; border-radius:20px; margin-bottom:26px;
-  }
-  .eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--lime); box-shadow:0 0 8px var(--lime); }
-  .hero h1{
-    font-size:52px; line-height:1.08; font-weight:700; letter-spacing:-0.5px;
-    margin-bottom:22px;
-  }
-  .hero h1 .accent{ color:var(--teal-glow); }
-  .hero p.lede{ font-size:16.5px; color:var(--muted); line-height:1.75; max-width:480px; margin-bottom:34px; }
-  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
-  .btn{
-    padding:14px 26px; border-radius:8px; font-weight:600; font-size:14.5px;
-    display:inline-flex; align-items:center; gap:8px; transition:all .2s ease;
-  }
-  .btn-primary{ background:var(--gold); color:#07090a; }
-  .btn-primary:hover{ background:#e0b95c; transform:translateY(-2px); }
-  .btn-outline{ border:1px solid var(--line); color:var(--text); }
-  .btn-outline:hover{ border-color:var(--teal-glow); color:var(--teal-glow); }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  /* rain effect */
-  #rainCanvas{
-    position:absolute; inset:0; width:100%; height:100%; z-index:0; opacity:0.5; pointer-events:none;
-  }
-  .hero-grid{ position:relative; z-index:1; }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-  /* AI chat preview card */
-  .ai-preview{
-    margin-top:30px; max-width:420px; border:1px solid var(--line); background:var(--panel);
-    border-radius:14px; padding:16px; display:flex; flex-direction:column; gap:10px;
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-  }
-  .ai-preview-head{ display:flex; align-items:center; gap:8px; font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
-  .ai-dot{ width:7px; height:7px; border-radius:50%; background:var(--lime); box-shadow:0 0 8px var(--lime); }
-  .ai-bubble{ display:flex; gap:10px; align-items:flex-start; }
-  .ai-avatar{
-    width:28px; height:28px; border-radius:8px; background:var(--teal-glow); color:#07090a;
-    display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;
-  }
-  .ai-msg{
-    background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:10px 14px;
-    font-size:13.5px; line-height:1.6; color:var(--text);
-  }
-  .ai-msg.user{ background:transparent; border-style:dashed; color:var(--muted); }
-  .typing-dots span{
-    display:inline-block; width:5px; height:5px; margin-right:3px; border-radius:50%; background:var(--muted);
-    animation: dotBlink 1.2s infinite ease-in-out;
-  }
-  .typing-dots span:nth-child(2){ animation-delay:.2s; }
-  .typing-dots span:nth-child(3){ animation-delay:.4s; }
-  @keyframes dotBlink{ 0%,80%,100%{ opacity:.25; } 40%{ opacity:1; } }
-
-  .hero-photo{ position:relative; }
-  .beam-frame{
-    position:relative; border-radius:18px; overflow:hidden;
-    border:1px solid var(--line);
-    box-shadow: 0 0 0 1px rgba(43,179,163,0.08), 0 30px 60px -20px rgba(0,0,0,0.7), 0 0 80px -10px rgba(43,179,163,0.25);
-  }
-  .beam-frame img{ width:100%; display:block; }
-  .badge-tag{
-    position:absolute; bottom:18px; left:18px; right:18px;
-    background:rgba(7,9,10,0.72); backdrop-filter:blur(6px);
-    border:1px solid rgba(183,211,62,0.4);
-    border-radius:10px; padding:12px 16px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .badge-tag .role{ color:var(--lime); font-size:12px; font-weight:600; letter-spacing:0.5px; }
-  .badge-tag .status{ font-size:11px; color:var(--muted); display:flex; align-items:center; gap:6px; }
-  .badge-tag .status::before{ content:""; width:6px; height:6px; border-radius:50%; background:#4ade80; box-shadow:0 0 6px #4ade80; }
-
-  /* section title motif (signature element) */
-  .section{ padding:80px 0; border-top:1px solid var(--line); }
-  .stitle{ display:flex; align-items:flex-end; gap:18px; margin-bottom:44px; }
-  .stitle .num{
-    font-family:'Space Grotesk'; font-size:13px; color:var(--void); background:var(--teal-glow);
-    width:30px; height:30px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:700;
-  }
-  .stitle h2{ font-size:28px; font-weight:700; }
-  .stitle .rule{ flex:1; height:1px; background:linear-gradient(90deg, var(--line), transparent); margin-bottom:12px; }
-
-  /* about */
-  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
-  .about-grid p{ color:var(--muted); font-size:15.5px; line-height:1.85; margin-bottom:16px; }
-  .stat-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:8px;}
-  .stat{ border:1px solid var(--line); border-radius:12px; padding:20px; background:var(--panel); }
-  .stat .n{ font-family:'Space Grotesk'; font-size:28px; font-weight:700; color:var(--gold); }
-  .stat .l{ font-size:12.5px; color:var(--muted); margin-top:4px; }
-
-  /* skills */
-  .skill-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-  .skill-card{
-    border:1px solid var(--line); background:var(--panel); border-radius:12px; padding:22px 18px;
-    transition: all .2s ease;
-  }
-  .skill-card:hover{ border-color:var(--teal-glow); transform:translateY(-3px); }
-  .skill-card .ic{ font-size:22px; margin-bottom:14px; }
-  .skill-card .t{ font-weight:600; font-size:14.5px; margin-bottom:4px; }
-  .skill-card .d{ font-size:12px; color:var(--muted); line-height:1.5; }
-
-  /* experience timeline */
-  .timeline-item{
-    display:grid; grid-template-columns:140px 1fr; gap:28px;
-    padding:28px 0; border-bottom:1px solid var(--line);
-  }
-  .timeline-item:last-child{ border-bottom:none; }
-  .tl-date{ color:var(--teal-glow); font-family:'Space Grotesk'; font-weight:600; font-size:14px; }
-  .tl-role{ font-size:19px; font-weight:700; margin-bottom:4px; }
-  .tl-org{ color:var(--gold); font-size:13.5px; margin-bottom:12px; font-weight:600; }
-  .tl-desc{ color:var(--muted); font-size:14.5px; line-height:1.75; max-width:640px; }
-
-  /* brands / connect */
-  .brand-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-  .brand-card{
-    border:1px solid var(--line); background:var(--panel); border-radius:14px; padding:26px;
-    display:flex; flex-direction:column; gap:14px; transition: all .2s ease;
-  }
-  .brand-card:hover{ border-color:var(--gold); transform:translateY(-3px); }
-  .brand-card .bi{
-    width:44px; height:44px; border-radius:10px; background:var(--panel-2); display:flex; align-items:center; justify-content:center; font-size:19px;
-    border:1px solid var(--line);
-  }
-  .brand-card h3{ font-size:16px; }
-  .brand-card p{ font-size:13px; color:var(--muted); line-height:1.6; }
-  .brand-card .go{ font-size:12.5px; color:var(--teal-glow); font-weight:600; margin-top:auto; }
-
-  /* contact / footer */
-  footer{ padding:90px 0 40px; border-top:1px solid var(--line); }
-  .cta-box{
-    text-align:center; padding:60px 40px; border-radius:20px;
-    background: linear-gradient(180deg, var(--panel), var(--void));
-    border:1px solid var(--line); position:relative; overflow:hidden;
-  }
-  .cta-box::before{
-    content:""; position:absolute; inset:0;
-    background: radial-gradient(400px 200px at 50% 0%, rgba(43,179,163,0.18), transparent 70%);
-  }
-  .cta-box h2{ font-size:30px; margin-bottom:14px; position:relative; }
-  .cta-box p{ color:var(--muted); margin-bottom:30px; position:relative; }
-  .cta-btns{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; }
-
-  .foot-links{
-    display:flex; justify-content:space-between; align-items:center; margin-top:56px; flex-wrap:wrap; gap:16px;
-    font-size:13px; color:var(--muted);
-  }
-  .foot-social{ display:flex; gap:20px; }
-  .foot-social a:hover{ color:var(--teal-glow); }
-
-  @media (max-width: 860px){
-    .navlinks{ display:none; }
-    .hero-grid{ grid-template-columns:1fr; }
-    .hero h1{ font-size:36px; }
-    .about-grid{ grid-template-columns:1fr; }
-    .skill-grid{ grid-template-columns:repeat(2,1fr); }
-    .brand-grid{ grid-template-columns:1fr; }
-    .timeline-item{ grid-template-columns:1fr; gap:8px; }
-  }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ transition:none !important; animation:none !important; }
-  }
-  html.no-motion *{ animation:none !important; transition:none !important; }
-  html.no-motion .reveal{ opacity:1 !important; transform:none !important; }
-
-  /* signature motion: gentle float on hero photo + pulse on live dots + scroll reveal */
-  @keyframes floaty{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-10px); }
-  }
-  @keyframes pulseGlow{
-    0%,100%{ box-shadow:0 0 6px currentColor; opacity:1; }
-    50%{ box-shadow:0 0 14px currentColor; opacity:0.7; }
-  }
-  .beam-frame{ animation: floaty 6s ease-in-out infinite; }
-  .eyebrow::before, .badge-tag .status::before{ animation: pulseGlow 2.2s ease-in-out infinite; }
-
-  .reveal{ opacity:0; transform:translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
-
-  /* scroll reveal */
-  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
-
-  /* subtle floating glow behind hero photo */
-  .hero-photo::before{
-    content:"";
-    position:absolute; inset:-40px;
-    background: radial-gradient(circle at 50% 30%, rgba(43,179,163,0.25), transparent 65%);
-    z-index:-1;
-    animation: floatGlow 6s ease-in-out infinite;
-  }
-  @keyframes floatGlow{
-    0%,100%{ transform:translateY(0) scale(1); opacity:0.7; }
-    50%{ transform:translateY(-10px) scale(1.05); opacity:1; }
-  }
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-  <nav>
-    <div class="logo">SNK<span>.</span></div>
-    <div class="navlinks">
-      <a href="#about" data-i18n="nav_about">About</a>
-      <a href="#skills" data-i18n="nav_skills">Skills</a>
-      <a href="#experience" data-i18n="nav_experience">Experience</a>
-      <a href="#connect" data-i18n="nav_connect">Connect</a>
-    </div>
-    <div class="nav-tools">
-      <button class="icon-btn" id="settingsToggle" type="button" aria-label="Settings">⚙️</button>
-      <a class="nav-cta" href="assets/Shah_Neil_Khan_CV.pdf" download data-i18n="nav_cv">Download CV</a>
+  <!-- =========================================
+       HEADER
+  ========================================== -->
 
-      <div class="settings-panel" id="settingsPanel">
-        <div class="settings-group">
-          <div class="settings-label">Theme</div>
-          <div class="settings-options">
-            <label class="settings-option"><input type="radio" name="theme" value="dark"> Dark</label>
-            <label class="settings-option"><input type="radio" name="theme" value="light"> Light</label>
-            <label class="settings-option"><input type="radio" name="theme" value="auto"> Auto</label>
-          </div>
-        </div>
-        <div class="settings-group">
-          <div class="settings-label">Language</div>
-          <div class="settings-options">
-            <label class="settings-option"><input type="radio" name="lang" value="en"> English</label>
-            <label class="settings-option"><input type="radio" name="lang" value="bn"> বাংলা</label>
-          </div>
-        </div>
-        <div class="settings-group">
-          <div class="settings-label">Animation</div>
-          <div class="settings-options">
-            <label class="settings-option"><input type="radio" name="anim" value="on"> On</label>
-            <label class="settings-option"><input type="radio" name="anim" value="off"> Off</label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
+  <header class="site-header" id="siteHeader">
 
-<section class="hero">
-  <canvas id="rainCanvas"></canvas>
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow" data-i18n="hero_eyebrow">Available for remote UX/UI work</div>
-      <h1 data-i18n="hero_h1">Designing digital<br>products with <span class="accent">clarity</span><br>&amp; craft.</h1>
-      <p class="lede" data-i18n="hero_lede">I'm Shah Neil Khan — a Software Engineer &amp; UI/UX Design Expert based in Sylhet, Bangladesh, currently leading UX for Yaqeen Institute (Texas, USA) remotely.</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="assets/Shah_Neil_Khan_CV.pdf" download data-i18n="hero_btn_cv">⬇ Download CV</a>
-        <a class="btn btn-outline" href="https://wa.me/8801705633733" target="_blank" data-i18n="hero_btn_wa">💬 Chat on WhatsApp</a>
-      </div>
+    <div class="nav-wrap">
 
-      <div class="ai-preview">
-        <div class="ai-preview-head"><span class="ai-dot"></span> <span data-i18n="ai_label">SNK Assistant · Preview</span></div>
-        <div class="ai-bubble">
-          <div class="ai-avatar">You</div>
-          <div class="ai-msg user" id="aiUserMsg" data-i18n="ai_user_q">What does Shah Neil Khan do?</div>
-        </div>
-        <div class="ai-bubble">
-          <div class="ai-avatar">AI</div>
-          <div class="ai-msg" id="aiReplyMsg"><span class="typing-dots"><span></span><span></span><span></span></span></div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <div class="beam-frame">
-        <img src="assets/hero.png" alt="Shah Neil Khan">
-        <div class="badge-tag">
-          <span class="role" data-i18n="hero_badge_role">LEAD UX DIGITAL EXPERT</span>
-          <span class="status" data-i18n="hero_badge_status">Remote · Texas, USA</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section reveal" id="about">
-  <div class="wrap">
-    <div class="stitle"><span class="num">01</span><h2 data-i18n="about_title">About</h2><span class="rule"></span></div>
-    <div class="about-grid">
-      <div>
-        <p data-i18n="about_p1">I design and build digital products end-to-end — from user research and wireframes to polished, production-ready interfaces. My background blends software engineering with UI/UX design, which means I don't just hand off mockups — I understand how they get built.</p>
-        <p data-i18n="about_p2">Since 2026, I've been leading UX for Yaqeen Institute, a Texas-based organization, working fully remote from Moulvibazar, Sylhet. Self-taught and hands-on, I've built my skillset through real projects rather than a classroom.</p>
-      </div>
-      <div class="stat-row">
-        <div class="stat"><div class="n">2026</div><div class="l" data-i18n="about_stat1">Leading UX at Yaqeen Institute</div></div>
-        <div class="stat"><div class="n">8+</div><div class="l" data-i18n="about_stat2">Core design &amp; dev skills</div></div>
-        <div class="stat"><div class="n">100%</div><div class="l" data-i18n="about_stat3">Remote-first workflow</div></div>
-        <div class="stat"><div class="n">BD</div><div class="l" data-i18n="about_stat4">Based in Sylhet, Bangladesh</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section reveal" id="skills">
-  <div class="wrap">
-    <div class="stitle"><span class="num">02</span><h2 data-i18n="skills_title">Skills</h2><span class="rule"></span></div>
-    <div class="skill-grid">
-      <div class="skill-card"><div class="ic">🎨</div><div class="t">Figma</div><div class="d" data-i18n="skill1d">Interface design &amp; design systems</div></div>
-      <div class="skill-card"><div class="ic">🖌️</div><div class="t">Photoshop / Illustrator</div><div class="d" data-i18n="skill2d">Visual &amp; brand assets</div></div>
-      <div class="skill-card"><div class="ic">🧩</div><div class="t" data-i18n="skill3t">UI Design</div><div class="d" data-i18n="skill3d">Clean, usable interfaces</div></div>
-      <div class="skill-card"><div class="ic">🔍</div><div class="t" data-i18n="skill4t">UX Research &amp; Wireframing</div><div class="d" data-i18n="skill4d">User-first problem solving</div></div>
-      <div class="skill-card"><div class="ic">⚡</div><div class="t" data-i18n="skill5t">Prototyping</div><div class="d" data-i18n="skill5d">Interactive, testable flows</div></div>
-      <div class="skill-card"><div class="ic">🧱</div><div class="t">HTML / CSS</div><div class="d" data-i18n="skill6d">Semantic, responsive markup</div></div>
-      <div class="skill-card"><div class="ic">💻</div><div class="t">JavaScript</div><div class="d" data-i18n="skill7d">Interactive front-end logic</div></div>
-      <div class="skill-card"><div class="ic">🌐</div><div class="t">WordPress</div><div class="d" data-i18n="skill8d">CMS builds &amp; customization</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section reveal" id="experience">
-  <div class="wrap">
-    <div class="stitle"><span class="num">03</span><h2 data-i18n="exp_title">Experience</h2><span class="rule"></span></div>
-    <div class="timeline-item">
-      <div class="tl-date" data-i18n="exp_date">2026 — Present</div>
-      <div>
-        <div class="tl-role" data-i18n="exp_role">UX Lead Digital Expert</div>
-        <div class="tl-org" data-i18n="exp_org">Yaqeen Institute · Texas, USA (Remote)</div>
-        <div class="tl-desc" data-i18n="exp_desc">Leading UI/UX design for the organization's websites and digital products — covering product design, building user-friendly interfaces, and coordinating with the team to continuously improve digital experiences.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section reveal" id="connect">
-  <div class="wrap">
-    <div class="stitle"><span class="num">04</span><h2 data-i18n="connect_title">Find me elsewhere</h2><span class="rule"></span></div>
-    <div class="brand-grid">
-      <a class="brand-card" href="https://www.linkedin.com/in/uxuidesigners" target="_blank">
-        <div class="bi">in</div>
-        <h3>LinkedIn</h3>
-        <p data-i18n="connect_li">Professional profile, experience &amp; recommendations.</p>
-        <div class="go" data-i18n="connect_li_cta">View profile →</div>
+      <a href="#home" class="brand-logo" aria-label="Shah Neil Khan Home">
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="Shah Neil Khan — SNK"
+        >
       </a>
-      <a class="brand-card" href="https://github.com/shahneilkhan/shahneilkhan.github.io" target="_blank">
-        <div class="bi">⌥</div>
-        <h3>GitHub</h3>
-        <p data-i18n="connect_gh">Code, this portfolio's source &amp; front-end projects.</p>
-        <div class="go" data-i18n="connect_gh_cta">View repos →</div>
-      </a>
-      <a class="brand-card" href="https://www.behance.net/thesnkdesign" target="_blank">
-        <div class="bi">Bē</div>
-        <h3>Behance</h3>
-        <p data-i18n="connect_be">Case studies &amp; visual design work.</p>
-        <div class="go" data-i18n="connect_be_cta">View work →</div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<footer class="reveal">
-  <div class="wrap">
-    <div class="cta-box">
-      <h2 data-i18n="foot_h2">Let's build something clean &amp; useful.</h2>
-      <p data-i18n="foot_p">Open to remote UX/UI &amp; front-end projects — reply within a day.</p>
-      <div class="cta-btns">
-        <a class="btn btn-primary" href="https://wa.me/8801705633733" target="_blank" data-i18n="foot_btn_wa">💬 Message on WhatsApp</a>
-        <a class="btn btn-outline" href="assets/Shah_Neil_Khan_CV.pdf" download data-i18n="foot_btn_cv">⬇ Download CV</a>
+      <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="#home" class="active">Home</a>
+
+        <a href="#ecosystem">Ecosystem</a>
+
+        <a href="#ai">AI</a>
+
+        <a href="#expertise">Expertise</a>
+
+        <a href="#experience">Experience</a>
+
+        <a href="#about">About</a>
+
+        <a href="brand.html">Brand</a>
+
+        <a href="#contact">Contact</a>
+
+      </nav>
+
+      <div class="nav-actions">
+
+        <button
+          class="icon-btn"
+          id="languageToggle"
+          type="button"
+          aria-label="Switch language"
+        >
+          বাংলা
+        </button>
+
+        <button
+          class="icon-btn"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark and light mode"
+        >
+          ☼
+        </button>
+
+        <button
+          class="icon-btn"
+          id="rainToggle"
+          type="button"
+          aria-label="Toggle rain effect"
+        >
+          Rain
+        </button>
+
       </div>
+
     </div>
-    <div class="foot-links">
-      <div data-i18n="foot_copy">© 2026 Shah Neil Khan. Moulvibazar, Sylhet, Bangladesh.</div>
-      <div class="foot-social">
-        <a href="https://www.linkedin.com/in/uxuidesigners" target="_blank">LinkedIn</a>
-        <a href="https://github.com/shahneilkhan/shahneilkhan.github.io" target="_blank">GitHub</a>
-        <a href="https://www.behance.net/thesnkdesign" target="_blank">Behance</a>
+
+  </header>
+
+
+  <!-- =========================================
+       HERO
+  ========================================== -->
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="hero-bg"></div>
+
+      <div class="rain-layer" aria-hidden="true"></div>
+
+      <div class="wrap hero-grid">
+
+        <div class="hero-content reveal">
+
+          <div class="hero-eyebrow">
+            PERSONAL BRAND · DIGITAL EXPERIENCE · SYSTEMS THINKING
+          </div>
+
+          <h1 class="hero-title">
+            I BUILD
+            <span>SYSTEMS.</span>
+            <br>
+
+            I TRAIN
+            <span>MINDS.</span>
+            <br>
+
+            I CREATE
+            <span>IMPACT.</span>
+          </h1>
+
+          <p class="hero-description">
+            I'm Shah Neil Khan — a UX Lead Digital Expert, Software Engineer
+            and UI/UX Design Expert focused on creating meaningful digital
+            experiences, thoughtful systems and products that people can use.
+          </p>
+
+          <div class="hero-actions">
+
+            <a href="#ecosystem" class="btn btn-primary">
+              Explore My World
+              <span>↗</span>
+            </a>
+
+            <a href="projects.html" class="btn btn-outline">
+              View Work
+              <span>→</span>
+            </a>
+
+          </div>
+
+          <!-- Terminal -->
+
+          <div class="hero-terminal">
+
+            <div class="terminal-top">
+
+              <div class="terminal-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <span>snk@system:~</span>
+
+            </div>
+
+            <div class="terminal-body">
+
+              <div>
+                <span class="terminal-green">$</span>
+                whoami
+              </div>
+
+              <div class="terminal-output">
+                shah-neil-khan
+              </div>
+
+              <div>
+                <span class="terminal-green">$</span>
+                <span id="typingText">thinking...</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Hero Visual -->
+
+        <div class="hero-visual reveal">
+
+          <div class="hero-frame">
+
+            <div class="hero-image-wrap">
+
+              <img
+                src="assets/hero.png"
+                alt="Shah Neil Khan"
+                class="hero-image"
+              >
+
+            </div>
+
+            <div class="hero-status">
+
+              <div>
+
+                <span class="status-dot"></span>
+
+                <span>
+                  UX LEAD DIGITAL EXPERT
+                </span>
+
+              </div>
+
+              <span>
+                2026 — PRESENT
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="flying-birds" aria-hidden="true"></div>
+
+        </div>
+
       </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ECOSYSTEM
+    ========================================== -->
+
+    <section class="section ecosystem-section" id="ecosystem">
+
+      <div class="wrap">
+
+        <div class="section-heading reveal">
+
+          <span class="section-kicker">
+            01 · ECOSYSTEM
+          </span>
+
+          <h2>
+            One mind.
+            <span>Multiple directions.</span>
+          </h2>
+
+          <p>
+            Different ideas, different platforms — one connected ecosystem
+            built around design, technology, learning and digital experiences.
+          </p>
+
+        </div>
+
+
+        <div class="ecosystem-grid">
+
+
+          <!-- WebsitesDeal -->
+
+          <a
+            class="ecosystem-card reveal"
+            href="https://websitesdeal.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="card-number">01</div>
+
+            <div class="card-icon">↗</div>
+
+            <div class="card-content">
+
+              <span class="card-label">
+                DIGITAL · WEB
+              </span>
+
+              <h3>
+                WebsitesDeal
+              </h3>
+
+              <p>
+                Digital website solutions and web-focused experiences.
+              </p>
+
+              <span class="card-link">
+                Visit Website →
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- Tabayyun -->
+
+          <a
+            class="ecosystem-card reveal"
+            href="https://www.tabayyuninstitute.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="card-number">02</div>
+
+            <div class="card-icon">↗</div>
+
+            <div class="card-content">
+
+              <span class="card-label">
+                INSTITUTE · PLATFORM
+              </span>
+
+              <h3>
+                Tabayyun TV
+              </h3>
+
+              <p>
+                Explore the Tabayyun Institute digital platform.
+              </p>
+
+              <span class="card-link">
+                Visit Website →
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- SNK IT Institute -->
+
+          <a
+            class="ecosystem-card reveal"
+            href="https://snkitinstitute.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="card-number">03</div>
+
+            <div class="card-icon">↗</div>
+
+            <div class="card-content">
+
+              <span class="card-label">
+                EDUCATION · TECHNOLOGY
+              </span>
+
+              <h3>
+                SNK IT Institute
+              </h3>
+
+              <p>
+                An education and technology-focused digital initiative.
+              </p>
+
+              <span class="card-link">
+                Visit Website →
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- Sarakat -->
+
+          <a
+            class="ecosystem-card reveal"
+            href="https://sarakatagency.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="card-number">04</div>
+
+            <div class="card-icon">↗</div>
+
+            <div class="card-content">
+
+              <span class="card-label">
+                AGENCY · CREATIVE
+              </span>
+
+              <h3>
+                Sarakāt Agency
+              </h3>
+
+              <p>
+                A creative direction and digital agency initiative.
+              </p>
+
+              <span class="card-link">
+                Visit Website →
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- SNK Design -->
+
+          <a
+            class="ecosystem-card reveal"
+            href="https://snkdesign.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="card-number">05</div>
+
+            <div class="card-icon">↗</div>
+
+            <div class="card-content">
+
+              <span class="card-label">
+                DESIGN · CREATIVE
+              </span>
+
+              <h3>
+                SNK Design
+              </h3>
+
+              <p>
+                Visual design, creative direction and digital design work.
+              </p>
+
+              <span class="card-link">
+                Visit Website →
+              </span>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         AI
+    ========================================== -->
+
+    <section class="section ai-section" id="ai">
+
+      <div class="wrap">
+
+        <div class="ai-layout">
+
+          <div class="ai-copy reveal">
+
+            <span class="section-kicker">
+              02 · AI / CONTEXT ENGINEERING
+            </span>
+
+            <h2>
+              I don't just
+              <span>use AI.</span>
+              <br>
+              I design with it.
+            </h2>
+
+            <p>
+              AI is becoming part of how I think, structure information,
+              solve problems and build better digital systems.
+            </p>
+
+            <a href="expertise.html" class="text-link">
+              Explore Expertise →
+            </a>
+
+          </div>
+
+
+          <div class="ai-orbit reveal">
+
+            <div class="orbit-ring orbit-one"></div>
+
+            <div class="orbit-ring orbit-two"></div>
+
+            <div class="orbit-core">
+
+              <span>SNK</span>
+
+              <small>
+                AI × UX
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ENGINEERING MINDSET
+    ========================================== -->
+
+    <section class="section mindset-section">
+
+      <div class="wrap">
+
+        <div class="section-heading reveal">
+
+          <span class="section-kicker">
+            03 · ENGINEERING MINDSET
+          </span>
+
+          <h2>
+            Think deeply.
+            <span>Build intentionally.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="mindset-grid">
+
+          <article class="mindset-card reveal">
+
+            <span>01</span>
+
+            <h3>
+              Understand
+            </h3>
+
+            <p>
+              Start with the real problem before jumping into the solution.
+            </p>
+
+          </article>
+
+
+          <article class="mindset-card reveal">
+
+            <span>02</span>
+
+            <h3>
+              Structure
+            </h3>
+
+            <p>
+              Turn complexity into clear systems, flows and decisions.
+            </p>
+
+          </article>
+
+
+          <article class="mindset-card reveal">
+
+            <span>03</span>
+
+            <h3>
+              Build
+            </h3>
+
+            <p>
+              Design and engineering work together instead of living apart.
+            </p>
+
+          </article>
+
+
+          <article class="mindset-card reveal">
+
+            <span>04</span>
+
+            <h3>
+              Improve
+            </h3>
+
+            <p>
+              Keep learning, testing and refining the experience.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         EXPERTISE
+    ========================================== -->
+
+    <section class="section expertise-section" id="expertise">
+
+      <div class="wrap">
+
+        <div class="section-heading reveal">
+
+          <span class="section-kicker">
+            04 · EXPERTISE
+          </span>
+
+          <h2>
+            What I
+            <span>work with.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="expertise-grid">
+
+
+          <article class="expertise-card reveal">
+
+            <span class="expertise-icon">01</span>
+
+            <h3>
+              UX Strategy
+            </h3>
+
+            <p>
+              User journeys, information architecture and product thinking.
+            </p>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span class="expertise-icon">02</span>
+
+            <h3>
+              Digital Experience
+            </h3>
+
+            <p>
+              Creating digital experiences that are clear, useful and human.
+            </p>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span class="expertise-icon">03</span>
+
+            <h3>
+              AI-Assisted Systems
+            </h3>
+
+            <p>
+              Using AI to accelerate research, thinking and digital workflows.
+            </p>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span class="expertise-icon">04</span>
+
+            <h3>
+              Design Systems
+            </h3>
+
+            <p>
+              Consistent visual language, reusable components and scalable UI.
+            </p>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span class="expertise-icon">05</span>
+
+            <h3>
+              Creative Direction
+            </h3>
+
+            <p>
+              Connecting brand, visual design and digital experiences.
+            </p>
+
+          </article>
+
+
+          <article class="expertise-card reveal">
+
+            <span class="expertise-icon">06</span>
+
+            <h3>
+              Systems Thinking
+            </h3>
+
+            <p>
+              Looking beyond individual screens to understand the whole system.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         EXPERIENCE
+    ========================================== -->
+
+    <section class="section experience-section" id="experience">
+
+      <div class="wrap">
+
+        <div class="experience-heading reveal">
+
+          <div>
+
+            <span class="section-kicker">
+              05 · EXPERIENCE
+            </span>
+
+            <h2>
+              Experience
+              <span>shapes the mind.</span>
+            </h2>
+
+          </div>
+
+          <a href="experience.html" class="text-link">
+            Full Experience →
+          </a>
+
+        </div>
+
+
+        <div class="experience-timeline">
+
+          <article class="experience-card reveal">
+
+            <div class="experience-date">
+              2026 — PRESENT
+            </div>
+
+            <div class="experience-main">
+
+              <span class="experience-label">
+                CURRENT ROLE
+              </span>
+
+              <h3>
+                UX Lead Digital Expert
+              </h3>
+
+              <h4>
+                Yaqeen Institute
+              </h4>
+
+              <p>
+                Texas, USA · Remote
+              </p>
+
+              <div class="experience-line"></div>
+
+              <p class="experience-description">
+                Leading UI/UX design for websites and digital products,
+                focusing on product design, user-friendly interfaces and
+                continuously improving digital experiences with the team.
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <div class="experience-philosophy reveal">
+
+          <span>
+            PRINCIPLE
+          </span>
+
+          <p>
+            Good experience is not decoration.
+            <strong>It's a system of thoughtful decisions.</strong>
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ABOUT
+    ========================================== -->
+
+    <section class="section about-section" id="about">
+
+      <div class="wrap">
+
+        <div class="about-layout">
+
+          <div class="about-copy reveal">
+
+            <span class="section-kicker">
+              06 · ABOUT
+            </span>
+
+            <h2>
+              Build.
+              <span>Learn.</span>
+              Share.
+            </h2>
+
+          </div>
+
+
+          <div class="about-text reveal">
+
+            <p>
+              I'm Shah Neil Khan — a Software Engineer and UI/UX Design
+              Expert interested in the space where design, technology,
+              systems and people meet.
+            </p>
+
+            <p>
+              My work is driven by curiosity and a simple principle:
+              understand the problem, create clarity, then build something
+              useful.
+            </p>
+
+            <a href="about.html" class="text-link">
+              More About Me →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         BRAND
+    ========================================== -->
+
+    <section class="section brand-section" id="brand">
+
+      <div class="wrap">
+
+        <div class="brand-banner reveal">
+
+          <div>
+
+            <span class="section-kicker">
+              PERSONAL BRAND
+            </span>
+
+            <h3>
+              SNK is more than a logo.
+              <span>It's a direction.</span>
+            </h3>
+
+            <p>
+              Explore the wider SNK ecosystem, ideas and creative direction.
+            </p>
+
+          </div>
+
+          <a href="brand.html" class="btn btn-outline">
+            Explore SNK Brand →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CONTACT
+    ========================================== -->
+
+    <section class="section contact-section" id="contact">
+
+      <div class="wrap">
+
+        <div class="contact-box reveal">
+
+          <span class="section-kicker">
+            07 · CONTACT
+          </span>
+
+          <h2>
+            Let's build something
+            <span>meaningful.</span>
+          </h2>
+
+          <p>
+            Have an idea, project or digital experience that needs thoughtful
+            design and engineering?
+          </p>
+
+          <div class="contact-actions">
+
+            <a
+              href="contact.html"
+              class="btn btn-primary"
+            >
+              Start a Conversation →
+            </a>
+
+            <a
+              href="https://www.linkedin.com/company/iamsnkbd"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+            >
+              LinkedIn ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer class="site-footer">
+
+    <div class="wrap">
+
+      <div class="footer-top">
+
+        <div>
+
+          <a href="#home" class="footer-logo">
+            SNK
+          </a>
+
+          <p>
+            Design · Technology · Systems · Ideas
+          </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="projects.html">
+            Projects
+          </a>
+
+          <a href="expertise.html">
+            Expertise
+          </a>
+
+          <a href="experience.html">
+            Experience
+          </a>
+
+          <a href="cv.html">
+            CV
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="footerYear">2026</span> Shah Neil Khan.
+          All rights reserved.
+        </span>
+
+
+        <div class="footer-social">
+
+          <a
+            href="https://www.linkedin.com/company/iamsnkbd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            href="https://github.com/shahneilkhan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://instagram.com/iamsnkbd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+
+          <a
+            href="https://youtube.com/c/shahneilkhan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            YouTube
+          </a>
+
+        </div>
+
+      </div>
+
     </div>
-  </div>
-</footer>
+
+  </footer>
 
 
-<script>
-  // Scroll-reveal: sections fade/slide in as they enter view
-  const revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el=> io.observe(el));
-  } else {
-    revealEls.forEach(el=> el.classList.add('in'));
-  }
-</script>
-<script>
-  // Settings panel: theme (dark/light/auto), animation (on/off)
-  const html = document.documentElement;
-  const settingsBtn = document.getElementById('settingsToggle');
-  const settingsPanel = document.getElementById('settingsPanel');
+  <!-- =========================================
+       SCRIPT
+  ========================================== -->
 
-  settingsBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    settingsPanel.classList.toggle('open');
-  });
-  document.addEventListener('click', (e) => {
-    if(!settingsPanel.contains(e.target) && e.target !== settingsBtn){ settingsPanel.classList.remove('open'); }
-  });
+  <script src="script.js"></script>
 
-  const mq = window.matchMedia('(prefers-color-scheme: dark)');
-  function applyTheme(mode){
-    if(mode === 'auto'){
-      html.setAttribute('data-theme', mq.matches ? 'dark' : 'light');
-    } else {
-      html.setAttribute('data-theme', mode);
+  <script>
+    const year = document.getElementById("footerYear");
+
+    if (year) {
+      year.textContent = new Date().getFullYear();
     }
-    localStorage.setItem('snk-theme-mode', mode);
-  }
-  mq.addEventListener('change', () => {
-    if(localStorage.getItem('snk-theme-mode') === 'auto'){ applyTheme('auto'); }
-  });
-  const savedThemeMode = localStorage.getItem('snk-theme-mode') || 'dark';
-  applyTheme(savedThemeMode);
-  document.querySelectorAll('input[name="theme"]').forEach(r => {
-    r.checked = (r.value === savedThemeMode);
-    r.addEventListener('change', () => applyTheme(r.value));
-  });
+  </script>
 
-  function applyAnim(mode){
-    html.classList.toggle('no-motion', mode === 'off');
-    localStorage.setItem('snk-anim', mode);
-  }
-  const savedAnim = localStorage.getItem('snk-anim') || 'on';
-  applyAnim(savedAnim);
-  document.querySelectorAll('input[name="anim"]').forEach(r => {
-    r.checked = (r.value === savedAnim);
-    r.addEventListener('change', () => applyAnim(r.value));
-  });
-</script>
-<script>
-  // Language toggle (EN / বাংলা) — remembers choice
-  const i18n = {
-    nav_about:{en:"About", bn:"সম্পর্কে"},
-    nav_skills:{en:"Skills", bn:"দক্ষতা"},
-    nav_experience:{en:"Experience", bn:"অভিজ্ঞতা"},
-    nav_connect:{en:"Connect", bn:"যোগাযোগ"},
-    nav_cv:{en:"Download CV", bn:"CV ডাউনলোড"},
-    hero_eyebrow:{en:"Available for remote UX/UI work", bn:"রিমোট UX/UI কাজের জন্য উপলব্ধ"},
-    hero_h1:{en:'Designing digital<br>products with <span class="accent">clarity</span><br>&amp; craft.', bn:'স্বচ্ছতা ও যত্ন সহকারে<br>ডিজিটাল <span class="accent">প্রোডাক্ট</span><br>ডিজাইন করি।'},
-    hero_lede:{en:"I'm Shah Neil Khan — a Software Engineer &amp; UI/UX Design Expert based in Sylhet, Bangladesh, currently leading UX for Yaqeen Institute (Texas, USA) remotely.", bn:"আমি শাহ নীল খান — সিলেট, বাংলাদেশ ভিত্তিক একজন Software Engineer ও UI/UX Design Expert। বর্তমানে Yaqeen Institute (Texas, USA)-এর জন্য রিমোটে UX-এর নেতৃত্ব দিচ্ছি।"},
-    hero_btn_cv:{en:"⬇ Download CV", bn:"⬇ CV ডাউনলোড করুন"},
-    hero_btn_wa:{en:"💬 Chat on WhatsApp", bn:"💬 WhatsApp-এ কথা বলুন"},
-    hero_badge_role:{en:"LEAD UX DIGITAL EXPERT", bn:"লিড ইউএক্স ডিজিটাল এক্সপার্ট"},
-    hero_badge_status:{en:"Remote · Texas, USA", bn:"রিমোট · টেক্সাস, USA"},
-    about_title:{en:"About", bn:"সম্পর্কে"},
-    about_p1:{en:"I design and build digital products end-to-end — from user research and wireframes to polished, production-ready interfaces. My background blends software engineering with UI/UX design, which means I don't just hand off mockups — I understand how they get built.", bn:"আমি ডিজিটাল প্রোডাক্ট শুরু থেকে শেষ পর্যন্ত ডিজাইন ও তৈরি করি — ইউজার রিসার্চ ও ওয়্যারফ্রেম থেকে শুরু করে প্রোডাকশন-রেডি ইন্টারফেস পর্যন্ত। আমার ব্যাকগ্রাউন্ড Software Engineering আর UI/UX Design এর মিশ্রণ — তাই আমি শুধু ডিজাইন হ্যান্ডওভার করি না, কীভাবে সেটা তৈরি হয় সেটাও বুঝি।"},
-    about_p2:{en:"Since 2026, I've been leading UX for Yaqeen Institute, a Texas-based organization, working fully remote from Moulvibazar, Sylhet. Self-taught and hands-on, I've built my skillset through real projects rather than a classroom.", bn:"২০২৬ সাল থেকে, আমি Yaqeen Institute (Texas-ভিত্তিক প্রতিষ্ঠান)-এর UX-এর নেতৃত্ব দিচ্ছি, সম্পূর্ণ রিমোটে মৌলভীবাজার, সিলেট থেকে কাজ করে। আমি সেল্ফ-টট, ক্লাসরুমের বদলে রিয়েল প্রজেক্টের মাধ্যমে স্কিল তৈরি করেছি।"},
-    about_stat1:{en:"Leading UX at Yaqeen Institute", bn:"Yaqeen Institute-এ UX-এর নেতৃত্ব"},
-    about_stat2:{en:"Core design &amp; dev skills", bn:"মূল ডিজাইন ও ডেভ স্কিল"},
-    about_stat3:{en:"Remote-first workflow", bn:"রিমোট-ফার্স্ট কর্মপদ্ধতি"},
-    about_stat4:{en:"Based in Sylhet, Bangladesh", bn:"সিলেট, বাংলাদেশ ভিত্তিক"},
-    skills_title:{en:"Skills", bn:"দক্ষতা"},
-    skill2d:{en:"Visual &amp; brand assets", bn:"ভিজ্যুয়াল ও ব্র্যান্ড অ্যাসেট"},
-    skill3t:{en:"UI Design", bn:"UI ডিজাইন"},
-    skill3d:{en:"Clean, usable interfaces", bn:"পরিষ্কার, ব্যবহারযোগ্য ইন্টারফেস"},
-    skill4t:{en:"UX Research &amp; Wireframing", bn:"UX রিসার্চ ও ওয়্যারফ্রেমিং"},
-    skill4d:{en:"User-first problem solving", bn:"ইউজার-কেন্দ্রিক সমস্যা সমাধান"},
-    skill5t:{en:"Prototyping", bn:"প্রোটোটাইপিং"},
-    skill5d:{en:"Interactive, testable flows", bn:"ইন্টারেক্টিভ, টেস্টযোগ্য ফ্লো"},
-    skill1d:{en:"Interface design &amp; design systems", bn:"ইন্টারফেস ডিজাইন ও ডিজাইন সিস্টেম"},
-    skill6d:{en:"Semantic, responsive markup", bn:"সিমান্টিক, রেসপন্সিভ মার্কআপ"},
-    skill7d:{en:"Interactive front-end logic", bn:"ইন্টারেক্টিভ ফ্রন্ট-এন্ড লজিক"},
-    skill8d:{en:"CMS builds &amp; customization", bn:"CMS নির্মাণ ও কাস্টমাইজেশন"},
-    exp_title:{en:"Experience", bn:"অভিজ্ঞতা"},
-    exp_date:{en:"2026 — Present", bn:"২০২৬ — বর্তমান"},
-    exp_role:{en:"UX Lead Digital Expert", bn:"UX লিড ডিজিটাল এক্সপার্ট"},
-    exp_org:{en:"Yaqeen Institute · Texas, USA (Remote)", bn:"Yaqeen Institute · টেক্সাস, USA (রিমোট)"},
-    exp_desc:{en:"Leading UI/UX design for the organization's websites and digital products — covering product design, building user-friendly interfaces, and coordinating with the team to continuously improve digital experiences.", bn:"প্রতিষ্ঠানের ওয়েবসাইট ও ডিজিটাল প্রোডাক্টের জন্য UI/UX ডিজাইনের নেতৃত্ব দিচ্ছি — প্রোডাক্ট ডিজাইন, ইউজার-ফ্রেন্ডলি ইন্টারফেস তৈরি, এবং টিমের সাথে সমন্বয় করে ডিজিটাল অভিজ্ঞতা ক্রমাগত উন্নত করা।"},
-    connect_title:{en:"Find me elsewhere", bn:"অন্য জায়গায় আমাকে খুঁজুন"},
-    connect_li:{en:"Professional profile, experience &amp; recommendations.", bn:"প্রফেশনাল প্রোফাইল, অভিজ্ঞতা ও সুপারিশ।"},
-    connect_li_cta:{en:"View profile →", bn:"প্রোফাইল দেখুন →"},
-    connect_gh:{en:"Code, this portfolio's source &amp; front-end projects.", bn:"কোড, এই পোর্টফোলিওর সোর্স ও ফ্রন্ট-এন্ড প্রজেক্ট।"},
-    connect_gh_cta:{en:"View repos →", bn:"রিপো দেখুন →"},
-    connect_be:{en:"Case studies &amp; visual design work.", bn:"কেস স্টাডি ও ভিজ্যুয়াল ডিজাইন কাজ।"},
-    connect_be_cta:{en:"View work →", bn:"কাজ দেখুন →"},
-    foot_h2:{en:"Let's build something clean &amp; useful.", bn:"চলুন কিছু পরিষ্কার ও কার্যকর তৈরি করি।"},
-    foot_p:{en:"Open to remote UX/UI &amp; front-end projects — reply within a day.", bn:"রিমোট UX/UI ও ফ্রন্ট-এন্ড প্রজেক্টের জন্য উন্মুক্ত — একদিনের মধ্যে রিপ্লাই দেব।"},
-    foot_btn_wa:{en:"💬 Message on WhatsApp", bn:"💬 WhatsApp-এ মেসেজ করুন"},
-    foot_btn_cv:{en:"⬇ Download CV", bn:"⬇ CV ডাউনলোড করুন"},
-    foot_copy:{en:"© 2026 Shah Neil Khan. Moulvibazar, Sylhet, Bangladesh.", bn:"© ২০২৬ শাহ নীল খান। মৌলভীবাজার, সিলেট, বাংলাদেশ।"},
-    ai_label:{en:"SNK Assistant · Preview", bn:"SNK অ্যাসিস্ট্যান্ট · প্রিভিউ"},
-    ai_user_q:{en:"What does Shah Neil Khan do?", bn:"শাহ নীল খান কী কাজ করেন?"}
-  };
-  function applyLang(lang){
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if(i18n[key] && i18n[key][lang] !== undefined){ el.innerHTML = i18n[key][lang]; }
-    });
-    html.setAttribute('lang', lang);
-    localStorage.setItem('snk-lang', lang);
-  }
-  const savedLang = localStorage.getItem('snk-lang') || 'en';
-  applyLang(savedLang);
-  document.querySelectorAll('input[name="lang"]').forEach(r => {
-    r.checked = (r.value === savedLang);
-    r.addEventListener('change', () => applyLang(r.value));
-  });
-</script>
-<script>
-  // Rain effect (canvas) — pauses when Animation is set to Off
-  const canvas = document.getElementById('rainCanvas');
-  const ctx = canvas.getContext('2d');
-  let drops = [];
-  function sizeCanvas(){
-    const hero = canvas.parentElement;
-    canvas.width = hero.clientWidth;
-    canvas.height = hero.clientHeight;
-  }
-  function makeDrops(){
-    const count = Math.floor(canvas.width / 18);
-    drops = Array.from({length: count}, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      len: 14 + Math.random() * 18,
-      speed: 4 + Math.random() * 5,
-      opacity: 0.08 + Math.random() * 0.18
-    }));
-  }
-  let rainRunning = true;
-  function drawRain(){
-    if(!rainRunning){ return; }
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.strokeStyle = 'rgba(180,220,215,0.6)';
-    ctx.lineWidth = 1;
-    drops.forEach(d => {
-      ctx.globalAlpha = d.opacity;
-      ctx.beginPath();
-      ctx.moveTo(d.x, d.y);
-      ctx.lineTo(d.x - 2, d.y + d.len);
-      ctx.stroke();
-      d.y += d.speed;
-      d.x -= 0.6;
-      if(d.y > canvas.height){ d.y = -d.len; d.x = Math.random() * canvas.width; }
-    });
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(drawRain);
-  }
-  sizeCanvas(); makeDrops();
-  window.addEventListener('resize', () => { sizeCanvas(); makeDrops(); });
-  requestAnimationFrame(drawRain);
-
-  // link rain to the Animation On/Off setting from the settings panel
-  function syncRainWithAnim(){
-    const off = document.documentElement.classList.contains('no-motion');
-    rainRunning = !off;
-    canvas.style.display = off ? 'none' : 'block';
-    if(!off){ requestAnimationFrame(drawRain); }
-  }
-  document.querySelectorAll('input[name="anim"]').forEach(r => r.addEventListener('change', syncRainWithAnim));
-  syncRainWithAnim();
-</script>
-<script>
-  // AI reply preview — a scripted demo typing effect, not a live AI connection
-  const aiReplies = {
-    en: "He's a Software Engineer & UI/UX Design Expert, currently leading UX for Yaqeen Institute (Texas, USA) — remotely from Sylhet, Bangladesh.",
-    bn: "উনি একজন Software Engineer ও UI/UX Design Expert — বর্তমানে Yaqeen Institute (Texas, USA)-এর জন্য সিলেট থেকে রিমোটে UX-এর নেতৃত্ব দিচ্ছেন।"
-  };
-  function typeAiReply(){
-    const lang = localStorage.getItem('snk-lang') || 'en';
-    const full = aiReplies[lang] || aiReplies.en;
-    const el = document.getElementById('aiReplyMsg');
-    let i = 0;
-    el.innerHTML = '';
-    const iv = setInterval(() => {
-      el.textContent = full.slice(0, i);
-      i++;
-      if(i > full.length){ clearInterval(iv); }
-    }, 22);
-  }
-  setTimeout(typeAiReply, 1200);
-  document.querySelectorAll('input[name="lang"]').forEach(r => r.addEventListener('change', () => setTimeout(typeAiReply, 200)));
-</script>
 </body>
 </html>
