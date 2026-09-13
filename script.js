@@ -1,14 +1,15 @@
 /* =========================================================
-   SNK PORTFOLIO — FINAL SCRIPT
-   Compatible with V3.2 index.html + style.css
+   SNK PORTFOLIO
+   Shah Neil Khan
+   FINAL V3.2 SCRIPT
    ========================================================= */
 
 (() => {
   "use strict";
 
-  /* ---------------------------------------------------------
-     Helpers
-  --------------------------------------------------------- */
+  /* =========================================================
+     BASIC HELPERS
+     ========================================================= */
 
   const $ = (selector, parent = document) =>
     parent.querySelector(selector);
@@ -19,69 +20,117 @@
   const root = document.documentElement;
   const body = document.body;
 
-  const prefersReducedMotion = window.matchMedia(
+  const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
 
   /* =========================================================
-     1. THEME
+     DOM ELEMENTS
      ========================================================= */
 
+  const header = $(".site-header");
   const themeToggle = $("#themeToggle");
-  const savedTheme = localStorage.getItem("snk-theme");
+  const languageToggle = $("#languageToggle");
+  const rainToggle = $("#rainToggle");
 
-  function applyTheme(theme) {
-    const nextTheme = theme === "light" ? "light" : "dark";
+  const terminalText =
+    $("[data-terminal-text]") ||
+    $(".terminal-text");
 
-    root.setAttribute("data-theme", nextTheme);
-    localStorage.setItem("snk-theme", nextTheme);
+  const birdsContainer = $(".birds");
 
-    if (themeToggle) {
-      themeToggle.setAttribute(
-        "aria-label",
-        nextTheme === "dark"
-          ? "Switch to light mode"
-          : "Switch to dark mode"
-      );
-
-      themeToggle.setAttribute(
-        "title",
-        nextTheme === "dark"
-          ? "Light mode"
-          : "Dark mode"
-      );
-
-      const icon = themeToggle.querySelector("[data-theme-icon]");
-
-      if (icon) {
-        icon.textContent = nextTheme === "dark" ? "☼" : "☾";
-      }
-    }
-  }
-
-  applyTheme(
-    savedTheme ||
-      (window.matchMedia("(prefers-color-scheme: light)").matches
-        ? "light"
-        : "dark")
-  );
-
-  themeToggle?.addEventListener("click", () => {
-    const current =
-      root.getAttribute("data-theme") || "dark";
-
-    applyTheme(current === "dark" ? "light" : "dark");
-  });
+  let rainLayer = $(".rain-layer");
 
 
   /* =========================================================
-     2. LANGUAGE TOGGLE
+     1. THEME SYSTEM
      ========================================================= */
 
-  const languageToggle = $("#languageToggle");
-  const savedLanguage =
-    localStorage.getItem("snk-language") || "en";
+  const THEME_KEY = "snk-theme";
+
+  function getPreferredTheme() {
+    const saved = localStorage.getItem(THEME_KEY);
+
+    if (saved === "light" || saved === "dark") {
+      return saved;
+    }
+
+    return window.matchMedia(
+      "(prefers-color-scheme: light)"
+    ).matches
+      ? "light"
+      : "dark";
+  }
+
+  function updateThemeButton(theme) {
+    if (!themeToggle) return;
+
+    const icon =
+      themeToggle.querySelector("[data-theme-icon]");
+
+    if (icon) {
+      icon.textContent =
+        theme === "dark" ? "☼" : "☾";
+    }
+
+    themeToggle.setAttribute(
+      "aria-label",
+      theme === "dark"
+        ? "Switch to light mode"
+        : "Switch to dark mode"
+    );
+
+    themeToggle.setAttribute(
+      "title",
+      theme === "dark"
+        ? "Light mode"
+        : "Dark mode"
+    );
+  }
+
+  function setTheme(theme) {
+    const selected =
+      theme === "light"
+        ? "light"
+        : "dark";
+
+    root.setAttribute(
+      "data-theme",
+      selected
+    );
+
+    localStorage.setItem(
+      THEME_KEY,
+      selected
+    );
+
+    updateThemeButton(selected);
+  }
+
+  setTheme(getPreferredTheme());
+
+  themeToggle?.addEventListener(
+    "click",
+    () => {
+      const current =
+        root.getAttribute("data-theme") ||
+        "dark";
+
+      setTheme(
+        current === "dark"
+          ? "light"
+          : "dark"
+      );
+    }
+  );
+
+
+  /* =========================================================
+     2. LANGUAGE SYSTEM
+     ========================================================= */
+
+  const LANGUAGE_KEY = "snk-language";
 
   const translations = {
     en: {
@@ -94,37 +143,65 @@
       navBrand: "Brand",
       navContact: "Contact",
 
-      heroKicker: "UX • AI • SYSTEMS • DIGITAL EXPERIENCE",
+      heroKicker:
+        "UX • AI • SYSTEMS • DIGITAL EXPERIENCE",
+
       heroTitle:
         "I BUILD SYSTEMS. I TRAIN MINDS. I CREATE IMPACT.",
+
       heroDescription:
         "A personal portfolio for work across UX, digital experience, AI-assisted systems, creative direction, and structured thinking.",
 
-      ecosystemKicker: "01 / ECOSYSTEM",
-      ecosystemTitle: "Ideas become platforms.",
+      ecosystemKicker:
+        "01 / ECOSYSTEM",
+
+      ecosystemTitle:
+        "Ideas become platforms.",
+
       ecosystemDescription:
         "Explore the digital ecosystem around SNK.",
 
-      aiKicker: "02 / AI + CONTEXT",
-      aiTitle: "AI is only as good as the thinking behind it.",
+      aiKicker:
+        "02 / AI + CONTEXT",
 
-      mindsetKicker: "03 / MINDSET",
-      mindsetTitle: "Engineering mindset.",
+      aiTitle:
+        "AI is only as good as the thinking behind it.",
 
-      expertiseKicker: "04 / EXPERTISE",
-      expertiseTitle: "What I work on.",
+      mindsetKicker:
+        "03 / MINDSET",
 
-      experienceKicker: "05 / EXPERIENCE",
-      experienceTitle: "Experience shapes the mind.",
+      mindsetTitle:
+        "Engineering mindset.",
 
-      aboutKicker: "06 / ABOUT",
-      aboutTitle: "Build with clarity. Think beyond the interface.",
+      expertiseKicker:
+        "04 / EXPERTISE",
 
-      brandKicker: "07 / BRAND",
-      brandTitle: "SNK is more than a logo.",
+      expertiseTitle:
+        "What I work on.",
 
-      contactKicker: "08 / CONTACT",
-      contactTitle: "Let's build something meaningful.",
+      experienceKicker:
+        "05 / EXPERIENCE",
+
+      experienceTitle:
+        "Experience shapes the mind.",
+
+      aboutKicker:
+        "06 / ABOUT",
+
+      aboutTitle:
+        "Build with clarity. Think beyond the interface.",
+
+      brandKicker:
+        "07 / BRAND",
+
+      brandTitle:
+        "SNK is more than a logo.",
+
+      contactKicker:
+        "08 / CONTACT",
+
+      contactTitle:
+        "Let's build something meaningful.",
 
       footerText:
         "Designed and engineered with intention."
@@ -142,37 +219,61 @@
 
       heroKicker:
         "UX • AI • SYSTEMS • DIGITAL EXPERIENCE",
+
       heroTitle:
         "আমি সিস্টেম তৈরি করি। মনকে প্রশিক্ষণ দিই। প্রভাব তৈরি করি।",
+
       heroDescription:
         "UX, ডিজিটাল এক্সপেরিয়েন্স, AI-assisted systems, creative direction এবং structured thinking নিয়ে আমার কাজের একটি ব্যক্তিগত পোর্টফোলিও।",
 
-      ecosystemKicker: "০১ / ইকোসিস্টেম",
-      ecosystemTitle: "আইডিয়া থেকে প্ল্যাটফর্ম।",
+      ecosystemKicker:
+        "০১ / ইকোসিস্টেম",
+
+      ecosystemTitle:
+        "আইডিয়া থেকে প্ল্যাটফর্ম।",
+
       ecosystemDescription:
         "SNK-এর ডিজিটাল ইকোসিস্টেমের বিভিন্ন অংশ দেখুন।",
 
-      aiKicker: "০২ / AI + CONTEXT",
+      aiKicker:
+        "০২ / AI + CONTEXT",
+
       aiTitle:
         "AI যতটা ভালো, তার পেছনের চিন্তাও ততটাই গুরুত্বপূর্ণ।",
 
-      mindsetKicker: "০৩ / MINDSET",
-      mindsetTitle: "ইঞ্জিনিয়ারিং মাইন্ডসেট।",
+      mindsetKicker:
+        "০৩ / MINDSET",
 
-      expertiseKicker: "০৪ / EXPERTISE",
-      expertiseTitle: "আমি যেসব বিষয়ে কাজ করি।",
+      mindsetTitle:
+        "ইঞ্জিনিয়ারিং মাইন্ডসেট।",
 
-      experienceKicker: "০৫ / EXPERIENCE",
-      experienceTitle: "অভিজ্ঞতা চিন্তাভাবনাকে তৈরি করে।",
+      expertiseKicker:
+        "০৪ / EXPERTISE",
 
-      aboutKicker: "০৬ / ABOUT",
+      expertiseTitle:
+        "আমি যেসব বিষয়ে কাজ করি।",
+
+      experienceKicker:
+        "০৫ / EXPERIENCE",
+
+      experienceTitle:
+        "অভিজ্ঞতা চিন্তাভাবনাকে তৈরি করে।",
+
+      aboutKicker:
+        "০৬ / ABOUT",
+
       aboutTitle:
         "স্বচ্ছতা দিয়ে তৈরি করুন। ইন্টারফেসের বাইরে চিন্তা করুন।",
 
-      brandKicker: "০৭ / BRAND",
-      brandTitle: "SNK শুধু একটি লোগো নয়।",
+      brandKicker:
+        "০৭ / BRAND",
 
-      contactKicker: "০৮ / CONTACT",
+      brandTitle:
+        "SNK শুধু একটি লোগো নয়।",
+
+      contactKicker:
+        "০৮ / CONTACT",
+
       contactTitle:
         "চলুন অর্থবহ কিছু তৈরি করি।",
 
@@ -181,39 +282,31 @@
     }
   };
 
-  function translateElement(element, value) {
-    if (!element) return;
+  function translateUsingDataAttributes(language) {
+    const dictionary =
+      translations[language];
 
-    element.textContent = value;
+    $$("[data-i18n]").forEach(
+      (element) => {
+        const key =
+          element.dataset.i18n;
+
+        if (
+          key &&
+          dictionary[key]
+        ) {
+          element.textContent =
+            dictionary[key];
+        }
+      }
+    );
   }
 
-  function applyLanguage(language) {
-    const lang = language === "bn" ? "bn" : "en";
-    const dictionary = translations[lang];
+  function translateUsingClasses(language) {
+    const dictionary =
+      translations[language];
 
-    root.setAttribute("lang", lang);
-    localStorage.setItem("snk-language", lang);
-
-    /*
-     * Optional data-i18n support.
-     *
-     * Example:
-     * <span data-i18n="navHome"></span>
-     */
-    $$("[data-i18n]").forEach((element) => {
-      const key = element.dataset.i18n;
-
-      if (dictionary[key]) {
-        translateElement(element, dictionary[key]);
-      }
-    });
-
-    /*
-     * Support common existing classes from index.html.
-     * Elements only change when they are present.
-     */
-
-    const selectorMap = {
+    const map = {
       ".nav-home": "navHome",
       ".nav-ecosystem": "navEcosystem",
       ".nav-ai": "navAI",
@@ -229,7 +322,8 @@
 
       ".ecosystem-kicker": "ecosystemKicker",
       ".ecosystem-title": "ecosystemTitle",
-      ".ecosystem-description": "ecosystemDescription",
+      ".ecosystem-description":
+        "ecosystemDescription",
 
       ".ai-kicker": "aiKicker",
       ".ai-title": "aiTitle",
@@ -237,11 +331,15 @@
       ".mindset-kicker": "mindsetKicker",
       ".mindset-title": "mindsetTitle",
 
-      ".expertise-kicker": "expertiseKicker",
-      ".expertise-title": "expertiseTitle",
+      ".expertise-kicker":
+        "expertiseKicker",
+      ".expertise-title":
+        "expertiseTitle",
 
-      ".experience-kicker": "experienceKicker",
-      ".experience-title": "experienceTitle",
+      ".experience-kicker":
+        "experienceKicker",
+      ".experience-title":
+        "experienceTitle",
 
       ".about-kicker": "aboutKicker",
       ".about-title": "aboutTitle",
@@ -249,61 +347,100 @@
       ".brand-kicker": "brandKicker",
       ".brand-title": "brandTitle",
 
-      ".contact-kicker": "contactKicker",
-      ".contact-title": "contactTitle",
+      ".contact-kicker":
+        "contactKicker",
+      ".contact-title":
+        "contactTitle",
 
       ".footer-text": "footerText"
     };
 
-    Object.entries(selectorMap).forEach(
+    Object.entries(map).forEach(
       ([selector, key]) => {
-        const elements = $$(selector);
-
-        elements.forEach((element) => {
-          if (dictionary[key]) {
-            element.textContent = dictionary[key];
+        $$(selector).forEach(
+          (element) => {
+            if (dictionary[key]) {
+              element.textContent =
+                dictionary[key];
+            }
           }
-        });
+        );
       }
+    );
+  }
+
+  function setLanguage(language) {
+    const selected =
+      language === "bn"
+        ? "bn"
+        : "en";
+
+    root.setAttribute(
+      "lang",
+      selected
+    );
+
+    localStorage.setItem(
+      LANGUAGE_KEY,
+      selected
+    );
+
+    translateUsingDataAttributes(
+      selected
+    );
+
+    translateUsingClasses(
+      selected
     );
 
     if (languageToggle) {
       languageToggle.textContent =
-        lang === "en" ? "বাংলা" : "EN";
+        selected === "en"
+          ? "বাংলা"
+          : "EN";
 
       languageToggle.setAttribute(
         "aria-label",
-        lang === "en"
+        selected === "en"
           ? "Switch to Bengali"
           : "Switch to English"
+      );
+
+      languageToggle.setAttribute(
+        "title",
+        selected === "en"
+          ? "বাংলা"
+          : "English"
       );
     }
   }
 
-  applyLanguage(savedLanguage);
+  const savedLanguage =
+    localStorage.getItem(
+      LANGUAGE_KEY
+    ) || "en";
 
-  languageToggle?.addEventListener("click", () => {
-    const current =
-      root.getAttribute("lang") || "en";
+  setLanguage(savedLanguage);
 
-    applyLanguage(current === "en" ? "bn" : "en");
-  });
+  languageToggle?.addEventListener(
+    "click",
+    () => {
+      const current =
+        root.getAttribute("lang") ||
+        "en";
+
+      setLanguage(
+        current === "en"
+          ? "bn"
+          : "en"
+      );
+    }
+  );
 
 
   /* =========================================================
-     3. TERMINAL TYPING EFFECT
+     3. TERMINAL TYPING
      ========================================================= */
-
-  const terminalText = $(
-    "[data-terminal-text]"
-  );
-
-  const terminalFallback = $(
-    ".terminal-text"
-  );
-
-  const terminalTarget =
-    terminalText || terminalFallback;
 
   const terminalMessages = [
     "thinking...",
@@ -314,77 +451,94 @@
     "solving..."
   ];
 
-  let terminalMessageIndex = 0;
-  let terminalCharacterIndex = 0;
+  let terminalIndex = 0;
+  let characterIndex = 0;
   let deleting = false;
+  let terminalTimer = null;
 
-  function runTerminalTyping() {
-    if (!terminalTarget || prefersReducedMotion) {
+  function terminalLoop() {
+    if (
+      !terminalText ||
+      reducedMotion
+    ) {
       return;
     }
 
-    const message =
-      terminalMessages[terminalMessageIndex];
+    const currentMessage =
+      terminalMessages[
+        terminalIndex
+      ];
 
     if (!deleting) {
-      terminalCharacterIndex++;
+      characterIndex++;
 
-      terminalTarget.textContent =
-        message.slice(0, terminalCharacterIndex);
+      terminalText.textContent =
+        currentMessage.slice(
+          0,
+          characterIndex
+        );
 
       if (
-        terminalCharacterIndex >= message.length
+        characterIndex >=
+        currentMessage.length
       ) {
         deleting = true;
 
-        setTimeout(
-          runTerminalTyping,
-          1100
-        );
+        terminalTimer =
+          setTimeout(
+            terminalLoop,
+            1100
+          );
 
         return;
       }
 
-      setTimeout(
-        runTerminalTyping,
-        75
-      );
+      terminalTimer =
+        setTimeout(
+          terminalLoop,
+          70
+        );
 
       return;
     }
 
-    terminalCharacterIndex--;
+    characterIndex--;
 
-    terminalTarget.textContent =
-      message.slice(0, terminalCharacterIndex);
+    terminalText.textContent =
+      currentMessage.slice(
+        0,
+        characterIndex
+      );
 
-    if (terminalCharacterIndex <= 0) {
+    if (characterIndex <= 0) {
       deleting = false;
 
-      terminalMessageIndex =
-        (terminalMessageIndex + 1) %
+      terminalIndex =
+        (terminalIndex + 1) %
         terminalMessages.length;
 
-      setTimeout(
-        runTerminalTyping,
-        350
-      );
+      terminalTimer =
+        setTimeout(
+          terminalLoop,
+          300
+        );
 
       return;
     }
 
-    setTimeout(
-      runTerminalTyping,
-      45
-    );
+    terminalTimer =
+      setTimeout(
+        terminalLoop,
+        40
+      );
   }
 
-  if (terminalTarget) {
-    if (prefersReducedMotion) {
-      terminalTarget.textContent =
+  if (terminalText) {
+    if (reducedMotion) {
+      terminalText.textContent =
         terminalMessages[0];
     } else {
-      runTerminalTyping();
+      terminalLoop();
     }
   }
 
@@ -393,18 +547,31 @@
      4. RAIN EFFECT
      ========================================================= */
 
-  const rainToggle = $("#rainToggle");
-  let rainLayer = $(".rain-layer");
-  let rainEnabled =
-    localStorage.getItem("snk-rain") === "true";
+  const RAIN_KEY = "snk-rain";
 
-  function createRainLayer() {
-    if (rainLayer) {
-      rainLayer.remove();
+  let rainEnabled =
+    localStorage.getItem(
+      RAIN_KEY
+    ) === "true";
+
+  function createRain() {
+    removeRain();
+
+    if (
+      !rainEnabled ||
+      reducedMotion
+    ) {
+      return;
     }
 
-    rainLayer = document.createElement("div");
-    rainLayer.className = "rain-layer";
+    rainLayer =
+      document.createElement(
+        "div"
+      );
+
+    rainLayer.className =
+      "rain-layer";
+
     rainLayer.setAttribute(
       "aria-hidden",
       "true"
@@ -413,14 +580,23 @@
     const fragment =
       document.createDocumentFragment();
 
-    const amount =
-      window.innerWidth < 640 ? 55 : 95;
+    const count =
+      window.innerWidth <= 640
+        ? 55
+        : 100;
 
-    for (let i = 0; i < amount; i++) {
+    for (
+      let i = 0;
+      i < count;
+      i++
+    ) {
       const drop =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
 
-      drop.className = "rain-drop";
+      drop.className =
+        "rain-drop";
 
       drop.style.left =
         `${Math.random() * 100}%`;
@@ -429,30 +605,36 @@
         `${Math.random() * 2.5}s`;
 
       drop.style.animationDuration =
-        `${0.7 + Math.random() * 0.8}s`;
+        `${0.7 + Math.random() * 0.9}s`;
 
       drop.style.opacity =
-        `${0.15 + Math.random() * 0.45}`;
+        `${0.15 + Math.random() * 0.4}`;
 
       fragment.appendChild(drop);
     }
 
-    rainLayer.appendChild(fragment);
-    body.appendChild(rainLayer);
+    rainLayer.appendChild(
+      fragment
+    );
+
+    body.appendChild(
+      rainLayer
+    );
   }
 
-  function removeRainLayer() {
+  function removeRain() {
     if (rainLayer) {
       rainLayer.remove();
       rainLayer = null;
     }
   }
 
-  function applyRain(enabled) {
-    rainEnabled = Boolean(enabled);
+  function setRain(enabled) {
+    rainEnabled =
+      Boolean(enabled);
 
     localStorage.setItem(
-      "snk-rain",
+      RAIN_KEY,
       String(rainEnabled)
     );
 
@@ -461,10 +643,10 @@
       rainEnabled
     );
 
-    if (rainEnabled && !prefersReducedMotion) {
-      createRainLayer();
+    if (rainEnabled) {
+      createRain();
     } else {
-      removeRainLayer();
+      removeRain();
     }
 
     if (rainToggle) {
@@ -482,12 +664,12 @@
     }
   }
 
-  applyRain(rainEnabled);
+  setRain(rainEnabled);
 
   rainToggle?.addEventListener(
     "click",
     () => {
-      applyRain(!rainEnabled);
+      setRain(!rainEnabled);
     }
   );
 
@@ -496,41 +678,53 @@
      5. FLYING BIRDS
      ========================================================= */
 
-  const birdsContainer =
-    $(".birds");
-
   function createBirds() {
-    if (!birdsContainer) return;
+    if (!birdsContainer) {
+      return;
+    }
 
     birdsContainer.innerHTML = "";
 
-    if (prefersReducedMotion) return;
+    if (reducedMotion) {
+      return;
+    }
 
-    const birdCount =
-      window.innerWidth < 640 ? 2 : 4;
+    const count =
+      window.innerWidth <= 640
+        ? 2
+        : 4;
 
-    for (let i = 0; i < birdCount; i++) {
+    for (
+      let i = 0;
+      i < count;
+      i++
+    ) {
       const bird =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
 
-      bird.className = "bird";
+      bird.className =
+        "bird";
 
       bird.style.top =
-        `${12 + Math.random() * 48}%`;
+        `${12 + Math.random() * 45}%`;
 
       bird.style.left =
-        `${-10 - Math.random() * 20}%`;
+        `${-15 - Math.random() * 15}%`;
 
       bird.style.animationDelay =
         `${Math.random() * 8}s`;
 
       bird.style.animationDuration =
-        `${12 + Math.random() * 9}s`;
+        `${12 + Math.random() * 8}s`;
 
       bird.style.transform =
         `scale(${0.55 + Math.random() * 0.45})`;
 
-      birdsContainer.appendChild(bird);
+      birdsContainer.appendChild(
+        bird
+      );
     }
   }
 
@@ -545,52 +739,63 @@
     $$(".reveal");
 
   if (
-    !prefersReducedMotion &&
-    "IntersectionObserver" in window
+    reducedMotion ||
+    !("IntersectionObserver" in window)
   ) {
+    revealElements.forEach(
+      (element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      }
+    );
+  } else {
     const revealObserver =
       new IntersectionObserver(
         (entries, observer) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
+          entries.forEach(
+            (entry) => {
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
+              }
 
-            entry.target.classList.add(
-              "is-visible"
-            );
+              entry.target.classList.add(
+                "is-visible"
+              );
 
-            observer.unobserve(
-              entry.target
-            );
-          });
+              observer.unobserve(
+                entry.target
+              );
+            }
+          );
         },
         {
           threshold: 0.12,
           rootMargin:
-            "0px 0px -50px 0px"
+            "0px 0px -45px 0px"
         }
       );
 
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-  } else {
-    revealElements.forEach((element) => {
-      element.classList.add(
-        "is-visible"
-      );
-    });
+    revealElements.forEach(
+      (element) => {
+        revealObserver.observe(
+          element
+        );
+      }
+    );
   }
 
 
   /* =========================================================
-     7. HEADER SCROLL STATE
+     7. HEADER SCROLL EFFECT
      ========================================================= */
 
-  const header =
-    $(".site-header");
-
   function updateHeader() {
-    if (!header) return;
+    if (!header) {
+      return;
+    }
 
     header.classList.toggle(
       "is-scrolled",
@@ -603,7 +808,9 @@
   window.addEventListener(
     "scroll",
     updateHeader,
-    { passive: true }
+    {
+      passive: true
+    }
   );
 
 
@@ -617,12 +824,21 @@
   const sections =
     navLinks
       .map((link) => {
-        const id =
-          link.getAttribute("href");
+        const href =
+          link.getAttribute(
+            "href"
+          );
 
-        return id
-          ? document.querySelector(id)
-          : null;
+        if (
+          !href ||
+          href === "#"
+        ) {
+          return null;
+        }
+
+        return document.querySelector(
+          href
+        );
       })
       .filter(Boolean);
 
@@ -630,24 +846,32 @@
     sections.length &&
     "IntersectionObserver" in window
   ) {
-    const sectionObserver =
+    const navObserver =
       new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
+          entries.forEach(
+            (entry) => {
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
+              }
 
-            const id =
-              `#${entry.target.id}`;
+              const currentId =
+                `#${entry.target.id}`;
 
-            navLinks.forEach((link) => {
-              link.classList.toggle(
-                "active",
-                link.getAttribute(
-                  "href"
-                ) === id
+              navLinks.forEach(
+                (link) => {
+                  link.classList.toggle(
+                    "active",
+                    link.getAttribute(
+                      "href"
+                    ) === currentId
+                  );
+                }
               );
-            });
-          });
+            }
+          );
         },
         {
           rootMargin:
@@ -656,38 +880,45 @@
         }
       );
 
-    sections.forEach((section) => {
-      sectionObserver.observe(section);
-    });
+    sections.forEach(
+      (section) => {
+        navObserver.observe(
+          section
+        );
+      }
+    );
   }
 
 
   /* =========================================================
-     9. SMOOTH ANCHOR NAVIGATION
+     9. SMOOTH ANCHOR SCROLL
      ========================================================= */
 
-  function getHeaderOffset() {
+  function headerHeight() {
     return header
       ? header.offsetHeight + 18
       : 18;
   }
 
-  function scrollToElement(
+  function scrollToTarget(
     target,
-    updateHash = true
+    updateUrl = true
   ) {
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
-    if (target.id === "home") {
+    if (
+      target.id === "home"
+    ) {
       window.scrollTo({
         top: 0,
-        behavior:
-          prefersReducedMotion
-            ? "auto"
-            : "smooth"
+        behavior: reducedMotion
+          ? "auto"
+          : "smooth"
       });
 
-      if (updateHash) {
+      if (updateUrl) {
         history.replaceState(
           null,
           "",
@@ -698,21 +929,24 @@
       return;
     }
 
-    const top =
-      target.getBoundingClientRect().top +
+    const targetTop =
+      target.getBoundingClientRect()
+        .top +
       window.scrollY -
-      getHeaderOffset();
+      headerHeight();
 
     window.scrollTo({
-      top: Math.max(0, top),
-      behavior:
-        prefersReducedMotion
-          ? "auto"
-          : "smooth"
+      top: Math.max(
+        0,
+        targetTop
+      ),
+      behavior: reducedMotion
+        ? "auto"
+        : "smooth"
     });
 
     if (
-      updateHash &&
+      updateUrl &&
       target.id
     ) {
       history.replaceState(
@@ -729,7 +963,9 @@
         "click",
         (event) => {
           const href =
-            link.getAttribute("href");
+            link.getAttribute(
+              "href"
+            );
 
           if (
             !href ||
@@ -743,154 +979,205 @@
               href
             );
 
-          if (!target) return;
+          if (!target) {
+            return;
+          }
 
           event.preventDefault();
 
-          scrollToElement(target);
+          scrollToTarget(
+            target
+          );
         }
       );
     }
   );
 
-  /*
-   * Fix direct visits such as:
-   * index.html#home
-   */
-  if (
-    window.location.hash === "#home"
-  ) {
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "auto"
-      });
-    }, 50);
+
+  /* =========================================================
+     10. DIRECT HASH HANDLING
+     ========================================================= */
+
+  function handleInitialHash() {
+    const hash =
+      window.location.hash;
+
+    if (!hash) {
+      return;
+    }
+
+    const target =
+      document.querySelector(
+        hash
+      );
+
+    if (!target) {
+      return;
+    }
+
+    /*
+     * Wait until layout/images
+     * have settled.
+     */
+    setTimeout(
+      () => {
+        scrollToTarget(
+          target,
+          false
+        );
+      },
+      100
+    );
   }
+
+  handleInitialHash();
 
 
   /* =========================================================
-     10. SUBTLE CARD TILT
+     11. CARD HOVER TILT
      ========================================================= */
 
-  const tiltCards = $$(
-    ".ecosystem-card, .expertise-card, .mindset-card, .social-card, .brand-card"
-  );
+  const tiltCards =
+    $$(
+      [
+        ".ecosystem-card",
+        ".expertise-card",
+        ".mindset-card",
+        ".social-card",
+        ".brand-card"
+      ].join(",")
+    );
 
-  if (
-    !prefersReducedMotion &&
+  const finePointer =
     window.matchMedia(
       "(pointer: fine)"
-    ).matches
+    ).matches;
+
+  if (
+    !reducedMotion &&
+    finePointer
   ) {
-    tiltCards.forEach((card) => {
-      card.addEventListener(
-        "pointermove",
-        (event) => {
-          const rect =
-            card.getBoundingClientRect();
+    tiltCards.forEach(
+      (card) => {
+        card.addEventListener(
+          "pointermove",
+          (event) => {
+            const rect =
+              card.getBoundingClientRect();
 
-          const x =
-            event.clientX -
-            rect.left;
+            const x =
+              event.clientX -
+              rect.left;
 
-          const y =
-            event.clientY -
-            rect.top;
+            const y =
+              event.clientY -
+              rect.top;
 
-          const rotateY =
-            ((x / rect.width) - 0.5) *
-            4;
+            const rotateY =
+              ((x / rect.width) -
+                0.5) *
+              4;
 
-          const rotateX =
-            ((y / rect.height) - 0.5) *
-            -4;
+            const rotateX =
+              ((y / rect.height) -
+                0.5) *
+              -4;
 
-          card.style.transform =
-            `perspective(900px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-             translateY(-4px)`;
-        }
-      );
+            card.style.transform =
+              `perspective(900px)
+               rotateX(${rotateX}deg)
+               rotateY(${rotateY}deg)
+               translateY(-4px)`;
+          }
+        );
 
-      card.addEventListener(
-        "pointerleave",
-        () => {
-          card.style.transform = "";
-        }
-      );
-    });
+        card.addEventListener(
+          "pointerleave",
+          () => {
+            card.style.transform =
+              "";
+          }
+        );
+      }
+    );
   }
 
 
   /* =========================================================
-     11. EXTERNAL LINKS
+     12. EXTERNAL LINK SAFETY
      ========================================================= */
 
-  $$("a[href]").forEach((link) => {
-    const href =
-      link.getAttribute("href");
+  $$("a[href]").forEach(
+    (link) => {
+      const href =
+        link.getAttribute(
+          "href"
+        );
 
-    if (!href) return;
+      if (!href) {
+        return;
+      }
 
-    const isExternal =
-      /^https?:\/\//i.test(href) &&
-      !href.includes(
-        window.location.hostname
-      );
+      const external =
+        /^https?:\/\//i.test(
+          href
+        ) &&
+        !href.includes(
+          window.location.hostname
+        );
 
-    if (isExternal) {
-      link.setAttribute(
-        "target",
-        "_blank"
-      );
+      if (external) {
+        link.setAttribute(
+          "target",
+          "_blank"
+        );
 
-      link.setAttribute(
-        "rel",
-        "noopener noreferrer"
-      );
+        link.setAttribute(
+          "rel",
+          "noopener noreferrer"
+        );
+      }
     }
-  });
+  );
 
 
   /* =========================================================
-     12. KEYBOARD SHORTCUTS
+     13. KEYBOARD SHORTCUTS
      ========================================================= */
 
   document.addEventListener(
     "keydown",
     (event) => {
-      /*
-       * Don't trigger shortcuts while
-       * typing in form fields.
-       */
-
       const active =
         document.activeElement;
 
-      const isTyping =
+      const typing =
         active &&
         (
-          active.tagName === "INPUT" ||
-          active.tagName === "TEXTAREA" ||
+          active.tagName ===
+            "INPUT" ||
+          active.tagName ===
+            "TEXTAREA" ||
           active.isContentEditable
         );
 
-      if (isTyping) return;
+      if (typing) {
+        return;
+      }
 
       /*
-       * T = Theme
+       * T = Toggle theme
        */
       if (
-        event.key.toLowerCase() === "t"
+        event.key.toLowerCase() ===
+        "t"
       ) {
         const current =
           root.getAttribute(
             "data-theme"
           ) || "dark";
 
-        applyTheme(
+        setTheme(
           current === "dark"
             ? "light"
             : "dark"
@@ -898,82 +1185,98 @@
       }
 
       /*
-       * R = Rain
+       * R = Toggle rain
        */
       if (
-        event.key.toLowerCase() === "r"
+        event.key.toLowerCase() ===
+        "r"
       ) {
-        applyRain(!rainEnabled);
+        setRain(!rainEnabled);
       }
     }
   );
 
 
   /* =========================================================
-     13. RESIZE HANDLING
+     14. RESIZE
      ========================================================= */
 
-  let resizeTimer;
+  let resizeTimer = null;
 
   window.addEventListener(
     "resize",
     () => {
-      clearTimeout(resizeTimer);
+      clearTimeout(
+        resizeTimer
+      );
 
-      resizeTimer = setTimeout(() => {
-        if (rainEnabled) {
-          createRainLayer();
-        }
+      resizeTimer =
+        setTimeout(
+          () => {
+            createBirds();
 
-        createBirds();
-      }, 250);
+            if (rainEnabled) {
+              createRain();
+            }
+          },
+          250
+        );
     },
-    { passive: true }
-  );
-
-
-  /* =========================================================
-     14. FOOTER YEAR
-     ========================================================= */
-
-  $$(".current-year").forEach(
-    (element) => {
-      element.textContent =
-        new Date().getFullYear();
+    {
+      passive: true
     }
   );
 
 
   /* =========================================================
-     15. IMAGE FALLBACK
+     15. FOOTER YEAR
      ========================================================= */
 
-  $$("img").forEach((image) => {
-    image.addEventListener(
-      "error",
-      () => {
-        image.classList.add(
-          "image-error"
-        );
-      },
-      { once: true }
-    );
-  });
+  $$(".current-year").forEach(
+    (element) => {
+      element.textContent =
+        new Date()
+          .getFullYear();
+    }
+  );
 
 
   /* =========================================================
-     16. INITIAL PAGE STATE
+     16. IMAGE ERROR HANDLING
      ========================================================= */
 
-  requestAnimationFrame(() => {
-    body.classList.add(
-      "page-ready"
-    );
-  });
+  $$("img").forEach(
+    (image) => {
+      image.addEventListener(
+        "error",
+        () => {
+          image.classList.add(
+            "image-error"
+          );
+        },
+        {
+          once: true
+        }
+      );
+    }
+  );
 
 
   /* =========================================================
-     17. CONSOLE BRANDING
+     17. PAGE READY
+     ========================================================= */
+
+  requestAnimationFrame(
+    () => {
+      body.classList.add(
+        "page-ready"
+      );
+    }
+  );
+
+
+  /* =========================================================
+     18. CONSOLE BRANDING
      ========================================================= */
 
   console.log(
