@@ -1,44 +1,41 @@
 /* =========================================================
    SNK ADMIN SYSTEM
-   Authentication Layer
+   Authentication Layer — Supabase
 ========================================================= */
 
 "use strict";
 
-/*
-|--------------------------------------------------------------------------
-| SUPABASE CONFIG
-|--------------------------------------------------------------------------
-|
-| Replace these two values with your Supabase project values.
-|
-| IMPORTANT:
-| Never put your Supabase SERVICE ROLE key here.
-|
-*/
+/* =========================================================
+   SUPABASE CONFIG
+========================================================= */
 
 const SUPABASE_URL =
-  "YOUR_SUPABASE_PROJECT_URL";
+  "https://pgugexzrbbijfygapixn.supabase.co";
 
 const SUPABASE_ANON_KEY =
-  "YOUR_SUPABASE_ANON_KEY";
+  "YOUR_SB_PUBLISHABLE_KEY";
 
 
 /* =========================================================
-   INITIALIZE
+   INITIALIZE SUPABASE
 ========================================================= */
 
 let supabaseClient = null;
 
-if (
-  SUPABASE_URL !== "YOUR_SUPABASE_PROJECT_URL" &&
-  SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY"
-) {
-  supabaseClient =
-    window.supabase.createClient(
+try {
+  if (
+    SUPABASE_URL &&
+    SUPABASE_ANON_KEY &&
+    SUPABASE_URL !== "YOUR_SUPABASE_PROJECT_URL" &&
+    SUPABASE_ANON_KEY !== "YOUR_SB_PUBLISHABLE_KEY"
+  ) {
+    supabaseClient = window.supabase.createClient(
       SUPABASE_URL,
       SUPABASE_ANON_KEY
     );
+  }
+} catch (error) {
+  console.error("SNK Admin: Supabase initialization failed.", error);
 }
 
 
@@ -69,19 +66,13 @@ const togglePassword =
    MESSAGE
 ========================================================= */
 
-function showMessage(
-  message,
-  type = "error"
-) {
+function showMessage(message, type = "error") {
 
-  if (!loginMessage) {
-    return;
-  }
+  if (!loginMessage) return;
 
   loginMessage.textContent = message;
 
-  loginMessage.className =
-    "login-message";
+  loginMessage.className = "login-message";
 
   if (type === "success") {
     loginMessage.classList.add("success");
@@ -93,27 +84,20 @@ function showMessage(
    PASSWORD VISIBILITY
 ========================================================= */
 
-if (togglePassword) {
+if (togglePassword && passwordInput) {
 
-  togglePassword.addEventListener(
-    "click",
-    () => {
+  togglePassword.addEventListener("click", () => {
 
-      const isPassword =
-        passwordInput.type === "password";
+    const isPassword =
+      passwordInput.type === "password";
 
-      passwordInput.type =
-        isPassword
-          ? "text"
-          : "password";
+    passwordInput.type =
+      isPassword ? "text" : "password";
 
-      togglePassword.textContent =
-        isPassword
-          ? "HIDE"
-          : "SHOW";
+    togglePassword.textContent =
+      isPassword ? "HIDE" : "SHOW";
 
-    }
-  );
+  });
 
 }
 
@@ -138,7 +122,7 @@ if (loginForm) {
 
 
       /* -----------------------------------------
-         BASIC VALIDATION
+         VALIDATION
       ----------------------------------------- */
 
       if (!email || !password) {
@@ -152,17 +136,17 @@ if (loginForm) {
 
 
       /* -----------------------------------------
-         CONFIG CHECK
+         SUPABASE CHECK
       ----------------------------------------- */
 
       if (!supabaseClient) {
 
         showMessage(
-          "Supabase is not configured yet."
+          "Supabase is not configured. Add your Publishable key in admin.js."
         );
 
-        console.warn(
-          "SNK Admin: Add SUPABASE_URL and SUPABASE_ANON_KEY in admin.js."
+        console.error(
+          "SNK Admin: Supabase client was not initialized."
         );
 
         return;
@@ -185,9 +169,9 @@ if (loginForm) {
 
       try {
 
-        /* -----------------------------------------
-           SUPABASE LOGIN
-        ----------------------------------------- */
+        /* ---------------------------------------
+           SUPABASE AUTH
+        --------------------------------------- */
 
         const {
           data,
@@ -204,22 +188,27 @@ if (loginForm) {
         }
 
 
-        /* -----------------------------------------
-           SUCCESS
-        ----------------------------------------- */
+        /* ---------------------------------------
+           SESSION CHECK
+        --------------------------------------- */
 
         if (!data || !data.session) {
+
           throw new Error(
             "Authentication session was not created."
           );
+
         }
 
+
+        /* ---------------------------------------
+           SUCCESS
+        --------------------------------------- */
 
         showMessage(
           "Authentication successful. Opening dashboard...",
           "success"
         );
-
 
         loginButton.innerHTML = `
           <span>ACCESS GRANTED</span>
@@ -227,9 +216,9 @@ if (loginForm) {
         `;
 
 
-        /* -----------------------------------------
+        /* ---------------------------------------
            DASHBOARD
-        ----------------------------------------- */
+        --------------------------------------- */
 
         setTimeout(() => {
 
@@ -239,6 +228,7 @@ if (loginForm) {
         }, 500);
 
       }
+
 
       catch (error) {
 
@@ -299,14 +289,21 @@ function getAuthErrorMessage(error) {
   if (
     message.includes("too many requests")
   ) {
-    return "Too many attempts. Please wait and try again.";
+    return "Too many login attempts. Please wait and try again.";
   }
 
 
   if (
     message.includes("network")
   ) {
-    return "Network error. Check your connection.";
+    return "Network error. Check your internet connection.";
+  }
+
+
+  if (
+    message.includes("failed to fetch")
+  ) {
+    return "Unable to connect to Supabase. Check your Project URL and Publishable key.";
   }
 
 
@@ -314,11 +311,12 @@ function getAuthErrorMessage(error) {
     error.message ||
     "Unable to sign in."
   );
+
 }
 
 
 /* =========================================================
-   EXISTING SESSION CHECK
+   EXISTING SESSION
 ========================================================= */
 
 async function checkExistingSession() {
@@ -330,20 +328,26 @@ async function checkExistingSession() {
   try {
 
     const {
-      data
+      data,
+      error
     } =
       await supabaseClient.auth.getSession();
+
+
+    if (error) {
+      console.warn(
+        "Session check error:",
+        error
+      );
+
+      return;
+    }
 
 
     if (
       data &&
       data.session
     ) {
-
-      /*
-       * If already logged in,
-       * send directly to dashboard.
-       */
 
       window.location.href =
         "./dashboard.html";
@@ -364,32 +368,8 @@ async function checkExistingSession() {
 }
 
 
-checkExistingSession();
-
-
 /* =========================================================
-   DEVELOPMENT NOTICE
+   START
 ========================================================= */
 
-if (!supabaseClient) {
-
-  console.info(`
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- SNK ADMIN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
- Supabase is not configured.
-
- Add:
-
- SUPABASE_URL
- SUPABASE_ANON_KEY
-
- inside:
-
- admin/admin.js
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-`);
-
-}
+checkExistingSession();
