@@ -1,46 +1,58 @@
 /* =========================================================
    SNK ADMIN SYSTEM
-   Authentication Layer — Supabase
+   FULL SUPABASE AUTHENTICATION
+   Shah Neil Khan
 ========================================================= */
 
 "use strict";
 
+
 /* =========================================================
-   SUPABASE CONFIG
+   1. SUPABASE CONFIG
 ========================================================= */
 
 const SUPABASE_URL =
   "https://pgugexzrbbijfygapixn.supabase.co";
 
-const SUPABASE_ANON_KEY =
+const SUPABASE_PUBLISHABLE_KEY =
   "YOUR_SB_PUBLISHABLE_KEY";
 
 
 /* =========================================================
-   INITIALIZE SUPABASE
+   2. CREATE SUPABASE CLIENT
 ========================================================= */
 
 let supabaseClient = null;
 
 try {
+
   if (
+    window.supabase &&
     SUPABASE_URL &&
-    SUPABASE_ANON_KEY &&
-    SUPABASE_URL !== "YOUR_SUPABASE_PROJECT_URL" &&
-    SUPABASE_ANON_KEY !== "YOUR_SB_PUBLISHABLE_KEY"
+    SUPABASE_PUBLISHABLE_KEY &&
+    SUPABASE_PUBLISHABLE_KEY !== "YOUR_SB_PUBLISHABLE_KEY"
   ) {
-    supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_ANON_KEY
-    );
+
+    supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
   }
+
 } catch (error) {
-  console.error("SNK Admin: Supabase initialization failed.", error);
+
+  console.error(
+    "SNK Admin: Supabase initialization failed.",
+    error
+  );
+
 }
 
 
 /* =========================================================
-   ELEMENTS
+   3. GET HTML ELEMENTS
 ========================================================= */
 
 const loginForm =
@@ -63,192 +75,76 @@ const togglePassword =
 
 
 /* =========================================================
-   MESSAGE
+   4. SHOW MESSAGE
 ========================================================= */
 
-function showMessage(message, type = "error") {
+function showMessage(
+  message,
+  type = "error"
+) {
 
-  if (!loginMessage) return;
+  if (!loginMessage) {
+    return;
+  }
 
-  loginMessage.textContent = message;
+  loginMessage.textContent =
+    message;
 
-  loginMessage.className = "login-message";
+  loginMessage.className =
+    "login-message";
 
   if (type === "success") {
-    loginMessage.classList.add("success");
+
+    loginMessage.classList.add(
+      "success"
+    );
+
   }
-}
-
-
-/* =========================================================
-   PASSWORD VISIBILITY
-========================================================= */
-
-if (togglePassword && passwordInput) {
-
-  togglePassword.addEventListener("click", () => {
-
-    const isPassword =
-      passwordInput.type === "password";
-
-    passwordInput.type =
-      isPassword ? "text" : "password";
-
-    togglePassword.textContent =
-      isPassword ? "HIDE" : "SHOW";
-
-  });
 
 }
 
 
 /* =========================================================
-   LOGIN
+   5. PASSWORD SHOW / HIDE
 ========================================================= */
 
-if (loginForm) {
+if (
+  togglePassword &&
+  passwordInput
+) {
 
-  loginForm.addEventListener(
-    "submit",
-    async (event) => {
+  togglePassword.addEventListener(
+    "click",
+    function () {
 
-      event.preventDefault();
+      const passwordVisible =
+        passwordInput.type === "text";
 
-      const email =
-        emailInput.value.trim();
+      if (passwordVisible) {
 
-      const password =
-        passwordInput.value;
+        passwordInput.type =
+          "password";
 
+        togglePassword.textContent =
+          "SHOW";
 
-      /* -----------------------------------------
-         VALIDATION
-      ----------------------------------------- */
-
-      if (!email || !password) {
-
-        showMessage(
-          "Please enter your email and password."
+        togglePassword.setAttribute(
+          "aria-label",
+          "Show password"
         );
 
-        return;
-      }
+      } else {
 
+        passwordInput.type =
+          "text";
 
-      /* -----------------------------------------
-         SUPABASE CHECK
-      ----------------------------------------- */
+        togglePassword.textContent =
+          "HIDE";
 
-      if (!supabaseClient) {
-
-        showMessage(
-          "Supabase is not configured. Add your Publishable key in admin.js."
+        togglePassword.setAttribute(
+          "aria-label",
+          "Hide password"
         );
-
-        console.error(
-          "SNK Admin: Supabase client was not initialized."
-        );
-
-        return;
-      }
-
-
-      /* -----------------------------------------
-         LOADING
-      ----------------------------------------- */
-
-      loginButton.classList.add("loading");
-
-      loginButton.innerHTML = `
-        <span>AUTHENTICATING...</span>
-        <span>•••</span>
-      `;
-
-      showMessage("");
-
-
-      try {
-
-        /* ---------------------------------------
-           SUPABASE AUTH
-        --------------------------------------- */
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient.auth.signInWithPassword({
-            email,
-            password
-          });
-
-
-        if (error) {
-          throw error;
-        }
-
-
-        /* ---------------------------------------
-           SESSION CHECK
-        --------------------------------------- */
-
-        if (!data || !data.session) {
-
-          throw new Error(
-            "Authentication session was not created."
-          );
-
-        }
-
-
-        /* ---------------------------------------
-           SUCCESS
-        --------------------------------------- */
-
-        showMessage(
-          "Authentication successful. Opening dashboard...",
-          "success"
-        );
-
-        loginButton.innerHTML = `
-          <span>ACCESS GRANTED</span>
-          <span>✓</span>
-        `;
-
-
-        /* ---------------------------------------
-           DASHBOARD
-        --------------------------------------- */
-
-        setTimeout(() => {
-
-          window.location.href =
-            "./dashboard.html";
-
-        }, 500);
-
-      }
-
-
-      catch (error) {
-
-        console.error(
-          "SNK Admin Login Error:",
-          error
-        );
-
-        showMessage(
-          getAuthErrorMessage(error)
-        );
-
-        loginButton.classList.remove(
-          "loading"
-        );
-
-        loginButton.innerHTML = `
-          <span>ENTER ADMIN</span>
-          <span>→</span>
-        `;
 
       }
 
@@ -259,51 +155,332 @@ if (loginForm) {
 
 
 /* =========================================================
-   AUTH ERROR HANDLER
+   6. LOGIN FORM
+========================================================= */
+
+if (loginForm) {
+
+  loginForm.addEventListener(
+    "submit",
+    async function (event) {
+
+      event.preventDefault();
+
+
+      /* -----------------------------------------
+         CHECK INPUTS
+      ----------------------------------------- */
+
+      const email =
+        emailInput
+          ? emailInput.value.trim()
+          : "";
+
+      const password =
+        passwordInput
+          ? passwordInput.value
+          : "";
+
+
+      if (!email) {
+
+        showMessage(
+          "Please enter your admin email."
+        );
+
+        if (emailInput) {
+          emailInput.focus();
+        }
+
+        return;
+      }
+
+
+      if (!password) {
+
+        showMessage(
+          "Please enter your admin password."
+        );
+
+        if (passwordInput) {
+          passwordInput.focus();
+        }
+
+        return;
+      }
+
+
+      /* -----------------------------------------
+         CHECK SUPABASE
+      ----------------------------------------- */
+
+      if (!supabaseClient) {
+
+        showMessage(
+          "Supabase is not connected. Please check admin.js configuration."
+        );
+
+        console.error(
+          "SNK Admin: Supabase client is not configured."
+        );
+
+        return;
+      }
+
+
+      /* -----------------------------------------
+         BUTTON LOADING
+      ----------------------------------------- */
+
+      if (loginButton) {
+
+        loginButton.classList.add(
+          "loading"
+        );
+
+        loginButton.innerHTML = `
+          <span>AUTHENTICATING...</span>
+          <span>•••</span>
+        `;
+
+      }
+
+      showMessage("");
+
+
+      try {
+
+
+        /* ---------------------------------------
+           SUPABASE LOGIN
+        --------------------------------------- */
+
+        const result =
+          await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+          });
+
+
+        const data =
+          result.data;
+
+        const error =
+          result.error;
+
+
+        /* ---------------------------------------
+           LOGIN ERROR
+        --------------------------------------- */
+
+        if (error) {
+
+          throw error;
+
+        }
+
+
+        /* ---------------------------------------
+           CHECK SESSION
+        --------------------------------------- */
+
+        if (
+          !data ||
+          !data.session
+        ) {
+
+          throw new Error(
+            "Login succeeded but no session was created."
+          );
+
+        }
+
+
+        /* ---------------------------------------
+           SUCCESS
+        --------------------------------------- */
+
+        showMessage(
+          "Access granted. Opening admin dashboard...",
+          "success"
+        );
+
+
+        if (loginButton) {
+
+          loginButton.innerHTML = `
+            <span>ACCESS GRANTED</span>
+            <span>✓</span>
+          `;
+
+        }
+
+
+        /* ---------------------------------------
+           GO TO DASHBOARD
+        --------------------------------------- */
+
+        setTimeout(
+          function () {
+
+            window.location.href =
+              "./dashboard.html";
+
+          },
+          600
+        );
+
+
+      } catch (error) {
+
+
+        console.error(
+          "SNK Admin Login Error:",
+          error
+        );
+
+
+        showMessage(
+          getAuthErrorMessage(error)
+        );
+
+
+        if (loginButton) {
+
+          loginButton.classList.remove(
+            "loading"
+          );
+
+          loginButton.innerHTML = `
+            <span>ENTER ADMIN</span>
+            <span>→</span>
+          `;
+
+        }
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   7. AUTH ERROR MESSAGE
 ========================================================= */
 
 function getAuthErrorMessage(error) {
 
   if (!error) {
+
     return "Authentication failed.";
+
   }
+
 
   const message =
-    String(error.message || "").toLowerCase();
+    String(
+      error.message || ""
+    ).toLowerCase();
 
+
+  /* Invalid login */
 
   if (
-    message.includes("invalid login credentials")
+    message.includes(
+      "invalid login credentials"
+    )
   ) {
-    return "Invalid email or password.";
+
+    return (
+      "Invalid email or password."
+    );
+
   }
 
 
+  /* Email confirmation */
+
   if (
-    message.includes("email not confirmed")
+    message.includes(
+      "email not confirmed"
+    )
   ) {
-    return "Please confirm your admin email first.";
+
+    return (
+      "Your admin email is not confirmed yet."
+    );
+
   }
 
 
+  /* Too many attempts */
+
   if (
-    message.includes("too many requests")
+    message.includes(
+      "too many requests"
+    )
   ) {
-    return "Too many login attempts. Please wait and try again.";
+
+    return (
+      "Too many login attempts. Please wait a little and try again."
+    );
+
   }
 
 
+  /* Network */
+
   if (
-    message.includes("network")
+    message.includes(
+      "network"
+    ) ||
+    message.includes(
+      "failed to fetch"
+    )
   ) {
-    return "Network error. Check your internet connection.";
+
+    return (
+      "Cannot connect to Supabase. Please check your internet connection."
+    );
+
   }
 
 
+  /* Bad API key */
+
   if (
-    message.includes("failed to fetch")
+    message.includes(
+      "apikey"
+    ) ||
+    message.includes(
+      "api key"
+    )
   ) {
-    return "Unable to connect to Supabase. Check your Project URL and Publishable key.";
+
+    return (
+      "Supabase API key is incorrect."
+    );
+
+  }
+
+
+  /* Invalid URL */
+
+  if (
+    message.includes(
+      "url"
+    )
+  ) {
+
+    return (
+      "Supabase Project URL is incorrect."
+    );
+
   }
 
 
@@ -316,31 +493,40 @@ function getAuthErrorMessage(error) {
 
 
 /* =========================================================
-   EXISTING SESSION
+   8. CHECK EXISTING SESSION
 ========================================================= */
 
 async function checkExistingSession() {
 
   if (!supabaseClient) {
+
     return;
+
   }
+
 
   try {
 
-    const {
-      data,
-      error
-    } =
+    const result =
       await supabaseClient.auth.getSession();
 
 
+    const data =
+      result.data;
+
+    const error =
+      result.error;
+
+
     if (error) {
+
       console.warn(
-        "Session check error:",
+        "SNK Admin session check:",
         error
       );
 
       return;
+
     }
 
 
@@ -349,17 +535,20 @@ async function checkExistingSession() {
       data.session
     ) {
 
+      /*
+       * User is already logged in.
+       * Go directly to dashboard.
+       */
+
       window.location.href =
         "./dashboard.html";
 
     }
 
-  }
-
-  catch (error) {
+  } catch (error) {
 
     console.warn(
-      "Session check failed:",
+      "SNK Admin session check failed:",
       error
     );
 
@@ -369,7 +558,20 @@ async function checkExistingSession() {
 
 
 /* =========================================================
-   START
+   9. START SESSION CHECK
 ========================================================= */
 
 checkExistingSession();
+
+
+/* =========================================================
+   10. DEVELOPMENT / CONFIG MESSAGE
+========================================================= */
+
+if (!supabaseClient) {
+
+  console.warn(
+    "SNK ADMIN: Supabase is not configured."
+  );
+
+}
