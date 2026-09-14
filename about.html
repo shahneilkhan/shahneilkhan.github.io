@@ -3,17 +3,28 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>About — Shah Neil Khan | SNK</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="About Shah Neil Khan — UX Lead Digital Expert, digital experience thinker, and creator of the SNK personal brand ecosystem."
+    content="About Shah Neil Khan — UX Lead Digital Expert, digital experience designer and builder behind the SNK ecosystem."
   >
 
-  <meta name="author" content="Shah Neil Khan">
-  <meta name="theme-color" content="#080808">
+  <meta
+    name="author"
+    content="Shah Neil Khan"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080808"
+  >
+
+  <title>About — Shah Neil Khan | SNK</title>
 
   <!-- FAVICON -->
   <link
@@ -24,97 +35,1484 @@
 
   <!-- SHARED CSS -->
   <link rel="stylesheet" href="style.css">
+
+
+  <!-- =====================================================
+       ABOUT PAGE CSS
+  ====================================================== -->
+
+  <style>
+
+    /* =====================================================
+       PAGE
+    ====================================================== */
+
+    .about-page {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+
+    /* =====================================================
+       HERO
+    ====================================================== */
+
+    .about-hero {
+      position: relative;
+
+      min-height: 76vh;
+      min-height: 76svh;
+
+      display: flex;
+      align-items: center;
+
+      padding:
+        150px
+        clamp(24px, 6vw, 100px)
+        105px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 78% 40%,
+          rgba(208,164,92,0.13),
+          transparent 33%
+        ),
+        radial-gradient(
+          circle at 12% 85%,
+          rgba(208,164,92,0.05),
+          transparent 30%
+        ),
+        #080808;
+    }
+
+
+    .about-hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.017) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.017) 1px,
+          transparent 1px
+        );
+
+      background-size: 72px 72px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          black 20%,
+          black 80%,
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
+
+    .about-hero-glow {
+      position: absolute;
+
+      width: 470px;
+      height: 470px;
+
+      right: 8%;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      border-radius: 50%;
+
+      background:
+        rgba(208,164,92,0.055);
+
+      filter: blur(95px);
+
+      pointer-events: none;
+    }
+
+
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+
+      width: min(1050px, 100%);
+    }
+
+
+    .about-eyebrow {
+      margin: 0 0 22px;
+
+      color: #d0a45c;
+
+      font-size: 0.67rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.24em;
+
+      text-transform: uppercase;
+    }
+
+
+    .about-title {
+      max-width: 1050px;
+
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          3.3rem,
+          7.8vw,
+          8rem
+        );
+
+      line-height: 0.88;
+
+      letter-spacing: -0.07em;
+
+      font-weight: 800;
+    }
+
+
+    .about-title span {
+      color: #d0a45c;
+    }
+
+
+    .about-intro {
+      max-width: 700px;
+
+      margin: 35px 0 0;
+
+      color:
+        rgba(242,238,231,0.58);
+
+      font-size:
+        clamp(
+          0.93rem,
+          1.45vw,
+          1.1rem
+        );
+
+      line-height: 1.85;
+    }
+
+
+    .about-pills {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-top: 32px;
+    }
+
+
+    .about-pill {
+      display: inline-flex;
+
+      align-items: center;
+
+      min-height: 34px;
+
+      padding: 0 13px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+      border-radius: 999px;
+
+      color:
+        rgba(242,238,231,0.45);
+
+      background:
+        rgba(255,255,255,0.022);
+
+      font-size: 0.61rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.09em;
+
+      text-transform: uppercase;
+    }
+
+
+    .about-pill.active {
+      color: #d0a45c;
+
+      border-color:
+        rgba(208,164,92,0.28);
+
+      background:
+        rgba(208,164,92,0.055);
+    }
+
+
+    /* =====================================================
+       INTRODUCTION
+    ====================================================== */
+
+    .about-introduction {
+      padding:
+        120px
+        clamp(24px, 6vw, 100px);
+
+      background: #0b0b0b;
+    }
+
+
+    .about-intro-grid {
+      width: min(1200px, 100%);
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(250px, 0.65fr)
+        minmax(0, 1.35fr);
+
+      gap: 60px;
+    }
+
+
+    .about-label {
+      margin: 0;
+
+      color: #d0a45c;
+
+      font-size: 0.63rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.21em;
+
+      text-transform: uppercase;
+    }
+
+
+    .about-intro-copy h2 {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2rem,
+          4vw,
+          4rem
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+    }
+
+
+    .about-intro-copy h2 span {
+      color:
+        rgba(242,238,231,0.35);
+    }
+
+
+    .about-intro-copy p {
+      max-width: 760px;
+
+      margin: 24px 0 0;
+
+      color:
+        rgba(242,238,231,0.48);
+
+      font-size: 0.88rem;
+
+      line-height: 1.85;
+    }
+
+
+    .about-intro-copy p + p {
+      margin-top: 15px;
+    }
+
+
+    /* =====================================================
+       MINDSET
+    ====================================================== */
+
+    .about-mindset {
+      padding:
+        120px
+        clamp(24px, 6vw, 100px)
+        130px;
+
+      background: #080808;
+    }
+
+
+    .about-section-head {
+      width: min(1200px, 100%);
+
+      margin: 0 auto 48px;
+    }
+
+
+    .about-section-head h2 {
+      max-width: 800px;
+
+      margin: 13px 0 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2.1rem,
+          4.3vw,
+          4.4rem
+        );
+
+      line-height: 0.96;
+
+      letter-spacing: -0.055em;
+    }
+
+
+    .about-section-head h2 span {
+      color:
+        rgba(242,238,231,0.35);
+    }
+
+
+    .mindset-grid {
+      width: min(1200px, 100%);
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 15px;
+    }
+
+
+    .mindset-card {
+      position: relative;
+
+      min-height: 240px;
+
+      padding: 29px;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.065);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.042),
+          rgba(255,255,255,0.012)
+        );
+
+      transition:
+        transform 250ms ease,
+        border-color 250ms ease,
+        box-shadow 250ms ease;
+    }
+
+
+    .mindset-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 160px;
+      height: 160px;
+
+      right: -80px;
+      bottom: -80px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(208,164,92,0.05);
+
+      filter: blur(20px);
+
+      pointer-events: none;
+    }
+
+
+    .mindset-card:hover {
+      transform: translateY(-6px);
+
+      border-color:
+        rgba(208,164,92,0.24);
+
+      box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.28);
+    }
+
+
+    .mindset-number {
+      color:
+        rgba(242,238,231,0.22);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.63rem;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    .mindset-card h3 {
+      margin: 45px 0 12px;
+
+      color: #f2eee7;
+
+      font-size: 1.05rem;
+
+      letter-spacing: -0.025em;
+    }
+
+
+    .mindset-card p {
+      max-width: 470px;
+
+      margin: 0;
+
+      color:
+        rgba(242,238,231,0.43);
+
+      font-size: 0.76rem;
+
+      line-height: 1.72;
+    }
+
+
+    /* =====================================================
+       PRINCIPLES
+    ====================================================== */
+
+    .about-principles {
+      padding:
+        115px
+        clamp(24px, 6vw, 100px);
+
+      background: #0b0b0b;
+    }
+
+
+    .principles-layout {
+      width: min(1200px, 100%);
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(260px, 0.7fr)
+        minmax(0, 1.3fr);
+
+      gap: 70px;
+    }
+
+
+    .principles-title h2 {
+      margin: 13px 0 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2rem,
+          4vw,
+          4rem
+        );
+
+      line-height: 0.97;
+
+      letter-spacing: -0.055em;
+    }
+
+
+    .principles-title h2 span {
+      color:
+        rgba(242,238,231,0.34);
+    }
+
+
+    .principles-list {
+      display: grid;
+
+      gap: 0;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.07);
+    }
+
+
+    .principle-row {
+      display: grid;
+
+      grid-template-columns:
+        55px
+        minmax(120px, 0.45fr)
+        minmax(0, 1fr);
+
+      gap: 20px;
+
+      padding: 23px 0;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+    }
+
+
+    .principle-row-number {
+      color: #d0a45c;
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.62rem;
+    }
+
+
+    .principle-row h3 {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size: 0.82rem;
+    }
+
+
+    .principle-row p {
+      margin: 0;
+
+      color:
+        rgba(242,238,231,0.40);
+
+      font-size: 0.72rem;
+
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       EXPERIENCE
+    ====================================================== */
+
+    .about-experience {
+      padding:
+        120px
+        clamp(24px, 6vw, 100px);
+
+      background: #080808;
+    }
+
+
+    .experience-card {
+      width: min(1200px, 100%);
+
+      margin: 0 auto;
+
+      padding: 38px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      border-radius: 20px;
+
+      background:
+        radial-gradient(
+          circle at 85% 30%,
+          rgba(208,164,92,0.07),
+          transparent 32%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.043),
+          rgba(255,255,255,0.012)
+        );
+    }
+
+
+    .experience-top {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: start;
+
+      gap: 25px;
+    }
+
+
+    .experience-role {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          1.4rem,
+          3vw,
+          2.5rem
+        );
+
+      line-height: 1;
+
+      letter-spacing: -0.045em;
+    }
+
+
+    .experience-company {
+      margin: 9px 0 0;
+
+      color: #d0a45c;
+
+      font-size: 0.76rem;
+
+      font-weight: 700;
+    }
+
+
+    .experience-date {
+      color:
+        rgba(242,238,231,0.35);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.62rem;
+
+      white-space: nowrap;
+    }
+
+
+    .experience-location {
+      margin-top: 7px;
+
+      color:
+        rgba(242,238,231,0.30);
+
+      font-size: 0.62rem;
+    }
+
+
+    .experience-divider {
+      height: 1px;
+
+      margin: 32px 0;
+
+      background:
+        rgba(255,255,255,0.07);
+    }
+
+
+    .experience-description {
+      max-width: 780px;
+
+      margin: 0;
+
+      color:
+        rgba(242,238,231,0.46);
+
+      font-size: 0.82rem;
+
+      line-height: 1.8;
+    }
+
+
+    .experience-note {
+      margin-top: 18px;
+
+      color:
+        rgba(242,238,231,0.27);
+
+      font-size: 0.62rem;
+
+      line-height: 1.65;
+    }
+
+
+    /* =====================================================
+       ECOSYSTEM CTA
+    ====================================================== */
+
+    .about-ecosystem {
+      padding:
+        115px
+        clamp(24px, 6vw, 100px);
+
+      background: #0b0b0b;
+    }
+
+
+    .about-ecosystem-inner {
+      width: min(1200px, 100%);
+
+      margin: 0 auto;
+    }
+
+
+    .about-ecosystem-title {
+      display: flex;
+
+      align-items: end;
+
+      justify-content: space-between;
+
+      gap: 35px;
+
+      margin-bottom: 42px;
+    }
+
+
+    .about-ecosystem-title h2 {
+      margin: 13px 0 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2rem,
+          4vw,
+          4rem
+        );
+
+      line-height: 0.96;
+
+      letter-spacing: -0.055em;
+    }
+
+
+    .about-ecosystem-title p {
+      max-width: 400px;
+
+      margin: 0;
+
+      color:
+        rgba(242,238,231,0.40);
+
+      font-size: 0.75rem;
+
+      line-height: 1.7;
+    }
+
+
+    .ecosystem-mini-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+      gap: 10px;
+    }
+
+
+    .ecosystem-mini-card {
+      min-height: 150px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      padding: 20px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+      border-radius: 14px;
+
+      color: #f2eee7;
+
+      background:
+        rgba(255,255,255,0.018);
+
+      text-decoration: none;
+
+      transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease;
+    }
+
+
+    .ecosystem-mini-card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(208,164,92,0.25);
+
+      background:
+        rgba(208,164,92,0.035);
+    }
+
+
+    .ecosystem-mini-number {
+      color:
+        rgba(242,238,231,0.22);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.58rem;
+    }
+
+
+    .ecosystem-mini-card strong {
+      font-size: 0.72rem;
+
+      letter-spacing: -0.01em;
+    }
+
+
+    .ecosystem-mini-card span {
+      color:
+        rgba(242,238,231,0.29);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 0.54rem;
+    }
+
+
+    /* =====================================================
+       CTA
+    ====================================================== */
+
+    .about-cta {
+      position: relative;
+
+      padding:
+        135px
+        24px;
+
+      text-align: center;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(208,164,92,0.095),
+          transparent 39%
+        ),
+        #080808;
+    }
+
+
+    .about-cta-inner {
+      width: min(820px, 100%);
+
+      margin: 0 auto;
+    }
+
+
+    .about-cta h2 {
+      margin: 0;
+
+      color: #f2eee7;
+
+      font-size:
+        clamp(
+          2.5rem,
+          5.5vw,
+          5.5rem
+        );
+
+      line-height: 0.92;
+
+      letter-spacing: -0.065em;
+    }
+
+
+    .about-cta h2 span {
+      color: #d0a45c;
+    }
+
+
+    .about-cta p {
+      max-width: 590px;
+
+      margin: 25px auto 0;
+
+      color:
+        rgba(242,238,231,0.44);
+
+      font-size: 0.8rem;
+
+      line-height: 1.75;
+    }
+
+
+    .about-cta-actions {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 11px;
+
+      margin-top: 31px;
+    }
+
+
+    .about-cta-btn {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 48px;
+
+      padding: 0 22px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+      border-radius: 999px;
+
+      color: #f2eee7;
+
+      background:
+        rgba(255,255,255,0.025);
+
+      text-decoration: none;
+
+      font-size: 0.63rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+
+      transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease;
+    }
+
+
+    .about-cta-btn:hover {
+      transform: translateY(-2px);
+
+      border-color:
+        rgba(208,164,92,0.35);
+
+      background:
+        rgba(208,164,92,0.06);
+    }
+
+
+    .about-cta-btn.primary {
+      color: #111;
+
+      background: #d0a45c;
+
+      border-color: #d0a45c;
+    }
+
+
+    .about-cta-btn.primary:hover {
+      background: #dfb875;
+
+      border-color: #dfb875;
+    }
+
+
+    /* =====================================================
+       LIGHT MODE
+    ====================================================== */
+
+    html[data-theme="light"] .about-hero,
+    html[data-theme="light"] .about-cta {
+      background:
+        radial-gradient(
+          circle at 78% 40%,
+          rgba(170,120,45,0.09),
+          transparent 33%
+        ),
+        #f4f1eb;
+    }
+
+
+    html[data-theme="light"] .about-introduction,
+    html[data-theme="light"] .about-principles,
+    html[data-theme="light"] .about-ecosystem {
+      background: #eeebe5;
+    }
+
+
+    html[data-theme="light"] .about-mindset,
+    html[data-theme="light"] .about-experience {
+      background: #f4f1eb;
+    }
+
+
+    html[data-theme="light"] .about-title,
+    html[data-theme="light"] .about-intro-copy h2,
+    html[data-theme="light"] .about-section-head h2,
+    html[data-theme="light"] .mindset-card h3,
+    html[data-theme="light"] .principles-title h2,
+    html[data-theme="light"] .principle-row h3,
+    html[data-theme="light"] .experience-role,
+    html[data-theme="light"] .about-ecosystem-title h2,
+    html[data-theme="light"] .ecosystem-mini-card strong,
+    html[data-theme="light"] .about-cta h2 {
+      color: #151515;
+    }
+
+
+    html[data-theme="light"] .about-intro,
+    html[data-theme="light"] .about-intro-copy p,
+    html[data-theme="light"] .mindset-card p,
+    html[data-theme="light"] .principle-row p,
+    html[data-theme="light"] .experience-description,
+    html[data-theme="light"] .about-ecosystem-title p,
+    html[data-theme="light"] .about-cta p {
+      color:
+        rgba(21,21,21,0.52);
+    }
+
+
+    html[data-theme="light"] .about-pill {
+      color:
+        rgba(21,21,21,0.40);
+
+      border-color:
+        rgba(0,0,0,0.08);
+
+      background:
+        rgba(0,0,0,0.018);
+    }
+
+
+    html[data-theme="light"] .about-pill.active {
+      color: #98702e;
+
+      border-color:
+        rgba(152,112,46,0.27);
+
+      background:
+        rgba(152,112,46,0.05);
+    }
+
+
+    html[data-theme="light"] .mindset-card,
+    html[data-theme="light"] .experience-card {
+      border-color:
+        rgba(0,0,0,0.075);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.65),
+          rgba(255,255,255,0.35)
+        );
+
+      box-shadow:
+        0 20px 65px
+        rgba(0,0,0,0.045);
+    }
+
+
+    html[data-theme="light"] .mindset-number,
+    html[data-theme="light"] .principle-row-number,
+    html[data-theme="light"] .experience-date,
+    html[data-theme="light"] .experience-location,
+    html[data-theme="light"] .experience-note,
+    html[data-theme="light"] .ecosystem-mini-number,
+    html[data-theme="light"] .ecosystem-mini-card span {
+      color:
+        rgba(21,21,21,0.34);
+    }
+
+
+    html[data-theme="light"] .principles-list,
+    html[data-theme="light"] .principle-row,
+    html[data-theme="light"] .experience-divider {
+      border-color:
+        rgba(0,0,0,0.075);
+    }
+
+
+    html[data-theme="light"] .ecosystem-mini-card {
+      color: #151515;
+
+      border-color:
+        rgba(0,0,0,0.07);
+
+      background:
+        rgba(255,255,255,0.38);
+    }
+
+
+    html[data-theme="light"] .about-cta-btn {
+      color: #151515;
+
+      border-color:
+        rgba(0,0,0,0.09);
+
+      background:
+        rgba(0,0,0,0.025);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
+    @media (max-width: 1000px) {
+
+      .about-hero {
+        min-height: auto;
+
+        padding:
+          135px
+          24px
+          90px;
+      }
+
+
+      .about-intro-grid,
+      .principles-layout {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+      }
+
+
+      .ecosystem-mini-grid {
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+      }
+
+    }
+
+
+    @media (max-width: 760px) {
+
+      .about-title {
+        font-size:
+          clamp(
+            3.2rem,
+            15vw,
+            6rem
+          );
+      }
+
+
+      .about-introduction,
+      .about-mindset,
+      .about-principles,
+      .about-experience,
+      .about-ecosystem {
+        padding-top: 88px;
+        padding-bottom: 95px;
+      }
+
+
+      .mindset-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .about-ecosystem-title {
+        display: block;
+      }
+
+
+      .about-ecosystem-title p {
+        margin-top: 20px;
+      }
+
+
+      .ecosystem-mini-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+
+      .experience-top {
+        display: block;
+      }
+
+
+      .experience-date {
+        display: block;
+
+        margin-top: 16px;
+      }
+
+    }
+
+
+    @media (max-width: 560px) {
+
+      .about-hero {
+        padding:
+          125px
+          22px
+          80px;
+      }
+
+
+      .about-intro-grid {
+        gap: 25px;
+      }
+
+
+      .mindset-card {
+        min-height: 215px;
+
+        padding: 25px;
+      }
+
+
+      .mindset-card h3 {
+        margin-top: 38px;
+      }
+
+
+      .principle-row {
+        grid-template-columns:
+          42px
+          1fr;
+
+        gap: 10px;
+      }
+
+
+      .principle-row p {
+        grid-column: 2;
+      }
+
+
+      .experience-card {
+        padding: 25px;
+      }
+
+
+      .ecosystem-mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .ecosystem-mini-card {
+        min-height: 125px;
+      }
+
+
+      .about-cta {
+        padding:
+          105px
+          22px;
+      }
+
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .mindset-card,
+      .ecosystem-mini-card,
+      .about-cta-btn {
+        transition: none;
+      }
+
+
+      .mindset-card:hover,
+      .ecosystem-mini-card:hover,
+      .about-cta-btn:hover {
+        transform: none;
+      }
+
+    }
+
+  </style>
+
 </head>
 
+
 <body>
+
 
   <!-- =====================================================
        HEADER
   ====================================================== -->
-  <header class="site-header" id="siteHeader">
+
+  <header
+    class="site-header"
+    id="siteHeader"
+  >
 
     <div class="nav-wrap">
 
-      <!-- BRAND -->
-      <a href="index.html#home" class="logo" aria-label="Shah Neil Khan Home">
+
+      <!-- LOGO -->
+
+      <a
+        href="./index.html#home"
+        class="logo"
+        aria-label="Shah Neil Khan — Home"
+      >
 
         <img
           src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
           alt="SNK Logo"
         >
 
-        <span>SHAH NEIL KHAN</span>
+        <span>
+          SHAH NEIL KHAN
+        </span>
 
       </a>
 
 
-      <!-- MOBILE MENU BUTTON -->
+      <!-- MOBILE MENU -->
+
       <button
+        type="button"
         class="mobile-menu-btn"
         id="mobileMenuBtn"
-        type="button"
         aria-label="Open navigation"
         aria-expanded="false"
       >
+
         <span></span>
         <span></span>
         <span></span>
+
       </button>
 
 
       <!-- NAVIGATION -->
-      <nav class="main-nav" id="mainNav">
 
-        <a href="index.html#home">Home</a>
+      <nav
+        class="main-nav"
+        id="mainNav"
+        aria-label="Primary navigation"
+      >
 
-        <a href="index.html#ecosystem">Ecosystem</a>
+        <a href="./index.html#home">
+          Home
+        </a>
 
-        <a href="index.html#ai">AI</a>
+        <a href="./index.html#ecosystem">
+          Ecosystem
+        </a>
 
-        <a href="index.html#expertise">Expertise</a>
+        <a href="./index.html#ai">
+          AI
+        </a>
 
-        <a href="index.html#experience">Experience</a>
+        <a href="./index.html#expertise">
+          Expertise
+        </a>
 
-        <a href="about.html" class="active">About</a>
+        <a href="./index.html#experience">
+          Experience
+        </a>
 
-        <a href="brand.html">Brand</a>
+        <a
+          href="./about.html"
+          class="active"
+        >
+          About
+        </a>
 
-        <a href="index.html#contact">Contact</a>
+        <a href="./brand.html">
+          Brand
+        </a>
+
+        <a href="./contact.html">
+          Contact
+        </a>
 
       </nav>
 
 
-      <!-- NAV ACTIONS -->
+      <!-- ACTIONS -->
+
       <div class="nav-actions">
 
         <button
+          type="button"
           class="icon-btn"
           id="languageToggle"
-          type="button"
-          aria-label="Change language"
+          aria-label="Switch language"
           title="বাংলা / English"
         >
           বাংলা
         </button>
 
+
         <button
+          type="button"
           class="icon-btn"
           id="themeToggle"
-          type="button"
           aria-label="Toggle theme"
           title="Toggle dark/light mode"
         >
           ◐
         </button>
 
+
         <button
+          type="button"
           class="icon-btn"
           id="rainToggle"
-          type="button"
           aria-label="Toggle rain"
           title="Toggle rain"
         >
-          ✦
+          Rain
         </button>
 
       </div>
@@ -125,8 +1523,9 @@
 
 
   <!-- =====================================================
-       RAIN LAYER
+       RAIN
   ====================================================== -->
+
   <div
     class="rain-layer"
     id="rainLayer"
@@ -134,90 +1533,60 @@
   ></div>
 
 
-  <main>
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main class="about-page">
 
 
     <!-- ===================================================
-         ABOUT HERO
+         HERO
     ==================================================== -->
-    <section class="section about-page-hero">
 
-      <div class="wrapper">
+    <section class="about-hero">
 
-        <div class="about-hero-grid">
-
-          <div class="about-hero-copy reveal">
-
-            <p class="section-kicker">
-              ABOUT / SNK
-            </p>
-
-            <h1 class="about-main-title">
-              THE PERSON<br>
-              BEHIND <span>SNK.</span>
-            </h1>
-
-            <p class="section-text">
-              I'm Shah Neil Khan — a UX Lead Digital Expert working
-              across digital experience, systems thinking, creative
-              direction, and AI-assisted workflows.
-            </p>
-
-            <div class="hero-actions">
-
-              <a
-                href="index.html#experience"
-                class="btn btn-primary"
-              >
-                View Experience ↗
-              </a>
-
-              <a
-                href="index.html#contact"
-                class="btn btn-secondary"
-              >
-                Let's Connect
-              </a>
-
-            </div>
-
-          </div>
+      <div class="about-hero-glow"></div>
 
 
-          <!-- ABOUT INTRO CARD -->
-          <div class="about-intro-card reveal">
+      <div class="about-hero-content reveal">
 
-            <div class="about-card-top">
+        <p class="about-eyebrow">
+          ABOUT · SHAH NEIL KHAN · SNK
+        </p>
 
-              <span>SNK / 01</span>
 
-              <span>ABOUT</span>
+        <h1 class="about-title">
+          I DESIGN<br>
+          <span>THE THINKING.</span>
+        </h1>
 
-            </div>
 
-            <div class="about-card-content">
+        <p class="about-intro">
+          I work across digital experience, product thinking,
+          systems and creative technology — turning complex
+          ideas into clearer, more useful and more meaningful
+          experiences.
+        </p>
 
-              <span class="about-card-mark">
-                SNK
-              </span>
 
-              <p>
-                Think deeply.<br>
-                Design clearly.<br>
-                Build intentionally.
-              </p>
+        <div class="about-pills">
 
-            </div>
+          <span class="about-pill active">
+            UX Lead Digital Expert
+          </span>
 
-            <div class="about-card-bottom">
+          <span class="about-pill">
+            Digital Experience
+          </span>
 
-              <span>SHAH NEIL KHAN</span>
+          <span class="about-pill">
+            AI-Assisted Systems
+          </span>
 
-              <span>2026</span>
-
-            </div>
-
-          </div>
+          <span class="about-pill">
+            Systems Thinking
+          </span>
 
         </div>
 
@@ -229,111 +1598,50 @@
     <!-- ===================================================
          INTRODUCTION
     ==================================================== -->
-    <section class="section about-introduction">
 
-      <div class="wrapper">
+    <section class="about-introduction">
 
-        <div class="section-heading reveal">
+      <div class="about-intro-grid">
 
-          <div>
 
-            <p class="section-kicker">
-              WHO I AM
-            </p>
+        <div class="reveal">
 
-            <h2>
-              BUILDING WITH<br>
-              <span>INTENTION.</span>
-            </h2>
-
-          </div>
-
-          <p class="section-text">
-            I believe good digital work starts with understanding
-            before execution.
+          <p class="about-label">
+            THE PERSON
           </p>
 
         </div>
 
 
-        <div class="about-layout">
+        <div class="about-intro-copy reveal">
 
-          <div class="about-text reveal">
-
-            <p>
-              My work sits at the intersection of UX, digital
-              experiences, technology, and systems thinking.
-            </p>
-
-            <p>
-              Rather than treating design and technology as separate
-              disciplines, I look at the entire system — the people,
-              the product, the content, the workflow, and the
-              technology behind it.
-            </p>
-
-            <p>
-              The goal is simple: create digital experiences that
-              make sense, feel intentional, and solve real problems.
-            </p>
-
-          </div>
+          <h2>
+            Design is not just how something looks.
+            <span>It is how it thinks.</span>
+          </h2>
 
 
-          <div class="about-stats reveal">
-
-            <div class="stat-card">
-
-              <span class="stat-label">
-                CURRENT ROLE
-              </span>
-
-              <strong class="stat-value">
-                UX Lead Digital Expert
-              </strong>
-
-            </div>
+          <p>
+            My work sits at the intersection of design,
+            technology, systems and human experience. I care
+            about understanding the problem before deciding
+            what the solution should look like.
+          </p>
 
 
-            <div class="stat-card">
-
-              <span class="stat-label">
-                ORGANIZATION
-              </span>
-
-              <strong class="stat-value">
-                Yaqeen Institute
-              </strong>
-
-            </div>
+          <p>
+            The goal is not simply to make something visually
+            impressive. The goal is to create something that
+            makes sense, works well and has a reason to exist.
+          </p>
 
 
-            <div class="stat-card">
-
-              <span class="stat-label">
-                LOCATION
-              </span>
-
-              <strong class="stat-value">
-                Texas, USA · Remote
-              </strong>
-
-            </div>
-
-
-            <div class="stat-card">
-
-              <span class="stat-label">
-                APPROACH
-              </span>
-
-              <strong class="stat-value">
-                Systems Thinking
-              </strong>
-
-            </div>
-
-          </div>
+          <p>
+            SNK is the personal brand and ecosystem where these
+            different directions come together — from digital
+            experiences and AI-assisted workflows to creative
+            platforms and learning-oriented initiatives.
+          </p>
 
         </div>
 
@@ -345,102 +1653,108 @@
     <!-- ===================================================
          MINDSET
     ==================================================== -->
-    <section class="section about-mindset">
 
-      <div class="wrapper">
+    <section class="about-mindset">
 
-        <div class="section-heading reveal">
+      <div class="about-section-head reveal">
 
-          <div>
-
-            <p class="section-kicker">
-              MY MINDSET
-            </p>
-
-            <h2>
-              THINK BEFORE<br>
-              YOU <span>BUILD.</span>
-            </h2>
-
-          </div>
-
-        </div>
+        <p class="about-label">
+          MINDSET
+        </p>
 
 
-        <div class="mindset-grid">
+        <h2>
+          Think deeper.<br>
+          <span>Build better.</span>
+        </h2>
 
-          <article class="mindset-card reveal">
-
-            <span class="mindset-number">
-              01
-            </span>
-
-            <h3>
-              UNDERSTAND
-            </h3>
-
-            <p>
-              Understand the problem, people, context,
-              and constraints before jumping into execution.
-            </p>
-
-          </article>
+      </div>
 
 
-          <article class="mindset-card reveal">
-
-            <span class="mindset-number">
-              02
-            </span>
-
-            <h3>
-              STRUCTURE
-            </h3>
-
-            <p>
-              Turn complexity into a clear structure that
-              people can understand and use.
-            </p>
-
-          </article>
+      <div class="mindset-grid">
 
 
-          <article class="mindset-card reveal">
+        <article class="mindset-card reveal">
 
-            <span class="mindset-number">
-              03
-            </span>
-
-            <h3>
-              DESIGN
-            </h3>
-
-            <p>
-              Create experiences that connect visual clarity
-              with actual purpose.
-            </p>
-
-          </article>
+          <span class="mindset-number">
+            01
+          </span>
 
 
-          <article class="mindset-card reveal">
+          <h3>
+            Start With Why
+          </h3>
 
-            <span class="mindset-number">
-              04
-            </span>
 
-            <h3>
-              BUILD
-            </h3>
+          <p>
+            Before designing a screen or building a feature,
+            understand the reason behind it and the problem
+            it is supposed to solve.
+          </p>
 
-            <p>
-              Transform the idea into a working digital
-              experience and continue improving it.
-            </p>
+        </article>
 
-          </article>
 
-        </div>
+        <article class="mindset-card reveal">
+
+          <span class="mindset-number">
+            02
+          </span>
+
+
+          <h3>
+            Simplify Complexity
+          </h3>
+
+
+          <p>
+            Complex systems become powerful when people can
+            understand them. Good structure creates clarity.
+          </p>
+
+        </article>
+
+
+        <article class="mindset-card reveal">
+
+          <span class="mindset-number">
+            03
+          </span>
+
+
+          <h3>
+            Design The System
+          </h3>
+
+
+          <p>
+            Think beyond individual screens. Consider the
+            relationships, rules, workflows and experiences
+            that connect everything together.
+          </p>
+
+        </article>
+
+
+        <article class="mindset-card reveal">
+
+          <span class="mindset-number">
+            04
+          </span>
+
+
+          <h3>
+            Keep Learning
+          </h3>
+
+
+          <p>
+            Technology changes quickly. Curiosity, iteration
+            and continuous learning are part of the process.
+          </p>
+
+        </article>
+
 
       </div>
 
@@ -450,91 +1764,129 @@
     <!-- ===================================================
          PRINCIPLES
     ==================================================== -->
-    <section class="section about-principles">
 
-      <div class="wrapper">
+    <section class="about-principles">
 
-        <div class="section-heading reveal">
+      <div class="principles-layout">
 
-          <div>
 
-            <p class="section-kicker">
-              PRINCIPLES
-            </p>
+        <div class="principles-title reveal">
 
-            <h2>
-              WHAT I <span>BELIEVE.</span>
-            </h2>
+          <p class="about-label">
+            PRINCIPLES
+          </p>
 
-          </div>
+
+          <h2>
+            A few rules<br>
+            <span>behind the work.</span>
+          </h2>
 
         </div>
 
 
-        <div class="principles-grid">
+        <div class="principles-list">
 
-          <article class="principle-card reveal">
 
-            <span>01</span>
+          <article class="principle-row reveal">
+
+            <span class="principle-row-number">
+              01
+            </span>
+
 
             <h3>
-              Clarity Over Complexity
+              Clarity
             </h3>
 
+
             <p>
-              The best systems make complicated things
-              easier to understand.
+              Make the important things easy to understand
+              before adding more complexity.
             </p>
 
           </article>
 
 
-          <article class="principle-card reveal">
+          <article class="principle-row reveal">
 
-            <span>02</span>
+            <span class="principle-row-number">
+              02
+            </span>
+
 
             <h3>
-              People Before Interfaces
+              Purpose
             </h3>
 
+
             <p>
-              Interfaces exist to help people accomplish
-              something meaningful.
+              Every meaningful design decision should have
+              a reason behind it.
             </p>
 
           </article>
 
 
-          <article class="principle-card reveal">
+          <article class="principle-row reveal">
 
-            <span>03</span>
+            <span class="principle-row-number">
+              03
+            </span>
+
 
             <h3>
-              Systems Over Shortcuts
+              Systems
             </h3>
 
+
             <p>
-              Sustainable digital work comes from thinking
-              about the whole system.
+              Think about the complete experience instead of
+              optimizing isolated pieces.
             </p>
 
           </article>
 
 
-          <article class="principle-card reveal">
+          <article class="principle-row reveal">
 
-            <span>04</span>
+            <span class="principle-row-number">
+              04
+            </span>
+
 
             <h3>
-              Learn Continuously
+              Iteration
             </h3>
 
+
             <p>
-              Technology changes constantly. Curiosity and
-              learning keep the work relevant.
+              The first version is a starting point. Observe,
+              learn and improve.
             </p>
 
           </article>
+
+
+          <article class="principle-row reveal">
+
+            <span class="principle-row-number">
+              05
+            </span>
+
+
+            <h3>
+              Meaning
+            </h3>
+
+
+            <p>
+              Beautiful work becomes more valuable when it
+              creates something useful for people.
+            </p>
+
+          </article>
+
 
         </div>
 
@@ -544,71 +1896,71 @@
 
 
     <!-- ===================================================
-         EXPERIENCE SNAPSHOT
+         EXPERIENCE
     ==================================================== -->
-    <section class="section about-experience">
 
-      <div class="wrapper">
+    <section class="about-experience">
 
-        <div class="experience-heading reveal">
+      <div class="about-section-head reveal">
+
+        <p class="about-label">
+          EXPERIENCE
+        </p>
+
+
+        <h2>
+          Where the thinking<br>
+          <span>meets real work.</span>
+        </h2>
+
+      </div>
+
+
+      <div class="experience-card reveal">
+
+        <div class="experience-top">
 
           <div>
 
-            <p class="section-kicker">
-              EXPERIENCE
-            </p>
+            <h3 class="experience-role">
+              UX Lead Digital Expert
+            </h3>
 
-            <h2>
-              WHERE I AM<br>
-              <span>NOW.</span>
-            </h2>
-
-          </div>
-
-          <a
-            href="experience.html"
-            class="btn btn-secondary"
-          >
-            Full Experience ↗
-          </a>
-
-        </div>
-
-
-        <article class="experience-card reveal">
-
-          <div class="experience-meta">
-
-            <span>
-              2026 — PRESENT
-            </span>
-
-            <span>
-              TEXAS, USA · REMOTE
-            </span>
-
-          </div>
-
-
-          <div class="experience-main">
 
             <p class="experience-company">
               Yaqeen Institute
             </p>
 
-            <h3>
-              UX Lead Digital Expert
-            </h3>
 
-            <p>
-              Working across digital experience, UX thinking,
-              and systems that improve how people interact
-              with digital products and content.
+            <p class="experience-location">
+              Texas, USA · Remote
             </p>
 
           </div>
 
-        </article>
+
+          <div class="experience-date">
+            2026 — Present
+          </div>
+
+        </div>
+
+
+        <div class="experience-divider"></div>
+
+
+        <p class="experience-description">
+          Working across UX, digital experience and product
+          thinking with a focus on creating clearer and more
+          effective digital experiences.
+        </p>
+
+
+        <p class="experience-note">
+          Current experience shown using verified information.
+          Additional roles and achievements can be added later
+          as they are confirmed.
+        </p>
 
       </div>
 
@@ -616,184 +1968,169 @@
 
 
     <!-- ===================================================
-         SNK ECOSYSTEM
+         ECOSYSTEM
     ==================================================== -->
-    <section class="section about-ecosystem">
 
-      <div class="wrapper">
+    <section class="about-ecosystem">
 
-        <div class="section-heading reveal">
+      <div class="about-ecosystem-inner">
+
+
+        <div class="about-ecosystem-title reveal">
 
           <div>
 
-            <p class="section-kicker">
-              THE ECOSYSTEM
+            <p class="about-label">
+              SNK ECOSYSTEM
             </p>
 
+
             <h2>
-              MORE THAN<br>
-              <span>A PORTFOLIO.</span>
+              One identity.<br>
+              <span>Multiple directions.</span>
             </h2>
 
           </div>
 
-          <p class="section-text">
-            SNK is a personal brand and a growing ecosystem
-            of digital platforms and creative initiatives.
+
+          <p>
+            SNK connects multiple digital directions under one
+            personal-brand ecosystem. Explore the destinations
+            from the Brand page.
           </p>
 
         </div>
 
 
-        <div class="ecosystem-grid">
+        <div class="ecosystem-mini-grid">
 
+
+          <!-- 01 -->
 
           <a
             href="https://websitesdeal.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="ecosystem-card reveal"
+            class="ecosystem-mini-card reveal"
           >
 
-            <span class="ecosystem-index">
+            <span class="ecosystem-mini-number">
               01
             </span>
 
-            <div>
 
-              <span class="ecosystem-label">
-                DIGITAL
-              </span>
+            <strong>
+              WebsitesDeal
+            </strong>
 
-              <h3>
-                WebsitesDeal.com
-              </h3>
 
-              <p>
-                Visit Website ↗
-              </p>
-
-            </div>
+            <span>
+              websitesdeal.com ↗
+            </span>
 
           </a>
 
+
+          <!-- 02 -->
 
           <a
             href="https://www.tabayyuninstitute.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="ecosystem-card reveal"
+            class="ecosystem-mini-card reveal"
           >
 
-            <span class="ecosystem-index">
+            <span class="ecosystem-mini-number">
               02
             </span>
 
-            <div>
 
-              <span class="ecosystem-label">
-                PLATFORM
-              </span>
+            <strong>
+              TabayyunTV
+            </strong>
 
-              <h3>
-                TabayyunTV.com
-              </h3>
 
-              <p>
-                Visit Website ↗
-              </p>
-
-            </div>
+            <span>
+              External Destination ↗
+            </span>
 
           </a>
 
+
+          <!-- 03 -->
 
           <a
             href="https://snkitinstitute.github.io/"
             target="_blank"
             rel="noopener noreferrer"
-            class="ecosystem-card reveal"
+            class="ecosystem-mini-card reveal"
           >
 
-            <span class="ecosystem-index">
+            <span class="ecosystem-mini-number">
               03
             </span>
 
-            <div>
 
-              <span class="ecosystem-label">
-                EDUCATION
-              </span>
+            <strong>
+              SNK IT Institute
+            </strong>
 
-              <h3>
-                SNKITInstitute
-              </h3>
 
-              <p>
-                Visit Website ↗
-              </p>
-
-            </div>
+            <span>
+              GitHub Pages ↗
+            </span>
 
           </a>
 
+
+          <!-- 04 -->
 
           <a
             href="https://sarakatagency.github.io/"
             target="_blank"
             rel="noopener noreferrer"
-            class="ecosystem-card reveal"
+            class="ecosystem-mini-card reveal"
           >
 
-            <span class="ecosystem-index">
+            <span class="ecosystem-mini-number">
               04
             </span>
 
-            <div>
 
-              <span class="ecosystem-label">
-                AGENCY
-              </span>
+            <strong>
+              Sarakāt Agency
+            </strong>
 
-              <h3>
-                Sarakāt Agency
-              </h3>
 
-              <p>
-                Visit Website ↗
-              </p>
-
-            </div>
+            <span>
+              Ecosystem ↗
+            </span>
 
           </a>
 
+
+          <!-- 05 -->
 
           <a
             href="https://snkdesign.github.io/"
             target="_blank"
             rel="noopener noreferrer"
-            class="ecosystem-card reveal"
+            class="ecosystem-mini-card reveal"
           >
 
-            <span class="ecosystem-index">
+            <span class="ecosystem-mini-number">
               05
             </span>
 
-            <div>
 
-              <span class="ecosystem-label">
-                CREATIVE
-              </span>
+            <strong>
+              SNK Design
+            </strong>
 
-              <h3>
-                SNK Design
-              </h3>
 
-              <p>
-                Visit Website ↗
-              </p>
-
-            </div>
+            <span>
+              Ecosystem ↗
+            </span>
 
           </a>
 
@@ -808,43 +2145,52 @@
     <!-- ===================================================
          CTA
     ==================================================== -->
-    <section class="section about-cta">
 
-      <div class="wrapper">
+    <section class="about-cta">
 
-        <div class="about-cta-inner reveal">
+      <div class="about-cta-inner reveal">
 
-          <p class="section-kicker">
-            NEXT
-          </p>
+        <p class="about-label">
+          NEXT
+        </p>
 
-          <h2>
-            LET'S BUILD<br>
-            SOMETHING <span>MEANINGFUL.</span>
-          </h2>
 
-          <p>
-            Explore the work, understand the thinking,
-            and let's create something intentional.
-          </p>
+        <h2>
+          Let's turn ideas<br>
+          <span>into systems.</span>
+        </h2>
 
-          <div class="hero-actions">
 
-            <a
-              href="projects.html"
-              class="btn btn-primary"
-            >
-              Explore Work ↗
-            </a>
+        <p>
+          Explore the work, discover the SNK ecosystem or
+          start a conversation about something worth building.
+        </p>
 
-            <a
-              href="index.html#contact"
-              class="btn btn-secondary"
-            >
-              Contact Me
-            </a>
 
-          </div>
+        <div class="about-cta-actions">
+
+          <a
+            href="./projects.html"
+            class="about-cta-btn primary"
+          >
+            Explore Work
+          </a>
+
+
+          <a
+            href="./brand.html"
+            class="about-cta-btn"
+          >
+            Explore Brand
+          </a>
+
+
+          <a
+            href="./contact.html"
+            class="about-cta-btn"
+          >
+            Contact
+          </a>
 
         </div>
 
@@ -852,17 +2198,20 @@
 
     </section>
 
+
   </main>
 
 
   <!-- =====================================================
        FOOTER
   ====================================================== -->
+
   <footer class="footer">
 
     <div class="wrapper">
 
       <div class="footer-inner">
+
 
         <div>
 
@@ -879,23 +2228,27 @@
 
         <div class="footer-links">
 
-          <a href="index.html#home">
+          <a href="./index.html#home">
             Home
           </a>
 
-          <a href="projects.html">
+          <a href="./projects.html">
             Work
           </a>
 
-          <a href="experience.html">
+          <a href="./experience.html">
             Experience
           </a>
 
-          <a href="about.html">
+          <a href="./about.html">
             About
           </a>
 
-          <a href="index.html#contact">
+          <a href="./brand.html">
+            Brand
+          </a>
+
+          <a href="./contact.html">
             Contact
           </a>
 
@@ -907,9 +2260,14 @@
       <div class="footer-bottom">
 
         <span>
-          © <span id="footerYear">2026</span> Shah Neil Khan.
+          ©
+          <span id="footerYear">
+            2026
+          </span>
+          Shah Neil Khan.
           All rights reserved.
         </span>
+
 
         <span>
           SNK
@@ -922,9 +2280,27 @@
   </footer>
 
 
-  <!-- SHARED JS -->
+  <!-- SHARED SCRIPT -->
+
   <script src="script.js"></script>
 
-</body>
 
+  <!-- FOOTER YEAR FALLBACK -->
+
+  <script>
+
+    const footerYear =
+      document.getElementById("footerYear");
+
+    if (footerYear) {
+
+      footerYear.textContent =
+        new Date().getFullYear();
+
+    }
+
+  </script>
+
+
+</body>
 </html>
