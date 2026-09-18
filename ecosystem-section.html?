@@ -1,0 +1,125 @@
+<!-- ===== SNK ECOSYSTEM — PREMIUM CARDS (paste this whole block to replace the old Ecosystem section) ===== -->
+<section id="ecosystem" class="snk-eco-premium">
+<style>
+  .snk-eco-premium{
+    --eco-void:#07090a; --eco-panel:#0e1211; --eco-line:#1f2926;
+    --eco-teal:#2bb3a3; --eco-gold:#c9a24b; --eco-text:#eef1ee; --eco-muted:#93998f;
+    padding:90px 24px; background:var(--eco-void); color:var(--eco-text);
+    font-family:'Space Grotesk','Inter',sans-serif;
+  }
+  .snk-eco-premium .eco-head{ max-width:1100px; margin:0 auto 50px; }
+  .snk-eco-premium .eco-tag{
+    font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--eco-teal);
+    margin-bottom:14px; font-weight:700;
+  }
+  .snk-eco-premium h2{ font-size:34px; font-weight:700; line-height:1.2; }
+  .snk-eco-premium h2 span{ color:var(--eco-gold); }
+  .snk-eco-premium .eco-sub{ color:var(--eco-muted); font-size:15px; max-width:520px; margin-top:14px; line-height:1.7; }
+
+  .snk-eco-premium .eco-grid{
+    max-width:1100px; margin:0 auto; display:grid;
+    grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  .snk-eco-premium .eco-card{
+    position:relative; background:linear-gradient(180deg, var(--eco-panel), #0a0d0c);
+    border:1px solid var(--eco-line); border-radius:16px; padding:28px 24px;
+    display:flex; flex-direction:column; gap:14px; text-decoration:none; color:var(--eco-text);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    overflow:hidden;
+  }
+  .snk-eco-premium .eco-card::before{
+    content:""; position:absolute; inset:0; opacity:0; pointer-events:none;
+    background: radial-gradient(220px 140px at 20% 0%, rgba(43,179,163,0.16), transparent 70%);
+    transition: opacity .25s ease;
+  }
+  .snk-eco-premium .eco-card:hover{
+    transform:translateY(-6px); border-color:var(--eco-gold);
+    box-shadow:0 24px 50px -20px rgba(0,0,0,0.6);
+  }
+  .snk-eco-premium .eco-card:hover::before{ opacity:1; }
+
+  .snk-eco-premium .eco-top{ display:flex; align-items:center; justify-content:space-between; }
+  .snk-eco-premium .eco-num{
+    font-size:12px; color:var(--eco-muted); font-weight:700; letter-spacing:1px;
+  }
+  .snk-eco-premium .eco-live{
+    display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:700;
+    letter-spacing:1px; text-transform:uppercase; color:#4ade80;
+    border:1px solid rgba(74,222,128,0.35); background:rgba(74,222,128,0.08);
+    padding:3px 10px; border-radius:20px;
+  }
+  .snk-eco-premium .eco-live::before{
+    content:""; width:6px; height:6px; border-radius:50%; background:#4ade80; box-shadow:0 0 6px #4ade80;
+  }
+
+  .snk-eco-premium .eco-category{
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--eco-teal); font-weight:700;
+  }
+  .snk-eco-premium .eco-card h3{ font-size:19px; font-weight:700; }
+  .snk-eco-premium .eco-card p{ font-size:13.5px; color:var(--eco-muted); line-height:1.65; flex:1; }
+  .snk-eco-premium .eco-visit{
+    font-size:13px; font-weight:700; color:var(--eco-gold); display:inline-flex; align-items:center; gap:6px;
+    margin-top:4px;
+  }
+  .snk-eco-premium .eco-card:hover .eco-visit{ text-decoration:underline; }
+
+  @media (max-width:900px){
+    .snk-eco-premium .eco-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:600px){
+    .snk-eco-premium .eco-grid{ grid-template-columns:1fr; }
+    .snk-eco-premium h2{ font-size:26px; }
+  }
+</style>
+
+  <div class="eco-head">
+    <div class="eco-tag">The SNK Ecosystem</div>
+    <h2>One mind. <span>Multiple directions.</span></h2>
+    <p class="eco-sub">SNK is not only a portfolio. It is a personal ecosystem connecting digital experience, technology, design, education and creative ventures.</p>
+  </div>
+
+  <div class="eco-grid">
+
+    <a class="eco-card" href="https://websitesdeal.com/" target="_blank" rel="noopener">
+      <div class="eco-top"><span class="eco-num">01</span><span class="eco-live">Live</span></div>
+      <div class="eco-category">Digital Platform</div>
+      <h3>WebsitesDeal.com</h3>
+      <p>A digital destination focused on websites, digital solutions and online presence.</p>
+      <span class="eco-visit">Visit platform ↗</span>
+    </a>
+
+    <a class="eco-card" href="https://www.tabayyuninstitute.com/" target="_blank" rel="noopener">
+      <div class="eco-top"><span class="eco-num">02</span><span class="eco-live">Live</span></div>
+      <div class="eco-category">Education</div>
+      <h3>TabayyunTV.com</h3>
+      <p>An external education and knowledge destination within the wider ecosystem.</p>
+      <span class="eco-visit">Visit website ↗</span>
+    </a>
+
+    <a class="eco-card" href="https://snkitinstitute.github.io/" target="_blank" rel="noopener">
+      <div class="eco-top"><span class="eco-num">03</span><span class="eco-live">Live</span></div>
+      <div class="eco-category">Technology &amp; Learning</div>
+      <h3>SNK IT Institute</h3>
+      <p>A technology and learning-focused destination within the SNK ecosystem.</p>
+      <span class="eco-visit">Visit institute ↗</span>
+    </a>
+
+    <a class="eco-card" href="https://sarakatagency.github.io/" target="_blank" rel="noopener">
+      <div class="eco-top"><span class="eco-num">04</span><span class="eco-live">Live</span></div>
+      <div class="eco-category">Creative Agency</div>
+      <h3>Sarakāt Agency</h3>
+      <p>A creative direction and digital agency destination connected to the broader SNK ecosystem.</p>
+      <span class="eco-visit">Explore ↗</span>
+    </a>
+
+    <a class="eco-card" href="https://snkdesign.github.io/" target="_blank" rel="noopener">
+      <div class="eco-top"><span class="eco-num">05</span><span class="eco-live">Live</span></div>
+      <div class="eco-category">Design</div>
+      <h3>SNK Design</h3>
+      <p>A visual design direction focused on identity, digital visuals and creative expression.</p>
+      <span class="eco-visit">Explore design ↗</span>
+    </a>
+
+  </div>
+</section>
+<!-- ===== END SNK ECOSYSTEM SECTION ===== -->
