@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — SNK (Demo)</title>
-<meta name="description" content="SNK admin dashboard demo — UI preview only.">
+<title>Expertise — Shah Neil Khan</title>
+<meta name="description" content="Shah Neil Khan — Expertise in UX, Digital Experience, AI-assisted systems, design, strategy and creative technology.">
 <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -86,31 +86,6 @@
   }
   .form-grid textarea{ min-height:120px; resize:vertical; }
   .form-note{ font-size:11.5px; color:var(--muted); text-align:center; margin-top:10px; }
-
-  .admin-wrap{ max-width:720px; margin:60px auto; padding:0 24px; }
-  .login-box{
-    max-width:380px; margin:100px auto; background:var(--panel); border:1px solid var(--line);
-    border-radius:16px; padding:36px 30px; text-align:center;
-  }
-  .login-box h2{ font-size:20px; margin-bottom:8px; }
-  .login-box p{ color:var(--muted); font-size:12.5px; margin-bottom:22px; }
-  .login-box input{ width:100%; background:var(--void); border:1px solid var(--line); border-radius:8px; padding:12px 14px; color:var(--text); margin-bottom:14px; font-size:14px; }
-  .login-box button{ width:100%; padding:12px; border-radius:8px; background:var(--gold); color:#07090a; font-weight:700; border:none; cursor:pointer; font-size:14px; }
-  .login-error{ color:#ef4444; font-size:12px; margin-top:10px; display:none; }
-  .warn-banner{
-    background:rgba(201,162,75,0.08); border:1px solid var(--gold); border-radius:10px; padding:14px 18px;
-    font-size:12.5px; color:var(--gold); margin-bottom:30px; line-height:1.6;
-  }
-  .admin-section{ margin-bottom:34px; }
-  .admin-section h3{ font-size:16px; margin-bottom:14px; border-bottom:1px solid var(--line); padding-bottom:10px; }
-  .admin-field{ margin-bottom:14px; }
-  .admin-field label{ display:block; font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
-  .admin-field input, .admin-field textarea{
-    width:100%; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--text); font-size:13.5px; font-family:inherit;
-  }
-  .admin-field textarea{ min-height:80px; resize:vertical; }
-  .save-btn{ background:var(--teal); color:#07090a; border:none; padding:11px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13.5px; }
-  #dashboard{ display:none; }
 </style>
 </head>
 <body>
@@ -121,68 +96,58 @@
       SHAH NEIL KHAN
     </a>
     <div class="navlinks">
-      <a href="../index.html">Home</a> <a href="../brand/">Ecosystem</a> <a href="../expertise/">Expertise</a> <a href="../experience/">Experience</a> <a href="../about/">About</a> <a href="../projects/">Projects</a> <a href="../contact/">Contact</a>
+      <a href="../index.html">Home</a> <a href="../brand/">Ecosystem</a> <a href="../expertise/" class="active">Expertise</a> <a href="../experience/">Experience</a> <a href="../about/">About</a> <a href="../projects/">Projects</a> <a href="../contact/">Contact</a>
     </div>
   </nav>
 </header>
 
-<div class="admin-wrap">
-
-  <div id="loginScreen" class="login-box">
-    <h2>SNK Admin</h2>
-    <p>Demo login — UI preview only, not connected to a real account.</p>
-    <input type="password" id="pwInput" placeholder="Demo password">
-    <button onclick="tryLogin()">Sign In</button>
-    <div class="login-error" id="loginError">Incorrect password — try: snk2026</div>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Expertise / Systems / Experience</div>
+    <h1>I design the thinking behind digital.</h1>
+    <p>My work sits where UX thinking, digital experience, technology, AI and creative strategy meet.</p>
   </div>
+</section>
 
-  <div id="dashboard">
-    <div class="warn-banner">
-      ⚠ This is a UI-only demo dashboard. Nothing typed here is saved anywhere yet —
-      it is not connected to a real database or to your live site. It's a preview of how
-      an editing panel could look and work once connected to a backend (e.g. Firebase) later.
+<section class="section">
+  <div class="wrap">
+    <div class="sec-tag">Core Expertise</div>
+    <h2>Six disciplines. One way of thinking.</h2>
+    <div class="grid3">
+      <div class="card"><div class="n">01</div><h3>UX Strategy</h3><p>Understanding people, problems and product goals to create purposeful experiences.</p></div>
+      <div class="card"><div class="n">02</div><h3>Digital Experience</h3><p>Designing connected experiences across websites, interfaces and brand touchpoints.</p></div>
+      <div class="card"><div class="n">03</div><h3>AI-Assisted Systems</h3><p>Exploring practical AI support for research, ideation, workflows and digital products.</p></div>
+      <div class="card"><div class="n">04</div><h3>Design Systems</h3><p>Building reusable foundations for consistent, scalable digital experiences.</p></div>
+      <div class="card"><div class="n">05</div><h3>Creative Direction</h3><p>Connecting brand thinking, visual direction and digital experience into one language.</p></div>
+      <div class="card"><div class="n">06</div><h3>Systems Thinking</h3><p>Looking at how people, products, processes and technology work together.</p></div>
     </div>
-
-    <div class="admin-section">
-      <h3>Hero Section</h3>
-      <div class="admin-field"><label>Headline</label><input type="text" value="I BUILD SYSTEMS. I TRAIN MINDS. I CREATE IMPACT."></div>
-      <div class="admin-field"><label>Subtext</label><textarea>I work at the intersection of UX thinking, digital experience, AI-assisted systems, design strategy and creative technology.</textarea></div>
-    </div>
-
-    <div class="admin-section">
-      <h3>About</h3>
-      <div class="admin-field"><label>Bio</label><textarea>I am Shah Neil Khan — working across UX, digital experience, AI-assisted systems, design and creative technology.</textarea></div>
-    </div>
-
-    <div class="admin-section">
-      <h3>Skills</h3>
-      <div class="admin-field"><label>Skills (comma separated)</label><input type="text" value="Figma, Photoshop/Illustrator, JavaScript, HTML/CSS, WordPress, UI Design, UX Research, Prototyping"></div>
-    </div>
-
-    <div class="admin-section">
-      <h3>Contact Links</h3>
-      <div class="admin-field"><label>WhatsApp Number</label><input type="text" value="01705633700"></div>
-      <div class="admin-field"><label>LinkedIn URL</label><input type="text" value="https://www.linkedin.com/in/uxuidesigners"></div>
-      <div class="admin-field"><label>GitHub URL</label><input type="text" value="https://github.com/shahneilkhan"></div>
-    </div>
-
-    <button class="save-btn" onclick="alert('Demo only — not connected to a backend yet. This would save your changes once Firebase is set up.')">Save Changes</button>
   </div>
+</section>
 
-</div>
+<section class="section">
+  <div class="wrap">
+    <div class="sec-tag">How I Work</div>
+    <h2>Think before you build.</h2>
+    <div class="grid3">
+      <div class="card"><h3>Understand</h3><p>Start with the problem, people, context and goals before execution.</p></div>
+      <div class="card"><h3>Structure &amp; Design</h3><p>Turn complexity into clear systems and translate thinking into interfaces.</p></div>
+      <div class="card"><h3>Build &amp; Improve</h3><p>Move ideas toward reality, then learn from outcomes and keep improving.</p></div>
+    </div>
+  </div>
+</section>
 
-<script>
-  function tryLogin(){
-    const pw = document.getElementById('pwInput').value;
-    if(pw === 'snk2026'){
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('dashboard').style.display = 'block';
-    } else {
-      document.getElementById('loginError').style.display = 'block';
-    }
-  }
-  document.getElementById('pwInput').addEventListener('keydown', e => { if(e.key === 'Enter'){ tryLogin(); } });
-</script>
+<section class="section">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2>Have a complex problem?</h2>
+      <p>Let's make it clear together.</p>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href="../contact/">Start a Conversation</a>
+        <a class="btn btn-outline" href="../brand/">Explore Ecosystem</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">© 2026 Shah Neil Khan. All rights reserved. SNK</div>
