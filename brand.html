@@ -1,2182 +1,243 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand — Shah Neil Khan | SNK</title>
+<meta name="description" content="SNK — Shah Neil Khan's personal brand ecosystem, digital directions, creative systems and connected platforms.">
+<link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#07090a; --panel:#0e1211; --panel-2:#141b19; --line:#1f2926;
+    --teal:#2bb3a3; --gold:#c9a24b; --text:#eef1ee; --muted:#93998f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--void); color:var(--text); font-family:'Inter',sans-serif; overflow-x:hidden; }
+  h1,h2,h3{ font-family:'Space Grotesk',sans-serif; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 24px; }
+
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1;
+    background: radial-gradient(700px 500px at 15% -5%, rgba(43,179,163,0.14), transparent 60%),
+                radial-gradient(600px 500px at 100% 10%, rgba(201,162,75,0.08), transparent 60%);
+  }
+
+  header{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(7,9,10,0.72); border-bottom:1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1100px; margin:0 auto; }
+  .logo{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; }
+  .logo img{ height:28px; width:auto; }
+  .navlinks{ display:flex; gap:26px; font-size:13.5px; color:var(--muted); flex-wrap:wrap; }
+  .navlinks a:hover{ color:var(--text); }
+  .navlinks a.active{ color:var(--gold); }
+  @media (max-width:900px){ .navlinks{ display:none; } }
+
+  .hero{ padding:70px 0 50px; text-align:center; }
+  .eyebrow{
+    font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--teal); font-weight:700; margin-bottom:18px;
+  }
+  .hero h1{ font-size:38px; font-weight:700; line-height:1.2; max-width:760px; margin:0 auto 20px; }
+  .hero p{ color:var(--muted); font-size:15.5px; max-width:600px; margin:0 auto 24px; line-height:1.8; }
+  .pill-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .pill{ border:1px solid var(--line); border-radius:20px; padding:6px 14px; font-size:12px; color:var(--muted); }
+
+  .section{ padding:60px 0; border-top:1px solid var(--line); }
+  .sec-tag{ font-size:11.5px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:14px; text-align:center; }
+  .section h2{ font-size:28px; text-align:center; max-width:600px; margin:0 auto 16px; line-height:1.3; }
+  .section > .wrap > p.lede{ color:var(--muted); font-size:15px; text-align:center; max-width:640px; margin:0 auto 40px; line-height:1.8; }
+
+  /* Ecosystem cards */
+  .eco-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .eco-card{
+    position:relative; background:linear-gradient(180deg, var(--panel), #0a0d0c);
+    border:1px solid var(--line); border-radius:16px; padding:26px 22px;
+    display:flex; flex-direction:column; gap:12px; overflow:hidden;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .eco-card::before{
+    content:""; position:absolute; inset:0; opacity:0; pointer-events:none;
+    background: radial-gradient(220px 140px at 20% 0%, rgba(43,179,163,0.16), transparent 70%);
+    transition: opacity .25s ease;
+  }
+  .eco-card:hover{ transform:translateY(-6px); border-color:var(--gold); box-shadow:0 24px 50px -20px rgba(0,0,0,0.6); }
+  .eco-card:hover::before{ opacity:1; }
+  .eco-top{ display:flex; align-items:center; justify-content:space-between; }
+  .eco-num{ font-size:12px; color:var(--muted); font-weight:700; letter-spacing:1px; }
+  .eco-live{
+    display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    color:#4ade80; border:1px solid rgba(74,222,128,0.35); background:rgba(74,222,128,0.08); padding:3px 10px; border-radius:20px;
+  }
+  .eco-live::before{ content:""; width:6px; height:6px; border-radius:50%; background:#4ade80; box-shadow:0 0 6px #4ade80; }
+  .eco-category{ font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--teal); font-weight:700; }
+  .eco-card h3{ font-size:18px; }
+  .eco-card p{ font-size:13.5px; color:var(--muted); line-height:1.65; flex:1; }
+  .eco-domain{ font-size:12px; color:var(--muted); font-family:monospace; }
+  .eco-visit{ font-size:13px; font-weight:700; color:var(--gold); }
+  .eco-card:hover .eco-visit{ text-decoration:underline; }
+
+  @media (max-width:900px){ .eco-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .eco-grid{ grid-template-columns:1fr; } .hero h1{ font-size:28px; } }
+
+  /* How I think */
+  .think-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .think-card{ border:1px solid var(--line); background:var(--panel); border-radius:12px; padding:22px 18px; }
+  .think-card .n{ font-family:'Space Grotesk'; font-size:20px; font-weight:700; color:var(--gold); margin-bottom:10px; }
+  .think-card h3{ font-size:15px; margin-bottom:8px; }
+  .think-card p{ font-size:12.5px; color:var(--muted); line-height:1.6; }
+  @media (max-width:860px){ .think-grid{ grid-template-columns:repeat(2,1fr); } }
+
+  /* CTA footer */
+  .cta-box{
+    text-align:center; padding:60px 30px; border-radius:20px;
+    background:linear-gradient(180deg, var(--panel), var(--void)); border:1px solid var(--line); position:relative; overflow:hidden;
+  }
+  .cta-box::before{ content:""; position:absolute; inset:0; background:radial-gradient(400px 200px at 50% 0%, rgba(43,179,163,0.18), transparent 70%); }
+  .cta-box h2{ position:relative; margin-bottom:14px; }
+  .cta-box p{ position:relative; color:var(--muted); margin-bottom:26px; }
+  .cta-btns{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; }
+  .btn{ padding:12px 24px; border-radius:8px; font-weight:600; font-size:13.5px; }
+  .btn-primary{ background:var(--gold); color:#07090a; }
+  .btn-outline{ border:1px solid var(--line); color:var(--text); }
+  .btn-outline:hover{ border-color:var(--teal); color:var(--teal); }
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="SNK — Shah Neil Khan's personal brand ecosystem, digital directions, creative systems and connected platforms."
-  >
-
-  <meta
-    name="author"
-    content="Shah Neil Khan"
-  >
-
-  <meta
-    name="theme-color"
-    content="#080808"
-  >
-
-  <title>Brand — Shah Neil Khan | SNK</title>
-
-  <!-- FAVICON -->
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-  >
-
-  <!-- SHARED CSS -->
-  <link rel="stylesheet" href="style.css">
-
-
-  <!-- =====================================================
-       BRAND PAGE STYLES
-  ====================================================== -->
-
-  <style>
-
-    /* =====================================================
-       BASE
-    ====================================================== */
-
-    .brand-page {
-      min-height: 100vh;
-      overflow: hidden;
-    }
-
-
-    /* =====================================================
-       BRAND HERO
-    ====================================================== */
-
-    .brand-hero {
-      position: relative;
-
-      min-height: 82vh;
-      min-height: 82svh;
-
-      display: flex;
-      align-items: center;
-
-      padding:
-        150px
-        clamp(24px, 6vw, 100px)
-        110px;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 76% 42%,
-          rgba(208, 164, 92, 0.13),
-          transparent 32%
-        ),
-        radial-gradient(
-          circle at 15% 85%,
-          rgba(208, 164, 92, 0.05),
-          transparent 30%
-        ),
-        #080808;
-    }
-
-
-    .brand-hero::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          rgba(255,255,255,0.018) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.018) 1px,
-          transparent 1px
-        );
-
-      background-size: 72px 72px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          transparent,
-          black 20%,
-          black 80%,
-          transparent
-        );
-
-      pointer-events: none;
-    }
-
-
-    .brand-hero::after {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        radial-gradient(
-          ellipse at center,
-          transparent 25%,
-          rgba(0,0,0,0.28) 100%
-        );
-
-      pointer-events: none;
-    }
-
-
-    .brand-hero-glow {
-      position: absolute;
-
-      width: 520px;
-      height: 520px;
-
-      right: 5%;
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      border-radius: 50%;
-
-      background:
-        rgba(208,164,92,0.065);
-
-      filter: blur(100px);
-
-      pointer-events: none;
-    }
-
-
-    .brand-hero-content {
-      position: relative;
-      z-index: 2;
-
-      width: min(1050px, 100%);
-    }
-
-
-    .brand-eyebrow {
-      margin: 0 0 22px;
-
-      color: #d0a45c;
-
-      font-size: 0.68rem;
-      font-weight: 700;
-
-      letter-spacing: 0.24em;
-
-      text-transform: uppercase;
-    }
-
-
-    .brand-title {
-      max-width: 1050px;
-
-      margin: 0;
-
-      color: #f2eee7;
-
-      font-size:
-        clamp(
-          3.4rem,
-          8vw,
-          8.4rem
-        );
-
-      line-height: 0.88;
-
-      letter-spacing: -0.07em;
-
-      font-weight: 800;
-    }
-
-
-    .brand-title span {
-      color: #d0a45c;
-    }
-
-
-    .brand-intro {
-      max-width: 690px;
-
-      margin: 36px 0 0;
-
-      color:
-        rgba(242,238,231,0.62);
-
-      font-size:
-        clamp(
-          0.95rem,
-          1.5vw,
-          1.18rem
-        );
-
-      line-height: 1.85;
-    }
-
-
-    .brand-hero-meta {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 9px;
-
-      margin-top: 34px;
-    }
-
-
-    .brand-meta-pill {
-      display: inline-flex;
-
-      align-items: center;
-
-      min-height: 34px;
-
-      padding: 0 13px;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.09);
-
-      border-radius: 999px;
-
-      background:
-        rgba(255,255,255,0.025);
-
-      color:
-        rgba(242,238,231,0.52);
-
-      font-size: 0.64rem;
-
-      font-weight: 600;
-
-      letter-spacing: 0.1em;
-
-      text-transform: uppercase;
-    }
-
-
-    .brand-meta-pill.active {
-      color: #d0a45c;
-
-      border-color:
-        rgba(208,164,92,0.30);
-
-      background:
-        rgba(208,164,92,0.065);
-    }
-
-
-    /* =====================================================
-       MANIFESTO
-    ====================================================== */
-
-    .brand-manifesto {
-      padding:
-        120px
-        clamp(24px, 6vw, 100px);
-
-      background: #0b0b0b;
-    }
-
-
-    .brand-manifesto-inner {
-      width: min(1050px, 100%);
-
-      margin: 0 auto;
-
-      text-align: center;
-    }
-
-
-    .brand-section-label {
-      margin: 0 0 18px;
-
-      color: #d0a45c;
-
-      font-size: 0.64rem;
-
-      font-weight: 700;
-
-      letter-spacing: 0.22em;
-
-      text-transform: uppercase;
-    }
-
-
-    .brand-manifesto h2 {
-      margin: 0;
-
-      color: #f2eee7;
-
-      font-size:
-        clamp(
-          2.2rem,
-          4.8vw,
-          4.8rem
-        );
-
-      line-height: 1.01;
-
-      letter-spacing: -0.055em;
-    }
-
-
-    .brand-manifesto h2 span {
-      color:
-        rgba(242,238,231,0.38);
-    }
-
-
-    .brand-manifesto-copy {
-      max-width: 700px;
-
-      margin: 28px auto 0;
-
-      color:
-        rgba(242,238,231,0.53);
-
-      line-height: 1.85;
-
-      font-size: 0.94rem;
-    }
-
-
-    /* =====================================================
-       ECOSYSTEM
-    ====================================================== */
-
-    .brand-ecosystem {
-      padding:
-        120px
-        clamp(24px, 6vw, 100px)
-        135px;
-
-      background: #080808;
-    }
-
-
-    .brand-ecosystem-head {
-      width: min(1200px, 100%);
-
-      margin: 0 auto 48px;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: end;
-
-      gap: 40px;
-    }
-
-
-    .brand-ecosystem-head h2 {
-      margin: 0;
-
-      color: #f2eee7;
-
-      font-size:
-        clamp(
-          2.1rem,
-          4.2vw,
-          4.4rem
-        );
-
-      line-height: 0.96;
-
-      letter-spacing: -0.055em;
-    }
-
-
-    .brand-ecosystem-head p {
-      max-width: 400px;
-
-      margin: 0;
-
-      color:
-        rgba(242,238,231,0.46);
-
-      line-height: 1.75;
-
-      font-size: 0.84rem;
-    }
-
-
-    .brand-grid {
-      width: min(1200px, 100%);
-
-      margin: 0 auto;
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 18px;
-    }
-
-
-    .brand-card {
-      position: relative;
-
-      min-height: 330px;
-
-      padding: 34px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: space-between;
-
-      overflow: hidden;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.075);
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.045),
-          rgba(255,255,255,0.012)
-        );
-
-      box-shadow:
-        0 25px 80px
-        rgba(0,0,0,0.20);
-
-      text-decoration: none;
-
-      transition:
-        transform 280ms ease,
-        border-color 280ms ease,
-        box-shadow 280ms ease;
-    }
-
-
-    .brand-card::before {
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-      top: 0;
-
-      height: 2px;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(208,164,92,0.78),
-          transparent
-        );
-
-      opacity: 0.3;
-
-      transition:
-        opacity 280ms ease;
-    }
-
-
-    .brand-card::after {
-      content: "";
-
-      position: absolute;
-
-      width: 210px;
-      height: 210px;
-
-      right: -105px;
-      bottom: -105px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(208,164,92,0.05);
-
-      filter: blur(25px);
-
-      pointer-events: none;
-    }
-
-
-    .brand-card:hover {
-      transform: translateY(-8px);
-
-      border-color:
-        rgba(208,164,92,0.30);
-
-      box-shadow:
-        0 32px 95px
-        rgba(0,0,0,0.35),
-
-        0 0 42px
-        rgba(208,164,92,0.05);
-    }
-
-
-    .brand-card:hover::before {
-      opacity: 1;
-    }
-
-
-    .brand-card.featured {
-      grid-column: span 2;
-
-      min-height: 380px;
-
-      background:
-        radial-gradient(
-          circle at 82% 40%,
-          rgba(208,164,92,0.105),
-          transparent 35%
-        ),
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.05),
-          rgba(255,255,255,0.012)
-        );
-    }
-
-
-    .brand-card-top {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 15px;
-    }
-
-
-    .brand-number {
-      color:
-        rgba(242,238,231,0.22);
-
-      font-family:
-        "SFMono-Regular",
-        Consolas,
-        monospace;
-
-      font-size: 0.66rem;
-
-      letter-spacing: 0.12em;
-    }
-
-
-    .brand-status {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      color:
-        rgba(242,238,231,0.40);
-
-      font-family:
-        "SFMono-Regular",
-        Consolas,
-        monospace;
-
-      font-size: 0.59rem;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.1em;
-    }
-
-
-    .brand-status::before {
-      content: "";
-
-      width: 6px;
-      height: 6px;
-
-      flex: 0 0 6px;
-
-      border-radius: 50%;
-
-      background: #73c991;
-
-      box-shadow:
-        0 0 10px
-        rgba(115,201,145,0.45);
-    }
-
-
-    .brand-card-main {
-      position: relative;
-      z-index: 2;
-
-      margin-top: 45px;
-    }
-
-
-    .brand-card-name {
-      margin: 0;
-
-      color: #f2eee7;
-
-      font-size:
-        clamp(
-          1.9rem,
-          3.4vw,
-          3.5rem
-        );
-
-      line-height: 0.94;
-
-      letter-spacing: -0.05em;
-    }
-
-
-    .brand-card-name span {
-      color: #d0a45c;
-    }
-
-
-    .brand-card-description {
-      max-width: 600px;
-
-      margin: 17px 0 0;
-
-      color:
-        rgba(242,238,231,0.51);
-
-      line-height: 1.75;
-
-      font-size: 0.82rem;
-    }
-
-
-    .brand-card-bottom {
-      position: relative;
-      z-index: 3;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 15px;
-
-      margin-top: 35px;
-    }
-
-
-    .brand-domain {
-      color:
-        rgba(242,238,231,0.34);
-
-      font-family:
-        "SFMono-Regular",
-        Consolas,
-        monospace;
-
-      font-size: 0.65rem;
-    }
-
-
-    .brand-link {
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 8px;
-
-      min-height: 42px;
-
-      padding: 0 16px;
-
-      border:
-        1px solid
-        rgba(208,164,92,0.25);
-
-      border-radius: 999px;
-
-      color: #d0a45c;
-
-      background:
-        rgba(208,164,92,0.045);
-
-      text-decoration: none;
-
-      font-size: 0.64rem;
-
-      font-weight: 700;
-
-      letter-spacing: 0.08em;
-
-      text-transform: uppercase;
-
-      transition:
-        background 220ms ease,
-        border-color 220ms ease,
-        transform 220ms ease;
-    }
-
-
-    .brand-link:hover {
-      transform: translateX(3px);
-
-      background:
-        rgba(208,164,92,0.10);
-
-      border-color:
-        rgba(208,164,92,0.48);
-    }
-
-
-    /* =====================================================
-       PRINCIPLES
-    ====================================================== */
-
-    .brand-principles {
-      padding:
-        120px
-        clamp(24px, 6vw, 100px);
-
-      background: #0b0b0b;
-    }
-
-
-    .brand-principles-inner {
-      width: min(1200px, 100%);
-
-      margin: 0 auto;
-    }
-
-
-    .brand-principles-title {
-      max-width: 750px;
-
-      margin-bottom: 48px;
-    }
-
-
-    .brand-principles-title h2 {
-      margin: 0;
-
-      color: #f2eee7;
-
-      font-size:
-        clamp(
-          2.1rem,
-          4.2vw,
-          4.2rem
-        );
-
-      letter-spacing: -0.055em;
-
-      line-height: 0.98;
-    }
-
-
-    .principles-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-      gap: 14px;
-    }
-
-
-    .principle {
-      min-height: 205px;
-
-      padding: 27px 23px;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.065);
-
-      border-radius: 16px;
-
-      background:
-        rgba(255,255,255,0.018);
-
-      transition:
-        transform 250ms ease,
-        border-color 250ms ease;
-    }
-
-
-    .principle:hover {
-      transform: translateY(-5px);
-
-      border-color:
-        rgba(208,164,92,0.22);
-    }
-
-
-    .principle-index {
-      color: #d0a45c;
-
-      font-family:
-        "SFMono-Regular",
-        Consolas,
-        monospace;
-
-      font-size: 0.61rem;
-    }
-
-
-    .principle h3 {
-      margin: 35px 0 10px;
-
-      color: #f2eee7;
-
-      font-size: 1rem;
-
-      letter-spacing: -0.02em;
-    }
-
-
-    .principle p {
-      margin: 0;
-
-      color:
-        rgba(242,238,231,0.42);
-
-      line-height: 1.68;
-
-      font-size: 0.75rem;
-    }
-
-
-    /* =====================================================
-       CTA
-    ====================================================== */
-
-    .brand-cta {
-      position: relative;
-
-      padding:
-        140px
-        24px;
-
-      text-align: center;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 50% 45%,
-          rgba(208,164,92,0.10),
-          transparent 38%
-        ),
-        #080808;
-    }
-
-
-    .brand-cta::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          rgba(255,255,255,0.015) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.015) 1px,
-          transparent 1px
-        );
-
-      background-size: 70px 70px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          transparent,
-          black 35%,
-          black 65%,
-          transparent
-        );
-
-      pointer-events: none;
-    }
-
-
-    .brand-cta-inner {
-      position: relative;
-      z-index: 2;
-
-      width: min(850px, 100%);
-
-      margin: 0 auto;
-    }
-
-
-    .brand-cta h2 {
-      margin: 0;
-
-      color: #f2eee7;
-
-      font-size:
-        clamp(
-          2.5rem,
-          5.7vw,
-          5.7rem
-        );
-
-      line-height: 0.93;
-
-      letter-spacing: -0.065em;
-    }
-
-
-    .brand-cta h2 span {
-      color: #d0a45c;
-    }
-
-
-    .brand-cta p {
-      max-width: 590px;
-
-      margin: 27px auto 0;
-
-      color:
-        rgba(242,238,231,0.48);
-
-      line-height: 1.75;
-    }
-
-
-    .brand-cta-actions {
-      display: flex;
-
-      justify-content: center;
-
-      flex-wrap: wrap;
-
-      gap: 12px;
-
-      margin-top: 32px;
-    }
-
-
-    .brand-cta-btn {
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      min-height: 48px;
-
-      padding: 0 23px;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.11);
-
-      border-radius: 999px;
-
-      color: #f2eee7;
-
-      background:
-        rgba(255,255,255,0.03);
-
-      text-decoration: none;
-
-      font-size: 0.66rem;
-
-      font-weight: 700;
-
-      letter-spacing: 0.08em;
-
-      text-transform: uppercase;
-
-      transition:
-        transform 220ms ease,
-        border-color 220ms ease,
-        background 220ms ease;
-    }
-
-
-    .brand-cta-btn:hover {
-      transform: translateY(-3px);
-
-      border-color:
-        rgba(208,164,92,0.42);
-
-      background:
-        rgba(208,164,92,0.07);
-    }
-
-
-    .brand-cta-btn.primary {
-      color: #111;
-
-      background: #d0a45c;
-
-      border-color: #d0a45c;
-    }
-
-
-    .brand-cta-btn.primary:hover {
-      background: #dfb875;
-
-      border-color: #dfb875;
-    }
-
-
-    /* =====================================================
-       LIGHT MODE
-    ====================================================== */
-
-    html[data-theme="light"] .brand-hero,
-    html[data-theme="light"] .brand-cta {
-      background:
-        radial-gradient(
-          circle at 76% 42%,
-          rgba(170,120,45,0.10),
-          transparent 32%
-        ),
-        #f4f1eb;
-    }
-
-
-    html[data-theme="light"] .brand-manifesto,
-    html[data-theme="light"] .brand-principles {
-      background: #eeebe5;
-    }
-
-
-    html[data-theme="light"] .brand-ecosystem {
-      background: #f4f1eb;
-    }
-
-
-    html[data-theme="light"] .brand-title,
-    html[data-theme="light"] .brand-manifesto h2,
-    html[data-theme="light"] .brand-ecosystem-head h2,
-    html[data-theme="light"] .brand-card-name,
-    html[data-theme="light"] .brand-principles-title h2,
-    html[data-theme="light"] .principle h3,
-    html[data-theme="light"] .brand-cta h2 {
-      color: #151515;
-    }
-
-
-    html[data-theme="light"] .brand-intro,
-    html[data-theme="light"] .brand-ecosystem-head p,
-    html[data-theme="light"] .brand-card-description,
-    html[data-theme="light"] .principle p,
-    html[data-theme="light"] .brand-cta p {
-      color:
-        rgba(21,21,21,0.55);
-    }
-
-
-    html[data-theme="light"] .brand-meta-pill {
-      color:
-        rgba(21,21,21,0.43);
-
-      border-color:
-        rgba(0,0,0,0.09);
-
-      background:
-        rgba(0,0,0,0.018);
-    }
-
-
-    html[data-theme="light"] .brand-meta-pill.active {
-      color: #98702e;
-
-      border-color:
-        rgba(152,112,46,0.27);
-
-      background:
-        rgba(152,112,46,0.055);
-    }
-
-
-    html[data-theme="light"] .brand-card {
-      border-color:
-        rgba(0,0,0,0.085);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.65),
-          rgba(255,255,255,0.35)
-        );
-
-      box-shadow:
-        0 20px 65px
-        rgba(0,0,0,0.055);
-    }
-
-
-    html[data-theme="light"] .brand-card:hover {
-      border-color:
-        rgba(152,112,46,0.30);
-    }
-
-
-    html[data-theme="light"] .brand-number,
-    html[data-theme="light"] .brand-domain {
-      color:
-        rgba(21,21,21,0.38);
-    }
-
-
-    html[data-theme="light"] .brand-status {
-      color:
-        rgba(21,21,21,0.40);
-    }
-
-
-    html[data-theme="light"] .brand-link {
-      color: #98702e;
-
-      border-color:
-        rgba(152,112,46,0.25);
-    }
-
-
-    html[data-theme="light"] .principle {
-      border-color:
-        rgba(0,0,0,0.075);
-
-      background:
-        rgba(255,255,255,0.38);
-    }
-
-
-    html[data-theme="light"] .brand-cta-btn {
-      color: #151515;
-
-      border-color:
-        rgba(0,0,0,0.10);
-
-      background:
-        rgba(0,0,0,0.025);
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ====================================================== */
-
-    @media (max-width: 1000px) {
-
-      .brand-hero {
-        min-height: 72vh;
-
-        padding-top: 135px;
-      }
-
-
-      .principles-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-    }
-
-
-    @media (max-width: 760px) {
-
-      .brand-hero {
-        min-height: auto;
-
-        padding:
-          125px
-          22px
-          90px;
-      }
-
-
-      .brand-title {
-        font-size:
-          clamp(
-            3.2rem,
-            16vw,
-            6rem
-          );
-      }
-
-
-      .brand-intro {
-        font-size: 0.91rem;
-      }
-
-
-      .brand-ecosystem-head {
-        display: block;
-      }
-
-
-      .brand-ecosystem-head p {
-        margin-top: 20px;
-      }
-
-
-      .brand-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .brand-card.featured {
-        grid-column: span 1;
-
-        min-height: 340px;
-      }
-
-
-      .brand-card {
-        min-height: 305px;
-      }
-
-
-      .brand-card-main {
-        margin-top: 35px;
-      }
-
-    }
-
-
-    @media (max-width: 560px) {
-
-      .brand-manifesto,
-      .brand-ecosystem,
-      .brand-principles {
-        padding-top: 88px;
-        padding-bottom: 92px;
-      }
-
-
-      .brand-card {
-        padding: 25px;
-
-        border-radius: 17px;
-      }
-
-
-      .brand-card-bottom {
-        align-items: flex-start;
-
-        flex-direction: column;
-      }
-
-
-      .brand-link {
-        width: 100%;
-      }
-
-
-      .principles-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .principle {
-        min-height: auto;
-      }
-
-
-      .brand-cta {
-        padding:
-          105px
-          22px;
-      }
-
-    }
-
-
-    @media (prefers-reduced-motion: reduce) {
-
-      .brand-card,
-      .brand-link,
-      .brand-cta-btn,
-      .principle {
-        transition: none;
-      }
-
-
-      .brand-card:hover,
-      .brand-link:hover,
-      .brand-cta-btn:hover,
-      .principle:hover {
-        transform: none;
-      }
-
-    }
-
-  </style>
-
+  footer{ padding:50px 0 30px; text-align:center; color:var(--muted); font-size:12.5px; border-top:1px solid var(--line); }
+</style>
 </head>
-
-
 <body>
 
+<header>
+  <nav>
+    <a class="logo" href="../index.html">
+      <img src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg" alt="SNK Logo">
+      SHAH NEIL KHAN
+    </a>
+    <div class="navlinks">
+      <a href="../index.html#home">Home</a>
+      <a href="../brand.html" class="active">Ecosystem</a>
+      <a href="../index.html#ai">AI</a>
+      <a href="../expertise.html">Expertise</a>
+      <a href="../experience.html">Experience</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
 
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">SNK · Personal Brand · Ecosystem</div>
+    <h1>One mind. Multiple directions.</h1>
+    <p>SNK is more than a personal identity. It is a growing ecosystem of digital experiences, ideas, brands, learning and systems — each moving in its own direction while staying connected to one vision.</p>
+    <div class="pill-row">
+      <span class="pill">Personal Brand</span>
+      <span class="pill">Digital Experience</span>
+      <span class="pill">Systems Thinking</span>
+      <span class="pill">Creative Technology</span>
+    </div>
+  </div>
+</section>
 
-  <header
-    class="site-header"
-    id="siteHeader"
-  >
+<section class="section">
+  <div class="wrap">
+    <div class="sec-tag">The Idea</div>
+    <h2>Build something useful. Then make it meaningful.</h2>
+    <p class="lede">The SNK ecosystem brings together different directions without forcing them into one box. Design can become a system. A system can become a product. A product can become a learning platform. And an idea can become something people actually use.</p>
+  </div>
+</section>
 
-    <div class="nav-wrap">
+<section class="section">
+  <div class="wrap">
+    <div class="sec-tag">The Ecosystem</div>
+    <h2>Five directions. One ecosystem.</h2>
+    <p class="lede">Explore the different digital destinations connected to the SNK ecosystem. Each one has its own purpose, audience and direction.</p>
 
+    <div class="eco-grid">
 
-      <!-- LOGO -->
-
-      <a
-        href="./index.html#home"
-        class="logo"
-        aria-label="Shah Neil Khan — Home"
-      >
-
-        <img
-          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-          alt="SNK Logo"
-        >
-
-        <span>
-          SHAH NEIL KHAN
-        </span>
-
+      <a class="eco-card" href="https://websitesdeal.com/" target="_blank" rel="noopener">
+        <div class="eco-top"><span class="eco-num">01 / 05</span><span class="eco-live">Live</span></div>
+        <div class="eco-category">Digital Platform</div>
+        <h3>WebsitesDeal</h3>
+        <p>A dedicated digital destination focused on websites and digital solutions.</p>
+        <div class="eco-domain">websitesdeal.com</div>
+        <div class="eco-visit">Visit Website ↗</div>
       </a>
 
+      <a class="eco-card" href="https://www.tabayyuninstitute.com/" target="_blank" rel="noopener">
+        <div class="eco-top"><span class="eco-num">02 / 05</span><span class="eco-live">Live</span></div>
+        <div class="eco-category">Education</div>
+        <h3>TabayyunTV</h3>
+        <p>A separate destination within the wider Tabayyun ecosystem.</p>
+        <div class="eco-domain">tabayyuninstitute.com</div>
+        <div class="eco-visit">Visit Website ↗</div>
+      </a>
 
-      <!-- MOBILE MENU -->
+      <a class="eco-card" href="https://snkitinstitute.github.io/" target="_blank" rel="noopener">
+        <div class="eco-top"><span class="eco-num">03 / 05</span><span class="eco-live">Live</span></div>
+        <div class="eco-category">Technology &amp; Learning</div>
+        <h3>SNK IT Institute</h3>
+        <p>A learning-focused digital destination built around technology and practical growth.</p>
+        <div class="eco-domain">snkitinstitute.github.io</div>
+        <div class="eco-visit">Visit Website ↗</div>
+      </a>
 
-      <button
-        type="button"
-        class="mobile-menu-btn"
-        id="mobileMenuBtn"
-        aria-label="Open navigation"
-        aria-expanded="false"
-      >
+      <a class="eco-card" href="https://sarakatagency.github.io/" target="_blank" rel="noopener">
+        <div class="eco-top"><span class="eco-num">04 / 05</span><span class="eco-live">Live</span></div>
+        <div class="eco-category">Creative Agency</div>
+        <h3>Sarakāt Agency</h3>
+        <p>A creative agency direction within the broader SNK ecosystem.</p>
+        <div class="eco-domain">sarakatagency.github.io</div>
+        <div class="eco-visit">Visit Website ↗</div>
+      </a>
 
-        <span></span>
-        <span></span>
-        <span></span>
-
-      </button>
-
-
-      <!-- NAVIGATION -->
-
-      <nav
-        class="main-nav"
-        id="mainNav"
-        aria-label="Primary navigation"
-      >
-
-        <a href="./index.html#home">
-          Home
-        </a>
-
-        <a href="./index.html#ecosystem">
-          Ecosystem
-        </a>
-
-        <a href="./index.html#ai">
-          AI
-        </a>
-
-        <a href="./index.html#expertise">
-          Expertise
-        </a>
-
-        <a href="./index.html#experience">
-          Experience
-        </a>
-
-        <a href="./about.html">
-          About
-        </a>
-
-        <a
-          href="./brand.html"
-          class="active"
-        >
-          Brand
-        </a>
-
-        <a href="./index.html#contact">
-          Contact
-        </a>
-
-      </nav>
-
-
-      <!-- ACTIONS -->
-
-      <div class="nav-actions">
-
-        <button
-          type="button"
-          class="icon-btn"
-          id="languageToggle"
-          aria-label="Switch language"
-          title="বাংলা / English"
-        >
-          বাংলা
-        </button>
-
-
-        <button
-          type="button"
-          class="icon-btn"
-          id="themeToggle"
-          aria-label="Toggle theme"
-          title="Toggle dark/light mode"
-        >
-          ◐
-        </button>
-
-
-        <button
-          type="button"
-          class="icon-btn"
-          id="rainToggle"
-          aria-label="Toggle rain"
-          title="Toggle rain"
-        >
-          Rain
-        </button>
-
-      </div>
+      <a class="eco-card" href="https://snkdesign.github.io/" target="_blank" rel="noopener">
+        <div class="eco-top"><span class="eco-num">05 / 05</span><span class="eco-live">Live</span></div>
+        <div class="eco-category">Design</div>
+        <h3>SNK Design</h3>
+        <p>The design-focused direction of the SNK ecosystem, connecting visual thinking with digital experiences.</p>
+        <div class="eco-domain">snkdesign.github.io</div>
+        <div class="eco-visit">Visit Website ↗</div>
+      </a>
 
     </div>
-
-  </header>
-
-
-  <!-- =====================================================
-       RAIN
-  ====================================================== -->
-
-  <div
-    class="rain-layer"
-    id="rainLayer"
-    aria-hidden="true"
-  ></div>
-
-
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
-
-  <main class="brand-page">
-
-
-    <!-- ===================================================
-         HERO
-    ==================================================== -->
-
-    <section class="brand-hero">
-
-      <div class="brand-hero-glow"></div>
-
-
-      <div class="brand-hero-content reveal">
-
-        <p class="brand-eyebrow">
-          SNK · PERSONAL BRAND · ECOSYSTEM
-        </p>
-
-
-        <h1 class="brand-title">
-          ONE MIND.<br>
-          <span>MULTIPLE DIRECTIONS.</span>
-        </h1>
-
-
-        <p class="brand-intro">
-          SNK is more than a personal identity. It is a growing
-          ecosystem of digital experiences, ideas, brands,
-          learning and systems — each moving in its own direction
-          while staying connected to one vision.
-        </p>
-
-
-        <div class="brand-hero-meta">
-
-          <span class="brand-meta-pill active">
-            Personal Brand
-          </span>
-
-          <span class="brand-meta-pill">
-            Digital Experience
-          </span>
-
-          <span class="brand-meta-pill">
-            Systems Thinking
-          </span>
-
-          <span class="brand-meta-pill">
-            Creative Technology
-          </span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         MANIFESTO
-    ==================================================== -->
-
-    <section class="brand-manifesto">
-
-      <div class="brand-manifesto-inner reveal">
-
-        <p class="brand-section-label">
-          THE IDEA
-        </p>
-
-
-        <h2>
-          Build something useful.<br>
-          <span>Then make it meaningful.</span>
-        </h2>
-
-
-        <p class="brand-manifesto-copy">
-          The SNK ecosystem brings together different directions
-          without forcing them into one box. Design can become a
-          system. A system can become a product. A product can
-          become a learning platform. And an idea can become
-          something people actually use.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         ECOSYSTEM
-    ==================================================== -->
-
-    <section
-      class="brand-ecosystem"
-      id="brands"
-    >
-
-      <div class="brand-ecosystem-head reveal">
-
-        <div>
-
-          <p class="brand-section-label">
-            THE ECOSYSTEM
-          </p>
-
-
-          <h2>
-            Five directions.<br>
-            One ecosystem.
-          </h2>
-
-        </div>
-
-
-        <p>
-          Explore the different digital destinations connected
-          to the SNK ecosystem. Each one has its own purpose,
-          audience and direction.
-        </p>
-
-      </div>
-
-
-      <div class="brand-grid">
-
-
-        <!-- ===============================================
-             WEBSITES DEAL
-        ================================================ -->
-
-        <article
-          class="brand-card featured reveal"
-        >
-
-          <div class="brand-card-top">
-
-            <span class="brand-number">
-              01 / 05
-            </span>
-
-            <span class="brand-status">
-              LIVE
-            </span>
-
-          </div>
-
-
-          <div class="brand-card-main">
-
-            <h3 class="brand-card-name">
-              Websites<span>Deal</span>
-            </h3>
-
-
-            <p class="brand-card-description">
-              A dedicated digital destination focused on
-              websites and digital solutions.
-            </p>
-
-          </div>
-
-
-          <div class="brand-card-bottom">
-
-            <span class="brand-domain">
-              websitesdeal.com
-            </span>
-
-
-            <a
-              href="https://websitesdeal.com/"
-              class="brand-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit Website ↗
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- ===============================================
-             TABAYYUN TV
-        ================================================ -->
-
-        <article class="brand-card reveal">
-
-          <div class="brand-card-top">
-
-            <span class="brand-number">
-              02 / 05
-            </span>
-
-            <span class="brand-status">
-              LIVE
-            </span>
-
-          </div>
-
-
-          <div class="brand-card-main">
-
-            <h3 class="brand-card-name">
-              Tabayyun<span>TV</span>
-            </h3>
-
-
-            <p class="brand-card-description">
-              A separate destination within the wider
-              Tabayyun ecosystem.
-            </p>
-
-          </div>
-
-
-          <div class="brand-card-bottom">
-
-            <span class="brand-domain">
-              tabayyuninstitute.com
-            </span>
-
-
-            <a
-              href="https://www.tabayyuninstitute.com/"
-              class="brand-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit Website ↗
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- ===============================================
-             SNK IT INSTITUTE
-        ================================================ -->
-
-        <article class="brand-card reveal">
-
-          <div class="brand-card-top">
-
-            <span class="brand-number">
-              03 / 05
-            </span>
-
-            <span class="brand-status">
-              LIVE
-            </span>
-
-          </div>
-
-
-          <div class="brand-card-main">
-
-            <h3 class="brand-card-name">
-              SNK IT <span>Institute</span>
-            </h3>
-
-
-            <p class="brand-card-description">
-              A learning-focused digital destination built
-              around technology and practical growth.
-            </p>
-
-          </div>
-
-
-          <div class="brand-card-bottom">
-
-            <span class="brand-domain">
-              snkitinstitute.github.io
-            </span>
-
-
-            <a
-              href="https://snkitinstitute.github.io/"
-              class="brand-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit Website ↗
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- ===============================================
-             SARAKAT AGENCY
-        ================================================ -->
-
-        <article class="brand-card reveal">
-
-          <div class="brand-card-top">
-
-            <span class="brand-number">
-              04 / 05
-            </span>
-
-            <span class="brand-status">
-              ECOSYSTEM
-            </span>
-
-          </div>
-
-
-          <div class="brand-card-main">
-
-            <h3 class="brand-card-name">
-              Sarakāt <span>Agency</span>
-            </h3>
-
-
-            <p class="brand-card-description">
-              A creative agency direction within the broader
-              SNK ecosystem.
-            </p>
-
-          </div>
-
-
-          <div class="brand-card-bottom">
-
-            <span class="brand-domain">
-              Sarakāt Agency
-            </span>
-
-
-            <a
-              href="https://sarakatagency.github.io/"
-              class="brand-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit Website ↗
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- ===============================================
-             SNK DESIGN
-        ================================================ -->
-
-        <article class="brand-card reveal">
-
-          <div class="brand-card-top">
-
-            <span class="brand-number">
-              05 / 05
-            </span>
-
-            <span class="brand-status">
-              ECOSYSTEM
-            </span>
-
-          </div>
-
-
-          <div class="brand-card-main">
-
-            <h3 class="brand-card-name">
-              SNK <span>Design</span>
-            </h3>
-
-
-            <p class="brand-card-description">
-              The design-focused direction of the SNK ecosystem,
-              connecting visual thinking with digital experiences.
-            </p>
-
-          </div>
-
-
-          <div class="brand-card-bottom">
-
-            <span class="brand-domain">
-              SNK Design
-            </span>
-
-
-            <a
-              href="https://snkdesign.github.io/"
-              class="brand-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit Website ↗
-            </a>
-
-          </div>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         PRINCIPLES
-    ==================================================== -->
-
-    <section class="brand-principles">
-
-      <div class="brand-principles-inner">
-
-
-        <div class="brand-principles-title reveal">
-
-          <p class="brand-section-label">
-            HOW I THINK
-          </p>
-
-
-          <h2>
-            Different brands.<br>
-            Shared principles.
-          </h2>
-
-        </div>
-
-
-        <div class="principles-grid">
-
-
-          <article class="principle reveal">
-
-            <span class="principle-index">
-              01
-            </span>
-
-
-            <h3>
-              Understand
-            </h3>
-
-
-            <p>
-              Start with the problem, context and people
-              before jumping into execution.
-            </p>
-
-          </article>
-
-
-          <article class="principle reveal">
-
-            <span class="principle-index">
-              02
-            </span>
-
-
-            <h3>
-              Structure
-            </h3>
-
-
-            <p>
-              Turn scattered ideas into clear systems,
-              useful experiences and understandable direction.
-            </p>
-
-          </article>
-
-
-          <article class="principle reveal">
-
-            <span class="principle-index">
-              03
-            </span>
-
-
-            <h3>
-              Create
-            </h3>
-
-
-            <p>
-              Design with intention — balancing visual quality,
-              usability and purpose.
-            </p>
-
-          </article>
-
-
-          <article class="principle reveal">
-
-            <span class="principle-index">
-              04
-            </span>
-
-
-            <h3>
-              Improve
-            </h3>
-
-
-            <p>
-              Keep learning, testing and refining instead of
-              treating the first version as the final one.
-            </p>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         CTA
-    ==================================================== -->
-
-    <section class="brand-cta">
-
-      <div class="brand-cta-inner reveal">
-
-        <p class="brand-section-label">
-          KEEP EXPLORING
-        </p>
-
-
-        <h2>
-          See the work.<br>
-          <span>Meet the ecosystem.</span>
-        </h2>
-
-
-        <p>
-          Start from the main portfolio or explore one of the
-          connected destinations.
-        </p>
-
-
-        <div class="brand-cta-actions">
-
-          <a
-            href="./index.html"
-            class="brand-cta-btn primary"
-          >
-            Back to Portfolio
-          </a>
-
-
-          <a
-            href="./about.html"
-            class="brand-cta-btn"
-          >
-            About SNK
-          </a>
-
-
-          <a
-            href="./projects.html"
-            class="brand-cta-btn"
-          >
-            Explore Work
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-
-  <footer class="footer">
-
-    <div class="wrapper">
-
-      <div class="footer-inner">
-
-
-        <div>
-
-          <strong>
-            SHAH NEIL KHAN
-          </strong>
-
-          <p>
-            SNK — Personal Brand & Digital Experience
-          </p>
-
-        </div>
-
-
-        <div class="footer-links">
-
-          <a href="./index.html#home">
-            Home
-          </a>
-
-          <a href="./projects.html">
-            Work
-          </a>
-
-          <a href="./experience.html">
-            Experience
-          </a>
-
-          <a href="./about.html">
-            About
-          </a>
-
-          <a href="./brand.html">
-            Brand
-          </a>
-
-          <a href="./index.html#contact">
-            Contact
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <span>
-          ©
-          <span id="footerYear">
-            2026
-          </span>
-          Shah Neil Khan.
-          All rights reserved.
-        </span>
-
-
-        <span>
-          SNK
-        </span>
-
-      </div>
-
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-tag">How I Think</div>
+    <h2>Different brands. Shared principles.</h2>
+    <div class="think-grid">
+      <div class="think-card"><div class="n">01</div><h3>Understand</h3><p>Start with the problem, context and people before jumping into execution.</p></div>
+      <div class="think-card"><div class="n">02</div><h3>Structure</h3><p>Turn scattered ideas into clear systems, useful experiences and understandable direction.</p></div>
+      <div class="think-card"><div class="n">03</div><h3>Create</h3><p>Design with intention — balancing visual quality, usability and purpose.</p></div>
+      <div class="think-card"><div class="n">04</div><h3>Improve</h3><p>Keep learning, testing and refining instead of treating the first version as the final one.</p></div>
     </div>
+  </div>
+</section>
 
-  </footer>
+<section class="section">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2>See the work. Meet the ecosystem.</h2>
+      <p>Start from the main portfolio or explore one of the connected destinations.</p>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href="../index.html">Back to Portfolio</a>
+        <a class="btn btn-outline" href="../about.html">About SNK</a>
+        <a class="btn btn-outline" href="../projects.html">Explore Work</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-  <!-- =====================================================
-       SHARED SCRIPT
-  ====================================================== -->
-
-  <script src="script.js"></script>
-
-
-  <!-- FALLBACK YEAR -->
-  <script>
-
-    const footerYear =
-      document.getElementById("footerYear");
-
-    if (footerYear) {
-      footerYear.textContent =
-        new Date().getFullYear();
-    }
-
-  </script>
-
+<footer>
+  <div class="wrap">
+    © 2026 Shah Neil Khan. All rights reserved. SNK
+  </div>
+</footer>
 
 </body>
 </html>
