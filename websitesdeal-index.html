@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebsitesDeal — Premium Website Templates by SNK</title>
+<meta name="description" content="WebsitesDeal — premium, ready-made website templates. Preview a demo, order directly on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#07090a; --panel:#0e1211; --panel-2:#141b19; --line:#1f2926;
+    --teal:#2bb3a3; --gold:#c9a24b; --lime:#b7d33e; --text:#eef1ee; --muted:#93998f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--void); color:var(--text); font-family:'Inter',sans-serif; overflow-x:hidden; }
+  h1,h2,h3{ font-family:'Space Grotesk',sans-serif; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 24px; }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1;
+    background: radial-gradient(700px 500px at 15% -5%, rgba(43,179,163,0.14), transparent 60%),
+                radial-gradient(600px 500px at 100% 10%, rgba(201,162,75,0.08), transparent 60%);
+  }
+
+  header{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(7,9,10,0.72); border-bottom:1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1100px; margin:0 auto; }
+  .logo{ font-weight:700; font-size:16px; }
+  .logo span{ color:var(--teal); }
+  .navlinks{ display:flex; gap:26px; font-size:13.5px; color:var(--muted); }
+  .navlinks a:hover{ color:var(--text); }
+  .nav-cta{ border:1px solid var(--gold); color:var(--gold); padding:8px 18px; border-radius:6px; font-size:13px; font-weight:600; }
+  .nav-cta:hover{ background:var(--gold); color:#07090a; }
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  .hero{ padding:80px 0 56px; text-align:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:var(--lime);
+    border:1px solid rgba(183,211,62,0.35); background:rgba(183,211,62,0.06); padding:6px 14px; border-radius:20px; margin-bottom:26px;
+  }
+  .eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--lime); }
+  .hero h1{ font-size:42px; line-height:1.18; font-weight:700; margin-bottom:18px; }
+  .hero h1 .accent{ color:var(--teal); }
+  .hero p{ color:var(--muted); font-size:16px; max-width:540px; margin:0 auto 30px; line-height:1.75; }
+
+  .section{ padding:60px 0; border-top:1px solid var(--line); }
+  .stitle{ text-align:center; margin-bottom:44px; }
+  .stitle h2{ font-size:28px; margin-bottom:10px; }
+  .stitle p{ color:var(--muted); font-size:14.5px; }
+
+  .demo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .demo-card{
+    border:1px solid var(--line); background:var(--panel); border-radius:16px; overflow:hidden;
+    display:flex; flex-direction:column; transition: all .2s ease;
+  }
+  .demo-card:hover{ border-color:var(--teal); transform:translateY(-4px); }
+  .demo-thumb{
+    aspect-ratio:16/10; background: repeating-linear-gradient(135deg, var(--panel-2), var(--panel-2) 10px, #0a0f0e 10px, #0a0f0e 20px);
+    display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .demo-thumb .soon{
+    background:rgba(7,9,10,0.75); border:1px solid var(--gold); color:var(--gold);
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; padding:6px 14px; border-radius:20px;
+  }
+  .demo-body{ padding:20px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .demo-tag{ font-size:11px; color:var(--teal); text-transform:uppercase; letter-spacing:1px; font-weight:700; }
+  .demo-body h3{ font-size:17px; }
+  .demo-body p{ font-size:13px; color:var(--muted); line-height:1.6; flex:1; }
+  .demo-actions{ display:flex; gap:10px; margin-top:6px; }
+  .btn{ padding:10px 16px; border-radius:8px; font-size:13px; font-weight:600; flex:1; text-align:center; }
+  .btn-order{ background:var(--gold); color:#07090a; }
+  .btn-order:hover{ background:#e0b95c; }
+  .btn-ghost{ border:1px solid var(--line); color:var(--muted); }
+
+  .how-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .how-card{ border:1px solid var(--line); background:var(--panel); border-radius:14px; padding:26px; }
+  .how-card .n{ font-family:'Space Grotesk'; font-size:22px; font-weight:700; color:var(--gold); margin-bottom:10px; }
+  .how-card h3{ font-size:15.5px; margin-bottom:8px; }
+  .how-card p{ font-size:13px; color:var(--muted); line-height:1.6; }
+
+  footer{ padding:70px 0 40px; border-top:1px solid var(--line); text-align:center; }
+  .cta-box{ padding:50px 30px; border-radius:20px; background:linear-gradient(180deg, var(--panel), var(--void)); border:1px solid var(--line); }
+  .cta-box h2{ font-size:26px; margin-bottom:12px; }
+  .cta-box p{ color:var(--muted); margin-bottom:26px; }
+  .foot-note{ margin-top:40px; font-size:12.5px; color:var(--muted); }
+
+  @media (max-width:860px){ .demo-grid, .how-grid{ grid-template-columns:1fr; } .hero h1{ font-size:30px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Websites<span>Deal</span></div>
+    <div class="navlinks">
+      <a href="#demos">Demos</a>
+      <a href="#how">How it works</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="https://wa.me/8801705633700?text=Hi!%20I%20have%20a%20question%20about%20your%20demo%20templates." target="_blank">WhatsApp</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">By SNK · Premium Website Demos</div>
+    <h1>Pick a design. Get it <span class="accent">live</span> fast.</h1>
+    <p>A growing collection of ready-made website templates — portfolios, business sites and more. Preview a demo, and order the one you like straight over WhatsApp.</p>
+  </div>
+</section>
+
+<section class="section" id="demos">
+  <div class="wrap">
+    <div class="stitle">
+      <h2>Available Demos</h2>
+      <p>New templates are being added soon. Message us on WhatsApp for early access.</p>
+    </div>
+    <div class="demo-grid">
+
+      <div class="demo-card">
+        <div class="demo-thumb"><span class="soon">Coming Soon</span></div>
+        <div class="demo-body">
+          <div class="demo-tag">Portfolio</div>
+          <h3>Personal Portfolio Demo</h3>
+          <p>A clean, modern one-page portfolio template — great for designers &amp; developers.</p>
+          <div class="demo-actions">
+            <a class="btn btn-ghost" href="#">Preview</a>
+            <a class="btn btn-order" href="https://wa.me/8801705633700?text=Hi!%20I'm%20interested%20in%20the%20Personal%20Portfolio%20Demo." target="_blank">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="demo-thumb"><span class="soon">Coming Soon</span></div>
+        <div class="demo-body">
+          <div class="demo-tag">Business</div>
+          <h3>Business Landing Demo</h3>
+          <p>A conversion-focused landing page template for small businesses &amp; startups.</p>
+          <div class="demo-actions">
+            <a class="btn btn-ghost" href="#">Preview</a>
+            <a class="btn btn-order" href="https://wa.me/8801705633700?text=Hi!%20I'm%20interested%20in%20the%20Business%20Landing%20Demo." target="_blank">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="demo-thumb"><span class="soon">Coming Soon</span></div>
+        <div class="demo-body">
+          <div class="demo-tag">E-Commerce</div>
+          <h3>Online Store Demo</h3>
+          <p>A simple e-commerce template layout for showcasing and selling products.</p>
+          <div class="demo-actions">
+            <a class="btn btn-ghost" href="#">Preview</a>
+            <a class="btn btn-order" href="https://wa.me/8801705633700?text=Hi!%20I'm%20interested%20in%20the%20Online%20Store%20Demo." target="_blank">Order</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="stitle">
+      <h2>How Ordering Works</h2>
+      <p>Simple, no account needed.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card"><div class="n">01</div><h3>Browse demos</h3><p>Look through the available templates and pick the one that fits your project.</p></div>
+      <div class="how-card"><div class="n">02</div><h3>Click Order</h3><p>Tap the Order button — it opens WhatsApp with your chosen demo already mentioned.</p></div>
+      <div class="how-card"><div class="n">03</div><h3>We customize &amp; deliver</h3><p>We confirm details over chat, customize it with your content, and deliver it live.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2>Want a custom design instead?</h2>
+      <p>Message us directly and tell us what you need.</p>
+      <a class="btn btn-order" style="display:inline-block; padding:14px 28px;" href="https://wa.me/8801705633700?text=Hi!%20I'd%20like%20to%20discuss%20a%20custom%20website." target="_blank">💬 Chat on WhatsApp</a>
+    </div>
+    <div class="foot-note">© 2026 WebsitesDeal — by Shah Neil Khan (SNK) · <a href="https://shahneilkhan.github.io" style="color:var(--teal)">Main Portfolio</a> · <a href="https://shahneilkhan.github.io/brand/" style="color:var(--teal)">SNK Ecosystem</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
