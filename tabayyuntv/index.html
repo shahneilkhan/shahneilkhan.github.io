@@ -1,171 +1,124 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tabayyun TV — Shah Neil Khan</title>
-<meta name="description" content="Tabayyun TV — a Dawah platform by Shah Neil Khan, seeking clarity and truth.">
+<title>Admin — Tabayyun TV (Demo)</title>
+<style>
+  :root{
+    --bg:#160f2e; --panel:#1c1436; --panel-2:#241a44; --line:rgba(255,255,255,0.12);
+    --gold:#ffd98a; --cream:#fdf6e9; --muted:#cabfa8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--cream);
+    font-family:'Segoe UI', system-ui, sans-serif;
+    min-height:100vh;
+  }
+  .wrap{ max-width:680px; margin:0 auto; padding:60px 24px; }
 
-<!-- FAVICON -->
-<link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg">
+  .login-box{
+    max-width:380px; margin:100px auto; background:var(--panel); border:1px solid var(--line);
+    border-radius:16px; padding:36px 30px; text-align:center;
+  }
+  .login-box h1{ font-family:Georgia, serif; font-weight:400; font-size:24px; color:var(--gold); margin-bottom:8px; }
+  .login-box p{ color:var(--muted); font-size:12.5px; margin-bottom:22px; line-height:1.6; }
+  .login-box input{
+    width:100%; background:var(--bg); border:1px solid var(--line); border-radius:8px;
+    padding:12px 14px; color:var(--cream); margin-bottom:14px; font-size:14px;
+  }
+  .login-box button{
+    width:100%; padding:12px; border-radius:8px; background:var(--gold); color:#1c1330;
+    font-weight:700; border:none; cursor:pointer; font-size:14px;
+  }
+  .login-error{ color:#ff8a8a; font-size:12px; margin-top:10px; display:none; }
 
-<!-- SOCIAL SHARE PREVIEW -->
-<meta property="og:title" content="Tabayyun TV — Seeking Clarity, Returning to Allah">
-<meta property="og:description" content="A Dawah platform by Shah Neil Khan. My journey, my story, and honest answers.">
-<meta property="og:url" content="https://shahneilkhan.github.io/tabayyuntv">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tabayyun TV — Seeking Clarity, Returning to Allah">
-<meta name="twitter:description" content="A Dawah platform by Shah Neil Khan. My journey, my story, and honest answers.">
+  #dashboard{ display:none; }
+  .top-title{ font-family:Georgia, serif; font-size:26px; color:var(--gold); margin-bottom:6px; font-weight:400; }
+  .top-sub{ color:var(--muted); font-size:13px; margin-bottom:30px; }
 
-<link rel="stylesheet" href="style.css">
+  .warn-banner{
+    background:rgba(255,217,138,0.08); border:1px solid var(--gold); border-radius:10px; padding:14px 18px;
+    font-size:12.5px; color:var(--gold); margin-bottom:30px; line-height:1.65;
+  }
+  .admin-section{
+    margin-bottom:28px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px;
+  }
+  .admin-section h3{ font-family:Georgia, serif; font-weight:400; font-size:17px; margin-bottom:16px; color:var(--gold); }
+  .admin-field{ margin-bottom:14px; }
+  .admin-field:last-child{ margin-bottom:0; }
+  .admin-field label{ display:block; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .admin-field input, .admin-field textarea{
+    width:100%; background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+    color:var(--cream); font-size:13.5px; font-family:inherit;
+  }
+  .admin-field textarea{ min-height:90px; resize:vertical; line-height:1.6; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+  .save-btn{
+    background:var(--gold); color:#1c1330; border:none; padding:12px 26px; border-radius:8px;
+    font-weight:700; cursor:pointer; font-size:13.5px; margin-top:6px;
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-<!-- NAVBAR -->
-<header class="tv-navbar">
-  <div class="tv-nav-left">
-    <span class="tv-brand-name">TABAYYUN TV</span>
+  <div id="loginScreen" class="login-box">
+    <h1>Tabayyun TV</h1>
+    <p>Admin — Demo login. UI preview only, not connected to a real account yet.</p>
+    <input type="password" id="pwInput" placeholder="Demo password">
+    <button onclick="tryLogin()">Sign In</button>
+    <div class="login-error" id="loginError">Incorrect — try: tabayyun2026</div>
   </div>
-  <nav class="tv-nav-menu">
-    <a href="#story">My Story</a>
-    <a href="#follow">Follow</a>
-  </nav>
-</header>
 
-<!-- HERO -->
-<section class="hero">
+  <div id="dashboard">
+    <div class="top-title">Tabayyun TV Admin</div>
+    <div class="top-sub">Edit the life story and social stats shown on the site.</div>
 
-  <!-- SUNSET SCENE -->
-  <svg class="scene" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="skyGradient" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#160f2e"/>
-        <stop offset="35%" stop-color="#4a2a5c"/>
-        <stop offset="62%" stop-color="#d9704f"/>
-        <stop offset="80%" stop-color="#f7b155"/>
-        <stop offset="100%" stop-color="#ffd98a"/>
-      </linearGradient>
-      <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#fff2c8" stop-opacity="0.9"/>
-        <stop offset="100%" stop-color="#fff2c8" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-
-    <!-- Sky -->
-    <rect x="0" y="0" width="1200" height="700" fill="url(#skyGradient)"/>
-
-    <!-- Sun glow + disc, sits behind mosque dome -->
-    <circle cx="600" cy="470" r="160" fill="url(#sunGlow)"/>
-    <circle cx="600" cy="470" r="70" fill="#ffe3a3"/>
-
-    <!-- Birds (V shapes), animated drifting across the sky -->
-    <g class="birds" fill="none" stroke="#2a1b3d" stroke-width="4" stroke-linecap="round">
-      <path class="bird bird1" d="M0,0 L12,-8 L24,0"/>
-      <path class="bird bird2" d="M0,0 L10,-7 L20,0"/>
-      <path class="bird bird3" d="M0,0 L14,-9 L28,0"/>
-      <path class="bird bird4" d="M0,0 L9,-6 L18,0"/>
-    </g>
-
-    <!-- Distant hills -->
-    <path d="M0,520 Q200,470 400,510 T800,500 T1200,520 L1200,700 L0,700 Z" fill="#2a1b3d" opacity="0.55"/>
-
-    <!-- Ground -->
-    <path d="M0,560 Q300,530 600,555 T1200,555 L1200,700 L0,700 Z" fill="#1c1330"/>
-
-    <!-- Masjid silhouette -->
-    <g class="masjid" fill="#150c26">
-      <!-- main dome building -->
-      <rect x="520" y="470" width="160" height="90" />
-      <path d="M520,470 Q600,390 680,470 Z"/>
-      <circle cx="600" cy="392" r="6"/>
-      <rect x="597" y="378" width="6" height="16"/>
-      <!-- left minaret -->
-      <rect x="480" y="410" width="14" height="150"/>
-      <path d="M480,410 Q487,392 494,410 Z"/>
-      <rect x="485" y="398" width="4" height="14"/>
-      <!-- right minaret -->
-      <rect x="706" y="410" width="14" height="150"/>
-      <path d="M706,410 Q713,392 720,410 Z"/>
-      <rect x="711" y="398" width="4" height="14"/>
-      <!-- entrance arch -->
-      <path d="M580,560 L580,520 Q600,495 620,520 L620,560 Z" fill="#0e0820"/>
-    </g>
-
-    <!-- Walking figure, animated moving toward masjid entrance -->
-    <g class="walker">
-      <circle cx="0" cy="-26" r="6" fill="#150c26"/>
-      <path d="M0,-20 L0,0 M0,-14 L-8,-6 M0,-14 L8,-6 M0,0 L-7,16 M0,0 L7,16" stroke="#150c26" stroke-width="3" stroke-linecap="round" fill="none"/>
-    </g>
-  </svg>
-
-  <!-- TEXT OVERLAY -->
-  <div class="hero-content">
-    <p class="hero-eyebrow">TABAYYUN TV</p>
-    <h1>Seeking Clarity.<br>Returning to Allah.</h1>
-    <p class="hero-sub">A Dawah platform by Shah Neil Khan — asking honest questions, and finding sincere answers.</p>
-    <div class="hero-actions">
-      <a href="#story" class="btn-primary">My Story</a>
-      <a href="#" class="btn-secondary">Watch Videos</a>
+    <div class="warn-banner">
+      ⚠ This is a UI-only demo. Nothing typed here is saved or published to the live site yet —
+      it previews how the editing panel will work once connected to a backend (Firebase, planned for later).
     </div>
+
+    <div class="admin-section">
+      <h3>My Journey — Life Story</h3>
+      <div class="admin-field"><label>Before Islam</label><textarea placeholder="Where you grew up, what you believed in, what life looked like..."></textarea></div>
+      <div class="admin-field"><label>The Turning Point</label><textarea placeholder="What changed things, and any struggles or doubts along the way..."></textarea></div>
+      <div class="admin-field"><label>Shahada</label>
+        <div class="field-row">
+          <input type="text" placeholder="Month / Year">
+          <input type="text" placeholder="How it felt, what changed after">
+        </div>
+      </div>
+      <div class="admin-field"><label>Why Tabayyun TV</label><textarea placeholder="Why and when you started Tabayyun TV, and what it's for..."></textarea></div>
+      <div class="admin-field"><label>What You Do Now</label><textarea placeholder="What Tabayyun TV actually does today..."></textarea></div>
+    </div>
+
+    <div class="admin-section">
+      <h3>Social Follower Counts</h3>
+      <div class="admin-field"><label>YouTube (@tabayyuninstitute)</label><input type="text" placeholder="e.g. 12,400 subscribers"></div>
+      <div class="admin-field"><label>Facebook</label><input type="text" placeholder="e.g. 8,200 followers"></div>
+      <div class="admin-field"><label>Instagram</label><input type="text" placeholder="e.g. 5,100 followers"></div>
+      <div class="admin-field"><label>TikTok</label><input type="text" placeholder="e.g. 3,600 followers"></div>
+    </div>
+
+    <button class="save-btn" onclick="alert('Demo only — not connected to a backend yet. This will publish live once Firebase is set up.')">Save &amp; Publish</button>
   </div>
 
-</section>
+</div>
 
-<!-- LIFE STORY -->
-<section id="story" class="story-section">
-  <h2>My Journey</h2>
-  <div class="story-text">
-    <p>I wasn't always Muslim. [Write briefly about your life before Islam — where you grew up, what you believed in, what your life looked like.]</p>
-    <p>Everything changed when [describe the moment or period that led you toward Islam]. It wasn't an easy path — [mention any struggles, doubts, or challenges you faced].</p>
-    <p>On [date/year], I took my Shahada and became Muslim. [Describe how that moment felt, and what changed in your life afterward.]</p>
-    <p>Since then, my life has been about returning — returning to purpose, to truth, and to Allah. That journey led me to start <strong>Tabayyun TV</strong> in [year] — a platform to help others ask honest questions and find clarity.</p>
-    <p>Through Tabayyun TV, I [describe what you actually do]. My hope is that this platform becomes a place where people can find sincere, clear answers.</p>
-  </div>
-</section>
-
-<!-- SOCIAL MEDIA CARDS -->
-<section class="social-section" id="follow">
-  <h2>Follow Tabayyun TV</h2>
-  <div class="social-grid">
-
-    <a href="https://youtube.com/@tabayyuninstitute" target="_blank" class="social-card">
-      <div class="social-icon">▶</div>
-      <p class="social-platform">YouTube</p>
-      <p class="social-handle">@tabayyuninstitute</p>
-      <p class="social-count">[Update follower count]</p>
-    </a>
-
-    <a href="https://facebook.com/tabayyuninstitute" target="_blank" class="social-card">
-      <div class="social-icon">f</div>
-      <p class="social-platform">Facebook</p>
-      <p class="social-handle">@tabayyuninstitute</p>
-      <p class="social-count">[Update follower count]</p>
-    </a>
-
-    <a href="https://instagram.com/tabayyuninstitute" target="_blank" class="social-card">
-      <div class="social-icon">◎</div>
-      <p class="social-platform">Instagram</p>
-      <p class="social-handle">@tabayyuninstitute</p>
-      <p class="social-count">[Update follower count]</p>
-    </a>
-
-    <a href="https://tiktok.com/@tabayyuninstitute" target="_blank" class="social-card">
-      <div class="social-icon">♪</div>
-      <p class="social-platform">TikTok</p>
-      <p class="social-handle">@tabayyuninstitute</p>
-      <p class="social-count">[Update follower count]</p>
-    </a>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="tv-footer">
-  <p>© 2026 Tabayyun TV. All rights reserved.</p>
-</footer>
-
-<script src="script.js"></script>
+<script>
+  function tryLogin(){
+    const pw = document.getElementById('pwInput').value;
+    if(pw === 'tabayyun2026'){
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+    } else {
+      document.getElementById('loginError').style.display = 'block';
+    }
+  }
+  document.getElementById('pwInput').addEventListener('keydown', e => { if(e.key === 'Enter'){ tryLogin(); } });
+</script>
 </body>
 </html>
