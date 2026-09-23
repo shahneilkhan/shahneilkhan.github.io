@@ -1,0 +1,125 @@
+<!-- ============================================= -->
+<!-- NEW HERO SECTION — paste this in place of the -->
+<!-- existing <section class="hero">...</section>  -->
+<!-- on your homepage (index.html)                 -->
+<!-- ============================================= -->
+
+<section class="new-hero">
+  <div class="new-hero-left">
+    <h1 id="heroHeadlineText">Expert Software Engineer &amp; UX / Context Engineer</h1>
+    <p id="heroDescText">I build intelligent software, AI systems, and context-aware digital experiences.</p>
+    <div class="new-hero-actions">
+      <a href="#projects" id="heroBtn1" class="new-hero-btn-primary">Explore My Work →</a>
+      <a href="https://wa.me/8801705633700" target="_blank" id="heroBtn2" class="new-hero-btn-secondary">Let's Talk →</a>
+    </div>
+  </div>
+  <div class="new-hero-right">
+    <img id="heroImageEl" src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg" alt="Shah Neil Khan">
+  </div>
+</section>
+
+<style>
+  .new-hero {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 70px 24px;
+    flex-wrap: wrap;
+  }
+
+  .new-hero-left { flex: 1; min-width: 300px; }
+
+  .new-hero-left h1 {
+    font-size: 38px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    color: var(--text, #f2f2f2);
+  }
+
+  .new-hero-left p {
+    font-size: 16px;
+    color: var(--text-dim, #a0a0a8);
+    max-width: 480px;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .new-hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .new-hero-btn-primary, .new-hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .new-hero-btn-primary {
+    background: var(--accent, #4ade80);
+    color: #06240f;
+  }
+  .new-hero-btn-primary:hover { transform: translateY(-2px); }
+
+  .new-hero-btn-secondary {
+    border: 1px solid var(--border, rgba(255,255,255,0.2));
+    color: var(--text, #f2f2f2);
+  }
+  .new-hero-btn-secondary:hover { background: rgba(255,255,255,0.06); }
+
+  .new-hero-right {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .new-hero-right img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 700px) {
+    .new-hero-left h1 { font-size: 28px; }
+  }
+</style>
+
+<!-- FIREBASE (read-only, loads live content from Admin Dashboard) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEHzTjHfp7Q8q6Gt3RbV6wXVmG77PicaA",
+    authDomain: "shahneilkhan-2cdb6.firebaseapp.com",
+    projectId: "shahneilkhan-2cdb6",
+    storageBucket: "shahneilkhan-2cdb6.firebasestorage.app",
+    messagingSenderId: "227701805510",
+    appId: "1:227701805510:web:a4ea839a169ad1e3f0a2c7",
+    measurementId: "G-C171XM6HK6"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const heroDb = firebase.firestore();
+
+  heroDb.collection('content').doc('hero').get().then(doc => {
+    if (!doc.exists) return; // keep default text above if nothing saved yet
+    const d = doc.data();
+    if (d.headline) document.getElementById('heroHeadlineText').textContent = d.headline;
+    if (d.description) document.getElementById('heroDescText').textContent = d.description;
+    if (d.btn1Text) document.getElementById('heroBtn1').textContent = d.btn1Text;
+    if (d.btn1Link) document.getElementById('heroBtn1').href = d.btn1Link;
+    if (d.btn2Text) document.getElementById('heroBtn2').textContent = d.btn2Text;
+    if (d.btn2Link) document.getElementById('heroBtn2').href = d.btn2Link;
+    if (d.imageUrl) document.getElementById('heroImageEl').src = d.imageUrl;
+  }).catch(err => console.error('Hero load error:', err));
+</script>

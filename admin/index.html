@@ -3,189 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — SNK (Demo)</title>
-<meta name="description" content="SNK admin dashboard demo — UI preview only.">
-<link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Admin — SNK Portfolio</title>
 <style>
-  :root{
-    --void:#07090a; --panel:#0e1211; --panel-2:#141b19; --line:#1f2926;
-    --teal:#2bb3a3; --gold:#c9a24b; --text:#eef1ee; --muted:#93998f;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --border: #262b35;
+    --text: #e8eaed;
+    --text-dim: #8b92a3;
+    --accent: #5b8def;
+    --accent-hover: #4a7ad9;
+    --success: #4ade80;
+    --error: #f87171;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{ background:var(--void); color:var(--text); font-family:'Inter',sans-serif; overflow-x:hidden; }
-  h1,h2,h3{ font-family:'Space Grotesk',sans-serif; }
-  a{ color:inherit; text-decoration:none; }
-  .wrap{ max-width:1000px; margin:0 auto; padding:0 24px; }
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-1;
-    background: radial-gradient(700px 500px at 15% -5%, rgba(43,179,163,0.14), transparent 60%),
-                radial-gradient(600px 500px at 100% 10%, rgba(201,162,75,0.08), transparent 60%);
+
+  body {
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
   }
-  header{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(7,9,10,0.72); border-bottom:1px solid var(--line); }
-  nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1000px; margin:0 auto; }
-  .logo{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; }
-  .logo img{ height:26px; width:auto; }
-  .navlinks{ display:flex; gap:22px; font-size:13px; color:var(--muted); flex-wrap:wrap; }
-  .navlinks a:hover{ color:var(--text); }
-  .navlinks a.active{ color:var(--gold); }
-  @media (max-width:880px){ .navlinks{ display:none; } }
 
-  .hero{ padding:70px 0 46px; text-align:center; }
-  .eyebrow{ font-size:11.5px; letter-spacing:2.5px; text-transform:uppercase; color:var(--teal); font-weight:700; margin-bottom:18px; }
-  .hero h1{ font-size:34px; font-weight:700; line-height:1.25; max-width:760px; margin:0 auto 18px; }
-  .hero p{ color:var(--muted); font-size:15px; max-width:600px; margin:0 auto; line-height:1.8; }
-
-  .section{ padding:56px 0; border-top:1px solid var(--line); }
-  .sec-tag{ font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:12px; text-align:center; }
-  .section h2{ font-size:26px; text-align:center; max-width:620px; margin:0 auto 16px; line-height:1.3; }
-  .section .lede{ color:var(--muted); font-size:14.5px; text-align:center; max-width:640px; margin:0 auto 40px; line-height:1.8; }
-
-  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  .grid2{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-  .card{ border:1px solid var(--line); background:var(--panel); border-radius:12px; padding:22px 18px; }
-  .card .n{ font-family:'Space Grotesk'; font-size:18px; font-weight:700; color:var(--gold); margin-bottom:10px; }
-  .card h3{ font-size:15.5px; margin-bottom:8px; }
-  .card p{ font-size:12.8px; color:var(--muted); line-height:1.65; }
-  @media (max-width:860px){ .grid3{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:600px){ .grid3,.grid2{ grid-template-columns:1fr; } .hero h1{ font-size:26px; } }
-
-  .placeholder-card{ border:1px dashed var(--line); background:var(--panel); border-radius:14px; padding:26px; margin-bottom:18px; }
-  .placeholder-card .tag{ font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
-  .placeholder-card h3{ font-size:17px; color:var(--muted); margin-bottom:8px; }
-  .placeholder-card p{ font-size:13px; color:var(--muted); line-height:1.6; }
-  .edit-badge{ display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); border-radius:20px; padding:3px 10px; margin-bottom:10px; }
-
-  .cta-box{
-    text-align:center; padding:56px 28px; border-radius:20px;
-    background:linear-gradient(180deg, var(--panel), var(--void)); border:1px solid var(--line); position:relative; overflow:hidden;
+  .login-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
   }
-  .cta-box::before{ content:""; position:absolute; inset:0; background:radial-gradient(400px 200px at 50% 0%, rgba(43,179,163,0.18), transparent 70%); }
-  .cta-box h2{ position:relative; margin-bottom:12px; }
-  .cta-box p{ position:relative; color:var(--muted); margin-bottom:24px; }
-  .cta-btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; }
-  .btn{ padding:11px 22px; border-radius:8px; font-weight:600; font-size:13px; }
-  .btn-primary{ background:var(--gold); color:#07090a; }
-  .btn-outline{ border:1px solid var(--line); color:var(--text); }
-  .btn-outline:hover{ border-color:var(--teal); color:var(--teal); }
 
-  .timeline{ border-left:2px solid var(--teal); padding-left:22px; margin-left:6px; }
-  .timeline .role{ font-size:18px; font-weight:700; }
-  .timeline .org{ color:var(--gold); font-size:13.5px; margin:4px 0 6px; }
-  .timeline .meta{ color:var(--muted); font-size:12.5px; margin-bottom:10px; }
-  .timeline .desc{ color:var(--muted); font-size:13.5px; line-height:1.7; max-width:600px; }
+  .login-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 360px;
+  }
 
-  footer{ padding:40px 0 30px; text-align:center; color:var(--muted); font-size:12px; border-top:1px solid var(--line); }
+  .login-box h1 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .login-box .sub { color: var(--text-dim); font-size: 13px; margin-bottom: 28px; }
 
-  /* form */
-  .form-grid{ display:grid; gap:14px; max-width:560px; margin:0 auto; }
-  .form-grid input, .form-grid textarea{
-    background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px 14px; color:var(--text); font-family:inherit; font-size:13.5px;
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+  .field input, .field textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
   }
-  .form-grid textarea{ min-height:120px; resize:vertical; }
-  .form-note{ font-size:11.5px; color:var(--muted); text-align:center; margin-top:10px; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
 
-  .admin-wrap{ max-width:720px; margin:60px auto; padding:0 24px; }
-  .login-box{
-    max-width:380px; margin:100px auto; background:var(--panel); border:1px solid var(--line);
-    border-radius:16px; padding:36px 30px; text-align:center;
+  .btn {
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
   }
-  .login-box h2{ font-size:20px; margin-bottom:8px; }
-  .login-box p{ color:var(--muted); font-size:12.5px; margin-bottom:22px; }
-  .login-box input{ width:100%; background:var(--void); border:1px solid var(--line); border-radius:8px; padding:12px 14px; color:var(--text); margin-bottom:14px; font-size:14px; }
-  .login-box button{ width:100%; padding:12px; border-radius:8px; background:var(--gold); color:#07090a; font-weight:700; border:none; cursor:pointer; font-size:14px; }
-  .login-error{ color:#ef4444; font-size:12px; margin-top:10px; display:none; }
-  .warn-banner{
-    background:rgba(201,162,75,0.08); border:1px solid var(--gold); border-radius:10px; padding:14px 18px;
-    font-size:12.5px; color:var(--gold); margin-bottom:30px; line-height:1.6;
+  .btn:hover { background: var(--accent-hover); }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .msg { font-size: 13px; margin-top: 12px; display: none; }
+  .msg.error { color: var(--error); }
+  .msg.success { color: var(--success); }
+
+  .dashboard { display: none; }
+
+  .dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 5;
   }
-  .admin-section{ margin-bottom:34px; }
-  .admin-section h3{ font-size:16px; margin-bottom:14px; border-bottom:1px solid var(--line); padding-bottom:10px; }
-  .admin-field{ margin-bottom:14px; }
-  .admin-field label{ display:block; font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
-  .admin-field input, .admin-field textarea{
-    width:100%; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--text); font-size:13.5px; font-family:inherit;
+
+  .dash-title { font-size: 15px; font-weight: 600; }
+
+  .logout-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
   }
-  .admin-field textarea{ min-height:80px; resize:vertical; }
-  .save-btn{ background:var(--teal); color:#07090a; border:none; padding:11px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13.5px; }
-  #dashboard{ display:none; }
+  .logout-btn:hover { color: var(--text); border-color: var(--text-dim); }
+
+  .dash-body { max-width: 640px; margin: 0 auto; padding: 28px 20px 80px; }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .panel h2 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .field textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .save-bar {
+    position: sticky;
+    bottom: 0;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 16px 28px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    align-items: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .save-status { font-size: 13px; opacity: 0; transition: opacity 0.3s ease; }
+  .save-status.show { opacity: 1; }
+
+  .save-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .save-btn:hover { background: var(--accent-hover); }
+  .save-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 </style>
 </head>
 <body>
-<header>
-  <nav>
-    <a class="logo" href="../index.html">
-      <img src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg" alt="SNK Logo">
-      SHAH NEIL KHAN
-    </a>
-    <div class="navlinks">
-      <a href="../index.html">Home</a> <a href="../brand/">Ecosystem</a> <a href="../expertise/">Expertise</a> <a href="../experience/">Experience</a> <a href="../about/">About</a> <a href="../projects/">Projects</a> <a href="../contact/">Contact</a>
+
+<!-- LOGIN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <h1>SNK Portfolio Admin</h1>
+    <p class="sub">Sign in with your Firebase account to edit site content.</p>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="emailInput" placeholder="you@example.com">
     </div>
-  </nav>
-</header>
-
-<div class="admin-wrap">
-
-  <div id="loginScreen" class="login-box">
-    <h2>SNK Admin</h2>
-    <p>Demo login — UI preview only, not connected to a real account.</p>
-    <input type="password" id="pwInput" placeholder="Demo password">
-    <button onclick="tryLogin()">Sign In</button>
-    <div class="login-error" id="loginError">Incorrect password — try: snk2026</div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="passwordInput" placeholder="Your password">
+    </div>
+    <button class="btn" id="loginBtn" onclick="doLogin()">Sign in</button>
+    <p class="msg error" id="loginError">Login failed. Check your email and password.</p>
   </div>
-
-  <div id="dashboard">
-    <div class="warn-banner">
-      ⚠ This is a UI-only demo dashboard. Nothing typed here is saved anywhere yet —
-      it is not connected to a real database or to your live site. It's a preview of how
-      an editing panel could look and work once connected to a backend (e.g. Firebase) later.
-    </div>
-
-    <div class="admin-section">
-      <h3>Hero Section</h3>
-      <div class="admin-field"><label>Headline</label><input type="text" value="I BUILD SYSTEMS. I TRAIN MINDS. I CREATE IMPACT."></div>
-      <div class="admin-field"><label>Subtext</label><textarea>I work at the intersection of UX thinking, digital experience, AI-assisted systems, design strategy and creative technology.</textarea></div>
-    </div>
-
-    <div class="admin-section">
-      <h3>About</h3>
-      <div class="admin-field"><label>Bio</label><textarea>I am Shah Neil Khan — working across UX, digital experience, AI-assisted systems, design and creative technology.</textarea></div>
-    </div>
-
-    <div class="admin-section">
-      <h3>Skills</h3>
-      <div class="admin-field"><label>Skills (comma separated)</label><input type="text" value="Figma, Photoshop/Illustrator, JavaScript, HTML/CSS, WordPress, UI Design, UX Research, Prototyping"></div>
-    </div>
-
-    <div class="admin-section">
-      <h3>Contact Links</h3>
-      <div class="admin-field"><label>WhatsApp Number</label><input type="text" value="01705633700"></div>
-      <div class="admin-field"><label>LinkedIn URL</label><input type="text" value="https://www.linkedin.com/in/uxuidesigners"></div>
-      <div class="admin-field"><label>GitHub URL</label><input type="text" value="https://github.com/shahneilkhan"></div>
-    </div>
-
-    <button class="save-btn" onclick="alert('Demo only — not connected to a backend yet. This would save your changes once Firebase is set up.')">Save Changes</button>
-  </div>
-
 </div>
 
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <span class="dash-title">SNK Portfolio Admin — Hero Section</span>
+    <button class="logout-btn" onclick="doLogout()">Sign out</button>
+  </div>
+
+  <div class="dash-body">
+    <div class="panel">
+      <h2>Hero Content (Homepage)</h2>
+      <div class="field">
+        <label>Headline</label>
+        <textarea id="heroHeadline" placeholder="e.g. Upskill Your Team with AI-Powered Training"></textarea>
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <textarea id="heroDesc" placeholder="Short supporting paragraph"></textarea>
+      </div>
+      <div class="field">
+        <label>Primary button text</label>
+        <input type="text" id="btn1Text" placeholder="e.g. Explore My Work">
+      </div>
+      <div class="field">
+        <label>Primary button link</label>
+        <input type="text" id="btn1Link" placeholder="e.g. #projects">
+      </div>
+      <div class="field">
+        <label>Secondary button text</label>
+        <input type="text" id="btn2Text" placeholder="e.g. Let's Talk">
+      </div>
+      <div class="field">
+        <label>Secondary button link</label>
+        <input type="text" id="btn2Link" placeholder="e.g. https://wa.me/...">
+      </div>
+      <div class="field">
+        <label>Hero image URL</label>
+        <input type="text" id="heroImage" placeholder="https://...">
+      </div>
+    </div>
+  </div>
+
+  <div class="save-bar">
+    <span class="save-status success" id="saveStatus">Saved ✓</span>
+    <button class="save-btn" id="saveBtn" onclick="saveHero()">Save changes</button>
+  </div>
+</div>
+
+<!-- FIREBASE SDK (compat, simplest for plain JS) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
 <script>
-  function tryLogin(){
-    const pw = document.getElementById('pwInput').value;
-    if(pw === 'snk2026'){
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEHzTjHfp7Q8q6Gt3RbV6wXVmG77PicaA",
+    authDomain: "shahneilkhan-2cdb6.firebaseapp.com",
+    projectId: "shahneilkhan-2cdb6",
+    storageBucket: "shahneilkhan-2cdb6.firebasestorage.app",
+    messagingSenderId: "227701805510",
+    appId: "1:227701805510:web:a4ea839a169ad1e3f0a2c7",
+    measurementId: "G-C171XM6HK6"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  // Watch login state
+  auth.onAuthStateChanged(user => {
+    if (user) {
       document.getElementById('loginScreen').style.display = 'none';
       document.getElementById('dashboard').style.display = 'block';
+      loadHeroContent();
     } else {
-      document.getElementById('loginError').style.display = 'block';
+      document.getElementById('loginScreen').style.display = 'flex';
+      document.getElementById('dashboard').style.display = 'none';
     }
+  });
+
+  function doLogin() {
+    const email = document.getElementById('emailInput').value;
+    const password = document.getElementById('passwordInput').value;
+    const btn = document.getElementById('loginBtn');
+    const errorMsg = document.getElementById('loginError');
+    errorMsg.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Signing in...';
+
+    auth.signInWithEmailAndPassword(email, password)
+      .catch(err => {
+        errorMsg.textContent = err.message;
+        errorMsg.style.display = 'block';
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = 'Sign in';
+      });
   }
-  document.getElementById('pwInput').addEventListener('keydown', e => { if(e.key === 'Enter'){ tryLogin(); } });
+
+  function doLogout() {
+    auth.signOut();
+  }
+
+  function loadHeroContent() {
+    db.collection('content').doc('hero').get().then(doc => {
+      if (doc.exists) {
+        const data = doc.data();
+        document.getElementById('heroHeadline').value = data.headline || '';
+        document.getElementById('heroDesc').value = data.description || '';
+        document.getElementById('btn1Text').value = data.btn1Text || '';
+        document.getElementById('btn1Link').value = data.btn1Link || '';
+        document.getElementById('btn2Text').value = data.btn2Text || '';
+        document.getElementById('btn2Link').value = data.btn2Link || '';
+        document.getElementById('heroImage').value = data.imageUrl || '';
+      }
+    }).catch(err => console.error('Load error:', err));
+  }
+
+  function saveHero() {
+    const saveBtn = document.getElementById('saveBtn');
+    const status = document.getElementById('saveStatus');
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving...';
+
+    const data = {
+      headline: document.getElementById('heroHeadline').value,
+      description: document.getElementById('heroDesc').value,
+      btn1Text: document.getElementById('btn1Text').value,
+      btn1Link: document.getElementById('btn1Link').value,
+      btn2Text: document.getElementById('btn2Text').value,
+      btn2Link: document.getElementById('btn2Link').value,
+      imageUrl: document.getElementById('heroImage').value,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    db.collection('content').doc('hero').set(data)
+      .then(() => {
+        status.textContent = 'Saved ✓';
+        status.className = 'save-status success show';
+        setTimeout(() => status.classList.remove('show'), 2500);
+      })
+      .catch(err => {
+        status.textContent = 'Error: ' + err.message;
+        status.className = 'save-status error show';
+      })
+      .finally(() => {
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Save changes';
+      });
+  }
 </script>
 
-<footer>
-  <div class="wrap">© 2026 Shah Neil Khan. All rights reserved. SNK</div>
-</footer>
 </body>
 </html>
