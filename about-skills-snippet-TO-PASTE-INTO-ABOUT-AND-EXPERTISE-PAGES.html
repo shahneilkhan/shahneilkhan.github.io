@@ -1,0 +1,102 @@
+<!-- ============================================================= -->
+<!-- ABOUT SECTION SNIPPET — paste in place of your existing       -->
+<!-- About content (on about/index.html)                           -->
+<!-- ============================================================= -->
+
+<section class="section about-section" id="about">
+  <h2>About</h2>
+  <div class="about-grid">
+    <p class="section-text" id="aboutBioText">I'm Shah Neil Khan, a self-taught Software Engineer and UI/UX Design Expert based in Sylhet, Bangladesh. I work remotely as UX Lead Digital Expert at Yaqeen Institute, Texas.</p>
+    <div class="about-stats">
+      <div class="stat-card">
+        <p class="stat-label">Based In</p>
+        <p class="stat-value" id="aboutBasedInText">Sylhet, Bangladesh</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Current Role</p>
+        <p class="stat-value" id="aboutRoleText">UX Lead Digital Expert</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Working With</p>
+        <p class="stat-value" id="aboutWorkingWithText">Yaqeen Institute, Texas (Remote)</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Background</p>
+        <p class="stat-value" id="aboutBackgroundText">Self-taught</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================= -->
+<!-- SKILLS SECTION SNIPPET — paste in place of your existing      -->
+<!-- Expertise/Skills content                                       -->
+<!-- ============================================================= -->
+
+<section id="expertise" class="section">
+  <h2>Expertise</h2>
+  <p class="skills-category-label">Development & Engineering</p>
+  <div class="skills-grid" id="skillsDevGrid"></div>
+  <p class="skills-category-label">Design & UX</p>
+  <div class="skills-grid" id="skillsDesignGrid"></div>
+</section>
+
+
+<!-- ============================================================= -->
+<!-- FIREBASE (read-only) — add this once per page, near the      -->
+<!-- bottom before </body>. If this page already loads Firebase   -->
+<!-- (e.g. the homepage hero), don't duplicate the SDK <script>    -->
+<!-- tags — just add the JS block below.                          -->
+<!-- ============================================================= -->
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEHzTjHfp7Q8q6Gt3RbV6wXVmG77PicaA",
+    authDomain: "shahneilkhan-2cdb6.firebaseapp.com",
+    projectId: "shahneilkhan-2cdb6",
+    storageBucket: "shahneilkhan-2cdb6.firebasestorage.app",
+    messagingSenderId: "227701805510",
+    appId: "1:227701805510:web:a4ea839a169ad1e3f0a2c7",
+    measurementId: "G-C171XM6HK6"
+  };
+  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+  const contentDb = firebase.firestore();
+
+  // Load About content
+  contentDb.collection('content').doc('about').get().then(doc => {
+    if (!doc.exists) return;
+    const d = doc.data();
+    if (d.bio) document.getElementById('aboutBioText').textContent = d.bio;
+    if (d.basedIn) document.getElementById('aboutBasedInText').textContent = d.basedIn;
+    if (d.currentRole) document.getElementById('aboutRoleText').textContent = d.currentRole;
+    if (d.workingWith) document.getElementById('aboutWorkingWithText').textContent = d.workingWith;
+    if (d.background) document.getElementById('aboutBackgroundText').textContent = d.background;
+  }).catch(err => console.error('About load error:', err));
+
+  // Load Skills content
+  function renderSkills(containerId, skills) {
+    const container = document.getElementById(containerId);
+    if (!container || !skills || !skills.length) return;
+    container.innerHTML = '';
+    skills.forEach(skill => {
+      const levelPct = skill.level === 'Advanced' ? 85 : skill.level === 'Beginner' ? 35 : 60;
+      const card = document.createElement('div');
+      card.className = 'skill-card';
+      card.innerHTML = `
+        <div class="skill-top"><span>${skill.name}</span><span class="skill-level-label">${skill.level}</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:${levelPct}%"></div></div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  contentDb.collection('content').doc('skills').get().then(doc => {
+    if (!doc.exists) return;
+    const d = doc.data();
+    renderSkills('skillsDevGrid', d.development);
+    renderSkills('skillsDesignGrid', d.design);
+  }).catch(err => console.error('Skills load error:', err));
+</script>

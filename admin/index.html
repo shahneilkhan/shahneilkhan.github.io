@@ -179,7 +179,7 @@
 <!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
   <div class="dash-header">
-    <span class="dash-title">SNK Portfolio Admin — Hero Section</span>
+    <span class="dash-title">SNK Portfolio Admin</span>
     <button class="logout-btn" onclick="doLogout()">Sign out</button>
   </div>
 
@@ -215,9 +215,74 @@
         <input type="text" id="heroImage" placeholder="https://...">
       </div>
     </div>
-  </div>
 
-  <div class="save-bar">
+    <div class="panel">
+      <h2>About Section</h2>
+      <div class="field">
+        <label>Bio paragraph</label>
+        <textarea id="aboutBio" placeholder="Full bio text" style="min-height:100px;"></textarea>
+      </div>
+      <div class="field">
+        <label>Based In</label>
+        <input type="text" id="aboutBasedIn" placeholder="e.g. Sylhet, Bangladesh">
+      </div>
+      <div class="field">
+        <label>Current Role</label>
+        <input type="text" id="aboutRole" placeholder="e.g. UX Lead Digital Expert">
+      </div>
+      <div class="field">
+        <label>Working With</label>
+        <input type="text" id="aboutWorkingWith" placeholder="e.g. Yaqeen Institute, Texas (Remote)">
+      </div>
+      <div class="field">
+        <label>Background</label>
+        <input type="text" id="aboutBackground" placeholder="e.g. Self-taught">
+      </div>
+      <button class="save-btn" style="width:100%;" onclick="saveAbout()">Save About</button>
+      <p class="msg success" id="aboutStatus" style="display:none;">Saved ✓</p>
+    </div>
+
+    <div class="panel">
+      <h2>Skills</h2>
+      <p style="font-size:12px;color:var(--text-dim);margin-bottom:14px;">One skill per line, format: <code>Name : Level</code> — Level should be Beginner, Intermediate, or Advanced.</p>
+      <div class="field">
+        <label>Development & Engineering skills</label>
+        <textarea id="skillsDev" placeholder="JavaScript : Intermediate&#10;HTML / CSS : Advanced" style="min-height:100px;"></textarea>
+      </div>
+      <div class="field">
+        <label>Design & UX skills</label>
+        <textarea id="skillsDesign" placeholder="Figma : Advanced&#10;UI Design : Advanced" style="min-height:100px;"></textarea>
+      </div>
+      <button class="save-btn" style="width:100%;" onclick="saveSkills()">Save Skills</button>
+      <p class="msg success" id="skillsStatus" style="display:none;">Saved ✓</p>
+    </div>
+
+    <div class="panel">
+      <h2>Brands Section</h2>
+      <p style="font-size:12px;color:var(--text-dim);margin-bottom:14px;">One brand per line, format: <code>Name | Description | Link | soon</code> — put <code>soon</code> as the last part only if it should show "Coming Soon" (leave it out if it's live and clickable).</p>
+      <div class="field">
+        <label>Brands list</label>
+        <textarea id="brandsList" placeholder="WebsitesDeal | Premium website templates marketplace | https://... |
+UI/UX Design & Strategy | Product design and research services | | soon" style="min-height:140px;"></textarea>
+      </div>
+      <button class="save-btn" style="width:100%;" onclick="saveBrands()">Save Brands</button>
+      <p class="msg success" id="brandsStatus" style="display:none;">Saved ✓</p>
+    </div>
+
+    <div class="panel">
+      <h2>Contact Links</h2>
+      <div class="field"><label>WhatsApp</label><input type="text" id="linkWhatsapp" placeholder="https://wa.me/..."></div>
+      <div class="field"><label>LinkedIn</label><input type="text" id="linkLinkedin" placeholder="https://linkedin.com/in/..."></div>
+      <div class="field"><label>GitHub</label><input type="text" id="linkGithub" placeholder="https://github.com/..."></div>
+      <div class="field"><label>Behance</label><input type="text" id="linkBehance" placeholder="https://behance.net/..."></div>
+      <div class="field"><label>YouTube</label><input type="text" id="linkYoutube" placeholder="https://youtube.com/@..."></div>
+      <div class="field"><label>Facebook</label><input type="text" id="linkFacebook" placeholder="https://facebook.com/..."></div>
+      <div class="field"><label>Instagram</label><input type="text" id="linkInstagram" placeholder="https://instagram.com/..."></div>
+      <div class="field"><label>X (Twitter)</label><input type="text" id="linkTwitter" placeholder="https://x.com/..."></div>
+      <div class="field"><label>TikTok</label><input type="text" id="linkTiktok" placeholder="https://tiktok.com/@..."></div>
+      <button class="save-btn" style="width:100%;" onclick="saveContact()">Save Contact Links</button>
+      <p class="msg success" id="contactStatus" style="display:none;">Saved ✓</p>
+    </div>
     <span class="save-status success" id="saveStatus">Saved ✓</span>
     <button class="save-btn" id="saveBtn" onclick="saveHero()">Save changes</button>
   </div>
@@ -249,6 +314,10 @@
       document.getElementById('loginScreen').style.display = 'none';
       document.getElementById('dashboard').style.display = 'block';
       loadHeroContent();
+      loadAbout();
+      loadSkills();
+      loadBrands();
+      loadContact();
     } else {
       document.getElementById('loginScreen').style.display = 'flex';
       document.getElementById('dashboard').style.display = 'none';
@@ -324,6 +393,178 @@
       .finally(() => {
         saveBtn.disabled = false;
         saveBtn.textContent = 'Save changes';
+      });
+  }
+
+  function loadAbout() {
+    db.collection('content').doc('about').get().then(doc => {
+      if (!doc.exists) return;
+      const d = doc.data();
+      document.getElementById('aboutBio').value = d.bio || '';
+      document.getElementById('aboutBasedIn').value = d.basedIn || '';
+      document.getElementById('aboutRole').value = d.currentRole || '';
+      document.getElementById('aboutWorkingWith').value = d.workingWith || '';
+      document.getElementById('aboutBackground').value = d.background || '';
+    }).catch(err => console.error('About load error:', err));
+  }
+
+  function saveAbout() {
+    const status = document.getElementById('aboutStatus');
+    const data = {
+      bio: document.getElementById('aboutBio').value,
+      basedIn: document.getElementById('aboutBasedIn').value,
+      currentRole: document.getElementById('aboutRole').value,
+      workingWith: document.getElementById('aboutWorkingWith').value,
+      background: document.getElementById('aboutBackground').value,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    db.collection('content').doc('about').set(data)
+      .then(() => {
+        status.textContent = 'Saved ✓';
+        status.style.display = 'block';
+        setTimeout(() => status.style.display = 'none', 2500);
+      })
+      .catch(err => {
+        status.textContent = 'Error: ' + err.message;
+        status.className = 'msg error';
+        status.style.display = 'block';
+      });
+  }
+
+  function parseSkillsText(text) {
+    return text.split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .map(line => {
+        const parts = line.split(':');
+        return {
+          name: (parts[0] || '').trim(),
+          level: (parts[1] || 'Intermediate').trim()
+        };
+      });
+  }
+
+  function skillsToText(arr) {
+    if (!arr || !arr.length) return '';
+    return arr.map(s => `${s.name} : ${s.level}`).join('\n');
+  }
+
+  function loadSkills() {
+    db.collection('content').doc('skills').get().then(doc => {
+      if (!doc.exists) return;
+      const d = doc.data();
+      document.getElementById('skillsDev').value = skillsToText(d.development);
+      document.getElementById('skillsDesign').value = skillsToText(d.design);
+    }).catch(err => console.error('Skills load error:', err));
+  }
+
+  function saveSkills() {
+    const status = document.getElementById('skillsStatus');
+    const data = {
+      development: parseSkillsText(document.getElementById('skillsDev').value),
+      design: parseSkillsText(document.getElementById('skillsDesign').value),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    db.collection('content').doc('skills').set(data)
+      .then(() => {
+        status.textContent = 'Saved ✓';
+        status.style.display = 'block';
+        setTimeout(() => status.style.display = 'none', 2500);
+      })
+      .catch(err => {
+        status.textContent = 'Error: ' + err.message;
+        status.className = 'msg error';
+        status.style.display = 'block';
+      });
+  }
+
+  function parseBrandsText(text) {
+    return text.split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .map(line => {
+        const parts = line.split('|').map(p => p.trim());
+        return {
+          name: parts[0] || '',
+          description: parts[1] || '',
+          link: parts[2] || '',
+          comingSoon: (parts[3] || '').toLowerCase() === 'soon'
+        };
+      });
+  }
+
+  function brandsToText(arr) {
+    if (!arr || !arr.length) return '';
+    return arr.map(b => `${b.name} | ${b.description} | ${b.link || ''}${b.comingSoon ? ' | soon' : ''}`).join('\n');
+  }
+
+  function loadBrands() {
+    db.collection('content').doc('brands').get().then(doc => {
+      if (!doc.exists) return;
+      const d = doc.data();
+      document.getElementById('brandsList').value = brandsToText(d.items);
+    }).catch(err => console.error('Brands load error:', err));
+  }
+
+  function saveBrands() {
+    const status = document.getElementById('brandsStatus');
+    const data = {
+      items: parseBrandsText(document.getElementById('brandsList').value),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    db.collection('content').doc('brands').set(data)
+      .then(() => {
+        status.textContent = 'Saved ✓';
+        status.style.display = 'block';
+        setTimeout(() => status.style.display = 'none', 2500);
+      })
+      .catch(err => {
+        status.textContent = 'Error: ' + err.message;
+        status.className = 'msg error';
+        status.style.display = 'block';
+      });
+  }
+
+  function loadContact() {
+    db.collection('content').doc('contact').get().then(doc => {
+      if (!doc.exists) return;
+      const d = doc.data();
+      document.getElementById('linkWhatsapp').value = d.whatsapp || '';
+      document.getElementById('linkLinkedin').value = d.linkedin || '';
+      document.getElementById('linkGithub').value = d.github || '';
+      document.getElementById('linkBehance').value = d.behance || '';
+      document.getElementById('linkYoutube').value = d.youtube || '';
+      document.getElementById('linkFacebook').value = d.facebook || '';
+      document.getElementById('linkInstagram').value = d.instagram || '';
+      document.getElementById('linkTwitter').value = d.twitter || '';
+      document.getElementById('linkTiktok').value = d.tiktok || '';
+    }).catch(err => console.error('Contact load error:', err));
+  }
+
+  function saveContact() {
+    const status = document.getElementById('contactStatus');
+    const data = {
+      whatsapp: document.getElementById('linkWhatsapp').value,
+      linkedin: document.getElementById('linkLinkedin').value,
+      github: document.getElementById('linkGithub').value,
+      behance: document.getElementById('linkBehance').value,
+      youtube: document.getElementById('linkYoutube').value,
+      facebook: document.getElementById('linkFacebook').value,
+      instagram: document.getElementById('linkInstagram').value,
+      twitter: document.getElementById('linkTwitter').value,
+      tiktok: document.getElementById('linkTiktok').value,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    db.collection('content').doc('contact').set(data)
+      .then(() => {
+        status.textContent = 'Saved ✓';
+        status.style.display = 'block';
+        setTimeout(() => status.style.display = 'none', 2500);
+      })
+      .catch(err => {
+        status.textContent = 'Error: ' + err.message;
+        status.className = 'msg error';
+        status.style.display = 'block';
       });
   }
 </script>
