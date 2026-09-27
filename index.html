@@ -1,30 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Shah Neil Khan — AI Software Engineer</title>
 
-<meta name="description"
-content="Shah Neil Khan — AI Software Engineer, Context Engineer, UI/UX Engineer and Digital Product Builder.">
+<meta
+  name="description"
+  content="Shah Neil Khan — AI Software Engineer, Context Engineer, UI/UX Engineer and Digital Product Builder."
+>
 
-<meta name="theme-color" content="#07090c">
+<meta name="theme-color" content="#08090a">
 
-<link rel="icon"
-type="image/svg+xml"
-href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg">
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+  rel="stylesheet"
+>
+
 
 <style>
 
 /* =========================================================
-   ROOT
+   SNK BRAND SYSTEM
+========================================================= */
+
+:root{
+
+  --snk-accent:#d8a64b;
+  --snk-accent-light:#f0c875;
+  --snk-accent-dark:#9f742b;
+
+  --snk-glow:rgba(216,166,75,.16);
+  --snk-glow-strong:rgba(216,166,75,.30);
+
+  --bg:#070809;
+  --bg-soft:#0b0c0e;
+  --bg-card:#101214;
+
+  --text:#f7f5ef;
+  --text-soft:#d7d3ca;
+
+  --muted:#929087;
+  --muted-dark:#68665f;
+
+  --border:rgba(216,166,75,.15);
+  --border-soft:rgba(255,255,255,.075);
+  --border-hover:rgba(216,166,75,.42);
+
+  --success:#64d99a;
+
+  --max:1180px;
+
+  --radius:24px;
+}
+
+
+/* =========================================================
+   RESET
 ========================================================= */
 
 *{
@@ -33,52 +76,69 @@ rel="stylesheet">
   box-sizing:border-box;
 }
 
-:root{
-  --bg:#07090c;
-  --bg-soft:#0b0e13;
-  --panel:#10141b;
-  --panel-2:#131821;
-
-  --border:rgba(255,255,255,.09);
-  --border-hover:rgba(255,255,255,.18);
-
-  --text:#f5f7fa;
-  --muted:#8e98a8;
-
-  --accent:#8fb4ff;
-  --accent-2:#5b8def;
-
-  --success:#4ade80;
-
-  --max:1180px;
-  --radius:24px;
-}
-
 html{
   scroll-behavior:smooth;
 }
 
 body{
+
   background:
+
     radial-gradient(
-      circle at 15% 0%,
-      rgba(91,141,239,.13),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 85% 10%,
-      rgba(143,180,255,.08),
+      circle at 10% 0%,
+      rgba(216,166,75,.10),
       transparent 30%
     ),
-    var(--bg);
+
+    radial-gradient(
+      circle at 90% 18%,
+      rgba(216,166,75,.055),
+      transparent 28%
+    ),
+
+    linear-gradient(
+      180deg,
+      #070809 0%,
+      #090a0c 55%,
+      #070809 100%
+    );
 
   color:var(--text);
 
-  font-family:Inter,system-ui,sans-serif;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
   line-height:1.6;
 
   overflow-x:hidden;
+}
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+
+  inset:0;
+
+  pointer-events:none;
+
+  opacity:.025;
+
+  background-image:
+    radial-gradient(
+      rgba(255,255,255,.8) .5px,
+      transparent .5px
+    );
+
+  background-size:4px 4px;
+
+  z-index:-1;
 }
 
 a{
@@ -86,11 +146,26 @@ a{
   text-decoration:none;
 }
 
+button{
+  font-family:inherit;
+}
+
+img{
+  max-width:100%;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
 .container{
-  width:min(
-    var(--max),
-    calc(100% - 40px)
-  );
+
+  width:
+    min(
+      var(--max),
+      calc(100% - 40px)
+    );
 
   margin:auto;
 }
@@ -101,24 +176,33 @@ a{
 ========================================================= */
 
 header{
+
   position:fixed;
+
   top:0;
   left:0;
 
   width:100%;
 
-  z-index:100;
+  z-index:1000;
 
-  background:rgba(7,9,12,.72);
+  background:
+    rgba(7,8,9,.78);
 
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:
+    blur(20px);
 
-  border-bottom:1px solid rgba(255,255,255,.06);
+  -webkit-backdrop-filter:
+    blur(20px);
+
+  border-bottom:
+    1px solid
+    rgba(216,166,75,.08);
 }
 
 .nav{
-  height:76px;
+
+  height:78px;
 
   display:flex;
 
@@ -128,31 +212,36 @@ header{
 }
 
 .brand{
+
   display:flex;
 
   align-items:center;
 
   gap:11px;
 
-  font-family:"Space Grotesk",sans-serif;
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
   font-weight:700;
 
   letter-spacing:-.03em;
 }
 
-.brand img{
+.brand-logo{
+
   width:34px;
   height:34px;
 
   object-fit:contain;
 }
 
-.brand span{
+.brand-name{
   font-size:15px;
 }
 
 .nav-links{
+
   display:flex;
 
   align-items:center;
@@ -161,25 +250,73 @@ header{
 }
 
 .nav-links a{
-  color:#aeb6c4;
 
-  font-size:13px;
+  position:relative;
+
+  color:#aaa69d;
+
+  font-size:12px;
 
   font-weight:500;
 
   transition:.25s;
 }
 
+.nav-links a::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  bottom:-8px;
+
+  width:0;
+  height:1px;
+
+  background:
+    var(--snk-accent);
+
+  transition:.25s;
+}
+
 .nav-links a:hover{
-  color:#fff;
+
+  color:
+    var(--snk-accent-light);
+}
+
+.nav-links a:hover::after{
+
+  width:100%;
 }
 
 .nav-cta{
-  border:1px solid var(--border);
 
-  padding:9px 15px;
+  padding:
+    9px 16px;
+
+  border:
+    1px solid
+    var(--border);
 
   border-radius:999px;
+
+  color:
+    var(--text) !important;
+}
+
+.nav-cta:hover{
+
+  background:
+    var(--snk-glow);
+
+  border-color:
+    var(--border-hover);
+}
+
+.nav-cta::after{
+  display:none;
 }
 
 
@@ -188,110 +325,144 @@ header{
 ========================================================= */
 
 .hero{
+
   min-height:100vh;
 
   display:flex;
 
   align-items:center;
 
-  padding:140px 0 100px;
+  padding:
+    145px 0 100px;
 
   position:relative;
 }
 
+.hero::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  right:-250px;
+  top:25%;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--snk-glow),
+      transparent 68%
+    );
+
+  filter:blur(25px);
+
+  pointer-events:none;
+}
+
 .hero-grid{
+
   display:grid;
 
   grid-template-columns:
-    1.05fr
-    .95fr;
+    1.05fr .95fr;
 
-  gap:70px;
+  gap:80px;
 
   align-items:center;
 }
 
 .eyebrow{
+
   display:inline-flex;
 
   align-items:center;
 
-  gap:8px;
+  gap:9px;
 
-  padding:7px 12px;
+  padding:
+    7px 12px;
 
-  border:1px solid var(--border);
+  border:
+    1px solid
+    var(--border);
 
   border-radius:999px;
 
-  color:#b8c1cf;
+  color:
+    var(--snk-accent-light);
 
-  font-size:11px;
+  font-size:10px;
 
-  letter-spacing:.08em;
+  font-weight:600;
+
+  letter-spacing:.12em;
 
   text-transform:uppercase;
 
-  margin-bottom:24px;
+  margin-bottom:25px;
 
-  background:rgba(255,255,255,.025);
+  background:
+    rgba(216,166,75,.035);
 }
 
 .eyebrow-dot{
+
   width:6px;
   height:6px;
 
-  background:var(--success);
-
   border-radius:50%;
+
+  background:
+    var(--success);
 
   box-shadow:
     0 0 12px
-    rgba(74,222,128,.7);
+    rgba(100,217,154,.75);
 }
 
 .hero h1{
-  font-family:"Space Grotesk",sans-serif;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
   font-size:
-    clamp(46px,6vw,80px);
+    clamp(48px,6.5vw,82px);
 
-  line-height:.98;
+  line-height:.96;
 
   letter-spacing:-.065em;
 
-  max-width:820px;
+  max-width:800px;
 
-  margin-bottom:26px;
+  margin-bottom:28px;
 }
 
 .hero h1 span{
-  background:
-    linear-gradient(
-      100deg,
-      #fff,
-      #91a9d4
-    );
 
-  -webkit-background-clip:text;
-  background-clip:text;
-
-  color:transparent;
+  color:
+    var(--snk-accent-light);
 }
 
 .hero-desc{
-  color:var(--muted);
 
-  font-size:17px;
+  color:
+    var(--muted);
+
+  font-size:16px;
 
   max-width:650px;
 
-  line-height:1.8;
+  line-height:1.85;
 
-  margin-bottom:34px;
+  margin-bottom:35px;
 }
 
 .hero-actions{
+
   display:flex;
 
   flex-wrap:wrap;
@@ -300,54 +471,84 @@ header{
 }
 
 .btn{
+
+  min-height:49px;
+
+  padding:
+    0 21px;
+
   display:inline-flex;
 
   align-items:center;
 
   justify-content:center;
 
-  min-height:48px;
-
-  padding:0 20px;
-
   border-radius:12px;
 
-  font-size:13px;
+  font-size:12px;
 
   font-weight:600;
 
-  transition:.25s;
+  transition:.28s ease;
 }
 
 .btn-primary{
-  background:#fff;
 
-  color:#080a0d;
+  color:#16120a;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--snk-accent-light),
+      var(--snk-accent)
+    );
+
+  box-shadow:
+    0 12px 35px
+    rgba(216,166,75,.12);
 }
 
 .btn-primary:hover{
-  transform:translateY(-2px);
 
-  background:#e9edf4;
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 18px 45px
+    rgba(216,166,75,.23);
 }
 
 .btn-secondary{
-  border:1px solid var(--border);
 
-  color:#d9dee7;
+  color:
+    var(--text-soft);
 
-  background:rgba(255,255,255,.025);
+  background:
+    rgba(255,255,255,.025);
+
+  border:
+    1px solid
+    var(--border-soft);
 }
 
 .btn-secondary:hover{
-  border-color:var(--border-hover);
 
-  transform:translateY(-2px);
+  color:
+    var(--snk-accent-light);
+
+  border-color:
+    var(--border-hover);
+
+  background:
+    rgba(216,166,75,.045);
+
+  transform:
+    translateY(-2px);
 }
 
 
 /* =========================================================
-   HERO IMAGE
+   HERO PHOTO
 ========================================================= */
 
 .hero-visual{
@@ -355,43 +556,51 @@ header{
 }
 
 .hero-card{
+
   position:relative;
 
-  border:1px solid var(--border);
+  padding:10px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:31px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,.07),
-      rgba(255,255,255,.015)
+      rgba(216,166,75,.10),
+      rgba(255,255,255,.02)
     );
 
-  border-radius:30px;
-
-  padding:12px;
-
   box-shadow:
-    0 40px 110px
-    rgba(0,0,0,.45);
+
+    0 35px 100px
+    rgba(0,0,0,.52),
+
+    0 0 80px
+    rgba(216,166,75,.08);
 
   overflow:hidden;
 }
 
 .hero-card::before{
+
   content:"";
 
   position:absolute;
 
-  width:220px;
-  height:220px;
+  width:250px;
+  height:250px;
 
-  top:-90px;
-  right:-80px;
+  top:-130px;
+  right:-90px;
 
   background:
     radial-gradient(
       circle,
-      rgba(91,141,239,.25),
+      var(--snk-glow-strong),
       transparent 70%
     );
 
@@ -399,18 +608,20 @@ header{
 }
 
 .hero-image-wrap{
+
   position:relative;
 
   overflow:hidden;
 
-  border-radius:22px;
+  border-radius:23px;
 
-  background:#10151c;
+  background:#101010;
 
   aspect-ratio:1 / 1;
 }
 
 .hero-image{
+
   width:100%;
   height:100%;
 
@@ -418,26 +629,42 @@ header{
 
   object-fit:cover;
 
+  object-position:center;
+
   transition:
-    transform .7s ease;
+    transform .8s ease;
 }
 
 .hero-card:hover .hero-image{
-  transform:scale(1.025);
+
+  transform:
+    scale(1.025);
 }
 
+.hero-image-wrap::after{
 
-/* =========================================================
-   IMAGE LABEL
-========================================================= */
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  border:
+    1px solid
+    rgba(216,166,75,.16);
+
+  border-radius:23px;
+
+  pointer-events:none;
+}
 
 .image-label{
+
   position:absolute;
 
   left:18px;
-  bottom:18px;
-
   right:18px;
+  bottom:18px;
 
   display:flex;
 
@@ -447,44 +674,51 @@ header{
 
   gap:15px;
 
-  padding:13px 15px;
+  padding:
+    13px 15px;
 
-  border:1px solid
-    rgba(255,255,255,.12);
+  border:
+    1px solid
+    rgba(216,166,75,.18);
 
   border-radius:14px;
 
   background:
-    rgba(5,7,10,.72);
+    rgba(8,8,8,.76);
 
-  backdrop-filter:blur(14px);
+  backdrop-filter:
+    blur(16px);
 
-  -webkit-backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:
+    blur(16px);
 }
 
 .image-label strong{
+
   display:block;
 
-  font-family:"Space Grotesk",sans-serif;
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
   font-size:13px;
 }
 
 .image-label span{
+
   display:block;
 
-  color:#8993a2;
+  color:#817d74;
 
-  font-size:10px;
+  font-size:9px;
 
   margin-top:2px;
 }
 
 .image-label-mark{
-  width:32px;
-  height:32px;
 
-  border-radius:50%;
+  width:34px;
+  height:34px;
 
   display:flex;
 
@@ -492,132 +726,41 @@ header{
 
   justify-content:center;
 
-  background:rgba(255,255,255,.08);
+  border-radius:50%;
 
-  font-size:12px;
+  color:
+    var(--snk-accent-light);
+
+  border:
+    1px solid
+    var(--border);
+
+  background:
+    rgba(216,166,75,.07);
+
+  font-size:9px;
+
+  font-weight:700;
 }
 
 
 /* =========================================================
-   FEATURED VISUAL SECTION
+   DIVIDER
 ========================================================= */
 
-.featured{
-  padding-top:25px;
-}
+.snk-divider{
 
-.featured-card{
-  position:relative;
+  width:100%;
 
-  border:1px solid var(--border);
-
-  border-radius:30px;
-
-  padding:12px;
+  height:1px;
 
   background:
     linear-gradient(
-      145deg,
-      rgba(255,255,255,.05),
-      rgba(255,255,255,.012)
+      90deg,
+      transparent,
+      rgba(216,166,75,.24),
+      transparent
     );
-
-  overflow:hidden;
-
-  box-shadow:
-    0 35px 100px
-    rgba(0,0,0,.35);
-}
-
-.featured-image-wrap{
-  position:relative;
-
-  overflow:hidden;
-
-  border-radius:22px;
-
-  background:#10141b;
-}
-
-.featured-image{
-  width:100%;
-
-  display:block;
-
-  height:auto;
-
-  transition:
-    transform .7s ease;
-}
-
-.featured-card:hover .featured-image{
-  transform:scale(1.015);
-}
-
-.featured-overlay{
-  position:absolute;
-
-  left:24px;
-  right:24px;
-  bottom:24px;
-
-  display:flex;
-
-  align-items:end;
-
-  justify-content:space-between;
-
-  gap:30px;
-}
-
-.featured-copy{
-  max-width:500px;
-
-  padding:22px;
-
-  border:1px solid
-    rgba(255,255,255,.13);
-
-  border-radius:18px;
-
-  background:
-    rgba(5,7,10,.72);
-
-  backdrop-filter:blur(18px);
-
-  -webkit-backdrop-filter:blur(18px);
-}
-
-.featured-copy small{
-  display:block;
-
-  color:#93a9ce;
-
-  font-size:9px;
-
-  text-transform:uppercase;
-
-  letter-spacing:.15em;
-
-  margin-bottom:7px;
-}
-
-.featured-copy h3{
-  font-family:"Space Grotesk",sans-serif;
-
-  font-size:25px;
-
-  line-height:1.1;
-
-  margin-bottom:7px;
-}
-
-.featured-copy p{
-  color:#a3adbc;
-
-  font-size:12px;
-
-  line-height:1.7;
 }
 
 
@@ -630,46 +773,309 @@ section{
 }
 
 .section-head{
+
   display:flex;
+
+  align-items:end;
 
   justify-content:space-between;
 
-  gap:30px;
-
-  align-items:end;
+  gap:35px;
 
   margin-bottom:42px;
 }
 
 .section-kicker{
-  color:var(--accent);
 
-  font-size:11px;
+  color:
+    var(--snk-accent);
+
+  font-size:9px;
+
+  font-weight:600;
 
   text-transform:uppercase;
 
-  letter-spacing:.15em;
+  letter-spacing:.18em;
 
-  margin-bottom:9px;
+  margin-bottom:10px;
 }
 
 .section-title{
-  font-family:"Space Grotesk",sans-serif;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
   font-size:
-    clamp(32px,4vw,50px);
+    clamp(34px,4vw,52px);
 
-  line-height:1;
+  line-height:.98;
 
-  letter-spacing:-.05em;
+  letter-spacing:-.055em;
 }
 
 .section-desc{
+
   max-width:470px;
 
-  color:var(--muted);
+  color:
+    var(--muted);
 
-  font-size:14px;
+  font-size:13px;
+
+  line-height:1.75;
+}
+
+
+/* =========================================================
+   SECOND IMAGE / FRAME 14
+========================================================= */
+
+.featured{
+  padding-top:35px;
+}
+
+.featured-card{
+
+  padding:10px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(216,166,75,.065),
+      rgba(255,255,255,.015)
+    );
+
+  box-shadow:
+    0 30px 90px
+    rgba(0,0,0,.35);
+
+  overflow:hidden;
+}
+
+.featured-link{
+
+  display:block;
+
+  position:relative;
+
+  cursor:pointer;
+}
+
+.featured-image-wrap{
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:22px;
+
+  background:#0e0f10;
+}
+
+.featured-image{
+
+  width:100%;
+
+  display:block;
+
+  height:auto;
+
+  transition:
+    transform .8s ease,
+    filter .35s ease;
+}
+
+.featured-link:hover .featured-image{
+
+  transform:
+    scale(1.018);
+
+  filter:
+    brightness(.82);
+}
+
+.featured-image-wrap::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  border:
+    1px solid
+    rgba(216,166,75,.17);
+
+  border-radius:22px;
+
+  pointer-events:none;
+}
+
+.featured-overlay{
+
+  position:absolute;
+
+  left:24px;
+  right:24px;
+  bottom:24px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:end;
+
+  gap:20px;
+
+  pointer-events:none;
+}
+
+.featured-copy{
+
+  max-width:520px;
+
+  padding:21px;
+
+  border:
+    1px solid
+    rgba(216,166,75,.20);
+
+  border-radius:17px;
+
+  background:
+    rgba(7,8,8,.78);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+}
+
+.featured-copy small{
+
+  display:block;
+
+  color:
+    var(--snk-accent);
+
+  font-size:8px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.18em;
+
+  margin-bottom:7px;
+}
+
+.featured-copy h3{
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:25px;
+
+  line-height:1.1;
+
+  margin-bottom:7px;
+}
+
+.featured-copy p{
+
+  color:#9d9a92;
+
+  font-size:11px;
+
+  line-height:1.7;
+}
+
+.featured-arrow{
+
+  width:48px;
+  height:48px;
+
+  flex-shrink:0;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(216,166,75,.30);
+
+  border-radius:50%;
+
+  color:
+    var(--snk-accent-light);
+
+  background:
+    rgba(7,8,8,.75);
+
+  backdrop-filter:
+    blur(12px);
+
+  font-size:17px;
+
+  transition:.3s;
+}
+
+.featured-link:hover .featured-arrow{
+
+  transform:
+    translate(3px,-3px);
+
+  background:
+    var(--snk-accent);
+
+  color:#111;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card{
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+
+  border:
+    1px solid
+    var(--border-soft);
+
+  border-radius:
+    var(--radius);
+
+  padding:30px;
+
+  transition:.3s ease;
+}
+
+.card:hover{
+
+  border-color:
+    var(--border-hover);
+
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.20);
 }
 
 
@@ -678,32 +1084,19 @@ section{
 ========================================================= */
 
 .about-grid{
+
   display:grid;
 
   grid-template-columns:
-    1.3fr
-    .7fr;
+    1.25fr .75fr;
 
-  gap:25px;
-}
-
-.card{
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.045),
-      rgba(255,255,255,.015)
-    );
-
-  border:1px solid var(--border);
-
-  border-radius:var(--radius);
-
-  padding:30px;
+  gap:22px;
 }
 
 .about-bio{
-  color:#c3cbd7;
+
+  color:
+    var(--text-soft);
 
   font-size:17px;
 
@@ -711,41 +1104,50 @@ section{
 }
 
 .meta-grid{
+
   display:grid;
 
   gap:15px;
 }
 
 .meta{
+
   padding-bottom:15px;
 
-  border-bottom:1px solid var(--border);
+  border-bottom:
+    1px solid
+    var(--border-soft);
 }
 
 .meta:last-child{
+
   border-bottom:0;
 
   padding-bottom:0;
 }
 
 .meta small{
+
   display:block;
 
-  color:#727d8d;
+  color:
+    var(--muted-dark);
 
   text-transform:uppercase;
 
-  letter-spacing:.1em;
+  letter-spacing:.12em;
 
-  font-size:9px;
+  font-size:8px;
 
   margin-bottom:4px;
 }
 
 .meta strong{
-  font-size:14px;
 
-  color:#e7ebf1;
+  color:
+    var(--text-soft);
+
+  font-size:13px;
 }
 
 
@@ -754,15 +1156,20 @@ section{
 ========================================================= */
 
 .skills-grid{
+
   display:grid;
 
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:
+    1fr 1fr;
 
-  gap:25px;
+  gap:22px;
 }
 
 .skill-group h3{
-  font-family:"Space Grotesk",sans-serif;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
   font-size:19px;
 
@@ -770,43 +1177,66 @@ section{
 }
 
 .skills{
+
   display:grid;
 
-  gap:10px;
+  gap:9px;
 }
 
 .skill{
-  display:flex;
 
-  justify-content:space-between;
+  display:flex;
 
   align-items:center;
 
+  justify-content:space-between;
+
   gap:15px;
 
-  border:1px solid var(--border);
+  padding:
+    14px 16px;
 
-  background:rgba(255,255,255,.025);
+  border:
+    1px solid
+    var(--border-soft);
 
-  padding:15px 17px;
+  border-radius:13px;
 
-  border-radius:14px;
+  background:
+    rgba(255,255,255,.018);
+
+  transition:.25s;
+}
+
+.skill:hover{
+
+  border-color:
+    var(--border-hover);
+
+  background:
+    rgba(216,166,75,.035);
 }
 
 .skill-name{
-  font-size:13px;
 
-  color:#dce1e9;
+  color:
+    #d8d5ce;
+
+  font-size:12px;
 }
 
 .skill-level{
-  font-size:10px;
+
+  color:
+    var(--snk-accent-light);
+
+  font-size:8px;
+
+  font-weight:600;
 
   text-transform:uppercase;
 
-  letter-spacing:.08em;
-
-  color:var(--accent);
+  letter-spacing:.1em;
 }
 
 
@@ -815,6 +1245,7 @@ section{
 ========================================================= */
 
 .brands-grid{
+
   display:grid;
 
   grid-template-columns:
@@ -824,37 +1255,56 @@ section{
 }
 
 .brand-card{
-  border:1px solid var(--border);
+
+  padding:25px;
+
+  border:
+    1px solid
+    var(--border-soft);
 
   border-radius:20px;
 
-  padding:24px;
+  background:
+    rgba(255,255,255,.018);
 
-  background:rgba(255,255,255,.02);
-
-  transition:.25s;
+  transition:.3s;
 }
 
 .brand-card:hover{
-  transform:translateY(-4px);
 
-  border-color:var(--border-hover);
+  transform:
+    translateY(-4px);
 
-  background:rgba(255,255,255,.035);
+  border-color:
+    var(--border-hover);
+
+  background:
+    rgba(216,166,75,.025);
+
+  box-shadow:
+    0 18px 50px
+    rgba(0,0,0,.20);
 }
 
 .brand-number{
-  color:#5e6877;
 
-  font-size:10px;
+  color:
+    var(--snk-accent-dark);
 
-  letter-spacing:.1em;
+  font-size:9px;
+
+  font-weight:600;
+
+  letter-spacing:.12em;
 
   margin-bottom:25px;
 }
 
 .brand-card h3{
-  font-family:"Space Grotesk",sans-serif;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
   font-size:19px;
 
@@ -862,43 +1312,58 @@ section{
 }
 
 .brand-card p{
-  color:var(--muted);
 
-  font-size:12px;
+  color:
+    var(--muted);
 
-  line-height:1.7;
+  font-size:11px;
+
+  line-height:1.75;
 
   min-height:42px;
 }
 
 .brand-link{
+
   display:inline-block;
 
   margin-top:18px;
 
-  color:#dfe7f7;
+  color:
+    var(--snk-accent-light);
 
-  font-size:11px;
+  font-size:10px;
+
+  font-weight:600;
+}
+
+.brand-link:hover{
+  color:#fff;
 }
 
 .soon{
+
   display:inline-block;
 
   margin-top:18px;
 
-  padding:5px 9px;
+  padding:
+    5px 9px;
 
-  border:1px solid var(--border);
+  border:
+    1px solid
+    var(--border);
 
   border-radius:999px;
 
-  color:#7d8795;
+  color:
+    var(--muted-dark);
 
-  font-size:9px;
+  font-size:8px;
 
   text-transform:uppercase;
 
-  letter-spacing:.08em;
+  letter-spacing:.1em;
 }
 
 
@@ -907,53 +1372,73 @@ section{
 ========================================================= */
 
 .contact{
+
   text-align:center;
 
   padding-bottom:130px;
 }
 
 .contact-box{
+
   max-width:850px;
 
   margin:auto;
 
-  padding:60px 30px;
+  padding:
+    65px 30px;
 
-  border:1px solid var(--border);
+  border:
+    1px solid
+    var(--border);
 
   border-radius:30px;
 
   background:
+
     radial-gradient(
       circle at 50% 0%,
-      rgba(91,141,239,.13),
-      transparent 40%
+      rgba(216,166,75,.13),
+      transparent 42%
     ),
-    rgba(255,255,255,.025);
+
+    rgba(255,255,255,.018);
+
+  box-shadow:
+    0 30px 90px
+    rgba(0,0,0,.25);
 }
 
 .contact-box h2{
-  font-family:"Space Grotesk",sans-serif;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
   font-size:
-    clamp(35px,5vw,58px);
+    clamp(36px,5vw,59px);
 
-  letter-spacing:-.05em;
+  line-height:.98;
 
-  line-height:1;
+  letter-spacing:-.055em;
 
   margin-bottom:18px;
 }
 
 .contact-box p{
-  color:var(--muted);
 
   max-width:550px;
 
-  margin:0 auto 28px;
+  margin:
+    0 auto 28px;
+
+  color:
+    var(--muted);
+
+  font-size:13px;
 }
 
 .socials{
+
   display:flex;
 
   flex-wrap:wrap;
@@ -964,23 +1449,33 @@ section{
 }
 
 .socials a{
-  padding:9px 13px;
 
-  border:1px solid var(--border);
+  padding:
+    9px 13px;
+
+  border:
+    1px solid
+    var(--border-soft);
 
   border-radius:999px;
 
-  color:#b8c1cf;
+  color:#aaa69d;
 
-  font-size:11px;
+  font-size:10px;
 
-  transition:.2s;
+  transition:.25s;
 }
 
 .socials a:hover{
-  color:#fff;
 
-  border-color:var(--border-hover);
+  color:
+    var(--snk-accent-light);
+
+  border-color:
+    var(--border-hover);
+
+  background:
+    rgba(216,166,75,.045);
 }
 
 
@@ -989,16 +1484,21 @@ section{
 ========================================================= */
 
 footer{
-  border-top:1px solid var(--border);
 
-  padding:28px 0;
+  border-top:
+    1px solid
+    var(--border);
 
-  color:#687382;
+  padding:
+    28px 0;
 
-  font-size:11px;
+  color:#65635d;
+
+  font-size:10px;
 }
 
 .footer-inner{
+
   display:flex;
 
   justify-content:space-between;
@@ -1012,9 +1512,11 @@ footer{
 ========================================================= */
 
 .loading{
-  color:var(--muted);
 
-  font-size:13px;
+  color:
+    var(--muted);
+
+  font-size:12px;
 }
 
 
@@ -1023,39 +1525,49 @@ footer{
 ========================================================= */
 
 .mobile-menu{
+
   display:none;
-
-  border:1px solid var(--border);
-
-  background:transparent;
-
-  color:#fff;
-
-  border-radius:9px;
 
   width:40px;
   height:40px;
 
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:10px;
+
+  color:
+    var(--snk-accent-light);
+
+  background:
+    rgba(216,166,75,.04);
+
   cursor:pointer;
 }
 
+
 @media(max-width:900px){
 
-  .hero-grid,
-  .about-grid{
+  .hero-grid{
+
     grid-template-columns:1fr;
   }
 
-  .hero{
-    padding-top:125px;
+  .about-grid{
+
+    grid-template-columns:1fr;
   }
 
   .hero-visual{
+
     max-width:650px;
   }
 
   .brands-grid{
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+      1fr 1fr;
   }
 
   .nav-links{
@@ -1065,83 +1577,102 @@ footer{
   .mobile-menu{
     display:block;
   }
-
 }
+
 
 @media(max-width:650px){
 
   .container{
-    width:min(
-      100% - 28px,
-      var(--max)
-    );
+
+    width:
+      calc(100% - 28px);
   }
 
   section{
-    padding:80px 0;
+
+    padding:
+      80px 0;
   }
 
   .hero{
-    min-height:auto;
 
     padding:
-      125px 0
-      70px;
+      125px 0 70px;
   }
 
   .hero h1{
-    font-size:48px;
+
+    font-size:
+      48px;
   }
 
   .hero-desc{
-    font-size:15px;
+
+    font-size:
+      14px;
+  }
+
+  .hero-grid{
+
+    gap:50px;
   }
 
   .hero-image-wrap{
-    aspect-ratio:auto;
-  }
 
-  .hero-image{
-    aspect-ratio:1 / 1;
-    object-fit:cover;
-  }
-
-  .featured-overlay{
-    position:static;
-
-    margin-top:-80px;
-
-    padding:0 12px 12px;
-  }
-
-  .featured-copy{
-    width:100%;
-  }
-
-  .featured-copy h3{
-    font-size:21px;
-  }
-
-  .skills-grid,
-  .brands-grid{
-    grid-template-columns:1fr;
+    aspect-ratio:
+      1 / 1;
   }
 
   .section-head{
+
     display:block;
   }
 
   .section-desc{
-    margin-top:15px;
+
+    margin-top:16px;
+  }
+
+  .skills-grid,
+  .brands-grid{
+
+    grid-template-columns:1fr;
+  }
+
+  .featured-overlay{
+
+    position:static;
+
+    padding:
+      0 10px 10px;
+
+    margin-top:-90px;
+  }
+
+  .featured-copy{
+
+    max-width:none;
+  }
+
+  .featured-copy h3{
+
+    font-size:20px;
+  }
+
+  .featured-arrow{
+
+    width:42px;
+    height:42px;
   }
 
   .footer-inner{
+
     flex-direction:column;
   }
-
 }
 
 </style>
+
 </head>
 
 
@@ -1154,48 +1685,62 @@ footer{
 
 <header>
 
-  <div class="container nav">
+<div class="container nav">
 
-    <a href="#home" class="brand">
+<a
+  href="#home"
+  class="brand"
+>
 
-      <img
-        src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
-        alt="SNK Logo"
-      >
+<img
+  class="brand-logo"
+  src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+  alt="SNK Logo"
+>
 
-      <span>Shah Neil Khan</span>
+<span class="brand-name">
+Shah Neil Khan
+</span>
 
-    </a>
-
-
-    <nav class="nav-links">
-
-      <a href="#home">Home</a>
-
-      <a href="#about">About</a>
-
-      <a href="#skills">Expertise</a>
-
-      <a href="#brands">Brands</a>
-
-      <a href="#contact" class="nav-cta">
-        Contact
-      </a>
-
-    </nav>
+</a>
 
 
-    <button
-      class="mobile-menu"
-      onclick="window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior:'smooth'
-      })"
-    >
-      ↓
-    </button>
+<nav class="nav-links">
 
-  </div>
+<a href="#home">
+Home
+</a>
+
+<a href="#about">
+About
+</a>
+
+<a href="#skills">
+Expertise
+</a>
+
+<a href="#brands">
+Work
+</a>
+
+<a
+  href="#contact"
+  class="nav-cta"
+>
+Contact
+</a>
+
+</nav>
+
+
+<button
+  class="mobile-menu"
+  onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+>
+↓
+</button>
+
+</div>
 
 </header>
 
@@ -1206,188 +1751,230 @@ footer{
 
 <!-- =========================================================
      HERO
+     YOUR PHOTO = hero.png
 ========================================================= -->
 
-<section class="hero" id="home">
+<section
+  class="hero"
+  id="home"
+>
 
-  <div class="container hero-grid">
-
-
-    <!-- LEFT -->
-
-    <div>
-
-      <div class="eyebrow">
-
-        <span class="eyebrow-dot"></span>
-
-        AI Software Engineer
-
-      </div>
+<div class="container hero-grid">
 
 
-      <h1 id="heroHeadline">
-        Building intelligent digital experiences.
-      </h1>
+<div>
+
+<div class="eyebrow">
+
+<span class="eyebrow-dot"></span>
+
+AI Software Engineer
+
+</div>
 
 
-      <p class="hero-desc" id="heroDesc">
+<h1 id="heroHeadline">
 
-        AI Software Engineer, Context Engineer and
-        UI/UX Engineer focused on building thoughtful
-        digital products, modern web experiences and
-        intelligent workflows.
+Building intelligent
+digital experiences.
 
-      </p>
+</h1>
 
 
-      <div class="hero-actions">
+<p
+  class="hero-desc"
+  id="heroDesc"
+>
 
-        <a
-          href="#brands"
-          class="btn btn-primary"
-          id="btn1"
-        >
-          Explore My Work
-        </a>
+AI Software Engineer, Context Engineer and
+UI/UX-focused digital product builder creating
+modern software, intelligent workflows and
+meaningful digital experiences.
 
-
-        <a
-          href="#contact"
-          class="btn btn-secondary"
-          id="btn2"
-        >
-          Let's Talk
-        </a>
-
-      </div>
-
-    </div>
+</p>
 
 
+<div class="hero-actions">
 
-    <!-- RIGHT IMAGE -->
-
-    <div class="hero-visual">
-
-      <div class="hero-card">
-
-        <div class="hero-image-wrap">
-
-          <img
-            id="heroImage"
-            class="hero-image"
-            src="https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/Frame%2014.jpg"
-            alt="Shah Neil Khan featured work"
-          >
+<a
+  id="btn1"
+  href="#brands"
+  class="btn btn-primary"
+>
+Explore My Work
+</a>
 
 
-          <div class="image-label">
+<a
+  id="btn2"
+  href="#contact"
+  class="btn btn-secondary"
+>
+Let's Talk
+</a>
 
-            <div>
+</div>
 
-              <strong>
-                Shah Neil Khan
-              </strong>
-
-              <span>
-                AI · Engineering · Design · Product
-              </span>
-
-            </div>
+</div>
 
 
-            <div class="image-label-mark">
-              SNK
-            </div>
 
-          </div>
+<!-- =====================================================
+     YOUR PHOTO
+===================================================== -->
 
-        </div>
+<div class="hero-visual">
 
-      </div>
+<div class="hero-card">
 
-    </div>
+<div class="hero-image-wrap">
 
-  </div>
+<img
+  id="heroImage"
+  class="hero-image"
+  src="https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/hero.png"
+  alt="Shah Neil Khan"
+  fetchpriority="high"
+>
+
+
+<div class="image-label">
+
+<div>
+
+<strong>
+Shah Neil Khan
+</strong>
+
+<span>
+AI · Engineering · Design · Product
+</span>
+
+</div>
+
+
+<div class="image-label-mark">
+SNK
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
 
 </section>
 
 
 
+<div class="snk-divider"></div>
+
+
+
 <!-- =========================================================
-     FEATURED VISUAL
+     SECOND IMAGE
+     FRAME 14
+     CLICK → SNKBP.COM
 ========================================================= -->
 
-<section class="featured">
+<section
+  class="featured"
+  id="featured"
+>
 
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-
-        <div class="section-kicker">
-          Featured Visual
-        </div>
-
-        <h2 class="section-title">
-          From idea<br>
-          to interface.
-        </h2>
-
-      </div>
+<div class="container">
 
 
-      <p class="section-desc">
+<div class="section-head">
 
-        A visual snapshot of digital product,
-        interface and experience work.
+<div>
 
-      </p>
+<div class="section-kicker">
+Featured Visual
+</div>
 
-    </div>
+<h2 class="section-title">
+From idea<br>
+to interface.
+</h2>
 
-
-    <div class="featured-card">
-
-      <div class="featured-image-wrap">
-
-        <img
-          class="featured-image"
-          src="https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/Frame%2014.jpg"
-          alt="Featured digital product interface"
-          loading="lazy"
-        >
+</div>
 
 
-        <div class="featured-overlay">
+<p class="section-desc">
 
-          <div class="featured-copy">
+A visual snapshot of digital product,
+interface and experience work.
 
-            <small>
-              Selected Interface
-            </small>
+</p>
 
-            <h3>
-              AI-powered digital experience
-            </h3>
+</div>
 
-            <p>
-              Combining product thinking, interface design,
-              technology and AI-driven workflows into
-              practical digital experiences.
-            </p>
 
-          </div>
 
-        </div>
+<div class="featured-card">
 
-      </div>
 
-    </div>
+<a
+  class="featured-link"
+  href="https://snkbp.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Open SNKBP"
+>
 
-  </div>
+
+<div class="featured-image-wrap">
+
+
+<img
+  class="featured-image"
+  src="https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/Frame%2014.jpg"
+  alt="Featured work by Shah Neil Khan"
+  loading="lazy"
+>
+
+
+<div class="featured-overlay">
+
+
+<div class="featured-copy">
+
+<small>
+Selected Work
+</small>
+
+<h3>
+Designing digital experiences
+</h3>
+
+<p>
+Explore the featured digital experience
+and discover more through SNKBP.
+</p>
+
+</div>
+
+
+<div class="featured-arrow">
+↗
+</div>
+
+
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1399,123 +1986,121 @@ footer{
 
 <section id="about">
 
-  <div class="container">
+<div class="container">
 
 
-    <div class="section-head">
+<div class="section-head">
 
-      <div>
+<div>
 
-        <div class="section-kicker">
-          01 — About
-        </div>
+<div class="section-kicker">
+01 — About
+</div>
 
-        <h2 class="section-title">
-          Built with context.<br>
-          Designed with intent.
-        </h2>
+<h2 class="section-title">
+Context first.<br>
+Experience always.
+</h2>
 
-      </div>
-
-
-      <p class="section-desc">
-
-        A multidisciplinary approach combining AI,
-        software engineering, UX and digital
-        product thinking.
-
-      </p>
-
-    </div>
+</div>
 
 
+<p class="section-desc">
 
-    <div class="about-grid">
+A multidisciplinary approach combining
+AI, software engineering, UX and digital
+product thinking.
 
+</p>
 
-      <div class="card">
-
-        <p
-          class="about-bio"
-          id="aboutBio"
-        >
-
-          I am a self-taught AI Software Engineer
-          and UI/UX-focused digital product builder,
-          creating modern web experiences and
-          intelligent software workflows.
-
-        </p>
-
-      </div>
+</div>
 
 
 
-      <div class="card">
-
-        <div class="meta-grid">
+<div class="about-grid">
 
 
-          <div class="meta">
+<div class="card">
 
-            <small>
-              Based In
-            </small>
+<p
+  class="about-bio"
+  id="aboutBio"
+>
 
-            <strong id="aboutBasedIn">
-              —
-            </strong>
+I am a self-taught AI Software Engineer
+and UI/UX-focused digital product builder,
+creating modern web experiences and
+intelligent software workflows.
 
-          </div>
+</p>
 
-
-          <div class="meta">
-
-            <small>
-              Current Role
-            </small>
-
-            <strong id="aboutRole">
-              —
-            </strong>
-
-          </div>
+</div>
 
 
-          <div class="meta">
+<div class="card">
 
-            <small>
-              Working With
-            </small>
-
-            <strong id="aboutWorkingWith">
-              —
-            </strong>
-
-          </div>
+<div class="meta-grid">
 
 
-          <div class="meta">
+<div class="meta">
 
-            <small>
-              Background
-            </small>
+<small>
+Based In
+</small>
 
-            <strong id="aboutBackground">
-              —
-            </strong>
+<strong id="aboutBasedIn">
+—
+</strong>
 
-          </div>
-
-
-        </div>
-
-      </div>
+</div>
 
 
-    </div>
+<div class="meta">
 
-  </div>
+<small>
+Current Role
+</small>
+
+<strong id="aboutRole">
+—
+</strong>
+
+</div>
+
+
+<div class="meta">
+
+<small>
+Working With
+</small>
+
+<strong id="aboutWorkingWith">
+—
+</strong>
+
+</div>
+
+
+<div class="meta">
+
+<small>
+Background
+</small>
+
+<strong id="aboutBackground">
+—
+</strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1527,138 +2112,138 @@ footer{
 
 <section id="skills">
 
-  <div class="container">
+<div class="container">
 
 
-    <div class="section-head">
+<div class="section-head">
 
-      <div>
+<div>
 
-        <div class="section-kicker">
-          02 — Expertise
-        </div>
+<div class="section-kicker">
+02 — Expertise
+</div>
 
-        <h2 class="section-title">
-          Capabilities
-        </h2>
+<h2 class="section-title">
+Capabilities.
+</h2>
 
-      </div>
-
-
-      <p class="section-desc">
-
-        Engineering and design capabilities used
-        to build real digital products and
-        experiences.
-
-      </p>
-
-    </div>
+</div>
 
 
+<p class="section-desc">
 
-    <div class="skills-grid">
+Engineering and design capabilities used
+to create practical, polished and modern
+digital products.
 
+</p>
 
-      <div class="card skill-group">
-
-        <h3>
-          Development & Engineering
-        </h3>
-
-        <div
-          class="skills"
-          id="developmentSkills"
-        >
-
-          <div class="loading">
-            Loading skills...
-          </div>
-
-        </div>
-
-      </div>
+</div>
 
 
 
-      <div class="card skill-group">
-
-        <h3>
-          Design & UX
-        </h3>
-
-        <div
-          class="skills"
-          id="designSkills"
-        >
-
-          <div class="loading">
-            Loading skills...
-          </div>
-
-        </div>
-
-      </div>
+<div class="skills-grid">
 
 
-    </div>
+<div class="card skill-group">
 
-  </div>
+<h3>
+Development & Engineering
+</h3>
+
+<div
+  class="skills"
+  id="developmentSkills"
+>
+
+<div class="loading">
+Loading skills...
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="card skill-group">
+
+<h3>
+Design & UX
+</h3>
+
+<div
+  class="skills"
+  id="designSkills"
+>
+
+<div class="loading">
+Loading skills...
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
 
 <!-- =========================================================
-     BRANDS
+     BRANDS / WORK
 ========================================================= -->
 
 <section id="brands">
 
-  <div class="container">
+<div class="container">
 
 
-    <div class="section-head">
+<div class="section-head">
 
-      <div>
+<div>
 
-        <div class="section-kicker">
-          03 — Brands
-        </div>
+<div class="section-kicker">
+03 — Work
+</div>
 
-        <h2 class="section-title">
-          Selected work<br>
-          & initiatives.
-        </h2>
+<h2 class="section-title">
+Selected work<br>
+& initiatives.
+</h2>
 
-      </div>
-
-
-      <p class="section-desc">
-
-        Digital products, platforms,
-        creative initiatives and
-        technology-focused work.
-
-      </p>
-
-    </div>
+</div>
 
 
+<p class="section-desc">
 
-    <div
-      class="brands-grid"
-      id="brandsGrid"
-    >
+Digital products, platforms, creative
+initiatives and technology-focused
+projects.
 
-      <div class="loading">
-        Loading brands...
-      </div>
+</p>
 
-    </div>
+</div>
 
 
-  </div>
+
+<div
+  class="brands-grid"
+  id="brandsGrid"
+>
+
+<div class="loading">
+Loading work...
+</div>
+
+</div>
+
+
+</div>
 
 </section>
 
@@ -1673,45 +2258,47 @@ footer{
   id="contact"
 >
 
-  <div class="container">
+<div class="container">
 
-    <div class="contact-box">
-
-      <div class="section-kicker">
-        04 — Contact
-      </div>
+<div class="contact-box">
 
 
-      <h2>
-        Let's build something meaningful.
-      </h2>
+<div class="section-kicker">
+04 — Contact
+</div>
 
 
-      <p>
-
-        Have a product idea, digital project
-        or collaboration in mind?
-
-        Connect with me through the
-        channels below.
-
-      </p>
+<h2>
+Let's build something meaningful.
+</h2>
 
 
-      <div
-        class="socials"
-        id="socialLinks"
-      >
+<p>
 
-        <div class="loading">
-          Loading contact links...
-        </div>
+Have a product idea, digital project
+or collaboration in mind?
 
-      </div>
+Connect with me through the
+channels below.
 
-    </div>
+</p>
 
-  </div>
+
+<div
+  class="socials"
+  id="socialLinks"
+>
+
+<div class="loading">
+Loading contact links...
+</div>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
@@ -1726,19 +2313,18 @@ footer{
 
 <footer>
 
-  <div class="container footer-inner">
+<div class="container footer-inner">
 
-    <span>
-      © <span id="year"></span>
-      Shah Neil Khan
-    </span>
+<span>
+© <span id="year"></span>
+Shah Neil Khan
+</span>
 
-    <span>
-      AI Software Engineering ·
-      Context · Design
-    </span>
+<span>
+AI Software Engineering · Context · Design
+</span>
 
-  </div>
+</div>
 
 </footer>
 
@@ -1754,6 +2340,11 @@ footer{
 
 
 <script>
+
+/* =========================================================
+   FIREBASE CONFIG
+   SAME PROJECT
+========================================================= */
 
 const firebaseConfig = {
 
@@ -1781,7 +2372,9 @@ const firebaseConfig = {
 };
 
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(
+  firebaseConfig
+);
 
 const db =
   firebase.firestore();
@@ -1868,8 +2461,8 @@ function loadHero(){
 
 
       /*
-        Admin-এ যদি Hero Image URL দেওয়া থাকে,
-        সেটি Frame 14-এর বদলে ব্যবহার করবে।
+       Admin-এর Hero Image URL থাকলে
+       সেটি hero.png-এর জায়গায় আসবে।
       */
 
       if(d.imageUrl){
@@ -1883,11 +2476,11 @@ function loadHero(){
 
     })
 
-    .catch(err => {
+    .catch(error => {
 
       console.error(
         "Hero error:",
-        err
+        error
       );
 
     });
@@ -1946,11 +2539,11 @@ function loadAbout(){
 
     })
 
-    .catch(err => {
+    .catch(error => {
 
       console.error(
         "About error:",
-        err
+        error
       );
 
     });
@@ -2003,7 +2596,6 @@ function createSkill(skill){
 }
 
 
-
 function loadSkills(){
 
   db.collection("content")
@@ -2023,7 +2615,6 @@ function loadSkills(){
         document.getElementById(
           "developmentSkills"
         );
-
 
       const design =
         document.getElementById(
@@ -2085,11 +2676,11 @@ function loadSkills(){
 
     })
 
-    .catch(err => {
+    .catch(error => {
 
       console.error(
         "Skills error:",
-        err
+        error
       );
 
     });
@@ -2119,7 +2710,7 @@ function loadBrands(){
       if(!doc.exists){
 
         grid.innerHTML =
-          '<div class="loading">No brands added yet.</div>';
+          '<div class="loading">No work added yet.</div>';
 
         return;
 
@@ -2139,7 +2730,7 @@ function loadBrands(){
       ){
 
         grid.innerHTML =
-          '<div class="loading">No brands added yet.</div>';
+          '<div class="loading">No work added yet.</div>';
 
         return;
 
@@ -2209,9 +2800,7 @@ function loadBrands(){
             badge.textContent =
               "Coming Soon";
 
-            card.appendChild(
-              badge
-            );
+            card.appendChild(badge);
 
           }
 
@@ -2237,27 +2826,23 @@ function loadBrands(){
             link.textContent =
               "Visit →";
 
-            card.appendChild(
-              link
-            );
+            card.appendChild(link);
 
           }
 
 
-          grid.appendChild(
-            card
-          );
+          grid.appendChild(card);
 
         }
       );
 
     })
 
-    .catch(err => {
+    .catch(error => {
 
       console.error(
         "Brands error:",
-        err
+        error
       );
 
     });
@@ -2304,23 +2889,23 @@ function loadContact(){
 
       const links = [
 
-        ["WhatsApp",d.whatsapp],
+        ["WhatsApp", d.whatsapp],
 
-        ["LinkedIn",d.linkedin],
+        ["LinkedIn", d.linkedin],
 
-        ["GitHub",d.github],
+        ["GitHub", d.github],
 
-        ["Behance",d.behance],
+        ["Behance", d.behance],
 
-        ["YouTube",d.youtube],
+        ["YouTube", d.youtube],
 
-        ["Facebook",d.facebook],
+        ["Facebook", d.facebook],
 
-        ["Instagram",d.instagram],
+        ["Instagram", d.instagram],
 
-        ["X",d.twitter],
+        ["X", d.twitter],
 
-        ["TikTok",d.tiktok]
+        ["TikTok", d.tiktok]
 
       ];
 
@@ -2370,11 +2955,11 @@ function loadContact(){
 
     })
 
-    .catch(err => {
+    .catch(error => {
 
       console.error(
         "Contact error:",
-        err
+        error
       );
 
     });
@@ -2384,14 +2969,20 @@ function loadContact(){
 
 
 /* =========================================================
-   START
+   YEAR
 ========================================================= */
 
-document.getElementById(
-  "year"
-).textContent =
-  new Date().getFullYear();
+document
+  .getElementById("year")
+  .textContent =
+  new Date()
+    .getFullYear();
 
+
+
+/* =========================================================
+   LOAD
+========================================================= */
 
 loadHero();
 
