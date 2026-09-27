@@ -769,5 +769,1272 @@ nav{
 }
 
 .timeline-item h3{
-  font-family:'Space
+  font-family:'Space Grotesk',sans-serif;
+  font-size:24px;
+  margin-bottom:6px;
+}
+
+.timeline-org{
+  color:var(--teal2);
+  font-size:13px;
+  margin-bottom:13px;
+}
+
+.timeline-item p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.75;
+  max-width:600px;
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.stat{
+  padding:35px 25px;
+  border-right:1px solid var(--line);
+}
+
+.stat:last-child{
+  border-right:0;
+}
+
+.stat-number{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:32px;
+  color:var(--gold);
+  margin-bottom:7px;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.cta{
+  padding:140px 0 120px;
+  text-align:center;
+}
+
+.cta .eyebrow{
+  justify-content:center;
+}
+
+.cta h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(42px,7vw,90px);
+  line-height:.95;
+  letter-spacing:-.06em;
+  max-width:900px;
+  margin:25px auto;
+}
+
+.cta h2 span{
+  color:var(--gold);
+}
+
+.cta p{
+  color:var(--muted);
+  max-width:500px;
+  margin:0 auto 30px;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.cta-buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:46px;
+  padding:0 24px;
+
+  border-radius:9px;
+
+  font-size:12px;
+  font-weight:600;
+
+  transition:.3s ease;
+}
+
+.btn-primary{
+  background:var(--gold);
+  color:#080a09;
+}
+
+.btn-primary:hover{
+  background:var(--gold2);
+  transform:translateY(-2px);
+  box-shadow:0 10px 35px rgba(214,173,90,.18);
+}
+
+.btn-outline{
+  border:1px solid var(--line);
+  color:var(--text);
+}
+
+.btn-outline:hover{
+  border-color:var(--teal);
+  color:var(--teal2);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:35px 0;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+
+  color:var(--muted2);
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px){
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:100px 0 110px;
+  }
+
+  .hero h1{
+    font-size:clamp(52px,12vw,90px);
+  }
+
+  .hero-description{
+    grid-template-columns:1fr;
+  }
+
+  .hero-description .right{
+    justify-self:start;
+  }
+
+  .section-head,
+  .career{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .intro-grid{
+    grid-template-columns:1fr;
+  }
+
+  .principles{
+    grid-template-columns:1fr;
+  }
+
+  .journey{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stat:nth-child(2){
+    border-right:0;
+  }
+
+  .stat:nth-child(-n+2){
+    border-bottom:1px solid var(--line);
+  }
+
+  .network-list{
+    grid-template-columns:1fr;
+  }
+
+  .network-item:nth-child(odd){
+    border-right:0;
+  }
+}
+
+@media(max-width:600px){
+
+  .container{
+    width:min(100% - 28px,1180px);
+  }
+
+  nav{
+    width:calc(100% - 28px);
+    min-height:68px;
+  }
+
+  .logo{
+    font-size:11px;
+  }
+
+  .logo img{
+    width:27px;
+    height:27px;
+  }
+
+  .hero{
+    padding:80px 0 90px;
+  }
+
+  .hero-top{
+    margin-bottom:28px;
+  }
+
+  .hero h1{
+    font-size:clamp(48px,16vw,78px);
+    letter-spacing:-.07em;
+  }
+
+  .hero-description{
+    margin-top:38px;
+    gap:22px;
+  }
+
+  .hero-scroll{
+    display:none;
+  }
+
+  .section{
+    padding:80px 0;
+  }
+
+  .section-head{
+    margin-bottom:45px;
+  }
+
+  .section-title{
+    font-size:38px;
+  }
+
+  .intro-copy{
+    font-size:17px;
+  }
+
+  .network-header{
+    display:block;
+  }
+
+  .network-header h3{
+    margin-bottom:15px;
+  }
+
+  .network-item{
+    padding:23px 20px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stat{
+    padding:25px 18px;
+  }
+
+  .stat-number{
+    font-size:27px;
+  }
+
+  .cta{
+    padding:100px 0;
+  }
+
+  .cta h2{
+    font-size:48px;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation:none !important;
+    transition:none !important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ======================================
+     HEADER
+====================================== -->
+
+<header>
+
+<nav>
+
+<a class="logo" href="../index.html">
+
+<img
+src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+alt="SNK Logo">
+
+SHAH NEIL KHAN
+
+</a>
+
+<div class="navlinks">
+
+<a href="../index.html">Home</a>
+
+<a href="../brand/">Ecosystem</a>
+
+<a href="../expertise/">Expertise</a>
+
+<a href="../experience/">Experience</a>
+
+<a href="../about/" class="active">About</a>
+
+<a href="../projects/">Projects</a>
+
+<a href="../contact/">Contact</a>
+
+</div>
+
+</nav>
+
+</header>
+
+
+<main>
+
+
+<!-- ======================================
+     HERO
+====================================== -->
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<div class="hero-top">
+
+<div class="eyebrow">
+ABOUT SNK
+</div>
+
+<div class="hero-index">
+/ 001 — PERSONAL PROFILE
+</div>
+
+</div>
+
+<h1>
+
+<span>SHAPING</span>
+
+<span class="accent">DIGITAL</span>
+
+<span>EXPERIENCES.</span>
+
+</h1>
+
+
+<div class="hero-description">
+
+<p>
+I’m <strong>Shah Neil Khan</strong> — an AI Software Engineer,
+UI/UX Design Expert and digital experience builder focused on
+turning complex ideas into useful, thoughtful and refined products.
+</p>
+
+<p class="right">
+Self-taught. Hands-on. Curious by nature.
+I learn through building, experimentation and real-world problem solving.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="hero-scroll">
+
+<span>Scroll to explore</span>
+
+<div class="scroll-line"></div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================
+     WHO I AM
+====================================== -->
+
+<section class="section reveal">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="section-number">
+01 / WHO I AM
+</div>
+
+<h2 class="section-title">
+Not defined by a degree.
+<br>
+Defined by what I <em>build.</em>
+</h2>
+
+</div>
+
+
+<div class="intro-grid">
+
+<div class="intro-copy">
+
+<p>
+I am a <strong>self-taught Software Engineer and UI/UX
+Design Expert</strong> based in Bangladesh, working across
+software engineering, product design, artificial intelligence
+and digital experiences.
+</p>
+
+<br>
+
+<p>
+My approach combines engineering thinking with design thinking —
+understanding the problem first, structuring the system clearly,
+then building experiences that feel simple, intentional and useful.
+</p>
+
+</div>
+
+
+<div class="identity-card">
+
+<div class="identity-label">
+Current Identity
+</div>
+
+<div class="identity-value">
+AI Software Engineer
+</div>
+
+
+<div class="identity-row">
+
+<div class="identity-label">
+Focus
+</div>
+
+<div>
+AI · Software · Product · UX
+</div>
+
+</div>
+
+
+<div class="identity-row">
+
+<div class="identity-label">
+Approach
+</div>
+
+<div>
+Self-Taught · Hands-On · Continuous Learning
+</div>
+
+</div>
+
+
+<div class="identity-row">
+
+<div class="identity-label">
+Work Mode
+</div>
+
+<div>
+Remote · Global Collaboration
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================
+     APPROACH
+====================================== -->
+
+<section class="section reveal">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="section-number">
+02 / APPROACH
+</div>
+
+<h2 class="section-title">
+Think deeply.
+<br>
+Build <em>intentionally.</em>
+</h2>
+
+</div>
+
+
+<div class="principles">
+
+<div class="principle">
+
+<div class="principle-number">
+01 — UNDERSTAND
+</div>
+
+<h3>Understand</h3>
+
+<p>
+Start with the problem, people, context and desired outcome
+before deciding what should be built.
+</p>
+
+</div>
+
+
+<div class="principle">
+
+<div class="principle-number">
+02 — STRUCTURE
+</div>
+
+<h3>Structure</h3>
+
+<p>
+Turn complex ideas into clear systems, usable flows and
+understandable digital experiences.
+</p>
+
+</div>
+
+
+<div class="principle">
+
+<div class="principle-number">
+03 — BUILD
+</div>
+
+<h3>Build & Improve</h3>
+
+<p>
+Design, develop, test and refine continuously until the
+experience becomes simpler and stronger.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================
+     LEARNING
+====================================== -->
+
+<section class="section reveal">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="section-number">
+03 / LEARNING
+</div>
+
+<h2 class="section-title">
+A global mindset for
+<br>
+continuous <em>learning.</em>
+</h2>
+
+</div>
+
+
+<div class="journey">
+
+
+<div class="journey-card">
+
+<div class="journey-top">
+
+<div class="journey-index">
+01
+</div>
+
+<div class="journey-icon">
+S
+</div>
+
+</div>
+
+<div class="category">
+Software Engineering
+</div>
+
+<h3>Engineering Mindset</h3>
+
+<p>
+Software architecture, full-stack development, JavaScript,
+APIs, systems thinking and modern digital product development.
+</p>
+
+</div>
+
+
+<div class="journey-card">
+
+<div class="journey-top">
+
+<div class="journey-index">
+02
+</div>
+
+<div class="journey-icon">
+U
+</div>
+
+</div>
+
+<div class="category">
+UI / UX Design
+</div>
+
+<h3>Human-Centered Design</h3>
+
+<p>
+Interface design, UX research, product thinking, prototyping
+and creating digital experiences around real human needs.
+</p>
+
+</div>
+
+
+<div class="journey-card">
+
+<div class="journey-top">
+
+<div class="journey-index">
+03
+</div>
+
+<div class="journey-icon">
+AI
+</div>
+
+</div>
+
+<div class="category">
+Artificial Intelligence
+</div>
+
+<h3>Intelligent Systems</h3>
+
+<p>
+Generative AI, LLMs, context engineering, AI-assisted software
+development and automation workflows.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================
+     GLOBAL LEARNING NETWORK
+====================================== -->
+
+<section class="section reveal">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="section-number">
+04 / GLOBAL LEARNING
+</div>
+
+<h2 class="section-title">
+Learning beyond
+<br>
+<em>boundaries.</em>
+</h2>
+
+</div>
+
+
+<div class="network">
+
+<div class="network-header">
+
+<div>
+
+<div class="eyebrow">
+GLOBAL INFLUENCES
+</div>
+
+<h3>Learning Ecosystem</h3>
+
+</div>
+
+<p>
+A curated global learning reference across software engineering,
+design and artificial intelligence.
+</p>
+
+</div>
+
+
+<div class="network-list">
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+Software Engineering
+</div>
+
+<div class="network-number">
+01
+</div>
+
+</div>
+
+<h4>Massachusetts Institute of Technology</h4>
+
+<p>
+77 Massachusetts Avenue, Cambridge, MA 02139, USA
+</p>
+
+</div>
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+Software Engineering
+</div>
+
+<div class="network-number">
+02
+</div>
+
+</div>
+
+<h4>Stanford University</h4>
+
+<p>
+450 Jane Stanford Way, Stanford, CA 94305, USA
+</p>
+
+</div>
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+Software Engineering
+</div>
+
+<div class="network-number">
+03
+</div>
+
+</div>
+
+<h4>Carnegie Mellon University</h4>
+
+<p>
+5000 Forbes Avenue, Pittsburgh, PA 15213, USA
+</p>
+
+</div>
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+Software Engineering
+</div>
+
+<div class="network-number">
+04
+</div>
+
+</div>
+
+<h4>ETH Zürich</h4>
+
+<p>
+Rämistrasse 101, 8092 Zürich, Switzerland
+</p>
+
+</div>
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+Software Engineering
+</div>
+
+<div class="network-number">
+05
+</div>
+
+</div>
+
+<h4>University of Oxford</h4>
+
+<p>
+Wellington Square, Oxford OX1 2JD, United Kingdom
+</p>
+
+</div>
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+UI / UX Design
+</div>
+
+<div class="network-number">
+06
+</div>
+
+</div>
+
+<h4>Rhode Island School of Design</h4>
+
+<p>
+20 Washington Place, Providence, RI 02903, USA
+</p>
+
+</div>
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+UI / UX Design
+</div>
+
+<div class="network-number">
+07
+</div>
+
+</div>
+
+<h4>Parsons School of Design</h4>
+
+<p>
+66 West 12th Street, New York, NY 10011, USA
+</p>
+
+</div>
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+Artificial Intelligence
+</div>
+
+<div class="network-number">
+08
+</div>
+
+</div>
+
+<h4>Carnegie Mellon — School of Computer Science</h4>
+
+<p>
+5000 Forbes Avenue, Pittsburgh, PA 15213, USA
+</p>
+
+</div>
+
+
+<div class="network-item">
+
+<div class="network-meta">
+
+<div class="network-category">
+Artificial Intelligence
+</div>
+
+<div class="network-number">
+09
+</div>
+
+</div>
+
+<h4>Stanford AI Lab</h4>
+
+<p>
+353 Jane Stanford Way, Stanford, CA 94305, USA
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================
+     CAREER
+====================================== -->
+
+<section class="section reveal">
+
+<div class="container">
+
+<div class="career">
+
+<div>
+
+<div class="career-label">
+05 / CURRENT ROLE
+</div>
+
+</div>
+
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+2026 — PRESENT
+</div>
+
+<h3>UX Lead Digital Expert</h3>
+
+<div class="timeline-org">
+Yaqeen Institute · Texas, USA · Remote
+</div>
+
+<p>
+Working across digital experience, UX strategy, product thinking
+and technology to create clearer and more useful digital systems.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+ONGOING
+</div>
+
+<h3>AI Software Engineer</h3>
+
+<div class="timeline-org">
+Independent · SNK
+</div>
+
+<p>
+Building software, AI-assisted systems, digital products and
+experiments across the SNK ecosystem.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================
+     STATS
+====================================== -->
+
+<section class="section reveal">
+
+<div class="container">
+
+<div class="stats">
+
+<div class="stat">
+
+<div class="stat-number">
+AI
+</div>
+
+<div class="stat-label">
+Software Engineering
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-number">
+UX
+</div>
+
+<div class="stat-label">
+Product & Experience
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-number">
+∞
+</div>
+
+<div class="stat-label">
+Continuous Learning
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-number">
+SNK
+</div>
+
+<div class="stat-label">
+Personal Brand
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================
+     CTA
+====================================== -->
+
+<section class="cta reveal">
+
+<div class="container">
+
+<div class="eyebrow">
+LET'S BUILD
+</div>
+
+<h2>
+Ideas become real
+<br>
+when we <span>build them.</span>
+</h2>
+
+<p>
+Explore the SNK ecosystem, discover the work,
+or start a conversation about your next digital product.
+</p>
+
+
+<div class="cta-buttons">
+
+<a
+class="btn btn-primary"
+href="../projects/">
+Explore Projects →
+</a>
+
+<a
+class="btn btn-outline"
+href="../contact/">
+Get In Touch
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- ======================================
+     FOOTER
+====================================== -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-inner">
+
+<div>
+© 2026 Shah Neil Khan
+</div>
+
+<div>
+AI · SOFTWARE · DESIGN · SNK
+</div>
+
+<div>
+ALL RIGHTS RESERVED
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const revealItems =
+document.querySelectorAll('.reveal');
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+},
+{
+  threshold:.12
+});
+
+revealItems.forEach(item=>{
+  observer.observe(item);
+});
+
+
+/* =========================================
+   INITIAL HERO REVEAL
+========================================= */
+
+window.addEventListener('load',()=>{
+
+  document
+    .querySelector('.hero-content')
+    ?.classList.add('show');
+
+});
+
+</script>
+
+</body>
+</html>
 ```
