@@ -308,7 +308,6 @@ UI/UX Design & Strategy | Product design and research services | | soon" style="
   const auth = firebase.auth();
   const db = firebase.firestore();
 
-  // Watch login state
   auth.onAuthStateChanged(user => {
     if (user) {
       document.getElementById('loginScreen').style.display = 'none';
