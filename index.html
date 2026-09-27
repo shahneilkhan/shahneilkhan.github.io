@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -17,7 +18,7 @@
 
   <meta
     name="theme-color"
-    content="#07111f"
+    content="#07130d"
   >
 
   <link
@@ -26,11 +27,11 @@
     href="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
   >
 
-  <!-- Hero image preload -->
+  <!-- HERO IMAGE PRELOAD -->
   <link
     rel="preload"
     as="image"
-    href="https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/hero1.svg"
+    href="https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/Frame%203%20(3).svg"
     fetchpriority="high"
   >
 
@@ -43,33 +44,39 @@
     rel="stylesheet"
   >
 
+
   <style>
 
-    /* =========================================================
-       SNK PREMIUM SYSTEM
-       ========================================================= */
+    /* =====================================================
+       SNK — PREMIUM GOLDEN GREEN SYSTEM
+       ===================================================== */
 
     :root {
 
-      --bg: #050b14;
-      --bg-soft: #08111f;
-      --bg-card: #0b1626;
-      --bg-card-2: #0e1c30;
+      --bg: #06100a;
+      --bg-2: #091810;
+      --bg-3: #0d1f15;
 
-      --text: #f4f8ff;
-      --text-soft: #aab8ca;
-      --text-muted: #728198;
+      --card: #0d1a12;
+      --card-2: #102419;
 
-      --accent: #39bfff;
-      --accent-2: #00e0c6;
+      --gold: #d6ad55;
+      --gold-light: #f0cf7a;
+      --gold-dark: #9e7b2f;
 
-      --accent-soft: rgba(57, 191, 255, 0.12);
-      --accent-border: rgba(57, 191, 255, 0.25);
+      --green: #163d29;
+      --green-light: #1e6240;
+      --green-bright: #42a96f;
 
-      --white-border: rgba(255,255,255,0.08);
+      --text: #f5f3ea;
+      --text-soft: #c0c5b9;
+      --text-muted: #7f8c81;
+
+      --border: rgba(214,173,85,0.18);
+      --border-soft: rgba(255,255,255,0.075);
 
       --shadow:
-        0 30px 80px rgba(0,0,0,0.38);
+        0 30px 90px rgba(0,0,0,0.45);
 
       --radius: 24px;
 
@@ -77,9 +84,9 @@
     }
 
 
-    /* =========================================================
+    /* =====================================================
        RESET
-       ========================================================= */
+       ===================================================== */
 
     * {
       margin: 0;
@@ -92,299 +99,392 @@
     }
 
     body {
+
       font-family: "Inter", sans-serif;
-      background:
-        radial-gradient(
-          circle at 15% 10%,
-          rgba(0, 224, 198, 0.07),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 85% 15%,
-          rgba(57, 191, 255, 0.08),
-          transparent 30%
-        ),
-        var(--bg);
 
       color: var(--text);
+
+      background:
+
+        radial-gradient(
+          circle at 10% 5%,
+          rgba(214,173,85,0.055),
+          transparent 27%
+        ),
+
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(30,98,64,0.13),
+          transparent 32%
+        ),
+
+        linear-gradient(
+          180deg,
+          #06100a 0%,
+          #07120c 50%,
+          #050b08 100%
+        );
 
       line-height: 1.6;
 
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-
-    /* =========================================================
-       BACKGROUND EFFECT
-       ========================================================= */
 
     body::before {
+
       content: "";
+
       position: fixed;
 
       width: 600px;
       height: 600px;
 
       top: -300px;
-      left: -250px;
+      right: -300px;
 
       background:
         radial-gradient(
           circle,
-          rgba(0, 224, 198, 0.06),
+          rgba(214,173,85,0.055),
           transparent 70%
         );
 
       pointer-events: none;
+
       z-index: -1;
     }
 
+
     body::after {
+
       content: "";
 
       position: fixed;
 
-      width: 700px;
-      height: 700px;
+      width: 650px;
+      height: 650px;
 
-      right: -350px;
+      left: -350px;
       bottom: -350px;
 
       background:
         radial-gradient(
           circle,
-          rgba(57, 191, 255, 0.07),
+          rgba(30,98,64,0.12),
           transparent 70%
         );
 
       pointer-events: none;
+
       z-index: -1;
     }
 
 
-    /* =========================================================
-       CONTAINER
-       ========================================================= */
-
-    .container {
-      width: min(
-        calc(100% - 40px),
-        var(--max-width)
-      );
-
-      margin: auto;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
 
-    /* =========================================================
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+
+    button {
+      font-family: inherit;
+    }
+
+
+    .container {
+
+      width:
+        min(
+          calc(100% - 40px),
+          var(--max-width)
+        );
+
+      margin:
+        0 auto;
+    }
+
+
+    /* =====================================================
        HEADER
-       ========================================================= */
+       ===================================================== */
 
     header {
+
       position: sticky;
+
       top: 0;
 
       z-index: 1000;
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
       background:
-        rgba(5, 11, 20, 0.78);
+        rgba(6,16,10,0.82);
+
+      backdrop-filter:
+        blur(20px);
+
+      -webkit-backdrop-filter:
+        blur(20px);
 
       border-bottom:
-        1px solid rgba(255,255,255,0.06);
+        1px solid
+        rgba(255,255,255,0.055);
     }
+
 
     .nav {
-      min-height: 78px;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      min-height:
+        78px;
 
-      gap: 30px;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        30px;
     }
 
-
-    /* LOGO */
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
 
-      font-family: "Space Grotesk", sans-serif;
+      display:
+        flex;
 
-      font-weight: 700;
+      align-items:
+        center;
 
-      letter-spacing: -0.03em;
+      gap:
+        11px;
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-weight:
+        700;
     }
+
 
     .brand img {
-      width: 38px;
-      height: 38px;
 
-      object-fit: contain;
+      width:
+        38px;
+
+      height:
+        38px;
+
+      object-fit:
+        contain;
     }
+
 
     .brand-name {
-      font-size: 18px;
+
+      font-size:
+        18px;
+
+      letter-spacing:
+        -0.025em;
     }
+
 
     .brand-name span {
-      color: var(--accent);
+      color:
+        var(--gold);
     }
 
-
-    /* NAV LINKS */
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 26px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        26px;
     }
+
 
     .nav-links a {
-      color: var(--text-soft);
 
-      font-size: 14px;
-      font-weight: 600;
+      color:
+        var(--text-soft);
 
-      transition: 0.25s ease;
+      font-size:
+        14px;
+
+      font-weight:
+        600;
+
+      transition:
+        0.25s ease;
     }
 
+
     .nav-links a:hover {
-      color: var(--text);
+
+      color:
+        var(--gold-light);
     }
 
 
     .nav-cta {
-      padding: 11px 17px;
 
-      border-radius: 999px;
+      padding:
+        10px 17px;
+
+      border-radius:
+        999px;
+
+      color:
+        #07100a !important;
 
       background:
         linear-gradient(
           135deg,
-          var(--accent),
-          var(--accent-2)
+          var(--gold-light),
+          var(--gold)
         );
 
-      color: #031018 !important;
-
-      font-weight: 800 !important;
-
       box-shadow:
-        0 10px 30px rgba(57,191,255,0.16);
+        0 10px 30px
+        rgba(214,173,85,0.14);
     }
 
 
-    /* =========================================================
+    /* =====================================================
        HERO
-       ========================================================= */
+       ===================================================== */
 
     .hero {
-      min-height: calc(100vh - 78px);
 
-      display: flex;
-      align-items: center;
+      min-height:
+        calc(100vh - 78px);
+
+      display:
+        flex;
+
+      align-items:
+        center;
 
       padding:
-        90px 0
-        80px;
+        90px 0 85px;
 
-      position: relative;
+      position:
+        relative;
     }
+
 
     .hero-grid {
 
-      display: grid;
+      display:
+        grid;
 
       grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(380px, 0.95fr);
+        minmax(0,1.02fr)
+        minmax(390px,0.98fr);
 
-      align-items: center;
+      align-items:
+        center;
 
-      gap: 80px;
+      gap:
+        70px;
     }
 
 
-    /* HERO TEXT */
-
     .eyebrow {
 
-      display: inline-flex;
+      display:
+        inline-flex;
 
-      align-items: center;
+      align-items:
+        center;
 
-      gap: 9px;
+      gap:
+        9px;
 
       padding:
         8px 13px;
 
       border:
-        1px solid var(--accent-border);
+        1px solid
+        var(--border);
 
-      border-radius: 999px;
+      border-radius:
+        999px;
 
       background:
-        rgba(57,191,255,0.06);
+        rgba(214,173,85,0.055);
 
       color:
-        #9fddff;
+        var(--gold-light);
 
-      font-size: 12px;
+      font-size:
+        11px;
 
-      font-weight: 700;
+      font-weight:
+        800;
 
-      letter-spacing: 0.08em;
+      letter-spacing:
+        0.1em;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
     }
+
 
     .eyebrow-dot {
 
-      width: 7px;
-      height: 7px;
+      width:
+        7px;
 
-      border-radius: 50%;
+      height:
+        7px;
+
+      border-radius:
+        50%;
 
       background:
-        var(--accent-2);
+        var(--green-bright);
 
       box-shadow:
-        0 0 14px var(--accent-2);
+        0 0 13px
+        rgba(66,169,111,0.8);
     }
 
 
     .hero h1 {
 
-      margin-top: 25px;
+      margin-top:
+        25px;
 
-      max-width: 850px;
+      max-width:
+        850px;
 
       font-family:
         "Space Grotesk",
         sans-serif;
 
       font-size:
-        clamp(48px, 6vw, 86px);
+        clamp(
+          48px,
+          6vw,
+          84px
+        );
 
       line-height:
         0.98;
@@ -393,180 +493,248 @@
         -0.055em;
     }
 
+
     .hero h1 .gradient {
 
       background:
         linear-gradient(
-          100deg,
+          105deg,
           #ffffff 0%,
-          #78d6ff 45%,
-          #5ff1dc 100%
+          var(--gold-light) 45%,
+          #b8d59b 100%
         );
 
-      -webkit-background-clip: text;
-      background-clip: text;
+      -webkit-background-clip:
+        text;
 
-      color: transparent;
+      background-clip:
+        text;
+
+      color:
+        transparent;
     }
 
 
     .hero-description {
 
-      margin-top: 28px;
+      margin-top:
+        28px;
 
-      max-width: 680px;
+      max-width:
+        670px;
 
       color:
         var(--text-soft);
 
-      font-size: 17px;
+      font-size:
+        17px;
 
-      line-height: 1.85;
+      line-height:
+        1.85;
     }
 
 
-    /* HERO BUTTONS */
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
 
     .hero-actions {
 
-      margin-top: 36px;
+      margin-top:
+        35px;
 
-      display: flex;
+      display:
+        flex;
 
-      flex-wrap: wrap;
+      flex-wrap:
+        wrap;
 
-      gap: 13px;
+      gap:
+        12px;
     }
+
 
     .btn {
 
-      min-height: 48px;
+      min-height:
+        48px;
 
-      display: inline-flex;
+      display:
+        inline-flex;
 
-      align-items: center;
+      align-items:
+        center;
 
-      justify-content: center;
+      justify-content:
+        center;
 
       padding:
         0 20px;
 
-      border-radius: 12px;
+      border-radius:
+        12px;
 
-      font-size: 14px;
+      font-size:
+        14px;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
       transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+        transform .25s ease,
+        box-shadow .25s ease;
     }
 
+
     .btn:hover {
+
       transform:
         translateY(-2px);
     }
 
+
     .btn-primary {
+
+      color:
+        #07100a;
 
       background:
         linear-gradient(
           135deg,
-          var(--accent),
-          var(--accent-2)
+          var(--gold-light),
+          var(--gold)
         );
-
-      color:
-        #031018;
 
       box-shadow:
         0 15px 35px
-        rgba(57,191,255,0.15);
+        rgba(214,173,85,0.14);
     }
+
 
     .btn-secondary {
 
-      border:
-        1px solid
-        var(--white-border);
-
-      background:
-        rgba(255,255,255,0.03);
-
       color:
         var(--text);
+
+      background:
+        rgba(255,255,255,0.025);
+
+      border:
+        1px solid
+        var(--border-soft);
     }
+
 
     .btn-secondary:hover {
 
-      background:
-        rgba(255,255,255,0.07);
+      border-color:
+        var(--border);
     }
 
 
-    /* =========================================================
-       HERO VISUAL
-       ========================================================= */
+    /* =====================================================
+       HERO IMAGE
+       ===================================================== */
 
     .hero-visual {
 
-      position: relative;
+      position:
+        relative;
 
-      display: flex;
+      min-height:
+        590px;
 
-      justify-content: center;
+      display:
+        flex;
 
-      align-items: center;
+      align-items:
+        center;
+
+      justify-content:
+        center;
     }
+
 
     .hero-glow {
 
-      position: absolute;
+      position:
+        absolute;
 
-      width: 430px;
-      height: 430px;
+      width:
+        470px;
 
-      border-radius: 50%;
+      height:
+        470px;
+
+      border-radius:
+        50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(57,191,255,0.18),
-          rgba(0,224,198,0.06) 45%,
+          rgba(214,173,85,0.14),
+          rgba(30,98,64,0.08) 42%,
           transparent 70%
         );
 
-      filter: blur(8px);
+      filter:
+        blur(7px);
+    }
 
-      pointer-events: none;
+
+    .hero-ring {
+
+      position:
+        absolute;
+
+      width:
+        410px;
+
+      height:
+        410px;
+
+      border:
+        1px solid
+        rgba(214,173,85,0.13);
+
+      border-radius:
+        50%;
+
+      transform:
+        rotate(-18deg);
     }
 
 
     .hero-photo {
 
-      position: relative;
+      position:
+        relative;
 
-      width: min(
-        100%,
-        520px
-      );
+      z-index:
+        2;
 
-      max-height: 650px;
+      width:
+        min(
+          100%,
+          530px
+        );
 
-      object-fit: contain;
+      max-height:
+        650px;
 
-      z-index: 2;
+      object-fit:
+        contain;
 
       filter:
         drop-shadow(
-          0 30px 60px
-          rgba(0,0,0,0.5)
+          0 35px 70px
+          rgba(0,0,0,0.55)
         );
 
       animation:
         heroFloat 7s ease-in-out infinite;
     }
+
 
     @keyframes heroFloat {
 
@@ -583,126 +751,155 @@
     }
 
 
-    /* =========================================================
-       SMALL HERO CARD
-       ========================================================= */
-
     .hero-badge {
 
-      position: absolute;
+      position:
+        absolute;
 
-      right: 0;
-      bottom: 45px;
+      right:
+        0;
 
-      z-index: 4;
+      bottom:
+        45px;
+
+      z-index:
+        5;
 
       padding:
-        14px 16px;
+        14px 17px;
 
       border:
         1px solid
-        rgba(255,255,255,0.1);
+        rgba(214,173,85,0.18);
 
-      border-radius: 16px;
+      border-radius:
+        16px;
 
       background:
-        rgba(7,17,31,0.82);
+        rgba(7,18,12,0.85);
 
       backdrop-filter:
-        blur(15px);
+        blur(16px);
 
       box-shadow:
         var(--shadow);
     }
 
+
     .hero-badge strong {
 
-      display: block;
+      display:
+        block;
 
-      font-size: 13px;
+      color:
+        var(--gold-light);
 
-      margin-bottom: 3px;
+      font-size:
+        13px;
     }
+
 
     .hero-badge span {
 
       color:
         var(--text-muted);
 
-      font-size: 11px;
+      font-size:
+        11px;
     }
 
 
-    /* =========================================================
-       SECTION
-       ========================================================= */
+    /* =====================================================
+       SECTIONS
+       ===================================================== */
 
     section {
       padding:
         110px 0;
     }
 
-    .section-head {
-      margin-bottom: 48px;
 
-      max-width: 720px;
+    .section-head {
+
+      max-width:
+        720px;
+
+      margin-bottom:
+        48px;
     }
+
 
     .section-label {
 
       color:
-        var(--accent);
+        var(--gold);
 
-      font-size: 12px;
+      font-size:
+        11px;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      letter-spacing: 0.14em;
+      letter-spacing:
+        0.16em;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
     }
+
 
     .section-title {
 
-      margin-top: 10px;
+      margin-top:
+        10px;
 
       font-family:
         "Space Grotesk",
         sans-serif;
 
       font-size:
-        clamp(32px, 4vw, 54px);
+        clamp(
+          32px,
+          4vw,
+          54px
+        );
 
-      line-height: 1.05;
+      line-height:
+        1.05;
 
       letter-spacing:
         -0.04em;
     }
 
+
     .section-description {
 
-      margin-top: 16px;
+      margin-top:
+        16px;
+
+      max-width:
+        650px;
 
       color:
         var(--text-soft);
-
-      max-width: 650px;
     }
 
 
-    /* =========================================================
-       FEATURED VISUAL
-       ========================================================= */
+    /* =====================================================
+       FEATURED IMAGE
+       ===================================================== */
 
     .featured-card {
 
-      position: relative;
+      overflow:
+        hidden;
 
-      overflow: hidden;
+      position:
+        relative;
 
       border:
         1px solid
-        var(--white-border);
+        var(--border);
 
       border-radius:
         var(--radius);
@@ -710,27 +907,33 @@
       background:
         linear-gradient(
           145deg,
-          rgba(255,255,255,0.045),
-          rgba(255,255,255,0.015)
+          rgba(214,173,85,0.035),
+          rgba(255,255,255,0.012)
         );
 
       box-shadow:
         var(--shadow);
     }
 
+
     .featured-link {
-      display: block;
+      display:
+        block;
     }
+
 
     .featured-image {
 
-      width: 100%;
+      width:
+        100%;
 
-      height: auto;
+      height:
+        auto;
 
       transition:
-        transform 0.6s ease;
+        transform .6s ease;
     }
+
 
     .featured-card:hover
     .featured-image {
@@ -739,84 +942,110 @@
         scale(1.025);
     }
 
+
     .featured-overlay {
 
-      position: absolute;
+      position:
+        absolute;
 
-      inset: auto 0 0 0;
+      left:
+        0;
+
+      right:
+        0;
+
+      bottom:
+        0;
 
       padding:
-        40px 32px 28px;
+        50px 32px 28px;
 
       background:
         linear-gradient(
           transparent,
-          rgba(0,0,0,0.8)
+          rgba(3,9,6,0.88)
         );
     }
 
+
     .featured-overlay span {
 
-      font-size: 12px;
-
       color:
-        #a7eaff;
+        var(--gold-light);
 
-      font-weight: 800;
+      font-size:
+        11px;
 
-      text-transform: uppercase;
+      font-weight:
+        800;
 
-      letter-spacing: 0.1em;
+      letter-spacing:
+        .12em;
+
+      text-transform:
+        uppercase;
     }
+
 
     .featured-overlay h3 {
 
-      margin-top: 5px;
+      margin-top:
+        5px;
 
       font-family:
         "Space Grotesk",
         sans-serif;
 
-      font-size: 24px;
+      font-size:
+        24px;
     }
 
 
-    /* =========================================================
+    /* =====================================================
        ABOUT
-       ========================================================= */
+       ===================================================== */
 
     .about-grid {
 
-      display: grid;
+      display:
+        grid;
 
       grid-template-columns:
-        1.1fr 0.9fr;
+        1.1fr .9fr;
 
-      gap: 60px;
+      gap:
+        60px;
 
-      align-items: start;
+      align-items:
+        start;
     }
+
 
     .about-copy {
 
       color:
         var(--text-soft);
 
-      font-size: 17px;
+      font-size:
+        17px;
 
-      line-height: 1.9;
+      line-height:
+        1.9;
     }
 
 
     .info-grid {
 
-      display: grid;
+      display:
+        grid;
 
       grid-template-columns:
         1fr 1fr;
 
-      gap: 12px;
+      gap:
+        12px;
     }
+
 
     .info-card {
 
@@ -825,55 +1054,67 @@
 
       border:
         1px solid
-        var(--white-border);
+        var(--border-soft);
 
       border-radius:
         18px;
 
       background:
-        rgba(255,255,255,0.025);
+        rgba(255,255,255,0.018);
     }
+
 
     .info-card span {
 
-      display: block;
+      display:
+        block;
 
-      margin-bottom: 6px;
+      margin-bottom:
+        6px;
 
       color:
         var(--text-muted);
 
-      font-size: 11px;
+      font-size:
+        10px;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      text-transform: uppercase;
+      letter-spacing:
+        .1em;
 
-      letter-spacing: 0.08em;
+      text-transform:
+        uppercase;
     }
+
 
     .info-card strong {
 
-      font-size: 14px;
-
       color:
         var(--text);
+
+      font-size:
+        14px;
     }
 
 
-    /* =========================================================
+    /* =====================================================
        SKILLS
-       ========================================================= */
+       ===================================================== */
 
     .skills-grid {
 
-      display: grid;
+      display:
+        grid;
 
       grid-template-columns:
         1fr 1fr;
 
-      gap: 20px;
+      gap:
+        20px;
     }
+
 
     .skill-box {
 
@@ -882,7 +1123,7 @@
 
       border:
         1px solid
-        var(--white-border);
+        var(--border-soft);
 
       border-radius:
         var(--radius);
@@ -890,21 +1131,25 @@
       background:
         linear-gradient(
           145deg,
-          rgba(255,255,255,0.035),
-          rgba(255,255,255,0.015)
+          rgba(255,255,255,0.028),
+          rgba(255,255,255,0.012)
         );
     }
 
+
     .skill-box h3 {
+
+      margin-bottom:
+        20px;
 
       font-family:
         "Space Grotesk",
         sans-serif;
 
-      font-size: 21px;
-
-      margin-bottom: 20px;
+      font-size:
+        21px;
     }
+
 
     .skill-list {
 
@@ -914,8 +1159,10 @@
       flex-wrap:
         wrap;
 
-      gap: 9px;
+      gap:
+        9px;
     }
+
 
     .skill {
 
@@ -925,57 +1172,71 @@
       align-items:
         center;
 
-      gap: 7px;
+      gap:
+        7px;
 
       padding:
         9px 11px;
 
-      border:
-        1px solid
-        var(--white-border);
-
-      border-radius:
-        10px;
+      color:
+        var(--text-soft);
 
       background:
         rgba(255,255,255,0.025);
 
+      border:
+        1px solid
+        var(--border-soft);
+
+      border-radius:
+        10px;
+
       font-size:
         12px;
-
-      color:
-        var(--text-soft);
     }
+
 
     .skill i {
 
-      width: 6px;
-      height: 6px;
+      width:
+        6px;
 
-      border-radius: 50%;
+      height:
+        6px;
+
+      border-radius:
+        50%;
 
       background:
-        var(--accent-2);
+        var(--gold);
+
+      box-shadow:
+        0 0 8px
+        rgba(214,173,85,.4);
     }
 
 
-    /* =========================================================
-       WORK / BRANDS
-       ========================================================= */
+    /* =====================================================
+       BRANDS
+       ===================================================== */
 
     .brand-grid {
 
-      display: grid;
+      display:
+        grid;
 
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-      gap: 16px;
+      gap:
+        16px;
     }
+
 
     .brand-card {
 
-      min-height: 210px;
+      min-height:
+        210px;
 
       padding:
         25px;
@@ -991,19 +1252,20 @@
 
       border:
         1px solid
-        var(--white-border);
+        var(--border-soft);
 
       border-radius:
         20px;
 
       background:
-        rgba(255,255,255,0.025);
+        rgba(255,255,255,0.018);
 
       transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
     }
+
 
     .brand-card:hover {
 
@@ -1011,16 +1273,17 @@
         translateY(-5px);
 
       border-color:
-        var(--accent-border);
+        var(--border);
 
       background:
-        rgba(57,191,255,0.04);
+        rgba(214,173,85,0.035);
     }
+
 
     .brand-number {
 
       color:
-        var(--accent);
+        var(--gold);
 
       font-size:
         11px;
@@ -1029,8 +1292,9 @@
         800;
 
       letter-spacing:
-        0.1em;
+        .1em;
     }
+
 
     .brand-card h3 {
 
@@ -1044,6 +1308,7 @@
       font-size:
         22px;
     }
+
 
     .brand-card p {
 
@@ -1060,13 +1325,14 @@
         1.7;
     }
 
+
     .brand-link {
 
       margin-top:
         22px;
 
       color:
-        #9fddff;
+        var(--gold-light);
 
       font-size:
         12px;
@@ -1076,9 +1342,9 @@
     }
 
 
-    /* =========================================================
+    /* =====================================================
        CONTACT
-       ========================================================= */
+       ===================================================== */
 
     .contact-box {
 
@@ -1090,7 +1356,7 @@
 
       border:
         1px solid
-        var(--accent-border);
+        var(--border);
 
       border-radius:
         30px;
@@ -1099,12 +1365,13 @@
 
         radial-gradient(
           circle at 50% 0%,
-          rgba(57,191,255,0.12),
+          rgba(214,173,85,0.09),
           transparent 55%
         ),
 
-        rgba(255,255,255,0.025);
+        rgba(255,255,255,0.018);
     }
+
 
     .contact-box h2 {
 
@@ -1113,14 +1380,19 @@
         sans-serif;
 
       font-size:
-        clamp(34px, 5vw, 60px);
+        clamp(
+          34px,
+          5vw,
+          60px
+        );
 
       line-height:
         1.05;
 
       letter-spacing:
-        -0.045em;
+        -.045em;
     }
+
 
     .contact-box p {
 
@@ -1133,6 +1405,7 @@
       color:
         var(--text-soft);
     }
+
 
     .social-links {
 
@@ -1152,6 +1425,7 @@
         10px;
     }
 
+
     .social-links a {
 
       padding:
@@ -1159,7 +1433,7 @@
 
       border:
         1px solid
-        var(--white-border);
+        var(--border-soft);
 
       border-radius:
         10px;
@@ -1171,22 +1445,23 @@
         12px;
 
       transition:
-        0.25s ease;
+        .25s ease;
     }
+
 
     .social-links a:hover {
 
       color:
-        var(--text);
+        var(--gold-light);
 
       border-color:
-        var(--accent-border);
+        var(--border);
     }
 
 
-    /* =========================================================
+    /* =====================================================
        FOOTER
-       ========================================================= */
+       ===================================================== */
 
     footer {
 
@@ -1195,23 +1470,25 @@
 
       border-top:
         1px solid
-        var(--white-border);
+        var(--border-soft);
     }
+
 
     .footer-inner {
 
       display:
         flex;
 
-      justify-content:
-        space-between;
-
       align-items:
         center;
+
+      justify-content:
+        space-between;
 
       gap:
         20px;
     }
+
 
     .footer-inner p {
 
@@ -1221,6 +1498,7 @@
       font-size:
         12px;
     }
+
 
     .footer-brand {
 
@@ -1232,65 +1510,39 @@
         700;
     }
 
+
     .footer-brand span {
       color:
-        var(--accent);
+        var(--gold);
     }
 
 
-    /* =========================================================
-       REVEAL
-       ========================================================= */
-
-    .reveal {
-
-      opacity:
-        0;
-
-      transform:
-        translateY(20px);
-
-      animation:
-        reveal 0.8s ease forwards;
-    }
-
-    @keyframes reveal {
-
-      to {
-
-        opacity:
-          1;
-
-        transform:
-          translateY(0);
-      }
-    }
-
-
-    /* =========================================================
+    /* =====================================================
        RESPONSIVE
-       ========================================================= */
+       ===================================================== */
 
     @media (max-width: 1050px) {
 
       .hero-grid {
 
         grid-template-columns:
-          1fr 0.8fr;
+          1fr .85fr;
 
         gap:
           40px;
       }
 
+
       .nav-links {
         gap:
-          17px;
+          16px;
       }
+
 
       .brand-grid {
 
         grid-template-columns:
-          repeat(2, 1fr);
+          repeat(2,1fr);
       }
     }
 
@@ -1306,24 +1558,26 @@
           );
       }
 
+
       .nav {
 
         min-height:
           70px;
       }
 
-      .nav-links {
 
+      .nav-links {
         display:
           none;
       }
 
+
       .hero {
 
         padding:
-          70px 0
-          65px;
+          60px 0 70px;
       }
+
 
       .hero-grid {
 
@@ -1332,28 +1586,21 @@
 
         text-align:
           center;
+
+        gap:
+          25px;
       }
 
-      .hero-description {
-
-        margin-left:
-          auto;
-
-        margin-right:
-          auto;
-      }
-
-      .hero-actions {
-
-        justify-content:
-          center;
-      }
 
       .hero-visual {
 
         order:
           -1;
+
+        min-height:
+          450px;
       }
+
 
       .hero-photo {
 
@@ -1364,20 +1611,40 @@
           );
       }
 
+
+      .hero-description {
+
+        margin-left:
+          auto;
+
+        margin-right:
+          auto;
+      }
+
+
+      .hero-actions {
+
+        justify-content:
+          center;
+      }
+
+
       .hero-badge {
 
         right:
           8%;
 
         bottom:
-          15px;
+          10px;
       }
+
 
       section {
 
         padding:
           75px 0;
       }
+
 
       .about-grid {
 
@@ -1388,11 +1655,13 @@
           35px;
       }
 
+
       .skills-grid {
 
         grid-template-columns:
           1fr;
       }
+
 
       .brand-grid {
 
@@ -1400,11 +1669,13 @@
           1fr;
       }
 
+
       .contact-box {
 
         padding:
           42px 22px;
       }
+
 
       .footer-inner {
 
@@ -1422,8 +1693,9 @@
       .hero h1 {
 
         font-size:
-          46px;
+          44px;
       }
+
 
       .hero-description {
 
@@ -1431,11 +1703,13 @@
           15px;
       }
 
+
       .hero-actions {
 
         flex-direction:
           column;
       }
+
 
       .hero-actions .btn {
 
@@ -1443,17 +1717,20 @@
           100%;
       }
 
+
       .info-grid {
 
         grid-template-columns:
           1fr;
       }
 
+
       .featured-overlay {
 
         padding:
-          30px 18px 18px;
+          35px 18px 18px;
       }
+
 
       .featured-overlay h3 {
 
@@ -1463,15 +1740,16 @@
     }
 
   </style>
+
 </head>
 
 
 <body>
 
 
-  <!-- =======================================================
+  <!-- =====================================================
        HEADER
-       ======================================================== -->
+       ===================================================== -->
 
   <header>
 
@@ -1498,17 +1776,29 @@
 
       <nav class="nav-links">
 
-        <a href="#home">Home</a>
+        <a href="#home">
+          Home
+        </a>
 
-        <a href="#work">Work</a>
+        <a href="#work">
+          Work
+        </a>
 
-        <a href="#about">About</a>
+        <a href="#about">
+          About
+        </a>
 
-        <a href="#skills">Expertise</a>
+        <a href="#skills">
+          Expertise
+        </a>
 
-        <a href="#brands">Brands</a>
+        <a href="#brands">
+          Brands
+        </a>
 
-        <a href="#contact">Contact</a>
+        <a href="#contact">
+          Contact
+        </a>
 
         <a
           href="#contact"
@@ -1524,12 +1814,16 @@
   </header>
 
 
-
-  <!-- =======================================================
-       HERO
-       ======================================================== -->
+  <!-- =====================================================
+       MAIN
+       ===================================================== -->
 
   <main>
+
+
+    <!-- ===================================================
+         HERO
+         =================================================== -->
 
     <section
       id="home"
@@ -1539,9 +1833,7 @@
       <div class="container hero-grid">
 
 
-        <!-- TEXT -->
-
-        <div class="hero-content reveal">
+        <div class="hero-content">
 
           <div class="eyebrow">
 
@@ -1597,20 +1889,21 @@
         </div>
 
 
-
-        <!-- VISUAL -->
+        <!-- HERO VISUAL -->
 
         <div class="hero-visual">
 
           <div class="hero-glow"></div>
 
+          <div class="hero-ring"></div>
+
 
           <img
             id="heroImage"
             class="hero-photo"
-            src="https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/hero1.svg"
+            src="https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/Frame%203%20(3).svg"
             alt="Shah Neil Khan"
-            width="520"
+            width="530"
             height="650"
             fetchpriority="high"
             decoding="async"
@@ -1637,9 +1930,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          FEATURED VISUAL
-         ====================================================== -->
+         =================================================== -->
 
     <section id="work">
 
@@ -1656,8 +1949,8 @@
           </h2>
 
           <p class="section-description">
-            A selected visual from the Shah Neil Khan digital
-            ecosystem.
+            A selected visual from the Shah Neil Khan
+            digital ecosystem.
           </p>
 
         </div>
@@ -1670,7 +1963,6 @@
             href="https://snkbp.com/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open SNKBP"
           >
 
             <img
@@ -1704,9 +1996,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          ABOUT
-         ====================================================== -->
+         =================================================== -->
 
     <section id="about">
 
@@ -1745,6 +2037,7 @@
 
 
           <div class="info-grid">
+
 
             <div class="info-card">
 
@@ -1807,9 +2100,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          SKILLS
-         ====================================================== -->
+         =================================================== -->
 
     <section id="skills">
 
@@ -1892,7 +2185,6 @@
           </div>
 
 
-
           <div class="skill-box">
 
             <h3>
@@ -1951,9 +2243,9 @@
 
 
 
-    <!-- =====================================================
-         BRANDS / WORK
-         ====================================================== -->
+    <!-- ===================================================
+         BRANDS
+         =================================================== -->
 
     <section id="brands">
 
@@ -1970,8 +2262,8 @@
           </h2>
 
           <p class="section-description">
-            Digital products and initiatives connected to
-            the Shah Neil Khan ecosystem.
+            Digital products and initiatives connected
+            to the Shah Neil Khan ecosystem.
           </p>
 
         </div>
@@ -1981,6 +2273,8 @@
           id="brandGrid"
           class="brand-grid"
         >
+
+          <!-- DEFAULT CONTENT -->
 
           <div class="brand-card">
 
@@ -2011,7 +2305,6 @@
             </a>
 
           </div>
-
 
 
           <div class="brand-card">
@@ -2045,7 +2338,6 @@
           </div>
 
 
-
           <div class="brand-card">
 
             <div>
@@ -2075,7 +2367,6 @@
             </a>
 
           </div>
-
 
 
           <div class="brand-card">
@@ -2109,7 +2400,6 @@
           </div>
 
 
-
           <div class="brand-card">
 
             <div>
@@ -2134,7 +2424,6 @@
             </span>
 
           </div>
-
 
 
           <div class="brand-card">
@@ -2170,9 +2459,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          CONTACT
-         ====================================================== -->
+         =================================================== -->
 
     <section id="contact">
 
@@ -2184,9 +2473,11 @@
             Contact
           </div>
 
+
           <h2>
             Let's build something meaningful.
           </h2>
+
 
           <p>
             Have an idea, product, website or AI-powered
@@ -2270,18 +2561,20 @@
 
 
 
-  <!-- =======================================================
+  <!-- =====================================================
        FOOTER
-       ======================================================== -->
+       ===================================================== -->
 
   <footer>
 
     <div class="container footer-inner">
 
       <p>
-        © <span id="year"></span>
+        ©
+        <span id="year"></span>
         Shah Neil Khan. All rights reserved.
       </p>
+
 
       <div class="footer-brand">
         SNK<span>.</span>
@@ -2293,9 +2586,9 @@
 
 
 
-  <!-- =======================================================
+  <!-- =====================================================
        FIREBASE
-       ======================================================== -->
+       ===================================================== -->
 
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 
@@ -2304,9 +2597,9 @@
 
   <script>
 
-    /* =======================================================
+    /* =====================================================
        FIREBASE CONFIG
-       ======================================================== */
+       ===================================================== */
 
     const firebaseConfig = {
 
@@ -2330,27 +2623,30 @@
 
       measurementId:
         "G-C171XM6HK6"
+
     };
 
 
-    firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(
+      firebaseConfig
+    );
+
 
     const db =
       firebase.firestore();
 
 
-
-    /* =======================================================
+    /* =====================================================
        DEFAULT HERO IMAGE
-       ======================================================== */
+       ===================================================== */
 
     const DEFAULT_HERO_IMAGE =
-      "https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/hero1.svg";
+      "https://raw.githubusercontent.com/shahneilkhan/shahneilkhan.github.io/main/Frame%203%20(3).svg";
 
 
-    /* =======================================================
+    /* =====================================================
        HERO
-       ======================================================== */
+       ===================================================== */
 
     async function loadHero() {
 
@@ -2364,9 +2660,7 @@
 
 
         if (!ref.exists) {
-
           return;
-
         }
 
 
@@ -2379,28 +2673,10 @@
           const headline =
             String(d.headline);
 
-          const words =
-            headline.split(" ");
 
-
-          if (words.length >= 2) {
-
-            const first =
-              words.slice(0, -2).join(" ");
-
-            const last =
-              words.slice(-2).join(" ");
-
-
-            document.querySelector(".hero h1").innerHTML =
-              `${first} <span class="gradient">${last}</span>`;
-
-          } else {
-
-            document.querySelector(".hero h1").textContent =
-              headline;
-
-          }
+          document.querySelector(
+            ".hero h1"
+          ).innerHTML = headline;
 
         }
 
@@ -2456,9 +2732,12 @@
 
 
         /*
-          Admin imageUrl থাকলে সেটা ব্যবহার হবে।
-          না থাকলে hero1.svg থাকবে।
-        */
+         * Admin-এর imageUrl থাকলে
+         * সেটাই ব্যবহার হবে।
+         *
+         * না থাকলে নতুন
+         * Frame 3 (3).svg থাকবে।
+         */
 
         if (
           d.imageUrl &&
@@ -2469,13 +2748,6 @@
             "heroImage"
           ).src =
             String(d.imageUrl).trim();
-
-        } else {
-
-          document.getElementById(
-            "heroImage"
-          ).src =
-            DEFAULT_HERO_IMAGE;
 
         }
 
@@ -2494,9 +2766,9 @@
 
 
 
-    /* =======================================================
+    /* =====================================================
        ABOUT
-       ======================================================== */
+       ===================================================== */
 
     async function loadAbout() {
 
@@ -2510,9 +2782,7 @@
 
 
         if (!ref.exists) {
-
           return;
-
         }
 
 
@@ -2584,9 +2854,9 @@
 
 
 
-    /* =======================================================
+    /* =====================================================
        SKILLS
-       ======================================================== */
+       ===================================================== */
 
     function renderSkills(
       elementId,
@@ -2617,14 +2887,18 @@
         skill => {
 
           const item =
-            document.createElement("span");
+            document.createElement(
+              "span"
+            );
 
           item.className =
             "skill";
 
 
           const dot =
-            document.createElement("i");
+            document.createElement(
+              "i"
+            );
 
 
           const name =
@@ -2657,9 +2931,7 @@
 
 
         if (!ref.exists) {
-
           return;
-
         }
 
 
@@ -2693,9 +2965,9 @@
 
 
 
-    /* =======================================================
+    /* =====================================================
        BRANDS
-       ======================================================== */
+       ===================================================== */
 
     function renderBrands(
       brands
@@ -2725,48 +2997,73 @@
         (brand, index) => {
 
           const card =
-            document.createElement("div");
+            document.createElement(
+              "div"
+            );
 
           card.className =
             "brand-card";
 
 
           const content =
-            document.createElement("div");
+            document.createElement(
+              "div"
+            );
 
 
           const number =
-            document.createElement("div");
+            document.createElement(
+              "div"
+            );
 
           number.className =
             "brand-number";
 
           number.textContent =
-            String(index + 1).padStart(2, "0");
+            String(
+              index + 1
+            ).padStart(
+              2,
+              "0"
+            );
 
 
           const title =
-            document.createElement("h3");
+            document.createElement(
+              "h3"
+            );
 
           title.textContent =
-            brand.name || "Untitled";
+            brand.name ||
+            "Untitled";
 
 
           const description =
-            document.createElement("p");
+            document.createElement(
+              "p"
+            );
 
           description.textContent =
-            brand.description || "";
+            brand.description ||
+            "";
 
 
-          content.appendChild(number);
+          content.appendChild(
+            number
+          );
 
-          content.appendChild(title);
+          content.appendChild(
+            title
+          );
 
-          content.appendChild(description);
+          content.appendChild(
+            description
+          );
 
 
-          card.appendChild(content);
+          card.appendChild(
+            content
+          );
 
 
           if (
@@ -2774,7 +3071,9 @@
           ) {
 
             const coming =
-              document.createElement("span");
+              document.createElement(
+                "span"
+              );
 
             coming.className =
               "brand-link";
@@ -2793,7 +3092,9 @@
           ) {
 
             const link =
-              document.createElement("a");
+              document.createElement(
+                "a"
+              );
 
             link.className =
               "brand-link";
@@ -2839,9 +3140,7 @@
 
 
         if (!ref.exists) {
-
           return;
-
         }
 
 
@@ -2868,9 +3167,9 @@
 
 
 
-    /* =======================================================
+    /* =====================================================
        CONTACT
-       ======================================================== */
+       ===================================================== */
 
     async function loadContact() {
 
@@ -2884,9 +3183,7 @@
 
 
         if (!ref.exists) {
-
           return;
-
         }
 
 
@@ -2897,32 +3194,35 @@
         if (d.whatsapp) {
 
           let whatsapp =
-            String(d.whatsapp).trim();
+            String(
+              d.whatsapp
+            ).trim();
 
-
-          /*
-            যদি admin-এ শুধু number দেওয়া থাকে
-          */
 
           if (
-            !whatsapp.startsWith("http")
+            !whatsapp.startsWith(
+              "http"
+            )
           ) {
 
             whatsapp =
-              whatsapp
-                .replace(
-                  /\D/g,
-                  ""
-                );
+              whatsapp.replace(
+                /\D/g,
+                ""
+              );
 
 
             if (
-              whatsapp.startsWith("01")
+              whatsapp.startsWith(
+                "01"
+              )
             ) {
 
               whatsapp =
                 "880" +
-                whatsapp.substring(1);
+                whatsapp.substring(
+                  1
+                );
 
             }
 
@@ -2993,7 +3293,8 @@
           );
 
 
-        social.innerHTML = "";
+        social.innerHTML =
+          "";
 
 
         socialData.forEach(
@@ -3002,14 +3303,14 @@
             if (
               !d[item.key]
             ) {
-
               return;
-
             }
 
 
             const a =
-              document.createElement("a");
+              document.createElement(
+                "a"
+              );
 
 
             a.href =
@@ -3025,7 +3326,9 @@
               item.label;
 
 
-            social.appendChild(a);
+            social.appendChild(
+              a
+            );
 
           }
         );
@@ -3045,9 +3348,9 @@
 
 
 
-    /* =======================================================
+    /* =====================================================
        YEAR
-       ======================================================== */
+       ===================================================== */
 
     document.getElementById(
       "year"
@@ -3056,9 +3359,9 @@
 
 
 
-    /* =======================================================
-       LOAD ALL DATA
-       ======================================================== */
+    /* =====================================================
+       LOAD FIREBASE CONTENT
+       ===================================================== */
 
     loadHero();
 
