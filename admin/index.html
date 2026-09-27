@@ -3,297 +3,1442 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Admin — SNK Portfolio</title>
+<meta name="theme-color" content="#0b0d0c">
+
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   :root {
-    --bg: #0f1115;
-    --panel: #171a21;
-    --border: #262b35;
-    --text: #e8eaed;
-    --text-dim: #8b92a3;
-    --accent: #5b8def;
-    --accent-hover: #4a7ad9;
-    --success: #4ade80;
-    --error: #f87171;
+    --bg: #090b0a;
+    --bg-soft: #0d100f;
+    --panel: #111513;
+    --panel-2: #151a17;
+    --border: rgba(255,255,255,.08);
+
+    --text: #f2f3ee;
+    --muted: #929991;
+
+    --gold: #d8a64b;
+    --gold-light: #f0c66c;
+    --gold-dark: #b98735;
+
+    --green: #72c98c;
+    --green-dark: #4fa96c;
+
+    --success: #72d39a;
+    --error: #ff7777;
+
+    --shadow: 0 20px 70px rgba(0,0,0,.35);
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      system-ui,
+      sans-serif;
+
+    background:
+      radial-gradient(
+        circle at 20% 0%,
+        rgba(216,166,75,.06),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(114,201,140,.05),
+        transparent 28%
+      ),
+      var(--bg);
+
     color: var(--text);
     min-height: 100vh;
   }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  /* =========================
+     LOGIN
+  ========================= */
 
   .login-screen {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 24px;
   }
 
   .login-box {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 40px 36px;
     width: 100%;
-    max-width: 360px;
+    max-width: 420px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,.035),
+        rgba(255,255,255,.015)
+      );
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 38px;
+
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
   }
 
-  .login-box h1 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
-  .login-box .sub { color: var(--text-dim); font-size: 13px; margin-bottom: 28px; }
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
 
-  .field { margin-bottom: 18px; }
-  .field label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
-  .field input, .field textarea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(216,166,75,.18),
+        rgba(114,201,140,.08)
+      );
+
+    border: 1px solid rgba(216,166,75,.25);
+    overflow: hidden;
+  }
+
+  .brand-mark img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+  }
+
+  .login-box h1 {
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -.5px;
+    margin-bottom: 8px;
+  }
+
+  .login-box .sub {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .field {
+    margin-bottom: 18px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #b8beb9;
+    margin-bottom: 8px;
+    letter-spacing: .2px;
+  }
+
+  .field input,
+  .field textarea {
     width: 100%;
-    background: var(--bg);
+
+    background: rgba(0,0,0,.18);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 10px 12px;
+
+    border-radius: 11px;
+
+    padding: 12px 14px;
+
     color: var(--text);
     font-size: 14px;
-    font-family: inherit;
+
+    outline: none;
+
+    transition:
+      border-color .2s ease,
+      box-shadow .2s ease,
+      background .2s ease;
   }
-  .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+
+  .field textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.6;
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: #626963;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    border-color: rgba(216,166,75,.65);
+
+    box-shadow:
+      0 0 0 3px rgba(216,166,75,.08);
+
+    background: rgba(0,0,0,.25);
+  }
 
   .btn {
     width: 100%;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 11px;
+
+    border: 0;
+    border-radius: 11px;
+
+    padding: 13px 16px;
+
+    background:
+      linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-dark)
+      );
+
+    color: #17120a;
+
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 800;
+
     cursor: pointer;
+
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease,
+      opacity .2s ease;
   }
-  .btn:hover { background: var(--accent-hover); }
-  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-  .msg { font-size: 13px; margin-top: 12px; display: none; }
-  .msg.error { color: var(--error); }
-  .msg.success { color: var(--success); }
+  .btn:hover {
+    transform: translateY(-1px);
 
-  .dashboard { display: none; }
+    box-shadow:
+      0 10px 30px rgba(216,166,75,.16);
+  }
+
+  .btn:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .msg {
+    font-size: 13px;
+    margin-top: 12px;
+    line-height: 1.5;
+    display: none;
+  }
+
+  .msg.error {
+    color: var(--error);
+  }
+
+  .msg.success {
+    color: var(--success);
+  }
+
+  /* =========================
+     DASHBOARD
+  ========================= */
+
+  .dashboard {
+    display: none;
+    min-height: 100vh;
+  }
 
   .dash-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 28px;
+
+    padding: 15px 28px;
+
+    background:
+      rgba(9,11,10,.86);
+
     border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 5;
+
+    backdrop-filter: blur(18px);
   }
 
-  .dash-title { font-size: 15px; font-weight: 600; }
+  .dash-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .dash-logo {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(216,166,75,.08);
+    border: 1px solid rgba(216,166,75,.18);
+
+    overflow: hidden;
+  }
+
+  .dash-logo img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+  }
+
+  .dash-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.1px;
+  }
+
+  .dash-subtitle {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
 
   .logout-btn {
     background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    cursor: pointer;
-  }
-  .logout-btn:hover { color: var(--text); border-color: var(--text-dim); }
 
-  .dash-body { max-width: 640px; margin: 0 auto; padding: 28px 20px 80px; }
+    border: 1px solid var(--border);
+    color: var(--muted);
+
+    padding: 8px 14px;
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+      color .2s ease,
+      border-color .2s ease,
+      background .2s ease;
+  }
+
+  .logout-btn:hover {
+    color: var(--text);
+    border-color: rgba(216,166,75,.4);
+    background: rgba(216,166,75,.05);
+  }
+
+  /* =========================
+     MAIN
+  ========================= */
+
+  .dash-body {
+    width: min(900px, calc(100% - 32px));
+    margin: 0 auto;
+
+    padding: 36px 0 100px;
+  }
+
+  .intro {
+    margin-bottom: 28px;
+  }
+
+  .intro-kicker {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1.7px;
+
+    margin-bottom: 8px;
+  }
+
+  .intro h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    letter-spacing: -.8px;
+    margin-bottom: 8px;
+  }
+
+  .intro p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 680px;
+  }
+
+  /* =========================
+     PANELS
+  ========================= */
 
   .panel {
-    background: var(--panel);
+    position: relative;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,.035),
+        rgba(255,255,255,.012)
+      );
+
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 24px;
+
+    border-radius: 18px;
+
+    padding: 26px;
+
     margin-bottom: 20px;
+
+    box-shadow:
+      0 12px 45px rgba(0,0,0,.13);
   }
 
-  .panel h2 {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 18px;
-    padding-bottom: 12px;
+  .panel::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 24px;
+    right: 24px;
+
+    height: 1px;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(216,166,75,.35),
+        transparent
+      );
+
+    opacity: .6;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+
     border-bottom: 1px solid var(--border);
   }
 
-  .field textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
-
-  .save-bar {
-    position: sticky;
-    bottom: 0;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
-    padding: 16px 28px;
+  .panel-heading {
     display: flex;
-    justify-content: flex-end;
-    gap: 12px;
     align-items: center;
-    max-width: 640px;
-    margin: 0 auto;
+    gap: 12px;
   }
 
-  .save-status { font-size: 13px; opacity: 0; transition: opacity 0.3s ease; }
-  .save-status.show { opacity: 1; }
+  .panel-number {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(216,166,75,.08);
+    border: 1px solid rgba(216,166,75,.16);
+
+    color: var(--gold-light);
+
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .panel h2 {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .panel-description {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 3px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 18px;
+  }
+
+  .full {
+    grid-column: 1 / -1;
+  }
+
+  /* =========================
+     CODE / HINT
+  ========================= */
+
+  .hint {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--border);
+
+    padding: 11px 13px;
+    border-radius: 10px;
+
+    margin-bottom: 18px;
+  }
+
+  code {
+    color: var(--gold-light);
+    background: rgba(216,166,75,.07);
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 11px;
+  }
+
+  /* =========================
+     SAVE BUTTONS
+  ========================= */
 
   .save-btn {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 22px;
-    font-size: 14px;
-    font-weight: 600;
+    width: 100%;
+
+    border: 0;
+    border-radius: 10px;
+
+    padding: 12px 18px;
+
+    background:
+      linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-dark)
+      );
+
+    color: #161108;
+
+    font-size: 13px;
+    font-weight: 800;
+
     cursor: pointer;
+
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease,
+      opacity .2s ease;
   }
-  .save-btn:hover { background: var(--accent-hover); }
-  .save-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .save-btn:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+      0 12px 30px rgba(216,166,75,.13);
+  }
+
+  .save-btn:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .status {
+    display: none;
+
+    margin-top: 11px;
+
+    padding: 9px 12px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .status.success {
+    color: var(--success);
+    background: rgba(114,211,154,.07);
+    border: 1px solid rgba(114,211,154,.12);
+  }
+
+  .status.error {
+    color: var(--error);
+    background: rgba(255,119,119,.07);
+    border: 1px solid rgba(255,119,119,.12);
+  }
+
+  .status.show {
+    display: block;
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  .admin-footer {
+    text-align: center;
+
+    color: #626963;
+
+    font-size: 11px;
+
+    padding: 10px 20px 40px;
+  }
+
+  .admin-footer strong {
+    color: #858c86;
+  }
+
+  /* =========================
+     RESPONSIVE
+  ========================= */
+
+  @media (max-width: 700px) {
+
+    .dash-header {
+      padding: 13px 16px;
+    }
+
+    .dash-subtitle {
+      display: none;
+    }
+
+    .dash-body {
+      width: min(100% - 22px, 900px);
+      padding-top: 25px;
+    }
+
+    .panel {
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .grid-2 {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .full {
+      grid-column: auto;
+    }
+
+    .login-box {
+      padding: 28px 22px;
+      border-radius: 18px;
+    }
+
+    .intro h1 {
+      font-size: 28px;
+    }
+  }
+
+  @media (max-width: 430px) {
+
+    .dash-title {
+      font-size: 13px;
+    }
+
+    .logout-btn {
+      padding: 7px 10px;
+      font-size: 11px;
+    }
+
+    .panel {
+      padding: 17px;
+    }
+
+    .panel-header {
+      gap: 10px;
+    }
+
+    .panel-number {
+      width: 27px;
+      height: 27px;
+      flex-shrink: 0;
+    }
+  }
 </style>
 </head>
+
 <body>
 
-<!-- LOGIN -->
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
 <div class="login-screen" id="loginScreen">
+
   <div class="login-box">
+
+    <div class="brand-mark">
+      <img
+        src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+        alt="SNK"
+      >
+    </div>
+
     <h1>SNK Portfolio Admin</h1>
-    <p class="sub">Sign in with your Firebase account to edit site content.</p>
+
+    <p class="sub">
+      Sign in with your Firebase account to manage your portfolio content.
+    </p>
+
     <div class="field">
-      <label>Email</label>
-      <input type="email" id="emailInput" placeholder="you@example.com">
+      <label for="emailInput">Email</label>
+      <input
+        type="email"
+        id="emailInput"
+        placeholder="you@example.com"
+        autocomplete="email"
+      >
     </div>
+
     <div class="field">
-      <label>Password</label>
-      <input type="password" id="passwordInput" placeholder="Your password">
+      <label for="passwordInput">Password</label>
+      <input
+        type="password"
+        id="passwordInput"
+        placeholder="Your password"
+        autocomplete="current-password"
+      >
     </div>
-    <button class="btn" id="loginBtn" onclick="doLogin()">Sign in</button>
-    <p class="msg error" id="loginError">Login failed. Check your email and password.</p>
+
+    <button
+      class="btn"
+      id="loginBtn"
+      onclick="doLogin()"
+    >
+      Sign in
+    </button>
+
+    <p class="msg error" id="loginError"></p>
+
   </div>
+
 </div>
 
-<!-- DASHBOARD -->
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
 <div class="dashboard" id="dashboard">
-  <div class="dash-header">
-    <span class="dash-title">SNK Portfolio Admin</span>
-    <button class="logout-btn" onclick="doLogout()">Sign out</button>
-  </div>
 
-  <div class="dash-body">
-    <div class="panel">
-      <h2>Hero Content (Homepage)</h2>
-      <div class="field">
-        <label>Headline</label>
-        <textarea id="heroHeadline" placeholder="e.g. Upskill Your Team with AI-Powered Training"></textarea>
+  <!-- HEADER -->
+
+  <header class="dash-header">
+
+    <div class="dash-brand">
+
+      <div class="dash-logo">
+        <img
+          src="https://raw.githubusercontent.com/shahneilkhan/asset/main/SNK%20LOGO.svg"
+          alt="SNK"
+        >
       </div>
-      <div class="field">
-        <label>Description</label>
-        <textarea id="heroDesc" placeholder="Short supporting paragraph"></textarea>
+
+      <div>
+        <div class="dash-title">
+          SNK Portfolio Admin
+        </div>
+
+        <div class="dash-subtitle">
+          Content Management
+        </div>
       </div>
-      <div class="field">
-        <label>Primary button text</label>
-        <input type="text" id="btn1Text" placeholder="e.g. Explore My Work">
-      </div>
-      <div class="field">
-        <label>Primary button link</label>
-        <input type="text" id="btn1Link" placeholder="e.g. #projects">
-      </div>
-      <div class="field">
-        <label>Secondary button text</label>
-        <input type="text" id="btn2Text" placeholder="e.g. Let's Talk">
-      </div>
-      <div class="field">
-        <label>Secondary button link</label>
-        <input type="text" id="btn2Link" placeholder="e.g. https://wa.me/...">
-      </div>
-      <div class="field">
-        <label>Hero image URL</label>
-        <input type="text" id="heroImage" placeholder="https://...">
-      </div>
+
     </div>
 
-    <div class="panel">
-      <h2>About Section</h2>
-      <div class="field">
-        <label>Bio paragraph</label>
-        <textarea id="aboutBio" placeholder="Full bio text" style="min-height:100px;"></textarea>
+    <button
+      class="logout-btn"
+      onclick="doLogout()"
+    >
+      Sign out
+    </button>
+
+  </header>
+
+
+  <!-- BODY -->
+
+  <main class="dash-body">
+
+    <div class="intro">
+
+      <div class="intro-kicker">
+        SNK / Control Panel
       </div>
-      <div class="field">
-        <label>Based In</label>
-        <input type="text" id="aboutBasedIn" placeholder="e.g. Sylhet, Bangladesh">
-      </div>
-      <div class="field">
-        <label>Current Role</label>
-        <input type="text" id="aboutRole" placeholder="e.g. UX Lead Digital Expert">
-      </div>
-      <div class="field">
-        <label>Working With</label>
-        <input type="text" id="aboutWorkingWith" placeholder="e.g. Yaqeen Institute, Texas (Remote)">
-      </div>
-      <div class="field">
-        <label>Background</label>
-        <input type="text" id="aboutBackground" placeholder="e.g. Self-taught">
-      </div>
-      <button class="save-btn" style="width:100%;" onclick="saveAbout()">Save About</button>
-      <p class="msg success" id="aboutStatus" style="display:none;">Saved ✓</p>
+
+      <h1>
+        Manage your portfolio.
+      </h1>
+
+      <p>
+        Update your homepage, profile, skills, brands and contact links.
+        Changes are saved directly to your existing Firebase Firestore content.
+      </p>
+
     </div>
 
-    <div class="panel">
-      <h2>Skills</h2>
-      <p style="font-size:12px;color:var(--text-dim);margin-bottom:14px;">One skill per line, format: <code>Name : Level</code> — Level should be Beginner, Intermediate, or Advanced.</p>
-      <div class="field">
-        <label>Development & Engineering skills</label>
-        <textarea id="skillsDev" placeholder="JavaScript : Intermediate&#10;HTML / CSS : Advanced" style="min-height:100px;"></textarea>
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="panel">
+
+      <div class="panel-header">
+
+        <div class="panel-heading">
+
+          <div class="panel-number">01</div>
+
+          <div>
+            <h2>Hero Content</h2>
+
+            <p class="panel-description">
+              Homepage headline, description, buttons and hero image.
+            </p>
+          </div>
+
+        </div>
+
       </div>
-      <div class="field">
-        <label>Design & UX skills</label>
-        <textarea id="skillsDesign" placeholder="Figma : Advanced&#10;UI Design : Advanced" style="min-height:100px;"></textarea>
+
+
+      <div class="grid-2">
+
+        <div class="field full">
+          <label for="heroHeadline">
+            Headline
+          </label>
+
+          <textarea
+            id="heroHeadline"
+            placeholder="AI Software Engineer building intelligent digital experiences."
+          ></textarea>
+        </div>
+
+
+        <div class="field full">
+          <label for="heroDesc">
+            Description
+          </label>
+
+          <textarea
+            id="heroDesc"
+            placeholder="Short supporting paragraph"
+          ></textarea>
+        </div>
+
+
+        <div class="field">
+
+          <label for="btn1Text">
+            Primary Button Text
+          </label>
+
+          <input
+            type="text"
+            id="btn1Text"
+            placeholder="Explore My Work"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="btn1Link">
+            Primary Button Link
+          </label>
+
+          <input
+            type="text"
+            id="btn1Link"
+            placeholder="#work"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="btn2Text">
+            Secondary Button Text
+          </label>
+
+          <input
+            type="text"
+            id="btn2Text"
+            placeholder="Let's Talk"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="btn2Link">
+            Secondary Button Link
+          </label>
+
+          <input
+            type="text"
+            id="btn2Link"
+            placeholder="https://wa.me/..."
+          >
+
+        </div>
+
+
+        <div class="field full">
+
+          <label for="heroImage">
+            Hero Image URL
+          </label>
+
+          <input
+            type="text"
+            id="heroImage"
+            placeholder="https://..."
+          >
+
+        </div>
+
       </div>
-      <button class="save-btn" style="width:100%;" onclick="saveSkills()">Save Skills</button>
-      <p class="msg success" id="skillsStatus" style="display:none;">Saved ✓</p>
+
+
+      <button
+        class="save-btn"
+        id="saveBtn"
+        onclick="saveHero()"
+      >
+        Save Hero
+      </button>
+
+      <div
+        class="status"
+        id="heroStatus"
+      ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         ABOUT
+    ================================================== -->
+
+    <section class="panel">
+
+      <div class="panel-header">
+
+        <div class="panel-heading">
+
+          <div class="panel-number">02</div>
+
+          <div>
+            <h2>About Section</h2>
+
+            <p class="panel-description">
+              Personal profile information shown on the portfolio.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="aboutBio">
+          Bio Paragraph
+        </label>
+
+        <textarea
+          id="aboutBio"
+          style="min-height:130px;"
+          placeholder="Write your professional bio..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="grid-2">
+
+        <div class="field">
+
+          <label for="aboutBasedIn">
+            Based In
+          </label>
+
+          <input
+            type="text"
+            id="aboutBasedIn"
+            placeholder="Bangladesh"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="aboutRole">
+            Current Role
+          </label>
+
+          <input
+            type="text"
+            id="aboutRole"
+            placeholder="AI Software Engineer"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="aboutWorkingWith">
+            Working With
+          </label>
+
+          <input
+            type="text"
+            id="aboutWorkingWith"
+            placeholder="AI • Software • Digital Products"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="aboutBackground">
+            Background
+          </label>
+
+          <input
+            type="text"
+            id="aboutBackground"
+            placeholder="Self-taught"
+          >
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="save-btn"
+        onclick="saveAbout()"
+      >
+        Save About
+      </button>
+
+      <div
+        class="status"
+        id="aboutStatus"
+      ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         SKILLS
+    ================================================== -->
+
+    <section class="panel">
+
+      <div class="panel-header">
+
+        <div class="panel-heading">
+
+          <div class="panel-number">03</div>
+
+          <div>
+            <h2>Skills & Expertise</h2>
+
+            <p class="panel-description">
+              Manage your development and design capabilities.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="hint">
+
+        <strong style="color:var(--gold-light);">
+          All skills are saved as Advanced.
+        </strong>
+
+        You can simply write one skill per line.
+        Example:
+        <code>JavaScript</code>
+
+        or
+
+        <code>JavaScript : Advanced</code>.
+
+        The admin automatically cleans old
+        Beginner / Intermediate / Markdown artifacts.
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="skillsDev">
+          Development & Engineering Skills
+        </label>
+
+        <textarea
+          id="skillsDev"
+          style="min-height:180px;"
+          placeholder="AI Software Engineering&#10;Context Engineering&#10;HTML / CSS&#10;JavaScript&#10;Web Security&#10;GitHub / Deployment&#10;Supabase / Backend Integration&#10;WordPress"
+        ></textarea>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="skillsDesign">
+          Design & UX Skills
+        </label>
+
+        <textarea
+          id="skillsDesign"
+          style="min-height:180px;"
+          placeholder="Figma&#10;UI Design&#10;UX Research&#10;Wireframing&#10;Prototyping&#10;Photoshop&#10;Illustrator"
+        ></textarea>
+
+      </div>
+
+
+      <button
+        class="save-btn"
+        onclick="saveSkills()"
+      >
+        Save Skills
+      </button>
+
+      <div
+        class="status"
+        id="skillsStatus"
+      ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         BRANDS
+    ================================================== -->
+
+    <section class="panel">
+
+      <div class="panel-header">
+
+        <div class="panel-heading">
+
+          <div class="panel-number">04</div>
+
+          <div>
+            <h2>Brands & Selected Work</h2>
+
+            <p class="panel-description">
+              Manage brands and external project links.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="hint">
+
+        Format:
+
+        <code>
+          Name | Description | Link
+        </code>
+
+        For coming-soon items:
+
+        <code>
+          Name | Description | | soon
+        </code>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="brandsList">
+          Brands List
+        </label>
+
+        <textarea
+          id="brandsList"
+          style="min-height:220px;"
+          placeholder="WebsitesDeal | Premium website templates marketplace | https://websitesdeal.com/&#10;Tabayyun Institute | Digital education platform | https://www.tabayyuninstitute.com/&#10;SNK IT Institute | Technology and learning platform | https://snkitinstitute.github.io/&#10;Sarakāt Agency | Digital agency | https://sarakatagency.com/&#10;SNK Design | Design services and creative work | | soon&#10;NeilUsha | AI video communication platform | | soon"
+        ></textarea>
+
+      </div>
+
+
+      <button
+        class="save-btn"
+        onclick="saveBrands()"
+      >
+        Save Brands
+      </button>
+
+      <div
+        class="status"
+        id="brandsStatus"
+      ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         CONTACT
+    ================================================== -->
+
+    <section class="panel">
+
+      <div class="panel-header">
+
+        <div class="panel-heading">
+
+          <div class="panel-number">05</div>
+
+          <div>
+            <h2>Contact Links</h2>
+
+            <p class="panel-description">
+              Social profiles and direct contact channels.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="grid-2">
+
+        <div class="field">
+
+          <label for="linkWhatsapp">
+            WhatsApp
+          </label>
+
+          <input
+            type="text"
+            id="linkWhatsapp"
+            placeholder="https://wa.me/..."
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="linkLinkedin">
+            LinkedIn
+          </label>
+
+          <input
+            type="text"
+            id="linkLinkedin"
+            placeholder="https://linkedin.com/in/..."
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="linkGithub">
+            GitHub
+          </label>
+
+          <input
+            type="text"
+            id="linkGithub"
+            placeholder="https://github.com/..."
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="linkBehance">
+            Behance
+          </label>
+
+          <input
+            type="text"
+            id="linkBehance"
+            placeholder="https://behance.net/..."
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="linkYoutube">
+            YouTube
+          </label>
+
+          <input
+            type="text"
+            id="linkYoutube"
+            placeholder="https://youtube.com/@..."
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="linkFacebook">
+            Facebook
+          </label>
+
+          <input
+            type="text"
+            id="linkFacebook"
+            placeholder="https://facebook.com/..."
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="linkInstagram">
+            Instagram
+          </label>
+
+          <input
+            type="text"
+            id="linkInstagram"
+            placeholder="https://instagram.com/..."
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="linkTwitter">
+            X / Twitter
+          </label>
+
+          <input
+            type="text"
+            id="linkTwitter"
+            placeholder="https://x.com/..."
+          >
+
+        </div>
+
+
+        <div class="field full">
+
+          <label for="linkTiktok">
+            TikTok
+          </label>
+
+          <input
+            type="text"
+            id="linkTiktok"
+            placeholder="https://tiktok.com/@..."
+          >
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="save-btn"
+        onclick="saveContact()"
+      >
+        Save Contact Links
+      </button>
+
+      <div
+        class="status"
+        id="contactStatus"
+      ></div>
+
+    </section>
+
+
+    <div class="admin-footer">
+      <strong>SNK Portfolio Admin</strong>
+      &nbsp;·&nbsp;
+      Firebase Content Management
     </div>
 
-    <div class="panel">
-      <h2>Brands Section</h2>
-      <p style="font-size:12px;color:var(--text-dim);margin-bottom:14px;">One brand per line, format: <code>Name | Description | Link | soon</code> — put <code>soon</code> as the last part only if it should show "Coming Soon" (leave it out if it's live and clickable).</p>
-      <div class="field">
-        <label>Brands list</label>
-        <textarea id="brandsList" placeholder="WebsitesDeal | Premium website templates marketplace | https://... |
-UI/UX Design & Strategy | Product design and research services | | soon" style="min-height:140px;"></textarea>
-      </div>
-      <button class="save-btn" style="width:100%;" onclick="saveBrands()">Save Brands</button>
-      <p class="msg success" id="brandsStatus" style="display:none;">Saved ✓</p>
-    </div>
+  </main>
 
-    <div class="panel">
-      <h2>Contact Links</h2>
-      <div class="field"><label>WhatsApp</label><input type="text" id="linkWhatsapp" placeholder="https://wa.me/..."></div>
-      <div class="field"><label>LinkedIn</label><input type="text" id="linkLinkedin" placeholder="https://linkedin.com/in/..."></div>
-      <div class="field"><label>GitHub</label><input type="text" id="linkGithub" placeholder="https://github.com/..."></div>
-      <div class="field"><label>Behance</label><input type="text" id="linkBehance" placeholder="https://behance.net/..."></div>
-      <div class="field"><label>YouTube</label><input type="text" id="linkYoutube" placeholder="https://youtube.com/@..."></div>
-      <div class="field"><label>Facebook</label><input type="text" id="linkFacebook" placeholder="https://facebook.com/..."></div>
-      <div class="field"><label>Instagram</label><input type="text" id="linkInstagram" placeholder="https://instagram.com/..."></div>
-      <div class="field"><label>X (Twitter)</label><input type="text" id="linkTwitter" placeholder="https://x.com/..."></div>
-      <div class="field"><label>TikTok</label><input type="text" id="linkTiktok" placeholder="https://tiktok.com/@..."></div>
-      <button class="save-btn" style="width:100%;" onclick="saveContact()">Save Contact Links</button>
-      <p class="msg success" id="contactStatus" style="display:none;">Saved ✓</p>
-    </div>
-    <span class="save-status success" id="saveStatus">Saved ✓</span>
-    <button class="save-btn" id="saveBtn" onclick="saveHero()">Save changes</button>
-  </div>
 </div>
 
-<!-- FIREBASE SDK (compat, simplest for plain JS) -->
+
+<!-- =====================================================
+     FIREBASE SDK
+===================================================== -->
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
+
 <script>
+
+  /* =====================================================
+     FIREBASE CONFIG
+  ===================================================== */
+
   const firebaseConfig = {
     apiKey: "AIzaSyAEHzTjHfp7Q8q6Gt3RbV6wXVmG77PicaA",
     authDomain: "shahneilkhan-2cdb6.firebaseapp.com",
@@ -304,268 +1449,941 @@ UI/UX Design & Strategy | Product design and research services | | soon" style="
     measurementId: "G-C171XM6HK6"
   };
 
+
   firebase.initializeApp(firebaseConfig);
+
   const auth = firebase.auth();
   const db = firebase.firestore();
 
+
+  /* =====================================================
+     AUTH STATE
+  ===================================================== */
+
   auth.onAuthStateChanged(user => {
+
     if (user) {
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('dashboard').style.display = 'block';
+
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+
       loadHeroContent();
       loadAbout();
       loadSkills();
       loadBrands();
       loadContact();
+
     } else {
-      document.getElementById('loginScreen').style.display = 'flex';
-      document.getElementById('dashboard').style.display = 'none';
+
+      document.getElementById("loginScreen").style.display = "flex";
+      document.getElementById("dashboard").style.display = "none";
+
     }
+
   });
 
-  function doLogin() {
-    const email = document.getElementById('emailInput').value;
-    const password = document.getElementById('passwordInput').value;
-    const btn = document.getElementById('loginBtn');
-    const errorMsg = document.getElementById('loginError');
-    errorMsg.style.display = 'none';
-    btn.disabled = true;
-    btn.textContent = 'Signing in...';
 
-    auth.signInWithEmailAndPassword(email, password)
+  /* =====================================================
+     LOGIN
+  ===================================================== */
+
+  function doLogin() {
+
+    const email =
+      document.getElementById("emailInput").value.trim();
+
+    const password =
+      document.getElementById("passwordInput").value;
+
+    const btn =
+      document.getElementById("loginBtn");
+
+    const errorMsg =
+      document.getElementById("loginError");
+
+
+    errorMsg.style.display = "none";
+
+    if (!email || !password) {
+
+      errorMsg.textContent =
+        "Please enter your email and password.";
+
+      errorMsg.style.display = "block";
+
+      return;
+    }
+
+
+    btn.disabled = true;
+    btn.textContent = "Signing in...";
+
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+
       .catch(err => {
-        errorMsg.textContent = err.message;
-        errorMsg.style.display = 'block';
+
+        errorMsg.textContent =
+          getFriendlyAuthError(err);
+
+        errorMsg.style.display = "block";
+
       })
+
       .finally(() => {
+
         btn.disabled = false;
-        btn.textContent = 'Sign in';
+        btn.textContent = "Sign in";
+
       });
+
   }
+
+
+  function getFriendlyAuthError(error) {
+
+    if (!error || !error.code) {
+      return "Login failed. Please try again.";
+    }
+
+    switch (error.code) {
+
+      case "auth/invalid-email":
+        return "Please enter a valid email address.";
+
+      case "auth/user-not-found":
+        return "No account was found with this email.";
+
+      case "auth/wrong-password":
+      case "auth/invalid-credential":
+        return "Incorrect email or password.";
+
+      case "auth/too-many-requests":
+        return "Too many attempts. Please try again later.";
+
+      default:
+        return error.message || "Login failed.";
+
+    }
+
+  }
+
+
+  /* =====================================================
+     LOGOUT
+  ===================================================== */
 
   function doLogout() {
+
     auth.signOut();
+
   }
+
+
+  /* =====================================================
+     STATUS HELPER
+  ===================================================== */
+
+  function showStatus(id, message, type = "success") {
+
+    const el =
+      document.getElementById(id);
+
+    if (!el) return;
+
+    el.textContent = message;
+
+    el.className =
+      "status " + type + " show";
+
+    clearTimeout(el._timer);
+
+    el._timer = setTimeout(() => {
+
+      el.classList.remove("show");
+
+    }, 3000);
+
+  }
+
+
+  /* =====================================================
+     HERO
+  ===================================================== */
 
   function loadHeroContent() {
-    db.collection('content').doc('hero').get().then(doc => {
-      if (doc.exists) {
+
+    db.collection("content")
+      .doc("hero")
+      .get()
+
+      .then(doc => {
+
+        if (!doc.exists) return;
+
         const data = doc.data();
-        document.getElementById('heroHeadline').value = data.headline || '';
-        document.getElementById('heroDesc').value = data.description || '';
-        document.getElementById('btn1Text').value = data.btn1Text || '';
-        document.getElementById('btn1Link').value = data.btn1Link || '';
-        document.getElementById('btn2Text').value = data.btn2Text || '';
-        document.getElementById('btn2Link').value = data.btn2Link || '';
-        document.getElementById('heroImage').value = data.imageUrl || '';
-      }
-    }).catch(err => console.error('Load error:', err));
+
+
+        document.getElementById("heroHeadline").value =
+          data.headline || "";
+
+        document.getElementById("heroDesc").value =
+          data.description || "";
+
+        document.getElementById("btn1Text").value =
+          data.btn1Text || "";
+
+        document.getElementById("btn1Link").value =
+          data.btn1Link || "";
+
+        document.getElementById("btn2Text").value =
+          data.btn2Text || "";
+
+        document.getElementById("btn2Link").value =
+          data.btn2Link || "";
+
+        document.getElementById("heroImage").value =
+          data.imageUrl || "";
+
+      })
+
+      .catch(err => {
+
+        console.error("Hero load error:", err);
+
+        showStatus(
+          "heroStatus",
+          "Could not load Hero content: " + err.message,
+          "error"
+        );
+
+      });
+
   }
+
 
   function saveHero() {
-    const saveBtn = document.getElementById('saveBtn');
-    const status = document.getElementById('saveStatus');
+
+    const saveBtn =
+      document.getElementById("saveBtn");
+
+
     saveBtn.disabled = true;
-    saveBtn.textContent = 'Saving...';
+    saveBtn.textContent = "Saving...";
+
 
     const data = {
-      headline: document.getElementById('heroHeadline').value,
-      description: document.getElementById('heroDesc').value,
-      btn1Text: document.getElementById('btn1Text').value,
-      btn1Link: document.getElementById('btn1Link').value,
-      btn2Text: document.getElementById('btn2Text').value,
-      btn2Link: document.getElementById('btn2Link').value,
-      imageUrl: document.getElementById('heroImage').value,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+
+      headline:
+        document.getElementById("heroHeadline").value.trim(),
+
+      description:
+        document.getElementById("heroDesc").value.trim(),
+
+      btn1Text:
+        document.getElementById("btn1Text").value.trim(),
+
+      btn1Link:
+        document.getElementById("btn1Link").value.trim(),
+
+      btn2Text:
+        document.getElementById("btn2Text").value.trim(),
+
+      btn2Link:
+        document.getElementById("btn2Link").value.trim(),
+
+      imageUrl:
+        document.getElementById("heroImage").value.trim(),
+
+      updatedAt:
+        firebase.firestore.FieldValue.serverTimestamp()
+
     };
 
-    db.collection('content').doc('hero').set(data)
+
+    db.collection("content")
+      .doc("hero")
+      .set(data)
+
       .then(() => {
-        status.textContent = 'Saved ✓';
-        status.className = 'save-status success show';
-        setTimeout(() => status.classList.remove('show'), 2500);
+
+        showStatus(
+          "heroStatus",
+          "Hero content saved successfully ✓"
+        );
+
       })
+
       .catch(err => {
-        status.textContent = 'Error: ' + err.message;
-        status.className = 'save-status error show';
+
+        showStatus(
+          "heroStatus",
+          "Error: " + err.message,
+          "error"
+        );
+
       })
+
       .finally(() => {
+
         saveBtn.disabled = false;
-        saveBtn.textContent = 'Save changes';
+        saveBtn.textContent = "Save Hero";
+
       });
+
   }
+
+
+  /* =====================================================
+     ABOUT
+  ===================================================== */
 
   function loadAbout() {
-    db.collection('content').doc('about').get().then(doc => {
-      if (!doc.exists) return;
-      const d = doc.data();
-      document.getElementById('aboutBio').value = d.bio || '';
-      document.getElementById('aboutBasedIn').value = d.basedIn || '';
-      document.getElementById('aboutRole').value = d.currentRole || '';
-      document.getElementById('aboutWorkingWith').value = d.workingWith || '';
-      document.getElementById('aboutBackground').value = d.background || '';
-    }).catch(err => console.error('About load error:', err));
+
+    db.collection("content")
+      .doc("about")
+      .get()
+
+      .then(doc => {
+
+        if (!doc.exists) return;
+
+        const d = doc.data();
+
+
+        document.getElementById("aboutBio").value =
+          d.bio || "";
+
+        document.getElementById("aboutBasedIn").value =
+          d.basedIn || "";
+
+        document.getElementById("aboutRole").value =
+          d.currentRole || "";
+
+        document.getElementById("aboutWorkingWith").value =
+          d.workingWith || "";
+
+        document.getElementById("aboutBackground").value =
+          d.background || "";
+
+      })
+
+      .catch(err => {
+
+        console.error("About load error:", err);
+
+        showStatus(
+          "aboutStatus",
+          "Could not load About content: " + err.message,
+          "error"
+        );
+
+      });
+
   }
+
 
   function saveAbout() {
-    const status = document.getElementById('aboutStatus');
+
     const data = {
-      bio: document.getElementById('aboutBio').value,
-      basedIn: document.getElementById('aboutBasedIn').value,
-      currentRole: document.getElementById('aboutRole').value,
-      workingWith: document.getElementById('aboutWorkingWith').value,
-      background: document.getElementById('aboutBackground').value,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+
+      bio:
+        document.getElementById("aboutBio").value.trim(),
+
+      basedIn:
+        document.getElementById("aboutBasedIn").value.trim(),
+
+      currentRole:
+        document.getElementById("aboutRole").value.trim(),
+
+      workingWith:
+        document.getElementById("aboutWorkingWith").value.trim(),
+
+      background:
+        document.getElementById("aboutBackground").value.trim(),
+
+      updatedAt:
+        firebase.firestore.FieldValue.serverTimestamp()
+
     };
-    db.collection('content').doc('about').set(data)
+
+
+    db.collection("content")
+      .doc("about")
+      .set(data)
+
       .then(() => {
-        status.textContent = 'Saved ✓';
-        status.style.display = 'block';
-        setTimeout(() => status.style.display = 'none', 2500);
+
+        showStatus(
+          "aboutStatus",
+          "About section saved successfully ✓"
+        );
+
       })
+
       .catch(err => {
-        status.textContent = 'Error: ' + err.message;
-        status.className = 'msg error';
-        status.style.display = 'block';
+
+        showStatus(
+          "aboutStatus",
+          "Error: " + err.message,
+          "error"
+        );
+
       });
+
   }
+
+
+  /* =====================================================
+     CLEAN TEXT
+  ===================================================== */
+
+  function cleanText(value) {
+
+    return String(value || "")
+
+      /* Markdown headings */
+      .replace(/^\s*#{1,6}\s*/gm, "")
+
+      /* Bold */
+      .replace(/\*\*/g, "")
+
+      /* Italic */
+      .replace(/\*/g, "")
+
+      /* Underline */
+      .replace(/__/g, "")
+
+      /* Code */
+      .replace(/`/g, "")
+
+      /* Extra whitespace */
+      .replace(/\s+/g, " ")
+
+      .trim();
+
+  }
+
+
+  /* =====================================================
+     NORMALIZE SKILL
+  ===================================================== */
+
+  function normalizeSkillName(value) {
+
+    let name =
+      cleanText(value);
+
+
+    /*
+      Remove trailing:
+      : Beginner
+      : Intermediate
+      : Advanced
+    */
+
+    name = name.replace(
+      /\s*[:|\-]\s*(Beginner|Intermediate|Advanced)\s*$/i,
+      ""
+    );
+
+
+    /*
+      Remove duplicated level without separator
+    */
+
+    name = name.replace(
+      /\s+(Beginner|Intermediate|Advanced)\s*$/i,
+      ""
+    );
+
+
+    /*
+      Remove empty trailing separators
+    */
+
+    name = name
+      .replace(/\s*[:|\-]\s*$/g, "")
+      .trim();
+
+
+    return name || "Skill";
+
+  }
+
+
+  /* =====================================================
+     PARSE SKILLS
+     EVERYTHING = ADVANCED
+  ===================================================== */
 
   function parseSkillsText(text) {
-    return text.split('\n')
+
+    return text
+
+      .split("\n")
+
       .map(line => line.trim())
+
       .filter(line => line.length > 0)
+
       .map(line => {
-        const parts = line.split(':');
+
+        /*
+          Support:
+          JavaScript
+          JavaScript : Advanced
+          JavaScript : Intermediate
+          ### JavaScript
+          **JavaScript**
+        */
+
+        const name =
+          normalizeSkillName(line);
+
+
         return {
-          name: (parts[0] || '').trim(),
-          level: (parts[1] || 'Intermediate').trim()
+
+          name: name,
+
+          level: "Advanced"
+
         };
+
       });
+
   }
+
+
+  /* =====================================================
+     SKILLS TO TEXT
+  ===================================================== */
 
   function skillsToText(arr) {
-    if (!arr || !arr.length) return '';
-    return arr.map(s => `${s.name} : ${s.level}`).join('\n');
+
+    if (!Array.isArray(arr) || !arr.length) {
+      return "";
+    }
+
+
+    return arr
+
+      .map(skill => {
+
+        if (typeof skill === "string") {
+
+          return normalizeSkillName(skill);
+
+        }
+
+
+        return normalizeSkillName(
+          skill && skill.name
+            ? skill.name
+            : ""
+        );
+
+      })
+
+      .filter(Boolean)
+
+      .join("\n");
+
   }
+
+
+  /* =====================================================
+     LOAD SKILLS
+  ===================================================== */
 
   function loadSkills() {
-    db.collection('content').doc('skills').get().then(doc => {
-      if (!doc.exists) return;
-      const d = doc.data();
-      document.getElementById('skillsDev').value = skillsToText(d.development);
-      document.getElementById('skillsDesign').value = skillsToText(d.design);
-    }).catch(err => console.error('Skills load error:', err));
+
+    db.collection("content")
+      .doc("skills")
+      .get()
+
+      .then(doc => {
+
+        if (!doc.exists) return;
+
+        const d = doc.data();
+
+
+        document.getElementById("skillsDev").value =
+          skillsToText(d.development);
+
+
+        document.getElementById("skillsDesign").value =
+          skillsToText(d.design);
+
+      })
+
+      .catch(err => {
+
+        console.error("Skills load error:", err);
+
+        showStatus(
+          "skillsStatus",
+          "Could not load Skills: " + err.message,
+          "error"
+        );
+
+      });
+
   }
+
+
+  /* =====================================================
+     SAVE SKILLS
+  ===================================================== */
 
   function saveSkills() {
-    const status = document.getElementById('skillsStatus');
+
     const data = {
-      development: parseSkillsText(document.getElementById('skillsDev').value),
-      design: parseSkillsText(document.getElementById('skillsDesign').value),
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+
+      development:
+        parseSkillsText(
+          document.getElementById("skillsDev").value
+        ),
+
+      design:
+        parseSkillsText(
+          document.getElementById("skillsDesign").value
+        ),
+
+      updatedAt:
+        firebase.firestore.FieldValue.serverTimestamp()
+
     };
-    db.collection('content').doc('skills').set(data)
+
+
+    db.collection("content")
+      .doc("skills")
+      .set(data)
+
       .then(() => {
-        status.textContent = 'Saved ✓';
-        status.style.display = 'block';
-        setTimeout(() => status.style.display = 'none', 2500);
+
+        showStatus(
+          "skillsStatus",
+          "Skills saved successfully — all set to Advanced ✓"
+        );
+
+        /*
+          Reload the cleaned version
+          immediately in the admin fields.
+        */
+
+        document.getElementById("skillsDev").value =
+          skillsToText(data.development);
+
+        document.getElementById("skillsDesign").value =
+          skillsToText(data.design);
+
       })
+
       .catch(err => {
-        status.textContent = 'Error: ' + err.message;
-        status.className = 'msg error';
-        status.style.display = 'block';
+
+        showStatus(
+          "skillsStatus",
+          "Error: " + err.message,
+          "error"
+        );
+
       });
+
   }
+
+
+  /* =====================================================
+     BRANDS
+  ===================================================== */
 
   function parseBrandsText(text) {
-    return text.split('\n')
+
+    return text
+
+      .split("\n")
+
       .map(line => line.trim())
+
       .filter(line => line.length > 0)
+
       .map(line => {
-        const parts = line.split('|').map(p => p.trim());
+
+        const parts =
+          line.split("|").map(p => p.trim());
+
+
         return {
-          name: parts[0] || '',
-          description: parts[1] || '',
-          link: parts[2] || '',
-          comingSoon: (parts[3] || '').toLowerCase() === 'soon'
+
+          name:
+            parts[0] || "",
+
+          description:
+            parts[1] || "",
+
+          link:
+            parts[2] || "",
+
+          comingSoon:
+            (parts[3] || "")
+              .toLowerCase() === "soon"
+
         };
+
       });
+
   }
+
 
   function brandsToText(arr) {
-    if (!arr || !arr.length) return '';
-    return arr.map(b => `${b.name} | ${b.description} | ${b.link || ''}${b.comingSoon ? ' | soon' : ''}`).join('\n');
+
+    if (!Array.isArray(arr) || !arr.length) {
+      return "";
+    }
+
+
+    return arr
+
+      .map(b => {
+
+        const name =
+          b.name || "";
+
+        const description =
+          b.description || "";
+
+        const link =
+          b.link || "";
+
+        const soon =
+          b.comingSoon
+            ? " | soon"
+            : "";
+
+
+        return `${name} | ${description} | ${link}${soon}`;
+
+      })
+
+      .join("\n");
+
   }
+
 
   function loadBrands() {
-    db.collection('content').doc('brands').get().then(doc => {
-      if (!doc.exists) return;
-      const d = doc.data();
-      document.getElementById('brandsList').value = brandsToText(d.items);
-    }).catch(err => console.error('Brands load error:', err));
+
+    db.collection("content")
+      .doc("brands")
+      .get()
+
+      .then(doc => {
+
+        if (!doc.exists) return;
+
+        const d = doc.data();
+
+
+        document.getElementById("brandsList").value =
+          brandsToText(d.items);
+
+      })
+
+      .catch(err => {
+
+        console.error("Brands load error:", err);
+
+        showStatus(
+          "brandsStatus",
+          "Could not load Brands: " + err.message,
+          "error"
+        );
+
+      });
+
   }
+
 
   function saveBrands() {
-    const status = document.getElementById('brandsStatus');
+
     const data = {
-      items: parseBrandsText(document.getElementById('brandsList').value),
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+
+      items:
+        parseBrandsText(
+          document.getElementById("brandsList").value
+        ),
+
+      updatedAt:
+        firebase.firestore.FieldValue.serverTimestamp()
+
     };
-    db.collection('content').doc('brands').set(data)
+
+
+    db.collection("content")
+      .doc("brands")
+      .set(data)
+
       .then(() => {
-        status.textContent = 'Saved ✓';
-        status.style.display = 'block';
-        setTimeout(() => status.style.display = 'none', 2500);
+
+        showStatus(
+          "brandsStatus",
+          "Brands saved successfully ✓"
+        );
+
       })
+
       .catch(err => {
-        status.textContent = 'Error: ' + err.message;
-        status.className = 'msg error';
-        status.style.display = 'block';
+
+        showStatus(
+          "brandsStatus",
+          "Error: " + err.message,
+          "error"
+        );
+
       });
+
   }
+
+
+  /* =====================================================
+     CONTACT
+  ===================================================== */
 
   function loadContact() {
-    db.collection('content').doc('contact').get().then(doc => {
-      if (!doc.exists) return;
-      const d = doc.data();
-      document.getElementById('linkWhatsapp').value = d.whatsapp || '';
-      document.getElementById('linkLinkedin').value = d.linkedin || '';
-      document.getElementById('linkGithub').value = d.github || '';
-      document.getElementById('linkBehance').value = d.behance || '';
-      document.getElementById('linkYoutube').value = d.youtube || '';
-      document.getElementById('linkFacebook').value = d.facebook || '';
-      document.getElementById('linkInstagram').value = d.instagram || '';
-      document.getElementById('linkTwitter').value = d.twitter || '';
-      document.getElementById('linkTiktok').value = d.tiktok || '';
-    }).catch(err => console.error('Contact load error:', err));
+
+    db.collection("content")
+      .doc("contact")
+      .get()
+
+      .then(doc => {
+
+        if (!doc.exists) return;
+
+        const d = doc.data();
+
+
+        document.getElementById("linkWhatsapp").value =
+          d.whatsapp || "";
+
+        document.getElementById("linkLinkedin").value =
+          d.linkedin || "";
+
+        document.getElementById("linkGithub").value =
+          d.github || "";
+
+        document.getElementById("linkBehance").value =
+          d.behance || "";
+
+        document.getElementById("linkYoutube").value =
+          d.youtube || "";
+
+        document.getElementById("linkFacebook").value =
+          d.facebook || "";
+
+        document.getElementById("linkInstagram").value =
+          d.instagram || "";
+
+        document.getElementById("linkTwitter").value =
+          d.twitter || "";
+
+        document.getElementById("linkTiktok").value =
+          d.tiktok || "";
+
+      })
+
+      .catch(err => {
+
+        console.error("Contact load error:", err);
+
+        showStatus(
+          "contactStatus",
+          "Could not load Contact links: " + err.message,
+          "error"
+        );
+
+      });
+
   }
 
+
   function saveContact() {
-    const status = document.getElementById('contactStatus');
+
     const data = {
-      whatsapp: document.getElementById('linkWhatsapp').value,
-      linkedin: document.getElementById('linkLinkedin').value,
-      github: document.getElementById('linkGithub').value,
-      behance: document.getElementById('linkBehance').value,
-      youtube: document.getElementById('linkYoutube').value,
-      facebook: document.getElementById('linkFacebook').value,
-      instagram: document.getElementById('linkInstagram').value,
-      twitter: document.getElementById('linkTwitter').value,
-      tiktok: document.getElementById('linkTiktok').value,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+
+      whatsapp:
+        document.getElementById("linkWhatsapp").value.trim(),
+
+      linkedin:
+        document.getElementById("linkLinkedin").value.trim(),
+
+      github:
+        document.getElementById("linkGithub").value.trim(),
+
+      behance:
+        document.getElementById("linkBehance").value.trim(),
+
+      youtube:
+        document.getElementById("linkYoutube").value.trim(),
+
+      facebook:
+        document.getElementById("linkFacebook").value.trim(),
+
+      instagram:
+        document.getElementById("linkInstagram").value.trim(),
+
+      twitter:
+        document.getElementById("linkTwitter").value.trim(),
+
+      tiktok:
+        document.getElementById("linkTiktok").value.trim(),
+
+      updatedAt:
+        firebase.firestore.FieldValue.serverTimestamp()
+
     };
-    db.collection('content').doc('contact').set(data)
+
+
+    db.collection("content")
+      .doc("contact")
+      .set(data)
+
       .then(() => {
-        status.textContent = 'Saved ✓';
-        status.style.display = 'block';
-        setTimeout(() => status.style.display = 'none', 2500);
+
+        showStatus(
+          "contactStatus",
+          "Contact links saved successfully ✓"
+        );
+
       })
+
       .catch(err => {
-        status.textContent = 'Error: ' + err.message;
-        status.className = 'msg error';
-        status.style.display = 'block';
+
+        showStatus(
+          "contactStatus",
+          "Error: " + err.message,
+          "error"
+        );
+
       });
+
   }
+
+
+  /* =====================================================
+     ENTER KEY LOGIN
+  ===================================================== */
+
+  document
+    .getElementById("passwordInput")
+    .addEventListener("keydown", function(event) {
+
+      if (event.key === "Enter") {
+        doLogin();
+      }
+
+    });
+
 </script>
 
 </body>
